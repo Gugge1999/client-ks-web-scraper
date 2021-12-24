@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ng-ks-scraper": {
+    "ks-web-scraper": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,17 +20,15 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ng-ks-scraper",
+            "outputPath": "dist/ks-web-scraper",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
             "styles": [
+              "node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -72,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "ng-ks-scraper:build:production"
+              "browserTarget": "ks-web-scraper:build:production"
             },
             "development": {
-              "browserTarget": "ng-ks-scraper:build:development"
+              "browserTarget": "ks-web-scraper:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ng-ks-scraper:build"
+            "browserTarget": "ks-web-scraper:build"
           }
         },
         "test": {
@@ -94,18 +92,13 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "src/favicon.ico",
-              "src/assets"
-            ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets"],
+            "styles": ["src/custom-theme.scss", "src/styles.scss"],
             "scripts": []
           }
         }
       }
     }
   },
-  "defaultProject": "ng-ks-scraper"
+  "defaultProject": "ks-web-scraper"
 }
