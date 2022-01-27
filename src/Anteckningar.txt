@@ -1,3 +1,5 @@
 Tema:
 Custom theme: https://materialtheme.arcsine.dev/
 
+För diagram och tabeller använd:
+https://www.npmjs.com/package/ng2-charts
