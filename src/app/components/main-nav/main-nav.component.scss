@@ -1,21 +1,20 @@
-.sidenav-container {
-  height: 100%;
+.watchIcon {
+  margin-right: 5px;
+  vertical-align: middle;
 }
 
-.sidenav {
-  width: 200px;
+.addNewWatchButton {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 2.5em;
 }
 
-.sidenav .mat-toolbar {
-  background: inherit;
+.addIcon {
+  transform: scale(2.5);
 }
 
-.mat-toolbar.mat-primary {
-  position: sticky;
-  top: 0;
-  z-index: 1;
-}
-
-#watchIcon {
-  margin-right: 10px;
+.toolbarTitle {
+  vertical-align: middle;
+  font-size: x-large;
 }

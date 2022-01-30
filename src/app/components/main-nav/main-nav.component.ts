@@ -1,7 +1,6 @@
-import { Component } from '@angular/core'
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'
-import { Observable } from 'rxjs'
-import { map, shareReplay } from 'rxjs/operators'
+import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { NewWatchDialogComponent } from '../new-watch-dialog/new-watch-dialog.component';
 
 @Component({
   selector: 'app-main-nav',
@@ -9,12 +8,20 @@ import { map, shareReplay } from 'rxjs/operators'
   styleUrls: ['./main-nav.component.scss'],
 })
 export class MainNavComponent {
-  isHandset$: Observable<boolean> = this.breakpointObserver
-    .observe(Breakpoints.Handset)
-    .pipe(
-      map((result) => result.matches),
-      shareReplay()
-    )
+  test: string = 'test string';
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(private dialog: MatDialog) {}
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(NewWatchDialogComponent, {
+      width: '700px',
+      autoFocus: false,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      console.log(this.test);
+      this.test = result;
+    });
+  }
 }

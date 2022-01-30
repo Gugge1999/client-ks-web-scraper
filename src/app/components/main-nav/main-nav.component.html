@@ -2,10 +2,19 @@
   <mat-sidenav-content>
     <mat-toolbar color="primary">
       <mat-toolbar-row>
-        <mat-icon id="watchIcon">watch</mat-icon>
-        <span class="unselectable">KS Web Scraper</span>
+        <a class="titlebarLink" [routerLink]="['/home']">
+          <mat-icon class="watchIcon">watch</mat-icon>
+          <span class="toolbarTitle">KS Web Scraper</span>
+        </a>
       </mat-toolbar-row>
     </mat-toolbar>
     <app-scraper-card></app-scraper-card>
+    <button
+      mat-icon-button
+      color="primary"
+      class="addNewWatchButton"
+      (click)="openDialog()">
+      <mat-icon class="addIcon">add_circle</mat-icon>
+    </button>
   </mat-sidenav-content>
 </mat-sidenav-container>

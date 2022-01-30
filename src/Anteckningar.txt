@@ -1,5 +1,17 @@
+-------------- TODO --------------
+Fixa en app-header och app-footer och lägg till i app.component.html
+
+
 Tema:
 Custom theme: https://materialtheme.arcsine.dev/
 
 För diagram och tabeller använd:
 https://www.npmjs.com/package/ng2-charts
+
+Ta bort --host 192.168.1.2 i package.json för att köra ren localhost
+För att köra lokalt skriv npm start eller ändra till:   
+"options": {
+  "host": "0.0.0.0"
+},
+
+i angular.json under "serve"
