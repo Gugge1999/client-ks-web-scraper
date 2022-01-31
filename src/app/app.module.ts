@@ -19,6 +19,7 @@ import { AppComponent } from './app.component';
 import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { ScraperCardComponent } from './components/scraper-card/scraper-card.component';
 import { NewWatchDialogComponent } from './components/new-watch-dialog/new-watch-dialog.component';
+import { DeleteWatchDialogComponent } from './components/delete-watch-dialog/delete-watch-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NewWatchDialogComponent } from './components/new-watch-dialog/new-watch
     MainNavComponent,
     ScraperCardComponent,
     NewWatchDialogComponent,
+    DeleteWatchDialogComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ export class NewWatchDialogComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onNoClick(): void {
+  onCancelClick(): void {
     this.dialogRef.close();
   }
 }

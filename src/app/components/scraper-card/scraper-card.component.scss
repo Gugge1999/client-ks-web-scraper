@@ -1,4 +1,22 @@
-.card {
-  // max-width: 100%;
-  max-width: 500px;
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  // max-width: 500px;
 }
+
+.card {
+  width: 100vw;
+}
+
+// .deleteIcon {
+//   color: #b93a36;
+// }
+
+// .isActiveCardButton {
+//   color: #33cc4d;
+// }
+
+// .chartCardButton {
+//   color: #33b0cc;
+// }

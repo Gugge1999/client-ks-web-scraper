@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DeleteWatchDialogComponent } from '../delete-watch-dialog/delete-watch-dialog.component';
 
 @Component({
   selector: 'app-scraper-card',
@@ -8,7 +10,21 @@ import { Component, OnInit } from '@angular/core';
 export class ScraperCardComponent implements OnInit {
   asdf: string = 'asdasd';
 
-  constructor() {}
+  isActive: string = 'toggle_off';
+
+  constructor(private dialog: MatDialog) {}
 
   ngOnInit(): void {}
+
+  deleteWatchDialog(): void {
+    const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
+      width: '375px',
+      autoFocus: false,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // result kommer från form field. Tror jag...
+      console.log('The dialog was closed');
+    });
+  }
 }

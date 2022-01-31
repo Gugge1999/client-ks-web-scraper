@@ -1,6 +1,7 @@
 -------------- TODO --------------
 Fixa en app-header och app-footer och lägg till i app.component.html
 
+Fixa "snackbar" det är samma sak som TRV global messages
 
 Tema:
 Custom theme: https://materialtheme.arcsine.dev/
