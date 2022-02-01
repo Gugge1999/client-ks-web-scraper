@@ -1,7 +1,7 @@
 -------------- TODO --------------
 Fixa en app-header och app-footer och lägg till i app.component.html
 
-Fixa "snackbar" det är samma sak som TRV global messages
+Fixa en "dismiss action" i snackbar. Skapa en egen snackbar component...
 
 Tema:
 Custom theme: https://materialtheme.arcsine.dev/

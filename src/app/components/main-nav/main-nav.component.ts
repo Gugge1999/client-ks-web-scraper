@@ -10,7 +10,7 @@ import { NewWatchDialogComponent } from '../new-watch-dialog/new-watch-dialog.co
 export class MainNavComponent {
   test: string = 'test string';
 
-  constructor(private dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
     const dialogRef = this.dialog.open(NewWatchDialogComponent, {

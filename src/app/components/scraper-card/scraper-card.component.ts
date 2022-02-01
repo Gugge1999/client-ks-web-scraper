@@ -12,7 +12,7 @@ export class ScraperCardComponent implements OnInit {
 
   isActive: string = 'toggle_off';
 
-  constructor(private dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
