@@ -2,15 +2,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   // max-width: 500px;
 }
 
 .card {
-  width: 100vw;
+  width: 100%;
+  margin-bottom: 8px;
+  min-width: 1080px;
 }
 
 .mat-card-actions-align-end {
   align-items: center;
+}
+
+.addNewWatchButton {
+  margin-top: 0.5em;
+  font-size: large;
+  padding: 0.5em;
+}
+
+.addIcon {
+  transform: scale(1.5);
+  margin-bottom: 4px;
+  margin-right: 4px;
 }
 
 // .deleteIcon {

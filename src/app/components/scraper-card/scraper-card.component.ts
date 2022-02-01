@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteWatchDialogComponent } from '../delete-watch-dialog/delete-watch-dialog.component';
+import { NewWatchDialogComponent } from '../new-watch-dialog/new-watch-dialog.component';
 
 @Component({
   selector: 'app-scraper-card',
@@ -29,5 +30,20 @@ export class ScraperCardComponent implements OnInit {
 
   toggleIsWatchActive(): void {
     console.log(`isActive: ${this.isActive}`);
+  }
+
+  test: string = 'test string';
+
+  openNewWatchDialog(): void {
+    const dialogRef = this.dialog.open(NewWatchDialogComponent, {
+      width: '700px',
+      autoFocus: false,
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log('The dialog was closed');
+      console.log(this.test);
+      this.test = result;
+    });
   }
 }

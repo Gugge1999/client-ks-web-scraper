@@ -5,6 +5,14 @@ Fixa en "dismiss action" i snackbar. Skapa en egen snackbar component...
 
 Fixa port width på card. På desktop: 50%. Mobil: 100%
 
+Fixa: add new watch knapp får fel css efter cancel
+
+-------------- Spåninngar --------------
+Om jag använder PostgreSQL, skicka med userid på varje klocka som ska "scrapas"
+
+Flytta lägga till knappen till under korten. Typ så att de blir som en egen kort. Eller ovanför...
+
+-------------- Misc -------------------
 Tema:
 Custom theme: https://materialtheme.arcsine.dev/
 
