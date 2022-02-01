@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 
 const MaterialComponents = [
   MatIconModule,
@@ -21,6 +22,7 @@ const MaterialComponents = [
   MatDialogModule,
   MatFormFieldModule,
   MatSnackBarModule,
+  MatSlideToggleModule,
 ];
 
 @NgModule({

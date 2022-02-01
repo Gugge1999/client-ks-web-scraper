@@ -3,6 +3,8 @@ Fixa en app-header och app-footer och lägg till i app.component.html
 
 Fixa en "dismiss action" i snackbar. Skapa en egen snackbar component...
 
+Fixa port width på card. På desktop: 50%. Mobil: 100%
+
 Tema:
 Custom theme: https://materialtheme.arcsine.dev/
 

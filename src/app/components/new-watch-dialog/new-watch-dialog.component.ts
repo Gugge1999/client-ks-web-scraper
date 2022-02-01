@@ -20,18 +20,22 @@ export class NewWatchDialogComponent implements OnInit {
     // TODO: save new watch.
     // If successfull: show success snackbar.
     // Else: show unsuccessful snackbar
-    this.showSnackbar('Saved watch: Label');
+    this.showSnackbar('Sinn 104');
   }
 
   onCancelClick(): void {
     this.dialogRef.close();
   }
 
-  showSnackbar(saveMessage: string, action?: string): void {
-    let snack = this._snackBar.open(saveMessage, action, {
-      panelClass: ['mat-toolbar', 'mat-primary'],
-      duration: 5000,
-    });
+  showSnackbar(label: string, action?: string): void {
+    let snack = this._snackBar.open(
+      `Saved watch with label: ${label}`,
+      action,
+      {
+        panelClass: ['mat-toolbar', 'mat-primary'],
+        duration: 5000,
+      }
+    );
     snack.afterDismissed().subscribe(() => {
       console.log('This will be shown after snackbar disappeared');
     });

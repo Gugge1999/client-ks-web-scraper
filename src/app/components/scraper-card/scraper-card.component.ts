@@ -9,8 +9,7 @@ import { DeleteWatchDialogComponent } from '../delete-watch-dialog/delete-watch-
 })
 export class ScraperCardComponent implements OnInit {
   asdf: string = 'asdasd';
-
-  isActive: string = 'toggle_off';
+  isActive: boolean = true;
 
   constructor(public dialog: MatDialog) {}
 
@@ -26,5 +25,9 @@ export class ScraperCardComponent implements OnInit {
       // result kommer från form field. Tror jag...
       console.log('The dialog was closed');
     });
+  }
+
+  toggleIsWatchActive(): void {
+    console.log(`isActive: ${this.isActive}`);
   }
 }
