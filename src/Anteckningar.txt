@@ -25,4 +25,8 @@ För att köra lokalt skriv npm start eller ändra till:
   "host": "0.0.0.0"
 },
 
+För att debugga med attach: 
+  högerklicka på chrome, -> Google chrome -> properties.
+  Lägg till: --remote-debugging-port=9222 på slutet i Target
+
 i angular.json under "serve"
