@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { WatchService } from 'src/app/services/watch.service';
 
 @Component({
   selector: 'app-main-nav',
@@ -6,5 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./main-nav.component.scss'],
 })
 export class MainNavComponent implements OnInit {
-  ngOnInit(): void {}
+  constructor(private _watchService: WatchService) {}
+
+  // Om det krånglar: kanske ändra till AfterViewInit?
+  ngOnInit(): void {
+    let test = this._watchService
+      .getAllWatches()
+      .subscribe((response) => console.log(response));
+  }
 }

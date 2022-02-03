@@ -30,6 +30,13 @@ export class WatchService {
       .pipe(catchError(this.handleError));
   }
 
+  getAllWatches(): Observable<any> {
+    let API_URL = `${this.REST_API}/all-watches`;
+    return this.httpClient
+      .get(API_URL, httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
   // Error
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
