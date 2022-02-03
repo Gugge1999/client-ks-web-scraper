@@ -1,4 +1,4 @@
-export interface NewWatch {
-  label: string;
-  uri: string;
+export class NewWatch {
+  label!: string;
+  uri!: string;
 }

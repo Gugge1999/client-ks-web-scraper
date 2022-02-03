@@ -21,9 +21,7 @@ export class WatchService {
 
   constructor(private httpClient: HttpClient) {}
 
-  // Ändra från any till interface eller class?
-  // https://www.positronx.io/build-angular-crud-application-with-nodejs-and-express-rest-api/
-  addNewWatch(data: any): Observable<any> {
+  addNewWatch(data: NewWatch): Observable<any> {
     let API_URL = `${this.REST_API}/add-watch`;
     return this.httpClient
       .post(API_URL, data, httpOptions)
