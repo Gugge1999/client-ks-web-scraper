@@ -4,11 +4,16 @@ Fixa en app-header och app-footer och lägg till i app.component.html
 Fixa en "dismiss action" i snackbar. Skapa en egen snackbar component...
   https://dev.to/itnext/custom-theme-for-angular-material-components-series-part-3-apply-theme-e34
 
+Fixa validation.
+  Kanske bra: https://coryrylan.com/blog/angular-form-builder-and-validation-management
+
 Fixa port width på card. På desktop: 50%. Mobil: 100%
+  https://stackoverflow.com/questions/45350716/detecting-real-time-window-size-changes-in-angular-4
 
 Fixa: add new watch knapp får fel css efter cancel
 
-
+metoden run i api kan retuerna en boolean. true eller false visar om det finns ny data. 
+Om det finns ny data, anropa getAllWatches() och hämta de nya. 
 
 -------------- Spåninngar --------------
 Om jag använder PostgreSQL, skicka med userid på varje klocka som ska "scrapas"

@@ -40,10 +40,13 @@ export class ScraperCardComponent implements OnInit {
       autoFocus: false,
     });
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log('The dialog was closed');
-      console.log(this.test);
-      this.test = result;
-    });
+    // dialogRef.afterClosed().subscribe((result) => {
+    // Samma data går att hämta här som i saveWatch.
+    // Vad är bäst? Jag tror att det är bäst i dialog
+    //   console.log('The dialog was closed');
+    //   console.log(this.test);
+    //   console.log('result: ' + result);
+    //   this.test = result;
+    // });
   }
 }

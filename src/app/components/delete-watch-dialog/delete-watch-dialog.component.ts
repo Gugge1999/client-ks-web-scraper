@@ -20,6 +20,7 @@ export class DeleteWatchDialogComponent implements OnInit {
 
   showSnackbar(watchToDelete: string, action: string): void {
     let snack = this._snackBar.open(`Deleted watch: ${watchToDelete}`, action, {
+      panelClass: ['mat-toolbar', 'mat-warn'],
       duration: 5000,
     });
     snack.afterDismissed().subscribe(() => {

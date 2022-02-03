@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { MainNavComponent } from '../main-nav/main-nav.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { WatchService } from '../../services/watch.service';
 
 @Component({
   selector: 'app-new-watch-dialog',
@@ -9,33 +11,36 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./new-watch-dialog.component.scss'],
 })
 export class NewWatchDialogComponent implements OnInit {
+  form!: FormGroup;
   constructor(
     public dialogRef: MatDialogRef<MainNavComponent>,
-    private _snackBar: MatSnackBar
+    private _formBuilder: FormBuilder,
+    private _snackBar: MatSnackBar,
+    private _watchService: WatchService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.form = this._formBuilder.group({
+      label: 'test label',
+      uri: 'https://klocksnack.se/search/1613408/?q=jeager&t=post&c[child_nodes]=1&c[nodes][0]=11&c[title_only]=1&o=date',
+    });
+  }
 
-  saveWatch(): void {
-    // TODO: save new watch.
-    // If successfull: show success snackbar.
-    // Else: show unsuccessful snackbar
-    this.showSnackbar('Sinn 104');
+  saveWatch(): any {
+    this._watchService
+      .addNewWatch(this.form.value)
+      .subscribe((response) => this.showSnackbar(response, 'Dismiss'));
   }
 
   onCancelClick(): void {
     this.dialogRef.close();
   }
 
-  showSnackbar(label: string, action?: string): void {
-    let snack = this._snackBar.open(
-      `Saved watch with label: ${label}`,
-      action,
-      {
-        panelClass: ['mat-toolbar', 'mat-primary'],
-        duration: 5000,
-      }
-    );
+  showSnackbar(response: string, action?: string): void {
+    let snack = this._snackBar.open(response, action, {
+      panelClass: ['mat-toolbar', 'mat-primary'],
+      duration: 5000,
+    });
     snack.afterDismissed().subscribe(() => {
       console.log('This will be shown after snackbar disappeared');
     });
