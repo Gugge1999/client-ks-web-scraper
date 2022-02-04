@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { WatchService } from 'src/app/services/watch.service';
 import { DeleteWatchDialogComponent } from '../delete-watch-dialog/delete-watch-dialog.component';
 import { NewWatchDialogComponent } from '../new-watch-dialog/new-watch-dialog.component';
 
@@ -9,12 +10,17 @@ import { NewWatchDialogComponent } from '../new-watch-dialog/new-watch-dialog.co
   styleUrls: ['./scraper-card.component.scss'],
 })
 export class ScraperCardComponent implements OnInit {
-  asdf: string = 'asdasd';
-  isActive: boolean = true;
+  // TODO: Byt från any. Se hur de är gjort:
+  // https://github.com/Jon-Peppinck/angular-node-mysql-crud/blob/5cd06316d18bf94f236edee302fc68770d3984f2/frontend/src/app/components/grocery-list/grocery-list.component.ts
+  watches!: any[];
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private _watchService: WatchService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this._watchService.getAllWatches().subscribe((response) => {
+      this.watches = response;
+    });
+  }
 
   deleteWatchDialog(): void {
     const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
@@ -28,8 +34,10 @@ export class ScraperCardComponent implements OnInit {
     });
   }
 
-  toggleIsWatchActive(): void {
-    console.log(`isActive: ${this.isActive}`);
+  toggleIsWatchActive(index: number, active: string, id: string): void {
+    this.watches[index].active = active === 'true' ? 'false' : 'true';
+    console.log('Toggle active value: ' + this.watches[index].active);
+    // TODO: skicka till backend och skapa en snackbar
   }
 
   test: string = 'test string';
@@ -39,14 +47,5 @@ export class ScraperCardComponent implements OnInit {
       width: '700px',
       autoFocus: false,
     });
-
-    // dialogRef.afterClosed().subscribe((result) => {
-    // Samma data går att hämta här som i saveWatch.
-    // Vad är bäst? Jag tror att det är bäst i dialog
-    //   console.log('The dialog was closed');
-    //   console.log(this.test);
-    //   console.log('result: ' + result);
-    //   this.test = result;
-    // });
   }
 }

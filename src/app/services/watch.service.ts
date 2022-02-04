@@ -17,10 +17,12 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class WatchService {
-  REST_API: string = 'http://localhost:3000';
+  REST_API: string = 'http://192.168.1.2:3000';
 
   constructor(private httpClient: HttpClient) {}
 
+  // https://github.com/Jon-Peppinck/angular-node-mysql-crud/blob/5cd06316d18bf94f236edee302fc68770d3984f2/frontend/src/app/services/grocery-list-crud.service.ts
+  // Bättre implementation av interface. Tror jag...
   addNewWatch(data: NewWatch): Observable<any> {
     let API_URL = `${this.REST_API}/add-watch`;
     return this.httpClient

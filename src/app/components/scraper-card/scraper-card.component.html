@@ -1,7 +1,21 @@
 <div class="container">
-  <mat-card class="card">
-    <mat-card-title>{{ asdf }}</mat-card-title>
-    <mat-card-subtitle>Last mail sent: 24th January 2022</mat-card-subtitle>
+  <mat-card class="card" *ngFor="let watch of watches; let i = index">
+    <mat-card-title>{{ watch.label }}</mat-card-title>
+    <mat-card-content>
+      <p>
+        Thread being watches:
+        <a target="_blank" class="linkToWatch" href="{{ watch.uri }}">Thread</a>
+      </p>
+      <p>Last mail sent: {{ watch.last_email_sent }}</p>
+      <p>Added: {{ watch.added }}</p>
+      <p>Current watch: {{ watch.stored_watch }}</p>
+      <a
+        target="_blank"
+        class="linkToWatch"
+        href="{{ watch.link_to_stored_watch }}"
+        >View watch on klocksnack</a
+      >
+    </mat-card-content>
     <mat-card-actions align="end">
       <button
         mat-icon-button
@@ -14,8 +28,8 @@
       </button>
       <mat-slide-toggle
         class="isActiveSlideToggle"
-        [(ngModel)]="isActive"
-        (change)="toggleIsWatchActive()"
+        [checked]="watch.active === 'true' ? true : false"
+        (change)="toggleIsWatchActive(i, watch.active, watch.id)"
         color="primary"></mat-slide-toggle>
     </mat-card-actions>
   </mat-card>
