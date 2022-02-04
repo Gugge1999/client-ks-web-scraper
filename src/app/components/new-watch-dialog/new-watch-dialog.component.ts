@@ -17,13 +17,13 @@ export class NewWatchDialogComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<MainNavComponent>,
-    private _formBuilder: FormBuilder,
-    private _snackBar: MatSnackBar,
-    private _watchService: WatchService
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar,
+    private watchService: WatchService
   ) {}
 
   ngOnInit(): void {
-    this.form = this._formBuilder.group({
+    this.form = this.formBuilder.group({
       label: this.label,
       uri: this.uri,
     });
@@ -31,10 +31,10 @@ export class NewWatchDialogComponent implements OnInit {
 
   saveWatch(): any {
     // TODO: kolla om nått gick snett. Nu får man alltid successfull snackbar
-    this._watchService
+    this.watchService
       .addNewWatch(this.form.value)
       .subscribe((response) => this.showSnackbar(response, 'Dismiss'));
-    // TODO: Uppdatera sidan också
+    // TODO: Uppdatera sidan också också
   }
 
   onCancelClick(): void {
@@ -42,7 +42,7 @@ export class NewWatchDialogComponent implements OnInit {
   }
 
   showSnackbar(response: string, action?: string): void {
-    let snack = this._snackBar.open(response, action, {
+    let snack = this.snackBar.open(response, action, {
       panelClass: ['mat-toolbar', 'mat-primary'],
       duration: 5000,
     });

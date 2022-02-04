@@ -9,7 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class DeleteWatchDialogComponent implements OnInit {
   watchToDelete: string = 'Test watch';
 
-  constructor(private _snackBar: MatSnackBar) {}
+  constructor(private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {}
 
@@ -19,7 +19,7 @@ export class DeleteWatchDialogComponent implements OnInit {
   }
 
   showSnackbar(watchToDelete: string, action: string): void {
-    let snack = this._snackBar.open(`Deleted watch: ${watchToDelete}`, action, {
+    let snack = this.snackBar.open(`Deleted watch: ${watchToDelete}`, action, {
       panelClass: ['mat-toolbar', 'mat-warn'],
       duration: 5000,
     });

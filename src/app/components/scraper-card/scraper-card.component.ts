@@ -14,10 +14,10 @@ export class ScraperCardComponent implements OnInit {
   // https://github.com/Jon-Peppinck/angular-node-mysql-crud/blob/5cd06316d18bf94f236edee302fc68770d3984f2/frontend/src/app/components/grocery-list/grocery-list.component.ts
   watches!: any[];
 
-  constructor(public dialog: MatDialog, private _watchService: WatchService) {}
+  constructor(public dialog: MatDialog, private watchService: WatchService) {}
 
   ngOnInit(): void {
-    this._watchService.getAllWatches().subscribe((response) => {
+    this.watchService.getAllWatches().subscribe((response) => {
       this.watches = response;
     });
   }

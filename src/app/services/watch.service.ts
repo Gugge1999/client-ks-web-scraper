@@ -19,20 +19,20 @@ const httpOptions = {
 export class WatchService {
   REST_API: string = 'http://192.168.1.2:3000';
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   // TODO: Bättre implementation av interface. Tror jag...
   // https://github.com/Jon-Peppinck/angular-node-mysql-crud/blob/5cd06316d18bf94f236edee302fc68770d3984f2/frontend/src/app/services/grocery-list-crud.service.ts
   addNewWatch(data: NewWatch): Observable<any> {
     let API_URL = `${this.REST_API}/add-watch`;
-    return this.httpClient
+    return this.http
       .post(API_URL, data, httpOptions)
       .pipe(catchError(this.handleError));
   }
 
   getAllWatches(): Observable<any> {
     let API_URL = `${this.REST_API}/all-watches`;
-    return this.httpClient
+    return this.http
       .get(API_URL, httpOptions)
       .pipe(catchError(this.handleError));
   }
