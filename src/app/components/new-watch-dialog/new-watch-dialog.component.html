@@ -3,11 +3,29 @@
   <div mat-dialog-content>
     <mat-form-field appearance="fill">
       <mat-label>Label</mat-label>
-      <input matInput formControlName="label" required />
+      <input matInput formControlName="label" required [(ngModel)]="label" />
+      <button
+        mat-button
+        *ngIf="label"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="label = ''">
+        <mat-icon>close</mat-icon>
+      </button>
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Watch Link</mat-label>
-      <input matInput formControlName="uri" required />
+      <input matInput formControlName="uri" required [(ngModel)]="uri" />
+      <button
+        mat-button
+        *ngIf="uri"
+        matSuffix
+        mat-icon-button
+        aria-label="Clear"
+        (click)="uri = ''">
+        <mat-icon>close</mat-icon>
+      </button>
     </mat-form-field>
   </div>
   <div mat-dialog-actions align="end">

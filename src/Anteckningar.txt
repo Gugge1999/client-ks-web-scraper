@@ -10,7 +10,7 @@ Fixa validation.
 Fixa port width på card. På desktop: 50%. Mobil: 100%
   https://stackoverflow.com/questions/45350716/detecting-real-time-window-size-changes-in-angular-4
 
-Fixa: add new watch knapp får fel css efter cancel
+Fixa: Skapa en mapp i components för dialoger
 
 Kolla: Gör jag rätt när jag skickar status codes? Skickar jag med 500 kod rätt? 
   se: https://github.com/Jon-Peppinck/angular-node-mysql-crud/blob/5cd06316d18bf94f236edee302fc68770d3984f2/backend/controllers/grocery.js

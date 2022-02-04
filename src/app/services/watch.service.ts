@@ -21,8 +21,8 @@ export class WatchService {
 
   constructor(private httpClient: HttpClient) {}
 
+  // TODO: Bättre implementation av interface. Tror jag...
   // https://github.com/Jon-Peppinck/angular-node-mysql-crud/blob/5cd06316d18bf94f236edee302fc68770d3984f2/frontend/src/app/services/grocery-list-crud.service.ts
-  // Bättre implementation av interface. Tror jag...
   addNewWatch(data: NewWatch): Observable<any> {
     let API_URL = `${this.REST_API}/add-watch`;
     return this.httpClient
@@ -37,7 +37,6 @@ export class WatchService {
       .pipe(catchError(this.handleError));
   }
 
-  // Error
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.

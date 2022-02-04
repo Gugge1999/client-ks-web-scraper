@@ -12,6 +12,9 @@ import { WatchService } from '../../services/watch.service';
 })
 export class NewWatchDialogComponent implements OnInit {
   form!: FormGroup;
+  label: string = '';
+  uri: string = '';
+
   constructor(
     public dialogRef: MatDialogRef<MainNavComponent>,
     private _formBuilder: FormBuilder,
@@ -21,15 +24,17 @@ export class NewWatchDialogComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this._formBuilder.group({
-      label: 'test label',
-      uri: 'https://klocksnack.se/search/1613408/?q=jeager&t=post&c[child_nodes]=1&c[nodes][0]=11&c[title_only]=1&o=date',
+      label: this.label,
+      uri: this.uri,
     });
   }
 
   saveWatch(): any {
+    // TODO: kolla om nått gick snett. Nu får man alltid successfull snackbar
     this._watchService
       .addNewWatch(this.form.value)
       .subscribe((response) => this.showSnackbar(response, 'Dismiss'));
+    // TODO: Uppdatera sidan också
   }
 
   onCancelClick(): void {

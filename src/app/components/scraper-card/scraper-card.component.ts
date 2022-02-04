@@ -30,7 +30,7 @@ export class ScraperCardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result) => {
       // result kommer från form field. Tror jag...
-      console.log('The dialog was closed');
+      console.log(`The dialog was closed. Result: ${result}`);
     });
   }
 
