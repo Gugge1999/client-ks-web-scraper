@@ -30,10 +30,20 @@ export class WatchService {
       .pipe(catchError(this.handleError));
   }
 
-  getAllWatches(): Observable<any> {
+  getAllWatches(): Observable<any[]> {
     let API_URL = `${this.REST_API}/all-watches`;
     return this.http
-      .get(API_URL, httpOptions)
+      .get<any[]>(API_URL, httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  // Byt från any
+  updateIsActive(watch: any): Observable<any> {
+    const API_URL = `${this.REST_API}/update-is-active`;
+    const data = { isActive: watch.active, label: watch.label, id: watch.id };
+
+    return this.http
+      .put(API_URL, data, httpOptions)
       .pipe(catchError(this.handleError));
   }
 

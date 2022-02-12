@@ -18,7 +18,7 @@ export class NewWatchDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<MainNavComponent>,
     private formBuilder: FormBuilder,
-    private snackBar: MatSnackBar,
+    private snackbar: MatSnackBar,
     private watchService: WatchService
   ) {}
 
@@ -31,10 +31,14 @@ export class NewWatchDialogComponent implements OnInit {
 
   saveWatch(): any {
     // TODO: kolla om nått gick snett. Nu får man alltid successfull snackbar
-    this.watchService
-      .addNewWatch(this.form.value)
-      .subscribe((response) => this.showSnackbar(response, 'Dismiss'));
+    this.watchService.addNewWatch(this.form.value).subscribe((response) => {
+      console.log('addNewWatch done.');
+
+      this.showSnackbar(response, 'Dismiss');
+    });
     // TODO: Uppdatera sidan också också
+
+    // Från github: Vad är tap? Importerad från rxjs
   }
 
   onCancelClick(): void {
@@ -42,7 +46,7 @@ export class NewWatchDialogComponent implements OnInit {
   }
 
   showSnackbar(response: string, action?: string): void {
-    let snack = this.snackBar.open(response, action, {
+    let snack = this.snackbar.open(response, action, {
       panelClass: ['mat-toolbar', 'mat-primary'],
       duration: 5000,
     });

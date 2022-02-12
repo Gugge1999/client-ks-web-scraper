@@ -36,7 +36,11 @@
       (click)="onCancelClick()">
       Cancel
     </button>
-    <button mat-flat-button type="submit" color="primary" mat-dialog-close>
+    <button
+      mat-flat-button
+      type="submit"
+      color="primary"
+      [mat-dialog-close]="true">
       Save
     </button>
   </div>

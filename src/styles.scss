@@ -28,16 +28,16 @@ body {
   z-index: 1;
 }
 
+.mat-toolbar-row {
+  vertical-align: middle;
+}
+
 mat-form-field {
   width: 100%;
 }
 
 input {
   text-overflow: ellipsis;
-}
-
-.container {
-  padding: 15px;
 }
 
 .linkToWatch:link,
@@ -60,6 +60,6 @@ a:hover {
   color: rgb(63, 63, 63);
 }
 
-.mat-toolbar-row {
-  vertical-align: middle;
+.mat-tooltip.tooltip {
+  font-size: 14px;
 }

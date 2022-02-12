@@ -1,5 +1,5 @@
-<div class="container">
-  <mat-card class="card" *ngFor="let watch of watches; let i = index">
+<div class="cardContainer">
+  <mat-card class="card" *ngFor="let watch of watches$ | async; let i = index">
     <mat-card-title>{{ watch.label }}</mat-card-title>
     <mat-card-content>
       <p>
@@ -13,13 +13,16 @@
         target="_blank"
         class="linkToWatch"
         href="{{ watch.link_to_stored_watch }}"
-        >View watch on klocksnack</a
+        >View watch on Klocksnack.se</a
       >
     </mat-card-content>
     <mat-card-actions align="end">
       <button
         mat-icon-button
         class="deleteCardButton"
+        matTooltip="Delete watch"
+        matTooltipPosition="above"
+        matTooltipClass="tooltip"
         (click)="deleteWatchDialog()">
         <mat-icon class="deleteIcon">delete_outline</mat-icon>
       </button>
@@ -28,9 +31,13 @@
       </button>
       <mat-slide-toggle
         class="isActiveSlideToggle"
-        [checked]="watch.active === 'true' ? true : false"
-        (change)="toggleIsWatchActive(i, watch.active, watch.id)"
-        color="primary"></mat-slide-toggle>
+        color="primary"
+        [(ngModel)]="watch.active"
+        matTooltip="Toggle active status"
+        matTooltipPosition="above"
+        matTooltipClass="tooltip"
+        (change)="toggleIsWatchActive(watch)">
+      </mat-slide-toggle>
     </mat-card-actions>
   </mat-card>
   <div class="addNewWatch">
