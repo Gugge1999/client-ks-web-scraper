@@ -8,14 +8,12 @@ import { WatchService } from '../../services/watch.service';
   templateUrl: './delete-watch-dialog.component.html',
   styleUrls: ['./delete-watch-dialog.component.scss'],
 })
-export class DeleteWatchDialogComponent implements OnInit {
+export class DeleteWatchDialogComponent {
   constructor(
     private snackbar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private watchService: WatchService
   ) {}
-
-  ngOnInit(): void {}
 
   deleteWatch(watchToDelete: any): void {
     this.watchService.deleteWatch(watchToDelete.id).subscribe(() => {
