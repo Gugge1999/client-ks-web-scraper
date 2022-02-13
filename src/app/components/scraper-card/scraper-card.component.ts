@@ -66,7 +66,9 @@ export class ScraperCardComponent implements OnInit {
       // Möjliga lösningar:
       // https://www.stackoverflow.com/questions/62114022/angular-resolver-observable-completes-too-early
       // BRA TROR JAG. Anropa watchService.getAllWatches() i dialog och skicka tillbaka alla klockor till card component. https://www.stackoverflow.com/questions/51815455/how-to-pass-data-from-angular-material-dialog-to-parent-component
-      setTimeout(() => {
+
+      // https://www.stackoverflow.com/questions/50519200/angular-6-view-is-not-updated-after-changing-a-variable-within-subscribe
+      https: setTimeout(() => {
         this.watches$ = this.watchService.getAllWatches();
       }, 500);
     });
