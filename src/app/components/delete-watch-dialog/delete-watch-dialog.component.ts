@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { WatchService } from '../../services/watch.service';
 
 @Component({
   selector: 'app-delete-watch-dialog',
@@ -7,21 +9,28 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./delete-watch-dialog.component.scss'],
 })
 export class DeleteWatchDialogComponent implements OnInit {
-  watchToDelete: string = 'Test watch';
-
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(
+    private snackbar: MatSnackBar,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private watchService: WatchService
+  ) {}
 
   ngOnInit(): void {}
 
-  deleteWatch(): void {
-    console.log('deleteWatch() called ');
-    this.showSnackbar(this.watchToDelete, 'Undo');
+  deleteWatch(watchToDelete: any): void {
+    this.watchService.deleteWatch(watchToDelete.id).subscribe(() => {
+      // För bättre Undo
+      // https://stackblitz.com/edit/undo-snackbar
+      this.showSnackbar(watchToDelete.label, 'Undo');
+    });
   }
 
-  showSnackbar(watchToDelete: string, action: string): void {
-    let snack = this.snackBar.open(`Deleted watch: ${watchToDelete}`, action, {
+  showSnackbar(message: string, action: string): void {
+    let snack = this.snackbar.open(`Deleted watch ${message}`, action, {
       panelClass: ['mat-toolbar', 'mat-warn'],
       duration: 5000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
     });
     snack.afterDismissed().subscribe(() => {
       console.log('This will be shown after snackbar disappeared');

@@ -47,6 +47,14 @@ export class WatchService {
       .pipe(catchError(this.handleError));
   }
 
+  deleteWatch(id: string): Observable<any> {
+    const API_URL = `${this.REST_API}/delete-watch/${id}`;
+
+    return this.http
+      .delete(API_URL, httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.

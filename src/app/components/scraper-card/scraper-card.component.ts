@@ -31,15 +31,17 @@ export class ScraperCardComponent implements OnInit {
     });
   }
 
-  deleteWatchDialog(): void {
+  deleteWatchDialog(watch: any): void {
     const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
       width: '375px',
       autoFocus: false,
+      data: watch,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       // result kommer från form field. Tror jag...
       console.log(`The dialog was closed. Result: ${result}`);
+      this.watches$ = this.watchService.getAllWatches();
     });
   }
 
@@ -61,16 +63,21 @@ export class ScraperCardComponent implements OnInit {
       console.log('result: ' + result);
 
       // Fixa så att timeout inte behöver användas
+      // Möjliga lösningar:
+      // https://www.stackoverflow.com/questions/62114022/angular-resolver-observable-completes-too-early
+      // BRA TROR JAG. Anropa watchService.getAllWatches() i dialog och skicka tillbaka alla klockor till card component. https://www.stackoverflow.com/questions/51815455/how-to-pass-data-from-angular-material-dialog-to-parent-component
       setTimeout(() => {
         this.watches$ = this.watchService.getAllWatches();
-      }, 2000);
+      }, 500);
     });
   }
 
   showSnackbar(response: string, action?: string): void {
     let snack = this.snackbar.open(response, action, {
-      panelClass: ['mat-toolbar', 'mat-primary'],
+      panelClass: 'success-snackbar',
       duration: 5000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
     });
     snack.afterDismissed().subscribe(() => {
       console.log('This will be shown after snackbar disappeared');

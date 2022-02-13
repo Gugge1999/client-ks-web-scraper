@@ -20,6 +20,9 @@ Kolla: Gör jag rätt när jag skickar status codes? Skickar jag med 500 kod rä
 metoden run i api kan retuerna en boolean. true eller false visar om det finns ny data. 
 Om det finns ny data, anropa getAllWatches() och hämta de nya. 
 
+
+Lägg till en "status för backend" i högra hörnet i nav.
+
 "Smallest piece of working product" är viktigt. Refactoring som är BRA kan göras sen.
 
 Använd Jest för att testa: https://www.xfive.co/blog/testing-angular-faster-jest/

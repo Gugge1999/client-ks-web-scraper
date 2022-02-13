@@ -47,8 +47,10 @@ export class NewWatchDialogComponent implements OnInit {
 
   showSnackbar(response: string, action?: string): void {
     let snack = this.snackbar.open(response, action, {
-      panelClass: ['mat-toolbar', 'mat-primary'],
+      panelClass: 'success-snackbar',
       duration: 5000,
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
     });
     snack.afterDismissed().subscribe(() => {
       console.log('This will be shown after snackbar disappeared');
