@@ -12,6 +12,10 @@
   margin-bottom: 2em;
 }
 
+.cardContainer:last-child {
+  margin-bottom: 2.5em;
+}
+
 .mat-card-actions-align-end {
   align-items: center;
 }
@@ -46,7 +50,3 @@ mat-card-actions > * {
 .deleteIcon {
   color: #d92923;
 }
-
-// .chartCardButton {
-//   color: #33b0cc;
-// }
