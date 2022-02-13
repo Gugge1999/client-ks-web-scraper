@@ -20,14 +20,22 @@
       <button
         mat-icon-button
         class="deleteCardButton"
-        matTooltip="Delete watch"
-        matTooltipPosition="above"
-        matTooltipClass="tooltip"
         (click)="deleteWatchDialog(watch)">
-        <mat-icon class="deleteIcon">delete_outline</mat-icon>
+        <mat-icon
+          class="deleteIcon"
+          matTooltip="Delete watch"
+          matTooltipPosition="above"
+          matTooltipClass="tooltip"
+          >delete_outline</mat-icon
+        >
       </button>
       <button mat-icon-button>
-        <mat-icon fontSet="material-icons-outlined" color="primary"
+        <mat-icon
+          fontSet="material-icons-outlined"
+          color="primary"
+          matTooltip="Show statistics"
+          matTooltipPosition="above"
+          matTooltipClass="tooltip"
           >assessment</mat-icon
         >
       </button>
