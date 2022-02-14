@@ -1,8 +1,10 @@
+import { Observable } from 'rxjs';
+import { WatchService } from 'src/app/services/watch.service';
+
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { Observable } from 'rxjs';
-import { WatchService } from 'src/app/services/watch.service';
+
 import { DeleteWatchDialogComponent } from '../delete-watch-dialog/delete-watch-dialog.component';
 import { NewWatchDialogComponent } from '../new-watch-dialog/new-watch-dialog.component';
 

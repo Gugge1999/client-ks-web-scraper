@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MainNavComponent } from '../main-nav/main-nav.component';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormBuilder, FormGroup } from '@angular/forms';
+
 import { WatchService } from '../../services/watch.service';
+import { MainNavComponent } from '../main-nav/main-nav.component';
 
 @Component({
   selector: 'app-new-watch-dialog',
