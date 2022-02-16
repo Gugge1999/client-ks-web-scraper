@@ -3,7 +3,7 @@
   Are you sure to delete watch: <strong>{{ data.label }}</strong> ?
 </div>
 <div mat-dialog-actions align="end">
-  <button mat-flat-button [mat-dialog-close]="true">Cancel</button>
+  <button mat-flat-button mat-dialog-close="cancelClicked">Cancel</button>
   <button
     mat-flat-button
     [mat-dialog-close]="true"

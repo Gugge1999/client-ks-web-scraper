@@ -1,8 +1,7 @@
 -------------- TODO --------------
 
 Prio: 
-[  ]  Fixa: 
-      https://www.npmjs.com/package/eslint-plugin-prettier
+[  ] Fixa blurry text
 
 
 [  ]  Fixa en "dismiss action" i snackbar. Skapa en egen snackbar component...
@@ -12,6 +11,8 @@ Prio:
 [  ]  Fixa "run" metod som faktigt kollar om nya klockor har kommit in...
       metoden run i api kan retuerna en boolean. true eller false visar om det finns ny data. 
       Om det finns ny data, anropa getAllWatches() och hämta de nya. 
+
+[  ] Fixa validation i add new watch dialog: https://angular.io/guide/form-validation
 
 
 [  ]  Fixa port width på card. På desktop: 50%. Mobil: 100%

@@ -31,19 +31,11 @@ export class NewWatchDialogComponent implements OnInit {
   }
 
   saveWatch(): any {
-    // TODO: kolla om nått gick snett. Nu får man alltid successfull snackbar
+    // Validering : https://angular.io/guide/form-validation
     this.watchService.addNewWatch(this.form.value).subscribe((response) => {
-      console.log('addNewWatch done.');
-
       this.showSnackbar(response, 'Dismiss');
+      this.dialogRef.close(response);
     });
-    // TODO: Uppdatera sidan också också
-
-    // Från github: Vad är tap? Importerad från rxjs
-  }
-
-  onCancelClick(): void {
-    this.dialogRef.close();
   }
 
   showSnackbar(response: string, action?: string): void {

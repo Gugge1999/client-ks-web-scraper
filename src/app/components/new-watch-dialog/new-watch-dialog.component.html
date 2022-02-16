@@ -29,19 +29,9 @@
     </mat-form-field>
   </div>
   <div mat-dialog-actions align="end">
-    <button
-      mat-flat-button
-      mat-dialog-close
-      color="accent"
-      (click)="onCancelClick()">
+    <button mat-flat-button mat-dialog-close="cancelClicked" color="accent">
       Cancel
     </button>
-    <button
-      mat-flat-button
-      type="submit"
-      color="primary"
-      [mat-dialog-close]="true">
-      Save
-    </button>
+    <button mat-flat-button color="primary">Save</button>
   </div>
 </form>

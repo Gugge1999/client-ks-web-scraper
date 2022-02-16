@@ -25,7 +25,7 @@ export class DeleteWatchDialogComponent {
   }
 
   showSnackbar(message: string, action: string): void {
-    let snack = this.snackbar.open(`Deleted watch ${message}`, action, {
+    let snack = this.snackbar.open(`Deleted watch: ${message}`, action, {
       panelClass: ['mat-toolbar', 'mat-warn'],
       duration: 5000,
       horizontalPosition: 'right',
