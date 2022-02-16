@@ -40,8 +40,8 @@ export class WatchService {
   }
 
   // Byt från any
-  updateIsActive(watch: any): Observable<any> {
-    const API_URL = `${this.REST_API}/update-is-active`;
+  updateActiveStatus(watch: any): Observable<any> {
+    const API_URL = `${this.REST_API}/update-active-status`;
     const data = { isActive: watch.active, label: watch.label, id: watch.id };
 
     return this.http

@@ -48,9 +48,9 @@ export class ScraperCardComponent implements OnInit {
   }
 
   // Byt från any
-  toggleIsWatchActive(watch: any): void {
+  toggleActiveStatus(watch: any): void {
     console.log(`Toggled watch. Sending to database...`);
-    this.watchService.updateIsActive(watch).subscribe((response) => {
+    this.watchService.updateActiveStatus(watch).subscribe((response) => {
       this.showSnackbar(response, 'Dismiss');
     });
   }
