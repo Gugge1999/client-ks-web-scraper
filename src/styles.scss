@@ -10,6 +10,7 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
+/*#region sidenav*/
 .sidenav-container {
   height: 100%;
 }
@@ -17,7 +18,9 @@ body {
 .sidenav {
   width: 200px;
 }
+/*#endregion */
 
+/*#region toolbar*/
 .sidenav .mat-toolbar {
   background: inherit;
 }
@@ -25,13 +28,15 @@ body {
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
 }
 
-.mat-toolbar-row {
+.mat-toolbar {
   vertical-align: middle;
 }
+/*#endregion */
 
+/*#region input*/
 mat-form-field {
   width: 100%;
 }
@@ -39,7 +44,9 @@ mat-form-field {
 input {
   text-overflow: ellipsis;
 }
+/*#endregion */
 
+/*#region links*/
 .linkToWatch:link,
 .linkToWatch:visited {
   color: #33cccc;
@@ -59,10 +66,13 @@ a {
 a:hover {
   color: rgb(63, 63, 63);
 }
+/*#endregion */
 
+/*#region tooltip*/
 .mat-tooltip.tooltip {
   font-size: 14px;
 }
+/*#endregion */
 
 /*#region snackbar*/
 .success-snackbar {
