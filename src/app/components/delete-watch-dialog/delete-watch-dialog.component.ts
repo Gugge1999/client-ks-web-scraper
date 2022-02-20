@@ -1,8 +1,9 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { WatchService } from '../../services/watch.service';
+import { MainNavComponent } from '../main-nav/main-nav.component';
 
 @Component({
   selector: 'app-delete-watch-dialog',
@@ -13,14 +14,18 @@ export class DeleteWatchDialogComponent {
   constructor(
     private snackbar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private watchService: WatchService
+    private watchService: WatchService,
+    public dialogRef: MatDialogRef<MainNavComponent>
   ) {}
 
   deleteWatch(watchToDelete: any): void {
-    this.watchService.deleteWatch(watchToDelete.id).subscribe(() => {
+    this.watchService.deleteWatch(watchToDelete.id).subscribe((response) => {
       // För bättre Undo
       // https://stackblitz.com/edit/undo-snackbar
+      // Lägg till laddsnurra eller progess bar
+
       this.showSnackbar(watchToDelete.label, 'Undo');
+      this.dialogRef.close(response);
     });
   }
 
