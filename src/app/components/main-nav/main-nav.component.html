@@ -1,12 +1,16 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <mat-toolbar-row>
-        <a class="titlebarLink" [routerLink]="['/']">
-          <mat-icon class="watchIcon">watch</mat-icon>
-          <span class="toolbarTitle">KS Web Scraper</span>
-        </a>
-      </mat-toolbar-row>
+      <a class="titlebarLink" [routerLink]="['/']">
+        <mat-icon class="iconMarginRight">watch</mat-icon>
+        <span class="toolbarTitle">KS Web Scraper</span>
+      </a>
+      <span class="spacer"></span>
+      <mat-card class="apiStatus">
+        <mat-icon color="primary" class="checkIcon"
+          >check_circle_outline</mat-icon
+        >
+      </mat-card>
     </mat-toolbar>
     <app-scraper-card></app-scraper-card>
   </mat-sidenav-content>

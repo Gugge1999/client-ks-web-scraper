@@ -27,6 +27,7 @@ export class WatchService {
   // https://github.com/Jon-Peppinck/angular-node-mysql-crud/blob/5cd06316d18bf94f236edee302fc68770d3984f2/frontend/src/app/services/grocery-list-crud.service.ts
   addNewWatch(data: NewWatch): Observable<any> {
     let API_URL = `${this.REST_API}/add-watch`;
+
     return this.http
       .post(API_URL, data, httpOptions)
       .pipe(catchError(this.handleError));
@@ -34,6 +35,7 @@ export class WatchService {
 
   getAllWatches(): Observable<any[]> {
     let API_URL = `${this.REST_API}/all-watches`;
+
     return this.http
       .get<any[]>(API_URL, httpOptions)
       .pipe(catchError(this.handleError));
@@ -54,6 +56,14 @@ export class WatchService {
 
     return this.http
       .delete(API_URL, httpOptions)
+      .pipe(catchError(this.handleError));
+  }
+
+  isApiActive(): Observable<any> {
+    const API_URL = `${this.REST_API}/is-api-active`;
+
+    return this.http
+      .get(API_URL, httpOptions)
       .pipe(catchError(this.handleError));
   }
 
