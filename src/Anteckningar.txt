@@ -33,21 +33,10 @@ Prio:
 
 [  ]  Använd Jest för att testa: https://www.xfive.co/blog/testing-angular-faster-jest/
 
-
-
-
-
--------------- Spåninngar --------------
-Om jag använder PostgreSQL, skicka med userid på varje klocka som ska "scrapas"
-
-Flytta lägga till knappen till under korten. Typ så att de blir som en egen kort. Eller ovanför...
-
-
-
-
-
-
 -------------- Misc -------------------
+Bra video från Google om Angular "How to stay fast and fresh with Angular"
+https://www.youtube.com/watch?v=B-lipaiZII8
+
 Tema:
 Custom theme: https://materialtheme.arcsine.dev/
 
@@ -56,6 +45,7 @@ https://www.npmjs.com/package/ng2-charts
 
 Ta bort --host 192.168.1.2 i package.json för att köra ren localhost
 För att köra lokalt skriv npm start eller ändra till:   
+i angular.json under "serve"
 "options": {
   "host": "0.0.0.0"
 },
@@ -63,5 +53,3 @@ För att köra lokalt skriv npm start eller ändra till:
 För att debugga med attach: 
   högerklicka på chrome, -> Google chrome -> properties.
   Lägg till: --remote-debugging-port=9222 på slutet i Target
-
-i angular.json under "serve"

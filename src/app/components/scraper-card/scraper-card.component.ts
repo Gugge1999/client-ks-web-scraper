@@ -25,7 +25,10 @@ export class ScraperCardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.watches$ = this.watchService.getAllWatches();
+    this.refreshData();
+    setInterval(() => {
+      this.refreshData();
+    }, 1 * 60000);
 
     this.watches$.subscribe((data) => {
       console.log(data);
@@ -43,7 +46,7 @@ export class ScraperCardComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((res) => {
       if (res === 'cancelClicked') return;
-      this.watches$ = this.watchService.getAllWatches();
+      this.refreshData();
     });
   }
 
@@ -63,7 +66,7 @@ export class ScraperCardComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe((res) => {
       if (res === 'cancelClicked') return;
-      this.watches$ = this.watchService.getAllWatches();
+      this.refreshData();
     });
   }
 
@@ -80,5 +83,9 @@ export class ScraperCardComponent implements OnInit {
     snack.onAction().subscribe(() => {
       console.log('This will be called when snackbar button clicked');
     });
+  }
+
+  refreshData() {
+    this.watches$ = this.watchService.getAllWatches();
   }
 }
