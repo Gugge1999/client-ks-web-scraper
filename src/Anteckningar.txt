@@ -4,6 +4,9 @@ Prio:
 [  ] Fixa blurry text
 
 
+[  ] Använd samma färgtema som riktiga Klocksnack 
+
+
 [  ]  Fixa en "dismiss action" i snackbar. Skapa en egen snackbar component...
       https://dev.to/itnext/custom-theme-for-angular-material-components-series-part-3-apply-theme-e34
 
