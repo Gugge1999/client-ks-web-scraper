@@ -1,13 +1,12 @@
-import { catchError, Observable, throwError } from 'rxjs';
-
 import {
   HttpClient,
   HttpErrorResponse,
-  HttpHeaders
+  HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { catchError, Observable, throwError } from 'rxjs';
 
-import { NewWatch } from '../models/new-watch.model';
+import { Watch } from '../models/watch.model';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -23,39 +22,36 @@ export class WatchService {
 
   constructor(private http: HttpClient) {}
 
-  // TODO: Bättre implementation av interface. Tror jag...
-  // https://github.com/Jon-Peppinck/angular-node-mysql-crud/blob/5cd06316d18bf94f236edee302fc68770d3984f2/frontend/src/app/services/grocery-list-crud.service.ts
-  addNewWatch(data: NewWatch): Observable<any> {
+  addNewWatch(data: Partial<Watch>): Observable<string> {
     let API_URL = `${this.REST_API}/add-watch`;
 
     return this.http
-      .post(API_URL, data, httpOptions)
+      .post<string>(API_URL, data, httpOptions)
       .pipe(catchError(this.handleError));
   }
 
-  getAllWatches(): Observable<any[]> {
+  getAllWatches(): Observable<Watch[]> {
     let API_URL = `${this.REST_API}/all-watches`;
 
     return this.http
-      .get<any[]>(API_URL, httpOptions)
+      .get<Watch[]>(API_URL, httpOptions)
       .pipe(catchError(this.handleError));
   }
 
-  // Byt från any
-  updateActiveStatus(watch: any): Observable<any> {
+  updateActiveStatus(watch: Partial<Watch>): Observable<string> {
     const API_URL = `${this.REST_API}/update-active-status`;
     const data = { isActive: watch.active, label: watch.label, id: watch.id };
 
     return this.http
-      .put(API_URL, data, httpOptions)
+      .put<string>(API_URL, data, httpOptions)
       .pipe(catchError(this.handleError));
   }
 
-  deleteWatch(id: string): Observable<any> {
+  deleteWatch(id: string): Observable<string> {
     const API_URL = `${this.REST_API}/delete-watch/${id}`;
 
     return this.http
-      .delete(API_URL, httpOptions)
+      .delete<string>(API_URL, httpOptions)
       .pipe(catchError(this.handleError));
   }
 
@@ -67,6 +63,7 @@ export class WatchService {
       .pipe(catchError(this.handleError));
   }
 
+  // Byt ut mot HttpInterceptor. Se: https://rollbar.com/blog/error-handling-with-angular-8-tips-and-best-practices/
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       // A client-side or network error occurred. Handle it accordingly.

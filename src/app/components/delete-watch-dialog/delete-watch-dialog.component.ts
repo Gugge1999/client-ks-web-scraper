@@ -18,7 +18,7 @@ export class DeleteWatchDialogComponent {
     public dialogRef: MatDialogRef<MainNavComponent>
   ) {}
 
-  deleteWatch(watchToDelete: any): void {
+  deleteWatch(watchToDelete: any) {
     this.watchService.deleteWatch(watchToDelete.id).subscribe((response) => {
       // För bättre Undo
       // https://stackblitz.com/edit/undo-snackbar
@@ -29,7 +29,7 @@ export class DeleteWatchDialogComponent {
     });
   }
 
-  showSnackbar(message: string, action: string): void {
+  showSnackbar(message: string, action: string) {
     let snack = this.snackbar.open(`Deleted watch: ${message}`, action, {
       panelClass: ['mat-toolbar', 'mat-warn'],
       duration: 5000,

@@ -23,14 +23,14 @@ export class NewWatchDialogComponent implements OnInit {
     private watchService: WatchService
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.form = this.formBuilder.group({
       label: this.label,
       uri: this.uri,
     });
   }
 
-  saveWatch(): any {
+  saveWatch() {
     // Validering : https://angular.io/guide/form-validation
     this.watchService.addNewWatch(this.form.value).subscribe((response) => {
       this.showSnackbar(response, 'Dismiss');
@@ -38,7 +38,7 @@ export class NewWatchDialogComponent implements OnInit {
     });
   }
 
-  showSnackbar(response: string, action?: string): void {
+  showSnackbar(response: string, action?: string) {
     let snack = this.snackbar.open(response, action, {
       panelClass: 'success-snackbar',
       duration: 5000,

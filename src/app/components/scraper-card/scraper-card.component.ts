@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
+import { Watch } from 'src/app/models/watch.model';
 import { WatchService } from 'src/app/services/watch.service';
 
 import { DeleteWatchDialogComponent } from '../delete-watch-dialog/delete-watch-dialog.component';
@@ -13,9 +14,7 @@ import { NewWatchDialogComponent } from '../new-watch-dialog/new-watch-dialog.co
   styleUrls: ['./scraper-card.component.scss'],
 })
 export class ScraperCardComponent implements OnInit {
-  // TODO: Byt från any. Se hur de är gjort:
-  // https://github.com/Jon-Peppinck/angular-node-mysql-crud/blob/5cd06316d18bf94f236edee302fc68770d3984f2/frontend/src/app/components/grocery-list/grocery-list.component.ts
-  watches$!: Observable<any[]>;
+  watches$!: Observable<Watch[]>;
 
   constructor(
     public dialog: MatDialog,
@@ -23,7 +22,7 @@ export class ScraperCardComponent implements OnInit {
     private snackbar: MatSnackBar
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.refreshData();
     setInterval(() => {
       this.refreshData();
@@ -34,7 +33,7 @@ export class ScraperCardComponent implements OnInit {
     });
   }
 
-  deleteWatchDialog(watch: any): void {
+  deleteWatchDialog(watch: any) {
     const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
       width: '350px',
       autoFocus: false,
@@ -42,33 +41,31 @@ export class ScraperCardComponent implements OnInit {
       restoreFocus: false,
     });
 
-    dialogRef.afterClosed().subscribe((res) => {
+    dialogRef.afterClosed().subscribe((res: string) => {
       if (res === 'cancelClicked') return;
       this.refreshData();
     });
   }
 
-  // Byt från any
-  toggleActiveStatus(watch: any): void {
-    console.log(`Toggled watch. Sending to database...`);
+  toggleActiveStatus(watch: Watch) {
     this.watchService.updateActiveStatus(watch).subscribe((response) => {
       this.showSnackbar(response, 'Dismiss');
     });
   }
 
-  openNewWatchDialog(): void {
+  openNewWatchDialog() {
     const dialogRef = this.dialog.open(NewWatchDialogComponent, {
       width: '700px',
       autoFocus: false,
       restoreFocus: false,
     });
-    dialogRef.afterClosed().subscribe((res) => {
+    dialogRef.afterClosed().subscribe((res: string) => {
       if (res === 'cancelClicked') return;
       this.refreshData();
     });
   }
 
-  showSnackbar(response: string, action?: string): void {
+  showSnackbar(response: string, action?: string) {
     let snack = this.snackbar.open(response, action, {
       panelClass: 'success-snackbar',
       duration: 5000,
@@ -84,6 +81,6 @@ export class ScraperCardComponent implements OnInit {
   }
 
   refreshData() {
-    this.watches$ = this.watchService.getAllWatches();
+    return (this.watches$ = this.watchService.getAllWatches());
   }
 }
