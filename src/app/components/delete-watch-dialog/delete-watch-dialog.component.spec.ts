@@ -8,9 +8,8 @@ describe('DeleteWatchDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ DeleteWatchDialogComponent ]
-    })
-    .compileComponents();
+      declarations: [DeleteWatchDialogComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

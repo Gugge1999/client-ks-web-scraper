@@ -8,9 +8,8 @@ describe('NewWatchDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ NewWatchDialogComponent ]
-    })
-    .compileComponents();
+      declarations: [NewWatchDialogComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

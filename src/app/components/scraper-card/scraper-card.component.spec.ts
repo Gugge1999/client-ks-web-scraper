@@ -8,9 +8,8 @@ describe('ScraperCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ScraperCardComponent ]
-    })
-    .compileComponents();
+      declarations: [ScraperCardComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
