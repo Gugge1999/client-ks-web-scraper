@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  BreakpointObserver,
+  Breakpoints,
+  BreakpointState,
+} from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
@@ -15,14 +20,24 @@ import { NewWatchDialogComponent } from '../new-watch-dialog/new-watch-dialog.co
 })
 export class ScraperCardComponent implements OnInit {
   watches$!: Observable<Watch[]>;
+  cardWidth!: string;
 
   constructor(
     public dialog: MatDialog,
     private watchService: WatchService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    public breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit() {
+    this.breakpointObserver
+      .observe(['(min-width: 900px)'])
+      .subscribe((state: BreakpointState) => {
+        state.matches
+          ? (this.cardWidth = 'smallWidthCard')
+          : (this.cardWidth = 'fullWidthCard');
+      });
+
     this.refreshData();
     setInterval(() => {
       this.refreshData();

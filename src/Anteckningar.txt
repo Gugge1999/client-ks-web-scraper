@@ -9,9 +9,6 @@ Frågor till Marcus:
 
 
 Prio: 
-[  ]  Fixa port width på card. På desktop: 50%. Mobil: 100%
-      https://stackoverflow.com/questions/45350716/detecting-real-time-window-size-changes-in-angular-4
-
 [  ] Fixa validation i add new watch dialog: https://angular.io/guide/form-validation
 
 

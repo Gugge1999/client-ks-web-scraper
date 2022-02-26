@@ -4,7 +4,6 @@
   align-items: center;
   flex-wrap: wrap;
   padding: 2em;
-  // max-width: 500px;
 }
 
 .card {
@@ -49,4 +48,12 @@ mat-card-actions > * {
 
 .deleteIcon {
   color: #d92923;
+}
+
+.smallWidthCard {
+  max-width: 50%;
+}
+
+.fullWidthCard {
+  max-width: 100%;
 }

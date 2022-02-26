@@ -1,5 +1,8 @@
 <div class="cardContainer">
-  <mat-card class="card" *ngFor="let watch of watches$ | async; let i = index">
+  <mat-card
+    class="card"
+    *ngFor="let watch of watches$ | async; let i = index"
+    [ngClass]="cardWidth">
     <mat-card-title>{{ watch.label }}</mat-card-title>
     <mat-card-content>
       <p>
