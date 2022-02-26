@@ -1,37 +1,30 @@
 -------------- TODO --------------
 
+Frågor till Marcus:
+
+[  ]  Varför scrollbar sidan längst upp efter observable uppdateras?
+
+[  ]  Blurry text. Varför?
+
+
+
 Prio: 
-[  ] Fixa blurry text
+[  ]  Fixa port width på card. På desktop: 50%. Mobil: 100%
+      https://stackoverflow.com/questions/45350716/detecting-real-time-window-size-changes-in-angular-4
+
+[  ] Fixa validation i add new watch dialog: https://angular.io/guide/form-validation
 
 
-[  ] Använd samma färgtema som riktiga Klocksnack 
+[  ]  Lägg till en "status för backend" i högra hörnet i nav. Det kan vara en material button "fab" eller mini fab. Se: https://material.angular.io/components/button/overview
 
 
 [  ]  Fixa en "dismiss action" i snackbar. Skapa en egen snackbar component...
       https://dev.to/itnext/custom-theme-for-angular-material-components-series-part-3-apply-theme-e34
 
 
-[  ]  Fixa "run" metod som faktigt kollar om nya klockor har kommit in...
-      metoden run i api kan retuerna en boolean. true eller false visar om det finns ny data. 
-      Om det finns ny data, anropa getAllWatches() och hämta de nya. 
-
-[  ] Fixa validation i add new watch dialog: https://angular.io/guide/form-validation
-
-
-[  ]  Fixa port width på card. På desktop: 50%. Mobil: 100%
-      https://stackoverflow.com/questions/45350716/detecting-real-time-window-size-changes-in-angular-4
-
-
-[  ]  Fixa en app-header och app-footer och lägg till i app.component.html
 
 
 [  ]  Fixa: Så att när en ny klocka läggs till scrollar sidan ned till den
-
-
-[  ]  Lägg till en "status för backend" i högra hörnet i nav.
-
-
-[  ]  "Smallest piece of working product" är viktigt. Refactoring som är BRA kan göras sen.
 
 
 [  ]  Använd Jest för att testa: https://www.xfive.co/blog/testing-angular-faster-jest/

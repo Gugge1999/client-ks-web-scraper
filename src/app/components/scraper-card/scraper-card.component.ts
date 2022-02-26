@@ -31,7 +31,6 @@ export class ScraperCardComponent implements OnInit {
     }, 1 * 60000);
 
     this.watches$.subscribe((data) => {
-      console.log(data);
       console.log(data[0]);
     });
   }
