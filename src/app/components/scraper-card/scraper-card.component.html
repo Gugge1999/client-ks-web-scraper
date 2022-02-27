@@ -11,13 +11,15 @@
       </p>
       <p>Last mail sent: {{ watch.last_email_sent }}</p>
       <p>Added: {{ watch.added }}</p>
-      <p>Current watch: {{ watch.stored_watch }}</p>
-      <a
-        target="_blank"
-        class="linkToWatch"
-        href="{{ watch.link_to_stored_watch }}"
-        >View watch on Klocksnack.se</a
-      >
+      <p>
+        Current watch:
+        <a
+          target="_blank"
+          class="linkToWatch"
+          href="{{ watch.link_to_watch }}"
+          >{{ watch.watch_name }}</a
+        >
+      </p>
     </mat-card-content>
     <mat-card-actions align="end">
       <button

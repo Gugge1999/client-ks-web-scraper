@@ -2,8 +2,9 @@ export interface Watch {
   id: string;
   uri: string;
   label: string;
-  stored_watch: string;
-  link_to_stored_watch: string;
+  watch_name: string;
+  watch_posted: string;
+  link_to_watch: string;
   active: string;
   last_email_sent: string;
   added: string;
