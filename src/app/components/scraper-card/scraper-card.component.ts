@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  BreakpointObserver,
-  Breakpoints,
-  BreakpointState,
-} from '@angular/cdk/layout';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
 import { Watch } from 'src/app/models/watch.model';
 import { WatchService } from 'src/app/services/watch.service';
+
+import {
+  BreakpointObserver,
+  Breakpoints,
+  BreakpointState
+} from '@angular/cdk/layout';
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { DeleteWatchDialogComponent } from '../delete-watch-dialog/delete-watch-dialog.component';
 import { NewWatchDialogComponent } from '../new-watch-dialog/new-watch-dialog.component';
@@ -39,13 +40,13 @@ export class ScraperCardComponent implements OnInit {
       });
 
     this.refreshData();
-    setInterval(() => {
-      this.refreshData();
-    }, 1 * 60000);
+    // setInterval(() => {
+    //   this.refreshData();
+    // }, 1 * 60000);
 
-    this.watches$.subscribe((data) => {
-      console.log(data[0]);
-    });
+    // this.watches$.subscribe((data) => {
+    //   console.log(data[0]);
+    // });
   }
 
   deleteWatchDialog(watch: any) {
