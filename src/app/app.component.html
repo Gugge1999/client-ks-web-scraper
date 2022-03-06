@@ -1,1 +1,24 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <a class="titlebarLink" [routerLink]="['/']">
+          <mat-icon class="iconMarginRight">watch</mat-icon>
+          <span class="toolbarTitle">KS Web Scraper</span>
+        </a>
+        <span class="spacer"></span>
+        <mat-card class="apiStatus">
+          <mat-icon color="primary" class="checkIcon"
+            >check_circle_outline</mat-icon
+          >
+        </mat-card>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+    <mat-toolbar>
+      <mat-toolbar-row></mat-toolbar-row>
+    </mat-toolbar>
+  </mat-sidenav-content>
+</mat-sidenav-container>

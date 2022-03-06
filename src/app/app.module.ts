@@ -8,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DeleteWatchDialogComponent } from './components/delete-watch-dialog/delete-watch-dialog.component';
-import { MainNavComponent } from './components/main-nav/main-nav.component';
 import { NewWatchDialogComponent } from './components/new-watch-dialog/new-watch-dialog.component';
 import { ScraperCardComponent } from './components/scraper-card/scraper-card.component';
 import { MaterialModule } from './material.module';
@@ -16,7 +15,6 @@ import { MaterialModule } from './material.module';
 @NgModule({
   declarations: [
     AppComponent,
-    MainNavComponent,
     ScraperCardComponent,
     NewWatchDialogComponent,
     DeleteWatchDialogComponent,

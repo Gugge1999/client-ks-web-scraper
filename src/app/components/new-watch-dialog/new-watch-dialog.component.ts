@@ -4,7 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { WatchService } from '../../services/watch.service';
-import { MainNavComponent } from '../main-nav/main-nav.component';
+import { ScraperCardComponent } from '../scraper-card/scraper-card.component';
 
 @Component({
   selector: 'app-new-watch-dialog',
@@ -17,7 +17,7 @@ export class NewWatchDialogComponent implements OnInit {
   uri: string = '';
 
   constructor(
-    public dialogRef: MatDialogRef<MainNavComponent>,
+    public dialogRef: MatDialogRef<ScraperCardComponent>,
     private formBuilder: FormBuilder,
     private snackbar: MatSnackBar,
     private watchService: WatchService

@@ -3,7 +3,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { WatchService } from '../../services/watch.service';
-import { MainNavComponent } from '../main-nav/main-nav.component';
+import { ScraperCardComponent } from '../scraper-card/scraper-card.component';
 
 @Component({
   selector: 'app-delete-watch-dialog',
@@ -15,7 +15,7 @@ export class DeleteWatchDialogComponent {
     private snackbar: MatSnackBar,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private watchService: WatchService,
-    public dialogRef: MatDialogRef<MainNavComponent>
+    public dialogRef: MatDialogRef<ScraperCardComponent>
   ) {}
 
   deleteWatch(watchToDelete: any) {
