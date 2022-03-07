@@ -32,7 +32,7 @@ export class ScraperCardComponent implements OnInit {
 
   ngOnInit() {
     this.breakpointObserver
-      .observe(['(min-width: 900px)'])
+      .observe(['(min-width: 1000px)'])
       .subscribe((state: BreakpointState) => {
         state.matches
           ? (this.cardWidth = 'smallWidthCard')

@@ -1,8 +1,9 @@
 .cardContainer {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   padding: 2em 2em 0 2em;
 }
 
@@ -51,7 +52,7 @@ mat-card-actions > * {
 }
 
 .smallWidthCard {
-  max-width: 50%;
+  max-width: 40%;
 }
 
 .fullWidthCard {

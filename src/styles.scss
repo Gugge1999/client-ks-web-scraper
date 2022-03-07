@@ -15,16 +15,9 @@ body {
   height: 100%;
 }
 
-.sidenav {
-  width: 200px;
-}
 /*#endregion */
 
 /*#region toolbar*/
-.sidenav .mat-toolbar {
-  background: inherit;
-}
-
 .mat-toolbar.mat-primary {
   position: sticky;
   top: 0;
