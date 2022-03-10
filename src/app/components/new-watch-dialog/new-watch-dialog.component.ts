@@ -43,7 +43,7 @@ export class NewWatchDialogComponent implements OnInit {
       panelClass: 'success-snackbar',
       duration: 5000,
       horizontalPosition: 'right',
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
     });
     snack.afterDismissed().subscribe(() => {
       console.log('This will be shown after snackbar disappeared');

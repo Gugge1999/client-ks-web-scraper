@@ -34,7 +34,7 @@ export class DeleteWatchDialogComponent {
       panelClass: ['mat-toolbar', 'mat-warn'],
       duration: 5000,
       horizontalPosition: 'right',
-      verticalPosition: 'top',
+      verticalPosition: 'bottom',
     });
     snack.afterDismissed().subscribe(() => {
       console.log('This will be shown after snackbar disappeared');

@@ -9,13 +9,16 @@ Frågor till Marcus:
 
 
 Prio: 
-[  ] Fixa validation i add new watch dialog: https://angular.io/guide/form-validation
+[  ] Validation i add new watch dialog: https://angular.io/guide/form-validation
 
 
-[  ] Byt till kebeb-casing på alla css attribut
+[  ] Kebeb-casing på alla css attribut
 
 
 [  ] Byt från px till em i alla scss-filer
+
+
+[  ] Sticky header
 
 
 [  ] För att testa deploy. Se: https://www.youtube.com/watch?v=QdHvS0D1zAI
@@ -24,13 +27,8 @@ Prio:
 [  ]  Lägg till en "status för backend" i högra hörnet i nav. Det kan vara en material button "fab" eller mini fab. Se: https://material.angular.io/components/button/overview
 
 
-[  ]  Fixa en "dismiss action" i snackbar. Skapa en egen snackbar component...
+[  ]  "dismiss action" i snackbar. Skapa en egen snackbar component...
       https://dev.to/itnext/custom-theme-for-angular-material-components-series-part-3-apply-theme-e34
-
-
-
-
-[  ]  Fixa: Så att när en ny klocka läggs till scrollar sidan ned till den
 
 
 [  ]  Använd Jest för att testa: https://www.xfive.co/blog/testing-angular-faster-jest/
