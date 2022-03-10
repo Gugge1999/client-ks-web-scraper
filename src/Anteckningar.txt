@@ -12,6 +12,9 @@ Prio:
 [  ] Validation i add new watch dialog: https://angular.io/guide/form-validation
 
 
+[  ] Ska det heta link eller uri i model?
+
+
 [  ] Kebeb-casing på alla css attribut
 
 

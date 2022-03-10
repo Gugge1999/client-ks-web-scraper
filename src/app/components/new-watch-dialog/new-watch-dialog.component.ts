@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { NewWatch } from '../../models/new-watch';
 import { WatchService } from '../../services/watch.service';
 import { ScraperCardComponent } from '../scraper-card/scraper-card.component';
 
@@ -11,32 +12,24 @@ import { ScraperCardComponent } from '../scraper-card/scraper-card.component';
   templateUrl: './new-watch-dialog.component.html',
   styleUrls: ['./new-watch-dialog.component.scss'],
 })
-export class NewWatchDialogComponent implements OnInit {
-  form!: FormGroup;
-  label: string = '';
-  uri: string = '';
+export class NewWatchDialogComponent {
+  newWatch = new NewWatch('', '');
 
-  constructor(
-    public dialogRef: MatDialogRef<ScraperCardComponent>,
-    private formBuilder: FormBuilder,
-    private snackbar: MatSnackBar,
-    private watchService: WatchService
-  ) {}
-
-  ngOnInit() {
-    this.form = this.formBuilder.group({
-      label: this.label,
-      uri: this.uri,
-    });
-  }
-
-  saveWatch() {
+  onSubmit() {
+    console.log(this.newWatch.label);
+    console.log(this.newWatch.uri);
     // Validering : https://angular.io/guide/form-validation
-    this.watchService.addNewWatch(this.form.value).subscribe((response) => {
+    this.watchService.addNewWatch(this.newWatch).subscribe((response) => {
       this.showSnackbar(response, 'Dismiss');
       this.dialogRef.close(response);
     });
   }
+
+  constructor(
+    public dialogRef: MatDialogRef<ScraperCardComponent>,
+    private snackbar: MatSnackBar,
+    private watchService: WatchService
+  ) {}
 
   showSnackbar(response: string, action?: string) {
     let snack = this.snackbar.open(response, action, {

@@ -1,37 +1,64 @@
 <h2 mat-dialog-title>Add new watch</h2>
-<form [formGroup]="form" (ngSubmit)="saveWatch()">
-  <div mat-dialog-content>
+<form (ngSubmit)="onSubmit()" #newWatchForm="ngForm">
+  <div class="container">
     <mat-form-field appearance="fill">
       <mat-label>Label</mat-label>
-      <input matInput formControlName="label" required [(ngModel)]="label" />
+      <input
+        matInput
+        type="text"
+        class="form-control"
+        id="label"
+        required
+        [(ngModel)]="newWatch.label"
+        name="label"
+        #label="ngModel" />
       <button
-        mat-button
-        *ngIf="label"
+        *ngIf="newWatch.label"
         matSuffix
         mat-icon-button
         aria-label="Clear"
-        (click)="label = ''">
+        (click)="newWatch.label = ''">
         <mat-icon>close</mat-icon>
       </button>
+      <div [hidden]="label.valid || label.pristine" class="alert alert-danger">
+        Label is required
+      </div>
     </mat-form-field>
     <mat-form-field appearance="fill">
-      <mat-label>Watch Link</mat-label>
-      <input matInput formControlName="uri" required [(ngModel)]="uri" />
+      <mat-label>Watch link</mat-label>
+      <input
+        matInput
+        type="text"
+        class="form-control"
+        id="uri"
+        required
+        [(ngModel)]="newWatch.uri"
+        name="uri"
+        #uri="ngModel" />
       <button
-        mat-button
-        *ngIf="uri"
+        *ngIf="newWatch.uri"
         matSuffix
         mat-icon-button
         aria-label="Clear"
-        (click)="uri = ''">
+        (click)="newWatch.uri = ''">
         <mat-icon>close</mat-icon>
       </button>
+      <div [hidden]="uri.valid || uri.pristine" class="alert alert-danger">
+        Watch link is required
+      </div>
     </mat-form-field>
   </div>
   <div mat-dialog-actions align="end">
     <button mat-flat-button mat-dialog-close="cancelClicked" color="accent">
       Cancel
     </button>
-    <button mat-flat-button color="primary">Save</button>
+    <button
+      mat-flat-button
+      color="primary"
+      type="submit"
+      class="btn btn-success"
+      [disabled]="!newWatchForm.form.valid">
+      Save
+    </button>
   </div>
 </form>
