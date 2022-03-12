@@ -16,6 +16,7 @@ export class NewWatchDialogComponent {
 
   urlPattern: string =
     'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*(),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+';
+
   constructor(
     public dialogRef: MatDialogRef<ScraperCardComponent>,
     private snackbar: MatSnackBar,
@@ -23,9 +24,6 @@ export class NewWatchDialogComponent {
   ) {}
 
   onSubmit() {
-    console.log(this.newWatch.label);
-    console.log(this.newWatch.uri);
-    // Validering : https://angular.io/guide/form-validation
     this.watchService.addNewWatch(this.newWatch).subscribe((response) => {
       this.showSnackbar(response, 'Dismiss');
       this.dialogRef.close(response);
