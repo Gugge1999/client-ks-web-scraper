@@ -14,6 +14,8 @@ import { ScraperCardComponent } from '../scraper-card/scraper-card.component';
 export class NewWatchDialogComponent {
   newWatch = new NewWatch('', '');
 
+  urlPattern: string =
+    'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*(),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+';
   constructor(
     public dialogRef: MatDialogRef<ScraperCardComponent>,
     private snackbar: MatSnackBar,

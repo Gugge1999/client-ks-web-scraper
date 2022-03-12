@@ -31,7 +31,7 @@
       required
       [(ngModel)]="newWatch.uri"
       name="uri"
-      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      [pattern]="urlPattern"
       #uri="ngModel" />
     <button
       *ngIf="newWatch.uri"
@@ -41,7 +41,12 @@
       (click)="newWatch.uri = ''">
       <mat-icon>close</mat-icon>
     </button>
-    <mat-error *ngIf="uri.invalid"> <h4>Watch link is required</h4></mat-error>
+    <mat-error *ngIf="uri.errors?.['required']">
+      <h4>Watch link is required</h4></mat-error
+    >
+    <mat-error *ngIf="uri.touched && uri.errors?.['pattern']">
+      <h4>Watch link not valid</h4></mat-error
+    >
   </mat-form-field>
   <div mat-dialog-actions align="end">
     <button mat-flat-button mat-dialog-close="cancelClicked" color="accent">
