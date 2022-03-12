@@ -2,11 +2,7 @@ import { Observable } from 'rxjs';
 import { Watch } from 'src/app/models/watch.model';
 import { WatchService } from 'src/app/services/watch.service';
 
-import {
-  BreakpointObserver,
-  Breakpoints,
-  BreakpointState
-} from '@angular/cdk/layout';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';

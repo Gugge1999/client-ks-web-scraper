@@ -29,16 +29,6 @@ body {
 }
 /*#endregion */
 
-/*#region input*/
-mat-form-field {
-  width: 100%;
-}
-
-input {
-  text-overflow: ellipsis;
-}
-/*#endregion */
-
 /*#region links*/
 .linkToWatch:link,
 .linkToWatch:visited {
@@ -71,4 +61,27 @@ a:hover {
 .success-snackbar {
   background: #58c44a;
 }
+/*#endregion */
+
+/*#region form*/
+mat-form-field {
+  width: 100%;
+}
+
+input {
+  text-overflow: ellipsis;
+}
+
+.mat-error,
+.mat-form-field.mat-form-field-invalid .mat-form-field-label,
+.mat-form-field.mat-form-field-invalid
+  .mat-form-field-label
+  .mat-form-field-required-marker {
+  color: red;
+}
+
+.mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
+  background-color: red;
+}
+
 /*#endregion */

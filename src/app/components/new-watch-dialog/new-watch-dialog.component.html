@@ -1,53 +1,48 @@
 <h2 mat-dialog-title>Add new watch</h2>
 <form (ngSubmit)="onSubmit()" #newWatchForm="ngForm">
-  <div class="container">
-    <mat-form-field appearance="fill">
-      <mat-label>Label</mat-label>
-      <input
-        matInput
-        type="text"
-        class="form-control"
-        id="label"
-        required
-        [(ngModel)]="newWatch.label"
-        name="label"
-        #label="ngModel" />
-      <button
-        *ngIf="newWatch.label"
-        matSuffix
-        mat-icon-button
-        aria-label="Clear"
-        (click)="newWatch.label = ''">
-        <mat-icon>close</mat-icon>
-      </button>
-      <div [hidden]="label.valid || label.pristine" class="alert alert-danger">
-        Label is required
-      </div>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Watch link</mat-label>
-      <input
-        matInput
-        type="text"
-        class="form-control"
-        id="uri"
-        required
-        [(ngModel)]="newWatch.uri"
-        name="uri"
-        #uri="ngModel" />
-      <button
-        *ngIf="newWatch.uri"
-        matSuffix
-        mat-icon-button
-        aria-label="Clear"
-        (click)="newWatch.uri = ''">
-        <mat-icon>close</mat-icon>
-      </button>
-      <div [hidden]="uri.valid || uri.pristine" class="alert alert-danger">
-        Watch link is required
-      </div>
-    </mat-form-field>
-  </div>
+  <mat-form-field appearance="fill" class="form-element">
+    <mat-label>Label</mat-label>
+    <input
+      matInput
+      type="text"
+      class="form-control"
+      id="label"
+      required
+      [(ngModel)]="newWatch.label"
+      name="label"
+      #label="ngModel" />
+    <button
+      *ngIf="newWatch.label"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="newWatch.label = ''">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-error *ngIf="label.invalid"> <h4>Label is required</h4> </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Watch link</mat-label>
+    <input
+      matInput
+      type="text"
+      class="form-control"
+      id="uri"
+      required
+      [(ngModel)]="newWatch.uri"
+      name="uri"
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+      #uri="ngModel" />
+    <button
+      *ngIf="newWatch.uri"
+      matSuffix
+      mat-icon-button
+      aria-label="Clear"
+      (click)="newWatch.uri = ''">
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-error *ngIf="uri.invalid"> <h4>Watch link is required</h4></mat-error>
+  </mat-form-field>
   <div mat-dialog-actions align="end">
     <button mat-flat-button mat-dialog-close="cancelClicked" color="accent">
       Cancel

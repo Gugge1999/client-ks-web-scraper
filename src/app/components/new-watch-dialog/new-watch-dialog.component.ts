@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -15,6 +14,12 @@ import { ScraperCardComponent } from '../scraper-card/scraper-card.component';
 export class NewWatchDialogComponent {
   newWatch = new NewWatch('', '');
 
+  constructor(
+    public dialogRef: MatDialogRef<ScraperCardComponent>,
+    private snackbar: MatSnackBar,
+    private watchService: WatchService
+  ) {}
+
   onSubmit() {
     console.log(this.newWatch.label);
     console.log(this.newWatch.uri);
@@ -24,12 +29,6 @@ export class NewWatchDialogComponent {
       this.dialogRef.close(response);
     });
   }
-
-  constructor(
-    public dialogRef: MatDialogRef<ScraperCardComponent>,
-    private snackbar: MatSnackBar,
-    private watchService: WatchService
-  ) {}
 
   showSnackbar(response: string, action?: string) {
     let snack = this.snackbar.open(response, action, {
