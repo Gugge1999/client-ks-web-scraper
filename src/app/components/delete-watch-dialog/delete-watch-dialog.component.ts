@@ -24,7 +24,7 @@ export class DeleteWatchDialogComponent {
       // https://stackblitz.com/edit/undo-snackbar
       // Lägg till laddsnurra eller progess bar
 
-      this.showSnackbar(watchToDelete.label, 'Undo');
+      this.showSnackbar(watchToDelete.label, 'Dismiss');
       this.dialogRef.close(response);
     });
   }
@@ -40,7 +40,9 @@ export class DeleteWatchDialogComponent {
       console.log('This will be shown after snackbar disappeared');
     });
     snack.onAction().subscribe(() => {
-      console.log('This will be called when snackbar button clicked');
+      console.log(
+        'Deleted clicked. This will be called when snackbar button clicked'
+      );
     });
   }
 }

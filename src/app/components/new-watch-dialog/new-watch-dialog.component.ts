@@ -24,8 +24,8 @@ export class NewWatchDialogComponent {
   ) {}
 
   onSubmit() {
-    this.watchService.addNewWatch(this.newWatch).subscribe((response) => {
-      this.showSnackbar(response, 'Dismiss');
+    this.watchService.addNewWatch(this.newWatch).subscribe((response: any) => {
+      this.showSnackbar(response.label, 'Dismiss');
       this.dialogRef.close(response);
     });
   }

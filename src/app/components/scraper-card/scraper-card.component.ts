@@ -1,4 +1,3 @@
-import { Observable } from 'rxjs';
 import { Watch } from 'src/app/models/watch.model';
 import { WatchService } from 'src/app/services/watch.service';
 
@@ -16,9 +15,10 @@ import { NewWatchDialogComponent } from '../new-watch-dialog/new-watch-dialog.co
   styleUrls: ['./scraper-card.component.scss'],
 })
 export class ScraperCardComponent implements OnInit {
-  watches$!: Observable<Watch[]>;
+  watches!: Watch[];
   cardWidth!: string;
 
+  hide: boolean = false;
   constructor(
     public dialog: MatDialog,
     private watchService: WatchService,
@@ -35,14 +35,9 @@ export class ScraperCardComponent implements OnInit {
           : (this.cardWidth = 'fullWidthCard');
       });
 
-    this.refreshData();
-    // setInterval(() => {
-    //   this.refreshData();
-    // }, 1 * 60000);
-
-    // this.watches$.subscribe((data) => {
-    //   console.log(data[0]);
-    // });
+    this.watchService.getAllWatches().subscribe((res) => {
+      this.watches = res;
+    });
   }
 
   deleteWatchDialog(watch: any) {
@@ -53,28 +48,28 @@ export class ScraperCardComponent implements OnInit {
       restoreFocus: false,
     });
 
-    dialogRef.afterClosed().subscribe((res: string) => {
+    dialogRef.afterClosed().subscribe((res: any) => {
       if (res === 'cancelClicked') return;
-      this.refreshData();
+      this.watches = this.watches.filter((watch) => watch.id != res.id);
     });
   }
 
   toggleActiveStatus(watch: Watch) {
-    this.watchService.updateActiveStatus(watch).subscribe((response) => {
-      this.showSnackbar(response, 'Dismiss');
+    this.watchService.updateActiveStatus(watch).subscribe((res) => {
+      this.showSnackbar(res, 'Dismiss');
     });
   }
 
   openNewWatchDialog() {
     const dialogRef = this.dialog.open(NewWatchDialogComponent, {
       width: '700px',
-      height: '350px',
+      height: '335px',
       autoFocus: false,
       restoreFocus: false,
     });
-    dialogRef.afterClosed().subscribe((res: string) => {
+    dialogRef.afterClosed().subscribe((res: any) => {
       if (res === 'cancelClicked') return;
-      this.refreshData();
+      this.watches.push(res);
     });
   }
 
@@ -91,9 +86,5 @@ export class ScraperCardComponent implements OnInit {
     snack.onAction().subscribe(() => {
       console.log('This will be called when snackbar button clicked');
     });
-  }
-
-  refreshData() {
-    return (this.watches$ = this.watchService.getAllWatches());
   }
 }
