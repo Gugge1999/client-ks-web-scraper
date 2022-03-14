@@ -25,36 +25,36 @@ mat-card-actions > * {
   margin-left: 8px;
 }
 
-.addNewWatch {
+.new-watch-container {
   position: fixed;
   display: flex;
   bottom: 1em; // 1em från skärmens botten
 }
 
-.addNewWatchButton {
+.new-watch-button {
   margin: 0 auto;
   padding: 0.5em 2.5em;
   font-size: large;
 }
 
-.addIcon {
+.add-watch-icon {
   transform: scale(1.5);
   margin-bottom: 4px;
   margin-right: 4px;
 }
 
-.isActiveSlideToggle {
+.is-watch-active-slide-toggle {
   margin-top: 3px;
 }
 
-.deleteIcon {
+.delete-icon {
   color: #d92923;
 }
 
-.smallWidthCard {
+.small-card-width {
   max-width: 40%;
 }
 
-.fullWidthCard {
+.full-card-width {
   max-width: 100%;
 }

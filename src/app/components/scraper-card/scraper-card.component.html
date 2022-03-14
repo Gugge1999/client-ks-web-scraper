@@ -4,18 +4,15 @@
     <mat-card-content>
       <p>
         Thread being scraped:
-        <a target="_blank" class="linkToWatch" href="{{ watch.uri }}">Thread</a>
+        <a target="_blank" class="link" href="{{ watch.uri }}">Thread</a>
       </p>
       <p>Last mail sent: {{ watch.last_email_sent }}</p>
       <p>Added: {{ watch.added }}</p>
       <p>
         Current watch:
-        <a
-          target="_blank"
-          class="linkToWatch"
-          href="{{ watch.link_to_watch }}"
-          >{{ watch.watch_name }}</a
-        >
+        <a target="_blank" class="link" href="{{ watch.link_to_watch }}">{{
+          watch.watch_name
+        }}</a>
       </p>
     </mat-card-content>
     <mat-card-actions align="end">
@@ -24,7 +21,7 @@
         class="deleteCardButton"
         (click)="deleteWatchDialog(watch)">
         <mat-icon
-          class="deleteIcon"
+          class="delete-icon"
           matTooltip="Delete watch"
           matTooltipPosition="above"
           matTooltipClass="tooltip"
@@ -42,7 +39,7 @@
         >
       </button>
       <mat-slide-toggle
-        class="isActiveSlideToggle"
+        class="is-watch-active-slide-toggle"
         color="primary"
         [(ngModel)]="watch.active"
         matTooltip="Toggle active status"
@@ -52,13 +49,13 @@
       </mat-slide-toggle>
     </mat-card-actions>
   </mat-card>
-  <div class="addNewWatch">
+  <div class="new-watch-container">
     <button
       mat-raised-button
       color="primary"
       (click)="openNewWatchDialog()"
-      class="addNewWatchButton">
-      <mat-icon class="addIcon">add_circle</mat-icon>
+      class="new-watch-button">
+      <mat-icon class="add-watch-icon">add_circle</mat-icon>
       Add watch
     </button>
   </div>

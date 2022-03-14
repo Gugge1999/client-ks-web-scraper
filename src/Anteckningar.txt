@@ -12,7 +12,7 @@ Prio:
 [  ] Ska det heta link eller uri i model?
 
 
-[  ] Kebeb-casing på alla css attribut
+[  ] Byt till att bara skicka med id till api när du gör delete
 
 
 [  ] Byt från px till em i alla scss-filer

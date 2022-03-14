@@ -10,6 +10,20 @@ body {
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
+// Make the Component injected by Router Outlet full height:
+main {
+  display: flex;
+  flex-direction: column;
+  > *:not(router-outlet) {
+    flex: 1;
+    display: block;
+  }
+}
+
+.content {
+  flex: 1;
+}
+
 /*#region sidenav*/
 .sidenav-container {
   height: 100%;
@@ -30,14 +44,14 @@ body {
 /*#endregion */
 
 /*#region links*/
-.linkToWatch:link,
-.linkToWatch:visited {
+.link:link,
+.link:visited {
   color: #33cccc;
   text-decoration: none;
 }
 
-.linkToWatch:hover,
-.linkToWatch:active {
+.link:hover,
+.link:active {
   color: white;
 }
 

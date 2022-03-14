@@ -31,8 +31,8 @@ export class ScraperCardComponent implements OnInit {
       .observe(['(min-width: 1000px)'])
       .subscribe((state: BreakpointState) => {
         state.matches
-          ? (this.cardWidth = 'smallWidthCard')
-          : (this.cardWidth = 'fullWidthCard');
+          ? (this.cardWidth = 'small-card-width')
+          : (this.cardWidth = 'full-card-width');
       });
 
     this.watchService.getAllWatches().subscribe((res) => {
