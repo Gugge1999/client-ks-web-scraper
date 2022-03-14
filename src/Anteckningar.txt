@@ -15,9 +15,6 @@ Prio:
 [  ] Byt till att bara skicka med id till api när du gör delete
 
 
-[  ] Byt från px till em i alla scss-filer
-
-
 [  ] Sticky header
 
 
