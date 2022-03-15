@@ -2,8 +2,6 @@
 
 Frågor till Marcus:
 
-[  ]  Varför scrollbar sidan längst upp efter observable uppdateras?
-
 [  ]  Blurry text. Varför?
 
 

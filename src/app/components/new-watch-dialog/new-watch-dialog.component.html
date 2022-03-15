@@ -1,7 +1,7 @@
 <form (ngSubmit)="onSubmit()" #newWatchForm="ngForm">
   <h2 mat-dialog-title>Add new watch</h2>
   <mat-dialog-content class="mat-typography">
-    <mat-form-field appearance="fill" class="form-element">
+    <mat-form-field appearance="outline" class="form-element">
       <mat-label>Label</mat-label>
       <input
         matInput
@@ -20,12 +20,13 @@
         (click)="newWatch.label = ''">
         <mat-icon>close</mat-icon>
       </button>
+      <mat-hint><h5>Enter a label</h5></mat-hint>
       <mat-error *ngIf="label.invalid">
-        <h4>Label is required</h4>
+        <h5>Label is required</h5>
       </mat-error>
     </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Watch link</mat-label>
+    <mat-form-field appearance="outline">
+      <mat-label>Link</mat-label>
       <input
         matInput
         type="text"
@@ -44,11 +45,12 @@
         (click)="newWatch.uri = ''">
         <mat-icon>close</mat-icon>
       </button>
+      <mat-hint><h5>Enter link to search page</h5></mat-hint>
       <mat-error *ngIf="uri.errors?.['required']">
-        <h4>Watch link is required</h4></mat-error
+        <h5>Watch link is required</h5></mat-error
       >
       <mat-error *ngIf="uri.touched && uri.errors?.['pattern']">
-        <h4>Watch link not valid</h4></mat-error
+        <h5>Watch link not valid</h5></mat-error
       >
     </mat-form-field>
   </mat-dialog-content>
