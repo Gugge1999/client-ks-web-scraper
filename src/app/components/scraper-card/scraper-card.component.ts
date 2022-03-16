@@ -68,7 +68,7 @@ export class ScraperCardComponent implements OnInit {
       restoreFocus: false,
     });
     dialogRef.afterClosed().subscribe((res: any) => {
-      if (res === 'cancelClicked') return;
+      if (res === undefined || res === 'cancelClicked') return;
 
       this.watches.push(res);
     });
