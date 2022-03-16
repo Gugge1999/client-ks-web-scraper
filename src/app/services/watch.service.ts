@@ -24,7 +24,7 @@ export class WatchService {
   constructor(private http: HttpClient) {}
 
   addNewWatch(data: Partial<Watch>): Observable<string> {
-    let API_URL = `${this.REST_API}/add-watch`;
+    const API_URL = `${this.REST_API}/add-watch`;
 
     return this.http
       .post<string>(API_URL, data, httpOptions)
@@ -32,7 +32,7 @@ export class WatchService {
   }
 
   getAllWatches(): Observable<Watch[]> {
-    let API_URL = `${this.REST_API}/all-watches`;
+    const API_URL = `${this.REST_API}/all-watches`;
 
     return this.http
       .get<Watch[]>(API_URL, httpOptions)

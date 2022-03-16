@@ -23,10 +23,6 @@ Prio:
       Det kan vara en material button "fab" eller mini fab. Se: https://material.angular.io/components/button/overview
 
 
-[  ]  "dismiss action" i snackbar. Skapa en egen snackbar component...
-      https://dev.to/itnext/custom-theme-for-angular-material-components-series-part-3-apply-theme-e34
-
-
 [  ]  Använd Jest för att testa: https://www.xfive.co/blog/testing-angular-faster-jest/
 
 -------------- Misc -------------------

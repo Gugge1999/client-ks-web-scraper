@@ -18,7 +18,6 @@ export class ScraperCardComponent implements OnInit {
   watches!: Watch[];
   cardWidth!: string;
 
-  hide: boolean = false;
   constructor(
     public dialog: MatDialog,
     private watchService: WatchService,
@@ -42,7 +41,7 @@ export class ScraperCardComponent implements OnInit {
 
   deleteWatchDialog(watch: any) {
     const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
-      width: '350px',
+      width: '375px',
       autoFocus: false,
       data: watch,
       restoreFocus: false,
@@ -51,30 +50,32 @@ export class ScraperCardComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res: any) => {
       if (res === 'cancelClicked') return;
       this.watches = this.watches.filter((watch) => watch.id != res.id);
+      this.showSnackbarDelete(res);
     });
   }
 
   toggleActiveStatus(watch: Watch) {
     this.watchService.updateActiveStatus(watch).subscribe((res) => {
-      this.showSnackbar(res, 'Dismiss');
+      this.showSnackbarToggleStatus(res);
     });
   }
 
   openNewWatchDialog() {
     const dialogRef = this.dialog.open(NewWatchDialogComponent, {
       width: '700px',
-      height: '335px',
+      height: '350px',
       autoFocus: false,
       restoreFocus: false,
     });
     dialogRef.afterClosed().subscribe((res: any) => {
       if (res === 'cancelClicked') return;
+
       this.watches.push(res);
     });
   }
 
-  showSnackbar(response: string, action?: string) {
-    let snack = this.snackbar.open(response, action, {
+  showSnackbarToggleStatus(response: string) {
+    const snack = this.snackbar.open(response, 'Dismiss', {
       panelClass: 'success-snackbar',
       duration: 5000,
       horizontalPosition: 'right',
@@ -85,6 +86,30 @@ export class ScraperCardComponent implements OnInit {
     });
     snack.onAction().subscribe(() => {
       console.log('This will be called when snackbar button clicked');
+    });
+  }
+
+  showSnackbarDelete(deletedWatch: Watch) {
+    const snack = this.snackbar.open(
+      `Deleted watch: ${deletedWatch.label}`,
+      'Undo',
+      {
+        panelClass: ['mat-toolbar', 'mat-warn'],
+        duration: 5000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom',
+      }
+    );
+    snack.afterDismissed().subscribe((res) => {
+      // Om dismissedByAction är sant (användren klickade på Undo) ska vi inte ta bort klockan
+      if (res.dismissedByAction === true) return;
+
+      this.watchService.deleteWatch(deletedWatch.id).subscribe((res) => {
+        console.log(`Deleted: ${JSON.stringify(res)}`);
+      });
+    });
+    snack.onAction().subscribe(() => {
+      this.watches.push(deletedWatch);
     });
   }
 }

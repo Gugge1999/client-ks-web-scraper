@@ -24,19 +24,23 @@ export class NewWatchDialogComponent {
   ) {}
 
   onSubmit() {
-    this.watchService.addNewWatch(this.newWatch).subscribe((response: any) => {
-      this.showSnackbar(response.label, 'Dismiss');
-      this.dialogRef.close(response);
+    this.watchService.addNewWatch(this.newWatch).subscribe((res: any) => {
+      this.showSnackbarAdd(res.label);
+      this.dialogRef.close(res);
     });
   }
 
-  showSnackbar(response: string, action?: string) {
-    let snack = this.snackbar.open(response, action, {
-      panelClass: 'success-snackbar',
-      duration: 5000,
-      horizontalPosition: 'right',
-      verticalPosition: 'bottom',
-    });
+  showSnackbarAdd(response: string) {
+    const snack = this.snackbar.open(
+      `Added watch with label: ${response}`,
+      'Dismiss',
+      {
+        panelClass: 'success-snackbar',
+        duration: 5000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom',
+      }
+    );
     snack.afterDismissed().subscribe(() => {
       console.log('This will be shown after snackbar disappeared');
     });

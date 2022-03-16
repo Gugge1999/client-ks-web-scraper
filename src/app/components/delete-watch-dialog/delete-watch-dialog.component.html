@@ -1,10 +1,10 @@
 <h1 mat-dialog-title>Delete watch</h1>
 <div mat-dialog-content>
-  Are you sure to delete watch: <strong>{{ data.label }}</strong> ?
+  Are you sure to delete watch: <strong>{{ watchToDelete.label }}</strong> ?
 </div>
 <div mat-dialog-actions align="end">
   <button mat-flat-button mat-dialog-close="cancelClicked">Cancel</button>
-  <button mat-flat-button color="warn" (click)="deleteWatch(data)">
+  <button mat-flat-button color="warn" (click)="deleteWatch(watchToDelete)">
     Delete
   </button>
 </div>
