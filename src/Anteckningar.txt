@@ -1,29 +1,27 @@
 -------------- TODO --------------
-
-Frågor till Marcus:
-
-[  ]  Blurry text. Varför?
+Blurry text. Varför?
 
 
-
-Prio: 
-[  ] Ska det heta link eller uri i model?
+Byt till bara ett interface eller class i models.
 
 
-[  ] Byt till att bara skicka med id till api när du gör delete
+Ska det heta link eller uri i model?
 
 
-[  ] Sticky header
+Byt till att bara skicka med id till api när du gör delete
 
 
-[  ] För att testa deploy. Se: https://www.youtube.com/watch?v=QdHvS0D1zAI
+Sticky header
 
 
-[  ]  Lägg till en "status för backend" i högra hörnet i nav. Den kan visa när senaste databasbackupen genomfördes också. 
+För att testa deploy. Se: https://www.youtube.com/watch?v=QdHvS0D1zAI
+
+
+ Lägg till en "status för backend" i högra hörnet i nav. Den kan visa när senaste databasbackupen genomfördes också. 
       Det kan vara en material button "fab" eller mini fab. Se: https://material.angular.io/components/button/overview
 
 
-[  ]  Använd Jest för att testa: https://www.xfive.co/blog/testing-angular-faster-jest/
+Använd Jest för att testa: https://www.xfive.co/blog/testing-angular-faster-jest/
 
 -------------- Misc -------------------
 Bra video från Google om Angular "How to stay fast and fresh with Angular"

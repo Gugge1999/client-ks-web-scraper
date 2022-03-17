@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { IsAliveService } from './is-alive.service';
+import { StatusService } from './status.service';
 
-describe('IsAliveService', () => {
-  let service: IsAliveService;
+describe('StatusService', () => {
+  let service: StatusService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(IsAliveService);
+    service = TestBed.inject(StatusService);
   });
 
   it('should be created', () => {
