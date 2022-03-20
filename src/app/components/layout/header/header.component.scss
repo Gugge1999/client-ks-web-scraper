@@ -1,0 +1,39 @@
+.toolbar-title {
+  font-size: x-large;
+}
+
+.titlebar-link {
+  display: flex;
+  align-items: center;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.api-status {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  padding: 0.1em;
+}
+
+.api-status:hover {
+  cursor: pointer;
+}
+
+.status-text {
+  margin: 0 0.5em;
+}
+
+.status-icon {
+  margin-right: 0.25em;
+}
+
+.status-icon.offline {
+  color: #d92923;
+}
+
+.icon-margin-right {
+  margin-right: 0.25em;
+}

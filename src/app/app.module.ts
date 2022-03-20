@@ -7,11 +7,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ApiStatusDialogComponent } from './components/api-status-dialog/api-status-dialog.component';
 import { DeleteWatchDialogComponent } from './components/delete-watch-dialog/delete-watch-dialog.component';
+import { FooterComponent } from './components/layout/footer/footer.component';
 import { NewWatchDialogComponent } from './components/new-watch-dialog/new-watch-dialog.component';
 import { ScraperCardComponent } from './components/scraper-card/scraper-card.component';
 import { MaterialModule } from './material.module';
-import { ApiStatusDialogComponent } from './components/api-status-dialog/api-status-dialog.component';
+import { HeaderComponent } from './components/layout/header/header.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { ApiStatusDialogComponent } from './components/api-status-dialog/api-sta
     NewWatchDialogComponent,
     DeleteWatchDialogComponent,
     ApiStatusDialogComponent,
+    FooterComponent,
+    HeaderComponent,
   ],
   imports: [
     BrowserModule,

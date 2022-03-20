@@ -2,9 +2,6 @@
 Blurry text. Varför?
 
 
-Skapa en komponent av toolbar
-
-
 Byt till bara ett interface eller class i models.
 
 
