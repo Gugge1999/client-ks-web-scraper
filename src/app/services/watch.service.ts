@@ -7,6 +7,7 @@ import {
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { ApiStatus } from '../models/api-status.model';
 import { Watch } from '../models/watch.model';
 
 const httpOptions = {
@@ -23,11 +24,11 @@ export class WatchService {
 
   constructor(private http: HttpClient) {}
 
-  addNewWatch(data: Partial<Watch>): Observable<string> {
+  addNewWatch(data: Partial<Watch>): Observable<Watch> {
     const API_URL = `${this.REST_API}/add-watch`;
 
     return this.http
-      .post<string>(API_URL, data, httpOptions)
+      .post<Watch>(API_URL, data, httpOptions)
       .pipe(catchError(this.handleError));
   }
 
@@ -56,11 +57,11 @@ export class WatchService {
       .pipe(catchError(this.handleError));
   }
 
-  isApiActive(): Observable<any> {
+  isApiActive(): Observable<ApiStatus> {
     const API_URL = `${this.REST_API}/is-api-active`;
 
     return this.http
-      .get(API_URL, httpOptions)
+      .get<ApiStatus>(API_URL, httpOptions)
       .pipe(catchError(this.handleError));
   }
 

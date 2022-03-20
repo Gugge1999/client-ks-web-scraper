@@ -23,7 +23,7 @@ export class NewWatchDialogComponent {
   ) {}
 
   onSubmit() {
-    this.watchService.addNewWatch(this.newWatch).subscribe((res: any) => {
+    this.watchService.addNewWatch(this.newWatch).subscribe((res: Watch) => {
       this.showSnackbarAdd(res.label);
       this.dialogRef.close(res);
     });

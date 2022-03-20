@@ -1,7 +1,7 @@
-import { ApiStatus } from 'src/app/models/api-status.model';
-
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+import { ApiStatus } from '../../models/api-status.model';
 
 @Component({
   selector: 'app-api-status-dialog',

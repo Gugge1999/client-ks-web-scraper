@@ -1,5 +1,4 @@
 import { catchError, Observable, throwError } from 'rxjs';
-import { ApiStatus } from 'src/app/models/api-status.model';
 
 import {
   HttpClient,
@@ -7,6 +6,8 @@ import {
   HttpHeaders
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+
+import { ApiStatus } from '../../models/api-status.model';
 
 const httpOptions = {
   headers: new HttpHeaders({

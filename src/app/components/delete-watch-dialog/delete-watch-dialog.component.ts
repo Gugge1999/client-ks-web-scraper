@@ -1,6 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
+import { Watch } from '../../models/watch.model';
 import { ScraperCardComponent } from '../scraper-card/scraper-card.component';
 
 @Component({
@@ -10,11 +11,11 @@ import { ScraperCardComponent } from '../scraper-card/scraper-card.component';
 })
 export class DeleteWatchDialogComponent {
   constructor(
-    @Inject(MAT_DIALOG_DATA) public watchToDelete: any,
+    @Inject(MAT_DIALOG_DATA) public watchToDelete: Watch,
     public dialogRef: MatDialogRef<ScraperCardComponent>
   ) {}
 
-  deleteWatch(watchToDelete: any) {
+  deleteWatch(watchToDelete: Watch) {
     this.dialogRef.close(watchToDelete);
   }
 }

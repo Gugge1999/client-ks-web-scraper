@@ -1,11 +1,10 @@
-import { Watch } from 'src/app/models/watch.model';
-import { WatchService } from 'src/app/services/watch.service';
-
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { Watch } from '../../models/watch.model';
+import { WatchService } from '../../services/watch.service';
 import { DeleteWatchDialogComponent } from '../delete-watch-dialog/delete-watch-dialog.component';
 import { NewWatchDialogComponent } from '../new-watch-dialog/new-watch-dialog.component';
 
@@ -39,7 +38,7 @@ export class ScraperCardComponent implements OnInit {
     });
   }
 
-  deleteWatchDialog(watch: any) {
+  deleteWatchDialog(watch: Watch) {
     const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
       width: '375px',
       autoFocus: false,
