@@ -22,11 +22,26 @@
 }
 
 .api-status {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
   padding: 0.1em;
 }
 
-.check-icon {
-  padding: 0.2em 0.5em;
+.api-status:hover {
+  cursor: pointer;
+}
+
+.status-text {
+  margin: 0 0.5em;
+}
+
+.status-icon {
+  margin-right: 0.25em;
+}
+
+.status-icon.offline {
+  color: #d92923;
 }
 
 .icon-margin-right {

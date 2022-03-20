@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>API Status</h1>
+<div mat-dialog-content>
+  <h4>
+    Last backup: <i>{{ apiStatus.lastDatabaseBackupDate }}</i>
+  </h4>
+  <h4>
+    Scraping interval: <i>{{ apiStatus.scrapingIntervalInMinutes }} minutes</i>
+  </h4>
+  <h4>Uptime</h4>
+  <div class="uptime">
+    <p>Years: {{ apiStatus.uptime.years }}</p>
+    <p>Months: {{ apiStatus.uptime.months }}</p>
+    <p>Days: {{ apiStatus.uptime.days }}</p>
+    <p>Hours: {{ apiStatus.uptime.hours }}</p>
+    <p>Minutes: {{ apiStatus.uptime.minutes }}</p>
+    <p>Seconds: {{ apiStatus.uptime.seconds }}</p>
+  </div>
+</div>
+<div mat-dialog-actions align="end">
+  <button mat-flat-button mat-dialog-close color="accent">Cancel</button>
+</div>

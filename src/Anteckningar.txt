@@ -2,6 +2,9 @@
 Blurry text. Varför?
 
 
+Skapa en komponent av toolbar
+
+
 Byt till bara ett interface eller class i models.
 
 
@@ -15,10 +18,6 @@ Sticky header
 
 
 För att testa deploy. Se: https://www.youtube.com/watch?v=QdHvS0D1zAI
-
-
- Lägg till en "status för backend" i högra hörnet i nav. Den kan visa när senaste databasbackupen genomfördes också. 
-      Det kan vara en material button "fab" eller mini fab. Se: https://material.angular.io/components/button/overview
 
 
 Använd Jest för att testa: https://www.xfive.co/blog/testing-angular-faster-jest/

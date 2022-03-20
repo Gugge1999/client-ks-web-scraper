@@ -11,6 +11,7 @@ import { DeleteWatchDialogComponent } from './components/delete-watch-dialog/del
 import { NewWatchDialogComponent } from './components/new-watch-dialog/new-watch-dialog.component';
 import { ScraperCardComponent } from './components/scraper-card/scraper-card.component';
 import { MaterialModule } from './material.module';
+import { ApiStatusDialogComponent } from './components/api-status-dialog/api-status-dialog.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { MaterialModule } from './material.module';
     ScraperCardComponent,
     NewWatchDialogComponent,
     DeleteWatchDialogComponent,
+    ApiStatusDialogComponent,
   ],
   imports: [
     BrowserModule,

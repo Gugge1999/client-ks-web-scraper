@@ -8,9 +8,21 @@
             <span class="toolbar-title">KS Web Scraper</span>
           </a>
           <span class="spacer"></span>
-          <mat-card class="api-status">
-            <mat-icon color="primary" class="check-icon"
+          <mat-card
+            class="api-status"
+            (click)="apiStatus?.active ? openApiStatusDialog() : ''">
+            <span class="status-text">API Status</span>
+            <mat-icon
+              *ngIf="apiStatus?.active"
+              class="status-icon"
+              color="primary"
               >check_circle_outline</mat-icon
+            >
+            <mat-icon
+              *ngIf="!apiStatus?.active"
+              class="status-icon offline"
+              color="primary"
+              >highlight_off</mat-icon
             >
           </mat-card>
         </mat-toolbar-row>
