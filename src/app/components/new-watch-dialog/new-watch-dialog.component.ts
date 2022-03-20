@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { NewWatch } from '../../models/new-watch';
+import { Watch } from '../../models/watch.model';
 import { WatchService } from '../../services/watch.service';
 import { ScraperCardComponent } from '../scraper-card/scraper-card.component';
 
@@ -12,8 +12,7 @@ import { ScraperCardComponent } from '../scraper-card/scraper-card.component';
   styleUrls: ['./new-watch-dialog.component.scss'],
 })
 export class NewWatchDialogComponent {
-  newWatch = new NewWatch('', '');
-
+  newWatch = <Watch>{};
   urlPattern: string =
     'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*(),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+';
 
