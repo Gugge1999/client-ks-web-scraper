@@ -5,11 +5,11 @@
   align-items: center;
   flex-wrap: nowrap;
   padding: 2em 2em 0 2em;
+  gap: 2em;
 }
 
 .card {
   width: 100%;
-  margin-bottom: 2em;
 }
 
 .card:nth-last-child(2) {
