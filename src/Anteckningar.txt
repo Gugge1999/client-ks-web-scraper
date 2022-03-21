@@ -1,13 +1,4 @@
 -------------- TODO --------------
-Blurry text. Varför?
-
-
-Byt till bara ett interface eller class i models.
-
-
-Ska det heta link eller uri i model?
-
-
 Byt till att bara skicka med id till api när du gör delete
 
 

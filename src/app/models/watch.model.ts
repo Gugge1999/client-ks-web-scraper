@@ -1,6 +1,6 @@
 export interface Watch {
   id: string;
-  uri: string;
+  link: string;
   label: string;
   watch_name: string;
   watch_posted: string;

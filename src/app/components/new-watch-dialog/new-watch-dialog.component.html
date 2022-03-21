@@ -31,25 +31,25 @@
         matInput
         type="text"
         class="form-control"
-        id="uri"
+        id="link"
         required
-        [(ngModel)]="newWatch.uri"
-        name="uri"
+        [(ngModel)]="newWatch.link"
+        name="link"
         [pattern]="urlPattern"
-        #uri="ngModel" />
+        #link="ngModel" />
       <button
-        *ngIf="newWatch.uri"
+        *ngIf="newWatch.link"
         matSuffix
         mat-icon-button
         aria-label="Clear"
-        (click)="newWatch.uri = ''">
+        (click)="newWatch.link = ''">
         <mat-icon>close</mat-icon>
       </button>
       <mat-hint><h5>Enter link to search page</h5></mat-hint>
-      <mat-error *ngIf="uri.errors?.['required']">
+      <mat-error *ngIf="link.errors?.['required']">
         <h5>Watch link is required</h5></mat-error
       >
-      <mat-error *ngIf="uri.touched && uri.errors?.['pattern']">
+      <mat-error *ngIf="link.touched && link.errors?.['pattern']">
         <h5>Watch link not valid</h5></mat-error
       >
     </mat-form-field>
