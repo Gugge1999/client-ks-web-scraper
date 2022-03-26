@@ -1,7 +1,4 @@
 -------------- TODO --------------
-Byt till att bara skicka med id till api när du gör delete
-
-
 Sticky header
 
 

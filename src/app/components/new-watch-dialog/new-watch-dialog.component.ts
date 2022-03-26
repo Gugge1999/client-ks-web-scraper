@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -23,9 +24,15 @@ export class NewWatchDialogComponent {
   ) {}
 
   onSubmit() {
-    this.watchService.addNewWatch(this.newWatch).subscribe((res: Watch) => {
-      this.showSnackbarAdd(res.label);
-      this.dialogRef.close(res);
+    this.watchService.addNewWatch(this.newWatch).subscribe({
+      next: (res: Watch) => {
+        this.dialogRef.close(res);
+        this.showSnackbarAdd(res.label);
+      },
+      error: (res: HttpErrorResponse) => {
+        this.dialogRef.close();
+        this.showSnackbarDelete(res.error.message);
+      },
     });
   }
 
@@ -45,6 +52,15 @@ export class NewWatchDialogComponent {
     });
     snack.onAction().subscribe(() => {
       console.log('This will be called when snackbar button clicked');
+    });
+  }
+
+  showSnackbarDelete(message: string) {
+    this.snackbar.open(`Error: ${message}`, 'Dismiss', {
+      panelClass: ['mat-toolbar', 'mat-warn'],
+      duration: 5000,
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom',
     });
   }
 }
