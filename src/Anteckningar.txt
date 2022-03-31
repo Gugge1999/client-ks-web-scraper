@@ -7,6 +7,7 @@ För att testa deploy. Se: https://www.youtube.com/watch?v=QdHvS0D1zAI
 
 Använd Jest för att testa: https://www.xfive.co/blog/testing-angular-faster-jest/
 
+
 -------------- Misc -------------------
 Bra video från Google om Angular "How to stay fast and fresh with Angular"
 https://www.youtube.com/watch?v=B-lipaiZII8

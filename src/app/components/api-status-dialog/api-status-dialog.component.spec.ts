@@ -8,9 +8,8 @@ describe('ApiStatusDialogComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ApiStatusDialogComponent ]
-    })
-    .compileComponents();
+      declarations: [ApiStatusDialogComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {
