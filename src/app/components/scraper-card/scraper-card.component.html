@@ -1,5 +1,8 @@
 <div class="cardContainer">
-  <mat-card class="card" *ngFor="let watch of watches" [ngClass]="cardWidth">
+  <mat-card
+    class="card"
+    *ngFor="let watch of watches; index as i"
+    [ngClass]="cardWidth">
     <mat-card-title>{{ watch.label }}</mat-card-title>
     <mat-card-content>
       <p>
@@ -41,11 +44,11 @@
       <mat-slide-toggle
         class="is-watch-active-slide-toggle"
         color="primary"
-        [(ngModel)]="watch.active"
         matTooltip="Toggle active status"
         matTooltipPosition="above"
         matTooltipClass="tooltip"
-        (change)="toggleActiveStatus(watch)">
+        [checked]="watch.active"
+        (change)="toggleActiveStatus(watch, i, $event)">
       </mat-slide-toggle>
     </mat-card-actions>
   </mat-card>

@@ -5,7 +5,7 @@ export interface Watch {
   watch_name: string;
   watch_posted: string;
   link_to_watch: string;
-  active: string;
+  active: boolean;
   last_email_sent: string;
   added: string;
 }

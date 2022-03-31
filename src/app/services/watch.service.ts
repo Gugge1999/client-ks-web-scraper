@@ -3,7 +3,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 import {
   HttpClient,
   HttpErrorResponse,
-  HttpHeaders
+  HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -40,20 +40,22 @@ export class WatchService {
       .pipe(catchError(this.handleError));
   }
 
-  updateActiveStatus(watch: Partial<Watch>): Observable<string> {
-    const API_URL = `${this.REST_API}/update-active-status`;
+  toggleActiveStatus(
+    watch: Partial<Watch>
+  ): Observable<{ isActive: boolean; label: string }> {
+    const API_URL = `${this.REST_API}/toggle-active-status`;
     const data = { isActive: watch.active, label: watch.label, id: watch.id };
 
     return this.http
-      .put<string>(API_URL, data, httpOptions)
+      .put<any>(API_URL, data, httpOptions)
       .pipe(catchError(this.handleError));
   }
 
-  deleteWatch(id: string): Observable<string> {
+  deleteWatch(id: string): Observable<{ deletedWatchId: string }> {
     const API_URL = `${this.REST_API}/delete-watch/${id}`;
 
     return this.http
-      .delete<string>(API_URL, httpOptions)
+      .delete<{ deletedWatchId: string }>(API_URL, httpOptions)
       .pipe(catchError(this.handleError));
   }
 

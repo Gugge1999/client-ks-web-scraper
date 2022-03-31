@@ -1,4 +1,5 @@
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -53,9 +54,17 @@ export class ScraperCardComponent implements OnInit {
     });
   }
 
-  toggleActiveStatus(watch: Watch) {
-    this.watchService.updateActiveStatus(watch).subscribe((res) => {
-      this.showSnackbarToggleStatus(res);
+  toggleActiveStatus(watch: Watch, index: number, event: any) {
+    const oldStatus = this.watches[index].active;
+    event.source.checked = oldStatus;
+    this.watchService.toggleActiveStatus(watch).subscribe({
+      next: (res) => {
+        this.watches[index].active = res.isActive;
+        this.showSnackbarToggleStatus(res.label);
+      },
+      error: (res: HttpErrorResponse) => {
+        this.showErrorSnackbar(res.error.message);
+      },
     });
   }
 
@@ -73,13 +82,27 @@ export class ScraperCardComponent implements OnInit {
     });
   }
 
-  showSnackbarToggleStatus(response: string) {
-    const snack = this.snackbar.open(response, 'Dismiss', {
-      panelClass: 'success-snackbar',
+  showErrorSnackbar(message: string) {
+    this.snackbar.open(message, 'Dismiss', {
+      panelClass: ['mat-toolbar', 'mat-warn'],
       duration: 5000,
       horizontalPosition: 'right',
       verticalPosition: 'bottom',
     });
+  }
+
+  showSnackbarToggleStatus(message: string) {
+    const snack = this.snackbar.open(
+      `Toggled status on: ${message}`,
+      'Dismiss',
+      {
+        panelClass: 'success-snackbar',
+        duration: 5000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom',
+      }
+    );
+    // kolla vilka metoder som ska vara kvar
     snack.afterDismissed().subscribe(() => {
       console.log('This will be shown after snackbar disappeared');
     });
@@ -104,7 +127,7 @@ export class ScraperCardComponent implements OnInit {
       if (res.dismissedByAction === true) return;
 
       this.watchService.deleteWatch(deletedWatch.id).subscribe((res) => {
-        console.log(`Deleted: ${JSON.stringify(res)}`);
+        console.log(`Deleted: ${res.deletedWatchId}`);
       });
     });
     snack.onAction().subscribe(() => {
