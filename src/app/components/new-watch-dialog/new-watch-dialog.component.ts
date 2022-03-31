@@ -1,7 +1,8 @@
+import { SnackbarService } from 'src/app/services/snackbar.service';
+
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Watch } from '../../models/watch.model';
 import { WatchService } from '../../services/watch.service';
@@ -19,48 +20,22 @@ export class NewWatchDialogComponent {
 
   constructor(
     public dialogRef: MatDialogRef<ScraperCardComponent>,
-    private snackbar: MatSnackBar,
-    private watchService: WatchService
+    private watchService: WatchService,
+    private snackbarService: SnackbarService
   ) {}
 
   onSubmit() {
     this.watchService.addNewWatch(this.newWatch).subscribe({
       next: (res: Watch) => {
         this.dialogRef.close(res);
-        this.showSnackbarAdd(res.label);
+        this.snackbarService.openSuccessSnackbar(
+          `Added watch with label: ${res.label}`
+        );
       },
       error: (res: HttpErrorResponse) => {
         this.dialogRef.close();
-        this.showSnackbarDelete(res.error.message);
+        this.snackbarService.openErrorSnackbar(res.error.message);
       },
-    });
-  }
-
-  showSnackbarAdd(response: string) {
-    const snack = this.snackbar.open(
-      `Added watch with label: ${response}`,
-      'Dismiss',
-      {
-        panelClass: 'success-snackbar',
-        duration: 5000,
-        horizontalPosition: 'right',
-        verticalPosition: 'bottom',
-      }
-    );
-    snack.afterDismissed().subscribe(() => {
-      console.log('This will be shown after snackbar disappeared');
-    });
-    snack.onAction().subscribe(() => {
-      console.log('This will be called when snackbar button clicked');
-    });
-  }
-
-  showSnackbarDelete(message: string) {
-    this.snackbar.open(`Error: ${message}`, 'Dismiss', {
-      panelClass: ['mat-toolbar', 'mat-warn'],
-      duration: 5000,
-      horizontalPosition: 'right',
-      verticalPosition: 'bottom',
     });
   }
 }

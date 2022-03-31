@@ -1,8 +1,9 @@
+import { SnackbarService } from 'src/app/services/snackbar.service';
+
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Watch } from '../../models/watch.model';
 import { WatchService } from '../../services/watch.service';
@@ -21,7 +22,7 @@ export class ScraperCardComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     private watchService: WatchService,
-    private snackbar: MatSnackBar,
+    private snackbarService: SnackbarService,
     public breakpointObserver: BreakpointObserver
   ) {}
 
@@ -50,7 +51,7 @@ export class ScraperCardComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res: any) => {
       if (res === 'cancelClicked') return;
       this.watches = this.watches.filter((watch) => watch.id != res.id);
-      this.showSnackbarDelete(res);
+      this.snackbarService.showSnackbarDelete(res, this.watches);
     });
   }
 
@@ -60,10 +61,12 @@ export class ScraperCardComponent implements OnInit {
     this.watchService.toggleActiveStatus(watch).subscribe({
       next: (res) => {
         this.watches[index].active = res.isActive;
-        this.showSnackbarToggleStatus(res.label);
+        this.snackbarService.openSuccessSnackbar(
+          `Toggled status on: ${res.label}`
+        );
       },
       error: (res: HttpErrorResponse) => {
-        this.showErrorSnackbar(res.error.message);
+        this.snackbarService.openErrorSnackbar(res.error.message);
       },
     });
   }
@@ -79,59 +82,6 @@ export class ScraperCardComponent implements OnInit {
       if (res === undefined || res === 'cancelClicked') return;
 
       this.watches.push(res);
-    });
-  }
-
-  showErrorSnackbar(message: string) {
-    this.snackbar.open(message, 'Dismiss', {
-      panelClass: ['mat-toolbar', 'mat-warn'],
-      duration: 5000,
-      horizontalPosition: 'right',
-      verticalPosition: 'bottom',
-    });
-  }
-
-  showSnackbarToggleStatus(message: string) {
-    const snack = this.snackbar.open(
-      `Toggled status on: ${message}`,
-      'Dismiss',
-      {
-        panelClass: 'success-snackbar',
-        duration: 5000,
-        horizontalPosition: 'right',
-        verticalPosition: 'bottom',
-      }
-    );
-    // kolla vilka metoder som ska vara kvar
-    snack.afterDismissed().subscribe(() => {
-      console.log('This will be shown after snackbar disappeared');
-    });
-    snack.onAction().subscribe(() => {
-      console.log('This will be called when snackbar button clicked');
-    });
-  }
-
-  showSnackbarDelete(deletedWatch: Watch) {
-    const snack = this.snackbar.open(
-      `Deleted watch: ${deletedWatch.label}`,
-      'Undo',
-      {
-        panelClass: ['mat-toolbar', 'mat-warn'],
-        duration: 5000,
-        horizontalPosition: 'right',
-        verticalPosition: 'bottom',
-      }
-    );
-    snack.afterDismissed().subscribe((res) => {
-      // Om dismissedByAction är sant (användren klickade på Undo) ska vi inte ta bort klockan
-      if (res.dismissedByAction === true) return;
-
-      this.watchService.deleteWatch(deletedWatch.id).subscribe((res) => {
-        console.log(`Deleted: ${res.deletedWatchId}`);
-      });
-    });
-    snack.onAction().subscribe(() => {
-      this.watches.push(deletedWatch);
     });
   }
 }

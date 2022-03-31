@@ -20,6 +20,7 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class WatchService {
+  // Skapa AppConfig? Se: https://stackoverflow.com/a/54793384/14671400
   REST_API: string = 'http://192.168.1.2:3000';
 
   constructor(private http: HttpClient) {}
