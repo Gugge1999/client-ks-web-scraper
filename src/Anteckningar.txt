@@ -1,4 +1,7 @@
 -------------- TODO --------------
+Skapa light och mode med toggle.
+
+
 Sticky header
 
 

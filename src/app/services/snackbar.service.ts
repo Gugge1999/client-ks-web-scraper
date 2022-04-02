@@ -20,9 +20,13 @@ export class SnackbarService {
   }
 
   public openErrorSnackbar(message?: string) {
-    this.snackbar.open(`Error: ${message}`, 'Dismiss', {
-      panelClass: ['mat-toolbar', 'mat-warn'],
-    });
+    this.snackbar.open(
+      `Error: ${message ?? 'Something went wrong.'}`,
+      'Dismiss',
+      {
+        panelClass: ['mat-toolbar', 'mat-warn'],
+      }
+    );
   }
 
   public showSnackbarDelete(deletedWatch: Watch, watches: Watch[]) {
