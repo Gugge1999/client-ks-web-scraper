@@ -3,11 +3,10 @@ import { catchError, Observable, throwError } from 'rxjs';
 import {
   HttpClient,
   HttpErrorResponse,
-  HttpHeaders
+  HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import { ApiStatus } from '../../models/api-status.model';
+import { ApiStatus } from '@models/api-status.model';
 
 const httpOptions = {
   headers: new HttpHeaders({

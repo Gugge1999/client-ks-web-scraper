@@ -1,14 +1,12 @@
-import { SnackbarService } from 'src/app/services/snackbar.service';
-
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
-import { Watch } from '../../models/watch.model';
-import { WatchService } from '../../services/watch.service';
-import { DeleteWatchDialogComponent } from '../delete-watch-dialog/delete-watch-dialog.component';
-import { NewWatchDialogComponent } from '../new-watch-dialog/new-watch-dialog.component';
+import { DeleteWatchDialogComponent } from '@components/delete-watch-dialog/delete-watch-dialog.component';
+import { NewWatchDialogComponent } from '@components/new-watch-dialog/new-watch-dialog.component';
+import { Watch } from '@models/watch.model';
+import { WatchService } from '@services/watch.service';
+import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-scraper-card',

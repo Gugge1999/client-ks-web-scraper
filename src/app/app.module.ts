@@ -4,16 +4,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { ApiStatusDialogComponent } from './components/api-status-dialog/api-status-dialog.component';
-import { DeleteWatchDialogComponent } from './components/delete-watch-dialog/delete-watch-dialog.component';
-import { FooterComponent } from './components/layout/footer/footer.component';
-import { NewWatchDialogComponent } from './components/new-watch-dialog/new-watch-dialog.component';
-import { ScraperCardComponent } from './components/scraper-card/scraper-card.component';
-import { MaterialModule } from './material.module';
-import { HeaderComponent } from './components/layout/header/header.component';
+import { AppRoutingModule } from '@app/app-routing.module';
+import { AppComponent } from '@app/app.component';
+import { MaterialModule } from '@app/material.module';
+import { ApiStatusDialogComponent } from '@components/api-status-dialog/api-status-dialog.component';
+import { DeleteWatchDialogComponent } from '@components/delete-watch-dialog/delete-watch-dialog.component';
+import { NewWatchDialogComponent } from '@components/new-watch-dialog/new-watch-dialog.component';
+import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
+import { FooterComponent } from '@shared/layout/footer/footer.component';
+import { HeaderComponent } from '@shared/layout/header/header.component';
 
 @NgModule({
   declarations: [

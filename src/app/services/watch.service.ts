@@ -6,9 +6,8 @@ import {
   HttpHeaders,
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
-import { ApiStatus } from '../models/api-status.model';
-import { Watch } from '../models/watch.model';
+import { ApiStatus } from '@models/api-status.model';
+import { Watch } from '@models/watch.model';
 
 const httpOptions = {
   headers: new HttpHeaders({

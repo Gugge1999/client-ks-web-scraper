@@ -1,8 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-
-import { Watch } from '../../models/watch.model';
-import { ScraperCardComponent } from '../scraper-card/scraper-card.component';
+import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
+import { Watch } from '@models/watch.model';
 
 @Component({
   selector: 'app-delete-watch-dialog',

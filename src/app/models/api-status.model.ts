@@ -1,4 +1,4 @@
-import { Uptime } from './uptime.model';
+import { Uptime } from '@models/uptime.model';
 
 export interface ApiStatus {
   active: string;

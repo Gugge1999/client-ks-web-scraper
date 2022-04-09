@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
-import { Watch } from '../models/watch.model';
-import { WatchService } from './watch.service';
+import { Watch } from '@models/watch.model';
+import { WatchService } from '@services/watch.service';
 
 @Injectable({
   providedIn: 'root',

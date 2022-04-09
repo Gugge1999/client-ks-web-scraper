@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { ScraperCardComponent } from './scraper-card.component';
+import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
 
 describe('ScraperCardComponent', () => {
   let component: ScraperCardComponent;

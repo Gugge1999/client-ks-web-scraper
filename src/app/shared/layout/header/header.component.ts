@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-
-import { ApiStatus } from '../../../models/api-status.model';
-import { StatusService } from '../../../services/utils/status.service';
-import { ApiStatusDialogComponent } from '../../api-status-dialog/api-status-dialog.component';
+import { ApiStatusDialogComponent } from '@components/api-status-dialog/api-status-dialog.component';
+import { ApiStatus } from '@models/api-status.model';
+import { StatusService } from '@shared/services/utils/status.service';
 
 @Component({
   selector: 'app-header',

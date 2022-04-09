@@ -1,12 +1,10 @@
-import { SnackbarService } from 'src/app/services/snackbar.service';
-
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-
-import { Watch } from '../../models/watch.model';
-import { WatchService } from '../../services/watch.service';
-import { ScraperCardComponent } from '../scraper-card/scraper-card.component';
+import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
+import { Watch } from '@models/watch.model';
+import { WatchService } from '@services/watch.service';
+import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
 
 @Component({
   selector: 'app-new-watch-dialog',
