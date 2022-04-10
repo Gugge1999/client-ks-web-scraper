@@ -24,7 +24,12 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((httpErrorResponse: HttpErrorResponse) => {
-        const errorMessage = httpErrorResponse.error;
+        let errorMessage = '';
+
+        httpErrorResponse.status === 0
+          ? (errorMessage = 'Could not connect to API')
+          : (errorMessage = httpErrorResponse.error);
+
         if (httpErrorResponse.error instanceof ErrorEvent) {
           // client-side error. Ska den hanteras på något annat sätt?
           this.snackbarService.errorSnackbar(errorMessage);
@@ -32,6 +37,7 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           // server-side error
           this.snackbarService.errorSnackbar(errorMessage);
         }
+
         return throwError(() => errorMessage);
       })
     );
