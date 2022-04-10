@@ -1,4 +1,3 @@
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
@@ -26,13 +25,12 @@ export class NewWatchDialogComponent {
     this.watchService.addNewWatch(this.newWatch).subscribe({
       next: (res: Watch) => {
         this.dialogRef.close(res);
-        this.snackbarService.openSuccessSnackbar(
+        this.snackbarService.successSnackbar(
           `Added watch with label: ${res.label}`
         );
       },
-      error: (res: HttpErrorResponse) => {
+      error: () => {
         this.dialogRef.close();
-        this.snackbarService.openErrorSnackbar(res.error.message);
       },
     });
   }

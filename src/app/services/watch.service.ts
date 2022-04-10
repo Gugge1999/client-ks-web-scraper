@@ -1,12 +1,7 @@
-import { catchError, Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 
-import {
-  HttpClient,
-  HttpErrorResponse,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ApiStatus } from '@models/api-status.model';
 import { Watch } from '@models/watch.model';
 
 const httpOptions = {
@@ -27,17 +22,13 @@ export class WatchService {
   addNewWatch(data: Partial<Watch>): Observable<Watch> {
     const API_URL = `${this.REST_API}/add-watch`;
 
-    return this.http
-      .post<Watch>(API_URL, data, httpOptions)
-      .pipe(catchError(this.handleError));
+    return this.http.post<Watch>(API_URL, data, httpOptions);
   }
 
   getAllWatches(): Observable<Watch[]> {
     const API_URL = `${this.REST_API}/all-watches`;
 
-    return this.http
-      .get<Watch[]>(API_URL, httpOptions)
-      .pipe(catchError(this.handleError));
+    return this.http.get<Watch[]>(API_URL, httpOptions);
   }
 
   toggleActiveStatus(
@@ -46,41 +37,12 @@ export class WatchService {
     const API_URL = `${this.REST_API}/toggle-active-status`;
     const data = { isActive: watch.active, label: watch.label, id: watch.id };
 
-    return this.http
-      .put<any>(API_URL, data, httpOptions)
-      .pipe(catchError(this.handleError));
+    return this.http.put<any>(API_URL, data, httpOptions);
   }
 
   deleteWatch(id: string): Observable<{ deletedWatchId: string }> {
     const API_URL = `${this.REST_API}/delete-watch/${id}`;
 
-    return this.http
-      .delete<{ deletedWatchId: string }>(API_URL, httpOptions)
-      .pipe(catchError(this.handleError));
-  }
-
-  isApiActive(): Observable<ApiStatus> {
-    const API_URL = `${this.REST_API}/is-api-active`;
-
-    return this.http
-      .get<ApiStatus>(API_URL, httpOptions)
-      .pipe(catchError(this.handleError));
-  }
-
-  // Byt ut mot HttpInterceptor. Se: https://rollbar.com/blog/error-handling-with-angular-8-tips-and-best-practices/
-  private handleError(error: HttpErrorResponse) {
-    if (error.status === 0) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error);
-    } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
-      console.error(
-        `Backend returned code ${error.status}, body was: `,
-        error.error
-      );
-    }
-    // Return an observable with a user-facing error message.
-    return throwError(() => error);
+    return this.http.delete<{ deletedWatchId: string }>(API_URL, httpOptions);
   }
 }

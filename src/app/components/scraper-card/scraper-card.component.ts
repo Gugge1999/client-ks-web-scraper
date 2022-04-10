@@ -1,5 +1,4 @@
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteWatchDialogComponent } from '@components/delete-watch-dialog/delete-watch-dialog.component';
@@ -49,7 +48,7 @@ export class ScraperCardComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res: any) => {
       if (res === 'cancelClicked') return;
       this.watches = this.watches.filter((watch) => watch.id != res.id);
-      this.snackbarService.showSnackbarDelete(res, this.watches);
+      this.snackbarService.undoAndDeleteSnackbar(res, this.watches);
     });
   }
 
@@ -59,12 +58,7 @@ export class ScraperCardComponent implements OnInit {
     this.watchService.toggleActiveStatus(watch).subscribe({
       next: (res) => {
         this.watches[index].active = res.isActive;
-        this.snackbarService.openSuccessSnackbar(
-          `Toggled status on: ${res.label}`
-        );
-      },
-      error: (res: HttpErrorResponse) => {
-        this.snackbarService.openErrorSnackbar(res.error.message);
+        this.snackbarService.successSnackbar(`Toggled status on: ${res.label}`);
       },
     });
   }

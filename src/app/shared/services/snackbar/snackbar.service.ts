@@ -12,13 +12,13 @@ export class SnackbarService {
     private watchService: WatchService
   ) {}
 
-  public openSuccessSnackbar(message: string = '') {
+  public successSnackbar(message: string = '') {
     this.snackbar.open(message, 'Dismiss', {
       panelClass: 'success-snackbar',
     });
   }
 
-  public openErrorSnackbar(message?: string) {
+  public errorSnackbar(message?: string) {
     this.snackbar.open(
       `Error: ${message ?? 'Something went wrong.'}`,
       'Dismiss',
@@ -28,7 +28,7 @@ export class SnackbarService {
     );
   }
 
-  public showSnackbarDelete(deletedWatch: Watch, watches: Watch[]) {
+  public undoAndDeleteSnackbar(deletedWatch: Watch, watches: Watch[]) {
     const snack = this.snackbar.open(
       `Deleted watch: ${deletedWatch.label}`,
       'Undo',

@@ -1,5 +1,5 @@
 import { LayoutModule } from '@angular/cdk/layout';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -13,6 +13,7 @@ import { NewWatchDialogComponent } from '@components/new-watch-dialog/new-watch-
 import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
 import { FooterComponent } from '@shared/layout/footer/footer.component';
 import { HeaderComponent } from '@shared/layout/header/header.component';
+import { HttpErrorInterceptor } from '@shared/services/utils/http-error.interceptor.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,13 @@ import { HeaderComponent } from '@shared/layout/header/header.component';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpErrorInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
