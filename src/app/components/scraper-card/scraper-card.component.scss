@@ -1,6 +1,7 @@
+@use '../../../styles.scss' as style;
+
 .card-container {
-  display: flex;
-  flex-direction: column;
+  @include style.flex-and-column;
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
