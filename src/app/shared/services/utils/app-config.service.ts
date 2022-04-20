@@ -13,8 +13,14 @@ export class AppConfigService {
   constructor(private http: HttpClient) {}
 
   public async loadAppConfig() {
-    AppConfigService.appConfig = await lastValueFrom(
-      this.http.get<AppConfig>(`/assets/config/${environment.name}.config.json`)
-    );
+    try {
+      AppConfigService.appConfig = await lastValueFrom(
+        this.http.get<AppConfig>(
+          `/assets/config/${environment.name}.config.json`
+        )
+      );
+    } catch {
+      console.error('loadAppConfig failed.');
+    }
   }
 }
