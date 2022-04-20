@@ -26,9 +26,13 @@ export class HttpErrorInterceptor implements HttpInterceptor {
       catchError((httpErrorResponse: HttpErrorResponse) => {
         let errorMessage = '';
 
-        httpErrorResponse.status === 0
-          ? (errorMessage = 'Could not connect to API')
-          : (errorMessage = httpErrorResponse.error);
+        if (httpErrorResponse.status === 0) {
+          errorMessage = 'Could not connect to API';
+        } else if (httpErrorResponse.status === 404) {
+          errorMessage = `Page not found. URL: ${httpErrorResponse.url}`;
+        } else {
+          errorMessage = httpErrorResponse.error;
+        }
 
         if (httpErrorResponse.error instanceof ErrorEvent) {
           // client-side error. Ska den hanteras på något annat sätt?
