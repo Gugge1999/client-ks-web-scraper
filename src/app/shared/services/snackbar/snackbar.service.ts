@@ -18,14 +18,10 @@ export class SnackbarService {
     });
   }
 
-  public errorSnackbar(message?: string) {
-    this.snackbar.open(
-      `Error: ${message ?? 'Something went wrong.'}`,
-      'Dismiss',
-      {
-        panelClass: ['mat-toolbar', 'mat-warn'],
-      }
-    );
+  public errorSnackbar(message: string = 'Something went wrong') {
+    this.snackbar.open(`Error: ${message}`, 'Dismiss', {
+      panelClass: ['mat-toolbar', 'mat-warn'],
+    });
   }
 
   public undoAndDeleteSnackbar(deletedWatch: Watch, watches: Watch[]) {
