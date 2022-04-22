@@ -12,7 +12,7 @@ export class AppConfigService {
   static appConfig: AppConfig;
   constructor(private http: HttpClient) {}
 
-  public async loadAppConfig() {
+  async loadAppConfig() {
     try {
       AppConfigService.appConfig = await lastValueFrom(
         this.http.get<AppConfig>(

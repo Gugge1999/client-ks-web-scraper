@@ -17,10 +17,10 @@ export class ScraperCardComponent implements OnInit {
   cardWidth!: string;
 
   constructor(
-    public dialog: MatDialog,
+    private dialog: MatDialog,
     private watchService: WatchService,
     private snackbarService: SnackbarService,
-    public breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver
   ) {}
 
   ngOnInit() {

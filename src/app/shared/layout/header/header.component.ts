@@ -12,7 +12,10 @@ import { StatusService } from '@shared/services/utils/status.service';
 export class HeaderComponent implements OnInit {
   apiStatus!: ApiStatus;
 
-  constructor(public dialog: MatDialog, public statusService: StatusService) {}
+  constructor(
+    private dialog: MatDialog,
+    private statusService: StatusService
+  ) {}
   ngOnInit(): void {
     this.statusService.getApiStatus().subscribe((res) => {
       this.apiStatus = res;
