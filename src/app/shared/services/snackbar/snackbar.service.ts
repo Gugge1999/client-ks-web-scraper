@@ -12,19 +12,19 @@ export class SnackbarService {
     private watchService: WatchService
   ) {}
 
-  public successSnackbar(message: string = '') {
+  successSnackbar(message: string = '') {
     this.snackbar.open(message, 'Dismiss', {
       panelClass: 'success-snackbar',
     });
   }
 
-  public errorSnackbar(message: string = 'Something went wrong') {
+  errorSnackbar(message: string = 'Something went wrong') {
     this.snackbar.open(`Error: ${message}`, 'Dismiss', {
       panelClass: ['mat-toolbar', 'mat-warn'],
     });
   }
 
-  public undoAndDeleteSnackbar(deletedWatch: Watch, watches: Watch[]) {
+  undoAndDeleteSnackbar(deletedWatch: Watch, watches: Watch[]) {
     const snack = this.snackbar.open(
       `Deleted watch: ${deletedWatch.label}`,
       'Undo',
