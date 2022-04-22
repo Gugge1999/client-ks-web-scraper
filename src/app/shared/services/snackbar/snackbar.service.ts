@@ -41,6 +41,7 @@ export class SnackbarService {
       });
     });
     snack.onAction().subscribe(() => {
+      // Den lägger till borttagna klockan längst ned. Inte alltid på samma index som den var på förut
       watches.push(deletedWatch);
     });
   }
