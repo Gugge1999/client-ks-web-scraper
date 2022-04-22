@@ -16,8 +16,10 @@ const httpOptions = {
 })
 export class WatchService {
   apiUrl!: string;
+
   constructor(private http: HttpClient) {}
-  addNewWatch(data: Partial<Watch>): Observable<Watch> {
+
+  addNewWatch(data: { label: string; link: string }): Observable<Watch> {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/add-watch`;
 
     return this.http.post<Watch>(API_URL, data, httpOptions);
@@ -29,13 +31,19 @@ export class WatchService {
     return this.http.get<Watch[]>(API_URL, httpOptions);
   }
 
-  toggleActiveStatus(
-    watch: Partial<Watch>
-  ): Observable<{ isActive: boolean; label: string }> {
+  toggleActiveStatus(watch: {
+    isActive: boolean;
+    label: string;
+    id: string;
+  }): Observable<{ isActive: boolean; label: string }> {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/toggle-active-status`;
-    const data = { isActive: watch.active, label: watch.label, id: watch.id };
+    const data = { isActive: watch.isActive, label: watch.label, id: watch.id };
 
-    return this.http.put<any>(API_URL, data, httpOptions);
+    return this.http.put<{ isActive: boolean; label: string }>(
+      API_URL,
+      data,
+      httpOptions
+    );
   }
 
   deleteWatch(id: string): Observable<{ deletedWatchId: string }> {

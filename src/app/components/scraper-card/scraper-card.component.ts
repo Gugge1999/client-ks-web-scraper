@@ -1,6 +1,7 @@
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { DeleteWatchDialogComponent } from '@components/delete-watch-dialog/delete-watch-dialog.component';
 import { NewWatchDialogComponent } from '@components/new-watch-dialog/new-watch-dialog.component';
 import { Watch } from '@models/watch.model';
@@ -46,14 +47,18 @@ export class ScraperCardComponent implements OnInit {
       restoreFocus: false,
     });
 
-    dialogRef.afterClosed().subscribe((res: any) => {
+    dialogRef.afterClosed().subscribe((res) => {
       if (res === 'cancelClicked') return;
       this.watches = this.watches.filter((watch) => watch.id != res.id);
       this.snackbarService.undoAndDeleteSnackbar(res, this.watches);
     });
   }
 
-  toggleActiveStatus(watch: Watch, index: number, event: any) {
+  toggleActiveStatus(
+    watch: { isActive: boolean; label: string; id: string },
+    index: number,
+    event: MatSlideToggleChange
+  ) {
     const oldStatus = this.watches[index].active;
     event.source.checked = oldStatus;
     this.watchService.toggleActiveStatus(watch).subscribe({
@@ -71,7 +76,7 @@ export class ScraperCardComponent implements OnInit {
       autoFocus: false,
       restoreFocus: false,
     });
-    dialogRef.afterClosed().subscribe((res: any) => {
+    dialogRef.afterClosed().subscribe((res) => {
       if (res === undefined || res === 'cancelClicked') return;
 
       this.watches.push(res);

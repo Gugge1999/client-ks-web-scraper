@@ -55,7 +55,13 @@
         matTooltipPosition="above"
         matTooltipClass="tooltip"
         [checked]="watch.active"
-        (change)="toggleActiveStatus(watch, i, $event)">
+        (change)="
+          toggleActiveStatus(
+            { isActive: watch.active, label: watch.label, id: watch.id },
+            i,
+            $event
+          )
+        ">
       </mat-slide-toggle>
     </mat-card-actions>
   </mat-card>
