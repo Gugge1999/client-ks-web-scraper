@@ -38,7 +38,7 @@ export class ScraperCardComponent implements OnInit {
     });
   }
 
-  deleteWatchDialog(watch: Watch) {
+  deleteWatchDialog(watch: Watch, index: number) {
     const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
       width: '375px',
       height: '175px',
@@ -50,7 +50,7 @@ export class ScraperCardComponent implements OnInit {
     dialogRef.afterClosed().subscribe((res) => {
       if (res === 'cancelClicked') return;
       this.watches = this.watches.filter((watch) => watch.id != res.id);
-      this.snackbarService.undoAndDeleteSnackbar(res, this.watches);
+      this.snackbarService.undoAndDeleteSnackbar(res, index, this.watches);
     });
   }
 

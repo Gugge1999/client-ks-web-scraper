@@ -24,7 +24,7 @@ export class SnackbarService {
     });
   }
 
-  undoAndDeleteSnackbar(deletedWatch: Watch, watches: Watch[]) {
+  undoAndDeleteSnackbar(deletedWatch: Watch, index: number, watches: Watch[]) {
     const snack = this.snackbar.open(
       `Deleted watch: ${deletedWatch.label}`,
       'Undo',
@@ -41,8 +41,7 @@ export class SnackbarService {
       });
     });
     snack.onAction().subscribe(() => {
-      // Den lägger till borttagna klockan längst ned. Inte alltid på samma index som den var på förut
-      watches.push(deletedWatch);
+      watches.splice(index, 0, deletedWatch);
     });
   }
 }
