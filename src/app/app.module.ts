@@ -14,7 +14,7 @@ import { ScraperCardComponent } from '@components/scraper-card/scraper-card.comp
 import { FooterComponent } from '@shared/layout/footer/footer.component';
 import { HeaderComponent } from '@shared/layout/header/header.component';
 import { AppConfigService } from '@shared/services/utils/app-config.service';
-import { HttpErrorInterceptor } from '@shared/services/utils/http-error.interceptor.service';
+import { HttpErrorInterceptor } from '@shared/services/utils/http-error-interceptor.service';
 
 const appConfigInitializer = (appConfig: AppConfigService) => {
   return () => appConfig.loadAppConfig();
