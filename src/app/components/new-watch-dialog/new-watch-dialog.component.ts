@@ -21,17 +21,17 @@ export class NewWatchDialogComponent {
     private snackbarService: SnackbarService
   ) {}
 
-  onSubmit() {
-    this.watchService.addNewWatch(this.newWatch).subscribe({
-      next: (res: Watch) => {
-        this.dialogRef.close(res);
-        this.snackbarService.successSnackbar(
-          `Added watch with label: ${res.label}`
-        );
-      },
-      error: () => {
-        this.dialogRef.close();
-      },
-    });
-  }
+  // onSubmit() {
+  //   this.watchService.addNewWatch(this.newWatch).subscribe({
+  //     next: (res: Watch) => {
+  //       this.dialogRef.close(res);
+  //       this.snackbarService.successSnackbar(
+  //         `Added watch with label: ${res.label}`
+  //       );
+  //     },
+  //     error: () => {
+  //       this.dialogRef.close();
+  //     },
+  //   });
+  // }
 }

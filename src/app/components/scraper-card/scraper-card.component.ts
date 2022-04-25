@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -14,7 +16,7 @@ import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
   styleUrls: ['./scraper-card.component.scss'],
 })
 export class ScraperCardComponent implements OnInit {
-  watches!: Watch[];
+  watches!: Observable<Watch[]>;
   cardWidth!: string;
 
   constructor(
@@ -32,54 +34,53 @@ export class ScraperCardComponent implements OnInit {
           ? (this.cardWidth = 'small-card-width')
           : (this.cardWidth = 'full-card-width');
       });
+    this.watches = this.watchService.watches;
 
-    this.watchService.getAllWatches().subscribe((res) => {
-      this.watches = res;
-    });
+    this.watchService.getAllWatches();
   }
 
-  deleteWatchDialog(watch: Watch, index: number) {
-    const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
-      width: '375px',
-      height: '175px',
-      autoFocus: false,
-      data: watch,
-      restoreFocus: false,
-    });
+  // deleteWatchDialog(watch: Watch, index: number) {
+  //   const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
+  //     width: '375px',
+  //     height: '175px',
+  //     autoFocus: false,
+  //     data: watch,
+  //     restoreFocus: false,
+  //   });
 
-    dialogRef.afterClosed().subscribe((res) => {
-      if (res === 'cancelClicked') return;
-      this.watches = this.watches.filter((watch) => watch.id != res.id);
-      this.snackbarService.undoAndDeleteSnackbar(res, index, this.watches);
-    });
-  }
+  //   dialogRef.afterClosed().subscribe((res) => {
+  //     if (res === 'cancelClicked') return;
+  //     this.watches = this.watches.filter((watch) => watch.id != res.id);
+  //     this.snackbarService.undoAndDeleteSnackbar(res, index, this.watches);
+  //   });
+  // }
 
-  toggleActiveStatus(
-    watch: { isActive: boolean; label: string; id: string },
-    index: number,
-    event: MatSlideToggleChange
-  ) {
-    const oldStatus = this.watches[index].active;
-    event.source.checked = oldStatus;
-    this.watchService.toggleActiveStatus(watch).subscribe({
-      next: (res) => {
-        this.watches[index].active = res.isActive;
-        this.snackbarService.infoSnackbar(`Toggled status on: ${res.label}`);
-      },
-    });
-  }
+  // toggleActiveStatus(
+  //   watch: { isActive: boolean; label: string; id: string },
+  //   index: number,
+  //   event: MatSlideToggleChange
+  // ) {
+  //   const oldStatus = this.watches[index].active;
+  //   event.source.checked = oldStatus;
+  //   this.watchService.toggleActiveStatus(watch).subscribe({
+  //     next: (res) => {
+  //       this.watches[index].active = res.isActive;
+  //       this.snackbarService.infoSnackbar(`Toggled status on: ${res.label}`);
+  //     },
+  //   });
+  // }
 
-  openNewWatchDialog() {
-    const dialogRef = this.dialog.open(NewWatchDialogComponent, {
-      width: '700px',
-      height: '350px',
-      autoFocus: false,
-      restoreFocus: false,
-    });
-    dialogRef.afterClosed().subscribe((res) => {
-      if (res === undefined || res === 'cancelClicked') return;
+  // openNewWatchDialog() {
+  //   const dialogRef = this.dialog.open(NewWatchDialogComponent, {
+  //     width: '700px',
+  //     height: '350px',
+  //     autoFocus: false,
+  //     restoreFocus: false,
+  //   });
+  //   dialogRef.afterClosed().subscribe((res) => {
+  //     if (res === undefined || res === 'cancelClicked') return;
 
-      this.watches.push(res);
-    });
-  }
+  //     this.watches.push(res);
+  //   });
+  // }
 }

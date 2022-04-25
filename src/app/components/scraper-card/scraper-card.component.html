@@ -1,7 +1,7 @@
 <div class="card-container">
   <mat-card
     class="card"
-    *ngFor="let watch of watches; index as i"
+    *ngFor="let watch of watches | async; index as i"
     [ngClass]="cardWidth">
     <mat-card-title
       ><strong>{{ watch.label }}</strong></mat-card-title
@@ -26,7 +26,7 @@
       </p>
     </mat-card-content>
     <mat-card-actions align="end">
-      <button
+      <!-- <button
         mat-icon-button
         class="deleteCardButton"
         (click)="deleteWatchDialog(watch, i)">
@@ -37,7 +37,7 @@
           matTooltipClass="tooltip"
           >delete_outline</mat-icon
         >
-      </button>
+      </button> -->
       <button mat-icon-button>
         <mat-icon
           fontSet="material-icons-outlined"
@@ -48,7 +48,7 @@
           >assessment</mat-icon
         >
       </button>
-      <mat-slide-toggle
+      <!-- <mat-slide-toggle
         class="is-watch-active-slide-toggle"
         color="primary"
         matTooltip="Toggle active status"
@@ -62,17 +62,17 @@
             $event
           )
         ">
-      </mat-slide-toggle>
+      </mat-slide-toggle> -->
     </mat-card-actions>
   </mat-card>
   <div class="new-watch-container">
-    <button
+    <!-- <button
       mat-raised-button
       color="primary"
       (click)="openNewWatchDialog()"
       class="new-watch-button">
       <mat-icon class="add-watch-icon">add_circle</mat-icon>
       Add watch
-    </button>
+    </button> -->
   </div>
 </div>

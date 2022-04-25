@@ -30,24 +30,24 @@ export class SnackbarService {
     });
   }
 
-  undoAndDeleteSnackbar(deletedWatch: Watch, index: number, watches: Watch[]) {
-    const snack = this.snackbar.open(
-      `Deleted watch: ${deletedWatch.label}`,
-      'Undo',
-      {
-        panelClass: ['mat-toolbar', 'mat-warn'],
-      }
-    );
-    snack.afterDismissed().subscribe((res) => {
-      // Om dismissedByAction är sant (användren klickade på Undo) ska vi inte ta bort klockan
-      if (res.dismissedByAction === true) return;
+  // undoAndDeleteSnackbar(deletedWatch: Watch, index: number, watches: Watch[]) {
+  //   const snack = this.snackbar.open(
+  //     `Deleted watch: ${deletedWatch.label}`,
+  //     'Undo',
+  //     {
+  //       panelClass: ['mat-toolbar', 'mat-warn'],
+  //     }
+  //   );
+  //   snack.afterDismissed().subscribe((res) => {
+  //     // Om dismissedByAction är sant (användren klickade på Undo) ska vi inte ta bort klockan
+  //     if (res.dismissedByAction === true) return;
 
-      this.watchService.deleteWatch(deletedWatch.id).subscribe((res) => {
-        console.log(`Deleted: ${res.deletedWatchId}`);
-      });
-    });
-    snack.onAction().subscribe(() => {
-      watches.splice(index, 0, deletedWatch);
-    });
-  }
+  //     this.watchService.deleteWatch(deletedWatch.id).subscribe((res) => {
+  //       console.log(`Deleted: ${res.deletedWatchId}`);
+  //     });
+  //   });
+  //   snack.onAction().subscribe(() => {
+  //     watches.splice(index, 0, deletedWatch);
+  //   });
+  // }
 }
