@@ -18,6 +18,12 @@ export class SnackbarService {
     });
   }
 
+  infoSnackbar(message: string = '') {
+    this.snackbar.open(message, 'Dismiss', {
+      panelClass: 'info-snackbar',
+    });
+  }
+
   errorSnackbar(message: string = 'Something went wrong') {
     this.snackbar.open(`Error: ${message}`, 'Dismiss', {
       panelClass: ['mat-toolbar', 'mat-warn'],

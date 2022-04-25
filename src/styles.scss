@@ -8,6 +8,12 @@
 
 /*#endregion */
 
+/*#region variables colors*/
+$primary-color: #33cccc;
+$primary-accent-color-light: #d7d7d7;
+
+/*#endregion */
+
 /*#region colors*/
 $input-red: rgb(255, 0, 0);
 
@@ -60,7 +66,7 @@ main {
 /*#region links*/
 .link:link,
 .link:visited {
-  color: #33cccc;
+  color: $primary-color;
   text-decoration: none;
 }
 
@@ -88,6 +94,10 @@ a:hover {
 /*#region snackbar*/
 .success-snackbar {
   background: #58c44a;
+}
+
+.info-snackbar {
+  background: $primary-accent-color-light;
 }
 /*#endregion */
 
