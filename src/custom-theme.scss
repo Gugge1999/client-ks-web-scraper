@@ -1,7 +1,7 @@
 /**
 * Generated theme by Material Theme Generator
 * https://materialtheme.arcsine.dev
-* Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48IzMzY2NjYyIsIj9lcjwjYzJmMGYwIiwiO2VyPCMyMGI5Yjl$LCIlPmBePCM3OTc5NzkiLCI~ZXI8I2Q3ZDdkNyIsIjtlcjwjNWM1YzVjfiwid2Fybj5gXjwjYTExODE4IiwiP2VyPCNlM2JhYmEiLCI7ZXI8Izg1MGUwZX4sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZmFmYWZhIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMyYzJjMmN$LCJmb250cz5bYEA8KC00fixgQDwoLTN$LGBAPCgtMn4sYEA8KC0xfixgQDxoZWFkbGluZX4sYEA8dGl0bGV$LGBAPHN1YiktMn4sYEA8c3ViKS0xfixgQDxib2R5LTJ$LGBAPGJvZHktMX4sYEA8YnV0dG9ufixgQDxjYXB0aW9ufixgQDxpbnB1dCIsInNpemU$bnVsbH1dLCJpY29uczxGaWxsZWQiLCI~bmVzcz5mYWxzZSwidmVyc2lvbj4xM30=
+* Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48IzAwNTk0ZiIsIj9lcjwjYjNjZGNhIiwiO2VyPCMwMDNlMzZ$LCIlPmBePCM3OTc5NzkiLCI~ZXI8I2Q3ZDdkNyIsIjtlcjwjNWM1YzVjfiwid2Fybj5gXjwjZmYwMDAwIiwiP2VyPCNmZmIzYjMiLCI7ZXI8I2ZmMDAwMH4sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZmFmYWZhIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMyYzJjMmN$LCJmb250cz5bYEA8KC00fixgQDwoLTN$LGBAPCgtMn4sYEA8KC0xfixgQDxoZWFkbGluZX4sYEA8dGl0bGV$LGBAPHN1YiktMn4sYEA8c3ViKS0xfixgQDxib2R5LTJ$LGBAPGJvZHktMX4sYEA8YnV0dG9ufixgQDxjYXB0aW9ufixgQDxpbnB1dCIsInNpemU$bnVsbH1dLCJpY29uczxGaWxsZWQiLCI~bmVzcz5mYWxzZSwidmVyc2lvbj4xM30=
 */
 
 @use '@angular/material' as mat;
@@ -10,8 +10,8 @@
 // have to load a single css file for Angular Material in your app.
 
 // Fonts
-@import 'https://fonts.googleapis.com/css?family=Material+Icons';
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
 
 $fontConfig: (
   display-4: mat.define-typography-level(112px, 112px, 300, 'Roboto', -0.0134em),
@@ -149,24 +149,24 @@ $mat-dark-theme-background: (
 // Theme Config
 
 body {
-  --primary-color: #33cccc;
-  --primary-lighter-color: #c2f0f0;
-  --primary-darker-color: #20b9b9;
-  --text-primary-color: #{$dark-primary-text};
+  --primary-color: #00594f;
+  --primary-lighter-color: #b3cdca;
+  --primary-darker-color: #003e36;
+  --text-primary-color: #{$light-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
-  --text-primary-darker-color: #{$dark-primary-text};
+  --text-primary-darker-color: #{$light-primary-text};
 }
 $mat-primary: (
-  main: #33cccc,
-  lighter: #c2f0f0,
-  darker: #20b9b9,
-  200: #33cccc,
+  main: #00594f,
+  lighter: #b3cdca,
+  darker: #003e36,
+  200: #00594f,
   // For slide toggle,
   contrast:
     (
-      main: $dark-primary-text,
+      main: $light-primary-text,
       lighter: $dark-primary-text,
-      darker: $dark-primary-text,
+      darker: $light-primary-text,
     ),
 );
 $theme-primary: mat.define-palette($mat-primary, main, lighter, darker);
@@ -195,18 +195,18 @@ $mat-accent: (
 $theme-accent: mat.define-palette($mat-accent, main, lighter, darker);
 
 body {
-  --warn-color: #a11818;
-  --warn-lighter-color: #e3baba;
-  --warn-darker-color: #850e0e;
+  --warn-color: #ff0000;
+  --warn-lighter-color: #ffb3b3;
+  --warn-darker-color: #ff0000;
   --text-warn-color: #{$light-primary-text};
   --text-warn-lighter-color: #{$dark-primary-text};
   --text-warn-darker-color: #{$light-primary-text};
 }
 $mat-warn: (
-  main: #a11818,
-  lighter: #e3baba,
-  darker: #850e0e,
-  200: #a11818,
+  main: #ff0000,
+  lighter: #ffb3b3,
+  darker: #ff0000,
+  200: #ff0000,
   // For slide toggle,
   contrast:
     (
@@ -234,9 +234,11 @@ $altTheme: (
 );
 
 // Theme Init
-@include mat.all-component-themes($theme);
+.dark-mode {
+  @include mat.all-component-themes($theme);
+}
 
-.theme-alternate {
+.light-mode {
   @include mat.all-component-themes($altTheme);
 }
 
