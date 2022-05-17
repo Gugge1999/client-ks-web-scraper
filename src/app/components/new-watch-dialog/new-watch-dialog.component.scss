@@ -7,7 +7,7 @@
 // Löser problemet med att knappar inte hamnar längst ned.
 // Se: https://github.com/angular/components/issues/4609
 form {
-  @include style.flex-and-column;
+  @include style.flex-column;
   height: 100%;
 }
 

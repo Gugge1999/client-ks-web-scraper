@@ -35,6 +35,7 @@ const matSnackbarDefaultConfig: MatSnackBarConfig = {
   duration: 5000,
   horizontalPosition: 'right',
   verticalPosition: 'bottom',
+  panelClass: ['snackbar-success', 'snackbar-info'],
 };
 
 @NgModule({

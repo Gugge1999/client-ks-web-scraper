@@ -1,21 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
 
 /*#region mixing*/
-@mixin flex-and-column {
+@mixin flex-column {
   display: flex;
   flex-direction: column;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@mixin flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin flex-row-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 /*#endregion */
 
 /*#region variables colors*/
-$primary-color: #33cccc;
-$primary-accent-color-light: #d7d7d7;
-$link-color: #2c7ae0;
-
-/*#endregion */
-
-/*#region colors*/
+$primary-accent-color-light: #dedede;
+$link-color: #099d8c;
 $input-red: rgb(255, 0, 0);
 
 /*#endregion */
@@ -32,7 +44,7 @@ body {
 
 // Make the Component injected by Router Outlet full height:
 main {
-  @include flex-and-column;
+  @include flex-column;
   > *:not(router-outlet) {
     flex: 1;
     display: block;
@@ -47,6 +59,10 @@ main {
 /*#region sidenav*/
 .sidenav-container {
   height: 100%;
+}
+
+.mat-tooltip {
+  font-size: 1em;
 }
 
 /*#endregion */
@@ -64,11 +80,11 @@ main {
 /*#endregion */
 
 /*#region links*/
-// .link:link,
-// .link:visited {
-//   color: $link-color;
-//   text-decoration: none;
-// }
+.link:link,
+.link:visited {
+  color: $link-color;
+  text-decoration: none;
+}
 
 a {
   color: inherit;
@@ -82,17 +98,17 @@ a {
 
 /*#region tooltip*/
 .mat-tooltip.tooltip {
-  font-size: 1em;
+  font-size: 0.9em;
 }
 /*#endregion */
 
 /*#region snackbar*/
-.success-snackbar {
-  background: #58c44a;
+snack-bar-container.snackbar-success {
+  background-color: #58c44a !important;
 }
 
-.info-snackbar {
-  background: $primary-accent-color-light;
+snack-bar-container.snackbar-info {
+  background-color: $primary-accent-color-light !important;
 }
 /*#endregion */
 

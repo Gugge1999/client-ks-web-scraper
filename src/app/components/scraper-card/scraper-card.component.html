@@ -34,7 +34,6 @@
           class="delete-icon"
           matTooltip="Delete watch"
           matTooltipPosition="above"
-          matTooltipClass="tooltip"
           >delete_outline</mat-icon
         >
       </button>
@@ -42,9 +41,8 @@
         <mat-icon
           fontSet="material-icons-outlined"
           color="primary"
-          matTooltip="Show statistics"
+          matTooltip="View statistics"
           matTooltipPosition="above"
-          matTooltipClass="tooltip"
           >assessment</mat-icon
         >
       </button>
@@ -53,7 +51,6 @@
         color="primary"
         matTooltip="Toggle active status"
         matTooltipPosition="above"
-        matTooltipClass="tooltip"
         [checked]="watch.active"
         (change)="
           toggleActiveStatus(

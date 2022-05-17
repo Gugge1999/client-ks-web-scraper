@@ -1,3 +1,5 @@
+@use '../../../../styles.scss' as style;
+
 .toolbar-title {
   font-size: x-large;
 }
@@ -12,32 +14,26 @@
 }
 
 .toolbar-right {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+  @include style.flex-row-center;
+  font-size: 0.85em;
 }
 
 .toolbar-right .mat-slide-toggle {
   margin-right: 1em;
 }
 
-.api-status {
-  display: flex;
-  align-items: center;
-  font-size: 16px;
-  padding: 0.1em;
+.api-status-wrapper {
+  height: 2em;
+  padding: 0.25em 1em;
 }
 
-.api-status:hover {
-  cursor: pointer;
+.api-active,
+.api-inactive {
+  @include style.flex-row-center;
 }
 
 .status-text {
   margin: 0 0.5em;
-}
-
-.status-icon {
-  margin-right: 0.25em;
 }
 
 .status-icon.offline {

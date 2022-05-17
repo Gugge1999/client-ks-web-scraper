@@ -14,13 +14,13 @@ export class SnackbarService {
 
   successSnackbar(message: string = '') {
     this.snackbar.open(message, 'Dismiss', {
-      panelClass: 'success-snackbar',
+      panelClass: 'snackbar-success',
     });
   }
 
   infoSnackbar(message: string = '') {
     this.snackbar.open(message, 'Dismiss', {
-      panelClass: 'info-snackbar',
+      panelClass: 'snackbar-info',
     });
   }
 

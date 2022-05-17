@@ -8,31 +8,33 @@
       <span class="spacer"></span>
       <div class="toolbar-right">
         <mat-slide-toggle
-          class="is-watch-active-slide-toggle"
-          color="accent"
           matTooltip="Toggle theme"
-          matTooltipPosition="above"
-          matTooltipClass="tooltip"
           (click)="toggleTheme()"
+          color="accent"
           [checked]="isDarkMode">
           Dark mode
         </mat-slide-toggle>
         <mat-card
-          class="api-status"
-          (click)="apiStatus?.active ? openApiStatusDialog() : ''">
-          <span class="status-text">API Status</span>
-          <mat-icon
+          class="api-status-wrapper"
+          [style.cursor]="apiStatus?.active ? 'pointer' : 'default'"
+          matTooltip="View API statistics">
+          <div
+            class="api-active"
             *ngIf="apiStatus?.active"
-            class="status-icon"
-            color="primary"
-            >check_circle_outline</mat-icon
-          >
-          <mat-icon
-            *ngIf="!apiStatus?.active"
-            class="status-icon offline"
-            color="primary"
-            >highlight_off</mat-icon
-          >
+            (click)="apiStatus?.active ? openApiStatusDialog() : ''">
+            <span class="status-text">API Status</span>
+            <mat-icon class="status-icon" color="primary">
+              check_circle_outline
+            </mat-icon>
+          </div>
+          <div class="api-inactive">
+            <mat-icon
+              *ngIf="!apiStatus?.active"
+              class="status-icon offline"
+              color="primary">
+              highlight_off
+            </mat-icon>
+          </div>
         </mat-card>
       </div>
     </mat-toolbar-row>
