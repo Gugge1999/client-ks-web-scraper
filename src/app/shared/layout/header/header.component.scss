@@ -27,6 +27,12 @@
   padding: 0.25em 1em;
 }
 
+.hamburger-toolbar-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
 .api-active,
 .api-inactive {
   @include style.flex-row-center;

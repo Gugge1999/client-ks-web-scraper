@@ -6,37 +6,77 @@
         <span class="toolbar-title">KS Web Scraper</span>
       </a>
       <span class="spacer"></span>
-      <div class="toolbar-right">
-        <mat-slide-toggle
-          matTooltip="Toggle theme"
-          (click)="toggleTheme()"
-          color="accent"
-          [checked]="isDarkMode">
-          Dark mode
-        </mat-slide-toggle>
-        <mat-card
-          class="api-status-wrapper"
-          [style.cursor]="apiStatus?.active ? 'pointer' : 'default'"
-          matTooltip="View API statistics">
-          <div
-            class="api-active"
-            *ngIf="apiStatus?.active"
-            (click)="apiStatus?.active ? openApiStatusDialog() : ''">
-            <span class="status-text">API Status</span>
-            <mat-icon class="status-icon" color="primary">
-              check_circle_outline
-            </mat-icon>
+      <div *ngIf="showHamburgerMenu; else doNotShowHamburgerMeny">
+        <button
+          mat-icon-button
+          [matMenuTriggerFor]="menu"
+          aria-label="Example icon-button with a menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <div class="hamburger-toolbar-wrapper">
+            <button mat-menu-item (click)="$event.stopPropagation()">
+              <mat-slide-toggle
+                (click)="toggleTheme()"
+                color="accent"
+                [checked]="isDarkMode">
+                Dark mode
+              </mat-slide-toggle>
+            </button>
+            <button mat-menu-item (click)="$event.stopPropagation()">
+              <div
+                *ngIf="apiStatus?.active"
+                (click)="apiStatus?.active ? openApiStatusDialog() : ''">
+                <span class="status-text">API Status</span>
+                <mat-icon class="status-icon" color="primary">
+                  check_circle_outline
+                </mat-icon>
+              </div>
+              <div class="api-inactive">
+                <mat-icon
+                  *ngIf="!apiStatus?.active"
+                  class="status-icon offline"
+                  color="primary">
+                  highlight_off
+                </mat-icon>
+              </div>
+            </button>
           </div>
-          <div class="api-inactive">
-            <mat-icon
-              *ngIf="!apiStatus?.active"
-              class="status-icon offline"
-              color="primary">
-              highlight_off
-            </mat-icon>
-          </div>
-        </mat-card>
+        </mat-menu>
       </div>
+      <ng-template #doNotShowHamburgerMeny>
+        <div class="toolbar-right">
+          <mat-slide-toggle
+            matTooltip="Toggle theme"
+            (click)="toggleTheme()"
+            color="accent"
+            [checked]="isDarkMode">
+            Dark mode
+          </mat-slide-toggle>
+          <mat-card
+            class="api-status-wrapper"
+            [style.cursor]="apiStatus?.active ? 'pointer' : 'default'"
+            matTooltip="View API statistics">
+            <div
+              class="api-active"
+              *ngIf="apiStatus?.active"
+              (click)="apiStatus?.active ? openApiStatusDialog() : ''">
+              <span class="status-text">API Status</span>
+              <mat-icon class="status-icon" color="primary">
+                check_circle_outline
+              </mat-icon>
+            </div>
+            <div class="api-inactive">
+              <mat-icon
+                *ngIf="!apiStatus?.active"
+                class="status-icon offline"
+                color="primary">
+                highlight_off
+              </mat-icon>
+            </div>
+          </mat-card>
+        </div>
+      </ng-template>
     </mat-toolbar-row>
   </mat-toolbar>
 </header>
