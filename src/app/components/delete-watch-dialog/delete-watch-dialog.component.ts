@@ -14,7 +14,11 @@ export class DeleteWatchDialogComponent {
     private dialogRef: MatDialogRef<ScraperCardComponent>
   ) {}
 
-  deleteWatch(watchToDelete: Watch) {
+  cancelClicked(): void {
+    this.dialogRef.close({ click: 'cancelClicked' });
+  }
+
+  deleteWatch(watchToDelete: Watch): void {
     this.dialogRef.close(watchToDelete);
   }
 }

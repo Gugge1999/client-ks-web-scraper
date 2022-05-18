@@ -41,14 +41,16 @@ export class ScraperCardComponent implements OnInit {
   deleteWatchDialog(watch: Watch, index: number) {
     const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
       width: '375px',
-      height: '175px',
       autoFocus: false,
       data: watch,
       restoreFocus: false,
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      if (res === 'cancelClicked') return;
+      if (res === undefined || res.click === 'cancelClicked') {
+        return;
+      }
+
       this.watches = this.watches.filter((watch) => watch.id != res.id);
       this.snackbarService.undoAndDeleteSnackbar(res, index, this.watches);
     });

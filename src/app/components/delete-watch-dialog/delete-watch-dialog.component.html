@@ -6,7 +6,7 @@
     </span>
   </div>
   <div mat-dialog-actions align="end">
-    <button mat-flat-button mat-dialog-close="cancelClicked" color="accent">
+    <button mat-flat-button color="accent" (click)="cancelClicked()">
       Cancel
     </button>
     <button mat-flat-button color="warn" (click)="deleteWatch(watchToDelete)">
