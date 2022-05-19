@@ -40,7 +40,14 @@ export class ThemeService {
       return (this.colorTheme =
         localStorage.getItem('user-theme') ?? 'dark-mode');
     } else {
-      return (this.colorTheme = 'dark-mode');
+      // Kolla vilket tema som användaren har satt i sitt OS.
+      const userPrefersDark =
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      return userPrefersDark
+        ? (this.colorTheme = 'dark-mode')
+        : (this.colorTheme = 'light-mode');
     }
   }
 }
