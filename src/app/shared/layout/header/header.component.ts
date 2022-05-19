@@ -23,6 +23,10 @@ export class HeaderComponent implements OnInit {
   }
 
   openApiStatusDialog() {
+    this.statusService.getApiStatus().subscribe((res) => {
+      this.apiStatus = res;
+    });
+
     this.dialog.open(ApiStatusDialogComponent, {
       width: '450px',
       data: this.apiStatus,
