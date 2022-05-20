@@ -25,10 +25,17 @@ mat-card-actions > * {
   margin-left: 0.5em;
 }
 
-.new-watch-container {
+.large-new-watch-container {
   position: fixed;
   display: flex;
   bottom: 1em; // 1em från skärmens botten
+}
+
+.small-new-watch-container {
+  position: fixed;
+  right: 1.5em;
+  bottom: 0;
+  bottom: 2em; // 1em från skärmens botten
 }
 
 .new-watch-button {
@@ -37,10 +44,14 @@ mat-card-actions > * {
   font-size: large;
 }
 
-.add-watch-icon {
+.large-add-watch-icon {
   transform: scale(1.5);
   margin-bottom: 0.1em;
   margin-right: 0.25em;
+}
+
+.small-add-watch-icon {
+  transform: scale(1.75);
 }
 
 .is-watch-active-slide-toggle {

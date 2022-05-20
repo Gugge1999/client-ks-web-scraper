@@ -62,14 +62,24 @@
       </mat-slide-toggle>
     </mat-card-actions>
   </mat-card>
-  <div class="new-watch-container">
-    <button
-      mat-raised-button
-      color="primary"
-      (click)="openNewWatchDialog()"
-      class="new-watch-button">
-      <mat-icon class="add-watch-icon">add_circle</mat-icon>
-      Add watch
+  <div
+    *ngIf="smallAddNewWatchButtonSize; else showLargeAddNewWatchButton"
+    class="small-new-watch-container">
+    <button mat-fab color="primary" (click)="openNewWatchDialog()">
+      <mat-icon class="small-add-watch-icon">add</mat-icon>
     </button>
   </div>
+
+  <ng-template #showLargeAddNewWatchButton>
+    <div class="large-new-watch-container">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="openNewWatchDialog()"
+        class="new-watch-button">
+        <mat-icon class="large-add-watch-icon">add_circle</mat-icon>
+        Add watch
+      </button>
+    </div>
+  </ng-template>
 </div>

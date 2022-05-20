@@ -16,6 +16,7 @@ import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
 export class ScraperCardComponent implements OnInit {
   watches!: Watch[];
   cardWidth!: string;
+  smallAddNewWatchButtonSize: boolean = false;
 
   constructor(
     private dialog: MatDialog,
@@ -28,9 +29,13 @@ export class ScraperCardComponent implements OnInit {
     this.breakpointObserver
       .observe(['(min-width: 1000px)'])
       .subscribe((state: BreakpointState) => {
-        state.matches
-          ? (this.cardWidth = 'small-card-width')
-          : (this.cardWidth = 'full-card-width');
+        if (state.matches) {
+          this.cardWidth = 'small-card-width';
+          this.smallAddNewWatchButtonSize = false;
+        } else {
+          this.cardWidth = 'full-card-width';
+          this.smallAddNewWatchButtonSize = true;
+        }
       });
 
     this.watchService.getAllWatches().subscribe((res) => {
