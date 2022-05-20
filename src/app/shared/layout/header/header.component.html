@@ -26,10 +26,7 @@
                 Dark mode
               </mat-slide-toggle>
             </button>
-            <button
-              mat-menu-item
-              *ngIf="apiStatus?.active"
-              (click)="$event.stopPropagation()">
+            <button mat-menu-item *ngIf="apiStatus?.active">
               <div
                 matTooltip="View API statistics"
                 matTooltipPosition="left"
