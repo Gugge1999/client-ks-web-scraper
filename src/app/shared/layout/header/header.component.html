@@ -1,7 +1,7 @@
 <header role="banner">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
-      <a class="titlebar-link" [routerLink]="['/']">
+      <a class="title-bar-link" [routerLink]="['/']">
         <mat-icon class="icon-margin-right">watch</mat-icon>
         <span class="toolbar-title">KS Web Scraper</span>
       </a>
@@ -58,15 +58,17 @@
       <!-- Start "vanlig" meny -->
       <ng-template #doNotShowHamburgerMeny>
         <div class="toolbar-right">
-          <mat-slide-toggle
-            matTooltip="Toggle theme"
-            (click)="toggleTheme()"
-            color="accent"
-            [checked]="isDarkMode">
-            Dark mode
-          </mat-slide-toggle>
+          <mat-card class="dark-mode-card-wrapper">
+            <mat-slide-toggle
+              matTooltip="Toggle theme"
+              (click)="toggleTheme()"
+              color="primary"
+              [checked]="isDarkMode">
+              Dark mode
+            </mat-slide-toggle>
+          </mat-card>
           <mat-card
-            class="api-status-wrapper"
+            class="api-status-card-wrapper"
             [style.cursor]="apiStatus?.active ? 'pointer' : 'default'">
             <div
               class="api-active"

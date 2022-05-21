@@ -4,7 +4,7 @@
   font-size: x-large;
 }
 
-.titlebar-link {
+.title-bar-link {
   display: flex;
   align-items: center;
 }
@@ -22,9 +22,17 @@
   margin-right: 1em;
 }
 
-.api-status-wrapper {
+.api-status-card-wrapper {
+  @include style.flex-row-center;
   height: 2em;
   padding: 0.25em 1em;
+}
+
+.dark-mode-card-wrapper {
+  @include style.flex-row-center;
+  height: 2em;
+  padding: 0.25em 0 0.25em 0.75em;
+  margin-right: 0.5em;
 }
 
 .hamburger-toolbar-wrapper {
