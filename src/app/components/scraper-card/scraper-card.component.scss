@@ -54,8 +54,8 @@ mat-card-actions > * {
   transform: scale(1.75);
 }
 
-.is-watch-active-slide-toggle {
-  margin-top: 0.25em;
+mat-slide-toggle.is-watch-active-slide-toggle {
+  margin: 0.25em 1em 0 1em;
 }
 
 .delete-icon {
