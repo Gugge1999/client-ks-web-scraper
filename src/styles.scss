@@ -134,3 +134,11 @@ input {
 }
 
 /*#endregion */
+
+// .mat-slide-toggle-thumb-container har default z-index 0
+mat-slide-toggle
+  > label
+  > span.mat-slide-toggle-bar
+  > span.mat-slide-toggle-thumb-container {
+  z-index: 0;
+}
