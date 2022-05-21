@@ -56,17 +56,6 @@ main {
 }
 /*#endregion */
 
-/*#region sidenav*/
-.sidenav-container {
-  height: 100%;
-}
-
-.mat-tooltip {
-  font-size: 1em;
-}
-
-/*#endregion */
-
 /*#region toolbar*/
 
 // Sticky header
@@ -93,14 +82,18 @@ a {
   text-decoration: none;
 }
 
-// a:hover {
-//   color: rgb(63, 63, 63);
-// }
+a:hover {
+  color: rgb(231, 231, 231);
+}
 /*#endregion */
 
 /*#region tooltip*/
 .mat-tooltip.tooltip {
   font-size: 0.9em;
+}
+
+.mat-tooltip {
+  font-size: 1em;
 }
 /*#endregion */
 
@@ -137,6 +130,7 @@ input {
 
 /*#endregion */
 
+/*#region slide toggle*/
 // .mat-slide-toggle-thumb-container har default z-index 0
 mat-slide-toggle
   > label
@@ -144,3 +138,4 @@ mat-slide-toggle
   > span.mat-slide-toggle-thumb-container {
   z-index: 0;
 }
+/*#endregion */
