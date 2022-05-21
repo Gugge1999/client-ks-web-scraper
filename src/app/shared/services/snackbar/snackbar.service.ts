@@ -39,7 +39,7 @@ export class SnackbarService {
       }
     );
     snack.afterDismissed().subscribe((res) => {
-      // Om dismissedByAction är sant (användren klickade på Undo) ska vi inte ta bort klockan
+      // Om dismissedByAction är sant (användaren klickade på Undo) ska vi inte ta bort klockan
       if (res.dismissedByAction === true) return;
 
       this.watchService.deleteWatch(deletedWatch.id).subscribe((res) => {

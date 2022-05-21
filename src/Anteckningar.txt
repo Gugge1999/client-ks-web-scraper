@@ -1,10 +1,4 @@
 -------------- TODO --------------
-Skapa light och mode med toggle.
-
-
-Sticky header
-
-
 För att testa deploy. Se: https://www.youtube.com/watch?v=QdHvS0D1zAI
 
 
@@ -28,6 +22,6 @@ i angular.json under "serve"
   "host": "192.168.1.2"
 },
 
-För att debugga med attach: 
+För att köra debug med attach: 
   högerklicka på chrome, -> Google chrome -> properties.
   Lägg till: --remote-debugging-port=9222 på slutet i Target
