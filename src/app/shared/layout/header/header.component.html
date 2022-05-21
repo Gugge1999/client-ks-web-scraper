@@ -67,13 +67,12 @@
               Dark mode
             </mat-slide-toggle>
           </mat-card>
-          <mat-card
-            class="api-status-card-wrapper"
-            [style.cursor]="apiStatus?.active ? 'pointer' : 'default'">
+          <mat-card class="api-status-card-wrapper">
             <div
               class="api-active"
               *ngIf="apiStatus?.active"
               matTooltip="View API statistics"
+              [style.cursor]="apiStatus?.active ? 'pointer' : 'default'"
               (click)="apiStatus?.active ? openApiStatusDialog() : ''">
               <mat-icon class="status-icon" color="primary">
                 check_circle_outline

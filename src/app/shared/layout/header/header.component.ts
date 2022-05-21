@@ -51,6 +51,7 @@ export class HeaderComponent implements OnInit {
 
   toggleTheme() {
     this.isDarkMode = this.themeService.isDarkMode();
+
     this.isDarkMode
       ? this.themeService.updateTheme('light-mode')
       : this.themeService.updateTheme('dark-mode');
