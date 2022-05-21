@@ -31,10 +31,10 @@
                 matTooltip="View API statistics"
                 matTooltipPosition="left"
                 (click)="apiStatus?.active ? openApiStatusDialog() : ''">
-                <span class="status-text">API Status</span>
                 <mat-icon class="status-icon" color="primary">
                   check_circle_outline
                 </mat-icon>
+                <span class="status-text">API Status</span>
               </div>
             </button>
             <!-- API:et är inte aktivt. Länken ska vara inaktiverad  -->
@@ -43,13 +43,13 @@
                 matTooltip="API is not active"
                 matTooltipPosition="left"
                 class="api-inactive">
-                <span class="status-text">API Status</span>
                 <mat-icon
                   *ngIf="!apiStatus?.active"
                   class="status-icon offline"
                   color="primary">
                   highlight_off
                 </mat-icon>
+                <span class="status-text">API Status</span>
               </div>
             </button>
           </div>
@@ -75,23 +75,23 @@
               *ngIf="apiStatus?.active"
               matTooltip="View API statistics"
               (click)="apiStatus?.active ? openApiStatusDialog() : ''">
-              <span class="status-text">API Status</span>
               <mat-icon class="status-icon" color="primary">
                 check_circle_outline
               </mat-icon>
+              <span class="status-text">API Status</span>
             </div>
             <!-- API:et är inte aktivt. -->
             <div
               class="api-inactive"
               *ngIf="!apiStatus?.active"
               matTooltip="API is not active">
-              <span class="status-text">API Status</span>
               <mat-icon
                 *ngIf="!apiStatus?.active"
                 class="status-icon offline"
                 color="primary">
                 highlight_off
               </mat-icon>
+              <span class="status-text">API Status</span>
             </div>
           </mat-card>
         </div>
