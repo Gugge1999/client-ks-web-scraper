@@ -22,7 +22,7 @@
                 matTooltipPosition="left"
                 (click)="toggleTheme()"
                 color="primary"
-                [checked]="isDarkMode">
+                [(ngModel)]="isDarkMode">
                 Dark mode
               </mat-slide-toggle>
             </button>
@@ -63,7 +63,7 @@
               matTooltip="Toggle theme"
               (click)="toggleTheme()"
               color="primary"
-              [checked]="isDarkMode">
+              [(ngModel)]="isDarkMode">
               Dark mode
             </mat-slide-toggle>
           </mat-card>
