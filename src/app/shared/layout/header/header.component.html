@@ -16,10 +16,12 @@
         <!-- Start hamburgermeny -->
         <mat-menu #menu="matMenu">
           <div class="hamburger-toolbar-wrapper">
-            <button mat-menu-item (click)="$event.stopPropagation()">
+            <button
+              mat-menu-item
+              (click)="$event.stopPropagation()"
+              matTooltip="Toggle theme"
+              matTooltipPosition="left">
               <mat-slide-toggle
-                matTooltip="Toggle theme"
-                matTooltipPosition="left"
                 (click)="toggleTheme()"
                 color="primary"
                 [(ngModel)]="isDarkMode">
