@@ -138,4 +138,8 @@ mat-slide-toggle
   > span.mat-slide-toggle-thumb-container {
   z-index: 0;
 }
+
+.mat-slide-toggle-content {
+  @include flex-row-center;
+}
 /*#endregion */

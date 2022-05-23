@@ -26,6 +26,11 @@
                 color="primary"
                 [(ngModel)]="isDarkMode">
                 Dark mode
+                <mat-icon
+                  class="dark-mode-icons"
+                  fontSet="material-icons-outlined">
+                  dark_mode
+                </mat-icon>
               </mat-slide-toggle>
             </button>
             <button mat-menu-item *ngIf="apiStatus?.active">
@@ -63,10 +68,16 @@
           <mat-card class="dark-mode-card-wrapper">
             <mat-slide-toggle
               matTooltip="Toggle theme"
+              class="large-slide-toggle"
               (click)="toggleTheme()"
               color="primary"
               [(ngModel)]="isDarkMode">
               Dark mode
+              <mat-icon
+                class="dark-mode-icons"
+                fontSet="material-icons-outlined">
+                dark_mode
+              </mat-icon>
             </mat-slide-toggle>
           </mat-card>
           <mat-card class="api-status-card-wrapper">
