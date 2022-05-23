@@ -1,4 +1,7 @@
 -------------- TODO --------------
+Kolla genom https://github.com/AvocadoVenom/OverlayLoadingComponents 
+och se om det är en bättre lösning på spinner / progess bar
+
 För att testa deploy. Se: https://www.youtube.com/watch?v=QdHvS0D1zAI
 
 

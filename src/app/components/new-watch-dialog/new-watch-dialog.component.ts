@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
 import { Watch } from '@models/watch.model';
 import { WatchService } from '@services/watch.service';
+import { ProgressBarOverlayService } from '@shared/services/progress-bar/progess-bar-overlay.service';
 import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
 
 @Component({
@@ -18,7 +19,8 @@ export class NewWatchDialogComponent {
   constructor(
     private dialogRef: MatDialogRef<ScraperCardComponent>,
     private watchService: WatchService,
-    private snackbarService: SnackbarService
+    private snackbarService: SnackbarService,
+    private progressBarService: ProgressBarOverlayService
   ) {}
 
   onSubmit() {
@@ -31,6 +33,10 @@ export class NewWatchDialogComponent {
       },
       error: () => {
         this.dialogRef.close();
+        this.progressBarService.hide();
+      },
+      complete: () => {
+        this.progressBarService.hide();
       },
     });
   }
