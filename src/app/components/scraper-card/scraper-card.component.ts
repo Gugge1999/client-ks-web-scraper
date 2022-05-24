@@ -14,8 +14,8 @@ import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
   styleUrls: ['./scraper-card.component.scss'],
 })
 export class ScraperCardComponent implements OnInit {
-  watches!: Watch[];
-  cardWidth!: string;
+  watches: Watch[] = [];
+  cardWidth: string = '';
   smallAddNewWatchButtonSize: boolean = false;
 
   constructor(
