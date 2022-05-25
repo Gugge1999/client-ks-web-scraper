@@ -143,3 +143,9 @@ mat-slide-toggle
   @include flex-row-center;
 }
 /*#endregion */
+
+/*#region card*/
+.mat-card-title {
+  line-height: normal;
+}
+/*#endregion */
