@@ -28,6 +28,15 @@ export class NewWatchDialogComponent {
       this.newWatch.link = `https://${this.newWatch.link}`;
     }
 
+    // Byt ut id för sökningen som KS lägger på med 1.
+    // Det löser problemet med att "för nya" länkar har gammal data.
+    // När ett gammalt id skickas med tar den alltid de nyaste.
+    const splitLink = this.newWatch.link.split('/');
+
+    splitLink[4] = '1';
+
+    this.newWatch.link = splitLink.join('/');
+
     this.watchService.addNewWatch(this.newWatch).subscribe({
       next: (res: Watch) => {
         this.dialogRef.close(res);
