@@ -14,7 +14,7 @@ import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
 export class NewWatchDialogComponent {
   newWatch = <Watch>{};
   urlPattern: string =
-    'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*(),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+';
+    '[https://]?(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*(),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+';
 
   constructor(
     private dialogRef: MatDialogRef<ScraperCardComponent>,
@@ -24,6 +24,10 @@ export class NewWatchDialogComponent {
   ) {}
 
   onSubmit() {
+    if (this.newWatch.link.substring(0, 8) !== 'https://') {
+      this.newWatch.link = `https://${this.newWatch.link}`;
+    }
+
     this.watchService.addNewWatch(this.newWatch).subscribe({
       next: (res: Watch) => {
         this.dialogRef.close(res);
