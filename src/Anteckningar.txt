@@ -16,7 +16,9 @@ Tema:
 Custom theme: https://materialtheme.arcsine.dev/
 
 För diagram och tabeller använd:
-https://www.npmjs.com/package/ng2-charts
+https://swimlane.github.io/ngx-charts/#/ngx-charts/line-chart
+Kolla noga på feature "Timeline". Riktigt cool.
+
 
 Ta bort --host 192.168.1.2 i package.json för att köra ren localhost
 För att köra lokalt skriv npm start eller ändra till:   
