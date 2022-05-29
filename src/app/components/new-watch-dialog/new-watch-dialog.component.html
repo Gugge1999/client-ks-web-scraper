@@ -1,5 +1,5 @@
 <form (ngSubmit)="onSubmit()" #newWatchForm="ngForm">
-  <h2 mat-dialog-title>Add a new watch</h2>
+  <h2 mat-dialog-title>Add a new watch to scrape</h2>
   <mat-dialog-content class="mat-typography">
     <mat-form-field appearance="outline" class="form-element">
       <mat-label>Label</mat-label>
@@ -20,13 +20,13 @@
         (click)="newWatch.label = ''">
         <mat-icon>close</mat-icon>
       </button>
-      <mat-hint><h5>Enter a label</h5></mat-hint>
+      <mat-hint><h5>Enter a label. This can be anything.</h5></mat-hint>
       <mat-error *ngIf="label.invalid">
-        <h5>Label is required</h5>
+        <h5>Label is required.</h5>
       </mat-error>
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Link</mat-label>
+      <mat-label>Watch to scrape</mat-label>
       <input
         matInput
         type="text"
@@ -35,7 +35,6 @@
         required
         [(ngModel)]="newWatch.link"
         name="link"
-        [pattern]="urlPattern"
         #link="ngModel" />
       <button
         *ngIf="newWatch.link"
@@ -45,13 +44,12 @@
         (click)="newWatch.link = ''">
         <mat-icon>close</mat-icon>
       </button>
-      <mat-hint><h5>Enter link to search page</h5></mat-hint>
+      <mat-hint>
+        <h5>Enter the watch you want to scrape.</h5>
+      </mat-hint>
       <mat-error *ngIf="link.errors?.['required']">
-        <h5>Watch link is required</h5></mat-error
-      >
-      <mat-error *ngIf="link.touched && link.errors?.['pattern']">
-        <h5>Watch link not valid</h5></mat-error
-      >
+        <h5>Name of watch to scrape is required.</h5>
+      </mat-error>
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions align="end">

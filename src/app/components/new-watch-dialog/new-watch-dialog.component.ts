@@ -24,18 +24,13 @@ export class NewWatchDialogComponent {
   ) {}
 
   onSubmit() {
-    if (this.newWatch.link.substring(0, 8) !== 'https://') {
-      this.newWatch.link = `https://${this.newWatch.link}`;
-    }
+    const wordsSeparatedByPlus = this.newWatch.link.trim().replace(/\s+/g, '+');
 
-    // Byt ut id för sökningen som KS lägger på med 1.
-    // Det löser problemet med att "för nya" länkar har gammal data.
-    // När ett gammalt id skickas med tar den alltid de nyaste.
-    const splitLink = this.newWatch.link.split('/');
-
-    splitLink[4] = '1';
-
-    this.newWatch.link = splitLink.join('/');
+    this.newWatch.link =
+      'https://klocksnack.se/search/1/?q=REPLACE-ME&t=post&c[child_nodes]=1&c[nodes][0]=11&c[title_only]=1&o=date'.replace(
+        'REPLACE-ME',
+        wordsSeparatedByPlus
+      );
 
     this.watchService.addNewWatch(this.newWatch).subscribe({
       next: (res: Watch) => {
