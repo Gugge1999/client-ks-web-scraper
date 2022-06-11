@@ -20,8 +20,8 @@
       <p><strong>Added: </strong> {{ watch.added }}</p>
       <p>
         <strong>Current watch: </strong>
-        <a target="_blank" class="link" href="{{ watch.watches.watchLink }}">{{
-          watch.watches.watchName
+        <a target="_blank" class="link" href="{{ watch.watches.link }}">{{
+          watch.watches.name
         }}</a>
       </p>
     </mat-card-content>
@@ -60,7 +60,6 @@
             $event
           )
         ">
-        Active
       </mat-slide-toggle>
     </mat-card-actions>
   </mat-card>

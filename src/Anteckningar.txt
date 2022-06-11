@@ -1,4 +1,9 @@
 -------------- TODO --------------
+Byt från cards till chips för dark mode, api status?
+
+Tickade klocka i api status dialog:
+https://stackoverflow.com/questions/46300682/running-clock-in-angular-4-3
+
 Kolla genom https://github.com/AvocadoVenom/OverlayLoadingComponents 
 och se om det är en bättre lösning på spinner / progess bar
 

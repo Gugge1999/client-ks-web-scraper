@@ -79,7 +79,7 @@ export class ScraperCardComponent implements OnInit {
   openNewWatchDialog() {
     const dialogRef = this.dialog.open(NewWatchDialogComponent, {
       width: '700px',
-      height: '350px',
+      height: '425px',
       autoFocus: false,
       restoreFocus: false,
     });

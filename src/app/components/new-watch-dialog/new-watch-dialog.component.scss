@@ -14,3 +14,10 @@ form {
 mat-dialog-content {
   flex-grow: 1;
 }
+
+.mat-form-field {
+  margin-bottom: 1em;
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
