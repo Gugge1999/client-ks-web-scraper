@@ -13,8 +13,6 @@ import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
 })
 export class NewWatchDialogComponent {
   newWatch = <Watch>{};
-  urlPattern: string =
-    '[https://]?(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*(),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+';
 
   constructor(
     private dialogRef: MatDialogRef<ScraperCardComponent>,
