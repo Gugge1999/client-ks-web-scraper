@@ -3,9 +3,6 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-trigger:
-- main
-
 pool:
   name: Default
   demands: agent.name -equals David-Desktop-Agent
@@ -15,20 +12,28 @@ resources:
     - repository: backend
       type: git
       name: KS-Web-Scraper/backend-ks-web-scraper
+    
+    - repository: frontend
+      type: git
+      name: KS-Web-Scraper/frontend-ks-web-scraper
 
 steps:
-- checkout: self
-- checkout: backend
-  displayName: Testing checkout backend
-- script: dir $(Build.SourcesDirectory)
+- checkout: frontend
+  displayName: Checkout frontend
 
-- script: cd frontend-ks-web-scraper
+- checkout: backend
+  displayName: Checkout backend
+
+- script: dir $(Build.SourcesDirectory)
+  displayName: Displaying directory
 
 - script: |
     npm install -g @angular/cli
   displayName: 'Installing Angular'
 
 - script: |
+    cd frontend-ks-web-scraper
+    dir
     npm install --force
   displayName: 'Installing dependencies'
 
