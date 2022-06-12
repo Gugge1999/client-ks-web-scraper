@@ -30,13 +30,13 @@ steps:
   displayName: 'Archive files'
   inputs:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist'
-    includeRootFolder: true
+    includeRootFolder: false
     archiveType: zip
-    archiveFile: $(Build.ArtifactStagingDirectory.zip
+    archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
     replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
   inputs: 
-    PathtoPublish: '$(Build.ArtifactStagingDirectory).zip'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     ArtifactName: 'angular-drop'
     publishLocation: 'Container'
