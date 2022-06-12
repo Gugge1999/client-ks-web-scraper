@@ -16,6 +16,7 @@ steps:
   displayName: 'checkout Angular'
 
 - script: |
+    'cd '$(System.DefaultWorkingDirectory)/ks-web-scraper'
     npm install -g @angular/cli
     npm install --force
     ng build --prod
