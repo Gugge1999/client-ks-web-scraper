@@ -10,9 +10,20 @@ pool:
   name: Default
   demands: agent.name -equals David-Desktop-Agent
 
+
 steps:
-- script: |
-    npm install -g @angular/cli
-    npm install --force
-    ng build --prod
-  displayName: 'npm install and build'
+- checkout: Angular
+  displayName: 'checkout Angular'
+
+- task: Npm@1
+  displayName: 'npm install'
+  inputs:
+    command: install
+    workingDir: '$(Agent.BuildDirectory)/s/frontend-ks-web-scraper/'
+
+- task: Npm@1
+  displayName: 'Build Angular'
+  inputs:
+    command: custom
+    customCommand: run build
+    workingDir: '$(Agent.BuildDirectory)/s/frontend-ks-web-scraper/'
