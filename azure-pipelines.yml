@@ -3,28 +3,48 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-trigger:
-- main
-
 pool:
   name: Default
   demands: agent.name -equals David-Desktop-Agent
 
+resources:
+  repositories:
+    - repository: backend
+      type: git
+      name: KS-Web-Scraper/backend-ks-web-scraper
+    
+    - repository: frontend
+      type: git
+      name: KS-Web-Scraper/frontend-ks-web-scraper
 
 steps:
-- checkout: self
-  displayName: 'checkout Angular'
+- checkout: frontend
+  displayName: Checkout frontend
+
+- checkout: backend
+  displayName: Checkout backend
+
+- script: dir $(Build.SourcesDirectory)
+  displayName: Displaying directory
 
 - script: |
     npm install -g @angular/cli
+  displayName: 'Installing Angular'
+
+- script: |
+    cd frontend-ks-web-scraper
     npm install --force
+  displayName: 'Installing dependencies'
+
+- script: |
+    cd frontend-ks-web-scraper
     ng build
-  displayName: 'npm install and build'
+  displayName: 'Building angular'
 
 - task: ArchiveFiles@2
   displayName: 'Archive files'
   inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/'
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/frontend-ks-web-scraper/dist'
     includeRootFolder: false
     archiveType: zip
     archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
@@ -34,4 +54,44 @@ steps:
   inputs: 
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     ArtifactName: 'angular-drop'
+    publishLocation: 'Container'
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '16.x'
+
+- script: |
+    cd backend-ks-web-scraper
+    npm install
+  displayName: 'Installing backend dependencies'
+
+- script: |
+    cd backend-ks-web-scraper
+    npm run build
+  displayName: 'Building backend'
+
+- task: DownloadSecureFile@1
+  inputs:
+    secureFile: '.env'
+
+- task: CopyFiles@2
+  displayName: 'Copying secure file'
+  inputs:
+    SourceFolder: '$(Agent.TempDirectory)'
+    Contents: .env
+    TargetFolder: './backend-ks-web-scraper'
+
+- task: ArchiveFiles@2
+  displayName: 'Archive files'
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/backend-ks-web-scraper'
+    includeRootFolder: false
+    archiveType: zip
+    archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+    replaceExistingArchive: true
+
+- task: PublishBuildArtifacts@1
+  inputs: 
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    ArtifactName: 'backend-drop'
     publishLocation: 'Container'
