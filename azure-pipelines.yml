@@ -10,28 +10,27 @@ pool:
   name: Default
   demands: agent.name -equals David-Desktop-Agent
 
-
 steps:
 - checkout: self
   displayName: 'checkout Angular'
 
 - script: |
     npm install -g @angular/cli
-  displayName: 'npm install angular'
+  displayName: 'Installing Angular'
 
 - script: |
     npm install --force
-  displayName: 'npm install --force'
+  displayName: 'Installing dependencies'
 
 - script: |
     ng build --verbose
-  displayName: 'ng build'
+  displayName: 'Building angular'
 
 - task: ArchiveFiles@2
   displayName: 'Archive files'
   inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/'
-    includeRootFolder: false
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist'
+    includeRootFolder: true
     archiveType: zip
     archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
     replaceExistingArchive: true
