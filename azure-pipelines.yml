@@ -38,6 +38,8 @@ steps:
   displayName: 'Installing dependencies'
 
 - script: |
+    dir
+    cd frontend-ks-web-scraper
     ng build --verbose
   displayName: 'Building angular'
 
