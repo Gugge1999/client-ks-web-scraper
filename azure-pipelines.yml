@@ -48,10 +48,39 @@ steps:
     includeRootFolder: false
     archiveType: zip
     archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-    replaceExistingArchive: true
+    replaceExistingArchive: false
 
 - task: PublishBuildArtifacts@1
   inputs: 
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    ArtifactName: 'drop'
+    ArtifactName: 'angular-drop'
+    publishLocation: 'Container'
+
+- task: NodeTool@0
+  inputs:
+    versionSpec: '16.x'
+
+- script: |
+    cd backend-ks-web-scraper
+    npm install
+  displayName: 'Installing backend dependencies'
+
+- script: |
+    cd backend-ks-web-scraper
+    npm run build
+  displayName: 'Building backend'
+
+- task: ArchiveFiles@2
+  displayName: 'Archive files'
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/backend-ks-web-scraper/dist'
+    includeRootFolder: false
+    archiveType: zip
+    archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+    replaceExistingArchive: false
+
+- task: PublishBuildArtifacts@1
+  inputs: 
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    ArtifactName: 'backend-drop'
     publishLocation: 'Container'
