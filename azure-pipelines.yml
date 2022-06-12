@@ -10,6 +10,12 @@ pool:
   name: Default
   demands: agent.name -equals David-Desktop-Agent
 
+resources:
+  repositories:
+    - repository: backend
+      type: git
+      name: KS-Web-Scraper/backend-ks-web-scraper
+
 steps:
 - checkout: self
   displayName: 'checkout Angular'
@@ -40,3 +46,13 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     ArtifactName: 'angular-drop'
     publishLocation: 'Container'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    publishLocation: 'pipeline'
+
+- checkout: backend
+  displayName: Testing checkout backend
+
+- script: dir $(Build.SourcesDirectory)
