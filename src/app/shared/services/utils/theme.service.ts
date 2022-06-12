@@ -14,6 +14,7 @@ export class ThemeService {
 
   initTheme() {
     this.colorTheme;
+    console.log('colorTheme', this.colorTheme);
     this._renderer.addClass(document.body, this._colorTheme);
   }
 
@@ -45,9 +46,11 @@ export class ThemeService {
         window.matchMedia &&
         window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-      return userPrefersDark
+      const theme = userPrefersDark
         ? (this.colorTheme = 'dark-mode')
         : (this.colorTheme = 'light-mode');
+
+      return theme;
     }
   }
 }
