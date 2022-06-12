@@ -15,15 +15,14 @@ steps:
 - checkout: self
   displayName: 'checkout Angular'
 
-- task: Npm@1
-  displayName: 'npm install'
-  inputs:
-    command: install
-    workingDir: '$(Agent.BuildDirectory)/frontend-ks-web-scraper/'
+- script: |
+    npm install -g @angular/cli
+    npm install --force
+    ng build --prod
+  displayName: 'npm install and build'
 
 - task: Npm@1
   displayName: 'Build Angular'
   inputs:
     command: custom
     customCommand: run build
-    workingDir: '$(Agent.BuildDirectory)/s/frontend-ks-web-scraper/'
