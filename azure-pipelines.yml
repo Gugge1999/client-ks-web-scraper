@@ -19,7 +19,7 @@ steps:
   displayName: 'npm install'
   inputs:
     command: install
-    workingDir: '$(Agent.BuildDirectory)/s/frontend-ks-web-scraper/'
+    workingDir: '$(Agent.BuildDirectory)/frontend-ks-web-scraper/'
 
 - task: Npm@1
   displayName: 'Build Angular'
