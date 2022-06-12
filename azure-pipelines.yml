@@ -18,7 +18,7 @@ steps:
 - script: |
     npm install -g @angular/cli
     npm install --force
-    ng build --prod
+    ng build
   displayName: 'npm install and build'
 
 - task: ArchiveFiles@2
@@ -33,5 +33,5 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs: 
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    ArtifactName: 'drop'
+    ArtifactName: 'angular-drop'
     publishLocation: 'Container'
