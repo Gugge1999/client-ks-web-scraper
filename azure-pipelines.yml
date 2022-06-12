@@ -22,6 +22,8 @@ steps:
   displayName: Testing checkout backend
 - script: dir $(Build.SourcesDirectory)
 
+- script: cd frontend-ks-web-scraper
+
 - script: |
     npm install -g @angular/cli
   displayName: 'Installing Angular'
