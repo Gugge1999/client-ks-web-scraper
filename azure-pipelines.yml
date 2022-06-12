@@ -46,7 +46,7 @@ steps:
 - task: ArchiveFiles@2
   displayName: 'Archive files'
   inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist'
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/frontend-ks-web-scraper/dist'
     includeRootFolder: false
     archiveType: zip
     archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
