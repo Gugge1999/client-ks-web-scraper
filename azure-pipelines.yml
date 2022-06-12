@@ -32,7 +32,7 @@ steps:
     rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist'
     includeRootFolder: true
     archiveType: zip
-    archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+    archiveFile: $(Build.ArtifactStagingDirectory.zip
     replaceExistingArchive: true
 
 - task: PublishBuildArtifacts@1
