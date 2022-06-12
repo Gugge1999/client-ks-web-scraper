@@ -12,7 +12,7 @@ pool:
 
 
 steps:
-- checkout: Angular
+- checkout: self
   displayName: 'checkout Angular'
 
 - task: Npm@1
