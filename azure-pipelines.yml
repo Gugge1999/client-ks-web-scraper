@@ -33,14 +33,12 @@ steps:
 
 - script: |
     cd frontend-ks-web-scraper
-    dir
     npm install --force
   displayName: 'Installing dependencies'
 
 - script: |
-    dir
     cd frontend-ks-web-scraper
-    ng build --verbose
+    ng build
   displayName: 'Building angular'
 
 - task: ArchiveFiles@2
@@ -55,5 +53,5 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs: 
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    ArtifactName: 'angular-drop'
+    ArtifactName: 'drop'
     publishLocation: 'Container'
