@@ -18,7 +18,9 @@ resources:
 
 steps:
 - checkout: self
-  displayName: 'checkout Angular'
+- checkout: backend
+  displayName: Testing checkout backend
+- script: dir $(Build.SourcesDirectory)
 
 - script: |
     npm install -g @angular/cli
@@ -52,7 +54,3 @@ steps:
     targetPath: '$(Pipeline.Workspace)'
     publishLocation: 'pipeline'
 
-- checkout: backend
-  displayName: Testing checkout backend
-
-- script: dir $(Build.SourcesDirectory)
