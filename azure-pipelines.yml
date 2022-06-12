@@ -24,7 +24,7 @@ steps:
   displayName: 'npm install --force'
 
 - script: |
-    ng build --prod --verbose
+    ng build --verbose
   displayName: 'ng build'
 
 - task: ArchiveFiles@2
