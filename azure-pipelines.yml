@@ -43,7 +43,9 @@ steps:
 - script: |
     cd frontend-ks-web-scraper
     npm install
-    npm run build
+    dir
+    ng build
+    dir
   displayName: 'Install & build frontend'
 
 - task: NodeTool@0
