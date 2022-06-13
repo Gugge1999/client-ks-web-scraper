@@ -4,8 +4,7 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
 pool:
-  name: Default
-  demands: agent.name -equals David-Desktop-Agent
+  vmImage: 'windows-latest'
 
 resources:
   repositories:
