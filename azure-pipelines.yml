@@ -3,12 +3,16 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 
-# För egen Agent:
+# Egen Agent:
 #  name: Default
 #  demands: agent.name -equals David-Desktop-Agent
 
+# Microsoft Agent:
+#  vmImage: 'windows-latest'
+
 pool:
-  vmImage: 'windows-latest'
+  name: Default
+  demands: agent.name -equals David-Desktop-Agent
 
 resources:
   repositories:
@@ -41,23 +45,24 @@ steps:
 
 - script: |
     cd frontend-ks-web-scraper
-    ng build
+    npm run build
   displayName: 'Building angular'
 
-- task: ArchiveFiles@2
-  displayName: 'Archive files'
-  inputs:
-    rootFolderOrFile: '$(System.DefaultWorkingDirectory)/frontend-ks-web-scraper/ng-dist'
-    includeRootFolder: false
-    archiveType: zip
-    archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
-    replaceExistingArchive: true
+# - task: ArchiveFiles@2
+#   displayName: 'Archive files'
+#   inputs:
+#     rootFolderOrFile: '$(System.DefaultWorkingDirectory)/frontend-ks-web-scraper/ng-dist'
+#     includeRootFolder: false
+#     archiveType: zip
+#     archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+#     replaceExistingArchive: true
 
-- task: PublishBuildArtifacts@1
-  inputs: 
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    ArtifactName: 'angular-drop'
-    publishLocation: 'Container'
+
+# - task: PublishBuildArtifacts@1
+#   inputs: 
+#     PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+#     ArtifactName: 'angular-drop'
+#     publishLocation: 'Container'
 
 - task: NodeTool@0
   inputs:
@@ -83,6 +88,12 @@ steps:
     SourceFolder: '$(Agent.TempDirectory)'
     Contents: .env
     TargetFolder: './backend-ks-web-scraper'
+
+- task: CopyFiles@2
+  inputs:
+    SourceFolder: './frontend-ks-web-scraper/ng-dist'
+    Contents: '**'
+    TargetFolder: './backend-ks-web-scraper/ng-dist'
 
 - task: ArchiveFiles@2
   displayName: 'Archive files'
