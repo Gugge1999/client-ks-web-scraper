@@ -43,10 +43,12 @@ steps:
 - script: |
     cd frontend-ks-web-scraper
     npm install
-    dir
-    ng build
-    dir
-  displayName: 'Install & build frontend'
+  displayName: 'Install frontend dependencies'
+
+- script: |
+    cd frontend-ks-web-scraper
+    npm run build
+  displayName: 'Build frontend'
 
 - task: NodeTool@0
   inputs:
@@ -55,8 +57,12 @@ steps:
 - script: |
     cd backend-ks-web-scraper
     npm install
+  displayName: 'Install backend dependencies'
+
+- script: |
+    cd backend-ks-web-scraper
     npm run build
-  displayName: 'Install & build backend'
+  displayName: 'Build backend'
 
 - task: DownloadSecureFile@1
   inputs:
