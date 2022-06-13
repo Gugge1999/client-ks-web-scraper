@@ -93,5 +93,5 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs: 
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/ks-web-scraper.zip'
-    ArtifactName: 'backend-drop'
+    ArtifactName: 'ks-web-scraper-drop'
     publishLocation: 'Container'
