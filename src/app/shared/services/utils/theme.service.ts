@@ -13,12 +13,12 @@ export class ThemeService {
   }
 
   initTheme() {
-    this.colorTheme;
+    this.getColorTheme();
     this._renderer.addClass(document.body, this._colorTheme);
   }
 
   updateTheme(theme: 'dark-mode' | 'light-mode') {
-    this.colorTheme = theme;
+    this.setColorTheme(theme);
 
     const previousColorTheme =
       theme === 'dark-mode' ? 'light-mode' : 'dark-mode';
@@ -30,30 +30,25 @@ export class ThemeService {
     return this._colorTheme === 'dark-mode';
   }
 
-  private set colorTheme(theme: string) {
+  private setColorTheme(theme: string) {
     this._colorTheme = theme;
     localStorage.setItem('user-theme', theme);
   }
 
-  private get colorTheme(): string {
-    let theme;
-
+  private getColorTheme() {
     if (localStorage.getItem('user-theme')) {
-      theme = this.colorTheme =
-        localStorage.getItem('user-theme') ?? 'dark-mode';
-
-      return theme;
+      this._colorTheme = localStorage.getItem('user-theme') ?? 'dark-mode';
     } else {
       // Kolla vilket tema som användaren har satt i sitt OS.
       const userPrefersDark =
         window.matchMedia &&
         window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-      theme = userPrefersDark
-        ? (this.colorTheme = 'dark-mode')
-        : (this.colorTheme = 'light-mode');
+      userPrefersDark
+        ? (this._colorTheme = 'dark-mode')
+        : (this._colorTheme = 'light-mode');
 
-      return theme;
+      this.setColorTheme(this._colorTheme);
     }
   }
 }
