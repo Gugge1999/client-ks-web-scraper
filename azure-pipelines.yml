@@ -11,6 +11,10 @@
 # Microsoft Agent:
 #  vmImage: 'windows-latest'
 
+# Kom ihåg trigger sen...
+# trigger:
+#  - main
+
 pool:
   name: Default
   demands: agent.name -equals David-Desktop-Agent
