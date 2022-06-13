@@ -14,7 +14,6 @@ export class ThemeService {
 
   initTheme() {
     this.colorTheme;
-    console.log('colorTheme', this.colorTheme);
     this._renderer.addClass(document.body, this._colorTheme);
   }
 
@@ -37,16 +36,20 @@ export class ThemeService {
   }
 
   private get colorTheme(): string {
+    let theme;
+
     if (localStorage.getItem('user-theme')) {
-      return (this.colorTheme =
-        localStorage.getItem('user-theme') ?? 'dark-mode');
+      theme = this.colorTheme =
+        localStorage.getItem('user-theme') ?? 'dark-mode';
+
+      return theme;
     } else {
       // Kolla vilket tema som användaren har satt i sitt OS.
       const userPrefersDark =
         window.matchMedia &&
         window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-      const theme = userPrefersDark
+      theme = userPrefersDark
         ? (this.colorTheme = 'dark-mode')
         : (this.colorTheme = 'light-mode');
 
