@@ -30,6 +30,7 @@ resources:
       name: KS-Web-Scraper/frontend-ks-web-scraper
 
 steps:
+# Behövs checkout frontend? "- checkout: self" kanske funkar?
 - checkout: frontend
   displayName: Checkout frontend
 
