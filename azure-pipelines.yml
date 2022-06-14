@@ -16,8 +16,7 @@
 #  - main
 
 pool:
-  name: Default
-  demands: agent.name -equals David-Desktop-Agent
+  vmImage: 'ubuntu-latest'
 
 resources:
   repositories:
