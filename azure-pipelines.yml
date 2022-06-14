@@ -56,7 +56,7 @@ steps:
 
 - task: NodeTool@0
   inputs:
-    versionSpec: '16.15.1'
+    versionSpec: '14.18.2'
 
 - script: |
     cd backend-ks-web-scraper
