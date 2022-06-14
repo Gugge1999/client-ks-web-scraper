@@ -57,6 +57,7 @@ steps:
 - task: NodeTool@0
   inputs:
     versionSpec: '14.18.2'
+  displayName: 'Install Node'
 
 - script: |
     cd backend-ks-web-scraper
