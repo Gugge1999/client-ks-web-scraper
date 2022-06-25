@@ -45,7 +45,7 @@ export class ScraperCardComponent implements OnInit {
 
   deleteWatchDialog(watch: Watch, index: number) {
     const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
-      width: '375px',
+      width: 'fit-content',
       autoFocus: false,
       data: watch,
       restoreFocus: false,
