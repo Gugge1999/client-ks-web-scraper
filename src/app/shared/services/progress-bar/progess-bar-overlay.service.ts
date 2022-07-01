@@ -35,6 +35,7 @@ export class ProgressBarOverlayService {
     this.overlayRef.attach(progressBarOverlayPortal);
   }
 
+  // TODO: Varför två !! ?
   public hide() {
     if (!!this.overlayRef) {
       this.overlayRef.detach();

@@ -14,6 +14,9 @@ För att testa deploy. Se: https://www.youtube.com/watch?v=QdHvS0D1zAI
 Byt till typed forms?
 
 
+Kolla på: https://storybook.js.org/docs/angular/get-started/install
+
+
 Kolla om version 14 finns av paketen som tillhör angular-eslint.
 
 
