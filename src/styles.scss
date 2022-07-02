@@ -1,7 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-@use './custom-theme.scss' as custom-theme;
-
 /*#region mixing*/
 @mixin flex-column {
   display: flex;
@@ -169,7 +167,7 @@ mat-slide-toggle
 /*#endregion */
 
 .dark-mode .mat-chip.mat-standard-chip {
-  background-color: custom-theme.$dark-bg-lighter-5;
+  background-color: lighten(#2c2c2c, 5%);
   color: #fff;
 }
 
