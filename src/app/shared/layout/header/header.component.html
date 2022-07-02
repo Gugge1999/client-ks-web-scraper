@@ -64,13 +64,13 @@
       </div>
       <!-- Start "vanlig" meny -->
       <ng-template #doNotShowHamburgerMeny>
-        <div class="toolbar-right">
-          <mat-card class="dark-mode-card-wrapper">
+        <mat-chip-list #chipList class="toolbar-chip-list">
+          <mat-chip>
             <mat-slide-toggle
               matTooltip="Toggle theme"
               class="large-slide-toggle"
-              (click)="toggleTheme()"
               color="primary"
+              (click)="toggleTheme()"
               [(ngModel)]="isDarkMode">
               Dark mode
               <mat-icon
@@ -79,8 +79,8 @@
                 dark_mode
               </mat-icon>
             </mat-slide-toggle>
-          </mat-card>
-          <mat-card class="api-status-card-wrapper">
+          </mat-chip>
+          <mat-chip>
             <div
               class="api-active"
               *ngIf="apiStatus?.active"
@@ -105,8 +105,8 @@
               </mat-icon>
               <span class="status-text">API Status</span>
             </div>
-          </mat-card>
-        </div>
+          </mat-chip>
+        </mat-chip-list>
       </ng-template>
     </mat-toolbar-row>
   </mat-toolbar>

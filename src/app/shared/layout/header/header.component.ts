@@ -13,7 +13,7 @@ import { ThemeService } from '@shared/services/utils/theme.service';
 })
 export class HeaderComponent implements OnInit {
   apiStatus!: ApiStatus;
-  isDarkMode: boolean = true;
+  isDarkMode: boolean;
   showHamburgerMenu: boolean = true;
 
   constructor(
@@ -21,7 +21,11 @@ export class HeaderComponent implements OnInit {
     private statusService: StatusService,
     private themeService: ThemeService,
     private breakpointObserver: BreakpointObserver
-  ) {}
+  ) {
+    this.themeService.initTheme();
+    this.isDarkMode = this.themeService.isDarkMode();
+  }
+
   ngOnInit(): void {
     this.breakpointObserver
       .observe(['(min-width: 1000px)'])
@@ -33,9 +37,6 @@ export class HeaderComponent implements OnInit {
     this.statusService.getApiStatus().subscribe((res) => {
       this.apiStatus = res;
     });
-
-    this.themeService.initTheme();
-    this.isDarkMode = this.themeService.isDarkMode();
   }
 
   openApiStatusDialog() {
