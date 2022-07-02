@@ -8,12 +8,15 @@ app.use(json());
 
 const port = process.env.PORT || 8080;
 
-const relativePath = (a) => join(dirname(fileURLToPath(import.meta.url)), a);
+const relativePath = (p) => join(dirname(fileURLToPath(import.meta.url)), p);
 
 const pathToAngularDist = relativePath('./dist/ks-web-scraper');
 
 app.use('/', express.static(pathToAngularDist));
 
+// Hantera 404
+app.use('*', express.static(pathToAngularDist));
+
 app.listen(port, () => {
-  console.log(`Started server on: http://127.0.0.1:${port}/`);
+  console.log(`Started server on: http://localhost:${port}/`);
 });
