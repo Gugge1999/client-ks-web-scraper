@@ -6,26 +6,35 @@
     <mat-card-title
       ><strong>{{ watch.label }}</strong></mat-card-title
     >
-    <mat-card-content>
-      <p>
-        <strong>Thread being scraped: </strong>
-        <a target="_blank" class="link" href="{{ watch.link }}">Thread</a>
-      </p>
-      <p>
-        <strong> Last mail sent: </strong>
-        {{
-          watch.last_email_sent === '' ? 'No email sent' : watch.last_email_sent
-        }}
-      </p>
-      <p><strong>Added: </strong> {{ watch.added }}</p>
-      <p>
-        <strong>Current watch: </strong>
-        <a target="_blank" class="link" href="{{ watch.watches.link }}">{{
-          watch.watches.name
-        }}</a>
-      </p>
-    </mat-card-content>
-    <mat-divider inset></mat-divider>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="card-mat-expansion-panel-header">
+          <mat-panel-title>Details</mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-card-content class="card-mat-card-content">
+          <p>
+            <strong>Thread being scraped: </strong>
+            <a target="_blank" class="link" href="{{ watch.link }}">Thread</a>
+          </p>
+          <p>
+            <strong> Last mail sent: </strong>
+            {{
+              watch.last_email_sent === ''
+                ? 'No email sent'
+                : watch.last_email_sent
+            }}
+          </p>
+          <p><strong>Added: </strong> {{ watch.added }}</p>
+          <p>
+            <strong>Current watch: </strong>
+            <a target="_blank" class="link" href="{{ watch.watches.link }}">{{
+              watch.watches.name
+            }}</a>
+          </p>
+        </mat-card-content>
+      </mat-expansion-panel>
+    </mat-accordion>
+
     <mat-card-actions align="end" class="watch-card-actions">
       <button
         mat-icon-button

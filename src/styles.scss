@@ -149,3 +149,19 @@ mat-slide-toggle
   line-height: normal;
 }
 /*#endregion */
+
+/*#region expansion-panel*/
+.mat-expansion-panel-content .mat-expansion-panel-body {
+  padding: 0 1em 1em;
+}
+/*#endregion */
+
+/*#region dark and light mode*/
+.dark-mode .mat-expansion-panel {
+  background: #414141;
+}
+
+.light-mode .mat-expansion-panel {
+  background: #fcfcfc;
+}
+/*#endregion */

@@ -18,5 +18,5 @@ app.use('/', express.static(pathToAngularDist));
 app.use('*', express.static(pathToAngularDist));
 
 app.listen(port, () => {
-  console.log(`Started server on: http://localhost:${port}/`);
+  console.log(`Started client.`);
 });
