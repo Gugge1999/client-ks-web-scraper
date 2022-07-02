@@ -1,4 +1,4 @@
 {
   "env": "production",
-  "apiBaseUrl": ""
+  "apiBaseUrl": "https://chrono-notifier-api.herokuapp.com"
 }
