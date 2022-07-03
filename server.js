@@ -10,7 +10,7 @@ const port = process.env.PORT || 8080;
 
 const relativePath = (p) => join(dirname(fileURLToPath(import.meta.url)), p);
 
-const pathToAngularDist = relativePath('./dist/ks-web-scraper');
+const pathToAngularDist = relativePath('./dist/client-ks-web-scraper');
 
 app.use('/', express.static(pathToAngularDist));
 
