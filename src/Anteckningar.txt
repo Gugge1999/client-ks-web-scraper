@@ -7,8 +7,13 @@ https://stackoverflow.com/questions/46300682/running-clock-in-angular-4-3
 
 
 Kolla genom https://github.com/AvocadoVenom/OverlayLoadingComponents 
+
 och se om det är en bättre lösning på spinner / progess bar
 
+
+Kolla på: https://medium.com/@siobhanpmahoney/deploying-a-react-frontend-rails-backend-project-to-heroku-4b2c4f6f630c
+vid Step 2: { "root": "build/", "routes": { "/**": "index.html" } }
+och den: https://github.com/angular/angular-cli/issues/2517
 
 För att testa deploy. Se: https://www.youtube.com/watch?v=QdHvS0D1zAI
 

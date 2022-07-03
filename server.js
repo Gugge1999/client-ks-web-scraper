@@ -12,11 +12,13 @@ const relativePath = (p) => join(dirname(fileURLToPath(import.meta.url)), p);
 
 const pathToAngularDist = relativePath('./dist/client-ks-web-scraper');
 
-app.use('/', express.static(pathToAngularDist));
-
-// Hantera 404
-app.use('*', express.static(pathToAngularDist));
+app.use(express.static(pathToAngularDist));
 
 app.listen(port, () => {
   console.log(`Started client.`);
+});
+
+// For all GET requests, send back index.html so that PathLocationStrategy can be used
+app.get('/*', function (req, res) {
+  res.sendFile(`${pathToAngularDist}/index.html`);
 });
