@@ -27,9 +27,13 @@
           <p><strong>Added: </strong> {{ watch.added }}</p>
           <p>
             <strong>Current watch: </strong>
-            <a target="_blank" class="link" href="{{ watch.watches.link }}">{{
-              watch.watches.name
-            }}</a>
+            <!-- Visa endast den sensate klockan, därav index 0 -->
+            <a
+              target="_blank"
+              class="link"
+              href="{{ watch.watches[0].link }}"
+              >{{ watch.watches[0].name }}</a
+            >
           </p>
         </mat-card-content>
       </mat-expansion-panel>
