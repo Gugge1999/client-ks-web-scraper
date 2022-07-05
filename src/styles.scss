@@ -105,6 +105,27 @@ snack-bar-container.snackbar-success {
 snack-bar-container.snackbar-info {
   background-color: $primary-accent-color-light !important;
 }
+
+.light-mode .mat-button {
+  color: white;
+}
+
+snack-bar-container.snackbar-info .mat-simple-snackbar .mat-button-wrapper,
+.light-mode .mat-snack-bar-container .mat-simple-snack-bar-content {
+  color: #2d2d2d;
+}
+
+.light-mode
+  .mat-toolbar.mat-warn
+  .mat-simple-snackbar
+  .mat-simple-snack-bar-content,
+.light-mode
+  .snackbar-success
+  .mat-simple-snackbar
+  .mat-simple-snack-bar-content {
+  color: white;
+}
+
 /*#endregion */
 
 /*#region form*/
