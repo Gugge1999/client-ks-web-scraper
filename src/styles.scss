@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
 /*#region mixing*/
+
+// TODO: Byt från mixins att använda dessa mixins i andra filer.
+// De skapar för stora filer vid ng build.
 @mixin flex-column {
   display: flex;
   flex-direction: column;
