@@ -185,13 +185,21 @@ mat-slide-toggle
 .light-mode .mat-expansion-panel {
   background: #fcfcfc;
 }
-/*#endregion */
 
 .dark-mode .mat-chip.mat-standard-chip {
   background-color: lighten(#2c2c2c, 5%);
   color: #fff;
 }
+/*#endregion */
 
+/*#region chips*/
 .toolbar-chip-list .mat-standard-chip {
   height: 3em;
 }
+/*#endregion */
+
+/*#region expansion-panel*/
+.mat-expansion-panel-header {
+  font-size: 16px;
+}
+/*#endregion */
