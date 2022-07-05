@@ -47,6 +47,8 @@ export class HeaderComponent implements OnInit {
     this.dialog.open(ApiStatusDialogComponent, {
       width: '450px',
       data: this.apiStatus,
+      autoFocus: false,
+      restoreFocus: false,
     });
   }
 
