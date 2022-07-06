@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
 import { Watch } from '@models/watch.model';
@@ -13,23 +13,20 @@ import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
   styleUrls: ['./new-watch-dialog.component.scss'],
 })
 export class NewWatchDialogComponent {
-  watchForm = new FormGroup({
-    label: new FormControl('', {
-      validators: [Validators.required, Validators.minLength(3)],
-      nonNullable: true,
-    }),
-    link: new FormControl('', {
-      validators: Validators.required,
-      nonNullable: true,
-    }),
-  });
+  protected watchForm: FormGroup;
 
   constructor(
     private dialogRef: MatDialogRef<ScraperCardComponent>,
     private watchService: WatchService,
     private snackbarService: SnackbarService,
-    private progressBarService: ProgressBarOverlayService
-  ) {}
+    private progressBarService: ProgressBarOverlayService,
+    private formBuilder: NonNullableFormBuilder
+  ) {
+    this.watchForm = this.formBuilder.group({
+      label: ['', [Validators.required, Validators.minLength(3)]],
+      link: ['', [Validators.required]],
+    });
+  }
 
   submitNewWatch() {
     const wordsSeparatedByPlus = this.watchForm
