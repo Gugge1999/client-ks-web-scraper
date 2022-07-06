@@ -23,7 +23,9 @@ export class WatchService {
     private progressBarService: ProgressBarOverlayService
   ) {}
 
-  addNewWatch(data: { label: string; link: string }): Observable<Watch> {
+  addNewWatch(
+    data: Partial<{ label: string; link: string }>
+  ): Observable<Watch> {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/add-watch`;
 
     this.progressBarService.show('Adding watch...');

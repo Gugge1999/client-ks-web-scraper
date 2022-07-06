@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
 import { Watch } from '@models/watch.model';
@@ -12,7 +13,16 @@ import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
   styleUrls: ['./new-watch-dialog.component.scss'],
 })
 export class NewWatchDialogComponent {
-  newWatch = <Watch>{};
+  watchForm = new FormGroup({
+    label: new FormControl('', {
+      validators: [Validators.required, Validators.minLength(3)],
+      nonNullable: true,
+    }),
+    link: new FormControl('', {
+      validators: Validators.required,
+      nonNullable: true,
+    }),
+  });
 
   constructor(
     private dialogRef: MatDialogRef<ScraperCardComponent>,
@@ -21,16 +31,22 @@ export class NewWatchDialogComponent {
     private progressBarService: ProgressBarOverlayService
   ) {}
 
-  onSubmit() {
-    const wordsSeparatedByPlus = this.newWatch.link.trim().replace(/\s+/g, '+');
+  submitNewWatch() {
+    const wordsSeparatedByPlus = this.watchForm
+      .get('link')
+      ?.value.trim()
+      .replace(/\s+/g, '+');
 
-    this.newWatch.link =
-      'https://klocksnack.se/search/1/?q=REPLACE-ME&t=post&c[child_nodes]=1&c[nodes][0]=11&c[title_only]=1&o=date'.replace(
-        'REPLACE-ME',
-        wordsSeparatedByPlus
+    this.watchForm
+      .get('link')
+      ?.setValue(
+        'https://klocksnack.se/search/1/?q=REPLACE-ME&t=post&c[child_nodes]=1&c[nodes][0]=11&c[title_only]=1&o=date'.replace(
+          'REPLACE-ME',
+          wordsSeparatedByPlus ?? ''
+        )
       );
 
-    this.watchService.addNewWatch(this.newWatch).subscribe({
+    this.watchService.addNewWatch(this.watchForm.value).subscribe({
       next: (res: Watch) => {
         this.dialogRef.close(res);
         this.snackbarService.successSnackbar(
