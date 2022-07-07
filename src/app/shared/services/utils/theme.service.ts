@@ -1,3 +1,5 @@
+import { BehaviorSubject, Observable } from 'rxjs';
+
 import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 
 @Injectable({
@@ -6,6 +8,9 @@ import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 export class ThemeService {
   private _renderer!: Renderer2;
   private _colorTheme!: string;
+  private currentThemeSubject = new BehaviorSubject<string>(
+    this.getColorTheme()
+  );
 
   // Från: https://www.youtube.com/watch?v=XIUv27nYcLE
   constructor(rendererFactory: RendererFactory2) {
@@ -37,18 +42,25 @@ export class ThemeService {
 
   private getColorTheme() {
     if (localStorage.getItem('user-theme')) {
-      this._colorTheme = localStorage.getItem('user-theme') ?? 'dark-mode';
+      return (this._colorTheme =
+        localStorage.getItem('user-theme') ?? 'dark-mode');
     } else {
       // Kolla vilket tema som användaren har satt i sitt OS.
       const userPrefersDark =
         window.matchMedia &&
         window.matchMedia('(prefers-color-scheme: dark)').matches;
 
-      userPrefersDark
+      return (this._colorTheme = userPrefersDark
         ? (this._colorTheme = 'dark-mode')
-        : (this._colorTheme = 'light-mode');
-
-      this.setColorTheme(this._colorTheme);
+        : (this._colorTheme = 'light-mode'));
     }
+  }
+
+  public setCurrentTheme(currentTheme: string) {
+    this.currentThemeSubject.next(currentTheme);
+  }
+
+  public getCurrentTheme(): Observable<string> {
+    return this.currentThemeSubject.asObservable();
   }
 }

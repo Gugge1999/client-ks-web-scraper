@@ -58,5 +58,9 @@ export class HeaderComponent implements OnInit {
     this.isDarkMode
       ? this.themeService.updateTheme('light-mode')
       : this.themeService.updateTheme('dark-mode');
+
+    this.themeService.setCurrentTheme(
+      this.themeService.isDarkMode() ? 'dark-mode' : 'light-mode'
+    );
   }
 }
