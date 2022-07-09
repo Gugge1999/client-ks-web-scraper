@@ -1,3 +1,5 @@
+import { take } from 'rxjs';
+
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -34,9 +36,12 @@ export class HeaderComponent implements OnInit {
           ? (this.showHamburgerMenu = false)
           : (this.showHamburgerMenu = true);
       });
-    this.statusService.getApiStatus().subscribe((res) => {
-      this.apiStatus = res;
-    });
+    this.statusService
+      .getApiStatus()
+      .pipe(take(1))
+      .subscribe((res) => {
+        this.apiStatus = res;
+      });
   }
 
   openApiStatusDialog() {
