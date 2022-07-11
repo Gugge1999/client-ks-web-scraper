@@ -1,7 +1,7 @@
-import { take } from 'rxjs';
+import { Subject, take, takeUntil } from 'rxjs';
 
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiStatusDialogComponent } from '@components/api-status-dialog/api-status-dialog.component';
 import { ApiStatus } from '@models/api-status.model';
@@ -13,10 +13,12 @@ import { ThemeService } from '@shared/services/utils/theme.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   apiStatus!: ApiStatus;
   isDarkMode: boolean;
   showHamburgerMenu: boolean = true;
+
+  private destroySubject$ = new Subject<void>();
 
   constructor(
     private dialog: MatDialog,
@@ -31,11 +33,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.breakpointObserver
       .observe(['(min-width: 1000px)'])
+      .pipe(takeUntil(this.destroySubject$))
       .subscribe((state: BreakpointState) => {
         state.matches
           ? (this.showHamburgerMenu = false)
           : (this.showHamburgerMenu = true);
       });
+
     this.statusService
       .getApiStatus()
       .pipe(take(1))
@@ -45,9 +49,12 @@ export class HeaderComponent implements OnInit {
   }
 
   openApiStatusDialog() {
-    this.statusService.getApiStatus().subscribe((res) => {
-      this.apiStatus = res;
-    });
+    this.statusService
+      .getApiStatus()
+      .pipe(takeUntil(this.destroySubject$))
+      .subscribe((res) => {
+        this.apiStatus = res;
+      });
 
     this.dialog.open(ApiStatusDialogComponent, {
       width: '450px',
@@ -67,5 +74,9 @@ export class HeaderComponent implements OnInit {
     this.themeService.setCurrentTheme(
       this.themeService.isDarkMode() ? 'dark-mode' : 'light-mode'
     );
+  }
+
+  ngOnDestroy(): void {
+    this.destroySubject$.next();
   }
 }

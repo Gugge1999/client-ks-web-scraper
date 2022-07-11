@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+
+import { Component, OnDestroy } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
@@ -12,8 +14,9 @@ import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
   templateUrl: './new-watch-dialog.component.html',
   styleUrls: ['./new-watch-dialog.component.scss'],
 })
-export class NewWatchDialogComponent {
+export class NewWatchDialogComponent implements OnDestroy {
   protected watchForm: FormGroup;
+  private destroySubject$ = new Subject<void>();
 
   constructor(
     private dialogRef: MatDialogRef<ScraperCardComponent>,
@@ -43,20 +46,25 @@ export class NewWatchDialogComponent {
         )
       );
 
-    this.watchService.addNewWatch(this.watchForm.value).subscribe({
-      next: (res: Watch) => {
-        this.dialogRef.close(res);
-        this.snackbarService.successSnackbar(
-          `Added watch with label: ${res.label}`
-        );
-      },
-      error: () => {
-        this.dialogRef.close();
-        this.progressBarService.hide();
-      },
-      complete: () => {
-        this.progressBarService.hide();
-      },
-    });
+    this.watchService
+      .addNewWatch(this.watchForm.value)
+      .pipe(takeUntil(this.destroySubject$))
+      .subscribe({
+        next: (res: Watch) => {
+          this.dialogRef.close(res);
+          this.snackbarService.successSnackbar(
+            `Added watch with label: ${res.label}`
+          );
+          this.progressBarService.hide();
+        },
+        error: () => {
+          this.dialogRef.close();
+          this.progressBarService.hide();
+        },
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroySubject$.next();
   }
 }

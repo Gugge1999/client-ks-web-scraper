@@ -1,4 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Subject, takeUntil } from 'rxjs';
+
+import { Injectable, OnDestroy } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Watch } from '@models/watch.model';
 import { WatchService } from '@services/watch.service';
@@ -6,7 +8,9 @@ import { WatchService } from '@services/watch.service';
 @Injectable({
   providedIn: 'root',
 })
-export class SnackbarService {
+export class SnackbarService implements OnDestroy {
+  private destroySubject$ = new Subject<void>();
+
   constructor(
     private snackbar: MatSnackBar,
     private watchService: WatchService
@@ -38,16 +42,29 @@ export class SnackbarService {
         panelClass: ['mat-toolbar', 'mat-warn'],
       }
     );
-    snack.afterDismissed().subscribe((res) => {
-      // Om dismissedByAction är sant (användaren klickade på Undo) ska vi inte ta bort klockan
-      if (res.dismissedByAction === true) return;
+    snack
+      .afterDismissed()
+      .pipe(takeUntil(this.destroySubject$))
+      .subscribe((res) => {
+        // Om dismissedByAction är sant (användaren klickade på Undo) ska vi inte ta bort klockan
+        if (res.dismissedByAction === true) return;
 
-      this.watchService.deleteWatch(deletedWatch.id).subscribe((res) => {
-        console.log(`Deleted: ${res.deletedWatchId}`);
+        // Byt till switchMap?
+        this.watchService
+          .deleteWatch(deletedWatch.id)
+          .pipe(takeUntil(this.destroySubject$))
+          .subscribe((res) => {
+            console.log(`Deleted: ${res.deletedWatchId}`);
+          });
       });
-    });
-    snack.onAction().subscribe(() => {
-      watches.splice(index, 0, deletedWatch);
-    });
+    snack
+      .onAction()
+      .pipe(takeUntil(this.destroySubject$))
+      .subscribe(() => {
+        watches.splice(index, 0, deletedWatch);
+      });
+  }
+  ngOnDestroy(): void {
+    this.destroySubject$.next();
   }
 }

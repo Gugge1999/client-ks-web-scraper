@@ -1,5 +1,7 @@
+import { Subject, takeUntil } from 'rxjs';
+
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { DeleteWatchDialogComponent } from '@components/delete-watch-dialog/delete-watch-dialog.component';
@@ -13,10 +15,11 @@ import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
   templateUrl: './scraper-card.component.html',
   styleUrls: ['./scraper-card.component.scss'],
 })
-export class ScraperCardComponent implements OnInit {
+export class ScraperCardComponent implements OnInit, OnDestroy {
   watches: Watch[] = [];
   cardWidth: string = '';
   smallAddNewWatchButtonSize: boolean = false;
+  private destroySubject$ = new Subject<void>();
 
   constructor(
     private dialog: MatDialog,
@@ -28,6 +31,7 @@ export class ScraperCardComponent implements OnInit {
   ngOnInit() {
     this.breakpointObserver
       .observe(['(min-width: 1000px)'])
+      .pipe(takeUntil(this.destroySubject$))
       .subscribe((state: BreakpointState) => {
         if (state.matches) {
           this.cardWidth = 'small-card-width';
@@ -38,9 +42,12 @@ export class ScraperCardComponent implements OnInit {
         }
       });
 
-    this.watchService.getAllWatches().subscribe((res) => {
-      this.watches = res;
-    });
+    this.watchService
+      .getAllWatches()
+      .pipe(takeUntil(this.destroySubject$))
+      .subscribe((res) => {
+        this.watches = res;
+      });
   }
 
   deleteWatchDialog(watch: Watch, index: number) {
@@ -51,14 +58,17 @@ export class ScraperCardComponent implements OnInit {
       restoreFocus: false,
     });
 
-    dialogRef.afterClosed().subscribe((res) => {
-      if (res === undefined || res.click === 'cancelClicked') {
-        return;
-      }
+    dialogRef
+      .afterClosed()
+      .pipe(takeUntil(this.destroySubject$))
+      .subscribe((res) => {
+        if (res === undefined || res.click === 'cancelClicked') {
+          return;
+        }
 
-      this.watches = this.watches.filter((watch) => watch.id != res.id);
-      this.snackbarService.undoAndDeleteSnackbar(res, index, this.watches);
-    });
+        this.watches = this.watches.filter((watch) => watch.id != res.id);
+        this.snackbarService.undoAndDeleteSnackbar(res, index, this.watches);
+      });
   }
 
   toggleActiveStatus(
@@ -68,12 +78,15 @@ export class ScraperCardComponent implements OnInit {
   ) {
     const oldStatus = this.watches[index].active;
     event.source.checked = oldStatus;
-    this.watchService.toggleActiveStatus(watch).subscribe({
-      next: (res) => {
-        this.watches[index].active = res.isActive;
-        this.snackbarService.infoSnackbar(`Toggled status on: ${res.label}`);
-      },
-    });
+    this.watchService
+      .toggleActiveStatus(watch)
+      .pipe(takeUntil(this.destroySubject$))
+      .subscribe({
+        next: (res) => {
+          this.watches[index].active = res.isActive;
+          this.snackbarService.infoSnackbar(`Toggled status on: ${res.label}`);
+        },
+      });
   }
 
   openNewWatchDialog() {
@@ -83,10 +96,17 @@ export class ScraperCardComponent implements OnInit {
       autoFocus: false,
       restoreFocus: false,
     });
-    dialogRef.afterClosed().subscribe((res) => {
-      if (res === undefined || res === 'cancelClicked') return;
+    dialogRef
+      .afterClosed()
+      .pipe(takeUntil(this.destroySubject$))
+      .subscribe((res) => {
+        if (res === undefined || res === 'cancelClicked') return;
 
-      this.watches.push(res);
-    });
+        this.watches.push(res);
+      });
+  }
+
+  ngOnDestroy(): void {
+    this.destroySubject$.next();
   }
 }
