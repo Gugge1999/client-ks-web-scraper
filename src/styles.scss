@@ -113,19 +113,13 @@ snack-bar-container.snackbar-info {
   color: white;
 }
 
-snack-bar-container.snackbar-info .mat-simple-snackbar .mat-button-wrapper,
-.light-mode .mat-snack-bar-container .mat-simple-snack-bar-content {
+snack-bar-container.snackbar-info .mat-button-wrapper,
+.light-mode .mat-simple-snack-bar-content {
   color: #2d2d2d;
 }
 
-.light-mode
-  .mat-toolbar.mat-warn
-  .mat-simple-snackbar
-  .mat-simple-snack-bar-content,
-.light-mode
-  .snackbar-success
-  .mat-simple-snackbar
-  .mat-simple-snack-bar-content {
+.light-mode .mat-toolbar.mat-warn .mat-simple-snack-bar-content,
+.light-mode .snackbar-success .mat-simple-snack-bar-content {
   color: white;
 }
 
