@@ -8,6 +8,7 @@ app.use(json());
 
 const port = process.env.PORT || 8080;
 
+// Behövs p?
 const relativePath = (p) => join(dirname(fileURLToPath(import.meta.url)), p);
 
 const pathToAngularDist = relativePath('./dist/client-ks-web-scraper');

@@ -31,7 +31,7 @@
 /*#region variables colors*/
 $primary-accent-color-light: #dedede;
 $link-color: #099d8c;
-$input-red: rgb(255, 0, 0);
+$dark-mode-input-validation-error: #ff6e6e;
 
 /*#endregion */
 
@@ -80,6 +80,7 @@ app-header {
   text-decoration: none;
 }
 
+// TODO: Byt från a som selector. För generellt
 a {
   color: inherit;
   text-decoration: none;
@@ -134,18 +135,6 @@ input {
   text-overflow: ellipsis;
 }
 
-.mat-error,
-.mat-form-field.mat-form-field-invalid .mat-form-field-label,
-.mat-form-field.mat-form-field-invalid
-  .mat-form-field-label
-  .mat-form-field-required-marker {
-  color: $input-red;
-}
-
-.mat-form-field.mat-form-field-invalid .mat-form-field-ripple {
-  background-color: $input-red;
-}
-
 /*#endregion */
 
 /*#region slide toggle*/
@@ -185,8 +174,24 @@ mat-slide-toggle
 
 .dark-mode .mat-chip.mat-standard-chip {
   background-color: lighten(#2c2c2c, 5%);
-  color: #fff;
 }
+
+.dark-mode .mat-error,
+.dark-mode .mat-form-field.mat-form-field-invalid .mat-form-field-label,
+.dark-mode
+  .mat-form-field.mat-form-field-invalid
+  .mat-form-field-label
+  .mat-form-field-required-marker,
+.dark-mode
+  .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid
+  .mat-form-field-outline-thick {
+  color: $dark-mode-input-validation-error;
+}
+
+.dark-mode .mat-form-field-invalid .mat-input-element {
+  caret-color: $dark-mode-input-validation-error;
+}
+
 /*#endregion */
 
 /*#region chips*/
