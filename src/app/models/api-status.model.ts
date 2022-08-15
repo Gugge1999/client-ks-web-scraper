@@ -1,7 +1,7 @@
 import { Uptime } from '@models/uptime.model';
 
 export interface ApiStatus {
-  active: string;
+  active: boolean;
   scrapingIntervalInMinutes: number;
   uptime: Uptime;
 }

@@ -1,6 +1,6 @@
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
-import { Component, OnDestroy } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProgressBarOverlayService } from '@shared/services/progress-bar/progess-bar-overlay.service';
 
 @Component({
@@ -8,19 +8,12 @@ import { ProgressBarOverlayService } from '@shared/services/progress-bar/progess
   templateUrl: './progress-bar.component.html',
   styleUrls: ['./progress-bar.component.scss'],
 })
-export class ProgessBarComponent implements OnDestroy {
-  message: string = '';
-  private destroySubject$ = new Subject<void>();
+export class ProgessBarComponent implements OnInit {
+  protected message$: Observable<string> = of('');
 
-  constructor(private progressBarService: ProgressBarOverlayService) {
-    this.progressBarService.progessBarMessage
-      .pipe(takeUntil(this.destroySubject$))
-      .subscribe((res) => {
-        this.message = res;
-      });
-  }
+  constructor(private progressBarService: ProgressBarOverlayService) {}
 
-  ngOnDestroy(): void {
-    this.destroySubject$.next();
+  ngOnInit(): void {
+    this.message$ = this.progressBarService.getProgessBarMessage();
   }
 }

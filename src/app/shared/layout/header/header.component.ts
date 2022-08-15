@@ -1,7 +1,15 @@
-import { Subject, take, takeUntil } from 'rxjs';
+import {
+  catchError,
+  filter,
+  Observable,
+  of,
+  shareReplay,
+  switchMap,
+  timer
+} from 'rxjs';
 
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiStatusDialogComponent } from '@components/api-status-dialog/api-status-dialog.component';
 import { ApiStatus } from '@models/api-status.model';
@@ -13,12 +21,10 @@ import { ThemeService } from '@shared/services/utils/theme.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit, OnDestroy {
-  apiStatus!: ApiStatus;
+export class HeaderComponent implements OnInit {
+  apiStatus$!: Observable<ApiStatus>;
   isDarkMode: boolean;
   showHamburgerMenu: boolean = true;
-
-  private destroySubject$ = new Subject<void>();
 
   constructor(
     private dialog: MatDialog,
@@ -33,32 +39,31 @@ export class HeaderComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.breakpointObserver
       .observe(['(min-width: 1000px)'])
-      .pipe(takeUntil(this.destroySubject$))
       .subscribe((state: BreakpointState) => {
         state.matches
           ? (this.showHamburgerMenu = false)
           : (this.showHamburgerMenu = true);
       });
 
-    this.statusService
-      .getApiStatus()
-      .pipe(take(1))
-      .subscribe((res) => {
-        this.apiStatus = res;
-      });
+    let failedApiCalls = 0;
+
+    this.apiStatus$ = timer(0, 30000).pipe(
+      filter(() => failedApiCalls !== 3),
+      switchMap(() =>
+        this.statusService.getApiStatus().pipe(
+          catchError((err) => {
+            failedApiCalls++;
+            return of(err);
+          })
+        )
+      ),
+      shareReplay({ bufferSize: 1, refCount: true }) // OBS: ShareReplay måste ligga sist i pipe
+    );
   }
 
   openApiStatusDialog() {
-    this.statusService
-      .getApiStatus()
-      .pipe(takeUntil(this.destroySubject$))
-      .subscribe((res) => {
-        this.apiStatus = res;
-      });
-
     this.dialog.open(ApiStatusDialogComponent, {
       width: '450px',
-      data: this.apiStatus,
       autoFocus: false,
       restoreFocus: false,
     });
@@ -74,9 +79,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.themeService.setCurrentTheme(
       this.themeService.isDarkMode() ? 'dark-mode' : 'light-mode'
     );
-  }
-
-  ngOnDestroy(): void {
-    this.destroySubject$.next();
   }
 }

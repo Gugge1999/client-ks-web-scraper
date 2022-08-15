@@ -6,7 +6,7 @@
         <span class="toolbar-title">KS Web Scraper</span>
       </a>
       <span class="spacer"></span>
-      <div *ngIf="showHamburgerMenu; else doNotShowHamburgerMeny">
+      <div [hidden]="!showHamburgerMenu">
         <button
           mat-icon-button
           [matMenuTriggerFor]="menu"
@@ -33,11 +33,16 @@
                 </mat-icon>
               </mat-slide-toggle>
             </button>
-            <button mat-menu-item *ngIf="apiStatus?.active">
+            <button
+              mat-menu-item
+              *ngIf="
+                (apiStatus$ | async)?.active as active;
+                else hamburgerApiNotActive
+              ">
               <div
                 matTooltip="View API statistics"
                 matTooltipPosition="left"
-                (click)="apiStatus?.active ? openApiStatusDialog() : ''">
+                (click)="active ? openApiStatusDialog() : ''">
                 <mat-icon class="status-icon" color="primary">
                   check_circle_outline
                 </mat-icon>
@@ -45,25 +50,24 @@
               </div>
             </button>
             <!-- API:et är inte aktivt. Länken ska vara inaktiverad  -->
-            <button mat-menu-item disabled *ngIf="!apiStatus?.active">
-              <div
-                matTooltip="API is not active"
-                matTooltipPosition="left"
-                class="api-inactive">
-                <mat-icon
-                  *ngIf="!apiStatus?.active"
-                  class="status-icon offline"
-                  color="primary">
-                  highlight_off
-                </mat-icon>
-                <span class="status-text">API Status</span>
-              </div>
-            </button>
+            <ng-template #hamburgerApiNotActive>
+              <button mat-menu-item disabled>
+                <div
+                  matTooltip="API is not active"
+                  matTooltipPosition="left"
+                  class="api-inactive">
+                  <mat-icon class="status-icon offline" color="primary">
+                    highlight_off
+                  </mat-icon>
+                  <span class="status-text">API Status</span>
+                </div>
+              </button>
+            </ng-template>
           </div>
         </mat-menu>
       </div>
       <!-- Start "vanlig" meny -->
-      <ng-template #doNotShowHamburgerMeny>
+      <div [hidden]="showHamburgerMenu">
         <mat-chip-list #chipList class="toolbar-chip-list">
           <mat-chip>
             <mat-slide-toggle
@@ -83,31 +87,27 @@
           <mat-chip>
             <div
               class="api-active"
-              *ngIf="apiStatus?.active"
+              *ngIf="(apiStatus$ | async)?.active as active; else apiNotActive"
               matTooltip="View API statistics"
-              [style.cursor]="apiStatus?.active ? 'pointer' : 'default'"
-              (click)="apiStatus?.active ? openApiStatusDialog() : ''">
+              [style.cursor]="active ? 'pointer' : 'default'"
+              (click)="active ? openApiStatusDialog() : ''">
               <mat-icon class="status-icon" color="primary">
                 check_circle_outline
               </mat-icon>
               <span class="status-text">API Status</span>
             </div>
             <!-- API:et är inte aktivt. -->
-            <div
-              class="api-inactive"
-              *ngIf="!apiStatus?.active"
-              matTooltip="API is not active">
-              <mat-icon
-                *ngIf="!apiStatus?.active"
-                class="status-icon offline"
-                color="primary">
-                highlight_off
-              </mat-icon>
-              <span class="status-text">API Status</span>
-            </div>
+            <ng-template #apiNotActive>
+              <div class="api-inactive" matTooltip="API is not active">
+                <mat-icon class="status-icon offline" color="primary">
+                  highlight_off
+                </mat-icon>
+                <span class="status-text">API Status</span>
+              </div>
+            </ng-template>
           </mat-chip>
         </mat-chip-list>
-      </ng-template>
+      </div>
     </mat-toolbar-row>
   </mat-toolbar>
 </header>

@@ -42,7 +42,7 @@ export class ProgressBarOverlayService {
     }
   }
 
-  public get progessBarMessage(): Observable<string> {
+  public getProgessBarMessage(): Observable<string> {
     return this.progessBarMessageSubject.asObservable();
   }
 }

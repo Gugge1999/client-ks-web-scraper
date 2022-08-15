@@ -10,9 +10,9 @@
       stroke="none"
       stroke-width="0"
       [style.fill]="
-        currentTheme === 'dark-mode'
-          ? darkModeFooterColors.levelOne
-          : lightModeFooterColors.levelOne
+        (currentTheme$ | async) === 'dark-mode'
+          ? darkModeFooterColors.top
+          : lightModeFooterColors.top
       "
       class="transition-all duration-300 ease-in-out delay-150 path-0"></path>
     <path
@@ -20,9 +20,9 @@
       stroke="none"
       stroke-width="0"
       [style.fill]="
-        currentTheme === 'dark-mode'
-          ? darkModeFooterColors.levelTwo
-          : lightModeFooterColors.levelTwo
+        (currentTheme$ | async) === 'dark-mode'
+          ? darkModeFooterColors.middle
+          : lightModeFooterColors.middle
       "
       class="transition-all duration-300 ease-in-out delay-150 path-1"></path>
     <path
@@ -30,9 +30,9 @@
       stroke="none"
       stroke-width="0"
       [style.fill]="
-        currentTheme === 'dark-mode'
-          ? darkModeFooterColors.levelThree
-          : lightModeFooterColors.levelThree
+        (currentTheme$ | async) === 'dark-mode'
+          ? darkModeFooterColors.bottom
+          : lightModeFooterColors.bottom
       "
       class="transition-all duration-300 ease-in-out delay-150 path-2"></path>
   </svg>

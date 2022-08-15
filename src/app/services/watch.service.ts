@@ -16,16 +16,12 @@ const httpOptions = {
   providedIn: 'root',
 })
 export class WatchService {
-  apiUrl!: string;
-
   constructor(
     private http: HttpClient,
     private progressBarService: ProgressBarOverlayService
   ) {}
 
-  addNewWatch(
-    data: Partial<{ label: string; link: string }>
-  ): Observable<Watch> {
+  addNewWatch(data: { label: string; link: string }): Observable<Watch> {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/add-watch`;
 
     this.progressBarService.show('Adding watch...');

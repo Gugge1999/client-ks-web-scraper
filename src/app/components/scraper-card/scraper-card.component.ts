@@ -108,5 +108,6 @@ export class ScraperCardComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.destroySubject$.next();
+    this.destroySubject$.complete();
   }
 }

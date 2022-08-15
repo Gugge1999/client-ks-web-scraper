@@ -6,7 +6,7 @@ import {
   HttpEvent,
   HttpHandler,
   HttpInterceptor,
-  HttpRequest,
+  HttpRequest
 } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
@@ -34,12 +34,23 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           errorMessage = httpErrorResponse.error;
         }
 
+        // TODO: Städa upp den alla checkar
         if (httpErrorResponse.error instanceof ErrorEvent) {
           // client-side error. Ska den hanteras på något annat sätt?
           this.snackbarService.errorSnackbar(errorMessage);
         } else {
           // server-side error
-          this.snackbarService.errorSnackbar(errorMessage);
+          if (
+            httpErrorResponse.status === 0 &&
+            sessionStorage.getItem('firstApiError') === 'yes'
+          ) {
+            console.log(errorMessage);
+          } else if (httpErrorResponse.status === 0) {
+            this.snackbarService.errorSnackbar(errorMessage);
+            sessionStorage.setItem('firstApiError', 'yes');
+          } else {
+            this.snackbarService.errorSnackbar(errorMessage);
+          }
         }
 
         return throwError(() => errorMessage);

@@ -66,5 +66,6 @@ export class SnackbarService implements OnDestroy {
   }
   ngOnDestroy(): void {
     this.destroySubject$.next();
+    this.destroySubject$.complete();
   }
 }

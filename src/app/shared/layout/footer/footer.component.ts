@@ -1,6 +1,6 @@
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, of } from 'rxjs';
 
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ThemeService } from '@app/shared/services/utils/theme.service';
 
 @Component({
@@ -8,34 +8,24 @@ import { ThemeService } from '@app/shared/services/utils/theme.service';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss'],
 })
-export class FooterComponent implements OnInit, OnDestroy {
-  private destroySubject$ = new Subject<void>();
-  protected currentTheme!: string;
+export class FooterComponent implements OnInit {
+  protected currentTheme$: Observable<string> = of('');
 
   darkModeFooterColors = {
-    levelOne: '#5c5c5c',
-    levelTwo: '#4f4f4f',
-    levelThree: '#404040',
+    top: '#5c5c5c',
+    middle: '#4f4f4f',
+    bottom: '#404040',
   };
 
   lightModeFooterColors = {
-    levelOne: '#ededed',
-    levelTwo: '#c9c9c9',
-    levelThree: '#999999',
+    top: '#ededed',
+    middle: '#c9c9c9',
+    bottom: '#999999',
   };
 
   constructor(private themeService: ThemeService) {}
 
   ngOnInit() {
-    this.themeService
-      .getCurrentTheme()
-      .pipe(takeUntil(this.destroySubject$))
-      .subscribe((res) => {
-        this.currentTheme = res;
-      });
-  }
-
-  ngOnDestroy(): void {
-    this.destroySubject$.next();
+    this.currentTheme$ = this.themeService.getCurrentTheme();
   }
 }

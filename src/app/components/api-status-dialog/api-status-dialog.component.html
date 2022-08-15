@@ -1,15 +1,16 @@
 <h1 mat-dialog-title>API Status</h1>
-<div mat-dialog-content>
+<div mat-dialog-content *ngIf="apiStatus$ | async as status">
   <h4>
-    Scraping interval: <i>{{ apiStatus.scrapingIntervalInMinutes }} minutes</i>
+    Scraping interval:
+    <i>{{ status.scrapingIntervalInMinutes }} minutes</i>
   </h4>
   <h4>Uptime</h4>
   <div class="uptime">
-    <p>Years: {{ apiStatus.uptime.years }}</p>
-    <p>Months: {{ apiStatus.uptime.months }}</p>
-    <p>Days: {{ apiStatus.uptime.days }}</p>
-    <p>Hours: {{ apiStatus.uptime.hours }}</p>
-    <p>Minutes: {{ apiStatus.uptime.minutes }}</p>
-    <p>Seconds: {{ apiStatus.uptime.seconds }}</p>
+    <p>Years: {{ status.uptime.years }}</p>
+    <p>Months: {{ status.uptime.months }}</p>
+    <p>Days: {{ status.uptime.days }}</p>
+    <p>Hours: {{ status.uptime.hours }}</p>
+    <p>Minutes: {{ status.uptime.minutes }}</p>
+    <p>Seconds: {{ status.uptime.seconds }}</p>
   </div>
 </div>
