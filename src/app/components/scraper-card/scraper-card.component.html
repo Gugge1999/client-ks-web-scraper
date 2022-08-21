@@ -80,14 +80,14 @@
   </mat-card>
   <div
     *ngIf="smallAddNewWatchButtonSize; else showLargeAddNewWatchButton"
-    class="small-new-watch-container">
+    class="fab-small-screen-new-watch-button">
     <button mat-fab color="primary" (click)="openNewWatchDialog()">
       <mat-icon class="small-add-watch-icon">add</mat-icon>
     </button>
   </div>
 
   <ng-template #showLargeAddNewWatchButton>
-    <div class="large-new-watch-container">
+    <div class="fab-large-screen-new-watch-button">
       <button
         mat-raised-button
         color="primary"

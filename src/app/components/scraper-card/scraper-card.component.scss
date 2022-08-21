@@ -25,17 +25,15 @@ mat-card-actions > * {
   margin-left: 0.5em;
 }
 
-.large-new-watch-container {
+.fab-large-screen-new-watch-button {
   position: fixed;
-  display: flex;
-  bottom: 1em; // 1em från skärmens botten
+  bottom: 1rem; // 1em från skärmens botten
 }
 
-.small-new-watch-container {
+.fab-small-screen-new-watch-button {
   position: fixed;
-  right: 1.5em;
-  bottom: 0;
-  bottom: 2em; // 1em från skärmens botten
+  right: 1.5rem;
+  bottom: 2rem; // 1em från skärmens botten
 }
 
 .new-watch-button {
