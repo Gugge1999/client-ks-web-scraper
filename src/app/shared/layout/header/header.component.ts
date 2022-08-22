@@ -4,12 +4,14 @@ import {
   Observable,
   of,
   shareReplay,
+  Subject,
   switchMap,
+  takeUntil,
   timer
 } from 'rxjs';
 
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiStatusDialogComponent } from '@components/api-status-dialog/api-status-dialog.component';
 import { ApiStatus } from '@models/api-status.model';
@@ -21,10 +23,11 @@ import { ThemeService } from '@shared/services/utils/theme.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnDestroy {
   apiStatus$!: Observable<ApiStatus>;
   isDarkMode: boolean;
   showHamburgerMenu: boolean = true;
+  private destroySubject$ = new Subject<void>();
 
   constructor(
     private dialog: MatDialog,
@@ -37,8 +40,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // Försök byta från .subscribe
     this.breakpointObserver
       .observe(['(min-width: 1000px)'])
+      .pipe(takeUntil(this.destroySubject$))
       .subscribe((state: BreakpointState) => {
         state.matches
           ? (this.showHamburgerMenu = false)
@@ -79,5 +84,10 @@ export class HeaderComponent implements OnInit {
     this.themeService.setCurrentTheme(
       this.themeService.isDarkMode() ? 'dark-mode' : 'light-mode'
     );
+  }
+
+  ngOnDestroy(): void {
+    this.destroySubject$.next();
+    this.destroySubject$.complete();
   }
 }
