@@ -6,11 +6,14 @@ import {
   shareReplay,
   Subject,
   switchMap,
-  takeUntil,
   timer
 } from 'rxjs';
 
-import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import {
+  BreakpointObserver,
+  Breakpoints,
+  BreakpointState
+} from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ApiStatusDialogComponent } from '@components/api-status-dialog/api-status-dialog.component';
@@ -28,6 +31,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   isDarkMode: boolean;
   showHamburgerMenu: boolean = true;
   private destroySubject$ = new Subject<void>();
+  isHandset$!: Observable<BreakpointState>;
 
   constructor(
     private dialog: MatDialog,
@@ -40,15 +44,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // Försök byta från .subscribe
-    this.breakpointObserver
-      .observe(['(min-width: 1000px)'])
-      .pipe(takeUntil(this.destroySubject$))
-      .subscribe((state: BreakpointState) => {
-        state.matches
-          ? (this.showHamburgerMenu = false)
-          : (this.showHamburgerMenu = true);
-      });
+    this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset);
 
     let failedApiCalls = 0;
 

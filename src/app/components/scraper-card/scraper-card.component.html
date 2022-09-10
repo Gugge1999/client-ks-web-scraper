@@ -1,8 +1,10 @@
-<div class="card-container">
+<div class="card-container" *ngIf="this.isHandset$ | async as breakpointState">
   <mat-card
     class="card"
     *ngFor="let watch of watches; index as i"
-    [ngClass]="cardWidth">
+    [ngClass]="
+      breakpointState.matches ? 'full-card-width' : 'small-card-width'
+    ">
     <mat-card-title
       ><strong>{{ watch.label }}</strong></mat-card-title
     >
@@ -79,7 +81,7 @@
     </mat-card-actions>
   </mat-card>
   <div
-    *ngIf="smallAddNewWatchButtonSize; else showLargeAddNewWatchButton"
+    *ngIf="breakpointState.matches; else showLargeAddNewWatchButton"
     class="fab-small-screen-new-watch-button">
     <button mat-fab color="primary" (click)="openNewWatchDialog()">
       <mat-icon class="small-add-watch-icon">add</mat-icon>

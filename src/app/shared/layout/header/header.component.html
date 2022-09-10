@@ -1,4 +1,4 @@
-<header role="banner">
+<header role="banner" *ngIf="this.isHandset$ | async as breakpointState">
   <mat-toolbar color="primary">
     <mat-toolbar-row>
       <a class="title-bar-link" [routerLink]="['/']">
@@ -6,7 +6,7 @@
         <span class="toolbar-title">KS Web Scraper</span>
       </a>
       <span class="spacer"></span>
-      <div [hidden]="!showHamburgerMenu">
+      <div [hidden]="!breakpointState.matches">
         <button
           mat-icon-button
           [matMenuTriggerFor]="menu"
@@ -67,7 +67,7 @@
         </mat-menu>
       </div>
       <!-- Start "vanlig" meny -->
-      <div [hidden]="showHamburgerMenu">
+      <div [hidden]="breakpointState.matches">
         <mat-chip-list #chipList class="toolbar-chip-list">
           <mat-chip>
             <mat-slide-toggle

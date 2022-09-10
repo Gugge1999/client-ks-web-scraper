@@ -1,6 +1,10 @@
-import { Subject, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 
-import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
+import {
+  BreakpointObserver,
+  Breakpoints,
+  BreakpointState
+} from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
@@ -17,9 +21,8 @@ import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
 })
 export class ScraperCardComponent implements OnInit, OnDestroy {
   watches: Watch[] = [];
-  cardWidth: string = '';
-  smallAddNewWatchButtonSize: boolean = false;
   private destroySubject$ = new Subject<void>();
+  isHandset$!: Observable<BreakpointState>;
 
   constructor(
     private dialog: MatDialog,
@@ -29,18 +32,7 @@ export class ScraperCardComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.breakpointObserver
-      .observe(['(min-width: 1000px)'])
-      .pipe(takeUntil(this.destroySubject$))
-      .subscribe((state: BreakpointState) => {
-        if (state.matches) {
-          this.cardWidth = 'small-card-width';
-          this.smallAddNewWatchButtonSize = false;
-        } else {
-          this.cardWidth = 'full-card-width';
-          this.smallAddNewWatchButtonSize = true;
-        }
-      });
+    this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset);
 
     this.watchService
       .getAllWatches()
