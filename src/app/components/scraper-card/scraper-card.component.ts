@@ -82,6 +82,7 @@ export class ScraperCardComponent implements OnInit, OnDestroy {
   }
 
   openNewWatchDialog() {
+    // TODO: Byt från px till %
     const dialogRef = this.dialog.open(NewWatchDialogComponent, {
       width: '700px',
       height: '425px',
