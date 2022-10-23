@@ -11,7 +11,7 @@ Se: https://stackblitz.com/edit/angular-fh1kyp?file=src%2Fapp%2Ftodo.service.ts
 
 
 Skriv om theme service så att den använder riktiga getters och setters. 
-
+Den guiden kanske är bra: https://www.youtube.com/watch?v=sM3ATKt8568&list=WL&index=34
 
 Kolla genom https://github.com/AvocadoVenom/OverlayLoadingComponents 
 och se om det är en bättre lösning på spinner / progess bar
@@ -30,6 +30,9 @@ Använd Jest för att testa: https://www.xfive.co/blog/testing-angular-faster-je
 
 
 |--------------------------------------------------- Misc ---------------------------------------------------------|
+Bra förklaring om NgRx och historien bakom det:
+https://blog.angular-university.io/angular-ngrx-store-and-effects-crash-course/
+
 Bra video från Google om Angular "How to stay fast and fresh with Angular"
 https://www.youtube.com/watch?v=B-lipaiZII8
 
