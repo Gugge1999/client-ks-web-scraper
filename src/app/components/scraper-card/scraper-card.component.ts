@@ -10,6 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { DeleteWatchDialogComponent } from '@components/delete-watch-dialog/delete-watch-dialog.component';
 import { NewWatchDialogComponent } from '@components/new-watch-dialog/new-watch-dialog.component';
+import { TimeFormats } from '@models/constants';
 import { Watch } from '@models/watch.model';
 import { WatchService } from '@services/watch.service';
 import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
@@ -23,6 +24,7 @@ export class ScraperCardComponent implements OnInit, OnDestroy {
   watches: Watch[] = [];
   private destroySubject$ = new Subject<void>();
   isHandset$!: Observable<BreakpointState>;
+  protected cardFormat = TimeFormats.cardFormat;
 
   constructor(
     private dialog: MatDialog,

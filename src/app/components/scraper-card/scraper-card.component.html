@@ -25,10 +25,13 @@
             {{
               watch.last_email_sent === ''
                 ? 'No email sent'
-                : watch.last_email_sent
+                : (watch.last_email_sent | date: cardFormat)
             }}
           </p>
-          <p><strong>Added: </strong> {{ watch.added }}</p>
+          <p>
+            <strong>Added: </strong>
+            {{ watch.added | date: cardFormat }}
+          </p>
           <p>
             <strong>Current watch: </strong>
             <!-- Visa endast den sensate klockan, därav index 0 -->
