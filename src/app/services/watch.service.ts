@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { WatchFormDTO } from '@app/models/DTOs/watch-form-dto';
 import { ProgressBarOverlayService } from '@app/shared/services/progress-bar/progess-bar-overlay.service';
 import { Watch } from '@models/watch.model';
 import { AppConfigService } from '@shared/services/utils/app-config.service';
@@ -21,12 +22,12 @@ export class WatchService {
     private progressBarService: ProgressBarOverlayService
   ) {}
 
-  addNewWatch(data: { label: string; link: string }): Observable<Watch> {
+  addNewWatch(watchFormDTO: WatchFormDTO): Observable<Watch> {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/add-watch`;
 
     this.progressBarService.show('Adding watch...');
 
-    return this.http.post<Watch>(API_URL, data, httpOptions);
+    return this.http.post<Watch>(API_URL, watchFormDTO, httpOptions);
   }
 
   getAllWatches(): Observable<Watch[]> {

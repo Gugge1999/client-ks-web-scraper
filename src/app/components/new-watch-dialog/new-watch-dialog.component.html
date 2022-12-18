@@ -30,23 +30,24 @@
       <mat-label>Watch to scrape</mat-label>
       <input
         matInput
-        formControlName="link"
+        formControlName="watchToScrape"
         type="text"
         class="form-control"
-        id="link"
-        name="link" />
+        id="watchToScrape"
+        name="watchToScrape" />
       <button
-        *ngIf="watchForm.controls['link'].value !== ''"
+        *ngIf="watchForm.controls['watchToScrape'].value !== ''"
         matSuffix
         mat-icon-button
         aria-label="Clear"
-        (click)="watchForm.controls['link'].setValue('')">
+        (click)="watchForm.controls['watchToScrape'].setValue('')">
         <mat-icon>close</mat-icon>
       </button>
       <mat-hint>
         <h5>Enter the watch you want to scrape.</h5>
       </mat-hint>
-      <mat-error *ngIf="watchForm.controls['link'].errors?.['required']">
+      <mat-error
+        *ngIf="watchForm.controls['watchToScrape'].errors?.['required']">
         <h5>Name of watch to scrape is required.</h5>
       </mat-error>
     </mat-form-field>

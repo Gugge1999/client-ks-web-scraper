@@ -1,8 +1,9 @@
 import { Subject, takeUntil } from 'rxjs';
 
 import { Component, OnDestroy } from '@angular/core';
-import { FormGroup, NonNullableFormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { WatchFormDTO } from '@app/models/DTOs/watch-form-dto';
 import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
 import { Watch } from '@models/watch.model';
 import { WatchService } from '@services/watch.service';
@@ -15,43 +16,46 @@ import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
   styleUrls: ['./new-watch-dialog.component.scss'],
 })
 export class NewWatchDialogComponent implements OnDestroy {
-  protected watchForm: FormGroup;
+  watchForm = new FormGroup({
+    label: new FormControl<string>('', {
+      validators: [Validators.required, Validators.minLength(3)],
+      nonNullable: true,
+    }),
+    watchToScrape: new FormControl<string>('', {
+      validators: [Validators.required],
+      nonNullable: true,
+    }),
+  });
+
   private destroySubject$ = new Subject<void>();
 
   constructor(
     private dialogRef: MatDialogRef<ScraperCardComponent>,
     private watchService: WatchService,
     private snackbarService: SnackbarService,
-    private progressBarService: ProgressBarOverlayService,
-    private formBuilder: NonNullableFormBuilder
-  ) {
-    this.watchForm = this.formBuilder.group({
-      label: ['', [Validators.required, Validators.minLength(3)]],
-      link: ['', [Validators.required]],
-    });
-  }
+    private progressBarService: ProgressBarOverlayService
+  ) {}
 
   submitNewWatch() {
-    const wordsSeparatedByPlus = this.watchForm
-      .get('link')
-      ?.value.trim()
+    const wordsSeparatedByPlus = this.watchForm.controls.watchToScrape.value
+      .trim()
       .replace(/\s+/g, '+');
 
     const replaceThreadString =
       'https://klocksnack.se/search/1/?q=REPLACE-ME&t=post&c[child_nodes]=1&c[nodes][0]=11&c[title_only]=1&o=date';
 
-    const watchThread = replaceThreadString.replace(
+    const linkToThread = replaceThreadString.replace(
       'REPLACE-ME',
       wordsSeparatedByPlus
     );
 
-    const watchForm = {
-      label: this.watchForm.get('label')?.value,
-      link: watchThread,
+    const watchFormDTO: WatchFormDTO = {
+      label: this.watchForm.controls.label.value,
+      link: linkToThread,
     };
 
     this.watchService
-      .addNewWatch(watchForm)
+      .addNewWatch(watchFormDTO)
       .pipe(takeUntil(this.destroySubject$))
       .subscribe({
         next: (res: Watch) => {
@@ -61,7 +65,8 @@ export class NewWatchDialogComponent implements OnDestroy {
           );
           this.progressBarService.hide();
         },
-        error: () => {
+        error: (error) => {
+          console.log(`Error from addNewWatch function: ${error}`);
           this.dialogRef.close();
           this.progressBarService.hide();
         },
