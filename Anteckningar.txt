@@ -2,8 +2,8 @@
 Byt till Firebase för deploy av Angular
 
 
-Kolla på hur unsubscribe kan skötas: 
-https://medium.com/ngconf/rxjs-for-beginner-angular-developers-part-2-fundamentals-535b939378d5
+Angular material och CDK har förändrats i v 15
+Se: https://www.youtube.com/watch?v=XlPtyPb3Hmw
 
 
 Byt till | async för att hantera visning / borttagning av klockor.
