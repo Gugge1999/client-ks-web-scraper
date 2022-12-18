@@ -1,7 +1,7 @@
 import { Subject, takeUntil } from 'rxjs';
 
 import { Injectable, OnDestroy } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { Watch } from '@models/watch.model';
 import { WatchService } from '@services/watch.service';
 

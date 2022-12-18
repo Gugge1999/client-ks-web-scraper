@@ -2,7 +2,7 @@ import { Subject, takeUntil } from 'rxjs';
 
 import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatLegacyDialogRef as MatDialogRef } from '@angular/material/legacy-dialog';
 import { WatchFormDTO } from '@app/models/DTOs/watch-form-dto';
 import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
 import { Watch } from '@models/watch.model';

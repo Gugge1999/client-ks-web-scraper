@@ -15,7 +15,7 @@ import {
   BreakpointState
 } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { ApiStatusDialogComponent } from '@components/api-status-dialog/api-status-dialog.component';
 import { ApiStatus } from '@models/api-status.model';
 import { StatusService } from '@shared/services/utils/status.service';
