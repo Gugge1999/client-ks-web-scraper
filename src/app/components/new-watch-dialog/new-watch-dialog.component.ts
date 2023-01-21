@@ -51,7 +51,7 @@ export class NewWatchDialogComponent implements OnDestroy {
 
     const watchFormDTO: WatchFormDTO = {
       label: this.watchForm.controls.label.value,
-      link: linkToThread,
+      linkToThread: linkToThread,
     };
 
     this.watchService

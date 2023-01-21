@@ -30,8 +30,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   apiStatus$!: Observable<ApiStatus>;
   isDarkMode: boolean;
   showHamburgerMenu: boolean = true;
-  private destroySubject$ = new Subject<void>();
   isHandset$!: Observable<BreakpointState>;
+
+  private destroySubject$ = new Subject<void>();
 
   constructor(
     private dialog: MatDialog,

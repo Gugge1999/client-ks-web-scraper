@@ -11,6 +11,6 @@
     <p>Days: {{ status.uptime.days }}</p>
     <p>Hours: {{ status.uptime.hours }}</p>
     <p>Minutes: {{ status.uptime.minutes }}</p>
-    <p>Seconds: {{ status.uptime.seconds }}</p>
+    <p>Seconds: {{ status.uptime.seconds | number: '1.0-0' }}</p>
   </div>
 </div>
