@@ -6,6 +6,6 @@ export interface Watch {
   label: string;
   watches: ScrapedWatches[];
   active: boolean;
-  last_email_sent: string;
+  lastEmailSent: string;
   added: string;
 }

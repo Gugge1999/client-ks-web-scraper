@@ -22,9 +22,10 @@ import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
 })
 export class ScraperCardComponent implements OnInit, OnDestroy {
   watches: Watch[] = [];
-  private destroySubject$ = new Subject<void>();
   isHandset$!: Observable<BreakpointState>;
-  protected cardFormat = TimeFormats.cardFormat;
+  cardFormat = TimeFormats.cardFormat;
+
+  private destroySubject$ = new Subject<void>();
 
   constructor(
     private dialog: MatDialog,

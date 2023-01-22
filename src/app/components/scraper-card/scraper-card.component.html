@@ -23,11 +23,11 @@
             >
           </p>
           <p>
-            <strong> Last mail sent: </strong>
+            <strong> Last email sent: </strong>
             {{
-              watch.last_email_sent === ''
+              watch.lastEmailSent === ''
                 ? 'No email sent'
-                : (watch.last_email_sent | date: cardFormat)
+                : (watch.lastEmailSent | date: cardFormat)
             }}
           </p>
           <p>
