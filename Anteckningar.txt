@@ -1,5 +1,8 @@
 -------------- TODO --------------
-Byt till Firebase för deploy av Angular
+Byt till Firebase eller Github pages för deploy av Angular
+
+
+Det går att bygga Angular med esbuild istället för webpack. esbuild är mycket snabbare men experimental
 
 
 Angular material och CDK har förändrats i v 15
@@ -13,6 +16,7 @@ Se: https://stackblitz.com/edit/angular-fh1kyp?file=src%2Fapp%2Ftodo.service.ts
 Skriv om theme service så att den använder riktiga getters och setters. 
 Den guiden kanske är bra: https://www.youtube.com/watch?v=sM3ATKt8568&list=WL&index=34
 
+
 Kolla genom https://github.com/AvocadoVenom/OverlayLoadingComponents 
 och se om det är en bättre lösning på spinner / progess bar
 
@@ -21,7 +25,8 @@ För att testa deploy. Se: https://www.youtube.com/watch?v=QdHvS0D1zAI
 
 
 Lägg till state för expansion panel i local storage
-Hur localstorage och | async används: https://blog.briebug.com/blog/managing-local-storage-in-angular
+Hur localStorage och | async används: https://blog.briebug.com/blog/managing-local-storage-in-angular
+
 
 Kolla in storybook: https://storybook.js.org/docs/angular/get-started/install
 
