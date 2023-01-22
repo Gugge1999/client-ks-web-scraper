@@ -5,8 +5,8 @@ Byt till Firebase eller Github pages för deploy av Angular
 Det går att bygga Angular med esbuild istället för webpack. esbuild är mycket snabbare men experimental
 
 
-Angular material och CDK har förändrats i v 15
-Se: https://www.youtube.com/watch?v=XlPtyPb3Hmw
+Ta bort filer som som försvann i angular 15 uppgraderingen:
+Se: https://blog.ninja-squad.com/2022/11/16/angular-cli-15.0/
 
 
 Byt till | async för att hantera visning / borttagning av klockor.
