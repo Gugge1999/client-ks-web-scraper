@@ -155,8 +155,8 @@ $mat-dark-theme-background: (
 //  If you don't need the default component typographies but still want the hierarchy styles,
 //  you can delete this line and instead use:
 //    `@include mat.legacy-typography-hierarchy($fontConfig);`
-@include mat.all-legacy-component-typographies($fontConfig);
-@include mat.legacy-core();
+@include mat.all-component-typographies($fontConfig);
+@include mat.core();
 
 // Theme Config
 
@@ -214,11 +214,25 @@ body {
   --text-warn-lighter-color: #{$dark-primary-text};
   --text-warn-darker-color: #{$light-primary-text};
 }
-$mat-warn: (
-  main: #a11818,
-  lighter: #e3baba,
-  darker: #850e0e,
-  200: #a11818,
+$mat-warn-dark: (
+  main: #ff6e6e,
+  lighter: #ffd4d4,
+  darker: #ff5151,
+  200: #ff6e6e,
+  // For slide toggle,
+  contrast:
+    (
+      main: $dark-primary-text,
+      lighter: $dark-primary-text,
+      darker: $dark-primary-text,
+    ),
+);
+
+$mat-warn-light: (
+  main: #b00020,
+  lighter: #e7b3bc,
+  darker: #970013,
+  200: #b00020,
   // For slide toggle,
   contrast:
     (
@@ -227,19 +241,24 @@ $mat-warn: (
       darker: $light-primary-text,
     ),
 );
-$theme-warn: mat.define-palette($mat-warn, main, lighter, darker);
+
+$theme-warn-dark: mat.define-palette($mat-warn-dark, main, lighter, darker);
+
+$theme-warn-light: mat.define-palette($mat-warn-light, main, lighter, darker);
+
 $theme: (
   primary: $theme-primary,
   accent: $theme-accent,
-  warn: $theme-warn,
+  warn: $theme-warn-dark,
   is-dark: true,
   foreground: $mat-dark-theme-foreground,
   background: $mat-dark-theme-background,
 );
+
 $altTheme: (
   primary: $theme-primary,
   accent: $theme-accent,
-  warn: $theme-warn,
+  warn: $theme-warn-light,
   is-dark: false,
   foreground: $mat-light-theme-foreground,
   background: $mat-light-theme-background,
@@ -247,26 +266,26 @@ $altTheme: (
 
 // Theme Init
 .dark-mode {
-  @include mat.all-legacy-component-themes($theme);
+  @include mat.all-component-themes($theme);
 }
 
 .light-mode {
-  @include mat.all-legacy-component-themes($altTheme);
+  @include mat.all-component-themes($altTheme);
 }
 
 // Specific component overrides, pieces that are not in line with the general theming
 
 // Handle buttons appropriately, with respect to line-height
-.mat-raised-button,
-.mat-stroked-button,
-.mat-flat-button {
+.mat-mdc-raised-button,
+.mat-mdc-outlined-button,
+.mat-mdc-unelevated-button {
   padding: 0 1.15em;
   margin: 0 0.65em;
   min-width: 3em;
   line-height: 36.4px;
 }
 
-.mat-standard-chip {
+.mat-mdc-standard-chip {
   padding: 0.5em 0.85em;
   min-height: 2.5em;
 }

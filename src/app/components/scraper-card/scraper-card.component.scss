@@ -16,30 +16,10 @@
   margin-bottom: 0;
 }
 
-.mat-card-actions-align-end {
-  align-items: center;
-}
-
-// Margin on all child elements (card-actions)
-mat-card-actions > * {
-  margin-left: 0.5em;
-}
-
-.fab-large-screen-new-watch-button {
-  position: fixed;
-  bottom: 1rem; // 1em från skärmens botten
-}
-
 .fab-small-screen-new-watch-button {
   position: fixed;
   right: 1.5rem;
   bottom: 2rem; // 1em från skärmens botten
-}
-
-.new-watch-button {
-  margin: 0 auto;
-  padding: 0.5em 2.5em;
-  font-size: large;
 }
 
 .large-add-watch-icon {
@@ -50,10 +30,6 @@ mat-card-actions > * {
 
 .small-add-watch-icon {
   transform: scale(1.75);
-}
-
-mat-slide-toggle.is-watch-active-slide-toggle {
-  margin: 0.25em 1em 0 1em;
 }
 
 .delete-icon {
@@ -72,6 +48,11 @@ mat-slide-toggle.is-watch-active-slide-toggle {
   padding-left: 0.8em;
 }
 
-.mat-card-title {
-  padding-left: 0.25em;
+.mat-mdc-card-title {
+  padding-left: 0.75em;
+  padding-top: 0.5em;
+}
+
+.is-watch-active-slide-toggle {
+  margin-left: 16px;
 }

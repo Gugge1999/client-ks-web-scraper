@@ -15,7 +15,7 @@ import {
   BreakpointState
 } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ApiStatusDialogComponent } from '@components/api-status-dialog/api-status-dialog.component';
 import { ApiStatus } from '@models/api-status.model';
 import { StatusService } from '@shared/services/utils/status.service';
@@ -81,6 +81,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.themeService.setCurrentTheme(
       this.themeService.isDarkMode() ? 'dark-mode' : 'light-mode'
     );
+
+    // TODO: Lite klumpig lösning att hämta samma värde igen. Byt till ren rxjs?
+    this.isDarkMode = this.themeService.isDarkMode();
   }
 
   ngOnDestroy(): void {

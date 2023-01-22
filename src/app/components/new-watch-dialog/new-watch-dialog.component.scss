@@ -11,11 +11,7 @@ form {
   height: 100%;
 }
 
-mat-dialog-content {
-  flex-grow: 1;
-}
-
-.mat-form-field {
+.mat-mdc-form-field {
   margin-bottom: 1em;
   &:last-child {
     margin-bottom: 0;

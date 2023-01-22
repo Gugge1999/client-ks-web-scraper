@@ -13,15 +13,6 @@
   flex: 1 1 auto;
 }
 
-.toolbar-right {
-  @include style.flex-row-center;
-  font-size: 0.85em;
-}
-
-.toolbar-right .mat-slide-toggle {
-  margin-right: 1em;
-}
-
 .api-status-card-wrapper {
   @include style.flex-row-center;
   height: 2em;
@@ -49,6 +40,8 @@
 
 .status-text {
   margin: 0 0.5em;
+  font-size: medium;
+  user-select: none;
 }
 
 .status-icon.offline {
@@ -62,4 +55,30 @@
 .dark-mode-icons {
   transform: scale(0.8);
   margin-left: 0.25em;
+}
+
+.header-chip {
+  margin-left: 12px;
+  padding: 8px;
+  border-radius: 15px;
+}
+
+.header-chip-wrapper-dark {
+  display: flex;
+  .header-chip {
+    background-color: #414141;
+  }
+  span {
+    color: #fff;
+  }
+}
+
+.header-chip-wrapper-light {
+  display: flex;
+  .header-chip {
+    background-color: #fff;
+  }
+  span {
+    color: #000;
+  }
 }

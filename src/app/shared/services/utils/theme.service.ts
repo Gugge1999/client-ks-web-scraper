@@ -8,7 +8,7 @@ import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 export class ThemeService {
   private _renderer!: Renderer2;
   private _colorTheme!: string;
-  private currentThemeSubject = new BehaviorSubject<string>(
+  private currentThemeSubject$ = new BehaviorSubject<string>(
     this.getColorTheme()
   );
 
@@ -42,8 +42,7 @@ export class ThemeService {
 
   private getColorTheme() {
     if (localStorage.getItem('user-theme')) {
-      return (this._colorTheme =
-        localStorage.getItem('user-theme') ?? 'dark-mode');
+      return (this._colorTheme = localStorage.getItem('user-theme') ?? '');
     } else {
       // Kolla vilket tema som användaren har satt i sitt OS.
       const userPrefersDark =
@@ -57,10 +56,10 @@ export class ThemeService {
   }
 
   public setCurrentTheme(currentTheme: string) {
-    this.currentThemeSubject.next(currentTheme);
+    this.currentThemeSubject$.next(currentTheme);
   }
 
   public getCurrentTheme(): Observable<string> {
-    return this.currentThemeSubject.asObservable();
+    return this.currentThemeSubject$.asObservable();
   }
 }

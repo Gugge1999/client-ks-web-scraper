@@ -1,5 +1,6 @@
 <div class="card-container" *ngIf="this.isHandset$ | async as breakpointState">
   <mat-card
+    appearance="outlined"
     class="card"
     *ngFor="let watch of watches; index as i"
     [ngClass]="
@@ -18,8 +19,8 @@
         <mat-card-content class="card-mat-card-content">
           <p>
             <strong>Thread being scraped: </strong>
-            <a target="_blank" class="link" href="{{ watch.linkToThread }}"
-              >Thread</a
+            <a target="_blank" class="link" [href]="watch.linkToThread"
+              >Link to thread</a
             >
           </p>
           <p>
@@ -37,35 +38,29 @@
           <p>
             <strong>Current watch: </strong>
             <!-- Visa endast den sensate klockan, därav index 0 -->
-            <a
-              target="_blank"
-              class="link"
-              href="{{ watch.watches[0].link }}"
-              >{{ watch.watches[0].name }}</a
-            >
+            <a target="_blank" class="link" [href]="watch.watches[0].link">{{
+              watch.watches[0].name
+            }}</a>
           </p>
         </mat-card-content>
       </mat-expansion-panel>
     </mat-accordion>
 
+    <!-- TODO: Bryt ut till en egen komponent? -->
     <mat-card-actions align="end" class="watch-card-actions">
       <button
         mat-icon-button
         class="deleteCardButton"
+        matTooltip="Delete watch"
+        matTooltipPosition="above"
         (click)="deleteWatchDialog(watch, i)">
-        <mat-icon
-          class="delete-icon"
-          matTooltip="Delete watch"
-          matTooltipPosition="above"
-          >delete_outline</mat-icon
-        >
+        <mat-icon class="delete-icon">delete_outline</mat-icon>
       </button>
-      <button mat-icon-button>
-        <mat-icon
-          fontSet="material-icons-outlined"
-          color="primary"
-          matTooltip="View statistics"
-          matTooltipPosition="above"
+      <button
+        mat-icon-button
+        matTooltip="View statistics"
+        matTooltipPosition="above">
+        <mat-icon fontSet="material-icons-outlined" color="primary"
           >assessment</mat-icon
         >
       </button>
@@ -86,23 +81,11 @@
     </mat-card-actions>
   </mat-card>
   <div
-    *ngIf="breakpointState.matches; else showLargeAddNewWatchButton"
-    class="fab-small-screen-new-watch-button">
+    class="fab-small-screen-new-watch-button custom-tooltip"
+    matTooltip="Add new watch"
+    matTooltipPosition="left">
     <button mat-fab color="primary" (click)="openNewWatchDialog()">
       <mat-icon class="small-add-watch-icon">add</mat-icon>
     </button>
   </div>
-
-  <ng-template #showLargeAddNewWatchButton>
-    <div class="fab-large-screen-new-watch-button">
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="openNewWatchDialog()"
-        class="new-watch-button">
-        <mat-icon class="large-add-watch-icon">add_circle</mat-icon>
-        Add watch
-      </button>
-    </div>
-  </ng-template>
 </div>

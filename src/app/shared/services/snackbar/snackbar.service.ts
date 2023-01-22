@@ -1,7 +1,7 @@
 import { Subject, takeUntil } from 'rxjs';
 
 import { Injectable, OnDestroy } from '@angular/core';
-import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Watch } from '@models/watch.model';
 import { WatchService } from '@services/watch.service';
 
@@ -16,13 +16,13 @@ export class SnackbarService implements OnDestroy {
     private watchService: WatchService
   ) {}
 
-  successSnackbar(message: string = '') {
+  successSnackbar(message: string) {
     this.snackbar.open(message, 'Dismiss', {
       panelClass: 'snackbar-success',
     });
   }
 
-  infoSnackbar(message: string = '') {
+  infoSnackbar(message: string) {
     this.snackbar.open(message, 'Dismiss', {
       panelClass: 'snackbar-info',
     });
@@ -30,7 +30,7 @@ export class SnackbarService implements OnDestroy {
 
   errorSnackbar(message: string = 'Something went wrong') {
     this.snackbar.open(`Error: ${message}`, 'Dismiss', {
-      panelClass: ['mat-toolbar', 'mat-warn'],
+      panelClass: ['snackbar-warning'],
     });
   }
 
@@ -38,9 +38,7 @@ export class SnackbarService implements OnDestroy {
     const snack = this.snackbar.open(
       `Deleted watch: ${deletedWatch.label}`,
       'Undo',
-      {
-        panelClass: ['mat-toolbar', 'mat-warn'],
-      }
+      { panelClass: ['snackbar-warning'] }
     );
     snack
       .afterDismissed()
@@ -64,6 +62,7 @@ export class SnackbarService implements OnDestroy {
         watches.splice(index, 0, deletedWatch);
       });
   }
+
   ngOnDestroy(): void {
     this.destroySubject$.next();
     this.destroySubject$.complete();

@@ -7,14 +7,14 @@
       </a>
       <span class="spacer"></span>
       <!-- TODO: Byt ut till separata komponenter? -->
-      <div [hidden]="!isHandset.matches">
+      <div *ngIf="isHandset.matches; else largeMenu">
+        <!-- Start hamburgarmeny -->
         <button
           mat-icon-button
           [matMenuTriggerFor]="menu"
           aria-label="Example icon-button with a menu">
           <mat-icon>menu</mat-icon>
         </button>
-        <!-- Start hamburgermeny -->
         <mat-menu #menu="matMenu">
           <div class="hamburger-toolbar-wrapper">
             <button
@@ -68,15 +68,19 @@
         </mat-menu>
       </div>
       <!-- Start "vanlig" meny -->
-      <div [hidden]="isHandset.matches">
-        <mat-chip-list #chipList class="toolbar-chip-list">
-          <mat-chip>
-            <mat-slide-toggle
-              matTooltip="Toggle theme"
-              class="large-slide-toggle"
-              color="primary"
-              (click)="toggleTheme()"
-              [(ngModel)]="isDarkMode">
+      <ng-template #largeMenu>
+        <!-- TODO: Går det att byta till select med dark-mode? -->
+        <div
+          [ngClass]="
+            isDarkMode
+              ? 'header-chip-wrapper-dark'
+              : 'header-chip-wrapper-light'
+          ">
+          <div
+            class="header-chip pointer"
+            matTooltip="Toggle theme"
+            (click)="toggleTheme()">
+            <mat-slide-toggle color="accent" [checked]="isDarkMode">
               Dark mode
               <mat-icon
                 class="dark-mode-icons"
@@ -84,31 +88,33 @@
                 dark_mode
               </mat-icon>
             </mat-slide-toggle>
-          </mat-chip>
-          <mat-chip>
-            <div
-              class="api-active"
-              *ngIf="(apiStatus$ | async)?.active as active; else apiNotActive"
-              matTooltip="View API statistics"
-              [style.cursor]="active ? 'pointer' : 'default'"
-              (click)="active ? openApiStatusDialog() : ''">
+          </div>
+          <div
+            *ngIf="(apiStatus$ | async)?.active as active; else apiNotActive"
+            (click)="active ? openApiStatusDialog() : ''"
+            class="header-chip pointer"
+            matTooltip="View API statistics">
+            <!-- API:et är aktivt. -->
+            <div class="api-active">
               <mat-icon class="status-icon" color="primary">
                 check_circle_outline
               </mat-icon>
               <span class="status-text">API Status</span>
             </div>
-            <!-- API:et är inte aktivt. -->
-            <ng-template #apiNotActive>
+          </div>
+          <!-- API:et är INTE aktivt. -->
+          <ng-template #apiNotActive>
+            <div class="header-chip">
               <div class="api-inactive" matTooltip="API is not active">
                 <mat-icon class="status-icon offline" color="primary">
                   highlight_off
                 </mat-icon>
                 <span class="status-text">API Status</span>
               </div>
-            </ng-template>
-          </mat-chip>
-        </mat-chip-list>
-      </div>
+            </div>
+          </ng-template>
+        </div>
+      </ng-template>
     </mat-toolbar-row>
   </mat-toolbar>
 </header>

@@ -68,9 +68,6 @@ app-header {
   z-index: 1;
 }
 
-.mat-toolbar {
-  vertical-align: middle;
-}
 /*#endregion */
 
 /*#region links*/
@@ -87,39 +84,46 @@ a {
 }
 
 a:hover {
-  color: rgb(231, 231, 231);
+  color: #e7e7e7;
 }
 /*#endregion */
 
 /*#region tooltip*/
-.mat-tooltip.tooltip {
-  font-size: 0.9em;
-}
-
-.mat-tooltip {
-  font-size: 1em;
+.mat-mdc-tooltip {
+  --mdc-plain-tooltip-supporting-text-size: 16px;
 }
 /*#endregion */
 
 /*#region snackbar*/
-snack-bar-container.snackbar-success {
-  background-color: #58c44a !important;
+.mat-mdc-snack-bar-container.snackbar-success {
+  --mdc-snackbar-container-color: #58c44a;
 }
 
-snack-bar-container.snackbar-info {
-  background-color: $primary-accent-color-light !important;
+.dark-mode .mat-mdc-snack-bar-container.snackbar-warning {
+  --mdc-snackbar-container-color: #ff6e6e;
+  .mat-mdc-snack-bar-label {
+    color: #000;
+  }
 }
 
-.light-mode .mat-button {
-  color: white;
+.light-mode .mat-mdc-snack-bar-container.snackbar-warning {
+  --mdc-snackbar-container-color: #b00020;
+  .mat-mdc-snack-bar-label {
+    color: #fff;
+  }
 }
 
-snack-bar-container.snackbar-info .mat-button-wrapper,
+.light-mode .mat-mdc-button {
+  color: #fff !important;
+}
+
+/* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
+.mat-mdc-snack-bar-container .snackbar-info .mat-button-wrapper,
 .light-mode .mat-simple-snack-bar-content {
   color: #2d2d2d;
 }
 
-.light-mode .mat-toolbar.mat-warn .mat-simple-snack-bar-content,
+.light-mode .mat-toolbar.mat-warn .mat-mdc-snack-bar-label,
 .light-mode .snackbar-success .mat-simple-snack-bar-content {
   color: white;
 }
@@ -138,29 +142,21 @@ input {
 /*#endregion */
 
 /*#region slide toggle*/
-// .mat-slide-toggle-thumb-container har default z-index 0
-mat-slide-toggle
-  > label
-  > span.mat-slide-toggle-bar
-  > span.mat-slide-toggle-thumb-container {
-  z-index: 0;
+.mdc-form-field > label {
+  display: flex;
+  align-items: center;
 }
 
-.mat-slide-toggle-content {
-  @include flex-row-center;
-}
-/*#endregion */
-
-/*#region card*/
-.mat-card-title {
-  line-height: normal;
-}
 /*#endregion */
 
 /*#region expansion-panel*/
+.mat-expansion-panel {
+  margin: 1em;
+}
 .mat-expansion-panel-content .mat-expansion-panel-body {
   padding: 0 1em 1em;
 }
+
 /*#endregion */
 
 /*#region dark and light mode*/
@@ -172,36 +168,32 @@ mat-slide-toggle
   background: #fcfcfc;
 }
 
-.dark-mode .mat-chip.mat-standard-chip {
-  background-color: lighten(#2c2c2c, 5%);
-}
-
-.dark-mode .mat-error,
-.dark-mode .mat-form-field.mat-form-field-invalid .mat-form-field-label,
-.dark-mode
-  .mat-form-field.mat-form-field-invalid
-  .mat-form-field-label
-  .mat-form-field-required-marker,
-.dark-mode
-  .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid
-  .mat-form-field-outline-thick {
-  color: $dark-mode-input-validation-error;
-}
-
-.dark-mode .mat-form-field-invalid .mat-input-element {
-  caret-color: $dark-mode-input-validation-error;
-}
-
-/*#endregion */
-
-/*#region chips*/
-.toolbar-chip-list .mat-standard-chip {
-  height: 3em;
-}
 /*#endregion */
 
 /*#region expansion-panel*/
 .mat-expansion-panel-header {
   font-size: 1rem;
+}
+/*#endregion */
+
+/*#region cursors*/
+.pointer {
+  cursor: pointer;
+  & * {
+    cursor: pointer;
+  }
+}
+/*#endregion */
+
+/*#region scrollbar*/
+::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: #202324;
+}
+::-webkit-scrollbar-thumb:vertical {
+  background-color: #454a4d;
 }
 /*#endregion */
