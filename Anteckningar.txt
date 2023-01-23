@@ -1,12 +1,8 @@
 -------------- TODO --------------
-Byt till Firebase eller Github pages för deploy av Angular
+Byt till Firebase för deploy av Angular
 
 
 Det går att bygga Angular med esbuild istället för webpack. esbuild är mycket snabbare men experimental
-
-
-Ta bort filer som som försvann i angular 15 uppgraderingen:
-Se: https://blog.ninja-squad.com/2022/11/16/angular-cli-15.0/
 
 
 Byt till | async för att hantera visning / borttagning av klockor.
@@ -38,11 +34,14 @@ Använd Jest för att testa: https://www.xfive.co/blog/testing-angular-faster-je
 Bra förklaring om NgRx och historien bakom det:
 https://blog.angular-university.io/angular-ngrx-store-and-effects-crash-course/
 
+
 Bra video från Google om Angular "How to stay fast and fresh with Angular"
 https://www.youtube.com/watch?v=B-lipaiZII8
 
+
 Tema:
 Custom theme: https://materialtheme.arcsine.dev/
+
 
 För diagram och tabeller använd:
 https://swimlane.github.io/ngx-charts/#/ngx-charts/line-chart
@@ -55,6 +54,7 @@ i angular.json under "serve"
 "options": {
   "host": "192.168.1.2"
 },
+
 
 För att köra debug med attach: 
   högerklicka på chrome, -> Google chrome -> properties.
