@@ -1,5 +1,9 @@
 @use '../../../../styles.scss' as style;
 
+header {
+  user-select: none;
+}
+
 .toolbar-title {
   font-size: x-large;
 }
@@ -41,7 +45,6 @@
 .status-text {
   margin: 0 0.5em;
   font-size: medium;
-  user-select: none;
 }
 
 .status-icon.offline {
