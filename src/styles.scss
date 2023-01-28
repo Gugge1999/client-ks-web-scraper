@@ -99,24 +99,6 @@ a:hover {
   --mdc-snackbar-container-color: #58c44a;
 }
 
-.dark-mode .mat-mdc-snack-bar-container.snackbar-warning {
-  --mdc-snackbar-container-color: #ff6e6e;
-  .mat-mdc-snack-bar-label {
-    color: #000;
-  }
-}
-
-.light-mode .mat-mdc-snack-bar-container.snackbar-warning {
-  --mdc-snackbar-container-color: #b00020;
-  .mat-mdc-snack-bar-label {
-    color: #fff;
-  }
-}
-
-.light-mode .mat-mdc-button {
-  color: #fff !important;
-}
-
 /* TODO(mdc-migration): The following rule targets internal classes of button that may no longer apply for the MDC version. */
 .mat-mdc-snack-bar-container .snackbar-info .mat-button-wrapper,
 .light-mode .mat-simple-snack-bar-content {
@@ -170,6 +152,24 @@ input {
 
 .dark-mode .mat-mdc-card-title {
   color: #fff;
+}
+
+.dark-mode .mat-mdc-snack-bar-container.snackbar-warning {
+  --mdc-snackbar-container-color: #ff6e6e;
+  .mat-mdc-snack-bar-label {
+    color: #000;
+  }
+}
+
+.light-mode .mat-mdc-snack-bar-container.snackbar-warning {
+  --mdc-snackbar-container-color: #b00020;
+  .mat-mdc-snack-bar-label {
+    color: #fff;
+  }
+}
+
+.light-mode .mat-mdc-button {
+  color: #fff !important;
 }
 
 /*#endregion */

@@ -1,51 +1,47 @@
-import { Observable, Subject, takeUntil } from 'rxjs';
+import { Observable } from 'rxjs';
 
 import {
   BreakpointObserver,
   Breakpoints,
   BreakpointState
 } from '@angular/cdk/layout';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { DeleteWatchDialogComponent } from '@components/delete-watch-dialog/delete-watch-dialog.component';
 import { NewWatchDialogComponent } from '@components/new-watch-dialog/new-watch-dialog.component';
 import { TimeFormats } from '@models/constants';
 import { Watch } from '@models/watch.model';
-import { WatchService } from '@services/watch.service';
+import { Store } from '@ngrx/store';
 import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
+import { toggleActiveStatus } from '@store/actions/watch-api.actions';
+import { deleteWatch } from '@store/actions/watch.actions';
+import { selectAllWatches } from '@store/selectors/watch.selectors';
 
 @Component({
   selector: 'app-scraper-card',
   templateUrl: './scraper-card.component.html',
   styleUrls: ['./scraper-card.component.scss'],
 })
-export class ScraperCardComponent implements OnInit, OnDestroy {
-  watches: Watch[] = [];
-  isHandset$!: Observable<BreakpointState>;
-  cardFormat = TimeFormats.cardFormat;
-
-  private destroySubject$ = new Subject<void>();
+export class ScraperCardComponent implements OnInit {
+  protected isHandset$!: Observable<BreakpointState>;
+  protected watches$!: Observable<Watch[]>;
+  protected cardDateFormat = TimeFormats.cardFormat;
 
   constructor(
-    private dialog: MatDialog,
-    private watchService: WatchService,
-    private snackbarService: SnackbarService,
-    private breakpointObserver: BreakpointObserver
+    private readonly dialog: MatDialog,
+    private readonly snackbarService: SnackbarService,
+    private readonly breakpointObserver: BreakpointObserver,
+    private readonly store: Store
   ) {}
 
   ngOnInit() {
     this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset);
 
-    this.watchService
-      .getAllWatches()
-      .pipe(takeUntil(this.destroySubject$))
-      .subscribe((res) => {
-        this.watches = res;
-      });
+    this.watches$ = this.store.select(selectAllWatches);
   }
 
-  deleteWatchDialog(watch: Watch, index: number) {
+  deleteWatchDialog(watch: Watch) {
     const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
       width: 'fit-content',
       autoFocus: false,
@@ -53,57 +49,31 @@ export class ScraperCardComponent implements OnInit, OnDestroy {
       restoreFocus: false,
     });
 
-    dialogRef
-      .afterClosed()
-      .pipe(takeUntil(this.destroySubject$))
-      .subscribe((res) => {
-        if (res === undefined || res.click === 'cancelClicked') {
-          return;
-        }
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res === undefined || res.click === 'cancelClicked') {
+        return;
+      }
 
-        this.watches = this.watches.filter((watch) => watch.id != res.id);
-        this.snackbarService.undoAndDeleteSnackbar(res, index, this.watches);
-      });
+      this.store.dispatch(deleteWatch({ watchId: watch.id }));
+
+      this.snackbarService.undoAndDeleteSnackbar(watch);
+    });
   }
 
-  toggleActiveStatus(
-    watch: { isActive: boolean; label: string; id: string },
-    index: number,
-    event: MatSlideToggleChange
-  ) {
-    const oldStatus = this.watches[index].active;
+  toggleActiveStatus(watch: Watch, event: MatSlideToggleChange) {
+    const oldStatus = watch.active;
     event.source.checked = oldStatus;
-    this.watchService
-      .toggleActiveStatus(watch)
-      .pipe(takeUntil(this.destroySubject$))
-      .subscribe({
-        next: (res) => {
-          this.watches[index].active = res.isActive;
-          this.snackbarService.infoSnackbar(`Toggled status on: ${res.label}`);
-        },
-      });
+
+    this.store.dispatch(toggleActiveStatus({ watch }));
   }
 
   openNewWatchDialog() {
     // TODO: Byt från px till %
-    const dialogRef = this.dialog.open(NewWatchDialogComponent, {
+    this.dialog.open(NewWatchDialogComponent, {
       width: '700px',
       height: '425px',
       autoFocus: false,
       restoreFocus: false,
     });
-    dialogRef
-      .afterClosed()
-      .pipe(takeUntil(this.destroySubject$))
-      .subscribe((res) => {
-        if (res === undefined || res === 'cancelClicked') return;
-
-        this.watches.push(res);
-      });
-  }
-
-  ngOnDestroy(): void {
-    this.destroySubject$.next();
-    this.destroySubject$.complete();
   }
 }

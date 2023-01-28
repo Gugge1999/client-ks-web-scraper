@@ -1,21 +1,17 @@
-import { Subject, takeUntil } from 'rxjs';
-
-import { Component, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
-import { WatchFormDTO } from '@app/models/DTOs/watch-form-dto';
 import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
-import { Watch } from '@models/watch.model';
-import { WatchService } from '@services/watch.service';
-import { ProgressBarOverlayService } from '@shared/services/progress-bar/progess-bar-overlay.service';
-import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
+import { WatchFormDTO } from '@models/DTOs/watch-form-dto';
+import { Store } from '@ngrx/store';
+import { addWatch } from '@store/actions/watch-api.actions';
 
 @Component({
   selector: 'app-new-watch-dialog',
   templateUrl: './new-watch-dialog.component.html',
   styleUrls: ['./new-watch-dialog.component.scss'],
 })
-export class NewWatchDialogComponent implements OnDestroy {
+export class NewWatchDialogComponent {
   watchForm = new FormGroup({
     label: new FormControl<string>('', {
       validators: [Validators.required, Validators.minLength(3)],
@@ -27,13 +23,9 @@ export class NewWatchDialogComponent implements OnDestroy {
     }),
   });
 
-  private destroySubject$ = new Subject<void>();
-
   constructor(
-    private dialogRef: MatDialogRef<ScraperCardComponent>,
-    private watchService: WatchService,
-    private snackbarService: SnackbarService,
-    private progressBarService: ProgressBarOverlayService
+    private readonly dialogRef: MatDialogRef<ScraperCardComponent>,
+    private readonly store: Store
   ) {}
 
   submitNewWatch() {
@@ -54,27 +46,8 @@ export class NewWatchDialogComponent implements OnDestroy {
       linkToThread: linkToThread,
     };
 
-    this.watchService
-      .addNewWatch(watchFormDTO)
-      .pipe(takeUntil(this.destroySubject$))
-      .subscribe({
-        next: (res: Watch) => {
-          this.dialogRef.close(res);
-          this.snackbarService.successSnackbar(
-            `Added watch with label: ${res.label}`
-          );
-          this.progressBarService.hide();
-        },
-        error: (error) => {
-          console.log(`Error from addNewWatch function: ${error}`);
-          this.dialogRef.close();
-          this.progressBarService.hide();
-        },
-      });
-  }
-
-  ngOnDestroy(): void {
-    this.destroySubject$.next();
-    this.destroySubject$.complete();
+    this.store.dispatch(
+      addWatch({ newWatch: watchFormDTO, dialogRef: this.dialogRef })
+    );
   }
 }

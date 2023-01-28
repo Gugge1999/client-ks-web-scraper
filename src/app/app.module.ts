@@ -1,21 +1,27 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, isDevMode, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from '@app/app-routing.module';
-import { AppComponent } from '@app/app.component';
-import { MaterialModule } from '@app/material.module';
 import { ApiStatusDialogComponent } from '@components/api-status-dialog/api-status-dialog.component';
 import { DeleteWatchDialogComponent } from '@components/delete-watch-dialog/delete-watch-dialog.component';
 import { NewWatchDialogComponent } from '@components/new-watch-dialog/new-watch-dialog.component';
 import { ProgessBarComponent } from '@components/progress-bar/progress-bar.component';
 import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FooterComponent } from '@shared/layout/footer/footer.component';
 import { HeaderComponent } from '@shared/layout/header/header.component';
 import { AppConfigService } from '@shared/services/utils/app-config.service';
 import { HttpErrorInterceptor } from '@shared/services/utils/http-error-interceptor.service';
+import { WatchEffects } from '@store/effects/watch.effects';
+import { reducers } from '@store/reducers/index';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { MaterialModule } from './material.module';
 
 const appConfigInitializer = (appConfig: AppConfigService) => {
   return () => appConfig.loadAppConfig();
@@ -41,6 +47,19 @@ const appConfigInitializer = (appConfig: AppConfigService) => {
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
+    StoreModule.forRoot(reducers, {
+      // Fulhack för att få dialog att fungera
+      runtimeChecks: {
+        strictActionImmutability: false,
+        strictActionSerializability: false,
+        strictActionTypeUniqueness: isDevMode(),
+        strictActionWithinNgZone: isDevMode(),
+        strictStateImmutability: isDevMode(),
+        strictStateSerializability: false,
+      },
+    }),
+    EffectsModule.forRoot([WatchEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [
     {

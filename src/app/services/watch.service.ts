@@ -1,9 +1,6 @@
-import { Observable } from 'rxjs';
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { WatchFormDTO } from '@app/models/DTOs/watch-form-dto';
-import { ProgressBarOverlayService } from '@app/shared/services/progress-bar/progess-bar-overlay.service';
+import { WatchFormDTO } from '@models/DTOs/watch-form-dto';
 import { Watch } from '@models/watch.model';
 import { AppConfigService } from '@shared/services/utils/app-config.service';
 
@@ -11,39 +8,34 @@ import { AppConfigService } from '@shared/services/utils/app-config.service';
   providedIn: 'root',
 })
 export class WatchService {
-  constructor(
-    private http: HttpClient,
-    private progressBarService: ProgressBarOverlayService
-  ) {}
+  constructor(private httpClient: HttpClient) {}
 
-  addNewWatch(watchFormDTO: WatchFormDTO): Observable<Watch> {
+  addNewWatch(watchFormDTO: WatchFormDTO) {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/add-watch`;
 
-    this.progressBarService.show('Adding watch...');
-
-    return this.http.post<Watch>(API_URL, watchFormDTO);
+    return this.httpClient.post<Watch>(API_URL, watchFormDTO);
   }
 
-  getAllWatches(): Observable<Watch[]> {
+  getAllWatches() {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/all-watches`;
 
-    return this.http.get<Watch[]>(API_URL);
+    return this.httpClient.get<Watch[]>(API_URL);
   }
 
-  toggleActiveStatus(watch: {
-    isActive: boolean;
-    label: string;
-    id: string;
-  }): Observable<{ isActive: boolean; label: string }> {
+  toggleActiveStatus(watch: Watch) {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/toggle-active-status`;
-    const data = { isActive: watch.isActive, label: watch.label, id: watch.id };
+    const data = { isActive: watch.active, label: watch.label, id: watch.id };
 
-    return this.http.put<{ isActive: boolean; label: string }>(API_URL, data);
+    return this.httpClient.put<{
+      id: string;
+      active: boolean;
+      label: string;
+    }>(API_URL, data);
   }
 
-  deleteWatch(id: string): Observable<{ deletedWatchId: string }> {
+  deleteWatch(id: string) {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/delete-watch/${id}`;
 
-    return this.http.delete<{ deletedWatchId: string }>(API_URL);
+    return this.httpClient.delete<{ deletedWatchId: string }>(API_URL);
   }
 }

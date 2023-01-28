@@ -1,8 +1,8 @@
 import { Observable } from 'rxjs';
 
 import { Component, OnInit } from '@angular/core';
-import { StatusService } from '@app/shared/services/utils/status.service';
 import { ApiStatus } from '@models/api-status.model';
+import { StatusService } from '@shared/services/utils/status.service';
 
 @Component({
   selector: 'app-api-status-dialog',
@@ -12,7 +12,7 @@ import { ApiStatus } from '@models/api-status.model';
 export class ApiStatusDialogComponent implements OnInit {
   apiStatus$!: Observable<ApiStatus>;
 
-  constructor(private statusService: StatusService) {}
+  constructor(private readonly statusService: StatusService) {}
 
   ngOnInit(): void {
     this.apiStatus$ = this.statusService.getApiStatus();

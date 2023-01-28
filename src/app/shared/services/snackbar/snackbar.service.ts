@@ -1,20 +1,15 @@
-import { Subject, takeUntil } from 'rxjs';
-
-import { Injectable, OnDestroy } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Watch } from '@models/watch.model';
-import { WatchService } from '@services/watch.service';
+import { Store } from '@ngrx/store';
+import { deleteWatchById } from '@store/actions/watch-api.actions';
+import { addWatch } from '@store/actions/watch.actions';
 
 @Injectable({
   providedIn: 'root',
 })
-export class SnackbarService implements OnDestroy {
-  private destroySubject$ = new Subject<void>();
-
-  constructor(
-    private snackbar: MatSnackBar,
-    private watchService: WatchService
-  ) {}
+export class SnackbarService {
+  constructor(private snackbar: MatSnackBar, private readonly store: Store) {}
 
   successSnackbar(message: string) {
     this.snackbar.open(message, 'Dismiss', {
@@ -34,37 +29,23 @@ export class SnackbarService implements OnDestroy {
     });
   }
 
-  undoAndDeleteSnackbar(deletedWatch: Watch, index: number, watches: Watch[]) {
-    const snack = this.snackbar.open(
-      `Deleted watch: ${deletedWatch.label}`,
+  undoAndDeleteSnackbar(watch: Watch) {
+    const snackbar = this.snackbar.open(
+      `Deleted watch: ${watch.label}`,
       'Undo',
-      { panelClass: ['snackbar-warning'] }
+      {
+        panelClass: ['snackbar-warning'],
+      }
     );
-    snack
-      .afterDismissed()
-      .pipe(takeUntil(this.destroySubject$))
-      .subscribe((res) => {
-        // Om dismissedByAction är sant (användaren klickade på Undo) ska vi inte ta bort klockan
-        if (res.dismissedByAction === true) return;
 
-        // Byt till switchMap?
-        this.watchService
-          .deleteWatch(deletedWatch.id)
-          .pipe(takeUntil(this.destroySubject$))
-          .subscribe((res) => {
-            console.log(`Deleted: ${res.deletedWatchId}`);
-          });
-      });
-    snack
-      .onAction()
-      .pipe(takeUntil(this.destroySubject$))
-      .subscribe(() => {
-        watches.splice(index, 0, deletedWatch);
-      });
-  }
+    snackbar.afterDismissed().subscribe((res) => {
+      // Om dismissedByAction är sant (användaren klickade på Undo)
+      // ska klockan inte tas bort
+      if (res.dismissedByAction === true) {
+        return this.store.dispatch(addWatch({ watch: watch }));
+      }
 
-  ngOnDestroy(): void {
-    this.destroySubject$.next();
-    this.destroySubject$.complete();
+      this.store.dispatch(deleteWatchById({ watchId: watch.id }));
+    });
   }
 }

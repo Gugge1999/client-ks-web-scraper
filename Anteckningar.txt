@@ -5,8 +5,9 @@ Byt till Firebase för deploy av Angular
 Det går att bygga Angular med esbuild istället för webpack. esbuild är mycket snabbare men experimental
 
 
-Byt till | async för att hantera visning / borttagning av klockor.
-Se: https://stackblitz.com/edit/angular-fh1kyp?file=src%2Fapp%2Ftodo.service.ts
+Kolla vilka rules som eslint rules för ngrx. 
+Det finns presents om man kör kommandot: ng add @ngrx/store@latest --no-minimal
+på ett nytt projekt
 
 
 Skriv om theme service så att den använder riktiga getters och setters. 

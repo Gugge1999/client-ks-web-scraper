@@ -1,7 +1,7 @@
 import { Observable, of } from 'rxjs';
 
 import { Component, OnInit } from '@angular/core';
-import { ThemeService } from '@app/shared/services/utils/theme.service';
+import { ThemeService } from '@shared/services/utils/theme.service';
 
 @Component({
   selector: 'app-footer',

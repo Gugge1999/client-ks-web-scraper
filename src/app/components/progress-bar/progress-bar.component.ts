@@ -1,7 +1,7 @@
 import { Observable, of } from 'rxjs';
 
 import { Component, OnInit } from '@angular/core';
-import { ProgressBarOverlayService } from '@shared/services/progress-bar/progess-bar-overlay.service';
+import { ProgressBarService } from '@shared/services/progress-bar/progess-bar-overlay.service';
 
 @Component({
   selector: 'app-loader',
@@ -11,9 +11,9 @@ import { ProgressBarOverlayService } from '@shared/services/progress-bar/progess
 export class ProgessBarComponent implements OnInit {
   protected message$: Observable<string> = of('');
 
-  constructor(private progressBarService: ProgressBarOverlayService) {}
+  constructor(private progressBarService: ProgressBarService) {}
 
   ngOnInit(): void {
-    this.message$ = this.progressBarService.getProgessBarMessage();
+    this.message$ = this.progressBarService.progessBarMessage;
   }
 }
