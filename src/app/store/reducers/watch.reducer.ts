@@ -34,9 +34,13 @@ export const watchReducer = createReducer(
       newWatchLoading: false,
     })
   ),
-  on(WatchApiActions.toggleActiveStatusSuccess, (state, { id, active }) => {
-    return adapter.updateOne({ id: id, changes: { active: active } }, state);
-  }),
+  on(
+    WatchApiActions.toggleActiveStatusSuccess,
+    WatchApiActions.toggleActiveStatusFailure,
+    (state, { id, active }) => {
+      return adapter.updateOne({ id: id, changes: { active: active } }, state);
+    }
+  ),
   on(
     WatchApiActions.addWatch,
     (state): WatchState => ({

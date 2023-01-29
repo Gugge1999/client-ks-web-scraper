@@ -94,12 +94,18 @@ export class WatchEffects {
               label: updatedWatch.label,
             });
           }),
-          catchError((error) => {
+          catchError(() => {
             this.snackbarService.errorSnackbar(
               'Could not toggle active status'
             );
 
-            return of(watchApiActions.toggleActiveStatusFailure({ error }));
+            return of(
+              watchApiActions.toggleActiveStatusFailure({
+                id: action.watch.id,
+                active: action.watch.active,
+                label: action.watch.label,
+              })
+            );
           })
         )
       )

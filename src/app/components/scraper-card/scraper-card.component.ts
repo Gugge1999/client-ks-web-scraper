@@ -7,7 +7,6 @@ import {
 } from '@angular/cdk/layout';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { DeleteWatchDialogComponent } from '@components/delete-watch-dialog/delete-watch-dialog.component';
 import { NewWatchDialogComponent } from '@components/new-watch-dialog/new-watch-dialog.component';
 import { TimeFormats } from '@models/constants';
@@ -66,10 +65,7 @@ export class ScraperCardComponent implements OnInit {
     });
   }
 
-  toggleActiveStatus(watch: Watch, event: MatSlideToggleChange) {
-    const oldStatus = watch.active;
-    event.source.checked = oldStatus;
-
+  toggleActiveStatus(watch: Watch) {
     this.store.dispatch(toggleActiveStatus({ watch }));
   }
 

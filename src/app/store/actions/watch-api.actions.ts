@@ -60,5 +60,5 @@ export const toggleActiveStatusSuccess = createAction(
 
 export const toggleActiveStatusFailure = createAction(
   '[Watch API] Toggle active status failure',
-  props<{ error: string }>()
+  props<{ id: string; active: boolean; label: string }>()
 );

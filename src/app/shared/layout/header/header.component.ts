@@ -72,9 +72,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   toggleTheme() {
-    this.isDarkMode = this.themeService.isDarkMode();
-
-    this.isDarkMode
+    this.themeService.isDarkMode()
       ? this.themeService.updateTheme('light-mode')
       : this.themeService.updateTheme('dark-mode');
 
@@ -82,7 +80,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.themeService.isDarkMode() ? 'dark-mode' : 'light-mode'
     );
 
-    // TODO: Lite klumpig lösning att hämta samma värde igen. Byt till ren rxjs?
     this.isDarkMode = this.themeService.isDarkMode();
   }
 
