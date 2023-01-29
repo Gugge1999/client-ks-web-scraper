@@ -29,8 +29,8 @@ import {
 export class ScraperCardComponent implements OnInit {
   protected isHandset$!: Observable<BreakpointState>;
   protected watches$!: Observable<Watch[]>;
-  protected cardDateFormat = TimeFormats.cardFormat;
   protected newWatchLoading$!: Observable<boolean>;
+  protected cardDateFormat = TimeFormats.cardDateFormat;
 
   constructor(
     private readonly dialog: MatDialog,

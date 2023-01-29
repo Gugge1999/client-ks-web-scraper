@@ -62,16 +62,16 @@ export class WatchEffects {
 
   deleteWatchById$ = createEffect(() => {
     return this.actions$.pipe(
-      ofType(watchApiActions.deleteWatchById),
+      ofType(watchApiActions.deleteWatch),
       switchMap((action) =>
-        this.watchService.deleteWatch(action.watchId).pipe(
+        this.watchService.deleteWatchById(action.watch.id).pipe(
           map((id) => {
-            return watchApiActions.deleteWatchByIdSuccess({
+            return watchApiActions.deleteWatchSuccess({
               watchId: id.deletedWatchId,
             });
           }),
-          catchError((error) =>
-            of(watchApiActions.deleteWatchByIdFailure({ error }))
+          catchError(() =>
+            of(watchApiActions.deleteWatchFailure({ watch: action.watch }))
           )
         )
       )

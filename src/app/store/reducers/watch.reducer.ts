@@ -21,7 +21,7 @@ export const watchReducer = createReducer(
   on(WatchApiActions.loadWatchesSuccess, (state, { watches }) => {
     return adapter.setAll(watches, state);
   }),
-  on(WatchApiActions.deleteWatchByIdSuccess, (state, { watchId }) => {
+  on(WatchApiActions.deleteWatchSuccess, (state, { watchId }) => {
     return adapter.removeOne(watchId, state);
   }),
   on(WatchApiActions.addWatchSuccess, (state, { newWatch }) => {
@@ -48,9 +48,14 @@ export const watchReducer = createReducer(
       newWatchLoading: true,
     })
   ),
-  on(WatchActions.addWatch, (state, { watch }) => {
-    return adapter.addOne(watch, state);
-  }),
+  on(
+    WatchActions.addWatch,
+    // Om klockan inte tas bort, lägg till den igen
+    WatchApiActions.deleteWatchFailure,
+    (state, { watch }) => {
+      return adapter.addOne(watch, state);
+    }
+  ),
   on(WatchActions.deleteWatch, (state, { watchId }) => {
     return adapter.removeOne(watchId, state);
   })

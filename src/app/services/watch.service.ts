@@ -33,7 +33,7 @@ export class WatchService {
     }>(API_URL, data);
   }
 
-  deleteWatch(id: string) {
+  deleteWatchById(id: string) {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/delete-watch/${id}`;
 
     return this.httpClient.delete<{ deletedWatchId: string }>(API_URL);

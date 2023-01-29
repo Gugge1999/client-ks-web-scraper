@@ -33,19 +33,19 @@ export const addWatchFailure = createAction(
   props<{ error: string }>()
 );
 
-export const deleteWatchById = createAction(
-  '[Watch API] Delete watch by id',
+export const deleteWatch = createAction(
+  '[Watch API] Delete watch ',
+  props<{ watch: Watch }>()
+);
+
+export const deleteWatchSuccess = createAction(
+  '[Watch API] Delete watches success',
   props<{ watchId: string }>()
 );
 
-export const deleteWatchByIdSuccess = createAction(
-  '[Watch API] Delete watches by id success',
-  props<{ watchId: string }>()
-);
-
-export const deleteWatchByIdFailure = createAction(
-  '[Watch API] Delete watch by id failure',
-  props<{ error: string }>()
+export const deleteWatchFailure = createAction(
+  '[Watch API] Delete watch failure',
+  props<{ watch: Watch }>()
 );
 
 export const toggleActiveStatus = createAction(

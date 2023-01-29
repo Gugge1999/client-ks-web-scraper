@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Watch } from '@models/watch.model';
 import { Store } from '@ngrx/store';
-import { deleteWatchById } from '@store/actions/watch-api.actions';
+import { deleteWatch } from '@store/actions/watch-api.actions';
 import { addWatch } from '@store/actions/watch.actions';
 
 @Injectable({
@@ -45,7 +45,7 @@ export class SnackbarService {
         return this.store.dispatch(addWatch({ watch: watch }));
       }
 
-      this.store.dispatch(deleteWatchById({ watchId: watch.id }));
+      this.store.dispatch(deleteWatch({ watch }));
     });
   }
 }
