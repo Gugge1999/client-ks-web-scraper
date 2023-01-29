@@ -70,10 +70,8 @@ export class ScraperCardComponent implements OnInit {
   }
 
   openNewWatchDialog() {
-    // TODO: Byt från px till %
     this.dialog.open(NewWatchDialogComponent, {
-      width: '700px',
-      height: '425px',
+      height: 'clamp(45ch, 50%, 50ch)',
       autoFocus: false,
       restoreFocus: false,
     });

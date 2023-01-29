@@ -5,16 +5,13 @@
   {{ this.progressBarService.hide() }}
 </ng-template>
 
-<!-- TODO: Byt till scss breakpoint? -->
-<div *ngIf="this.isHandset$ | async as breakpointState">
+<div *ngIf="this.isHandset$ | async as isHandset">
   <div *ngIf="watches$ | async as watches" class="card-container">
     <mat-card
       appearance="outlined"
       class="card"
       *ngFor="let watch of watches; index as i"
-      [ngClass]="
-        breakpointState.matches ? 'full-card-width' : 'small-card-width'
-      ">
+      [ngClass]="isHandset.matches ? 'full-card-width' : 'small-card-width'">
       <mat-card-title
         ><strong>{{ watch.label }}</strong></mat-card-title
       >

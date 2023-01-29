@@ -34,7 +34,6 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           errorMessage = httpErrorResponse.error;
         }
 
-        // TODO: Städa upp den alla checkar
         if (httpErrorResponse.error instanceof ErrorEvent) {
           // client-side error. Ska den hanteras på något annat sätt?
           this.snackbarService.errorSnackbar(errorMessage);

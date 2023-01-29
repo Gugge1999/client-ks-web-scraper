@@ -37,7 +37,7 @@
 }
 
 .small-card-width {
-  max-width: 40%;
+  width: clamp(45ch, 40%, 60ch);
 }
 
 .full-card-width {

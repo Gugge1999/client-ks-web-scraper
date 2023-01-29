@@ -50,7 +50,7 @@ export const watchReducer = createReducer(
   ),
   on(
     WatchActions.addWatch,
-    // Om klockan inte tas bort, lägg till den igen
+    // Om klockan inte kunde tas bort, lägg till den igen
     WatchApiActions.deleteWatchFailure,
     (state, { watch }) => {
       return adapter.addOne(watch, state);
