@@ -1,3 +1,10 @@
+<div *ngIf="newWatchLoading$ | async; else notLoading">
+  {{ this.progressBarService.show('Adding watch...') }}
+</div>
+<ng-template #notLoading>
+  {{ this.progressBarService.hide() }}
+</ng-template>
+
 <!-- TODO: Byt till scss breakpoint? -->
 <div *ngIf="this.isHandset$ | async as breakpointState">
   <div *ngIf="watches$ | async as watches" class="card-container">

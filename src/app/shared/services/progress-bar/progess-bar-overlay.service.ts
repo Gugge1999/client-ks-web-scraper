@@ -32,10 +32,12 @@ export class ProgressBarService {
 
     // Create ComponentPortal that can be attached to a PortalHost
     const progressBarOverlayPortal = new ComponentPortal(ProgessBarComponent);
-    this.overlayRef.attach(progressBarOverlayPortal);
+
+    if (!this.overlayRef.hasAttached()) {
+      this.overlayRef.attach(progressBarOverlayPortal);
+    }
   }
 
-  // TODO: Varför två !! ?
   public hide() {
     if (!!this.overlayRef) {
       this.overlayRef.detach();

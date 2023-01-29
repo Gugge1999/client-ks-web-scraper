@@ -7,7 +7,6 @@ import { WatchService } from '@services/watch.service';
 import { ProgressBarService } from '@shared/services/progress-bar/progess-bar-overlay.service';
 import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
 import * as watchApiActions from '@store/actions/watch-api.actions';
-import * as watchActions from '@store/actions/watch.actions';
 
 @Injectable()
 export class WatchEffects {
@@ -17,9 +16,6 @@ export class WatchEffects {
     private snackbarService: SnackbarService,
     private progressBarService: ProgressBarService
   ) {}
-
-  // TODO: Kolla in detta när du skapar reducer
-  // för snackbar / progessService: https://github.com/timdeschryver/eslint-plugin-ngrx/blob/main/docs/rules/no-multiple-actions-in-effects.md
 
   loadWatches$ = createEffect(() => {
     return this.actions$.pipe(
@@ -41,18 +37,15 @@ export class WatchEffects {
     return this.actions$.pipe(
       ofType(watchApiActions.addWatch),
       switchMap((action) => {
-        this.progressBarService.show('Adding watch...');
-
         return this.watchService.addNewWatch(action.newWatch).pipe(
           map((watch) => {
             action.dialogRef.close();
             this.snackbarService.successSnackbar(
               `Added watch with label: ${watch.label}`
             );
-            this.progressBarService.hide();
 
-            return watchActions.addWatch({
-              watch,
+            return watchApiActions.addWatchSuccess({
+              newWatch: watch,
             });
           }),
           catchError((error) => {

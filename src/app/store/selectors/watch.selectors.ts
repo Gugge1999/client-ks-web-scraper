@@ -36,3 +36,8 @@ export const selectWatchTotal = createSelector(
   selectWatchState,
   fromWatch.selectWatchTotal
 );
+
+export const selectNewWatchLoading = createSelector(
+  selectWatchState,
+  (state) => state.newWatchLoading
+);
