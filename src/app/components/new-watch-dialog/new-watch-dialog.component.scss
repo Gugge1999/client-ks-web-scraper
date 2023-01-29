@@ -1,5 +1,3 @@
-@use '../../../styles.scss' as style;
-
 .form-element {
   padding: 0.25em 0 1.5em 0;
 }
@@ -7,7 +5,8 @@
 // Löser problemet med att knappar inte hamnar längst ned.
 // Se: https://github.com/angular/components/issues/4609
 form {
-  @include style.flex-column;
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 

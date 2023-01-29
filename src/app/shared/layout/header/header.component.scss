@@ -1,4 +1,8 @@
-@use '../../../../styles.scss' as style;
+@mixin flex-row-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
 
 header {
   user-select: none;
@@ -20,13 +24,13 @@ header {
 }
 
 .api-status-card-wrapper {
-  @include style.flex-row-center;
+  @include flex-row-center;
   height: 2em;
   padding: 0.25em 1em;
 }
 
 .dark-mode-card-wrapper {
-  @include style.flex-row-center;
+  @include flex-row-center;
   height: 2em;
   padding: 0.25em 0 0.25em 0.75em;
   margin-right: 0.5em;
@@ -41,7 +45,7 @@ header {
 
 .api-active,
 .api-inactive {
-  @include style.flex-row-center;
+  @include flex-row-center;
 }
 
 .status-text {
