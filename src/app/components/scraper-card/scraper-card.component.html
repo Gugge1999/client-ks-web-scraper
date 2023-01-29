@@ -35,7 +35,7 @@
             <p>
               <strong> Last email sent: </strong>
               {{
-                watch.lastEmailSent === ''
+                watch.lastEmailSent === null
                   ? 'No email sent'
                   : (watch.lastEmailSent | date: cardDateFormat)
               }}
