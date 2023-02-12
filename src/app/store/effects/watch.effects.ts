@@ -39,7 +39,7 @@ export class WatchEffects {
       switchMap((action) => {
         return this.watchService.addNewWatch(action.newWatch).pipe(
           map((watch) => {
-            action.dialogRef.close();
+            // action.dialogRef.close();
             this.snackbarService.successSnackbar(
               `Added watch with label: ${watch.label}`
             );
@@ -50,8 +50,8 @@ export class WatchEffects {
           }),
           catchError((error) => {
             console.log(`Error from addNewWatch function: ${error}`);
-            action.dialogRef.close();
-            this.progressBarService.hide();
+            // action.dialogRef.close();
+            // this.progressBarService.hide();
 
             return of(watchApiActions.addWatchFailure({ error }));
           })

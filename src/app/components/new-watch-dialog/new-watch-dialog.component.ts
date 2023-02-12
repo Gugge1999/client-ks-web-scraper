@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
-import { WatchFormDTO } from '@models/DTOs/watch-form-dto';
+import { NewWatchFormDTO } from '@models/DTOs/new-watch-form-dto';
 import { Store } from '@ngrx/store';
 import { addWatch } from '@store/actions/watch-api.actions';
 
@@ -29,21 +29,9 @@ export class NewWatchDialogComponent {
   ) {}
 
   submitNewWatch() {
-    const wordsSeparatedByPlus = this.watchForm.controls.watchToScrape.value
-      .trim()
-      .replace(/\s+/g, '+');
-
-    const replaceThreadString =
-      'https://klocksnack.se/search/1/?q=REPLACE-ME&t=post&c[child_nodes]=1&c[nodes][0]=11&c[title_only]=1&o=date';
-
-    const linkToThread = replaceThreadString.replace(
-      'REPLACE-ME',
-      wordsSeparatedByPlus
-    );
-
-    const watchFormDTO: WatchFormDTO = {
+    const watchFormDTO: NewWatchFormDTO = {
       label: this.watchForm.controls.label.value,
-      linkToThread: linkToThread,
+      watchToScrape: this.watchForm.controls.watchToScrape.value,
     };
 
     this.store.dispatch(

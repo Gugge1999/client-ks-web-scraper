@@ -16,7 +16,7 @@ import { FooterComponent } from '@shared/layout/footer/footer.component';
 import { HeaderComponent } from '@shared/layout/header/header.component';
 import { AppConfigService } from '@shared/services/utils/app-config.service';
 import { HttpErrorInterceptor } from '@shared/services/utils/http-error-interceptor.service';
-import { WatchEffects } from '@store/effects/watch.effects';
+import { effects } from '@store/effects/index';
 import { reducers } from '@store/reducers/index';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -47,18 +47,22 @@ const appConfigInitializer = (appConfig: AppConfigService) => {
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot(reducers, {
-      // Fulhack för att få dialog att fungera
-      runtimeChecks: {
-        strictActionImmutability: false,
-        strictActionSerializability: false,
-        strictActionTypeUniqueness: isDevMode(),
-        strictActionWithinNgZone: isDevMode(),
-        strictStateImmutability: isDevMode(),
-        strictStateSerializability: false,
-      },
-    }),
-    EffectsModule.forRoot([WatchEffects]),
+    StoreModule.forRoot(
+      reducers,
+
+      {
+        // TODO: Fulhack för att få dialog att fungera
+        runtimeChecks: {
+          strictActionImmutability: false,
+          strictActionSerializability: false,
+          strictActionTypeUniqueness: isDevMode(),
+          strictActionWithinNgZone: isDevMode(),
+          strictStateImmutability: isDevMode(),
+          strictStateSerializability: false,
+        },
+      }
+    ),
+    EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],
   providers: [

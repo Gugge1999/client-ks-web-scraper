@@ -1,5 +1,5 @@
 import { MatDialogRef } from '@angular/material/dialog';
-import { WatchFormDTO } from '@models/DTOs/watch-form-dto';
+import { NewWatchFormDTO } from '@models/DTOs/new-watch-form-dto';
 import { Watch } from '@models/watch.model';
 import { createAction, props } from '@ngrx/store';
 
@@ -18,7 +18,7 @@ export const loadWatchesFailure = createAction(
 export const addWatch = createAction(
   '[Watch API] Add watch API',
   props<{
-    newWatch: WatchFormDTO;
+    newWatch: NewWatchFormDTO;
     dialogRef: MatDialogRef<any, any>;
   }>()
 );

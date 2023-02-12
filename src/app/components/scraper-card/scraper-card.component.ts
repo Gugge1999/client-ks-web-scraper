@@ -8,12 +8,12 @@ import {
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DeleteWatchDialogComponent } from '@components/delete-watch-dialog/delete-watch-dialog.component';
-import { NewWatchDialogComponent } from '@components/new-watch-dialog/new-watch-dialog.component';
 import { TimeFormats } from '@models/constants';
 import { Watch } from '@models/watch.model';
 import { Store } from '@ngrx/store';
 import { ProgressBarService } from '@shared/services/progress-bar/progess-bar-overlay.service';
 import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
+import { openNewWatchDialog } from '@store/actions/dialog.actions';
 import { toggleActiveStatus } from '@store/actions/watch-api.actions';
 import { deleteWatch } from '@store/actions/watch.actions';
 import {
@@ -70,10 +70,6 @@ export class ScraperCardComponent implements OnInit {
   }
 
   openNewWatchDialog() {
-    this.dialog.open(NewWatchDialogComponent, {
-      height: 'clamp(45ch, 50%, 50ch)',
-      autoFocus: false,
-      restoreFocus: false,
-    });
+    this.store.dispatch(openNewWatchDialog());
   }
 }

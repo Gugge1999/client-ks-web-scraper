@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { WatchFormDTO } from '@models/DTOs/watch-form-dto';
+import { NewWatchFormDTO } from '@models/DTOs/new-watch-form-dto';
 import { Watch } from '@models/watch.model';
 import { AppConfigService } from '@shared/services/utils/app-config.service';
 
@@ -10,7 +10,7 @@ import { AppConfigService } from '@shared/services/utils/app-config.service';
 export class WatchService {
   constructor(private httpClient: HttpClient) {}
 
-  addNewWatch(watchFormDTO: WatchFormDTO) {
+  addNewWatch(watchFormDTO: NewWatchFormDTO) {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/add-watch`;
 
     return this.httpClient.post<Watch>(API_URL, watchFormDTO);
