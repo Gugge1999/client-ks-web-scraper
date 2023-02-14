@@ -6,17 +6,17 @@ import {
   shareReplay,
   Subject,
   switchMap,
-  timer
+  timer,
 } from 'rxjs';
 
 import {
   BreakpointObserver,
   Breakpoints,
-  BreakpointState
+  BreakpointState,
 } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ApiStatusDialogComponent } from '@components/api-status-dialog/api-status-dialog.component';
+import { ApiStatusDialogComponent } from '@dialogs/api-status-dialog/api-status-dialog.component';
 import { ApiStatus } from '@models/api-status.model';
 import { StatusService } from '@shared/services/utils/status.service';
 import { ThemeService } from '@shared/services/utils/theme.service';

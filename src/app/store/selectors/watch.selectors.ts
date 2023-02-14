@@ -1,7 +1,7 @@
 import {
   ActionReducerMap,
   createFeatureSelector,
-  createSelector
+  createSelector,
 } from '@ngrx/store';
 import * as fromWatch from '@store/reducers/watch.reducer';
 
@@ -37,7 +37,7 @@ export const selectWatchTotal = createSelector(
   fromWatch.selectWatchTotal
 );
 
-export const selectNewWatchLoading = createSelector(
+export const selectIsNewWatchLoading = createSelector(
   selectWatchState,
   (state) => state.newWatchLoading
 );

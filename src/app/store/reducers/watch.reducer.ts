@@ -9,6 +9,7 @@ export interface WatchState extends EntityState<Watch> {
 }
 
 export const adapter: EntityAdapter<Watch> = createEntityAdapter<Watch>({
+  // TODO: Nånting blir galet här man lägger till en ny klocka...
   sortComparer: (a: Watch, b: Watch) => a.added.localeCompare(b.added),
 });
 
@@ -37,8 +38,11 @@ export const watchReducer = createReducer(
   on(
     WatchApiActions.toggleActiveStatusSuccess,
     WatchApiActions.toggleActiveStatusFailure,
-    (state, { id, active }) => {
-      return adapter.updateOne({ id: id, changes: { active: active } }, state);
+    (state, { watchProps }) => {
+      return adapter.updateOne(
+        { id: watchProps.id, changes: { active: watchProps.active } },
+        state
+      );
     }
   ),
   on(

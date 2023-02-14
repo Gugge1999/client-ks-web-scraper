@@ -1,4 +1,3 @@
-import { MatDialogRef } from '@angular/material/dialog';
 import { NewWatchFormDTO } from '@models/DTOs/new-watch-form-dto';
 import { Watch } from '@models/watch.model';
 import { createAction, props } from '@ngrx/store';
@@ -12,25 +11,24 @@ export const loadWatchesSuccess = createAction(
 
 export const loadWatchesFailure = createAction(
   '[Watch API] Load watches failure',
-  props<{ error: string }>()
+  props<{ snackbarMessage: string }>()
 );
 
 export const addWatch = createAction(
   '[Watch API] Add watch API',
   props<{
     newWatch: NewWatchFormDTO;
-    dialogRef: MatDialogRef<any, any>;
   }>()
 );
 
 export const addWatchSuccess = createAction(
   '[Watch API] Add watch API success',
-  props<{ newWatch: Watch }>()
+  props<{ snackbarMessage: string; newWatch: Watch }>()
 );
 
 export const addWatchFailure = createAction(
   '[Watch API] Load watches API failure',
-  props<{ error: string }>()
+  props<{ snackbarMessage: string }>()
 );
 
 export const deleteWatch = createAction(
@@ -45,7 +43,7 @@ export const deleteWatchSuccess = createAction(
 
 export const deleteWatchFailure = createAction(
   '[Watch API] Delete watch failure',
-  props<{ watch: Watch }>()
+  props<{ snackbarMessage: string; watch: Watch }>()
 );
 
 export const toggleActiveStatus = createAction(
@@ -55,10 +53,16 @@ export const toggleActiveStatus = createAction(
 
 export const toggleActiveStatusSuccess = createAction(
   '[Watch API] Toggle active status success',
-  props<{ id: string; active: boolean; label: string }>()
+  props<{
+    snackbarMessage: string;
+    watchProps: { id: string; active: boolean; label: string };
+  }>()
 );
 
 export const toggleActiveStatusFailure = createAction(
   '[Watch API] Toggle active status failure',
-  props<{ id: string; active: boolean; label: string }>()
+  props<{
+    snackbarMessage: string;
+    watchProps: { id: string; active: boolean; label: string };
+  }>()
 );

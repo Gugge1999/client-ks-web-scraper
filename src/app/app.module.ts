@@ -4,11 +4,11 @@ import { APP_INITIALIZER, isDevMode, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ApiStatusDialogComponent } from '@components/api-status-dialog/api-status-dialog.component';
-import { DeleteWatchDialogComponent } from '@components/delete-watch-dialog/delete-watch-dialog.component';
-import { NewWatchDialogComponent } from '@components/new-watch-dialog/new-watch-dialog.component';
 import { ProgessBarComponent } from '@components/progress-bar/progress-bar.component';
 import { ScraperCardComponent } from '@components/scraper-card/scraper-card.component';
+import { ApiStatusDialogComponent } from '@dialogs/api-status-dialog/api-status-dialog.component';
+import { DeleteWatchDialogComponent } from '@dialogs/delete-watch-dialog/delete-watch-dialog.component';
+import { NewWatchDialogComponent } from '@dialogs/new-watch-dialog/new-watch-dialog.component';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -47,21 +47,7 @@ const appConfigInitializer = (appConfig: AppConfigService) => {
     MaterialModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot(
-      reducers,
-
-      {
-        // TODO: Fulhack för att få dialog att fungera
-        runtimeChecks: {
-          strictActionImmutability: false,
-          strictActionSerializability: false,
-          strictActionTypeUniqueness: isDevMode(),
-          strictActionWithinNgZone: isDevMode(),
-          strictStateImmutability: isDevMode(),
-          strictStateSerializability: false,
-        },
-      }
-    ),
+    StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
   ],

@@ -2,12 +2,20 @@
 Byt till Firebase för deploy av Angular
 
 
+
+Läs igenom alternativen för att hantera loading:
+https://medium.com/angular-in-depth/ngrx-how-and-where-to-handle-loading-and-error-states-of-ajax-calls-6613a14f902d
+
+
+
 Det går att bygga Angular med esbuild istället för webpack. esbuild är mycket snabbare men experimental
+
 
 
 Kolla vilka rules som eslint rules för ngrx. 
 Det finns presents om man kör kommandot: ng add @ngrx/store@latest --no-minimal
 på ett nytt projekt
+
 
 
 Skriv om theme service så att den använder riktiga getters och setters. 
@@ -18,14 +26,18 @@ Kolla genom https://github.com/AvocadoVenom/OverlayLoadingComponents
 och se om det är en bättre lösning på spinner / progess bar
 
 
+
 För att testa deploy. Se: https://www.youtube.com/watch?v=QdHvS0D1zAI
+
 
 
 Lägg till state för expansion panel i local storage
 Hur localStorage och | async används: https://blog.briebug.com/blog/managing-local-storage-in-angular
 
 
+
 Kolla in storybook: https://storybook.js.org/docs/angular/get-started/install
+
 
 
 Använd Jest för att testa: https://www.xfive.co/blog/testing-angular-faster-jest/

@@ -3,22 +3,21 @@ import { Observable } from 'rxjs';
 import {
   BreakpointObserver,
   Breakpoints,
-  BreakpointState
+  BreakpointState,
 } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { DeleteWatchDialogComponent } from '@components/delete-watch-dialog/delete-watch-dialog.component';
+import { Component } from '@angular/core';
 import { TimeFormats } from '@models/constants';
 import { Watch } from '@models/watch.model';
 import { Store } from '@ngrx/store';
 import { ProgressBarService } from '@shared/services/progress-bar/progess-bar-overlay.service';
-import { SnackbarService } from '@shared/services/snackbar/snackbar.service';
-import { openNewWatchDialog } from '@store/actions/dialog.actions';
+import {
+  openDeleteWatchDialog,
+  openNewWatchDialog,
+} from '@store/actions/dialog.actions';
 import { toggleActiveStatus } from '@store/actions/watch-api.actions';
-import { deleteWatch } from '@store/actions/watch.actions';
 import {
   selectAllWatches,
-  selectNewWatchLoading
+  selectIsNewWatchLoading,
 } from '@store/selectors/watch.selectors';
 
 @Component({
@@ -26,43 +25,28 @@ import {
   templateUrl: './scraper-card.component.html',
   styleUrls: ['./scraper-card.component.scss'],
 })
-export class ScraperCardComponent implements OnInit {
-  protected isHandset$!: Observable<BreakpointState>;
-  protected watches$!: Observable<Watch[]>;
-  protected newWatchLoading$!: Observable<boolean>;
+export class ScraperCardComponent {
+  protected isHandset$: Observable<BreakpointState>;
+  protected watches$: Observable<Watch[]>;
+  protected newWatchLoading$: Observable<boolean>;
   protected cardDateFormat = TimeFormats.cardDateFormat;
 
   constructor(
-    private readonly dialog: MatDialog,
-    private readonly snackbarService: SnackbarService,
     private readonly breakpointObserver: BreakpointObserver,
     private readonly store: Store,
-    protected readonly progressBarService: ProgressBarService
-  ) {}
-
-  ngOnInit() {
+    protected progressBarService: ProgressBarService
+  ) {
     this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset);
     this.watches$ = this.store.select(selectAllWatches);
-    this.newWatchLoading$ = this.store.select(selectNewWatchLoading);
+    this.newWatchLoading$ = this.store.select(selectIsNewWatchLoading);
   }
 
   deleteWatchDialog(watch: Watch) {
-    const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
-      width: 'fit-content',
-      autoFocus: false,
-      data: watch,
-      restoreFocus: false,
-    });
-
-    dialogRef.afterClosed().subscribe((res) => {
-      if (res === undefined || res.click === 'cancelClicked') {
-        return;
-      }
-
-      this.store.dispatch(deleteWatch({ watchId: watch.id }));
-
-      this.snackbarService.undoAndDeleteSnackbar(watch);
-    });
+    this.store.dispatch(
+      openDeleteWatchDialog({
+        watch,
+      })
+    );
   }
 
   toggleActiveStatus(watch: Watch) {
