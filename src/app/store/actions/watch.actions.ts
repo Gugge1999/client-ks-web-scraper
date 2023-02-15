@@ -10,5 +10,3 @@ export const deleteWatch = createAction(
   '[Watch] Delete watch',
   props<{ watchId: string }>()
 );
-
-export const noOp = createAction('[No Op] No Op');

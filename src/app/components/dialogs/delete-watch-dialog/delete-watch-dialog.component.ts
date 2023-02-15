@@ -15,7 +15,7 @@ export class DeleteWatchDialogComponent {
   ) {}
 
   cancelClicked(): void {
-    this.dialogRef.close({ click: 'cancelClicked' });
+    this.dialogRef.close();
   }
 
   deleteWatch(watchToDelete: Watch): void {

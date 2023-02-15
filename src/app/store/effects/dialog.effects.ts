@@ -1,4 +1,4 @@
-import { map, switchMap, tap } from 'rxjs/operators';
+import { filter, map, switchMap, tap } from 'rxjs/operators';
 
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -40,9 +40,10 @@ export class DialogEffects {
       return this.actions$.pipe(
         ofType(
           watchApiActions.addWatchSuccess,
-          watchApiActions.addWatchFailure,
-          watchApiActions.deleteWatchSuccess,
-          watchApiActions.deleteWatchFailure
+          watchApiActions.addWatchFailure
+          // TODO: Tror inte att de behövs
+          // watchApiActions.deleteWatchSuccess,
+          // watchApiActions.deleteWatchFailure
         ),
         tap(() => this.dialog.closeAll())
       );
@@ -62,14 +63,11 @@ export class DialogEffects {
         });
         return dialogRef.afterClosed();
       }),
-      map((res: Watch | { click: string } | undefined) => {
-        if (res === undefined || 'click' in res) {
-          return watchActions.noOp();
-        } else {
-          this.snackbarService.undoAndDeleteSnackbar(res);
+      filter((res: Watch) => res !== undefined),
+      map((res: Watch) => {
+        this.snackbarService.undoAndDeleteSnackbar(res);
 
-          return watchActions.deleteWatch({ watchId: res.id });
-        }
+        return watchActions.deleteWatch({ watchId: res.id });
       })
     );
   });
