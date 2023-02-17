@@ -1,4 +1,4 @@
-import { filter, map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
@@ -15,7 +15,7 @@ import * as watchActions from '@store/actions/watch.actions';
 export class DialogEffects {
   constructor(
     private actions$: Actions,
-    private readonly dialog: MatDialog,
+    private dialog: MatDialog,
     private snackbarService: SnackbarService
   ) {}
 
@@ -38,13 +38,7 @@ export class DialogEffects {
   closeNewWatchDialog$ = createEffect(
     () => {
       return this.actions$.pipe(
-        ofType(
-          watchApiActions.addWatchSuccess,
-          watchApiActions.addWatchFailure
-          // TODO: Tror inte att de behövs
-          // watchApiActions.deleteWatchSuccess,
-          // watchApiActions.deleteWatchFailure
-        ),
+        ofType(watchApiActions.addWatch),
         tap(() => this.dialog.closeAll())
       );
     },
@@ -56,15 +50,17 @@ export class DialogEffects {
       ofType(dialogActions.openDeleteWatchDialog),
       switchMap(({ watch }) => {
         const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
-          width: 'fit-content',
           autoFocus: false,
           data: watch,
           restoreFocus: false,
         });
         return dialogRef.afterClosed();
       }),
-      filter((res: Watch) => res !== undefined),
       map((res: Watch) => {
+        if (res === undefined) {
+          return dialogActions.closeDeleteWatchDialog();
+        }
+
         this.snackbarService.undoAndDeleteSnackbar(res);
 
         return watchActions.deleteWatch({ watchId: res.id });

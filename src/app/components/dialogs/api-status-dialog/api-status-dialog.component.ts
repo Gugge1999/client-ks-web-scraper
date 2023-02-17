@@ -12,7 +12,7 @@ import { StatusService } from '@shared/services/utils/status.service';
 export class ApiStatusDialogComponent implements OnInit {
   apiStatus$!: Observable<ApiStatus>;
 
-  constructor(private readonly statusService: StatusService) {}
+  constructor(private statusService: StatusService) {}
 
   ngOnInit(): void {
     this.apiStatus$ = this.statusService.getApiStatus();

@@ -32,8 +32,8 @@ export class ScraperCardComponent {
   protected cardDateFormat = TimeFormats.cardDateFormat;
 
   constructor(
-    private readonly breakpointObserver: BreakpointObserver,
-    private readonly store: Store,
+    private breakpointObserver: BreakpointObserver,
+    private store: Store,
     protected progressBarService: ProgressBarService
   ) {
     this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset);

@@ -21,7 +21,7 @@ export class NewWatchDialogComponent {
     }),
   });
 
-  constructor(private readonly store: Store) {}
+  constructor(private store: Store) {}
 
   submitNewWatch() {
     const newWatch: NewWatchFormDTO = {

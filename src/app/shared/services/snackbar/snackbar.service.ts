@@ -9,7 +9,7 @@ import { addWatch } from '@store/actions/watch.actions';
   providedIn: 'root',
 })
 export class SnackbarService {
-  constructor(private snackbar: MatSnackBar, private readonly store: Store) {}
+  constructor(private snackbar: MatSnackBar, private store: Store) {}
 
   successSnackbar(message: string) {
     this.snackbar.open(message, 'Dismiss', {

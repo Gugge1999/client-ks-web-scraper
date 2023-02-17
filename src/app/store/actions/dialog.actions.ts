@@ -9,3 +9,7 @@ export const openDeleteWatchDialog = createAction(
   '[UI Dialog] Open delete watch dialog',
   props<{ watch: Watch }>()
 );
+
+export const closeDeleteWatchDialog = createAction(
+  '[UI Dialog] Close delete watch dialog'
+);
