@@ -2,6 +2,7 @@ import { map, switchMap, tap } from 'rxjs/operators';
 
 import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ApiStatusDialogComponent } from '@components/dialogs/api-status-dialog/api-status-dialog.component';
 import { DeleteWatchDialogComponent } from '@components/dialogs/delete-watch-dialog/delete-watch-dialog.component';
 import { NewWatchDialogComponent } from '@components/dialogs/new-watch-dialog/new-watch-dialog.component';
 import { Watch } from '@models/watch.model';
@@ -58,7 +59,7 @@ export class DialogEffects {
       }),
       map((res: Watch) => {
         if (res === undefined) {
-          return dialogActions.closeDeleteWatchDialog();
+          return dialogActions.closeDialog();
         }
 
         this.snackbarService.undoAndDeleteSnackbar(res);
@@ -67,4 +68,20 @@ export class DialogEffects {
       })
     );
   });
+
+  openApiStatusDialog$ = createEffect(
+    () => {
+      return this.actions$.pipe(
+        ofType(dialogActions.openApiStatusDialog),
+        tap(() => {
+          return this.dialog.open(ApiStatusDialogComponent, {
+            width: '450px',
+            autoFocus: false,
+            restoreFocus: false,
+          });
+        })
+      );
+    },
+    { dispatch: false }
+  );
 }

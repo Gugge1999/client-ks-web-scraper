@@ -10,6 +10,8 @@ export const openDeleteWatchDialog = createAction(
   props<{ watch: Watch }>()
 );
 
-export const closeDeleteWatchDialog = createAction(
-  '[UI Dialog] Close delete watch dialog'
+export const closeDialog = createAction('[UI Dialog] Close dialog');
+
+export const openApiStatusDialog = createAction(
+  '[UI Dialog] Open API status dialog'
 );

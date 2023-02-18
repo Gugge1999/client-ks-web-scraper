@@ -9,8 +9,8 @@ export interface WatchState extends EntityState<Watch> {
 }
 
 export const adapter: EntityAdapter<Watch> = createEntityAdapter<Watch>({
-  // TODO: Nånting blir galet här man lägger till en ny klocka...
-  sortComparer: (a: Watch, b: Watch) => a.added.localeCompare(b.added),
+  sortComparer: (a: Watch, b: Watch) =>
+    Date.parse(a.added.toString()) - Date.parse(b.added.toString()),
 });
 
 export const initialState: WatchState = adapter.getInitialState({

@@ -4,7 +4,6 @@ import {
   Observable,
   of,
   shareReplay,
-  Subject,
   switchMap,
   timer,
 } from 'rxjs';
@@ -14,31 +13,29 @@ import {
   Breakpoints,
   BreakpointState,
 } from '@angular/cdk/layout';
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ApiStatusDialogComponent } from '@dialogs/api-status-dialog/api-status-dialog.component';
+import { Component, OnInit } from '@angular/core';
 import { ApiStatus } from '@models/api-status.model';
+import { Store } from '@ngrx/store';
 import { StatusService } from '@shared/services/utils/status.service';
 import { ThemeService } from '@shared/services/utils/theme.service';
+import { openApiStatusDialog } from '@store/actions/dialog.actions';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
   apiStatus$!: Observable<ApiStatus>;
   isDarkMode: boolean;
   showHamburgerMenu: boolean = true;
   isHandset$!: Observable<BreakpointState>;
 
-  private destroySubject$ = new Subject<void>();
-
   constructor(
-    private dialog: MatDialog,
     private statusService: StatusService,
     private themeService: ThemeService,
-    private breakpointObserver: BreakpointObserver
+    private breakpointObserver: BreakpointObserver,
+    private store: Store
   ) {
     this.themeService.initTheme();
     this.isDarkMode = this.themeService.isDarkMode();
@@ -53,9 +50,23 @@ export class HeaderComponent implements OnInit, OnDestroy {
       filter(() => failedApiCalls !== 3),
       switchMap(() =>
         this.statusService.getApiStatus().pipe(
-          catchError((err) => {
+          catchError(() => {
             failedApiCalls++;
-            return of(err);
+
+            const errorApiStatus: ApiStatus = {
+              active: false,
+              scrapingIntervalInMinutes: 0,
+              uptime: {
+                years: 0,
+                months: 0,
+                days: 0,
+                hours: 0,
+                minutes: 0,
+                seconds: 0,
+              },
+            };
+
+            return of(errorApiStatus);
           })
         )
       ),
@@ -64,11 +75,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   openApiStatusDialog() {
-    this.dialog.open(ApiStatusDialogComponent, {
-      width: '450px',
-      autoFocus: false,
-      restoreFocus: false,
-    });
+    this.store.dispatch(openApiStatusDialog());
   }
 
   toggleTheme() {
@@ -81,10 +88,5 @@ export class HeaderComponent implements OnInit, OnDestroy {
     );
 
     this.isDarkMode = this.themeService.isDarkMode();
-  }
-
-  ngOnDestroy(): void {
-    this.destroySubject$.next();
-    this.destroySubject$.complete();
   }
 }
