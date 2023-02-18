@@ -1,11 +1,12 @@
 import { Observable, of } from 'rxjs';
 
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ThemeService } from '@shared/services/utils/theme.service';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./footer.component.scss'],
 })
 export class FooterComponent implements OnInit {

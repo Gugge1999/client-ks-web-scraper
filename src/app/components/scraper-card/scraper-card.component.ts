@@ -5,7 +5,7 @@ import {
   Breakpoints,
   BreakpointState,
 } from '@angular/cdk/layout';
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { TimeFormats } from '@models/constants';
 import { Watch } from '@models/watch.model';
 import { Store } from '@ngrx/store';
@@ -23,6 +23,7 @@ import {
 @Component({
   selector: 'app-scraper-card',
   templateUrl: './scraper-card.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./scraper-card.component.scss'],
 })
 export class ScraperCardComponent {

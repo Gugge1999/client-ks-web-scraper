@@ -13,7 +13,7 @@ import {
   Breakpoints,
   BreakpointState,
 } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { ApiStatus } from '@models/api-status.model';
 import { Store } from '@ngrx/store';
 import { StatusService } from '@shared/services/utils/status.service';
@@ -23,6 +23,7 @@ import { openApiStatusDialog } from '@store/actions/dialog.actions';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
