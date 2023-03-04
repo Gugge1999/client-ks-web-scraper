@@ -1,4 +1,8 @@
 -------------- TODO --------------
+Istället för att använda loading spinner skapa en skeleton card när en ny klocka läggs till
+
+
+
 Byt till Firebase för deploy av Angular
 
 

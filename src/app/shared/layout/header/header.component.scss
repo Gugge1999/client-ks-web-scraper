@@ -91,3 +91,25 @@ header {
     color: #000;
   }
 }
+
+// TODO: Dessa borde inte behövas göra om man använder themes rätt...
+::ng-deep
+  .mat-mdc-slide-toggle.mat-mdc-slide-toggle-checked:not(.mat-disabled)
+  .mdc-switch__shadow {
+  background-color: #099d8c;
+  /*replace with your color*/
+}
+
+::ng-deep
+  .mat-mdc-slide-toggle.mat-mdc-slide-toggle-checked:not(.mat-disabled)
+  .mdc-switch__track::after {
+  background-color: rgb(168, 168, 168) !important;
+  /*replace with your color*/
+}
+
+::ng-deep
+  .mat-mdc-slide-toggle
+  .mdc-switch.mdc-switch--selected:enabled:hover:not(:focus)
+  .mdc-switch__ripple::after {
+  background-color: rgb(168, 168, 168) !important;
+}
