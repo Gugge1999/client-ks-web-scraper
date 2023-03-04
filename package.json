@@ -27,6 +27,7 @@
     "@ngrx/entity": "^15.2.1",
     "@ngrx/store": "^15.2.1",
     "@ngrx/store-devtools": "^15.2.1",
+    "firebase": "^9.17.2",
     "rxjs": "~7.5.6",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.8"
