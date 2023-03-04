@@ -1,4 +1,4 @@
 {
   "env": "production",
-  "apiBaseUrl": "https://chrono-notifier-api.herokuapp.com"
+  "apiBaseUrl": "https://api-ks-web-scraper.fly.dev"
 }
