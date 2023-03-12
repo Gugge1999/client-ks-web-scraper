@@ -10,10 +10,9 @@
 
 .card {
   width: 100%;
-}
-
-.card:nth-last-child(2) {
-  margin-bottom: 0;
+  &:nth-last-child(2) {
+    margin-bottom: 0;
+  }
 }
 
 .fab-small-screen-new-watch-button {
