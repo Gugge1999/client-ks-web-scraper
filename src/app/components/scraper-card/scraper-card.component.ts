@@ -1,11 +1,15 @@
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
 
 import {
   BreakpointObserver,
   Breakpoints,
   BreakpointState,
 } from '@angular/cdk/layout';
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+} from '@angular/core';
 import { TimeFormats } from '@models/constants';
 import { Watch } from '@models/watch.model';
 import { Store } from '@ngrx/store';
@@ -35,10 +39,17 @@ export class ScraperCardComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private store: Store,
-    protected progressBarService: ProgressBarService
+    protected progressBarService: ProgressBarService,
+    private cdr: ChangeDetectorRef
   ) {
     this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset);
-    this.watches$ = this.store.select(selectAllWatches);
+    this.watches$ = this.store.select(selectAllWatches).pipe(
+      tap(() => {
+        // Fulhack för att fixa problem på firefox där change detection inte körs
+        // TODO: Försök att få bort den
+        this.cdr.detectChanges();
+      })
+    );
     this.newWatchLoading$ = this.store.select(selectIsNewWatchLoading);
   }
 
