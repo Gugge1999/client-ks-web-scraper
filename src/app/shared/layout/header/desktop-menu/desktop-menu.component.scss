@@ -1,0 +1,25 @@
+.header-chip {
+  margin-left: 12px;
+  padding: 8px;
+  border-radius: 15px;
+}
+
+.header-chip-wrapper-dark {
+  display: flex;
+  .header-chip {
+    background-color: #414141;
+  }
+  span {
+    color: #fff;
+  }
+}
+
+.header-chip-wrapper-light {
+  display: flex;
+  .header-chip {
+    background-color: #fff;
+  }
+  span {
+    color: #000;
+  }
+}

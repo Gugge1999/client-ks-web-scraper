@@ -1,4 +1,5 @@
-import { catchError, filter, Observable, of, shareReplay, switchMap, timer } from "rxjs";
+import { Observable, timer } from "rxjs";
+import { retry, startWith, switchMap } from "rxjs/operators";
 
 import { BreakpointObserver, Breakpoints, BreakpointState } from "@angular/cdk/layout";
 import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
@@ -34,35 +35,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset);
 
-    let failedApiCalls = 0;
-
-    // TODO: Byt till retry?
-    this.apiStatus$ = timer(0, 30000).pipe(
-      filter(() => failedApiCalls !== 3),
-      switchMap(() =>
-        this.statusService.getApiStatus().pipe(
-          catchError(() => {
-            failedApiCalls++;
-
-            const errorApiStatus: ApiStatus = {
-              active: false,
-              scrapingIntervalInMinutes: 0,
-              uptime: {
-                years: 0,
-                months: 0,
-                days: 0,
-                hours: 0,
-                minutes: 0,
-                seconds: 0,
-              },
-            };
-
-            return of(errorApiStatus);
-          })
-        )
-      ),
-      // TODO: Jag tror att shareReplay går att ta bort om apiStatus$ alltid är truthy
-      shareReplay({ bufferSize: 1, refCount: true }) // OBS: ShareReplay måste ligga sist i pipe
+    this.apiStatus$ = timer(0, 10_000).pipe(
+      switchMap(() => this.statusService.getApiStatus()),
+      startWith(this.getInitialApiStatus()), // startWith måste ligga efter switchMap
+      retry(3)
     );
   }
 
@@ -78,5 +54,20 @@ export class HeaderComponent implements OnInit {
     this.themeService.setCurrentTheme(this.themeService.isDarkMode() ? Theme.darkMode : Theme.lightMode);
 
     this.isDarkMode = this.themeService.isDarkMode();
+  }
+
+  private getInitialApiStatus(): ApiStatus {
+    return {
+      active: false,
+      scrapingIntervalInMinutes: 0,
+      uptime: {
+        years: 0,
+        months: 0,
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
+      },
+    };
   }
 }

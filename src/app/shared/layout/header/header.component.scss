@@ -1,7 +1,5 @@
-@mixin flex-row-center {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
+.icon-margin-right {
+  margin-right: 0.25em;
 }
 
 header {
@@ -21,75 +19,6 @@ header {
 
 .spacer {
   flex: 1 1 auto;
-}
-
-.api-status-card-wrapper {
-  @include flex-row-center;
-  height: 2em;
-  padding: 0.25em 1em;
-}
-
-.dark-mode-card-wrapper {
-  @include flex-row-center;
-  height: 2em;
-  padding: 0.25em 0 0.25em 0.75em;
-  margin-right: 0.5em;
-  cursor: pointer;
-}
-
-.hamburger-toolbar-wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-}
-
-.api-active,
-.api-inactive {
-  @include flex-row-center;
-}
-
-.status-text {
-  margin: 0 0.5em;
-  font-size: medium;
-}
-
-.status-icon.offline {
-  color: #ff5151;
-}
-
-.icon-margin-right {
-  margin-right: 0.25em;
-}
-
-.dark-mode-icons {
-  transform: scale(0.8);
-  margin-left: 0.25em;
-}
-
-.header-chip {
-  margin-left: 12px;
-  padding: 8px;
-  border-radius: 15px;
-}
-
-.header-chip-wrapper-dark {
-  display: flex;
-  .header-chip {
-    background-color: #414141;
-  }
-  span {
-    color: #fff;
-  }
-}
-
-.header-chip-wrapper-light {
-  display: flex;
-  .header-chip {
-    background-color: #fff;
-  }
-  span {
-    color: #000;
-  }
 }
 
 // TODO: Dessa borde inte behövas göra om man använder themes rätt...

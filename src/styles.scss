@@ -166,3 +166,26 @@ input {
   background-color: #454a4d;
 }
 /*#endregion */
+
+/*#region api status*/
+.status-text {
+  margin: 0 0.5em;
+  font-size: medium;
+}
+
+.status-icon.offline {
+  color: #ff5151;
+}
+
+.dark-mode-icons {
+  transform: scale(0.8);
+  margin-left: 0.25em;
+}
+
+.api-active,
+.api-inactive {
+  display: flex;
+  align-items: center;
+}
+
+/*#endregion */

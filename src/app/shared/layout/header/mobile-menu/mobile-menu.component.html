@@ -1,0 +1,45 @@
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>menu</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+  <div class="hamburger-toolbar-wrapper">
+    <!-- $event.stopPropagation förhindrar att menyn stängs vid klick -->
+    <button
+      mat-menu-item
+      (click)="$event.stopPropagation()"
+      (click)="onToggleTheme()"
+      matTooltip="Toggle theme"
+      matTooltipPosition="left"
+      class="pointer">
+      <mat-slide-toggle color="primary" [checked]="isDarkMode">
+        Dark mode
+        <mat-icon class="dark-mode-icons" fontSet="material-icons-outlined"> dark_mode </mat-icon>
+      </mat-slide-toggle>
+    </button>
+
+    <button
+      mat-menu-item
+      *ngIf="apiStatus.active; else hamburgerApiNotActive"
+      (click)="apiStatus.active ? onOpenApiStatusDialog() : ''">
+      <div matTooltip="View API statistics" matTooltipPosition="left">
+        <div class="api-content-wrapper">
+          <mat-icon class="status-icon" color="primary"> check_circle_outline </mat-icon>
+          <span class="status-text">API Status</span>
+        </div>
+      </div>
+    </button>
+
+    <!-- API:et är inte aktivt. Länken ska vara inaktiverad  -->
+    <ng-template #hamburgerApiNotActive>
+      <button mat-menu-item disabled>
+        <div matTooltip="API is not active" matTooltipPosition="left" class="api-inactive">
+          <div class="api-content-wrapper">
+            <mat-icon class="status-icon offline" color="warn"> highlight_off </mat-icon>
+            <span class="status-text">API Status</span>
+          </div>
+        </div>
+      </button>
+    </ng-template>
+  </div>
+</mat-menu>
+
