@@ -9,57 +9,36 @@
       <!-- TODO: Byt ut till separata komponenter? -->
       <div *ngIf="isHandset.matches; else largeMenu">
         <!-- Start hamburgarmeny -->
-        <button
-          mat-icon-button
-          [matMenuTriggerFor]="menu"
-          aria-label="Example icon-button with a menu">
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
           <mat-icon>menu</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
           <div class="hamburger-toolbar-wrapper">
+            <!-- $event.stopPropagation förhindrar att menyn stängs vid klick -->
             <button
               mat-menu-item
               (click)="$event.stopPropagation()"
               matTooltip="Toggle theme"
               matTooltipPosition="left">
-              <mat-slide-toggle
-                (click)="toggleTheme()"
-                color="primary"
-                [(ngModel)]="isDarkMode">
+              <mat-slide-toggle (click)="toggleTheme()" color="primary" [(ngModel)]="isDarkMode">
                 Dark mode
-                <mat-icon
-                  class="dark-mode-icons"
-                  fontSet="material-icons-outlined">
-                  dark_mode
-                </mat-icon>
+                <mat-icon class="dark-mode-icons" fontSet="material-icons-outlined"> dark_mode </mat-icon>
               </mat-slide-toggle>
             </button>
-            <button
-              mat-menu-item
-              *ngIf="
-                (apiStatus$ | async)?.active as active;
-                else hamburgerApiNotActive
-              ">
+            <button mat-menu-item *ngIf="(apiStatus$ | async)?.active as active; else hamburgerApiNotActive">
               <div
                 matTooltip="View API statistics"
                 matTooltipPosition="left"
                 (click)="active ? openApiStatusDialog() : ''">
-                <mat-icon class="status-icon" color="primary">
-                  check_circle_outline
-                </mat-icon>
+                <mat-icon class="status-icon" color="primary"> check_circle_outline </mat-icon>
                 <span class="status-text">API Status</span>
               </div>
             </button>
             <!-- API:et är inte aktivt. Länken ska vara inaktiverad  -->
             <ng-template #hamburgerApiNotActive>
               <button mat-menu-item disabled>
-                <div
-                  matTooltip="API is not active"
-                  matTooltipPosition="left"
-                  class="api-inactive">
-                  <mat-icon class="status-icon offline" color="primary">
-                    highlight_off
-                  </mat-icon>
+                <div matTooltip="API is not active" matTooltipPosition="left" class="api-inactive">
+                  <mat-icon class="status-icon offline" color="primary"> highlight_off </mat-icon>
                   <span class="status-text">API Status</span>
                 </div>
               </button>
@@ -70,23 +49,11 @@
       <!-- Start "vanlig" meny -->
       <ng-template #largeMenu>
         <!-- TODO: Går det att byta till select med dark-mode? -->
-        <div
-          [ngClass]="
-            isDarkMode
-              ? 'header-chip-wrapper-dark'
-              : 'header-chip-wrapper-light'
-          ">
-          <div
-            class="header-chip pointer"
-            matTooltip="Toggle theme"
-            (click)="toggleTheme()">
+        <div [ngClass]="isDarkMode ? 'header-chip-wrapper-dark' : 'header-chip-wrapper-light'">
+          <div class="header-chip pointer" matTooltip="Toggle theme" (click)="toggleTheme()">
             <mat-slide-toggle color="accent" [checked]="isDarkMode">
               Dark mode
-              <mat-icon
-                class="dark-mode-icons"
-                fontSet="material-icons-outlined">
-                dark_mode
-              </mat-icon>
+              <mat-icon class="dark-mode-icons" fontSet="material-icons-outlined"> dark_mode </mat-icon>
             </mat-slide-toggle>
           </div>
           <div
@@ -96,9 +63,7 @@
             matTooltip="View API statistics">
             <!-- API:et är aktivt. -->
             <div class="api-active">
-              <mat-icon class="status-icon" color="primary">
-                check_circle_outline
-              </mat-icon>
+              <mat-icon class="status-icon" color="primary"> check_circle_outline </mat-icon>
               <span class="status-text">API Status</span>
             </div>
           </div>
@@ -106,9 +71,7 @@
           <ng-template #apiNotActive>
             <div class="header-chip">
               <div class="api-inactive" matTooltip="API is not active">
-                <mat-icon class="status-icon offline" color="primary">
-                  highlight_off
-                </mat-icon>
+                <mat-icon class="status-icon offline" color="primary"> highlight_off </mat-icon>
                 <span class="status-text">API Status</span>
               </div>
             </div>

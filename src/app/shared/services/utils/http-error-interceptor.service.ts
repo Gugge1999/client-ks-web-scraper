@@ -1,35 +1,24 @@
-import { Observable, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { Observable, throwError } from "rxjs";
+import { catchError } from "rxjs/operators";
 
-import {
-  HttpErrorResponse,
-  HttpEvent,
-  HttpHandler,
-  HttpInterceptor,
-  HttpRequest
-} from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
-import { SnackbarService } from '../snackbar/snackbar.service';
+import { SnackbarService } from "../snackbar/snackbar.service";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class HttpErrorInterceptor implements HttpInterceptor {
   constructor(private snackbarService: SnackbarService) {}
 
-  intercept(
-    request: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((httpErrorResponse: HttpErrorResponse) => {
-        let errorMessage = '';
+        let errorMessage = "";
 
         if (httpErrorResponse.status === 0) {
-          errorMessage = 'Could not connect to API';
-        } else if (httpErrorResponse.status === 404) {
-          errorMessage = `Page not found. URL: ${httpErrorResponse.url}`;
+          errorMessage = "Could not connect to API";
         } else {
           errorMessage = httpErrorResponse.error;
         }
@@ -39,14 +28,11 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           this.snackbarService.errorSnackbar(errorMessage);
         } else {
           // server-side error
-          if (
-            httpErrorResponse.status === 0 &&
-            sessionStorage.getItem('firstApiError') === 'yes'
-          ) {
-            console.log(errorMessage);
+          if (httpErrorResponse.status === 0 && sessionStorage.getItem("firstApiError") === "yes") {
+            console.error(errorMessage);
           } else if (httpErrorResponse.status === 0) {
             this.snackbarService.errorSnackbar(errorMessage);
-            sessionStorage.setItem('firstApiError', 'yes');
+            sessionStorage.setItem("firstApiError", "yes");
           } else {
             this.snackbarService.errorSnackbar(errorMessage);
           }

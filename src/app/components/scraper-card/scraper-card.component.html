@@ -1,5 +1,5 @@
 <div *ngIf="newWatchLoading$ | async; else notLoading">
-  {{ this.progressBarService.show('Adding watch...') }}
+  {{ this.progressBarService.show("Adding watch...") }}
 </div>
 <ng-template #notLoading>
   {{ this.progressBarService.hide() }}
@@ -25,22 +25,16 @@
           <mat-card-content class="card-mat-card-content">
             <p>
               <strong> Last email sent: </strong>
-              {{
-                watch.lastEmailSent === null
-                  ? 'No email sent'
-                  : (watch.lastEmailSent | date: cardDateFormat)
-              }}
+              {{ watch.lastEmailSent === null ? "No email sent" : (watch.lastEmailSent | date : cardDateFormat) }}
             </p>
             <p>
               <strong>Added: </strong>
-              {{ watch.added | date: cardDateFormat }}
+              {{ watch.added | date : cardDateFormat }}
             </p>
             <p>
               <strong>Current watch: </strong>
               <!-- Visa endast den sensate klockan, därav index 0 -->
-              <a target="_blank" class="link" [href]="watch.watches[0].link">{{
-                watch.watches[0].name
-              }}</a>
+              <a target="_blank" class="link" [href]="watch.watches[0].link">{{ watch.watches[0].name }}</a>
             </p>
           </mat-card-content>
         </mat-expansion-panel>
@@ -55,13 +49,8 @@
           (click)="deleteWatchDialog(watch)">
           <mat-icon class="delete-icon">delete_outline</mat-icon>
         </button>
-        <button
-          mat-icon-button
-          matTooltip="View statistics"
-          matTooltipPosition="above">
-          <mat-icon fontSet="material-icons-outlined" color="primary"
-            >assessment</mat-icon
-          >
+        <button mat-icon-button matTooltip="View statistics" matTooltipPosition="above">
+          <mat-icon fontSet="material-icons-outlined" color="primary">assessment</mat-icon>
         </button>
         <mat-slide-toggle
           class="is-watch-active-slide-toggle"
@@ -74,10 +63,7 @@
       </mat-card-actions>
     </mat-card>
   </div>
-  <div
-    class="fab-small-screen-new-watch-button custom-tooltip"
-    matTooltip="Add new watch"
-    matTooltipPosition="left">
+  <div class="fab-small-screen-new-watch-button custom-tooltip" matTooltip="Add new watch" matTooltipPosition="left">
     <button mat-fab color="primary" (click)="openNewWatchDialog()">
       <mat-icon class="small-add-watch-icon">add</mat-icon>
     </button>

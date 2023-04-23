@@ -1,11 +1,11 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { NewWatchFormDTO } from '@models/DTOs/new-watch-form-dto';
-import { Watch } from '@models/watch.model';
-import { AppConfigService } from '@shared/services/utils/app-config.service';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
+import { Watch } from "@models/watch.model";
+import { AppConfigService } from "@shared/services/utils/app-config.service";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class WatchService {
   constructor(private httpClient: HttpClient) {}

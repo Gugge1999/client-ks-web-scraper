@@ -1,16 +1,15 @@
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from "rxjs";
 
-import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+import { Injectable, Renderer2, RendererFactory2 } from "@angular/core";
+import { Theme } from "@models/constants";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class ThemeService {
   private _renderer!: Renderer2;
   private _colorTheme!: string;
-  private currentThemeSubject$ = new BehaviorSubject<string>(
-    this.getColorTheme()
-  );
+  private currentThemeSubject$ = new BehaviorSubject<string>(this.getColorTheme());
 
   // Från: https://www.youtube.com/watch?v=XIUv27nYcLE
   constructor(rendererFactory: RendererFactory2) {
@@ -22,36 +21,33 @@ export class ThemeService {
     this._renderer.addClass(document.body, this._colorTheme);
   }
 
-  updateTheme(theme: 'dark-mode' | 'light-mode') {
+  updateTheme(theme: Theme.darkMode | Theme.lightMode) {
     this.setColorTheme(theme);
 
-    const previousColorTheme =
-      theme === 'dark-mode' ? 'light-mode' : 'dark-mode';
+    const previousColorTheme = theme === Theme.darkMode ? Theme.lightMode : Theme.darkMode;
     this._renderer.removeClass(document.body, previousColorTheme);
     this._renderer.addClass(document.body, theme);
   }
 
   isDarkMode(): boolean {
-    return this._colorTheme === 'dark-mode';
+    return this._colorTheme === Theme.darkMode;
   }
 
   private setColorTheme(theme: string) {
     this._colorTheme = theme;
-    localStorage.setItem('user-theme', theme);
+    localStorage.setItem(Theme.userTheme, theme);
   }
 
-  private getColorTheme() {
-    if (localStorage.getItem('user-theme')) {
-      return (this._colorTheme = localStorage.getItem('user-theme') ?? '');
+  private getColorTheme(): string {
+    if (localStorage.getItem(Theme.userTheme)) {
+      return (this._colorTheme = localStorage.getItem(Theme.userTheme) ?? "");
     } else {
       // Kolla vilket tema som användaren har satt i sitt OS.
-      const userPrefersDark =
-        window.matchMedia &&
-        window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const userPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
       return (this._colorTheme = userPrefersDark
-        ? (this._colorTheme = 'dark-mode')
-        : (this._colorTheme = 'light-mode'));
+        ? (this._colorTheme = Theme.darkMode)
+        : (this._colorTheme = Theme.lightMode));
     }
   }
 

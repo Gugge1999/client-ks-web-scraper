@@ -1,10 +1,10 @@
-import { of, switchMap } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { of, switchMap } from "rxjs";
+import { catchError, map } from "rxjs/operators";
 
-import { Injectable } from '@angular/core';
-import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { WatchService } from '@services/watch.service';
-import * as watchApiActions from '@store/actions/watch-api.actions';
+import { Injectable } from "@angular/core";
+import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { WatchService } from "@services/watch.service";
+import * as watchApiActions from "@store/actions/watch-api.actions";
 
 @Injectable()
 export class WatchEffects {
@@ -18,9 +18,7 @@ export class WatchEffects {
           map((watches) => {
             return watchApiActions.loadWatchesSuccess({ watches: watches });
           }),
-          catchError((error) =>
-            of(watchApiActions.loadWatchesFailure({ snackbarMessage: error }))
-          )
+          catchError((error) => of(watchApiActions.loadWatchesFailure({ snackbarMessage: error })))
         );
       })
     );
@@ -38,9 +36,7 @@ export class WatchEffects {
             });
           }),
           catchError((error: string) => {
-            return of(
-              watchApiActions.addWatchFailure({ snackbarMessage: error })
-            );
+            return of(watchApiActions.addWatchFailure({ snackbarMessage: error }));
           })
         );
       })

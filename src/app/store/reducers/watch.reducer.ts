@@ -1,16 +1,15 @@
-import { Watch } from '@models/watch.model';
-import { createEntityAdapter, EntityAdapter, EntityState } from '@ngrx/entity';
-import { createReducer, on } from '@ngrx/store';
-import * as WatchApiActions from '@store/actions/watch-api.actions';
-import * as WatchActions from '@store/actions/watch.actions';
+import { Watch } from "@models/watch.model";
+import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
+import { createReducer, on } from "@ngrx/store";
+import * as WatchApiActions from "@store/actions/watch-api.actions";
+import * as WatchActions from "@store/actions/watch.actions";
 
 export interface WatchState extends EntityState<Watch> {
   newWatchLoading: boolean;
 }
 
 export const adapter: EntityAdapter<Watch> = createEntityAdapter<Watch>({
-  sortComparer: (a: Watch, b: Watch) =>
-    Date.parse(a.added.toString()) - Date.parse(b.added.toString()),
+  sortComparer: (a: Watch, b: Watch) => Date.parse(a.added.toString()) - Date.parse(b.added.toString()),
 });
 
 export const initialState: WatchState = adapter.getInitialState({
@@ -35,16 +34,9 @@ export const watchReducer = createReducer(
       newWatchLoading: false,
     })
   ),
-  on(
-    WatchApiActions.toggleActiveStatusSuccess,
-    WatchApiActions.toggleActiveStatusFailure,
-    (state, { watchProps }) => {
-      return adapter.updateOne(
-        { id: watchProps.id, changes: { active: watchProps.active } },
-        state
-      );
-    }
-  ),
+  on(WatchApiActions.toggleActiveStatusSuccess, WatchApiActions.toggleActiveStatusFailure, (state, { watchProps }) => {
+    return adapter.updateOne({ id: watchProps.id, changes: { active: watchProps.active } }, state);
+  }),
   on(
     WatchApiActions.addWatch,
     (state): WatchState => ({
@@ -65,8 +57,7 @@ export const watchReducer = createReducer(
   })
 );
 
-const { selectIds, selectEntities, selectAll, selectTotal } =
-  adapter.getSelectors();
+const { selectIds, selectEntities, selectAll, selectTotal } = adapter.getSelectors();
 
 export const selectWatchIds = selectIds;
 

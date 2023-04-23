@@ -1,29 +1,25 @@
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from "rxjs";
 
-import { Overlay, OverlayRef } from '@angular/cdk/overlay';
-import { ComponentPortal } from '@angular/cdk/portal';
-import { Injectable } from '@angular/core';
-import { ProgessBarComponent } from '@components/progress-bar/progress-bar.component';
+import { Overlay, OverlayRef } from "@angular/cdk/overlay";
+import { ComponentPortal } from "@angular/cdk/portal";
+import { Injectable } from "@angular/core";
+import { ProgessBarComponent } from "@components/progress-bar/progress-bar.component";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class ProgressBarService {
   private overlayRef!: OverlayRef;
-  private progessBarMessage$ = new BehaviorSubject<string>('');
+  private progessBarMessage$ = new BehaviorSubject<string>("");
 
   constructor(private overlay: Overlay) {}
 
-  public show(message: string = '') {
+  public show(message: string = "") {
     // Returns an OverlayRef (which is a PortalHost)
 
     if (!this.overlayRef) {
       this.overlayRef = this.overlay.create({
-        positionStrategy: this.overlay
-          .position()
-          .global()
-          .centerHorizontally()
-          .centerVertically(),
+        positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically(),
         hasBackdrop: true,
       });
     }
