@@ -25,7 +25,7 @@ export class SnackbarService {
 
   errorSnackbar(message: string = "Something went wrong") {
     this.snackbar.open(`Error: ${message}`, "Dismiss", {
-      panelClass: ["snackbar-warning"],
+      panelClass: "snackbar-warning",
     });
   }
 
