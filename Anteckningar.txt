@@ -1,18 +1,18 @@
 -------------- TODO --------------
+Byt till standalone components
+Se: https://angular.io/guide/standalone-components
+Och: https://www.youtube.com/watch?v=x5PZwb4XurU  
+
+
+
 Istället för att använda loading spinner skapa en skeleton card när en ny klocka läggs till
 
-
-
-Byt till Firebase för deploy av Angular
 
 
 
 Läs igenom alternativen för att hantera loading:
 https://medium.com/angular-in-depth/ngrx-how-and-where-to-handle-loading-and-error-states-of-ajax-calls-6613a14f902d
 
-
-
-Det går att bygga Angular med esbuild istället för webpack. esbuild är mycket snabbare men experimental
 
 
 
@@ -22,8 +22,10 @@ på ett nytt projekt
 
 
 
-Skriv om theme service så att den använder riktiga getters och setters. 
+Skriv om theme service så att den använder riktiga getters och setters (signals kanske är bättre). 
 Den guiden kanske är bra: https://www.youtube.com/watch?v=sM3ATKt8568&list=WL&index=34
+
+
 
 
 Kolla genom https://github.com/AvocadoVenom/OverlayLoadingComponents 
