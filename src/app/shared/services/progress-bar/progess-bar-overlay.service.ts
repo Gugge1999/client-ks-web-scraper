@@ -14,7 +14,7 @@ export class ProgressBarService {
 
   constructor(private overlay: Overlay) {}
 
-  public show(message: string = "") {
+  public show(message: string) {
     // Returns an OverlayRef (which is a PortalHost)
 
     if (!this.overlayRef) {

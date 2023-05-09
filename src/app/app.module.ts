@@ -13,6 +13,7 @@ import { EffectsModule } from "@ngrx/effects";
 import { StoreModule } from "@ngrx/store";
 import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 import { FooterComponent } from "@shared/layout/footer/footer.component";
+import { DesktopMenuComponent } from "@shared/layout/header/desktop-menu/desktop-menu.component";
 import { HeaderComponent } from "@shared/layout/header/header.component";
 import { MobileMenuComponent } from "@shared/layout/header/mobile-menu/mobile-menu.component";
 import { AppConfigService } from "@shared/services/utils/app-config.service";
@@ -23,25 +24,13 @@ import { reducers } from "@store/reducers/index";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { MaterialModule } from "./material.module";
-import { DesktopMenuComponent } from './shared/layout/header/desktop-menu/desktop-menu.component';
 
 const appConfigInitializer = (appConfig: AppConfigService) => {
   return () => appConfig.loadAppConfig();
 };
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ScraperCardComponent,
-    NewWatchDialogComponent,
-    DeleteWatchDialogComponent,
-    ApiStatusDialogComponent,
-    FooterComponent,
-    HeaderComponent,
-    ProgessBarComponent,
-    MobileMenuComponent,
-    DesktopMenuComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -54,6 +43,15 @@ const appConfigInitializer = (appConfig: AppConfigService) => {
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    ScraperCardComponent,
+    NewWatchDialogComponent,
+    DeleteWatchDialogComponent,
+    ApiStatusDialogComponent,
+    FooterComponent,
+    HeaderComponent,
+    ProgessBarComponent,
+    MobileMenuComponent,
+    DesktopMenuComponent,
   ],
   providers: [
     {

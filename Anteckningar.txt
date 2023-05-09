@@ -2,6 +2,8 @@
 Byt till standalone components
 Se: https://angular.io/guide/standalone-components
 Och: https://www.youtube.com/watch?v=x5PZwb4XurU  
+Används: ng generate @angular/core:standalone
+
 
 
 

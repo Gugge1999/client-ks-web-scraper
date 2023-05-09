@@ -1,7 +1,14 @@
 import { Observable, tap } from "rxjs";
 
 import { BreakpointObserver, Breakpoints, BreakpointState } from "@angular/cdk/layout";
+import { AsyncPipe, DatePipe, NgClass, NgFor, NgIf } from "@angular/common";
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from "@angular/core";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCardModule } from "@angular/material/card";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { MatIconModule } from "@angular/material/icon";
+import { MatSlideToggleModule } from "@angular/material/slide-toggle";
+import { MatTooltipModule } from "@angular/material/tooltip";
 import { TimeFormats } from "@models/constants";
 import { Watch } from "@models/watch.model";
 import { Store } from "@ngrx/store";
@@ -15,6 +22,20 @@ import { selectAllWatches, selectIsNewWatchLoading } from "@store/selectors/watc
   templateUrl: "./scraper-card.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ["./scraper-card.component.scss"],
+  standalone: true,
+  imports: [
+    NgIf,
+    NgFor,
+    MatCardModule,
+    NgClass,
+    MatExpansionModule,
+    MatButtonModule,
+    MatTooltipModule,
+    MatIconModule,
+    MatSlideToggleModule,
+    AsyncPipe,
+    DatePipe,
+  ],
 })
 export class ScraperCardComponent {
   protected isHandset$: Observable<BreakpointState>;

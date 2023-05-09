@@ -5,6 +5,8 @@ import { NavigationEnd, Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { loadWatches } from "@store/actions/watch-api.actions";
 
+// TODO: Försök hitta en fix på det här
+// eslint-disable-next-line @typescript-eslint/ban-types
 declare const gtag: Function;
 
 @Component({

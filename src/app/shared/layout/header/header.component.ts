@@ -2,10 +2,16 @@ import { Observable, timer } from "rxjs";
 import { retry, startWith, switchMap } from "rxjs/operators";
 
 import { BreakpointObserver, Breakpoints, BreakpointState } from "@angular/cdk/layout";
+import { AsyncPipe, NgIf } from "@angular/common";
 import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
+import { MatIconModule } from "@angular/material/icon";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { RouterLink } from "@angular/router";
 import { ApiStatus } from "@models/api-status.model";
 import { Theme } from "@models/constants";
 import { Store } from "@ngrx/store";
+import { DesktopMenuComponent } from "@shared/layout/header/desktop-menu/desktop-menu.component";
+import { MobileMenuComponent } from "@shared/layout/header/mobile-menu/mobile-menu.component";
 import { StatusService } from "@shared/services/utils/status.service";
 import { ThemeService } from "@shared/services/utils/theme.service";
 import { openApiStatusDialog } from "@store/actions/dialog.actions";
@@ -15,11 +21,13 @@ import { openApiStatusDialog } from "@store/actions/dialog.actions";
   templateUrl: "./header.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ["./header.component.scss"],
+  standalone: true,
+  imports: [NgIf, MatToolbarModule, RouterLink, MatIconModule, MobileMenuComponent, DesktopMenuComponent, AsyncPipe],
 })
 export class HeaderComponent implements OnInit {
   apiStatus$!: Observable<ApiStatus>;
   isDarkMode: boolean;
-  showHamburgerMenu: boolean = true;
+  showHamburgerMenu = true;
   isHandset$!: Observable<BreakpointState>;
 
   constructor(

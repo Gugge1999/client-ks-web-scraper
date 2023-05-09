@@ -3,8 +3,7 @@ import { catchError } from "rxjs/operators";
 
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-
-import { SnackbarService } from "../snackbar/snackbar.service";
+import { SnackbarService } from "@shared/services/snackbar/snackbar.service";
 
 @Injectable({
   providedIn: "root",
@@ -12,7 +11,7 @@ import { SnackbarService } from "../snackbar/snackbar.service";
 export class HttpErrorInterceptor implements HttpInterceptor {
   constructor(private snackbarService: SnackbarService) {}
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       catchError((httpErrorResponse: HttpErrorResponse) => {
         let errorMessage = "";

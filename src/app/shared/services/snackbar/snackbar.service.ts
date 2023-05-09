@@ -23,7 +23,7 @@ export class SnackbarService {
     });
   }
 
-  errorSnackbar(message: string = "Something went wrong") {
+  errorSnackbar(message = "Something went wrong") {
     this.snackbar.open(`Error: ${message}`, "Dismiss", {
       panelClass: "snackbar-warning",
     });
@@ -34,6 +34,7 @@ export class SnackbarService {
       panelClass: ["snackbar-warning"],
     });
 
+    // TODO: Behöver man köra unsubscribe på snackbar ???
     snackbar.afterDismissed().subscribe((res) => {
       // Om dismissedByAction är sant (användaren klickade på Undo)
       // ska klockan inte tas bort

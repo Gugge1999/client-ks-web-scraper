@@ -2,12 +2,15 @@ import { Observable } from "rxjs";
 
 import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
 import { ThemeService } from "@shared/services/utils/theme.service";
+import { AsyncPipe } from "@angular/common";
 
 @Component({
   selector: "app-footer",
   templateUrl: "./footer.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ["./footer.component.scss"],
+  standalone: true,
+  imports: [AsyncPipe],
 })
 export class FooterComponent implements OnInit {
   darkModeFooterColors = {
