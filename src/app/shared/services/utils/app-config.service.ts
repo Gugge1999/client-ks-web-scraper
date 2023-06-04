@@ -1,6 +1,6 @@
 import { lastValueFrom } from "rxjs";
 
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { environment } from "@environments/environment";
 import { AppConfig } from "@models/app-config";
@@ -9,16 +9,22 @@ import { AppConfig } from "@models/app-config";
   providedIn: "root",
 })
 export class AppConfigService {
-  static appConfig: AppConfig;
+  public static appConfig: AppConfig;
+
+  private httpOptions = {
+    headers: new HttpHeaders({
+      "Cache-Control": "no-cache",
+    }),
+  };
   constructor(private http: HttpClient) {}
 
   async loadAppConfig() {
     try {
       AppConfigService.appConfig = await lastValueFrom(
-        this.http.get<AppConfig>(`/assets/config/${environment.name}.config.json`)
+        this.http.get<AppConfig>(`/assets/config/${environment.name}.config.json`, this.httpOptions)
       );
-    } catch {
-      console.error("loadAppConfig failed.");
+    } catch (err) {
+      console.error("loadAppConfig failed.", err);
     }
   }
 }
