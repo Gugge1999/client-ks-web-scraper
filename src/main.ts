@@ -5,8 +5,6 @@ import { environment } from "@environments/environment";
 import { AppModule } from "./app/app.module";
 
 if (environment.name === "prod") {
-  console.log("prod mode enabled.");
-
   enableProdMode();
 }
 
