@@ -16,8 +16,8 @@ import { ApiStatus } from "@models/api-status.model";
   imports: [MatButtonModule, MatMenuModule, MatIconModule, MatTooltipModule, MatSlideToggleModule, NgIf],
 })
 export class MobileMenuComponent {
-  @Input() apiStatus!: ApiStatus;
-  @Input() isDarkMode!: boolean;
+  @Input({ required: true }) apiStatus!: ApiStatus;
+  @Input({ required: true }) isDarkMode!: boolean;
 
   @Output() toggleTheme = new EventEmitter<void>();
   @Output() openApiStatusDialog = new EventEmitter<void>();

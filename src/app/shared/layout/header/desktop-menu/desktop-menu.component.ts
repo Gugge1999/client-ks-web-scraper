@@ -14,8 +14,8 @@ import { ApiStatus } from "@models/api-status.model";
   imports: [NgClass, MatTooltipModule, MatSlideToggleModule, MatIconModule, NgIf],
 })
 export class DesktopMenuComponent {
-  @Input() apiStatus!: ApiStatus;
-  @Input() isDarkMode!: boolean;
+  @Input({ required: true }) apiStatus!: ApiStatus;
+  @Input({ required: true }) isDarkMode!: boolean;
 
   @Output() toggleTheme = new EventEmitter<void>();
   @Output() openApiStatusDialog = new EventEmitter<void>();

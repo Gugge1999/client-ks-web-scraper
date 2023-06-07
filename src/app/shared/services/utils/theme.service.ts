@@ -39,15 +39,18 @@ export class ThemeService {
   }
 
   private getColorTheme(): string {
-    if (localStorage.getItem(Theme.userTheme)) {
-      return (this._colorTheme = localStorage.getItem(Theme.userTheme) ?? "");
+    const userTheme = localStorage.getItem(Theme.userTheme);
+    if (userTheme) {
+      return (this._colorTheme = userTheme);
     } else {
       // Kolla vilket tema som användaren har satt i sitt OS.
       const userPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-      return (this._colorTheme = userPrefersDark
-        ? (this._colorTheme = Theme.darkMode)
-        : (this._colorTheme = Theme.lightMode));
+      if (userPrefersDark) {
+        return (this._colorTheme = Theme.darkMode);
+      } else {
+        return (this._colorTheme = Theme.lightMode);
+      }
     }
   }
 
