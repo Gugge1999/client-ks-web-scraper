@@ -27,7 +27,6 @@ import { openApiStatusDialog } from "@store/actions/dialog.actions";
 export class HeaderComponent implements OnInit {
   apiStatus$!: Observable<ApiStatus>;
   isDarkMode: boolean;
-  showHamburgerMenu = true;
   isHandset$!: Observable<BreakpointState>;
 
   constructor(
@@ -43,6 +42,7 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset);
 
+    // TODO: Jag tror det är bäst om man låter det vara en observable och sen gör toSignal från rxjs-interop
     this.apiStatus$ = timer(0, 10_000).pipe(
       switchMap(() => this.statusService.getApiStatus()),
       startWith(this.getInitialApiStatus()), // startWith måste ligga efter switchMap
@@ -58,8 +58,6 @@ export class HeaderComponent implements OnInit {
     this.themeService.isDarkMode()
       ? this.themeService.updateTheme(Theme.lightMode)
       : this.themeService.updateTheme(Theme.darkMode);
-
-    this.themeService.setCurrentTheme(this.themeService.isDarkMode() ? Theme.darkMode : Theme.lightMode);
 
     this.isDarkMode = this.themeService.isDarkMode();
   }

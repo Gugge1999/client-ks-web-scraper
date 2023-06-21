@@ -26,16 +26,12 @@ export class WatchService {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/toggle-active-status`;
     const data = { isActive: watch.active, label: watch.label, id: watch.id };
 
-    return this.httpClient.put<{
-      id: string;
-      active: boolean;
-      label: string;
-    }>(API_URL, data);
+    return this.httpClient.put<Pick<Watch, "id" | "active" | "label">>(API_URL, data);
   }
 
   deleteWatchById(id: string) {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/delete-watch/${id}`;
 
-    return this.httpClient.delete<{ deletedWatchId: string }>(API_URL);
+    return this.httpClient.delete<Pick<Watch, "id">>(API_URL);
   }
 }

@@ -18,7 +18,7 @@ export class WatchEffects {
           map((watches) => {
             return watchApiActions.loadWatchesSuccess({ watches: watches });
           }),
-          catchError((error) => of(watchApiActions.loadWatchesFailure({ snackbarMessage: error })))
+          catchError((snackbarMessage: string) => of(watchApiActions.loadWatchesFailure({ snackbarMessage })))
         );
       })
     );
@@ -35,8 +35,8 @@ export class WatchEffects {
               newWatch: watch,
             });
           }),
-          catchError((error: string) => {
-            return of(watchApiActions.addWatchFailure({ snackbarMessage: error }));
+          catchError((snackbarMessage: string) => {
+            return of(watchApiActions.addWatchFailure({ snackbarMessage }));
           })
         );
       })
@@ -48,15 +48,15 @@ export class WatchEffects {
       ofType(watchApiActions.deleteWatch),
       switchMap((action) => {
         return this.watchService.deleteWatchById(action.watch.id).pipe(
-          map((id) => {
+          map((watchToDelete) => {
             return watchApiActions.deleteWatchSuccess({
-              watchId: id.deletedWatchId,
+              watchId: watchToDelete.id,
             });
           }),
-          catchError((err: string) =>
+          catchError((snackbarMessage: string) =>
             of(
               watchApiActions.deleteWatchFailure({
-                snackbarMessage: err,
+                snackbarMessage,
                 watch: action.watch,
               })
             )
@@ -81,10 +81,10 @@ export class WatchEffects {
               },
             });
           }),
-          catchError((err: string) => {
+          catchError((snackbarMessage: string) => {
             return of(
               watchApiActions.toggleActiveStatusFailure({
-                snackbarMessage: err,
+                snackbarMessage,
                 watchProps: {
                   id: action.watch.id,
                   active: action.watch.active,

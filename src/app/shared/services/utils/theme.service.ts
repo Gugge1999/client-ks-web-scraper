@@ -1,15 +1,14 @@
-import { BehaviorSubject, Observable } from "rxjs";
-
-import { Injectable, Renderer2, RendererFactory2 } from "@angular/core";
+import { Injectable, Renderer2, RendererFactory2, signal } from "@angular/core";
 import { Theme } from "@models/constants";
 
 @Injectable({
   providedIn: "root",
 })
 export class ThemeService {
+  public currentThemeSignal = signal(this.getColorTheme());
+
   private _renderer!: Renderer2;
   private _colorTheme!: string;
-  private currentThemeSubject$ = new BehaviorSubject<string>(this.getColorTheme());
 
   // Från: https://www.youtube.com/watch?v=XIUv27nYcLE
   constructor(rendererFactory: RendererFactory2) {
@@ -18,6 +17,7 @@ export class ThemeService {
 
   initTheme() {
     this.getColorTheme();
+    this.currentThemeSignal.set(this._colorTheme);
     this._renderer.addClass(document.body, this._colorTheme);
   }
 
@@ -27,18 +27,15 @@ export class ThemeService {
     const previousColorTheme = theme === Theme.darkMode ? Theme.lightMode : Theme.darkMode;
     this._renderer.removeClass(document.body, previousColorTheme);
     this._renderer.addClass(document.body, theme);
+
+    this.currentThemeSignal.update(() => theme);
   }
 
   isDarkMode(): boolean {
     return this._colorTheme === Theme.darkMode;
   }
 
-  private setColorTheme(theme: string) {
-    this._colorTheme = theme;
-    localStorage.setItem(Theme.userTheme, theme);
-  }
-
-  private getColorTheme(): string {
+  public getColorTheme(): string {
     const userTheme = localStorage.getItem(Theme.userTheme);
     if (userTheme) {
       return (this._colorTheme = userTheme);
@@ -54,11 +51,8 @@ export class ThemeService {
     }
   }
 
-  public setCurrentTheme(currentTheme: string) {
-    this.currentThemeSubject$.next(currentTheme);
-  }
-
-  public getCurrentTheme(): Observable<string> {
-    return this.currentThemeSubject$.asObservable();
+  private setColorTheme(theme: string) {
+    this._colorTheme = theme;
+    localStorage.setItem(Theme.userTheme, theme);
   }
 }

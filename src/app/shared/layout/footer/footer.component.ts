@@ -1,35 +1,32 @@
-import { Observable } from "rxjs";
-
-import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
-import { ThemeService } from "@shared/services/utils/theme.service";
 import { AsyncPipe } from "@angular/common";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { Theme } from "@models/constants";
+import { FooterThemeColor } from "@models/theme.model";
+import { ThemeService } from "@shared/services/utils/theme.service";
 
 @Component({
   selector: "app-footer",
   templateUrl: "./footer.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ["./footer.component.scss"],
   standalone: true,
   imports: [AsyncPipe],
 })
-export class FooterComponent implements OnInit {
-  darkModeFooterColors = {
+export class FooterComponent {
+  protected readonly darkModeFooterColors: FooterThemeColor = {
     top: "#5c5c5c",
     middle: "#4f4f4f",
     bottom: "#404040",
   };
 
-  lightModeFooterColors = {
+  protected readonly lightModeFooterColors: FooterThemeColor = {
     top: "#ededed",
     middle: "#c9c9c9",
     bottom: "#999999",
   };
 
-  protected currentTheme$!: Observable<string>;
+  protected readonly darkModeConst = Theme.darkMode;
+
+  protected readonly currentTheme = this.themeService.currentThemeSignal.asReadonly();
 
   constructor(private themeService: ThemeService) {}
-
-  ngOnInit() {
-    this.currentTheme$ = this.themeService.getCurrentTheme();
-  }
 }

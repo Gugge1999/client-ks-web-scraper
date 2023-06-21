@@ -13,7 +13,6 @@ export class StatusService {
 
   private httpOptions = {
     headers: new HttpHeaders({
-      "Content-Type": "application/json",
       "Cache-control": "no-cache",
     }),
   };
