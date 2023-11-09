@@ -1,7 +1,7 @@
-import { tap } from "rxjs/operators";
-
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
+import { tap } from "rxjs/operators";
+
 import { SnackbarService } from "@shared/services/snackbar/snackbar.service";
 import * as watchApiActions from "@store/actions/watch-api.actions";
 

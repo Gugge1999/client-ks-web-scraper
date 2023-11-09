@@ -45,8 +45,8 @@ export class HeaderComponent implements OnInit {
     // TODO: Jag tror det är bäst om man låter det vara en observable och sen gör toSignal från rxjs-interop
     this.apiStatus$ = timer(0, 10_000).pipe(
       switchMap(() => this.statusService.getApiStatus()),
-      startWith(this.getInitialApiStatus()), // startWith måste ligga efter switchMap
-      retry(3)
+      startWith(this.initialApiStatus()), // startWith måste ligga efter switchMap
+      retry({ count: 3, delay: 2_000, resetOnSuccess: true })
     );
   }
 
@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit {
     this.isDarkMode = this.themeService.isDarkMode();
   }
 
-  private getInitialApiStatus(): ApiStatus {
+  private initialApiStatus(): ApiStatus {
     return {
       active: false,
       scrapingIntervalInMinutes: 0,

@@ -4,12 +4,7 @@
     <mat-form-field appearance="outline" class="form-element">
       <mat-label>Label</mat-label>
       <input matInput formControlName="label" type="text" class="form-control" id="label" name="label" />
-      <button
-        *ngIf="watchForm.controls.label.value !== ''"
-        matSuffix
-        mat-icon-button
-        aria-label="Clear"
-        (click)="watchForm.controls.label.setValue('')">
+      <button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="onClear(watchForm.controls.label)">
         <mat-icon>close</mat-icon>
       </button>
       <mat-hint><h5>Enter a label. This can be anything.</h5></mat-hint>
@@ -30,11 +25,11 @@
         id="watchToScrape"
         name="watchToScrape" />
       <button
-        *ngIf="watchForm.controls.label.value !== ''"
         matSuffix
         mat-icon-button
         aria-label="Clear"
-        (click)="watchForm.controls.watchToScrape.setValue('')">
+        type="button"
+        (click)="onClear(watchForm.controls.watchToScrape)">
         <mat-icon>close</mat-icon>
       </button>
       <mat-hint>
@@ -47,7 +42,7 @@
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button mat-flat-button mat-dialog-close="cancelClicked" color="accent">Cancel</button>
-    <button mat-flat-button color="primary" type="submit" class="btn btn-success" [disabled]="!watchForm.valid">
+    <button mat-flat-button color="primary" type="submit" class="btn btn-success" [disabled]="watchForm.invalid">
       Save
     </button>
   </mat-dialog-actions>

@@ -1,8 +1,9 @@
 import { ChangeDetectionStrategy, Component, Inject } from "@angular/core";
-import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from "@angular/material/dialog";
+import { MatButtonModule } from "@angular/material/button";
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
+
 import { ScraperCardComponent } from "@components/scraper-card/scraper-card.component";
 import { Watch } from "@models/watch.model";
-import { MatButtonModule } from "@angular/material/button";
 
 @Component({
   selector: "app-delete-watch-dialog",

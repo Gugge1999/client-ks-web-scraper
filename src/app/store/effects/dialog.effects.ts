@@ -20,13 +20,21 @@ export class DialogEffects {
     () => {
       return this.actions$.pipe(
         ofType(dialogActions.openNewWatchDialog),
-        tap(() =>
-          this.dialog.open(NewWatchDialogComponent, {
+        tap(() => {
+          console.log("qiowjdoijqwd");
+
+          return this.dialog.open(NewWatchDialogComponent, {
             height: "clamp(45ch, 50%, 50ch)",
+
+            /*
+                TODO:
+                @breaking-change
+                14.0.0 Remove boolean option from autoFocus. Use string or AutoFocusTarget instead.
+              */
             autoFocus: false,
             restoreFocus: false,
-          })
-        )
+          });
+        })
       );
     },
     { dispatch: false }

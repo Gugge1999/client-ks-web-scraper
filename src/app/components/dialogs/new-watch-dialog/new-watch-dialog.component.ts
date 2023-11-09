@@ -1,14 +1,15 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
-import { FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
-import { Store } from "@ngrx/store";
-import { addWatch } from "@store/actions/watch-api.actions";
-import { MatIconModule } from "@angular/material/icon";
-import { MatButtonModule } from "@angular/material/button";
 import { NgIf } from "@angular/common";
-import { MatInputModule } from "@angular/material/input";
-import { MatFormFieldModule } from "@angular/material/form-field";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
+import { MatButtonModule } from "@angular/material/button";
 import { MatDialogModule } from "@angular/material/dialog";
+import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
+import { Store } from "@ngrx/store";
+
+import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
+import { addWatch } from "@store/actions/watch-api.actions";
 
 @Component({
   selector: "app-new-watch-dialog",
@@ -41,12 +42,16 @@ export class NewWatchDialogComponent {
 
   constructor(private store: Store) {}
 
-  submitNewWatch() {
+  protected submitNewWatch() {
     const newWatch: NewWatchFormDTO = {
       label: this.watchForm.controls.label.value,
       watchToScrape: this.watchForm.controls.watchToScrape.value,
     };
 
     this.store.dispatch(addWatch({ newWatch }));
+  }
+
+  protected onClear(formControl: FormControl) {
+    formControl.patchValue("");
   }
 }

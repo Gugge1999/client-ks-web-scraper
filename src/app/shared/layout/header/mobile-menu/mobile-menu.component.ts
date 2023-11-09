@@ -27,6 +27,7 @@ export class MobileMenuComponent {
   }
 
   onOpenApiStatusDialog() {
+    // TODO: Behöver öppning / stängning av dialog ligga i store?
     this.openApiStatusDialog.emit();
   }
 }

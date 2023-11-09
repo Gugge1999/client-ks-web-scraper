@@ -11,15 +11,9 @@ import { AppConfigService } from "@shared/services/utils/app-config.service";
 export class StatusService {
   constructor(private http: HttpClient) {}
 
-  private httpOptions = {
-    headers: new HttpHeaders({
-      "Cache-control": "no-cache",
-    }),
-  };
-
   getApiStatus(): Observable<ApiStatus> {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/api-status`;
 
-    return this.http.get<ApiStatus>(API_URL, this.httpOptions);
+    return this.http.get<ApiStatus>(API_URL);
   }
 }

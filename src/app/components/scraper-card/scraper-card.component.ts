@@ -1,17 +1,17 @@
-import { Observable, tap } from "rxjs";
-
 import { BreakpointObserver, Breakpoints, BreakpointState } from "@angular/cdk/layout";
 import { AsyncPipe, DatePipe, NgClass, NgFor, NgIf } from "@angular/common";
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatExpansionModule } from "@angular/material/expansion";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatTooltipModule } from "@angular/material/tooltip";
+import { Store } from "@ngrx/store";
+import { Observable } from "rxjs";
+
 import { TimeFormats } from "@models/constants";
 import { Watch } from "@models/watch.model";
-import { Store } from "@ngrx/store";
 import { ProgressBarService } from "@shared/services/progress-bar/progess-bar-overlay.service";
 import { openDeleteWatchDialog, openNewWatchDialog } from "@store/actions/dialog.actions";
 import { toggleActiveStatus } from "@store/actions/watch-api.actions";
@@ -46,17 +46,10 @@ export class ScraperCardComponent {
   constructor(
     private breakpointObserver: BreakpointObserver,
     private store: Store,
-    protected progressBarService: ProgressBarService,
-    private cdr: ChangeDetectorRef
+    protected progressBarService: ProgressBarService
   ) {
     this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset);
-    this.watches$ = this.store.select(selectAllWatches).pipe(
-      tap(() => {
-        // Fulhack för att fixa problem på firefox där change detection inte körs
-        // TODO: Försök att få bort den
-        this.cdr.detectChanges();
-      })
-    );
+    this.watches$ = this.store.select(selectAllWatches);
     this.newWatchLoading$ = this.store.select(selectIsNewWatchLoading);
   }
 

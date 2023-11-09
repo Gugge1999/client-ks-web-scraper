@@ -1,8 +1,5 @@
 -------------- TODO --------------
-Byt till standalone components
-Se: https://angular.io/guide/standalone-components
-Och: https://www.youtube.com/watch?v=x5PZwb4XurU  
-Används: ng generate @angular/core:standalone
+Går det att ta bort app.module.ts? Svar ja. Kör alla migrerings scripts i angular standalone docs
 
 
 
