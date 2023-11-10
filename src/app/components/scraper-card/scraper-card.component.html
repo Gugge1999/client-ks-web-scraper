@@ -1,20 +1,20 @@
-<div *ngIf="newWatchLoading$ | async; else notLoading">
+@if (newWatchLoading$ | async) {
+<div>
   {{ this.progressBarService.show("Adding watch...") }}
 </div>
-<ng-template #notLoading>
-  {{ this.progressBarService.hide() }}
-</ng-template>
+} @else {
 
-<div *ngIf="this.isHandset$ | async as isHandset">
-  <div *ngIf="watches$ | async as watches" class="card-container">
-    <mat-card
-      appearance="outlined"
-      class="card"
-      *ngFor="let watch of watches; index as i"
-      [ngClass]="isHandset.matches ? 'full-card-width' : 'small-card-width'">
-      <mat-card-title
-        ><strong>{{ watch.label }}</strong></mat-card-title
-      >
+{{ this.progressBarService.hide() }}
+
+} @if (this.isHandset$ | async; as isHandset) {
+<div>
+  @if (watches$ | async; as watches) {
+  <div class="card-container">
+    @for (watch of watches; track $index) {
+    <mat-card appearance="outlined" class="card" [ngClass]="isHandset.matches ? 'full-card-width' : 'small-card-width'">
+      <mat-card-title>
+        <strong>{{ watch.label }}</strong>
+      </mat-card-title>
       <mat-accordion>
         <mat-expansion-panel>
           <mat-expansion-panel-header class="card-mat-expansion-panel-header">
@@ -49,9 +49,11 @@
           (click)="deleteWatchDialog(watch)">
           <mat-icon class="delete-icon">delete_outline</mat-icon>
         </button>
+
         <button mat-icon-button matTooltip="View statistics" matTooltipPosition="above">
           <mat-icon fontSet="material-icons-outlined" color="primary">assessment</mat-icon>
         </button>
+
         <mat-slide-toggle
           class="is-watch-active-slide-toggle"
           color="primary"
@@ -62,10 +64,14 @@
         </mat-slide-toggle>
       </mat-card-actions>
     </mat-card>
+    }
   </div>
+  }
+
   <div class="fab-small-screen-new-watch-button custom-tooltip" matTooltip="Add new watch" matTooltipPosition="left">
     <button mat-fab color="primary" (click)="openNewWatchDialog()">
       <mat-icon class="small-add-watch-icon">add</mat-icon>
     </button>
   </div>
 </div>
+}

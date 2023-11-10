@@ -8,12 +8,15 @@
         <mat-icon>close</mat-icon>
       </button>
       <mat-hint><h5>Enter a label. This can be anything.</h5></mat-hint>
-      <mat-error *ngIf="watchForm.controls.label.errors?.['required']">
+      @if (watchForm.controls.label.errors?.['required']) {
+      <mat-error>
         <h5>Label is required.</h5>
       </mat-error>
-      <mat-error *ngIf="watchForm.controls.label.errors?.['minlength']">
+      } @if (watchForm.controls.label.errors?.['minlength']) {
+      <mat-error>
         <h5>Label must be at least 3 characters.</h5>
       </mat-error>
+      }
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Watch to scrape</mat-label>
@@ -35,9 +38,11 @@
       <mat-hint>
         <h5>Enter the watch you want to scrape.</h5>
       </mat-hint>
-      <mat-error *ngIf="watchForm.controls.watchToScrape.errors?.['required']">
+      @if (watchForm.controls.watchToScrape.errors?.['required']) {
+      <mat-error>
         <h5>Name of watch to scrape is required.</h5>
       </mat-error>
+      }
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions align="end">

@@ -1,5 +1,7 @@
-<header role="banner" *ngIf="isHandset$ | async as isHandset">
-  <div *ngIf="apiStatus$ | async as apiStatus">
+@if (isHandset$ | async; as isHandset) {
+<header role="banner">
+  @if (apiStatus$ | async; as apiStatus) {
+  <div>
     <mat-toolbar color="primary">
       <mat-toolbar-row>
         <a class="title-bar-link" [routerLink]="['/']">
@@ -9,7 +11,8 @@
         <!-- TODO: Behövs spacer? Går det inte att använda flexbox med space between? -->
         <span class="spacer"> </span>
 
-        <div *ngIf="isHandset.matches; else desktopMenu">
+        @if (isHandset.matches) {
+        <div>
           <app-mobile-menu
             [apiStatus]="apiStatus"
             [isDarkMode]="isDarkMode"
@@ -17,16 +20,17 @@
             (openApiStatusDialog)="openApiStatusDialog()">
           </app-mobile-menu>
         </div>
-
-        <ng-template #desktopMenu>
-          <app-desktop-menu
-            [apiStatus]="apiStatus"
-            [isDarkMode]="isDarkMode"
-            (toggleTheme)="toggleTheme()"
-            (openApiStatusDialog)="openApiStatusDialog()">
-          </app-desktop-menu>
-        </ng-template>
+        } @else {
+        <app-desktop-menu
+          [apiStatus]="apiStatus"
+          [isDarkMode]="isDarkMode"
+          (toggleTheme)="toggleTheme()"
+          (openApiStatusDialog)="openApiStatusDialog()">
+        </app-desktop-menu>
+        }
       </mat-toolbar-row>
     </mat-toolbar>
   </div>
+  }
 </header>
+}
