@@ -7,20 +7,19 @@
   </div>
 
   @if (apiStatus.active; as active) {
-  <div (click)="active ? onOpenApiStatusDialog() : ''" class="header-chip pointer" matTooltip="View API statistics">
-    <!-- API:et är aktivt -->
-    <div class="api-active">
-      <mat-icon class="status-icon" color="primary"> check_circle_outline </mat-icon>
-      <span class="status-text">API Status</span>
+    <div (click)="active ? onOpenApiStatusDialog() : ''" class="header-chip pointer" matTooltip="View API statistics">
+      <!-- API:et är aktivt -->
+      <div class="api-active">
+        <mat-icon class="status-icon" color="primary"> check_circle_outline </mat-icon>
+        <span class="status-text">API Status</span>
+      </div>
     </div>
-  </div>
   } @else {
-  <div class="header-chip">
-    <div class="api-inactive" matTooltip="API is not active">
-      <mat-icon class="status-icon offline" color="warn"> highlight_off </mat-icon>
-      <span class="status-text">API Status</span>
+    <div class="header-chip">
+      <div class="api-inactive" matTooltip="API is not active">
+        <mat-icon class="status-icon offline" color="warn"> highlight_off </mat-icon>
+        <span class="status-text">API Status</span>
+      </div>
     </div>
-  </div>
-
   }
 </div>

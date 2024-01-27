@@ -3,6 +3,10 @@ Går det att ta bort app.module.ts? Svar ja. Kör alla migrerings scripts i angu
 
 
 
+Lägg till en transition mellan dark och light mode. Se till exempel på angular.dev
+https://stackoverflow.com/questions/61129414/adding-animation-while-switching-to-dark-mode-html
+
+
 
 Istället för att använda loading spinner skapa en skeleton card när en ny klocka läggs till
 
@@ -21,7 +25,7 @@ på ett nytt projekt
 
 
 
-Skriv om theme service så att den använder riktiga getters och setters (signals kanske är bättre). 
+Skriv om theme service så att den använder riktiga getters och setters (signals är nog ännu bättre). 
 Den guiden kanske är bra: https://www.youtube.com/watch?v=sM3ATKt8568&list=WL&index=34
 
 

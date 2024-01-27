@@ -8,47 +8,35 @@
         <mat-icon>close</mat-icon>
       </button>
       <mat-hint><h5>Enter a label. This can be anything.</h5></mat-hint>
-      @if (watchForm.controls.label.errors?.['required']) {
-      <mat-error>
-        <h5>Label is required.</h5>
-      </mat-error>
-      } @if (watchForm.controls.label.errors?.['minlength']) {
-      <mat-error>
-        <h5>Label must be at least 3 characters.</h5>
-      </mat-error>
+      @if (watchForm.controls.label.errors?.["required"]) {
+        <mat-error>
+          <h5>Label is required.</h5>
+        </mat-error>
+      }
+      @if (watchForm.controls.label.errors?.["minlength"]) {
+        <mat-error>
+          <h5>Label must be at least 3 characters.</h5>
+        </mat-error>
       }
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Watch to scrape</mat-label>
-      <input
-        matInput
-        formControlName="watchToScrape"
-        type="text"
-        class="form-control"
-        id="watchToScrape"
-        name="watchToScrape" />
-      <button
-        matSuffix
-        mat-icon-button
-        aria-label="Clear"
-        type="button"
-        (click)="onClear(watchForm.controls.watchToScrape)">
+      <input matInput formControlName="watchToScrape" type="text" class="form-control" id="watchToScrape" name="watchToScrape" />
+      <button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="onClear(watchForm.controls.watchToScrape)">
         <mat-icon>close</mat-icon>
       </button>
       <mat-hint>
         <h5>Enter the watch you want to scrape.</h5>
       </mat-hint>
-      @if (watchForm.controls.watchToScrape.errors?.['required']) {
-      <mat-error>
-        <h5>Name of watch to scrape is required.</h5>
-      </mat-error>
+      @if (watchForm.controls.watchToScrape.errors?.["required"]) {
+        <mat-error>
+          <h5>Name of watch to scrape is required.</h5>
+        </mat-error>
       }
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
     <button mat-flat-button mat-dialog-close="cancelClicked" color="accent">Cancel</button>
-    <button mat-flat-button color="primary" type="submit" class="btn btn-success" [disabled]="watchForm.invalid">
-      Save
-    </button>
+    <button mat-flat-button color="primary" type="submit" class="btn btn-success" [disabled]="watchForm.invalid">Save</button>
   </mat-dialog-actions>
 </form>

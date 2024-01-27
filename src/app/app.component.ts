@@ -13,10 +13,13 @@ declare const gtag: Function;
   selector: "app-root",
   templateUrl: "./app.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ["./app.component.scss"],
+  styleUrl: "./app.component.scss",
 })
 export class AppComponent implements OnInit {
-  constructor(private store: Store, private router: Router) {}
+  constructor(
+    private store: Store,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     this.setUpAnalytics();

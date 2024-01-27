@@ -1,4 +1,3 @@
-import { NgIf } from "@angular/common";
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
@@ -11,9 +10,9 @@ import { ApiStatus } from "@models/api-status.model";
   selector: "app-mobile-menu",
   templateUrl: "./mobile-menu.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ["./mobile-menu.component.scss"],
+  styleUrl: "./mobile-menu.component.scss",
   standalone: true,
-  imports: [MatButtonModule, MatMenuModule, MatIconModule, MatTooltipModule, MatSlideToggleModule, NgIf],
+  imports: [MatButtonModule, MatMenuModule, MatIconModule, MatTooltipModule, MatSlideToggleModule],
 })
 export class MobileMenuComponent {
   @Input({ required: true }) apiStatus!: ApiStatus;

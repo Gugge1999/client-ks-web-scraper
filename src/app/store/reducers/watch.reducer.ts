@@ -32,7 +32,7 @@ export const watchReducer = createReducer(
     (state): WatchState => ({
       ...state,
       newWatchLoading: false,
-    })
+    }),
   ),
   on(WatchApiActions.toggleActiveStatusSuccess, WatchApiActions.toggleActiveStatusFailure, (state, { watchProps }) => {
     return adapter.updateOne({ id: watchProps.id, changes: { active: watchProps.active } }, state);
@@ -42,7 +42,7 @@ export const watchReducer = createReducer(
     (state): WatchState => ({
       ...state,
       newWatchLoading: true,
-    })
+    }),
   ),
   on(
     WatchActions.addWatch,
@@ -50,11 +50,11 @@ export const watchReducer = createReducer(
     WatchApiActions.deleteWatchFailure,
     (state, { watch }) => {
       return adapter.addOne(watch, state);
-    }
+    },
   ),
   on(WatchActions.deleteWatch, (state, { watchId }) => {
     return adapter.removeOne(watchId, state);
-  })
+  }),
 );
 
 const { selectIds, selectEntities, selectAll, selectTotal } = adapter.getSelectors();

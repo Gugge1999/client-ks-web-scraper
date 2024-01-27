@@ -21,9 +21,7 @@ export class AppConfigService {
 
   async loadAppConfig() {
     try {
-      AppConfigService.appConfig = await lastValueFrom(
-        this.http.get<AppConfig>(`/assets/config/${environment.name}.config.json`, this.httpOptions)
-      );
+      AppConfigService.appConfig = await lastValueFrom(this.http.get<AppConfig>(`/assets/config/${environment.name}.config.json`, this.httpOptions));
     } catch (err) {
       console.error("loadAppConfig failed.", err);
     }

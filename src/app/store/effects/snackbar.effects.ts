@@ -7,26 +7,29 @@ import * as watchApiActions from "@store/actions/watch-api.actions";
 
 @Injectable()
 export class SnackbarEffects {
-  constructor(private actions$: Actions, private snackbarService: SnackbarService) {}
+  constructor(
+    private actions$: Actions,
+    private snackbarService: SnackbarService,
+  ) {}
 
   showSuccessSnackbar$ = createEffect(
     () => {
       return this.actions$.pipe(
         ofType(watchApiActions.addWatchSuccess),
-        tap(({ snackbarMessage }) => this.snackbarService.successSnackbar(snackbarMessage))
+        tap(({ snackbarMessage }) => this.snackbarService.successSnackbar(snackbarMessage)),
       );
     },
-    { dispatch: false }
+    { dispatch: false },
   );
 
   showInfoSnackbar$ = createEffect(
     () => {
       return this.actions$.pipe(
         ofType(watchApiActions.toggleActiveStatusSuccess),
-        tap(({ snackbarMessage }) => this.snackbarService.infoSnackbar(snackbarMessage))
+        tap(({ snackbarMessage }) => this.snackbarService.infoSnackbar(snackbarMessage)),
       );
     },
-    { dispatch: false }
+    { dispatch: false },
   );
 
   showErrorSnackbar$ = createEffect(
@@ -36,11 +39,11 @@ export class SnackbarEffects {
           watchApiActions.addWatchFailure,
           watchApiActions.deleteWatchFailure,
           watchApiActions.toggleActiveStatusFailure,
-          watchApiActions.loadWatchesFailure
+          watchApiActions.loadWatchesFailure,
         ),
-        tap(({ snackbarMessage }) => this.snackbarService.errorSnackbar(snackbarMessage))
+        tap(({ snackbarMessage }) => this.snackbarService.errorSnackbar(snackbarMessage)),
       );
     },
-    { dispatch: false }
+    { dispatch: false },
   );
 }

@@ -3,6 +3,6 @@
   "semi": true,
   "singleQuote": false,
   "bracketSameLine": true,
-  "printWidth": 120,
+  "printWidth": 150,
   "endOfLine": "crlf"
 }

@@ -14,7 +14,11 @@ import * as watchActions from "@store/actions/watch.actions";
 
 @Injectable()
 export class DialogEffects {
-  constructor(private actions$: Actions, private dialog: MatDialog, private snackbarService: SnackbarService) {}
+  constructor(
+    private actions$: Actions,
+    private dialog: MatDialog,
+    private snackbarService: SnackbarService,
+  ) {}
 
   openNewWatchDialog$ = createEffect(
     () => {
@@ -34,20 +38,20 @@ export class DialogEffects {
             autoFocus: false,
             restoreFocus: false,
           });
-        })
+        }),
       );
     },
-    { dispatch: false }
+    { dispatch: false },
   );
 
   closeNewWatchDialog$ = createEffect(
     () => {
       return this.actions$.pipe(
         ofType(watchApiActions.addWatch),
-        tap(() => this.dialog.closeAll())
+        tap(() => this.dialog.closeAll()),
       );
     },
-    { dispatch: false }
+    { dispatch: false },
   );
 
   openDeleteWatchDialog$ = createEffect(() => {
@@ -69,7 +73,7 @@ export class DialogEffects {
         this.snackbarService.undoAndDeleteSnackbar(res);
 
         return watchActions.deleteWatch({ watchId: res.id });
-      })
+      }),
     );
   });
 
@@ -83,9 +87,9 @@ export class DialogEffects {
             autoFocus: false,
             restoreFocus: false,
           });
-        })
+        }),
       );
     },
-    { dispatch: false }
+    { dispatch: false },
   );
 }

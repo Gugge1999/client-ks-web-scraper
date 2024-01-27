@@ -9,14 +9,14 @@ import { Watch } from "@models/watch.model";
   selector: "app-delete-watch-dialog",
   templateUrl: "./delete-watch-dialog.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ["./delete-watch-dialog.component.scss"],
+  styleUrl: "./delete-watch-dialog.component.scss",
   standalone: true,
   imports: [MatDialogModule, MatButtonModule],
 })
 export class DeleteWatchDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public watchToDelete: Watch,
-    private dialogRef: MatDialogRef<ScraperCardComponent>
+    private dialogRef: MatDialogRef<ScraperCardComponent>,
   ) {}
 
   cancelClicked(): void {

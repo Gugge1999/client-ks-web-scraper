@@ -1,4 +1,3 @@
-import { NgIf } from "@angular/common";
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
@@ -15,18 +14,9 @@ import { addWatch } from "@store/actions/watch-api.actions";
   selector: "app-new-watch-dialog",
   templateUrl: "./new-watch-dialog.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ["./new-watch-dialog.component.scss"],
+  styleUrl: "./new-watch-dialog.component.scss",
   standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
-    NgIf,
-    MatButtonModule,
-    MatIconModule,
-  ],
+  imports: [FormsModule, ReactiveFormsModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
 })
 export class NewWatchDialogComponent {
   watchForm = new FormGroup({

@@ -1,4 +1,3 @@
-import { AsyncPipe } from "@angular/common";
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { Theme } from "@models/constants";
 import { FooterThemeColor } from "@models/theme.model";
@@ -9,9 +8,10 @@ import { ThemeService } from "@shared/services/utils/theme.service";
   templateUrl: "./footer.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [AsyncPipe],
 })
 export class FooterComponent {
+  constructor(private themeService: ThemeService) {}
+
   protected readonly darkModeFooterColors: FooterThemeColor = {
     top: "#5c5c5c",
     middle: "#4f4f4f",
@@ -27,6 +27,4 @@ export class FooterComponent {
   protected readonly darkModeConst = Theme.darkMode;
 
   protected readonly currentTheme = this.themeService.currentThemeSignal.asReadonly();
-
-  constructor(private themeService: ThemeService) {}
 }

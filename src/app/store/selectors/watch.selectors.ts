@@ -14,7 +14,7 @@ export const selectWatchState = createFeatureSelector<fromWatch.WatchState>("wat
 export const selectWatchIds = createSelector(
   selectWatchState,
   // shorthand for WatchesState => fromWatch.selectWatchIds(WatchesState)
-  fromWatch.selectWatchIds
+  fromWatch.selectWatchIds,
 );
 
 export const selectWatchEntities = createSelector(selectWatchState, fromWatch.selectWatchEntities);

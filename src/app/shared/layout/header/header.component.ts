@@ -1,9 +1,8 @@
-import { Observable, timer } from "rxjs";
+import { timer } from "rxjs";
 import { retry, startWith, switchMap } from "rxjs/operators";
 
-import { BreakpointObserver, Breakpoints, BreakpointState } from "@angular/cdk/layout";
-import { AsyncPipe, NgIf } from "@angular/common";
-import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
+import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
+import { ChangeDetectionStrategy, Component, OnInit, signal } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { RouterLink } from "@angular/router";
@@ -20,34 +19,37 @@ import { openApiStatusDialog } from "@store/actions/dialog.actions";
   selector: "app-header",
   templateUrl: "./header.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ["./header.component.scss"],
+  styleUrl: "./header.component.scss",
   standalone: true,
-  imports: [NgIf, MatToolbarModule, RouterLink, MatIconModule, MobileMenuComponent, DesktopMenuComponent, AsyncPipe],
+  imports: [MatToolbarModule, RouterLink, MatIconModule, MobileMenuComponent, DesktopMenuComponent],
 })
 export class HeaderComponent implements OnInit {
-  apiStatus$!: Observable<ApiStatus>;
   isDarkMode: boolean;
-  isHandset$!: Observable<BreakpointState>;
+  isHandset = signal(false);
+  apiStatus = signal(this.initialApiStatus());
 
   constructor(
     private statusService: StatusService,
     private themeService: ThemeService,
     private breakpointObserver: BreakpointObserver,
-    private store: Store
+    private store: Store,
   ) {
     this.themeService.initTheme();
     this.isDarkMode = this.themeService.isDarkMode();
   }
 
   ngOnInit(): void {
-    this.isHandset$ = this.breakpointObserver.observe(Breakpoints.Handset);
+    this.breakpointObserver.observe(Breakpoints.Handset).subscribe((breakpointObserver) => {
+      this.isHandset.set(breakpointObserver.matches);
+    });
 
-    // TODO: Jag tror det är bäst om man låter det vara en observable och sen gör toSignal från rxjs-interop
-    this.apiStatus$ = timer(0, 10_000).pipe(
-      switchMap(() => this.statusService.getApiStatus()),
-      startWith(this.initialApiStatus()), // startWith måste ligga efter switchMap
-      retry({ count: 3, delay: 2_000, resetOnSuccess: true })
-    );
+    timer(0, 10_000)
+      .pipe(
+        switchMap(() => this.statusService.getApiStatus()),
+        startWith(this.initialApiStatus()), // startWith måste ligga efter switchMap
+        retry({ count: 3, delay: 2_000 }),
+      )
+      .subscribe((apiStatus) => this.apiStatus.set(apiStatus));
   }
 
   openApiStatusDialog() {
@@ -55,9 +57,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleTheme() {
-    this.themeService.isDarkMode()
-      ? this.themeService.updateTheme(Theme.lightMode)
-      : this.themeService.updateTheme(Theme.darkMode);
+    this.themeService.isDarkMode() ? this.themeService.updateTheme(Theme.lightMode) : this.themeService.updateTheme(Theme.darkMode);
 
     this.isDarkMode = this.themeService.isDarkMode();
   }
@@ -65,14 +65,14 @@ export class HeaderComponent implements OnInit {
   private initialApiStatus(): ApiStatus {
     return {
       active: false,
-      scrapingIntervalInMinutes: 0,
+      scrapingIntervalInMinutes: 1,
       uptime: {
-        years: 0,
-        months: 0,
-        days: 0,
-        hours: 0,
-        minutes: 0,
-        seconds: 0,
+        years: 1,
+        months: 1,
+        days: 1,
+        hours: 1,
+        minutes: 1,
+        seconds: 1,
       },
     };
   }

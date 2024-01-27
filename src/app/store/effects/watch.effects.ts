@@ -8,7 +8,10 @@ import * as watchApiActions from "@store/actions/watch-api.actions";
 
 @Injectable()
 export class WatchEffects {
-  constructor(private actions$: Actions, private watchService: WatchService) {}
+  constructor(
+    private actions$: Actions,
+    private watchService: WatchService,
+  ) {}
 
   loadWatches$ = createEffect(() => {
     return this.actions$.pipe(
@@ -18,9 +21,9 @@ export class WatchEffects {
           map((watches) => {
             return watchApiActions.loadWatchesSuccess({ watches: watches });
           }),
-          catchError((snackbarMessage: string) => of(watchApiActions.loadWatchesFailure({ snackbarMessage })))
+          catchError((snackbarMessage: string) => of(watchApiActions.loadWatchesFailure({ snackbarMessage }))),
         );
-      })
+      }),
     );
   });
 
@@ -37,9 +40,9 @@ export class WatchEffects {
           }),
           catchError((snackbarMessage: string) => {
             return of(watchApiActions.addWatchFailure({ snackbarMessage }));
-          })
+          }),
         );
-      })
+      }),
     );
   });
 
@@ -58,11 +61,11 @@ export class WatchEffects {
               watchApiActions.deleteWatchFailure({
                 snackbarMessage,
                 watch: action.watch,
-              })
-            )
-          )
+              }),
+            ),
+          ),
         );
-      })
+      }),
     );
   });
 
@@ -90,11 +93,11 @@ export class WatchEffects {
                   active: action.watch.active,
                   label: action.watch.label,
                 },
-              })
+              }),
             );
-          })
+          }),
         );
-      })
+      }),
     );
   });
 }
