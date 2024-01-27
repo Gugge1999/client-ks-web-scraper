@@ -1,12 +1,12 @@
-<div [ngClass]="isDarkMode ? 'header-chip-wrapper-dark' : 'header-chip-wrapper-light'">
+<div [ngClass]="isDarkMode() ? 'header-chip-wrapper-dark' : 'header-chip-wrapper-light'">
   <div class="header-chip pointer" matTooltip="Toggle theme" (click)="onToggleTheme()">
-    <mat-slide-toggle color="accent" [checked]="isDarkMode">
+    <mat-slide-toggle color="accent" [checked]="isDarkMode()">
       Dark mode
       <mat-icon class="dark-mode-icons" fontSet="material-icons-outlined"> dark_mode </mat-icon>
     </mat-slide-toggle>
   </div>
 
-  @if (apiStatus.active; as active) {
+  @if (apiStatus().active; as active) {
     <div (click)="active ? onOpenApiStatusDialog() : ''" class="header-chip pointer" matTooltip="View API statistics">
       <!-- API:et är aktivt -->
       <div class="api-active">

@@ -1,5 +1,5 @@
 import { NgClass } from "@angular/common";
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatTooltipModule } from "@angular/material/tooltip";
@@ -15,8 +15,8 @@ import { ApiStatus } from "@models/api-status.model";
   imports: [NgClass, MatTooltipModule, MatSlideToggleModule, MatIconModule],
 })
 export class DesktopMenuComponent {
-  @Input({ required: true }) apiStatus!: ApiStatus;
-  @Input({ required: true }) isDarkMode!: boolean;
+  apiStatus = input.required<ApiStatus>();
+  isDarkMode = input.required<boolean>();
 
   @Output() toggleTheme = new EventEmitter<void>();
   @Output() openApiStatusDialog = new EventEmitter<void>();

@@ -17,8 +17,8 @@
       </mat-slide-toggle>
     </button>
 
-    @if (apiStatus.active) {
-      <button mat-menu-item (click)="apiStatus.active ? onOpenApiStatusDialog() : ''">
+    @if (apiStatus().active) {
+      <button mat-menu-item (click)="apiStatus().active ? onOpenApiStatusDialog() : ''">
         <div matTooltip="View API statistics" matTooltipPosition="left">
           <div class="api-content-wrapper">
             <mat-icon class="status-icon" color="primary"> check_circle_outline </mat-icon>
@@ -36,6 +36,5 @@
         </div>
       </button>
     }
-    <!-- API:et är inte aktivt. Länken ska vara inaktiverad  -->
   </div>
 </mat-menu>

@@ -1,34 +1,30 @@
-@if (isHandset(); as isHandset) {
-  <header role="banner">
-    @if (apiStatus(); as apiStatus) {
-      <div>
-        <mat-toolbar color="primary">
-          <mat-toolbar-row>
-            <a class="title-bar-link" [routerLink]="['/']">
-              <mat-icon class="icon-margin-right">watch</mat-icon>
-              <span class="toolbar-title">KS Web Scraper</span>
-            </a>
-            <!-- TODO: Behövs spacer? Går det inte att använda flexbox med space between? -->
-            <span class="spacer"> </span>
+<header role="banner">
+  <div>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row>
+        <a class="title-bar-link" [routerLink]="['/']">
+          <mat-icon class="icon-margin-right">watch</mat-icon>
+          <span class="toolbar-title">KS Web Scraper</span>
+        </a>
+        <!-- TODO: Behövs spacer? Går det inte att använda flexbox med space between? -->
+        <span class="spacer"> </span>
 
-            @if (isHandset) {
-              <app-mobile-menu
-                [apiStatus]="apiStatus"
-                [isDarkMode]="isDarkMode"
-                (toggleTheme)="toggleTheme()"
-                (openApiStatusDialog)="openApiStatusDialog()">
-              </app-mobile-menu>
-            } @else {
-              <app-desktop-menu
-                [apiStatus]="apiStatus"
-                [isDarkMode]="isDarkMode"
-                (toggleTheme)="toggleTheme()"
-                (openApiStatusDialog)="openApiStatusDialog()">
-              </app-desktop-menu>
-            }
-          </mat-toolbar-row>
-        </mat-toolbar>
-      </div>
-    }
-  </header>
-}
+        @if (isHandset()) {
+          <app-mobile-menu
+            [apiStatus]="apiStatus()"
+            [isDarkMode]="isDarkMode()"
+            (toggleTheme)="toggleTheme()"
+            (openApiStatusDialog)="openApiStatusDialog()">
+          </app-mobile-menu>
+        } @else {
+          <app-desktop-menu
+            [apiStatus]="apiStatus()"
+            [isDarkMode]="isDarkMode()"
+            (toggleTheme)="toggleTheme()"
+            (openApiStatusDialog)="openApiStatusDialog()">
+          </app-desktop-menu>
+        }
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </div>
+</header>

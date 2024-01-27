@@ -26,5 +26,5 @@ export class FooterComponent {
 
   protected readonly darkModeConst = Theme.darkMode;
 
-  protected readonly currentTheme = this.themeService.currentThemeSignal.asReadonly();
+  protected readonly currentTheme = this.themeService.getCurrentTheme();
 }

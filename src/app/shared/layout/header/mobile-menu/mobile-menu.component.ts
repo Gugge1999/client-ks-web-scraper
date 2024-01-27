@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from "@angular/core";
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatMenuModule } from "@angular/material/menu";
@@ -15,8 +15,8 @@ import { ApiStatus } from "@models/api-status.model";
   imports: [MatButtonModule, MatMenuModule, MatIconModule, MatTooltipModule, MatSlideToggleModule],
 })
 export class MobileMenuComponent {
-  @Input({ required: true }) apiStatus!: ApiStatus;
-  @Input({ required: true }) isDarkMode!: boolean;
+  apiStatus = input.required<ApiStatus>();
+  isDarkMode = input.required<boolean>();
 
   @Output() toggleTheme = new EventEmitter<void>();
   @Output() openApiStatusDialog = new EventEmitter<void>();

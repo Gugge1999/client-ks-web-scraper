@@ -24,7 +24,7 @@ import { openApiStatusDialog } from "@store/actions/dialog.actions";
   imports: [MatToolbarModule, RouterLink, MatIconModule, MobileMenuComponent, DesktopMenuComponent],
 })
 export class HeaderComponent implements OnInit {
-  isDarkMode: boolean;
+  isDarkMode = signal(false);
   isHandset = signal(false);
   apiStatus = signal(this.initialApiStatus());
 
@@ -33,12 +33,13 @@ export class HeaderComponent implements OnInit {
     private themeService: ThemeService,
     private breakpointObserver: BreakpointObserver,
     private store: Store,
-  ) {
-    this.themeService.initTheme();
-    this.isDarkMode = this.themeService.isDarkMode();
-  }
+  ) {}
 
   ngOnInit(): void {
+    this.themeService.initTheme();
+    this.isDarkMode.set(this.themeService.isDarkMode());
+
+    // TODO: unsubscribe?
     this.breakpointObserver.observe(Breakpoints.Handset).subscribe((breakpointObserver) => {
       this.isHandset.set(breakpointObserver.matches);
     });
@@ -59,20 +60,20 @@ export class HeaderComponent implements OnInit {
   toggleTheme() {
     this.themeService.isDarkMode() ? this.themeService.updateTheme(Theme.lightMode) : this.themeService.updateTheme(Theme.darkMode);
 
-    this.isDarkMode = this.themeService.isDarkMode();
+    this.isDarkMode.set(this.themeService.isDarkMode());
   }
 
   private initialApiStatus(): ApiStatus {
     return {
       active: false,
-      scrapingIntervalInMinutes: 1,
+      scrapingIntervalInMinutes: 0,
       uptime: {
-        years: 1,
-        months: 1,
-        days: 1,
-        hours: 1,
-        minutes: 1,
-        seconds: 1,
+        years: 0,
+        months: 0,
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0,
       },
     };
   }

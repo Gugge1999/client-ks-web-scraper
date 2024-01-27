@@ -5,10 +5,13 @@ import { Theme } from "@models/constants";
   providedIn: "root",
 })
 export class ThemeService {
-  public currentThemeSignal = signal(this.getColorTheme());
-
+  private _currentTheme = signal(this.getColorTheme());
   private _renderer!: Renderer2;
   private _colorTheme!: string;
+
+  public getCurrentTheme() {
+    return this._currentTheme.asReadonly();
+  }
 
   // Från: https://www.youtube.com/watch?v=XIUv27nYcLE
   constructor(rendererFactory: RendererFactory2) {
@@ -17,7 +20,7 @@ export class ThemeService {
 
   initTheme() {
     this.getColorTheme();
-    this.currentThemeSignal.set(this._colorTheme);
+    this._currentTheme.set(this._colorTheme);
     this._renderer.addClass(document.body, this._colorTheme);
   }
 
@@ -28,7 +31,7 @@ export class ThemeService {
     this._renderer.removeClass(document.body, previousColorTheme);
     this._renderer.addClass(document.body, theme);
 
-    this.currentThemeSignal.update(() => theme);
+    this._currentTheme.set(theme);
   }
 
   isDarkMode(): boolean {
