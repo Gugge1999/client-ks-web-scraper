@@ -1,8 +1,4 @@
 -------------- TODO --------------
-Går det att ta bort app.module.ts? Svar ja. Kör alla migrerings scripts i angular standalone docs
-
-
-
 Lägg till en transition mellan dark och light mode. Se till exempel på angular.dev
 https://stackoverflow.com/questions/61129414/adding-animation-while-switching-to-dark-mode-html
 
@@ -19,13 +15,8 @@ https://medium.com/angular-in-depth/ngrx-how-and-where-to-handle-loading-and-err
 
 
 
-Kolla vilka rules som eslint rules för ngrx. 
-Det finns presents om man kör kommandot: ng add @ngrx/store@latest --no-minimal
-på ett nytt projekt
 
-
-
-Skriv om theme service så att den använder riktiga getters och setters (signals är nog ännu bättre). 
+Skriv om theme service så att den använder enbart signals . 
 Den guiden kanske är bra: https://www.youtube.com/watch?v=sM3ATKt8568&list=WL&index=34
 
 
