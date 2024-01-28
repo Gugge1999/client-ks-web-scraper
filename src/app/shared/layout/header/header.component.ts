@@ -5,7 +5,6 @@ import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
 import { ChangeDetectionStrategy, Component, OnInit, signal } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
 import { MatToolbarModule } from "@angular/material/toolbar";
-import { RouterLink } from "@angular/router";
 import { ApiStatus } from "@models/api-status.model";
 import { Theme } from "@models/constants";
 import { Store } from "@ngrx/store";
@@ -16,12 +15,12 @@ import { ThemeService } from "@shared/services/utils/theme.service";
 import { openApiStatusDialog } from "@store/actions/dialog.actions";
 
 @Component({
-  selector: "app-header",
+  selector: "ks-scraper-header",
   templateUrl: "./header.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./header.component.scss",
   standalone: true,
-  imports: [MatToolbarModule, RouterLink, MatIconModule, MobileMenuComponent, DesktopMenuComponent],
+  imports: [MatToolbarModule, MatIconModule, MobileMenuComponent, DesktopMenuComponent],
 })
 export class HeaderComponent implements OnInit {
   isDarkMode = signal(false);

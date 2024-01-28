@@ -17,7 +17,7 @@ import { toggleActiveStatus } from "@store/actions/watch-api.actions";
 import { selectAllWatches, selectIsNewWatchLoading } from "@store/selectors/watch.selectors";
 
 @Component({
-  selector: "app-scraper-card",
+  selector: "ks-scraper-scraper-card",
   templateUrl: "./scraper-card.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./scraper-card.component.scss",

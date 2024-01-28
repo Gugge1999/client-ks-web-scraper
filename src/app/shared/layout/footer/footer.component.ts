@@ -4,7 +4,7 @@ import { FooterThemeColor } from "@models/theme.model";
 import { ThemeService } from "@shared/services/utils/theme.service";
 
 @Component({
-  selector: "app-footer",
+  selector: "ks-scraper-footer",
   templateUrl: "./footer.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,

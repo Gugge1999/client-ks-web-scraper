@@ -7,7 +7,7 @@ import { ApiStatus } from "@models/api-status.model";
 import { StatusService } from "@shared/services/utils/status.service";
 
 @Component({
-  selector: "app-api-status-dialog",
+  selector: "ks-scraper-api-status-dialog",
   templateUrl: "./api-status-dialog.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./api-status-dialog.component.scss",

@@ -7,7 +7,7 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { ProgressBarService } from "@shared/services/progress-bar/progess-bar-overlay.service";
 
 @Component({
-  selector: "app-loader",
+  selector: "ks-scraper-loader",
   templateUrl: "./progress-bar.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./progress-bar.component.scss",

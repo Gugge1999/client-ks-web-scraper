@@ -6,7 +6,7 @@ import { ScraperCardComponent } from "@components/scraper-card/scraper-card.comp
 import { Watch } from "@models/watch.model";
 
 @Component({
-  selector: "app-delete-watch-dialog",
+  selector: "ks-scraper-delete-watch-dialog",
   templateUrl: "./delete-watch-dialog.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./delete-watch-dialog.component.scss",

@@ -7,7 +7,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 import { ApiStatus } from "@models/api-status.model";
 
 @Component({
-  selector: "app-mobile-menu",
+  selector: "ks-scraper-mobile-menu",
   templateUrl: "./mobile-menu.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./mobile-menu.component.scss",
