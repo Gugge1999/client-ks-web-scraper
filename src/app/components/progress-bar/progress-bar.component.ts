@@ -1,10 +1,6 @@
-import { Observable } from "rxjs";
-
-import { AsyncPipe } from "@angular/common";
-import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { MatCardModule } from "@angular/material/card";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
-import { ProgressBarService } from "@shared/services/progress-bar/progess-bar-overlay.service";
 
 @Component({
   selector: "ks-scraper-loader",
@@ -12,14 +8,6 @@ import { ProgressBarService } from "@shared/services/progress-bar/progess-bar-ov
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./progress-bar.component.scss",
   standalone: true,
-  imports: [MatCardModule, MatProgressBarModule, AsyncPipe],
+  imports: [MatCardModule, MatProgressBarModule],
 })
-export class ProgessBarComponent implements OnInit {
-  protected message$!: Observable<string>;
-
-  constructor(private progressBarService: ProgressBarService) {}
-
-  ngOnInit(): void {
-    this.message$ = this.progressBarService.progessBarMessage;
-  }
-}
+export class ProgessBarComponent {}

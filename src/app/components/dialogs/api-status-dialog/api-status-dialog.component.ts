@@ -1,9 +1,8 @@
-import { AsyncPipe, DecimalPipe } from "@angular/common";
-import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
+import { DecimalPipe } from "@angular/common";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { toSignal } from "@angular/core/rxjs-interop";
 import { MatDialogModule } from "@angular/material/dialog";
-import { Observable } from "rxjs";
 
-import { ApiStatus } from "@models/api-status.model";
 import { StatusService } from "@shared/services/utils/status.service";
 
 @Component({
@@ -12,14 +11,10 @@ import { StatusService } from "@shared/services/utils/status.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./api-status-dialog.component.scss",
   standalone: true,
-  imports: [MatDialogModule, DecimalPipe, AsyncPipe],
+  imports: [MatDialogModule, DecimalPipe],
 })
-export class ApiStatusDialogComponent implements OnInit {
-  apiStatus$!: Observable<ApiStatus>;
+export class ApiStatusDialogComponent {
+  apiStatus = toSignal(this.statusService.getApiStatus());
 
   constructor(private statusService: StatusService) {}
-
-  ngOnInit(): void {
-    this.apiStatus$ = this.statusService.getApiStatus();
-  }
 }

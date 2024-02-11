@@ -32,7 +32,7 @@ export class SnackbarService {
     });
   }
 
-  undoAndDeleteSnackbar(watch: Watch) {
+  deleteSnackbarWithUndoAction(watch: Watch) {
     const snackbar = this.snackbar.open(`Deleted watch: ${watch.label}`, "Undo", {
       panelClass: ["snackbar-warning"],
     });

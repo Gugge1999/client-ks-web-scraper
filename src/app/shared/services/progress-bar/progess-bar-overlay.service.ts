@@ -1,5 +1,3 @@
-import { BehaviorSubject, Observable } from "rxjs";
-
 import { Overlay, OverlayRef } from "@angular/cdk/overlay";
 import { ComponentPortal } from "@angular/cdk/portal";
 import { Injectable } from "@angular/core";
@@ -10,11 +8,10 @@ import { ProgessBarComponent } from "@components/progress-bar/progress-bar.compo
 })
 export class ProgressBarService {
   private overlayRef!: OverlayRef;
-  private progessBarMessage$ = new BehaviorSubject<string>("");
 
   constructor(private overlay: Overlay) {}
 
-  public show(message: string) {
+  public show() {
     // Returns an OverlayRef (which is a PortalHost)
 
     if (!this.overlayRef) {
@@ -23,8 +20,6 @@ export class ProgressBarService {
         hasBackdrop: true,
       });
     }
-
-    this.progessBarMessage$.next(message);
 
     // Create ComponentPortal that can be attached to a PortalHost
     const progressBarOverlayPortal = new ComponentPortal(ProgessBarComponent);
@@ -38,9 +33,5 @@ export class ProgressBarService {
     if (!!this.overlayRef) {
       this.overlayRef.detach();
     }
-  }
-
-  public get progessBarMessage(): Observable<string> {
-    return this.progessBarMessage$.asObservable();
   }
 }

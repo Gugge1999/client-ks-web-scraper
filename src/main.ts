@@ -1,7 +1,6 @@
 import { LayoutModule } from "@angular/cdk/layout";
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { APP_INITIALIZER, enableProdMode, importProvidersFrom, isDevMode } from "@angular/core";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { BrowserModule, bootstrapApplication } from "@angular/platform-browser";
 import { provideAnimations } from "@angular/platform-browser/animations";
@@ -35,8 +34,6 @@ bootstrapApplication(AppComponent, {
     importProvidersFrom(
       BrowserModule,
       LayoutModule,
-      FormsModule,
-      ReactiveFormsModule,
       StoreModule.forRoot(reducers),
       EffectsModule.forRoot(effects),
       StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),

@@ -31,10 +31,6 @@
   transform: scale(1.75);
 }
 
-.delete-icon {
-  color: #ff5151;
-}
-
 .small-card-width {
   width: clamp(45ch, 40%, 60ch);
 }
@@ -49,10 +45,6 @@
 
 .mat-mdc-card-title {
   padding: 1em;
-}
-
-.is-watch-active-slide-toggle {
-  margin-left: 16px;
 }
 
 .mat-expansion-panel {

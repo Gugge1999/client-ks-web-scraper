@@ -1,10 +1,11 @@
-import { timer } from "rxjs";
-import { retry, startWith, switchMap } from "rxjs/operators";
-
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
-import { ChangeDetectionStrategy, Component, OnInit, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, signal } from "@angular/core";
+import { toSignal } from "@angular/core/rxjs-interop";
 import { MatIconModule } from "@angular/material/icon";
 import { MatToolbarModule } from "@angular/material/toolbar";
+import { timer } from "rxjs";
+import { map, retry, switchMap } from "rxjs/operators";
+
 import { ApiStatus } from "@models/api-status.model";
 import { Theme } from "@models/constants";
 import { Store } from "@ngrx/store";
@@ -24,32 +25,26 @@ import { openApiStatusDialog } from "@store/actions/dialog.actions";
 })
 export class HeaderComponent implements OnInit {
   isDarkMode = signal(false);
-  isHandset = signal(false);
-  apiStatus = signal(this.initialApiStatus());
+  isHandset = toSignal(this.breakpointObserver.observe(Breakpoints.Handset).pipe(map((bs) => bs.matches)), { initialValue: false });
+  apiStatus = toSignal(
+    timer(0, 30_000).pipe(
+      switchMap(() => this.statusService.getApiStatus()),
+      retry({ count: 2, delay: 5_000 }),
+    ),
+    { initialValue: this.initialApiStatus() },
+  );
 
   constructor(
     private statusService: StatusService,
     private themeService: ThemeService,
     private breakpointObserver: BreakpointObserver,
     private store: Store,
+    private destroyRef: DestroyRef,
   ) {}
 
   ngOnInit(): void {
     this.themeService.initTheme();
     this.isDarkMode.set(this.themeService.isDarkMode());
-
-    // TODO: unsubscribe?
-    this.breakpointObserver.observe(Breakpoints.Handset).subscribe((breakpointObserver) => {
-      this.isHandset.set(breakpointObserver.matches);
-    });
-
-    timer(0, 10_000)
-      .pipe(
-        switchMap(() => this.statusService.getApiStatus()),
-        startWith(this.initialApiStatus()), // startWith måste ligga efter switchMap
-        retry({ count: 3, delay: 2_000 }),
-      )
-      .subscribe((apiStatus) => this.apiStatus.set(apiStatus));
   }
 
   openApiStatusDialog() {

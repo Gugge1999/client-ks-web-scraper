@@ -1,78 +1,42 @@
-@if (newWatchLoading$ | async) {
+@if (newWatchLoading()) {
   <div>
-    {{ this.progressBarService.show("Adding watch...") }}
+    {{ this.progressBarService.show() }}
   </div>
 } @else {
   {{ this.progressBarService.hide() }}
 }
-@if (this.isHandset$ | async; as isHandset) {
-  <div>
-    @if (watches$ | async; as watches) {
-      <div class="card-container">
-        @for (watch of watches; track watch.id) {
-          <mat-card appearance="outlined" class="card" [ngClass]="isHandset.matches ? 'full-card-width' : 'small-card-width'">
-            <mat-card-title>
-              <strong>{{ watch.label }}</strong>
-            </mat-card-title>
-            <mat-accordion>
-              <mat-expansion-panel>
-                <mat-expansion-panel-header class="card-mat-expansion-panel-header">
-                  <mat-panel-title>
-                    <strong> Details </strong>
-                  </mat-panel-title>
-                </mat-expansion-panel-header>
-                <mat-card-content class="card-mat-card-content">
-                  <p>
-                    <strong> Last email sent: </strong>
-                    {{ watch.lastEmailSent === null ? "No email sent" : (watch.lastEmailSent | date: cardDateFormat) }}
-                  </p>
-                  <p>
-                    <strong>Added: </strong>
-                    {{ watch.added | date: cardDateFormat }}
-                  </p>
-                  <p>
-                    <strong>Current watch: </strong>
-                    <!-- Visa endast den sensate klockan, därav index 0 -->
-                    <a target="_blank" class="link" [href]="watch.watches[0].link">{{ watch.watches[0].name }}</a>
-                  </p>
-                </mat-card-content>
-              </mat-expansion-panel>
-            </mat-accordion>
-            <!-- TODO: Bryt ut till en egen komponent? -->
-            <mat-card-actions align="end" class="watch-card-actions">
-              <button
-                mat-icon-button
-                class="deleteCardButton"
-                matTooltip="Delete watch"
-                matTooltipPosition="above"
-                (click)="deleteWatchDialog(watch)">
-                <mat-icon class="delete-icon">delete_outline</mat-icon>
-              </button>
 
-              <button mat-icon-button matTooltip="View statistics" matTooltipPosition="above">
-                <mat-icon fontSet="material-icons-outlined" color="primary">assessment</mat-icon>
-              </button>
+<div class="card-container">
+  @for (watch of watches(); track watch.id) {
+    <!-- TODO: Använd "vanlig" breakpoint istället -->
+    <mat-card appearance="outlined" class="card" [ngClass]="isHandset() ? 'full-card-width' : 'small-card-width'">
+      <mat-card-title>
+        <strong>{{ watch.label }}</strong>
+      </mat-card-title>
+      <mat-card-content class="card-mat-card-content">
+        <p>
+          <strong> Last email sent: </strong>
+          {{ watch.lastEmailSent === null ? "No email sent" : (watch.lastEmailSent | date: cardDateFormat) }}
+        </p>
+        <p>
+          <strong>Added: </strong>
+          {{ watch.added | date: cardDateFormat }}
+        </p>
+        <p>
+          <strong>Current watch: </strong>
+          <!-- Visa endast den sensate klockan, därav index 0 -->
+          <a target="_blank" class="link" [href]="watch.watches[0].link">{{ watch.watches[0].name }}</a>
+        </p>
+      </mat-card-content>
+      <ks-scraper-card-actions [watch]="watch"></ks-scraper-card-actions>
+    </mat-card>
+  } @empty {
+    <div class="no-active-scraped-watches">Inga aktiva bevakningar.</div>
+  }
 
-              <mat-slide-toggle
-                class="is-watch-active-slide-toggle"
-                color="primary"
-                matTooltip="Toggle active status"
-                matTooltipPosition="above"
-                [checked]="watch.active"
-                (change)="toggleActiveStatus(watch)">
-              </mat-slide-toggle>
-            </mat-card-actions>
-          </mat-card>
-        } @empty {
-          <div class="no-active-scraped-watches">Inga aktiva bevakningar.</div>
-        }
-      </div>
-    }
-
-    <div class="fab-small-screen-new-watch-button custom-tooltip" matTooltip="Add new watch" matTooltipPosition="left">
-      <button mat-fab color="primary" (click)="openNewWatchDialog()">
-        <mat-icon class="small-add-watch-icon">add</mat-icon>
-      </button>
-    </div>
+  <div class="fab-small-screen-new-watch-button custom-tooltip" matTooltip="Add new watch" matTooltipPosition="left">
+    <button mat-fab color="primary" (click)="openNewWatchDialog()">
+      <mat-icon class="small-add-watch-icon">add</mat-icon>
+    </button>
   </div>
-}
+</div>

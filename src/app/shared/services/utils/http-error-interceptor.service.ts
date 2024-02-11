@@ -27,11 +27,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
           this.snackbarService.errorSnackbar(errorMessage);
         } else {
           // server-side error
-          if (httpErrorResponse.status === 0 && sessionStorage.getItem("firstApiError") === "yes") {
+          if (httpErrorResponse.status === 0) {
             console.error(errorMessage);
-          } else if (httpErrorResponse.status === 0) {
-            this.snackbarService.errorSnackbar(errorMessage);
-            sessionStorage.setItem("firstApiError", "yes");
           } else {
             this.snackbarService.errorSnackbar(errorMessage);
           }

@@ -40,6 +40,9 @@ Använd Jest för att testa: https://www.xfive.co/blog/testing-angular-faster-je
 
 
 |--------------------------------------------------- Misc ---------------------------------------------------------|
+För att se bundlesize bygg med flaggan "statsJson": true i options i angular.json. Klistra sen i stats.json i dist på sidan https://esbuild.github.io/analyze/ 
+
+
 Bra förklaring om NgRx och historien bakom det:
 https://blog.angular-university.io/angular-ngrx-store-and-effects-crash-course/
 

@@ -38,9 +38,7 @@ export class WatchEffects {
               newWatch: watch,
             });
           }),
-          catchError((snackbarMessage: string) => {
-            return of(watchApiActions.addWatchFailure({ snackbarMessage }));
-          }),
+          catchError((snackbarMessage: string) => of(watchApiActions.addWatchFailure({ snackbarMessage }))),
         );
       }),
     );
@@ -84,8 +82,8 @@ export class WatchEffects {
               },
             });
           }),
-          catchError((snackbarMessage: string) => {
-            return of(
+          catchError((snackbarMessage: string) =>
+            of(
               watchApiActions.toggleActiveStatusFailure({
                 snackbarMessage,
                 watchProps: {
@@ -94,8 +92,8 @@ export class WatchEffects {
                   label: action.watch.label,
                 },
               }),
-            );
-          }),
+            ),
+          ),
         );
       }),
     );

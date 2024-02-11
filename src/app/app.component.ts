@@ -7,10 +7,6 @@ import { FooterComponent } from "@shared/layout/footer/footer.component";
 import { HeaderComponent } from "@shared/layout/header/header.component";
 import { loadWatches } from "@store/actions/watch-api.actions";
 
-// TODO: Försök hitta en fix på det här
-// eslint-disable-next-line @typescript-eslint/ban-types
-declare const gtag: Function;
-
 @Component({
   selector: "ks-scraper-root",
   templateUrl: "./app.component.html",
@@ -22,15 +18,15 @@ declare const gtag: Function;
 export class AppComponent implements OnInit {
   constructor(private store: Store) {}
 
+  /*
+  TODO:
+
+    Kolla så att analytics fortfrande fungerar. Koden jag hade här tidigare var till för hantera
+    routing men jag tror inte jag behöver det länge
+
+  */
+
   ngOnInit() {
-    this.setUpAnalytics();
-
-    sessionStorage.removeItem("firstApiError");
-
     this.store.dispatch(loadWatches());
-  }
-
-  setUpAnalytics() {
-    gtag("config", "G-2M7YJWSQ0F");
   }
 }

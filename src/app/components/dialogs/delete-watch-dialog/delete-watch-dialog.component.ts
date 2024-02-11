@@ -17,7 +17,7 @@ export class DeleteWatchDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public watchToDelete: Watch,
     private dialogRef: MatDialogRef<ScraperCardComponent>,
-  ) {}
+  ) { }
 
   cancelClicked(): void {
     this.dialogRef.close();
