@@ -39,8 +39,6 @@ export class SnackbarService {
 
     // TODO: Behöver man köra unsubscribe på snackbar ???
     snackbar.afterDismissed().subscribe((res) => {
-      // Om dismissedByAction är sant (användaren klickade på Undo)
-      // ska klockan inte tas bort
       if (res.dismissedByAction === true) {
         return this.store.dispatch(addWatch({ watch }));
       } else {

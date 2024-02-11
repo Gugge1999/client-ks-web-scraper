@@ -14,25 +14,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       catchError((httpErrorResponse: HttpErrorResponse) => {
-        let errorMessage = "";
+        const errorMessage = httpErrorResponse.status === 0 ? "Could not connect to API" : httpErrorResponse.error;
+        console.error(errorMessage);
 
-        if (httpErrorResponse.status === 0) {
-          errorMessage = "Could not connect to API";
-        } else {
-          errorMessage = httpErrorResponse.error;
-        }
-
-        if (httpErrorResponse.error instanceof ErrorEvent) {
-          // client-side error. Ska den hanteras på något annat sätt?
-          this.snackbarService.errorSnackbar(errorMessage);
-        } else {
-          // server-side error
-          if (httpErrorResponse.status === 0) {
-            console.error(errorMessage);
-          } else {
-            this.snackbarService.errorSnackbar(errorMessage);
-          }
-        }
+        this.snackbarService.errorSnackbar(errorMessage);
 
         return throwError(() => errorMessage);
       }),

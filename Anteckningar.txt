@@ -22,15 +22,6 @@ Den guiden kanske är bra: https://www.youtube.com/watch?v=sM3ATKt8568&list=WL&i
 
 
 
-Kolla genom https://github.com/AvocadoVenom/OverlayLoadingComponents 
-och se om det är en bättre lösning på spinner / progess bar
-
-
-
-Lägg till state för expansion panel i local storage
-Hur localStorage och | async används: https://blog.briebug.com/blog/managing-local-storage-in-angular
-
-
 
 Kolla in storybook: https://storybook.js.org/docs/angular/get-started/install
 

@@ -12,8 +12,6 @@ export class ProgressBarService {
   constructor(private overlay: Overlay) {}
 
   public show() {
-    // Returns an OverlayRef (which is a PortalHost)
-
     if (!this.overlayRef) {
       this.overlayRef = this.overlay.create({
         positionStrategy: this.overlay.position().global().centerHorizontally().centerVertically(),
@@ -21,7 +19,6 @@ export class ProgressBarService {
       });
     }
 
-    // Create ComponentPortal that can be attached to a PortalHost
     const progressBarOverlayPortal = new ComponentPortal(ProgessBarComponent);
 
     if (!this.overlayRef.hasAttached()) {

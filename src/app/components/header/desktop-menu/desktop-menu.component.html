@@ -8,7 +8,6 @@
 
   @if (apiStatus().active; as active) {
     <div (click)="active ? onOpenApiStatusDialog() : ''" class="header-chip pointer" matTooltip="View API statistics">
-      <!-- API:et är aktivt -->
       <div class="api-active">
         <mat-icon class="status-icon" color="primary"> check_circle_outline </mat-icon>
         <span class="status-text">API Status</span>

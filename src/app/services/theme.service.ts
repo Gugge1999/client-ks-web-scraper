@@ -43,7 +43,6 @@ export class ThemeService {
     if (userTheme) {
       return (this._colorTheme = userTheme);
     } else {
-      // Kolla vilket tema som användaren har satt i sitt OS.
       const userPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
       if (userPrefersDark) {
