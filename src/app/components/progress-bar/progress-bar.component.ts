@@ -3,7 +3,7 @@ import { MatCardModule } from "@angular/material/card";
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 
 @Component({
-  selector: "ks-scraper-loader",
+  selector: "scraper-loader",
   templateUrl: "./progress-bar.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./progress-bar.component.scss",

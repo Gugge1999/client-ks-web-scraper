@@ -3,10 +3,10 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { MatDialogModule } from "@angular/material/dialog";
 
-import { StatusService } from "@shared/services/utils/status.service";
+import { StatusService } from "@services/status.service";
 
 @Component({
-  selector: "ks-scraper-api-status-dialog",
+  selector: "scraper-api-status-dialog",
   templateUrl: "./api-status-dialog.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./api-status-dialog.component.scss",

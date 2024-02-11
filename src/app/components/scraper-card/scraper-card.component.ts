@@ -10,13 +10,13 @@ import { map } from "rxjs";
 
 import { toSignal } from "@angular/core/rxjs-interop";
 import { CardActionsComponent } from "@components/card-actions/card-actions.component";
-import { ProgressBarService } from "@shared/services/progress-bar/progess-bar-overlay.service";
+import { ProgressBarService } from "@services/progess-bar-overlay.service";
 import { openNewWatchDialog } from "@store/actions/dialog.actions";
 
 import { selectAllWatches, selectIsNewWatchLoading } from "@store/selectors/watch.selectors";
 
 @Component({
-  selector: "ks-scraper-scraper-card",
+  selector: "scraper-scraper-card",
   templateUrl: "./scraper-card.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./scraper-card.component.scss",

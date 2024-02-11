@@ -7,7 +7,7 @@ import { DeleteWatchDialogComponent } from "@components/dialogs/delete-watch-dia
 import { NewWatchDialogComponent } from "@components/dialogs/new-watch-dialog/new-watch-dialog.component";
 import { Watch } from "@models/watch.model";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { SnackbarService } from "@shared/services/snackbar/snackbar.service";
+import { SnackbarService } from "@services/snackbar.service";
 import * as dialogActions from "@store/actions/dialog.actions";
 import * as watchApiActions from "@store/actions/watch-api.actions";
 import * as watchActions from "@store/actions/watch.actions";

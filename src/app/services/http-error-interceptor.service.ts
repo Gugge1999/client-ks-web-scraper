@@ -3,7 +3,7 @@ import { catchError } from "rxjs/operators";
 
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { SnackbarService } from "@shared/services/snackbar/snackbar.service";
+import { SnackbarService } from "@services/snackbar.service";
 
 @Injectable({
   providedIn: "root",

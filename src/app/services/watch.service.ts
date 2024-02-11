@@ -2,7 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { Watch } from "@models/watch.model";
-import { AppConfigService } from "@shared/services/utils/app-config.service";
+import { AppConfigService } from "@services/app-config.service";
 
 @Injectable({
   providedIn: "root",

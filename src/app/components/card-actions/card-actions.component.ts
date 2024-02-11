@@ -11,7 +11,7 @@ import { openDeleteWatchDialog } from "@store/actions/dialog.actions";
 import { toggleActiveStatus } from "@store/actions/watch-api.actions";
 
 @Component({
-  selector: "ks-scraper-card-actions",
+  selector: "scraper-card-actions",
   standalone: true,
   imports: [MatSlideToggleModule, MatIconModule, MatTooltip, MatButtonModule, MatCardActions],
   templateUrl: "./card-actions.component.html",

@@ -1,7 +1,7 @@
 <div [ngClass]="isDarkMode() ? 'header-chip-wrapper-dark' : 'header-chip-wrapper-light'">
   <div class="header-chip pointer" matTooltip="Toggle theme" (click)="onToggleTheme()">
     <mat-slide-toggle color="accent" [checked]="isDarkMode()">
-      Dark mode
+      <span>Dark mode</span>
       <mat-icon class="dark-mode-icons" fontSet="material-icons-outlined"> dark_mode </mat-icon>
     </mat-slide-toggle>
   </div>

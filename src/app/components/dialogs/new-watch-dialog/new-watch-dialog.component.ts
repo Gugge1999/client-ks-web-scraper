@@ -11,7 +11,7 @@ import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { addWatch } from "@store/actions/watch-api.actions";
 
 @Component({
-  selector: "ks-scraper-new-watch-dialog",
+  selector: "scraper-new-watch-dialog",
   templateUrl: "./new-watch-dialog.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./new-watch-dialog.component.scss",

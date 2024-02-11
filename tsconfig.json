@@ -8,9 +8,8 @@
       "@dialogs/*": ["app/components/dialogs/*"],
       "@models/*": ["app/models/*"],
       "@services/*": ["app/services/*"],
-      "@shared/*": ["app/shared/*"],
       "@store/*": ["app/store/*"],
-      "@environments/*": ["environments/*"]
+      "@environments/*": ["environments/*"],
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
@@ -29,12 +28,12 @@
     "target": "ES2022",
     "module": "es2020",
     "lib": ["es2020", "dom"],
-    "useDefineForClassFields": false
+    "useDefineForClassFields": false,
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  }
+    "strictTemplates": true,
+  },
 }

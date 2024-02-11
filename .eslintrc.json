@@ -19,7 +19,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "ks-scraper",
+            "prefix": "scraper",
             "style": "camelCase"
           }
         ],
@@ -27,7 +27,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "ks-scraper",
+            "prefix": "scraper",
             "style": "kebab-case"
           }
         ],

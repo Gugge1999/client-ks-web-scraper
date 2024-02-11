@@ -38,7 +38,7 @@ export class ThemeService {
     return this._colorTheme === Theme.darkMode;
   }
 
-  public getColorTheme(): string {
+  private getColorTheme(): string {
     const userTheme = localStorage.getItem(Theme.userTheme);
     if (userTheme) {
       return (this._colorTheme = userTheme);

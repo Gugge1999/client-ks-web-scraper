@@ -6,7 +6,7 @@ import { ScraperCardComponent } from "@components/scraper-card/scraper-card.comp
 import { Watch } from "@models/watch.model";
 
 @Component({
-  selector: "ks-scraper-delete-watch-dialog",
+  selector: "scraper-delete-watch-dialog",
   templateUrl: "./delete-watch-dialog.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./delete-watch-dialog.component.scss",
@@ -17,7 +17,7 @@ export class DeleteWatchDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public watchToDelete: Watch,
     private dialogRef: MatDialogRef<ScraperCardComponent>,
-  ) { }
+  ) {}
 
   cancelClicked(): void {
     this.dialogRef.close();

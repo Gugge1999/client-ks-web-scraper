@@ -1,22 +1,22 @@
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
-import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { MatIconModule } from "@angular/material/icon";
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { timer } from "rxjs";
 import { map, retry, switchMap } from "rxjs/operators";
 
+import { DesktopMenuComponent } from "@components/header/desktop-menu/desktop-menu.component";
+import { MobileMenuComponent } from "@components/header/mobile-menu/mobile-menu.component";
 import { ApiStatus } from "@models/api-status.model";
 import { Theme } from "@models/constants";
 import { Store } from "@ngrx/store";
-import { DesktopMenuComponent } from "@shared/layout/header/desktop-menu/desktop-menu.component";
-import { MobileMenuComponent } from "@shared/layout/header/mobile-menu/mobile-menu.component";
-import { StatusService } from "@shared/services/utils/status.service";
-import { ThemeService } from "@shared/services/utils/theme.service";
+import { StatusService } from "@services/status.service";
+import { ThemeService } from "@services/theme.service";
 import { openApiStatusDialog } from "@store/actions/dialog.actions";
 
 @Component({
-  selector: "ks-scraper-header",
+  selector: "scraper-header",
   templateUrl: "./header.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./header.component.scss",
@@ -39,7 +39,6 @@ export class HeaderComponent implements OnInit {
     private themeService: ThemeService,
     private breakpointObserver: BreakpointObserver,
     private store: Store,
-    private destroyRef: DestroyRef,
   ) {}
 
   ngOnInit(): void {

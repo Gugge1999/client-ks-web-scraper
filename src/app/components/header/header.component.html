@@ -10,19 +10,19 @@
         <span class="spacer"> </span>
 
         @if (isHandset()) {
-          <ks-scraper-mobile-menu
+          <scraper-mobile-menu
             [apiStatus]="apiStatus()"
             [isDarkMode]="isDarkMode()"
             (toggleTheme)="toggleTheme()"
             (openApiStatusDialog)="openApiStatusDialog()">
-          </ks-scraper-mobile-menu>
+          </scraper-mobile-menu>
         } @else {
-          <ks-scraper-desktop-menu
+          <scraper-desktop-menu
             [apiStatus]="apiStatus()"
             [isDarkMode]="isDarkMode()"
             (toggleTheme)="toggleTheme()"
             (openApiStatusDialog)="openApiStatusDialog()">
-          </ks-scraper-desktop-menu>
+          </scraper-desktop-menu>
         }
       </mat-toolbar-row>
     </mat-toolbar>

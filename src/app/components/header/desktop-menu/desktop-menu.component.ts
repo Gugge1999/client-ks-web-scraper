@@ -1,20 +1,20 @@
+import { NgClass } from "@angular/common";
 import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from "@angular/core";
-import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
-import { MatMenuModule } from "@angular/material/menu";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatTooltipModule } from "@angular/material/tooltip";
+
 import { ApiStatus } from "@models/api-status.model";
 
 @Component({
-  selector: "ks-scraper-mobile-menu",
-  templateUrl: "./mobile-menu.component.html",
+  selector: "scraper-desktop-menu",
+  templateUrl: "./desktop-menu.component.html",
+  styleUrl: "./desktop-menu.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrl: "./mobile-menu.component.scss",
   standalone: true,
-  imports: [MatButtonModule, MatMenuModule, MatIconModule, MatTooltipModule, MatSlideToggleModule],
+  imports: [NgClass, MatTooltipModule, MatSlideToggleModule, MatIconModule],
 })
-export class MobileMenuComponent {
+export class DesktopMenuComponent {
   apiStatus = input.required<ApiStatus>();
   isDarkMode = input.required<boolean>();
 
@@ -26,7 +26,6 @@ export class MobileMenuComponent {
   }
 
   onOpenApiStatusDialog() {
-    // TODO: Behöver öppning / stängning av dialog ligga i store?
     this.openApiStatusDialog.emit();
   }
 }

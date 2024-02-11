@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ThemeService } from "@services/theme.service";
+
 import { Theme } from "@models/constants";
 import { FooterThemeColor } from "@models/theme.model";
-import { ThemeService } from "@shared/services/utils/theme.service";
 
 @Component({
-  selector: "ks-scraper-footer",
+  selector: "scraper-footer",
   templateUrl: "./footer.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
