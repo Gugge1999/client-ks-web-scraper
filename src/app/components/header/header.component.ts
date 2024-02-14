@@ -6,14 +6,14 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { timer } from "rxjs";
 import { map, retry, switchMap } from "rxjs/operators";
 
+import { MatDialog } from "@angular/material/dialog";
+import { ApiStatusDialogComponent } from "@components/dialogs/api-status-dialog/api-status-dialog.component";
 import { DesktopMenuComponent } from "@components/header/desktop-menu/desktop-menu.component";
 import { MobileMenuComponent } from "@components/header/mobile-menu/mobile-menu.component";
 import { ApiStatus } from "@models/api-status.model";
 import { Theme } from "@models/constants";
-import { Store } from "@ngrx/store";
 import { StatusService } from "@services/status.service";
 import { ThemeService } from "@services/theme.service";
-import { openApiStatusDialog } from "@store/actions/dialog.actions";
 
 @Component({
   selector: "scraper-header",
@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit {
     private statusService: StatusService,
     private themeService: ThemeService,
     private breakpointObserver: BreakpointObserver,
-    private store: Store,
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
@@ -47,7 +47,10 @@ export class HeaderComponent implements OnInit {
   }
 
   openApiStatusDialog() {
-    this.store.dispatch(openApiStatusDialog());
+    this.dialog.open(ApiStatusDialogComponent, {
+      width: "450px",
+      restoreFocus: false,
+    });
   }
 
   toggleTheme() {

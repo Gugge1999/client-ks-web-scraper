@@ -1,14 +1,13 @@
 import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
-import { MatDialogModule } from "@angular/material/dialog";
+import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
-import { Store } from "@ngrx/store";
 
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
-import { addWatch } from "@store/actions/watch-api.actions";
+import { WatchService } from "@services/watch.service";
 
 @Component({
   selector: "scraper-new-watch-dialog",
@@ -30,7 +29,10 @@ export class NewWatchDialogComponent {
     }),
   });
 
-  constructor(private store: Store) {}
+  constructor(
+    private watchService: WatchService,
+    private dialogRef: MatDialogRef<NewWatchDialogComponent>,
+  ) {}
 
   protected submitNewWatch() {
     const newWatch: NewWatchFormDTO = {
@@ -38,7 +40,11 @@ export class NewWatchDialogComponent {
       watchToScrape: this.watchForm.controls.watchToScrape.value,
     };
 
-    this.store.dispatch(addWatch({ newWatch }));
+    this.watchService.addWatch(newWatch);
+  }
+
+  cancelClicked(): void {
+    this.dialogRef.close();
   }
 
   protected onClear(formControl: FormControl) {

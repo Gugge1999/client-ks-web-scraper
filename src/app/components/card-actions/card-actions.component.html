@@ -1,5 +1,5 @@
 <mat-card-actions align="end" class="watch-card-actions">
-  <button mat-icon-button class="deleteCardButton" matTooltip="Delete watch" matTooltipPosition="above" (click)="deleteWatchDialog(watch())">
+  <button mat-icon-button class="deleteCardButton" matTooltip="Delete watch" matTooltipPosition="above" (click)="deleteWatchDialog(watch)">
     <mat-icon class="delete-icon">delete_outline</mat-icon>
   </button>
 
@@ -7,12 +7,16 @@
     <mat-icon fontSet="material-icons-outlined" color="primary">assessment</mat-icon>
   </button>
 
+  <p>{{ watch.active }}</p>
+
+  <!-- TODO: det är checked som krånglar -->
+
   <mat-slide-toggle
     class="is-watch-active-slide-toggle"
     color="primary"
     matTooltip="Toggle active status"
     matTooltipPosition="above"
-    [checked]="watch().active"
-    (change)="toggleActiveStatus(watch())">
+    [checked]="watch.active"
+    (change)="toggleActiveStatus(watch)">
   </mat-slide-toggle>
 </mat-card-actions>

@@ -9,8 +9,6 @@ Istället för att använda loading spinner skapa en skeleton card när en ny kl
 
 
 
-Läs igenom alternativen för att hantera loading:
-https://medium.com/angular-in-depth/ngrx-how-and-where-to-handle-loading-and-error-states-of-ajax-calls-6613a14f902d
 
 
 
@@ -28,6 +26,7 @@ Kolla in storybook: https://storybook.js.org/docs/angular/get-started/install
 
 
 Använd Jest för att testa: https://www.xfive.co/blog/testing-angular-faster-jest/
+https://www.youtube.com/watch?v=bv9z_UfSqgM
 
 
 |--------------------------------------------------- Misc ---------------------------------------------------------|

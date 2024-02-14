@@ -1,11 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { MatSidenavContainer } from "@angular/material/sidenav";
-import { Store } from "@ngrx/store";
 
 import { FooterComponent } from "@components/footer/footer.component";
 import { HeaderComponent } from "@components/header/header.component";
 import { ScraperCardComponent } from "@components/scraper-card/scraper-card.component";
-import { loadWatches } from "@store/actions/watch-api.actions";
 
 @Component({
   selector: "scraper-root",
@@ -15,9 +13,7 @@ import { loadWatches } from "@store/actions/watch-api.actions";
   standalone: true,
   imports: [MatSidenavContainer, HeaderComponent, FooterComponent, ScraperCardComponent],
 })
-export class AppComponent implements OnInit {
-  constructor(private store: Store) {}
-
+export class AppComponent {
   /*
   TODO:
 
@@ -25,8 +21,4 @@ export class AppComponent implements OnInit {
     routing men jag tror inte jag behöver det länge
 
   */
-
-  ngOnInit() {
-    this.store.dispatch(loadWatches());
-  }
 }

@@ -1,18 +1,13 @@
 import { LayoutModule } from "@angular/cdk/layout";
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
-import { APP_INITIALIZER, enableProdMode, importProvidersFrom, isDevMode } from "@angular/core";
+import { APP_INITIALIZER, enableProdMode, importProvidersFrom } from "@angular/core";
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { BrowserModule, bootstrapApplication } from "@angular/platform-browser";
 import { provideAnimations } from "@angular/platform-browser/animations";
-import { EffectsModule } from "@ngrx/effects";
-import { StoreModule } from "@ngrx/store";
-import { StoreDevtoolsModule } from "@ngrx/store-devtools";
 
 import { environment } from "@environments/environment";
 import { AppConfigService } from "@services/app-config.service";
 import { HttpErrorInterceptor } from "@services/http-error-interceptor.service";
-import { effects } from "@store/effects/index";
-import { reducers } from "@store/reducers/index";
 import { AppComponent } from "./app/app.component";
 
 const appConfigInitializer = (appConfig: AppConfigService) => {
@@ -31,13 +26,7 @@ const matSnackbarDefaultConfig: MatSnackBarConfig = {
 
 bootstrapApplication(AppComponent, {
   providers: [
-    importProvidersFrom(
-      BrowserModule,
-      LayoutModule,
-      StoreModule.forRoot(reducers),
-      EffectsModule.forRoot(effects),
-      StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-    ),
+    importProvidersFrom(BrowserModule, LayoutModule),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: HttpErrorInterceptor,

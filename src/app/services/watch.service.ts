@@ -1,37 +1,66 @@
-import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, effect, signal } from "@angular/core";
+import { lastValueFrom, tap } from "rxjs";
+
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { Watch } from "@models/watch.model";
-import { AppConfigService } from "@services/app-config.service";
+import { WatchApiService } from "@services/watch-api.service";
+import { SnackbarService } from "./snackbar.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class WatchService {
-  constructor(private httpClient: HttpClient) {}
+  private _watches = signal<Watch[]>([]);
+  readonly watches = this._watches.asReadonly();
 
-  addNewWatch(watchFormDTO: NewWatchFormDTO) {
-    const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/add-watch`;
+  constructor(
+    private watchApiService: WatchApiService,
+    private snackbarService: SnackbarService,
+  ) {}
 
-    return this.httpClient.post<Watch>(API_URL, watchFormDTO);
+  async getAllWatches() {
+    this._watches.set(await lastValueFrom(this.watchApiService.getAllWatchesApi()));
   }
 
-  getAllWatches() {
-    const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/all-watches`;
+  async deleteWatch(watch: Watch, deleteFromDatabase = true) {
+    if (deleteFromDatabase) {
+      lastValueFrom(this.watchApiService.deleteWatchById(watch.id));
+    }
 
-    return this.httpClient.get<Watch[]>(API_URL);
+    this._watches.set(this._watches().filter((w) => w.id !== watch.id));
   }
 
-  toggleActiveStatus(watch: Watch) {
-    const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/toggle-active-status`;
-    const data = { isActive: watch.active, label: watch.label, id: watch.id };
+  async addWatch(watch: NewWatchFormDTO | Watch) {
+    let newWatch: Watch;
 
-    return this.httpClient.put<Pick<Watch, "id" | "active" | "label">>(API_URL, data);
+    if ("id" in watch) {
+      newWatch = watch;
+      this._watches.update((watches) => [...watches, newWatch].sort((a, b) => Date.parse(a.added.toString()) - Date.parse(b.added.toString())));
+    } else {
+      newWatch = await lastValueFrom(
+        this.watchApiService.addNewWatch(watch).pipe(tap(() => this.snackbarService.successSnackbar(`Added watch with label: ${watch.label}`))),
+      );
+      this._watches.update((watches) => [...watches, newWatch]);
+    }
   }
 
-  deleteWatchById(id: string) {
-    const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/delete-watch/${id}`;
+  async toggleActiveStatus(watch: Watch) {
+    const oldStatus = watch.active;
 
-    return this.httpClient.delete<Pick<Watch, "id">>(API_URL);
+    console.log(this._watches());
+
+    await lastValueFrom(
+      this.watchApiService.toggleActiveStatus(watch).pipe(
+        tap({
+          next: (res) => {
+            this.snackbarService.successSnackbar(`Toggled status on: ${res.label}`);
+          },
+          error: () => {
+            this._watches.update((w) => w.map((item) => (item.id === watch.id ? { ...watch, active: oldStatus } : item)));
+            console.log(this.watches());
+          },
+        }),
+      ),
+    );
   }
 }
