@@ -17,6 +17,10 @@ export class HttpErrorInterceptor implements HttpInterceptor {
         const errorMessage = httpErrorResponse.status === 0 ? "Could not connect to API" : httpErrorResponse.error;
         console.error(errorMessage);
 
+        if (httpErrorResponse.status === 400) {
+          return throwError(() => httpErrorResponse.error);
+        }
+
         this.snackbarService.errorSnackbar(errorMessage);
 
         return throwError(() => errorMessage);

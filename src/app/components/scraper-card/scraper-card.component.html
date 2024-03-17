@@ -1,15 +1,6 @@
-@if (false) {
-  <div>
-    {{ this.progressBarService.show() }}
-  </div>
-} @else {
-  {{ this.progressBarService.hide() }}
-}
-
 <div class="card-container">
   @for (watch of watches(); track watch.id) {
-    <!-- TODO: Använd "vanlig" breakpoint istället -->
-    <mat-card appearance="outlined" class="card" [ngClass]="isHandset() ? 'full-card-width' : 'small-card-width'">
+    <mat-card appearance="outlined" class="card">
       <mat-card-title>
         <strong>{{ watch.label }}</strong>
       </mat-card-title>

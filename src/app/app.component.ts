@@ -13,12 +13,4 @@ import { ScraperCardComponent } from "@components/scraper-card/scraper-card.comp
   standalone: true,
   imports: [MatSidenavContainer, HeaderComponent, FooterComponent, ScraperCardComponent],
 })
-export class AppComponent {
-  /*
-  TODO:
-
-    Kolla så att analytics fortfrande fungerar. Koden jag hade här tidigare var till för hantera
-    routing men jag tror inte jag behöver det länge
-
-  */
-}
+export class AppComponent {}

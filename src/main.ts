@@ -3,16 +3,14 @@ import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@a
 import { APP_INITIALIZER, enableProdMode, importProvidersFrom } from "@angular/core";
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { BrowserModule, bootstrapApplication } from "@angular/platform-browser";
-import { provideAnimations } from "@angular/platform-browser/animations";
+import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 
 import { environment } from "@environments/environment";
 import { AppConfigService } from "@services/app-config.service";
 import { HttpErrorInterceptor } from "@services/http-error-interceptor.service";
 import { AppComponent } from "./app/app.component";
 
-const appConfigInitializer = (appConfig: AppConfigService) => {
-  return () => appConfig.loadAppConfig();
-};
+const appConfigInitializer = (appConfig: AppConfigService) => () => appConfig.loadAppConfig();
 
 if (environment.name === "prod") {
   enableProdMode();
@@ -42,7 +40,7 @@ bootstrapApplication(AppComponent, {
       provide: MAT_SNACK_BAR_DEFAULT_OPTIONS,
       useValue: matSnackbarDefaultConfig,
     },
-    provideAnimations(),
+    provideAnimationsAsync(),
     provideHttpClient(withInterceptorsFromDi()),
   ],
 }).catch((err) => console.error(err));

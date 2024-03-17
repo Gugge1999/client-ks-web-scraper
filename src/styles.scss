@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@use "./theme.scss";
+
 /*#region variables colors*/
 $primary-accent-color-light: #dedede;
 $link-color: #099d8c;
@@ -15,20 +17,18 @@ body {
 
 body {
   margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-.content {
-  flex: 1;
-}
 /*#endregion */
 
-/*#region toolbar*/
+/*#region flex*/
+.flex {
+  display: flex;
+}
 
-// Sticky header
-app-header {
-  position: sticky;
-  top: 0;
-  z-index: 1;
+.flex-align-items-center {
+  align-items: center;
 }
 
 /*#endregion */
@@ -78,11 +78,7 @@ input {
 /*#endregion */
 
 /*#region dark and light mode*/
-.dark-mode {
-  .mat-expansion-panel {
-    background: #414141;
-  }
-
+.darkMode {
   .mat-mdc-card-title {
     color: #fff;
   }
@@ -99,11 +95,7 @@ input {
   }
 }
 
-.light-mode {
-  .mat-expansion-panel {
-    background: #fcfcfc;
-  }
-
+.lightMode {
   .mat-mdc-snack-bar-container.snackbar-warning {
     --mdc-snackbar-container-color: #b00020;
     .mat-mdc-snack-bar-label {
@@ -136,9 +128,11 @@ input {
   width: 15px;
   height: 15px;
 }
+
 ::-webkit-scrollbar-track-piece {
   background-color: #202324;
 }
+
 ::-webkit-scrollbar-thumb:vertical {
   background-color: #454a4d;
 }
@@ -157,12 +151,6 @@ input {
 .dark-mode-icons {
   transform: scale(0.8);
   margin-left: 0.25em;
-}
-
-.api-active,
-.api-inactive {
-  display: flex;
-  align-items: center;
 }
 
 /*#endregion */

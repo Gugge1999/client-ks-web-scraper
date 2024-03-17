@@ -1,17 +1,27 @@
 -------------- TODO --------------
 Lägg till en transition mellan dark och light mode. Se till exempel på angular.dev
+kod från angular.dev: https://github.com/angular/angular/blob/main/adev/src/app/core/services/theme-manager.service.ts
+
+
+
 https://stackoverflow.com/questions/61129414/adding-animation-while-switching-to-dark-mode-html
 
 
-
-Istället för att använda loading spinner skapa en skeleton card när en ny klocka läggs till
-
+Byt till inject function
 
 
 
+Läs igenom den: https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
+Finns det för v3?
 
 
 
+Ett bra repo att kika på: https://github.com/joematthews/extreme-angular
+
+
+
+Lägg till denna plugin. https://www.npmjs.com/package/@angular-eslint/eslint-plugin
+Se extreme angular repo för guide
 
 
 Skriv om theme service så att den använder enbart signals . 

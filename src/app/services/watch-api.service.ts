@@ -1,7 +1,8 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
+import { ValidationError } from "@models/DTOs/validation-error.dto";
 import { Watch } from "@models/watch.model";
 import { AppConfigService } from "@services/app-config.service";
 import { retry } from "rxjs";
@@ -10,6 +11,19 @@ import { retry } from "rxjs";
   providedIn: "root",
 })
 export class WatchApiService {
+  newWatchLoading = signal(false);
+
+  private url: string = "https://type.fit/api/quotes";
+
+  getData() {
+    return fetch(this.url)
+      .then((res) => res.json())
+      .then((res: Watch) => {
+        res.added;
+        // res is now an Actor
+      });
+  }
+
   // TODO: Byt till fetch? Enklare att jobba med tillsammans med signals
   constructor(private httpClient: HttpClient) {}
 
@@ -26,10 +40,10 @@ export class WatchApiService {
     return this.httpClient.delete(API_URL);
   }
 
-  addNewWatch(watchFormDTO: NewWatchFormDTO) {
-    const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/add-watch`;
+  saveNewWatch(watchFormDTO: NewWatchFormDTO) {
+    const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/save-watch`;
 
-    return this.httpClient.post<Watch>(API_URL, watchFormDTO);
+    return this.httpClient.post<Watch | ValidationError>(API_URL, watchFormDTO);
   }
 
   getAllWatchesApi() {

@@ -9,9 +9,16 @@
 }
 
 .card {
-  width: 100%;
+  scroll-margin: 20px;
+  width: clamp(45ch, 40%, 60ch);
   &:nth-last-child(2) {
     margin-bottom: 0;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .card {
+    width: 100%;
   }
 }
 
@@ -36,7 +43,7 @@
 }
 
 .full-card-width {
-  max-width: 100%;
+  width: 100%;
 }
 
 .mat-mdc-card-title {

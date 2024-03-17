@@ -25,14 +25,18 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/client-ks-web-scraper",
+            "outputPath": {
+              "base": "dist/client-ks-web-scraper",
+              "browser": ""
+            },
             "index": "src/index.html",
             "browser": "src/main.ts",
+            "statsJson": true,
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.png", "src/assets"],
-            "styles": ["src/custom-theme.scss", "src/styles.scss"],
+            "styles": ["src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -40,8 +44,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "1.25mb",
-                  "maximumError": "1.5mb"
+                  "maximumWarning": "1mb",
+                  "maximumError": "1250kb"
                 },
                 {
                   "type": "anyComponentStyle",

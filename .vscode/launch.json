@@ -10,7 +10,7 @@
       "request": "attach",
       "type": "chrome",
       "webRoot": "${workspaceFolder}",
-      "url": "192.168.1.2:4200"
+      "url": "192.168.1.2:4200*"
     }
   ]
 }

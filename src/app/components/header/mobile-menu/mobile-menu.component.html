@@ -4,13 +4,7 @@
 <mat-menu #menu="matMenu">
   <div class="hamburger-toolbar-wrapper">
     <!-- $event.stopPropagation förhindrar att menyn stängs vid klick -->
-    <button
-      mat-menu-item
-      (click)="$event.stopPropagation()"
-      (click)="onToggleTheme()"
-      matTooltip="Toggle theme"
-      matTooltipPosition="left"
-      class="pointer">
+    <button mat-menu-item (click)="$event.stopPropagation(); onToggleTheme()" matTooltip="Toggle theme" matTooltipPosition="left" class="pointer">
       <mat-slide-toggle color="primary" [checked]="isDarkMode">
         <span>Dark mode</span>
         <mat-icon class="dark-mode-icons" fontSet="material-icons-outlined"> dark_mode </mat-icon>
@@ -18,7 +12,7 @@
     </button>
 
     @if (apiStatus().active) {
-      <button mat-menu-item (click)="apiStatus().active ? onOpenApiStatusDialog() : ''">
+      <button mat-menu-item (click)="onOpenApiStatusDialog()">
         <div matTooltip="View API statistics" matTooltipPosition="left">
           <div class="api-content-wrapper">
             <mat-icon class="status-icon" color="primary"> check_circle_outline </mat-icon>
@@ -28,7 +22,7 @@
       </button>
     } @else {
       <button mat-menu-item disabled>
-        <div matTooltip="API is not active" matTooltipPosition="left" class="api-inactive">
+        <div matTooltip="API is not active" matTooltipPosition="left" class="api-inactive flex flex-align-items-center">
           <div class="api-content-wrapper">
             <mat-icon class="status-icon offline" color="warn"> highlight_off </mat-icon>
             <span class="status-text">API Status</span>

@@ -15,8 +15,8 @@ import { Watch } from "@models/watch.model";
 })
 export class DeleteWatchDialogComponent {
   constructor(
-    @Inject(MAT_DIALOG_DATA) public watchToDelete: Watch,
-    private dialogRef: MatDialogRef<ScraperCardComponent>,
+    @Inject(MAT_DIALOG_DATA) protected readonly watchToDelete: Watch,
+    private readonly dialogRef: MatDialogRef<ScraperCardComponent>,
   ) {}
 
   cancelClicked(): void {

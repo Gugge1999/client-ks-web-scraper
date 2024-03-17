@@ -16,5 +16,5 @@ import { StatusService } from "@services/status.service";
 export class ApiStatusDialogComponent {
   apiStatus = toSignal(this.statusService.getApiStatus());
 
-  constructor(private statusService: StatusService) {}
+  constructor(private readonly statusService: StatusService) {}
 }
