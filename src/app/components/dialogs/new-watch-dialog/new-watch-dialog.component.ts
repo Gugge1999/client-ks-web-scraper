@@ -52,7 +52,7 @@ export class NewWatchDialogComponent {
     if ("errorMessage" in result) {
       this.watchForm.controls.watchToScrape.setErrors({ noResult: true });
 
-      this.cdr.detectChanges();
+      this.cdr.markForCheck();
     } else {
       this.dialogRef.close(result);
     }

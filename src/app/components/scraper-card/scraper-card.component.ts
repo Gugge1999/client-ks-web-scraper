@@ -1,5 +1,5 @@
 import { DatePipe, NgClass } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, computed } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatDialog } from "@angular/material/dialog";
@@ -20,7 +20,9 @@ import { WatchService } from "@services/watch.service";
 })
 export class ScraperCardComponent implements OnInit {
   watches = this.watchService.watches;
-  readonly cardDateFormat = "EEE d MMM yyyy - H:mm:ss";
+  readonly cardDateFormat = "EEEE d MMM yyyy - H:mm:ss";
+
+  activeWatches = computed(() => this.watches().filter((m) => m.active));
 
   constructor(
     private watchService: WatchService,

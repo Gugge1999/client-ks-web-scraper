@@ -35,25 +35,27 @@ export class WatchService {
     this._watches.update((watches) => [...watches, watch].sort((a, b) => Date.parse(a.added.toString()) - Date.parse(b.added.toString())));
   }
 
-  async saveNewWatch(newWatch: NewWatchFormDTO) {
-    this.watchApiService.newWatchLoading.set(true);
-    const result = await lastValueFrom(this.watchApiService.saveNewWatch(newWatch)).catch((err: ValidationError) => err);
+  async saveNewWatch(newWatchDTO: NewWatchFormDTO) {
+    const newWatch = await lastValueFrom(this.watchApiService.saveNewWatch(newWatchDTO)).catch((err: ValidationError) => err);
 
-    if ("errorMessage" in result) {
-      return result;
+    if ("errorMessage" in newWatch) {
+      return newWatch;
     }
 
-    this.snackbarService.successSnackbar(`Added watch with label: ${newWatch.label}`);
-    this._watches.update((watches) => [...watches, result]);
-    this.watchApiService.newWatchLoading.set(false);
+    this.snackbarService.successSnackbar(`Added watch with label: ${newWatchDTO.label}`);
+    this._watches.update((watches) => [...watches, newWatch]);
 
-    return result;
+    return newWatch;
   }
 
-  // TODO: ska inte värdet uppdateras?
   async toggleActiveStatus(watch: Watch) {
-    await lastValueFrom(this.watchApiService.toggleActiveStatus(watch)).then((res) =>
-      this.snackbarService.infoSnackbar(`Toggled status on: ${res.label}`),
+    const updatedWatch = await lastValueFrom(this.watchApiService.toggleActiveStatus(watch));
+
+    this._watches.update((watches) =>
+      watches.map((watch) => {
+        watch.id === updatedWatch.id ? (watch.active = updatedWatch.active) : null;
+        return watch;
+      }),
     );
   }
 }

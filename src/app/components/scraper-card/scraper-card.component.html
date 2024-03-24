@@ -1,4 +1,8 @@
 <div class="card-container">
+  <span>
+    Total watches: <b>{{ watches().length }} </b> Active watches: <b>{{ activeWatches().length }}</b>
+  </span>
+
   @for (watch of watches(); track watch.id) {
     <mat-card appearance="outlined" class="card">
       <mat-card-title>
