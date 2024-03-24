@@ -1,8 +1,6 @@
-<div class="card-container">
-  <span>
-    Total watches: <b>{{ watches().length }} </b> Active watches: <b>{{ activeWatches().length }}</b>
-  </span>
+<scraper-summary [watches]="watches()"></scraper-summary>
 
+<div class="card-container">
   @for (watch of watches(); track watch.id) {
     <mat-card appearance="outlined" class="card">
       <mat-card-title>

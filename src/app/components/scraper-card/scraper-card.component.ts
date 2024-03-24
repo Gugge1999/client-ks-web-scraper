@@ -1,5 +1,5 @@
 import { DatePipe, NgClass } from "@angular/common";
-import { Component, OnInit, computed } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardModule } from "@angular/material/card";
 import { MatDialog } from "@angular/material/dialog";
@@ -8,6 +8,7 @@ import { MatTooltipModule } from "@angular/material/tooltip";
 
 import { CardActionsComponent } from "@components/card-actions/card-actions.component";
 import { NewWatchDialogComponent } from "@components/dialogs/new-watch-dialog/new-watch-dialog.component";
+import { SummaryComponent } from "@components/summary/summary.component";
 import { Watch } from "@models/watch.model";
 import { WatchService } from "@services/watch.service";
 
@@ -16,13 +17,11 @@ import { WatchService } from "@services/watch.service";
   templateUrl: "./scraper-card.component.html",
   styleUrl: "./scraper-card.component.scss",
   standalone: true,
-  imports: [MatCardModule, NgClass, MatButtonModule, MatTooltipModule, MatIconModule, DatePipe, CardActionsComponent],
+  imports: [MatCardModule, NgClass, MatButtonModule, MatTooltipModule, MatIconModule, DatePipe, CardActionsComponent, SummaryComponent],
 })
 export class ScraperCardComponent implements OnInit {
   watches = this.watchService.watches;
   readonly cardDateFormat = "EEEE d MMM yyyy - H:mm:ss";
-
-  activeWatches = computed(() => this.watches().filter((m) => m.active));
 
   constructor(
     private watchService: WatchService,

@@ -33,7 +33,7 @@ export class CardActionsComponent {
   deleteWatchDialog(watch: Watch) {
     const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
       data: watch,
-      restoreFocus: false,
+      autoFocus: "dialog",
     });
 
     dialogRef.afterClosed().subscribe((watch: Watch | undefined) => {

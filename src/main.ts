@@ -17,7 +17,7 @@ if (environment.name === "prod") {
 }
 
 const matSnackbarDefaultConfig: MatSnackBarConfig = {
-  duration: 5000,
+  duration: 5_000,
   horizontalPosition: "right",
   verticalPosition: "bottom",
 };

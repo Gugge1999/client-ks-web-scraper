@@ -1,4 +1,5 @@
-import { Injectable, Renderer2, RendererFactory2, signal } from "@angular/core";
+import { Injectable, Renderer2, signal } from "@angular/core";
+
 import { Theme } from "@models/constants";
 
 @Injectable({
@@ -13,29 +14,22 @@ export class ThemeService {
     return this._currentTheme.asReadonly();
   }
 
-  // Från: https://www.youtube.com/watch?v=XIUv27nYcLE
-  constructor(rendererFactory: RendererFactory2) {
-    this._renderer = rendererFactory.createRenderer(null, null);
-  }
-
   initTheme() {
     this.getColorTheme();
     this._currentTheme.set(this._colorTheme);
-    this._renderer.addClass(document.body, this._colorTheme);
+    document.documentElement.setAttribute("theme", this._colorTheme);
   }
 
-  updateTheme(theme: Theme.darkMode | Theme.lightMode) {
+  updateTheme(theme: Theme.dark | Theme.light) {
     this.setColorTheme(theme);
 
-    const previousColorTheme = theme === Theme.darkMode ? Theme.lightMode : Theme.darkMode;
-    this._renderer.removeClass(document.body, previousColorTheme);
-    this._renderer.addClass(document.body, theme);
+    document.documentElement.setAttribute("theme", theme);
 
     this._currentTheme.set(theme);
   }
 
   isDarkMode(): boolean {
-    return this._colorTheme === Theme.darkMode;
+    return document.documentElement.getAttribute("theme") === Theme.dark;
   }
 
   private getColorTheme(): string {
@@ -46,9 +40,9 @@ export class ThemeService {
       const userPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
       if (userPrefersDark) {
-        return (this._colorTheme = Theme.darkMode);
+        return (this._colorTheme = Theme.dark);
       } else {
-        return (this._colorTheme = Theme.lightMode);
+        return (this._colorTheme = Theme.light);
       }
     }
   }

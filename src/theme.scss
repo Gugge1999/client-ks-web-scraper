@@ -1,18 +1,137 @@
 @use "@angular/material" as mat;
 @include mat.core();
 
+$ks-pallette-primary: (
+  50: #e1f3f1,
+  100: #b4e1dc,
+  200: #83cfc6,
+  300: #50bbaf,
+  400: #2aac9d,
+  500: #099d8c,
+  600: #07907f,
+  700: #057f6e,
+  800: #036f60,
+  900: #005343,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: #000000,
+    A200: #ffffff,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+$ks-pallette-accent: (
+  50: #fbfbfb,
+  100: #f6f6f6,
+  200: #f1f1f1,
+  300: #e4e4e4,
+  400: #c1c1c1,
+  500: #a2a2a2,
+  600: #797979,
+  700: #656565,
+  800: #464646,
+  900: #242424,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: #000000,
+    A200: #ffffff,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+$ks-warn-dark: (
+  50: #ffebee,
+  100: #ffcdd2,
+  200: #ff9997,
+  300: #ff6e6e,
+  400: #ff4646,
+  500: #ff3327,
+  600: #ff2629,
+  700: #ee1624,
+  800: #e1081c,
+  900: #d1000d,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: #000000,
+    A200: #ffffff,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+$ks-warn-light: (
+  50: #fdeaee,
+  100: #fbcad2,
+  200: #ea959b,
+  300: #de6c74,
+  400: #e84853,
+  500: #ed323b,
+  600: #de2839,
+  700: #cc1d33,
+  800: #bf152c,
+  900: #b00020,
+  contrast: (
+    50: rgba(black, 0.87),
+    100: rgba(black, 0.87),
+    200: rgba(black, 0.87),
+    300: white,
+    400: white,
+    500: white,
+    600: white,
+    700: white,
+    800: white,
+    900: white,
+    A100: #000000,
+    A200: #ffffff,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+$dark-warn: mat.define-palette(mat.$red-palette);
+
 // Define a dark theme
 $dark-theme: mat.define-dark-theme(
   (
     // TODO: Fixa warn color
     color:
       (
-        primary: mat.define-palette(mat.$green-palette),
-        accent: mat.define-palette(mat.$gray-palette),
+        primary: mat.define-palette($ks-pallette-primary, 600),
+        accent: mat.define-palette($ks-pallette-accent, 600),
+        warn: mat.define-palette($dark-warn, 400),
       ),
     // Only include `typography` and `density` in the default dark theme.
     typography: mat.define-typography-config(),
-    density: -2
+    density: 0
   )
 );
 
@@ -22,17 +141,17 @@ $light-theme: mat.define-light-theme(
     // TODO: Fixa warn color
     color:
       (
-        primary: mat.define-palette(mat.$green-palette),
-        accent: mat.define-palette(mat.$gray-palette),
+        primary: mat.define-palette($ks-pallette-primary, 600),
+        accent: mat.define-palette($ks-pallette-accent, 600),
+        warn: mat.define-palette($ks-warn-light, 900),
       )
   )
 );
 
-// Apply the dark theme by default// Apply the dark theme by default
 @include mat.all-component-themes($dark-theme);
 
-// Apply the light theme only when the user prefers light themes.
-@media (prefers-color-scheme: light) {
+// Apply the light theme when the document element attribute is changed to 'light'
+:root[theme="light"] {
   // Use the `-color` mixins to only apply color styles without reapplying the same
   // typography and density styles.
   @include mat.all-component-colors($light-theme);

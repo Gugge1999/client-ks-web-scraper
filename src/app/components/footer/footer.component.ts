@@ -25,7 +25,7 @@ export class FooterComponent {
     bottom: "#999999",
   };
 
-  protected readonly darkModeConst = Theme.darkMode;
+  protected readonly darkModeConst = Theme.dark;
 
   protected readonly currentTheme = this.themeService.getCurrentTheme();
 }

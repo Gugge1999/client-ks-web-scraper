@@ -1,9 +1,9 @@
 import { ApiStatus } from "@models/api-status.model";
 
 export const enum Theme {
-  darkMode = "darkMode",
-  lightMode = "lightMode",
-  userTheme = "user-theme",
+  dark = "dark",
+  light = "light",
+  userTheme = "userTheme",
 }
 
 export const initialApiStatus: ApiStatus = {
