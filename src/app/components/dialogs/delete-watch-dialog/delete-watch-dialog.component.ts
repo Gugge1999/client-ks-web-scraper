@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, Inject } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 
-import { ScraperCardComponent } from "@components/scraper-card/scraper-card.component";
+import { ScraperCardComponent } from "@components/scraper-container/scraper-container.component";
 import { Watch } from "@models/watch.model";
 
 @Component({

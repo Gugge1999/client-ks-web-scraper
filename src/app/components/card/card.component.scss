@@ -1,0 +1,32 @@
+.card-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  padding: 1em 2em 0 2em;
+  gap: 2em;
+}
+
+.card {
+  scroll-margin: 20px;
+  width: clamp(45ch, 40%, 60ch);
+  &:nth-last-child(2) {
+    margin-bottom: 0;
+  }
+}
+
+@media all and (max-width: 600px) {
+  .card {
+    width: 100%;
+  }
+}
+
+.no-active-scraped-watches {
+  font-size: large;
+  font-weight: bold;
+}
+
+.mat-mdc-card-title {
+  padding: 1em;
+}

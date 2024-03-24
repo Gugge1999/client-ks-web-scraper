@@ -1,5 +1,3 @@
-<scraper-summary [watches]="watches()"></scraper-summary>
-
 <div class="card-container">
   @for (watch of watches(); track watch.id) {
     <mat-card appearance="outlined" class="card">
@@ -26,10 +24,4 @@
   } @empty {
     <div class="no-active-scraped-watches">Inga aktiva bevakningar.</div>
   }
-</div>
-
-<div class="fab-small-screen-new-watch-button custom-tooltip" matTooltip="Add new watch" matTooltipPosition="left">
-  <button mat-fab color="primary" (click)="openNewWatchDialog()">
-    <mat-icon class="small-add-watch-icon">add</mat-icon>
-  </button>
 </div>

@@ -122,29 +122,25 @@ $dark-warn: mat.define-palette(mat.$red-palette);
 // Define a dark theme
 $dark-theme: mat.define-dark-theme(
   (
-    // TODO: Fixa warn color
-    color:
-      (
-        primary: mat.define-palette($ks-pallette-primary, 600),
-        accent: mat.define-palette($ks-pallette-accent, 600),
-        warn: mat.define-palette($dark-warn, 400),
-      ),
+    color: (
+      primary: mat.define-palette($ks-pallette-primary, 600),
+      accent: mat.define-palette($ks-pallette-accent, 600),
+      warn: mat.define-palette($dark-warn, 400),
+    ),
     // Only include `typography` and `density` in the default dark theme.
     typography: mat.define-typography-config(),
-    density: 0
+    density: 0,
   )
 );
 
 // Define a light theme
 $light-theme: mat.define-light-theme(
   (
-    // TODO: Fixa warn color
-    color:
-      (
-        primary: mat.define-palette($ks-pallette-primary, 600),
-        accent: mat.define-palette($ks-pallette-accent, 600),
-        warn: mat.define-palette($ks-warn-light, 900),
-      )
+    color: (
+      primary: mat.define-palette($ks-pallette-primary, 600),
+      accent: mat.define-palette($ks-pallette-accent, 600),
+      warn: mat.define-palette($ks-warn-light, 900),
+    ),
   )
 );
 
