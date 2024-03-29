@@ -1,72 +1,12 @@
 @use "@angular/material" as mat;
 @include mat.core();
 
-$ks-pallette-primary: (
-  50: #e1f3f1,
-  100: #b4e1dc,
-  200: #83cfc6,
-  300: #50bbaf,
-  400: #2aac9d,
-  500: #099d8c,
-  600: #07907f,
-  700: #057f6e,
-  800: #036f60,
-  900: #005343,
-  contrast: (
-    50: rgba(black, 0.87),
-    100: rgba(black, 0.87),
-    200: rgba(black, 0.87),
-    300: white,
-    400: white,
-    500: white,
-    600: white,
-    700: white,
-    800: white,
-    900: white,
-    A100: #000000,
-    A200: #ffffff,
-    A400: #ffffff,
-    A700: #ffffff,
-  ),
-);
-
-$ks-pallette-accent: (
-  50: #fbfbfb,
-  100: #f6f6f6,
-  200: #f1f1f1,
-  300: #e4e4e4,
-  400: #c1c1c1,
-  500: #a2a2a2,
-  600: #797979,
-  700: #656565,
-  800: #464646,
-  900: #242424,
-  contrast: (
-    50: rgba(black, 0.87),
-    100: rgba(black, 0.87),
-    200: rgba(black, 0.87),
-    300: white,
-    400: white,
-    500: white,
-    600: white,
-    700: white,
-    800: white,
-    900: white,
-    A100: #000000,
-    A200: #ffffff,
-    A400: #ffffff,
-    A700: #ffffff,
-  ),
-);
-
-$dark-warn: mat.define-palette(mat.$red-palette);
-
 // Define a dark theme
 $dark-theme: mat.define-dark-theme(
   (
     color: (
-      primary: mat.define-palette($ks-pallette-primary, 600),
-      accent: mat.define-palette($ks-pallette-accent, 600),
+      primary: mat.define-palette(mat.$teal-palette),
+      accent: mat.define-palette(mat.$blue-gray-palette, 300),
       warn: mat.define-palette(mat.$red-palette, 300),
     ),
     // Only include `typography` and `density` in the default dark theme.
@@ -79,8 +19,8 @@ $dark-theme: mat.define-dark-theme(
 $light-theme: mat.define-light-theme(
   (
     color: (
-      primary: mat.define-palette($ks-pallette-primary, 600),
-      accent: mat.define-palette($ks-pallette-accent, 600),
+      primary: mat.define-palette(mat.$teal-palette),
+      accent: mat.define-palette(mat.$blue-gray-palette, 300),
       warn: mat.define-palette(mat.$red-palette, 900),
     ),
   )
