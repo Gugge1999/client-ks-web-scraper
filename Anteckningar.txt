@@ -13,12 +13,6 @@ Ett bra repo att kika på: https://github.com/joematthews/extreme-angular
 
 
 
-Lägg till denna plugin. https://www.npmjs.com/package/@angular-eslint/eslint-plugin
-Se extreme angular repo för guide
-
-
-
-
 Kolla in storybook: https://storybook.js.org/docs/angular/get-started/install
 
 
