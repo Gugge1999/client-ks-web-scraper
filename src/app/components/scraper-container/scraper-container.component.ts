@@ -34,7 +34,7 @@ export class ScraperCardComponent implements OnInit {
     const dialogRef = this.dialog.open(NewWatchDialogComponent, {
       height: "clamp(45ch, 50%, 50ch)",
       restoreFocus: false,
-      autoFocus: false,
+      autoFocus: "first-tabbable",
     });
 
     dialogRef.afterClosed().subscribe((res: Watch | undefined) => {

@@ -1,9 +1,11 @@
-<div class="flex flex-direction-column flex-align-items-center" style="margin-top: 14px">
-  <p>
-    Total: <b>{{ watches().length }} </b>
-  </p>
+@if (watches().length > 0) {
+  <div class="flex flex-direction-column flex-align-items-center" style="margin-top: 14px">
+    <p>
+      Total: <b>{{ watches().length }} </b>
+    </p>
 
-  <p>
-    Active: <b>{{ activeWatches().length }}</b>
-  </p>
-</div>
+    <p>
+      Active: <b>{{ activeWatches().length }}</b>
+    </p>
+  </div>
+}

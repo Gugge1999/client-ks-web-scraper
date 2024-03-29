@@ -2,22 +2,23 @@
 
 @use "./theme.scss";
 
-/*#region variables colors*/
-$primary-accent-color-light: #dedede;
-$link-color: #099d8c;
-$dark-mode-input-validation-error: #ff6e6e;
-
-/*#endregion */
-
 /*#region html, body, main, content*/
 html,
 body {
   height: 100%;
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// TODO: Vet inte om det här är en dålig idé... undersök senare
+* {
+  transition:
+    background-color 0.3s ease-in-out,
+    fill 0.3s ease-in-out;
 }
 
 /*#endregion */
@@ -40,7 +41,7 @@ body {
 /*#region links*/
 .link:link,
 .link:visited {
-  color: $link-color;
+  color: #099d8c;
   text-decoration: none;
 }
 
@@ -93,6 +94,18 @@ input {
   ::selection {
     background-color: #696969;
   }
+
+  footer {
+    #level-1 {
+      fill: #5c5c5c;
+    }
+    #level-2 {
+      fill: #4f4f4f;
+    }
+    #level-3 {
+      fill: #404040;
+    }
+  }
 }
 
 :root[theme="light"] {
@@ -109,6 +122,18 @@ input {
 
   ::selection {
     background-color: #c5c5c5;
+  }
+
+  footer {
+    #level-1 {
+      fill: #ededed;
+    }
+    #level-2 {
+      fill: #c9c9c9;
+    }
+    #level-3 {
+      fill: #999999;
+    }
   }
 }
 

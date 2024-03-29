@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable, signal } from "@angular/core";
+import { Injectable } from "@angular/core";
 
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { ValidationError } from "@models/DTOs/validation-error.dto";

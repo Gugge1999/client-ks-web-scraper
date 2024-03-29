@@ -1,10 +1,7 @@
 -------------- TODO --------------
-Lägg till en transition mellan dark och light mode. Se till exempel på angular.dev
-kod från angular.dev: https://github.com/angular/angular/blob/main/adev/src/app/core/services/theme-manager.service.ts
+Byt till async validator. 
+Verkar ändra funka med onpush: https://stackblitz.com/edit/angular-ivy-6lt1tq?file=src%2Fapp%2Fapp.component.ts,src%2Fapp%2Fuser.service.ts
 
-
-
-https://stackoverflow.com/questions/61129414/adding-animation-while-switching-to-dark-mode-html
 
 
 Byt till inject function

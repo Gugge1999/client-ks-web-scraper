@@ -1,4 +1,4 @@
-import { Injectable, Renderer2, signal } from "@angular/core";
+import { Injectable, signal } from "@angular/core";
 
 import { Theme } from "@models/constants";
 
@@ -7,12 +7,7 @@ import { Theme } from "@models/constants";
 })
 export class ThemeService {
   private _currentTheme = signal(this.getColorTheme());
-  private _renderer!: Renderer2;
   private _colorTheme!: string;
-
-  public getCurrentTheme() {
-    return this._currentTheme.asReadonly();
-  }
 
   initTheme() {
     this.getColorTheme();
