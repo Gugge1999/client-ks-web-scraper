@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { ValidationError } from "@models/DTOs/validation-error.dto";
@@ -12,10 +12,8 @@ import { SnackbarService } from "./snackbar.service";
   providedIn: "root",
 })
 export class WatchApiService {
-  constructor(
-    private httpClient: HttpClient,
-    private snackbarService: SnackbarService,
-  ) {}
+  private readonly httpClient = inject(HttpClient);
+  private readonly snackbarService = inject(SnackbarService);
 
   toggleActiveStatus(watch: Watch) {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/toggle-active-status`;

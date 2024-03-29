@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 
@@ -14,10 +14,8 @@ import { Watch } from "@models/watch.model";
   imports: [MatDialogModule, MatButtonModule],
 })
 export class DeleteWatchDialogComponent {
-  constructor(
-    @Inject(MAT_DIALOG_DATA) protected readonly watchToDelete: Watch,
-    private readonly dialogRef: MatDialogRef<ScraperCardComponent>,
-  ) {}
+  private readonly dialogRef = inject(MatDialogRef<ScraperCardComponent>);
+  protected readonly watchToDelete: Watch = inject(MAT_DIALOG_DATA);
 
   cancelClicked(): void {
     this.dialogRef.close();

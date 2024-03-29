@@ -1,5 +1,5 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { lastValueFrom } from "rxjs";
 
 import { environment } from "@environments/environment";
@@ -17,7 +17,7 @@ export class AppConfigService {
     }),
   };
 
-  constructor(private http: HttpClient) {}
+  private readonly http = inject(HttpClient);
 
   async loadAppConfig() {
     try {

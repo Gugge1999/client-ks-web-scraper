@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from "@angular/core";
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from "@angular/core";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
@@ -31,11 +31,9 @@ export class NewWatchDialogComponent {
 
   serverValidationError = "";
 
-  constructor(
-    private readonly watchService: WatchService,
-    private readonly dialogRef: MatDialogRef<NewWatchDialogComponent>,
-    private cdr: ChangeDetectorRef,
-  ) {}
+  private readonly watchService = inject(WatchService);
+  private readonly dialogRef = inject(MatDialogRef<NewWatchDialogComponent>);
+  private readonly cdr = inject(ChangeDetectorRef);
 
   protected async submitNewWatch() {
     const wordsSeparatedByPlus = this.watchForm.controls.watchToScrape.value.trim().replace(/\s+/g, "+");

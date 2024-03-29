@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
-import { ChangeDetectionStrategy, Component, OnInit, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { MatIconModule } from "@angular/material/icon";
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -23,18 +23,16 @@ import { ThemeService } from "@services/theme.service";
   imports: [MatToolbarModule, MatIconModule, MobileMenuComponent, DesktopMenuComponent],
 })
 export class HeaderComponent implements OnInit {
+  private readonly statusService = inject(StatusService);
+  private readonly themeService = inject(ThemeService);
+  private readonly breakpointObserver = inject(BreakpointObserver);
+  private readonly dialog = inject(MatDialog);
+
   isDarkMode = signal(false);
   isHandset = toSignal(this.breakpointObserver.observe(Breakpoints.Handset).pipe(map((bs) => bs.matches)), { initialValue: false });
   apiStatus = toSignal(timer(0, 30_000).pipe(switchMap(() => this.statusService.getApiStatus())), {
     initialValue: initialApiStatus,
   });
-
-  constructor(
-    private readonly statusService: StatusService,
-    private readonly themeService: ThemeService,
-    private readonly breakpointObserver: BreakpointObserver,
-    private readonly dialog: MatDialog,
-  ) {}
 
   ngOnInit(): void {
     this.themeService.initTheme();

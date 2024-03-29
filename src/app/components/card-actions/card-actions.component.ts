@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, Input, inject } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardActions } from "@angular/material/card";
@@ -24,11 +24,9 @@ import { WatchService } from "@services/watch.service";
 export class CardActionsComponent {
   @Input({ required: true }) watch!: Watch;
 
-  constructor(
-    private readonly dialog: MatDialog,
-    private readonly watchService: WatchService,
-    private readonly snackbar: MatSnackBar,
-  ) {}
+  private readonly dialog = inject(MatDialog);
+  private readonly watchService = inject(WatchService);
+  private readonly snackbar = inject(MatSnackBar);
 
   deleteWatchDialog(watch: Watch) {
     const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {

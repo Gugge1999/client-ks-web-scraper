@@ -1,4 +1,4 @@
-import { Injectable, signal } from "@angular/core";
+import { Injectable, inject, signal } from "@angular/core";
 import { lastValueFrom } from "rxjs";
 
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
@@ -14,10 +14,8 @@ export class WatchService {
   private _watches = signal<Watch[]>([]);
   readonly watches = this._watches.asReadonly();
 
-  constructor(
-    private watchApiService: WatchApiService,
-    private snackbarService: SnackbarService,
-  ) {}
+  private readonly watchApiService = inject(WatchApiService);
+  private readonly snackbarService = inject(SnackbarService);
 
   async getAllWatches() {
     this._watches.set(await lastValueFrom(this.watchApiService.getAllWatchesApi()));

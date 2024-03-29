@@ -1,5 +1,5 @@
 import { DatePipe, NgClass } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, inject } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatDialog } from "@angular/material/dialog";
 import { MatIconModule } from "@angular/material/icon";
@@ -19,12 +19,10 @@ import { WatchService } from "@services/watch.service";
   imports: [NgClass, MatButtonModule, MatTooltipModule, MatIconModule, DatePipe, SummaryComponent, CardComponent],
 })
 export class ScraperCardComponent implements OnInit {
-  watches = this.watchService.watches;
+  private readonly watchService = inject(WatchService);
+  private readonly dialog = inject(MatDialog);
 
-  constructor(
-    private watchService: WatchService,
-    private dialog: MatDialog,
-  ) {}
+  watches = this.watchService.watches;
 
   async ngOnInit() {
     this.watchService.getAllWatches();

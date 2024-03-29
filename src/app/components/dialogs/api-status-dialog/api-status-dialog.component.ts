@@ -1,5 +1,5 @@
 import { DecimalPipe } from "@angular/common";
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { MatDialogModule } from "@angular/material/dialog";
 
@@ -14,7 +14,7 @@ import { StatusService } from "@services/status.service";
   imports: [MatDialogModule, DecimalPipe],
 })
 export class ApiStatusDialogComponent {
-  apiStatus = toSignal(this.statusService.getApiStatus());
+  private readonly statusService = inject(StatusService);
 
-  constructor(private readonly statusService: StatusService) {}
+  apiStatus = toSignal(this.statusService.getApiStatus());
 }

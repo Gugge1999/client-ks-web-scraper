@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { Observable, catchError, of } from "rxjs";
 
 import { ApiStatus } from "@models/api-status.model";
@@ -10,7 +10,7 @@ import { AppConfigService } from "@services/app-config.service";
   providedIn: "root",
 })
 export class StatusService {
-  constructor(private http: HttpClient) {}
+  private readonly http = inject(HttpClient);
 
   getApiStatus(): Observable<ApiStatus> {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/api-status`;
