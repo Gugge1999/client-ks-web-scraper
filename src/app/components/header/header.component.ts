@@ -1,5 +1,5 @@
 import { BreakpointObserver, Breakpoints } from "@angular/cdk/layout";
-import { ChangeDetectionStrategy, Component, OnInit, inject, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { MatIconModule } from "@angular/material/icon";
 import { MatToolbarModule } from "@angular/material/toolbar";
@@ -22,22 +22,17 @@ import { ThemeService } from "@services/theme.service";
   standalone: true,
   imports: [MatToolbarModule, MatIconModule, MobileMenuComponent, DesktopMenuComponent],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
   private readonly statusService = inject(StatusService);
   private readonly themeService = inject(ThemeService);
   private readonly breakpointObserver = inject(BreakpointObserver);
   private readonly dialog = inject(MatDialog);
 
-  isDarkMode = signal(false);
+  isDarkMode = this.themeService.isDarkMode;
   isHandset = toSignal(this.breakpointObserver.observe(Breakpoints.Handset).pipe(map((bs) => bs.matches)), { initialValue: false });
   apiStatus = toSignal(timer(0, 30_000).pipe(switchMap(() => this.statusService.getApiStatus())), {
     initialValue: initialApiStatus,
   });
-
-  ngOnInit(): void {
-    this.themeService.initTheme();
-    this.isDarkMode.set(this.themeService.isDarkMode());
-  }
 
   openApiStatusDialog() {
     this.dialog.open(ApiStatusDialogComponent, {
@@ -47,8 +42,6 @@ export class HeaderComponent implements OnInit {
   }
 
   toggleTheme() {
-    this.themeService.isDarkMode() ? this.themeService.updateTheme(Theme.light) : this.themeService.updateTheme(Theme.dark);
-
-    this.isDarkMode.set(this.themeService.isDarkMode());
+    this.isDarkMode() ? this.themeService.updateTheme(Theme.light) : this.themeService.updateTheme(Theme.dark);
   }
 }

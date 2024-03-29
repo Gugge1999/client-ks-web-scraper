@@ -3,7 +3,7 @@ import { ApiStatus } from "@models/api-status.model";
 export const enum Theme {
   dark = "dark",
   light = "light",
-  userTheme = "userTheme",
+  userTheme = "user-theme",
 }
 
 export const initialApiStatus: ApiStatus = {

@@ -1,4 +1,4 @@
-import { Injectable, signal } from "@angular/core";
+import { Injectable, computed, signal } from "@angular/core";
 
 import { Theme } from "@models/constants";
 
@@ -6,44 +6,32 @@ import { Theme } from "@models/constants";
   providedIn: "root",
 })
 export class ThemeService {
-  private _currentTheme = signal(this.getColorTheme());
-  private _colorTheme!: string;
+  private currentTheme = signal(this.getColorTheme());
+  isDarkMode = computed(() => (this.currentTheme() === Theme.dark ? true : false));
 
   initTheme() {
-    this.getColorTheme();
-    this._currentTheme.set(this._colorTheme);
-    document.documentElement.setAttribute("theme", this._colorTheme);
+    const theme = this.getColorTheme();
+    this.setTheme(theme);
   }
 
-  updateTheme(theme: Theme.dark | Theme.light) {
-    this.setColorTheme(theme);
-
-    document.documentElement.setAttribute("theme", theme);
-
-    this._currentTheme.set(theme);
-  }
-
-  isDarkMode(): boolean {
-    return document.documentElement.getAttribute("theme") === Theme.dark;
-  }
-
-  private getColorTheme(): string {
+  private getColorTheme() {
     const userTheme = localStorage.getItem(Theme.userTheme);
     if (userTheme) {
-      return (this._colorTheme = userTheme);
+      return userTheme;
     } else {
       const userPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-      if (userPrefersDark) {
-        return (this._colorTheme = Theme.dark);
-      } else {
-        return (this._colorTheme = Theme.light);
-      }
+      return userPrefersDark ? Theme.dark : Theme.light;
     }
   }
 
-  private setColorTheme(theme: string) {
-    this._colorTheme = theme;
+  setTheme(theme: string) {
+    this.currentTheme.set(theme);
+    document.documentElement.setAttribute("theme", theme);
+  }
+
+  updateTheme(theme: Theme.dark | Theme.light) {
+    this.setTheme(theme);
     localStorage.setItem(Theme.userTheme, theme);
   }
 }

@@ -4,8 +4,8 @@
 <mat-menu #menu="matMenu">
   <div class="hamburger-toolbar-wrapper">
     <!-- $event.stopPropagation förhindrar att menyn stängs vid klick -->
-    <button mat-menu-item (click)="$event.stopPropagation(); onToggleTheme()" matTooltip="Toggle theme" matTooltipPosition="left" class="pointer">
-      <mat-slide-toggle color="primary" [checked]="isDarkMode">
+    <button mat-menu-item matTooltip="Toggle theme" matTooltipPosition="left" class="pointer">
+      <mat-slide-toggle color="primary" [checked]="isDarkMode" (click)="$event.stopPropagation(); onToggleTheme()">
         <span>Dark mode</span>
         <mat-icon class="dark-mode-icon" fontSet="material-icons-outlined"> dark_mode </mat-icon>
       </mat-slide-toggle>

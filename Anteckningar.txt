@@ -4,10 +4,6 @@ Verkar ändra funka med onpush: https://stackblitz.com/edit/angular-ivy-6lt1tq?f
 
 
 
-Byt till inject function
-
-
-
 Läs igenom den: https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
 Finns det för v3?
 
@@ -19,11 +15,6 @@ Ett bra repo att kika på: https://github.com/joematthews/extreme-angular
 
 Lägg till denna plugin. https://www.npmjs.com/package/@angular-eslint/eslint-plugin
 Se extreme angular repo för guide
-
-
-Skriv om theme service så att den använder enbart signals . 
-Den guiden kanske är bra: https://www.youtube.com/watch?v=sM3ATKt8568&list=WL&index=34
-
 
 
 

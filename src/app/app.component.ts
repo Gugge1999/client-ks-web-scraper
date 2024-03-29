@@ -1,8 +1,9 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit, inject } from "@angular/core";
 
 import { FooterComponent } from "@components/footer/footer.component";
 import { HeaderComponent } from "@components/header/header.component";
 import { ScraperCardComponent } from "@components/scraper-container/scraper-container.component";
+import { ThemeService } from "@services/theme.service";
 
 @Component({
   selector: "scraper-root",
@@ -12,4 +13,10 @@ import { ScraperCardComponent } from "@components/scraper-container/scraper-cont
   standalone: true,
   imports: [HeaderComponent, FooterComponent, ScraperCardComponent],
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  private readonly themeService = inject(ThemeService);
+
+  ngOnInit(): void {
+    this.themeService.initTheme();
+  }
+}
