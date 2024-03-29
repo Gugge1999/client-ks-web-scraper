@@ -33,21 +33,10 @@ Bra video från Google om Angular "How to stay fast and fresh with Angular"
 https://www.youtube.com/watch?v=B-lipaiZII8
 
 
-Tema:
-Custom theme: https://materialtheme.arcsine.dev/
-
-
 För diagram och tabeller använd:
 https://swimlane.github.io/ngx-charts/#/ngx-charts/line-chart
 Kolla noga på feature "Timeline". Riktigt cool.
 
-
-Ta bort --host 192.168.1.2 i package.json för att köra ren localhost
-För att köra lokalt skriv npm start eller ändra till:   
-i angular.json under "serve"
-"options": {
-  "host": "192.168.1.2"
-},
 
 
 För att köra debug med attach: 

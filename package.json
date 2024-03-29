@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "ng": "ng",
-    "dev": "npm run lint && ng serve --host 192.168.1.2",
+    "dev": "npm run lint && ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "lint": "ng lint"
