@@ -1,5 +1,5 @@
 import { DatePipe, NgClass } from "@angular/common";
-import { Component, OnInit, inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit, inject } from "@angular/core";
 import { MatButtonModule } from "@angular/material/button";
 import { MatDialog } from "@angular/material/dialog";
 import { MatIconModule } from "@angular/material/icon";
@@ -16,6 +16,7 @@ import { WatchService } from "@services/watch.service";
   templateUrl: "./scraper-container.component.html",
   styleUrl: "./scraper-container.component.scss",
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [NgClass, MatButtonModule, MatTooltipModule, MatIconModule, DatePipe, SummaryComponent, CardComponent],
 })
 export class ScraperCardComponent implements OnInit {
@@ -39,7 +40,7 @@ export class ScraperCardComponent implements OnInit {
       if (res !== undefined) {
         const cards = document.querySelectorAll(".card");
         const lastCard = cards[cards.length - 1];
-        lastCard.scrollIntoView({ behavior: "smooth" });
+        lastCard.scrollIntoView({ behavior: "smooth", block: "start" });
       }
     });
   }
