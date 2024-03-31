@@ -4,7 +4,7 @@
       <mat-card-title>
         <strong>{{ watch.label }}</strong>
       </mat-card-title>
-      <mat-card-content class="card-mat-card-content">
+      <mat-card-content>
         <p>
           <strong> Last email sent: </strong>
           {{ watch.lastEmailSent === null ? "No email sent" : (watch.lastEmailSent | date: cardDateFormat) }}

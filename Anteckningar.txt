@@ -4,6 +4,10 @@ Verkar ändra funka med OnPush: https://stackblitz.com/edit/angular-ivy-6lt1tq?f
 
 
 
+Läs igenom den för migrering till M3: https://material.angular.io/guide/material-3
+
+
+
 Läs igenom den: https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
 Finns det för v3?
 
