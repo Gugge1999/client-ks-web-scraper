@@ -83,7 +83,7 @@ input {
 /*#endregion */
 
 /*#region dark and light mode*/
-:root[theme="dark"] {
+:root[theme="dark-mode"] {
   .mat-mdc-snack-bar-container.snackbar-warning {
     --mdc-snackbar-container-color: #ff6e6e;
     .mat-mdc-snack-bar-label {
