@@ -1,6 +1,5 @@
 -------------- TODO --------------
-Byt till async validator. 
-Verkar ändra funka med OnPush: https://stackblitz.com/edit/angular-ivy-6lt1tq?file=src%2Fapp%2Fapp.component.ts,src%2Fapp%2Fuser.service.ts
+Fixa cookie consent 
 
 
 
