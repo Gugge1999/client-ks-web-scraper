@@ -2,6 +2,8 @@
 Fixa cookie consent 
 
 
+Radera @nx/nx-win32-x64-msvc från package.json. Den behövs på grund att ett problem i github actions
+
 
 Läs igenom den för migrering till M3: https://material.angular.io/guide/material-3
 

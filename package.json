@@ -41,6 +41,9 @@
     "prettier": "^3.2.5",
     "typescript": "~5.4.3"
   },
+  "optionalDependencies": {
+    "@nx/nx-linux-x64-gnu": "18.0.4"
+  },
   "lint-staged": {
     "*.ts": "eslint --fix",
     "*.{js,jsx,ts,tsx,md,html,css,scss}": "prettier --write"
