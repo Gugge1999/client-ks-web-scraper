@@ -58,7 +58,7 @@ export class CardActionsComponent {
       if (res.dismissedByAction) {
         this.watchService.addWatch(watch);
       } else {
-        this.watchService.deleteWatch(watch);
+        this.watchService.deleteWatch(watch, true);
       }
     });
   }

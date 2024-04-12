@@ -21,7 +21,7 @@ export class WatchService {
     this._watches.set(await lastValueFrom(this.watchApiService.getAllWatchesApi()));
   }
 
-  async deleteWatch(watch: Watch, deleteFromDatabase = true) {
+  async deleteWatch(watch: Watch, deleteFromDatabase: boolean) {
     if (deleteFromDatabase) {
       await lastValueFrom(this.watchApiService.deleteWatchById(watch.id));
     }
