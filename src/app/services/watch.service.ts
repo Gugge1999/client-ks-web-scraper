@@ -47,7 +47,12 @@ export class WatchService {
   }
 
   async toggleActiveStatus(watch: Watch) {
-    const updatedWatch = await lastValueFrom(this.watchApiService.toggleActiveStatus(watch));
+    const updatedWatch = await lastValueFrom(this.watchApiService.toggleActiveStatus(watch)).catch((err: ValidationError) => err);
+
+    if ("errorMessage" in updatedWatch) {
+      this._watches.set(structuredClone(this._watches()));
+      return;
+    }
 
     this._watches.update((watches) =>
       watches.map((watch) => {

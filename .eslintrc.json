@@ -32,7 +32,7 @@
           }
         ],
         "@typescript-eslint/no-unused-vars": "warn",
-        "@angular-eslint/prefer-on-push-component-change-detection": "error"
+        "@angular-eslint/prefer-on-push-component-change-detection": "warn"
       }
     },
     {

@@ -1,3 +1,5 @@
+/// <reference types="@angular/localize" />
+
 import { LayoutModule } from "@angular/cdk/layout";
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
 import { APP_INITIALIZER, enableProdMode, importProvidersFrom } from "@angular/core";

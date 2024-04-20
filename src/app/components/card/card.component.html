@@ -4,6 +4,7 @@
       <mat-card-title>
         <strong>{{ watch.label }}</strong>
       </mat-card-title>
+
       <mat-card-content>
         <p>
           <strong> Last email sent: </strong>
@@ -19,7 +20,8 @@
           <a target="_blank" class="link" [href]="watch.watches[0].link">{{ watch.watches[0].name }}</a>
         </p>
       </mat-card-content>
-      <scraper-card-actions [watch]="watch"></scraper-card-actions>
+
+      <scraper-card-actions [watch]="watch" [isActive]="watch.active"></scraper-card-actions>
     </mat-card>
   } @empty {
     <div class="no-active-scraped-watches">Inga aktiva bevakningar.</div>

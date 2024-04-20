@@ -14,16 +14,16 @@ export class HttpErrorInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     return next.handle(request).pipe(
       catchError((httpErrorResponse: HttpErrorResponse) => {
-        const errorMessage = httpErrorResponse.status === 0 ? "Could not connect to API" : httpErrorResponse.error;
-        console.error(errorMessage);
+        const error = httpErrorResponse.status === 0 ? "Could not connect to API" : httpErrorResponse.error;
+        console.error(error);
 
         if (httpErrorResponse.status === 400) {
           return throwError(() => httpErrorResponse.error);
         }
 
-        this.snackbarService.errorSnackbar(errorMessage);
+        this.snackbarService.errorSnackbar(error.errorMessage);
 
-        return throwError(() => errorMessage);
+        return throwError(() => error);
       }),
     );
   }

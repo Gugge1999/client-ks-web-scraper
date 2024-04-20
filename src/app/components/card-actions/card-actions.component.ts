@@ -23,6 +23,7 @@ import { WatchService } from "@services/watch.service";
 })
 export class CardActionsComponent {
   @Input({ required: true }) watch!: Watch;
+  @Input({ required: true }) isActive!: boolean;
 
   private readonly dialog = inject(MatDialog);
   private readonly watchService = inject(WatchService);

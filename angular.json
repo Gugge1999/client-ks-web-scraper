@@ -4,6 +4,10 @@
   "newProjectRoot": "projects",
   "projects": {
     "client-ks-web-scraper": {
+      // "i18n": {
+      //   "sourceLocale": "en-US",
+      //   "locales": { "sv-SE": "src/locale/messages.sv.xlf" }
+      // },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -31,13 +35,13 @@
             },
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "statsJson": true,
             "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.png", "src/assets"],
             "styles": ["src/styles.scss"],
             "scripts": []
+            // "localize": ["sv-SE"]
           },
           "configurations": {
             "production": {
