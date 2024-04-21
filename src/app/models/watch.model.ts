@@ -1,11 +1,15 @@
-import { ScrapedWatches } from "@models/scraped-watches.model";
-
 export interface Watch {
   id: string;
   watchToScrape: string;
   label: string;
-  watches: ScrapedWatches[];
+  watch: ScrapedWatch;
   active: boolean;
   lastEmailSent?: string;
   added: string;
+}
+
+export interface ScrapedWatch {
+  name: string;
+  postedDate: string;
+  link: string;
 }

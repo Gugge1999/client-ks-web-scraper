@@ -27,6 +27,9 @@ https://www.youtube.com/watch?v=bv9z_UfSqgM
 
 
 |--------------------------------------------------- Misc ---------------------------------------------------------|
+Bra blog: https://riegler.fr/
+
+
 För att se bundle size bygg med flaggan "statsJson": true i options i angular.json. Klistra sen i stats.json i dist på sidan https://esbuild.github.io/analyze/ 
 
 
