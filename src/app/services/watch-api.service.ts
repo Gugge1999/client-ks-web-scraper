@@ -1,8 +1,8 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 
+import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
-import { ValidationError } from "@models/DTOs/validation-error.dto";
 import { Watch } from "@models/watch.model";
 import { AppConfigService } from "@services/app-config.service";
 import { retry, tap } from "rxjs";
@@ -33,7 +33,7 @@ export class WatchApiService {
   saveNewWatch(watchFormDTO: NewWatchFormDTO) {
     const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/save-watch`;
 
-    return this.httpClient.post<Watch | ValidationError>(API_URL, watchFormDTO);
+    return this.httpClient.post<Watch | ApiError>(API_URL, watchFormDTO);
   }
 
   getAllWatchesApi() {

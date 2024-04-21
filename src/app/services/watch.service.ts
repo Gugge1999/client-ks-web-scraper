@@ -1,8 +1,8 @@
 import { Injectable, inject, signal } from "@angular/core";
 import { lastValueFrom } from "rxjs";
 
+import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
-import { ValidationError } from "@models/DTOs/validation-error.dto";
 import { Watch } from "@models/watch.model";
 import { SnackbarService } from "@services/snackbar.service";
 import { WatchApiService } from "@services/watch-api.service";
@@ -34,7 +34,7 @@ export class WatchService {
   }
 
   async saveNewWatch(newWatchDTO: NewWatchFormDTO) {
-    const newWatch = await lastValueFrom(this.watchApiService.saveNewWatch(newWatchDTO)).catch((err: ValidationError) => err);
+    const newWatch = await lastValueFrom(this.watchApiService.saveNewWatch(newWatchDTO)).catch((err: ApiError) => err);
 
     if ("errorMessage" in newWatch) {
       return newWatch;
@@ -47,7 +47,7 @@ export class WatchService {
   }
 
   async toggleActiveStatus(watch: Watch) {
-    const updatedWatch = await lastValueFrom(this.watchApiService.toggleActiveStatus(watch)).catch((err: ValidationError) => err);
+    const updatedWatch = await lastValueFrom(this.watchApiService.toggleActiveStatus(watch)).catch((err: ApiError) => err);
 
     if ("errorMessage" in updatedWatch) {
       this._watches.set(structuredClone(this._watches()));

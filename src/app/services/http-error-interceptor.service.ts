@@ -1,8 +1,8 @@
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
+import { Injectable, inject } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { catchError } from "rxjs/operators";
 
-import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from "@angular/common/http";
-import { Injectable, inject } from "@angular/core";
 import { SnackbarService } from "@services/snackbar.service";
 
 @Injectable({
@@ -15,7 +15,8 @@ export class HttpErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((httpErrorResponse: HttpErrorResponse) => {
         const error = httpErrorResponse.status === 0 ? "Could not connect to API" : httpErrorResponse.error;
-        console.error(error);
+        console.error(error.errorMessage);
+        console.error(JSON.parse(error?.verboseErrorMessage));
 
         if (httpErrorResponse.status === 400) {
           return throwError(() => httpErrorResponse.error);
