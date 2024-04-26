@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
-import { Observable, catchError, of, retry } from "rxjs";
+import { catchError, of, retry } from "rxjs";
 
 import { ApiStatus } from "@models/api-status.model";
 import { initialApiStatus } from "@models/constants";
@@ -12,12 +12,9 @@ import { AppConfigService } from "@services/app-config.service";
 export class StatusService {
   private readonly http = inject(HttpClient);
 
-  getApiStatus(): Observable<ApiStatus> {
-    const API_URL = `${AppConfigService.appConfig.apiBaseUrl}/api-status`;
-
-    return this.http.get<ApiStatus>(API_URL).pipe(
+  getApiStatus = () =>
+    this.http.get<ApiStatus>(`${AppConfigService.baseApiUrl()}/api-status`).pipe(
       retry({ delay: 5_000 }),
       catchError(() => of(initialApiStatus)),
     );
-  }
 }

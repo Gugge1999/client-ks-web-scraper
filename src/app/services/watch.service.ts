@@ -23,7 +23,11 @@ export class WatchService {
 
   async deleteWatch(watch: Watch, deleteFromDatabase: boolean) {
     if (deleteFromDatabase) {
-      await lastValueFrom(this.watchApiService.deleteWatchById(watch.id));
+      const deleteId = await lastValueFrom(this.watchApiService.deleteWatchById(watch.id));
+
+      if ("errorMessage" in deleteId) {
+        return;
+      }
     }
 
     this._watches.update((watches) => watches.filter((w) => w.id !== watch.id));
@@ -47,12 +51,15 @@ export class WatchService {
   }
 
   async toggleActiveStatus(watch: Watch) {
-    const updatedWatch = await lastValueFrom(this.watchApiService.toggleActiveStatus(watch)).catch((err: ApiError) => err);
+    const { active, id, label } = watch;
+    const updatedWatch = await lastValueFrom(this.watchApiService.toggleActiveStatus({ active, id, label })).catch((err: ApiError) => err);
 
     if ("errorMessage" in updatedWatch) {
       this._watches.set(structuredClone(this._watches()));
       return;
     }
+
+    this.snackbarService.infoSnackbar(`Toggled status on: ${updatedWatch.label}`);
 
     this._watches.update((watches) =>
       watches.map((watch) => {

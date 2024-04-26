@@ -1,9 +1,10 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
 import { lastValueFrom } from "rxjs";
 
 import { environment } from "@environments/environment";
 import { AppConfig } from "@models/app-config";
+import { httpOptions } from "@models/constants";
 
 @Injectable({
   providedIn: "root",
@@ -11,19 +12,15 @@ import { AppConfig } from "@models/app-config";
 export class AppConfigService {
   public static appConfig: AppConfig;
 
-  private readonly httpOptions = {
-    headers: new HttpHeaders({
-      "Cache-Control": "no-cache",
-    }),
-  };
-
   private readonly http = inject(HttpClient);
 
   async loadAppConfig() {
     try {
-      AppConfigService.appConfig = await lastValueFrom(this.http.get<AppConfig>(`/assets/config/${environment.name}.config.json`, this.httpOptions));
+      AppConfigService.appConfig = await lastValueFrom(this.http.get<AppConfig>(`/assets/config/${environment.name}.config.json`, httpOptions));
     } catch (err) {
       console.error("loadAppConfig failed.", err);
     }
   }
+
+  static baseApiUrl = () => AppConfigService.appConfig.apiBaseUrl;
 }

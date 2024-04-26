@@ -1,3 +1,4 @@
+import { HttpHeaders } from "@angular/common/http";
 import { ApiStatus } from "@models/api-status.model";
 
 export const enum Theme {
@@ -18,3 +19,9 @@ export const initialApiStatus: ApiStatus = {
     seconds: 0,
   },
 };
+
+export const httpOptions = {
+  headers: new HttpHeaders({
+    "Cache-Control": "no-cache",
+  }),
+} as const;
