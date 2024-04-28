@@ -1,0 +1,5 @@
+<div class="theme-icon-wrapper" matTooltip="Switch theme" [matTooltipPosition]="tooltipPos">
+  <mat-icon class="theme-mode-icon" [ngStyle]="{ color: iconColor }" color="primary" fontSet="material-icons-outlined">
+    {{ isDarkMode() ? "dark_mode" : "light_mode" }}
+  </mat-icon>
+</div>

@@ -4,22 +4,6 @@
   border-radius: 15px;
 }
 
-.header-chip-wrapper-dark {
-  display: flex;
-  .header-chip {
-    background-color: #414141;
-  }
-  span {
-    color: #fff;
-  }
-}
-
-.header-chip-wrapper-light {
-  display: flex;
-  .header-chip {
-    background-color: #fff;
-  }
-  span {
-    color: #000;
-  }
+.status-text {
+  margin-left: 6px;
 }

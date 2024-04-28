@@ -2,3 +2,17 @@ p {
   margin: 4px;
   font-size: large;
 }
+
+.summary-wrapper {
+  margin-top: 14px;
+  position: sticky;
+  z-index: 2;
+  top: 63px;
+  background-color: var(--mat-app-background-color);
+}
+
+@media all and (max-width: 600px) {
+  .summary-wrapper {
+    top: 56px;
+  }
+}

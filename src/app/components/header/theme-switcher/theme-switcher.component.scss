@@ -1,0 +1,21 @@
+:host {
+  display: flex;
+}
+
+.theme-icon-wrapper {
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.theme-mode-icon {
+  transform: scale(1.2);
+  transition: none;
+  padding: 4px;
+
+  &:hover {
+    background-color: #717171;
+    border-radius: 50%;
+    cursor: pointer;
+  }
+}

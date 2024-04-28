@@ -1,7 +1,7 @@
 /// <reference types="@angular/localize" />
 
 import { LayoutModule } from "@angular/cdk/layout";
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, provideHttpClient, withFetch, withInterceptorsFromDi } from "@angular/common/http";
 import { APP_INITIALIZER, enableProdMode, importProvidersFrom } from "@angular/core";
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { BrowserModule, bootstrapApplication } from "@angular/platform-browser";
@@ -43,6 +43,6 @@ bootstrapApplication(AppComponent, {
       useValue: matSnackbarDefaultConfig,
     },
     provideAnimationsAsync(),
-    provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(withInterceptorsFromDi(), withFetch()),
   ],
 }).catch((err) => console.error(err));

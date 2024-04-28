@@ -4,6 +4,7 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatTooltipModule } from "@angular/material/tooltip";
 
+import { ThemeSwitcherComponent } from "@components/header/theme-switcher/theme-switcher.component";
 import { ApiStatus } from "@models/api-status.model";
 
 @Component({
@@ -12,7 +13,7 @@ import { ApiStatus } from "@models/api-status.model";
   styleUrl: "./desktop-menu.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [NgClass, MatTooltipModule, MatSlideToggleModule, MatIconModule],
+  imports: [NgClass, MatTooltipModule, MatSlideToggleModule, MatIconModule, ThemeSwitcherComponent],
 })
 export class DesktopMenuComponent {
   apiStatus = input.required<ApiStatus>();
