@@ -1,0 +1,25 @@
+html,
+body {
+  height: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+input {
+  text-overflow: ellipsis;
+}
+
+.pointer {
+  cursor: pointer;
+  & * {
+    cursor: pointer;
+  }
+}
+
+.mat-mdc-snack-bar-container.snackbar-success {
+  --mdc-snackbar-container-color: #58c44a;
+}

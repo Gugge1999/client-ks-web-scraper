@@ -2,11 +2,6 @@
 Fixa i18n https://www.youtube.com/watch?v=KNTN-nsbV7M
 
 
-
-Bryt ut scss i flera filer
-
-
-
 https://angular-material.dev/articles/angular-material-3
 
 
