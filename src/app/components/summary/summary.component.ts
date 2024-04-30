@@ -4,7 +4,6 @@ import { Watch } from "@models/watch.model";
 @Component({
   selector: "scraper-summary",
   standalone: true,
-  imports: [],
   templateUrl: "./summary.component.html",
   styleUrl: "./summary.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
