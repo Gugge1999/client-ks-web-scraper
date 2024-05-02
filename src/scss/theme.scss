@@ -34,3 +34,70 @@ $light-theme: mat.define-light-theme(
   // typography and density styles.
   @include mat.all-component-colors($light-theme);
 }
+
+:root[theme="dark"] {
+  .mat-mdc-snack-bar-container.snackbar-warning {
+    --mdc-snackbar-container-color: #ff6e6e;
+    .mat-mdc-snack-bar-label {
+      color: #000;
+    }
+  }
+
+  ::selection {
+    background-color: #696969;
+  }
+
+  footer {
+    #level-1 {
+      fill: #5c5c5c;
+    }
+    #level-2 {
+      fill: #4f4f4f;
+    }
+    #level-3 {
+      fill: #404040;
+    }
+  }
+
+  .desktop-header-wrapper .header-chip {
+    background-color: var(--mat-app-background-color);
+  }
+}
+
+:root[theme="light"] {
+  .mat-mdc-snack-bar-container {
+    &.snackbar-warning {
+      --mdc-snackbar-container-color: #b00020;
+    }
+
+    .mat-mdc-snack-bar-label,
+    .mat-mdc-button.mat-mdc-snack-bar-action {
+      color: #fff;
+    }
+  }
+
+  ::selection {
+    background-color: #d6d6d6;
+  }
+
+  footer {
+    #level-1 {
+      fill: #ededed;
+    }
+    #level-2 {
+      fill: #c9c9c9;
+    }
+    #level-3 {
+      fill: #999999;
+    }
+  }
+
+  .desktop-header-wrapper {
+    .header-chip {
+      background-color: #fff;
+    }
+    span {
+      color: #000;
+    }
+  }
+}

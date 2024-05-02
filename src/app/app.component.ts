@@ -9,7 +9,6 @@ import { ThemeService } from "@services/theme.service";
   selector: "scraper-root",
   templateUrl: "./app.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrl: "./app.component.scss",
   standalone: true,
   imports: [HeaderComponent, FooterComponent, ScraperCardComponent],
 })

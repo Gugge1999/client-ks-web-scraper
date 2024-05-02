@@ -5,6 +5,7 @@ import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
+import { errorMessageConst } from "@models/constants";
 
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { WatchService } from "@services/watch.service";
@@ -29,8 +30,6 @@ export class NewWatchDialogComponent {
     }),
   });
 
-  serverValidationError = "";
-
   private readonly watchService = inject(WatchService);
   private readonly dialogRef = inject(MatDialogRef<NewWatchDialogComponent>);
   private readonly cdr = inject(ChangeDetectorRef);
@@ -47,13 +46,14 @@ export class NewWatchDialogComponent {
 
     const result = await this.watchService.saveNewWatch(newWatch);
 
-    if ("errorMessage" in result) {
+    if (errorMessageConst in result) {
       this.watchForm.controls.watchToScrape.setErrors({ noResult: true });
 
       this.cdr.markForCheck();
-    } else {
-      this.dialogRef.close(result);
+      return;
     }
+
+    this.dialogRef.close(result);
   }
 
   cancelClicked(): void {

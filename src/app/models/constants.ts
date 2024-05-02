@@ -25,3 +25,6 @@ export const httpOptions = {
     "Cache-Control": "no-cache",
   }),
 } as const;
+
+export const errorMessageConst = "errorMessage";
+export const verboseErrorMessageConst = "verboseErrorMessage";

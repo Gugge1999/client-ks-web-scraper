@@ -3,6 +3,7 @@ import { lastValueFrom } from "rxjs";
 
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
+import { errorMessageConst } from "@models/constants";
 import { Watch } from "@models/watch.model";
 import { SnackbarService } from "@services/snackbar.service";
 import { WatchApiService } from "@services/watch-api.service";
@@ -25,7 +26,7 @@ export class WatchService {
     if (deleteFromDatabase) {
       const deleteId = await lastValueFrom(this.watchApiService.deleteWatchById(watch.id));
 
-      if ("errorMessage" in deleteId) {
+      if (errorMessageConst in deleteId) {
         return;
       }
     }
@@ -40,7 +41,7 @@ export class WatchService {
   async saveNewWatch(newWatchDTO: NewWatchFormDTO) {
     const newWatch = await lastValueFrom(this.watchApiService.saveNewWatch(newWatchDTO)).catch((err: ApiError) => err);
 
-    if ("errorMessage" in newWatch) {
+    if (errorMessageConst in newWatch) {
       return newWatch;
     }
 
@@ -51,10 +52,10 @@ export class WatchService {
   }
 
   async toggleActiveStatus(watch: Watch) {
-    const { active, id, label } = watch;
-    const updatedWatch = await lastValueFrom(this.watchApiService.toggleActiveStatus({ active, id, label })).catch((err: ApiError) => err);
+    const { active, id } = watch;
+    const updatedWatch = await lastValueFrom(this.watchApiService.toggleActiveStatus({ active, id })).catch((err: ApiError) => err);
 
-    if ("errorMessage" in updatedWatch) {
+    if (errorMessageConst in updatedWatch) {
       this._watches.set(structuredClone(this._watches()));
       return;
     }

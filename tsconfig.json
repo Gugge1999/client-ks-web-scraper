@@ -8,6 +8,7 @@
       "@dialogs/*": ["app/components/dialogs/*"],
       "@models/*": ["app/models/*"],
       "@services/*": ["app/services/*"],
+      "@interceptors/*": ["app/interceptors/*"],
       "@store/*": ["app/store/*"],
       "@environments/*": ["environments/*"]
     },
