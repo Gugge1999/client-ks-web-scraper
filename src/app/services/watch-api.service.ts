@@ -15,7 +15,7 @@ export class WatchApiService {
 
   private readonly baseApiUrl = `${AppConfigService.baseApiUrl()}`;
 
-  toggleActiveStatus = (dto: Pick<Watch, "active" | "id">) => this.http.put<Watch>(`${this.baseApiUrl}/toggle-active-status`, dto);
+  toggleActiveStatus = (dto: Pick<Watch, "active" | "id" | "label">) => this.http.put<Watch>(`${this.baseApiUrl}/toggle-active-status`, dto);
 
   deleteWatchById = (id: string) => this.http.delete<{ deleteWatchId: string } | ApiError>(`${this.baseApiUrl}/delete-watch/${id} `);
 

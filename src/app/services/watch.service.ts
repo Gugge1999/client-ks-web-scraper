@@ -52,8 +52,8 @@ export class WatchService {
   }
 
   async toggleActiveStatus(watch: Watch) {
-    const { active, id } = watch;
-    const updatedWatch = await lastValueFrom(this.watchApiService.toggleActiveStatus({ active, id })).catch((err: ApiError) => err);
+    const { active, id, label } = watch;
+    const updatedWatch = await lastValueFrom(this.watchApiService.toggleActiveStatus({ active, id, label })).catch((err: ApiError) => err);
 
     if (errorMessageConst in updatedWatch) {
       this._watches.set(structuredClone(this._watches()));
