@@ -7,7 +7,7 @@ export const enum Theme {
   userTheme = "user-theme",
 }
 
-export const initialApiStatus: ApiStatus = {
+export const initialApiStatus: ApiStatus = Object.freeze({
   active: false,
   scrapingIntervalInMinutes: 0,
   uptime: {
@@ -18,13 +18,13 @@ export const initialApiStatus: ApiStatus = {
     minutes: 0,
     seconds: 0,
   },
-};
+});
 
-export const httpOptions = {
+export const httpOptions = Object.freeze({
   headers: new HttpHeaders({
     "Cache-Control": "no-cache",
   }),
-} as const;
+});
 
 export const errorMessageConst = "errorMessage";
 export const verboseErrorMessageConst = "verboseErrorMessage";

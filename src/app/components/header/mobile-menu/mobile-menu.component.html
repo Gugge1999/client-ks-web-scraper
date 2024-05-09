@@ -4,7 +4,7 @@
 <mat-menu #menu="matMenu">
   <div class="hamburger-toolbar-wrapper">
     <!-- $event.stopPropagation förhindrar att menyn stängs vid klick -->
-    <button mat-menu-item class="pointer" (click)="$event.stopPropagation(); onToggleTheme()">
+    <button mat-menu-item class="pointer" (click)="onToggleTheme()">
       <scraper-theme-switcher [isDarkMode]="isDarkMode()" tooltipPos="left" iconColor="primary" />
     </button>
 

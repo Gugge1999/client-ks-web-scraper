@@ -9,18 +9,18 @@ import { httpOptions } from "@models/constants";
 @Injectable({
   providedIn: "root",
 })
-export class AppConfigService {
-  public static appConfig: AppConfig;
+export class ConfigService {
+  private static appConfig: AppConfig;
 
   private readonly http = inject(HttpClient);
 
   async loadAppConfig() {
     try {
-      AppConfigService.appConfig = await lastValueFrom(this.http.get<AppConfig>(`/assets/config/${environment.name}.config.json`, httpOptions));
+      ConfigService.appConfig = await lastValueFrom(this.http.get<AppConfig>(`/assets/config/${environment.name}.config.json`, httpOptions));
     } catch (err) {
       console.error("loadAppConfig failed.", err);
     }
   }
 
-  static baseApiUrl = () => AppConfigService.appConfig.apiBaseUrl;
+  static apiUrl = () => ConfigService.appConfig.apiBaseUrl;
 }

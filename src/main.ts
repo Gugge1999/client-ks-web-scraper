@@ -9,10 +9,10 @@ import { provideAnimationsAsync } from "@angular/platform-browser/animations/asy
 
 import { environment } from "@environments/environment";
 import { errorInterceptor } from "@interceptors/error-interceptor";
-import { AppConfigService } from "@services/app-config.service";
+import { ConfigService } from "@services/app-config.service";
 import { AppComponent } from "./app/app.component";
 
-const appConfigInitializer = (appConfig: AppConfigService) => () => appConfig.loadAppConfig();
+const appConfigInitializer = (appConfig: ConfigService) => () => appConfig.loadAppConfig();
 
 if (environment.name === "prod") {
   enableProdMode();
@@ -30,7 +30,7 @@ bootstrapApplication(AppComponent, {
     {
       provide: APP_INITIALIZER,
       multi: true,
-      deps: [AppConfigService],
+      deps: [ConfigService],
       useFactory: appConfigInitializer,
     },
     {

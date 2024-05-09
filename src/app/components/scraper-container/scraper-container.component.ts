@@ -11,13 +11,14 @@ import { SummaryComponent } from "@components/summary/summary.component";
 import { Watch } from "@models/watch.model";
 import { WatchService } from "@services/watch.service";
 
+// TODO: Radera denna och flytta till app.component
 @Component({
   selector: "scraper-scraper-container",
   templateUrl: "./scraper-container.component.html",
   styleUrl: "./scraper-container.component.scss",
   standalone: true,
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgClass, MatButtonModule, MatTooltipModule, MatIconModule, DatePipe, SummaryComponent, CardComponent],
+  imports: [MatButtonModule, MatTooltipModule, MatIconModule, SummaryComponent, CardComponent],
 })
 export class ScraperCardComponent implements OnInit {
   private readonly watchService = inject(WatchService);
