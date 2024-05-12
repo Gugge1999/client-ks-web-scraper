@@ -45,7 +45,7 @@ export class WatchService {
       return newWatch;
     }
 
-    this.snackbarService.successSnackbar(`Added watch with label: ${newWatchDTO.label}`);
+    this.snackbarService.successSnackbar(`Ny bevakning skapad för: ${newWatchDTO.label}`);
     this._watches.update((watches) => [...watches, newWatch]);
 
     return newWatch;
@@ -60,7 +60,7 @@ export class WatchService {
       return;
     }
 
-    this.snackbarService.infoSnackbar(`Toggled status on: ${updatedWatch.label}`);
+    this.snackbarService.infoSnackbar(`Status växlad på: ${updatedWatch.label}`);
 
     this._watches.update((watches) =>
       watches.map((watch) => {

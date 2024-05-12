@@ -18,11 +18,11 @@ export class ThemeService {
     const userTheme = localStorage.getItem(Theme.userTheme);
     if (userTheme) {
       return userTheme;
-    } else {
-      const userPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-      return userPrefersDark ? Theme.dark : Theme.light;
     }
+
+    const userPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+    return userPrefersDark ? Theme.dark : Theme.light;
   }
 
   setTheme(theme: string) {

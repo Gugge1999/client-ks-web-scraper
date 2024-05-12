@@ -7,7 +7,8 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 export class SnackbarService {
   private readonly snackbar = inject(MatSnackBar);
 
-  successSnackbar = (message: string) => this.snackbar.open(message, "Dismiss", { panelClass: "snackbar-success" });
-  infoSnackbar = (message: string) => this.snackbar.open(message, "Dismiss", { panelClass: "snackbar-info" });
-  errorSnackbar = (message: string) => this.snackbar.open(`Error: ${message}`, "Dismiss", { panelClass: "snackbar-warning" });
+  successSnackbar = (message: string) => this.snackbar.open(message, "Avvisa", { panelClass: "snackbar-success" });
+  infoSnackbar = (message: string) => this.snackbar.open(message, "Avvisa", { panelClass: "snackbar-info" });
+  errorSnackbar = (message: string) => this.snackbar.open(`Error: ${message}`, "Avvisa", { panelClass: "snackbar-warning" });
+  undoSnackbar = (message: string) => this.snackbar.open(message, "Ångra", { panelClass: "snackbar-warning" });
 }

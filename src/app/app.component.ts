@@ -30,12 +30,9 @@ export class AppComponent implements OnInit {
   watches = this.watchService.watches;
 
   async ngOnInit() {
-    console.time("stopwatch");
-
     this.themeService.initTheme();
 
     this.watchService.getAllWatches();
-    console.timeEnd("stopwatch");
   }
 
   openNewWatchDialog() {

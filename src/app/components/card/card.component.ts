@@ -16,5 +16,5 @@ import { Watch } from "@models/watch.model";
 export class CardComponent {
   watches = input.required<Watch[]>();
 
-  readonly cardDateFormat = "EEEE d MMM yyyy - H:mm:ss";
+  readonly cardDateFormat = "d MMMM yyyy - H:mm:ss";
 }

@@ -6,11 +6,11 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatDialog } from "@angular/material/dialog";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
-import { MatSnackBar } from "@angular/material/snack-bar";
 import { MatTooltip } from "@angular/material/tooltip";
 
 import { DeleteWatchDialogComponent } from "@components/dialogs/delete-watch-dialog/delete-watch-dialog.component";
 import { Watch } from "@models/watch.model";
+import { SnackbarService } from "@services/snackbar.service";
 import { WatchService } from "@services/watch.service";
 
 @Component({
@@ -27,7 +27,7 @@ export class CardActionsComponent {
 
   private readonly dialog = inject(MatDialog);
   private readonly watchService = inject(WatchService);
-  private readonly snackbar = inject(MatSnackBar);
+  private readonly snackbarService = inject(SnackbarService);
 
   deleteWatchDialog(watch: Watch) {
     const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
@@ -51,9 +51,7 @@ export class CardActionsComponent {
   }
 
   private deleteSnackbarWithUndoAction(watch: Watch) {
-    const snackbar = this.snackbar.open(`Deleted watch: ${watch.label}`, "Undo", {
-      panelClass: ["snackbar-warning"],
-    });
+    const snackbar = this.snackbarService.undoSnackbar(`Raderade bevakning: ${watch.label}`);
 
     snackbar.afterDismissed().subscribe(async (res) => {
       if (res.dismissedByAction) {
