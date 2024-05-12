@@ -1,41 +1,41 @@
 <!-- TODO: Byt till async? Då slipper man anropa cdr -->
 <form [formGroup]="watchForm" (ngSubmit)="submitNewWatch()">
-  <h2 mat-dialog-title>Add a new watch to scrape</h2>
+  <h2 mat-dialog-title>Skapa ny bevakning</h2>
   <mat-dialog-content class="mat-typography">
     <mat-form-field appearance="outline" style="padding: 0.5rem 0 1.5rem 0">
-      <mat-label>Label</mat-label>
+      <mat-label>Namn</mat-label>
       <input matInput formControlName="label" type="text" class="form-control" id="label" name="label" />
       <button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="onClear(watchForm.controls.label)">
         <mat-icon>close</mat-icon>
       </button>
-      <mat-hint>Enter a label. This can be anything</mat-hint>
+      <mat-hint>Ange ett namn. Detta kan vara vad som helst</mat-hint>
       @if (watchForm.controls.label.errors?.["required"]) {
-        <mat-error> Label is required</mat-error>
+        <mat-error> Namn är obligatoriskt</mat-error>
       }
       @if (watchForm.controls.label.errors?.["minlength"]) {
-        <mat-error> Label must be at least 3 characters</mat-error>
+        <mat-error> Namn måste vara minst 3 bokstäver</mat-error>
       }
     </mat-form-field>
     <mat-form-field appearance="outline">
-      <mat-label>Watch to scrape</mat-label>
+      <mat-label>Klocka att bevaka</mat-label>
       <input matInput formControlName="watchToScrape" type="text" class="form-control" id="watchToScrape" name="watchToScrape" />
       <button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="onClear(watchForm.controls.watchToScrape)">
         <mat-icon>close</mat-icon>
       </button>
-      <mat-hint> Enter the watch you want to scrape </mat-hint>
+      <mat-hint> Ange klockan du vill bevaka </mat-hint>
       @if (watchForm.controls.watchToScrape.errors?.["required"]) {
-        <mat-error> Name of watch to scrape is required</mat-error>
+        <mat-error>Klocka att bevaka är obligatoriskt</mat-error>
       }
       @if (watchForm.controls.watchToScrape.errors?.["minlength"]) {
-        <mat-error> Watch to scrape must be at least 2 characters</mat-error>
+        <mat-error>Klocka att bevaka vara minst 2 bokstäver</mat-error>
       }
       @if (watchForm.controls.watchToScrape.errors?.["noResult"]) {
-        <mat-error> Watch yielded no result</mat-error>
+        <mat-error>Klockan gav 0 resultat</mat-error>
       }
     </mat-form-field>
   </mat-dialog-content>
   <mat-dialog-actions align="end">
-    <button mat-flat-button (click)="cancelClicked()" type="button" color="accent">Cancel</button>
-    <button mat-flat-button color="primary" type="submit" class="btn btn-success" [disabled]="watchForm.invalid">Save</button>
+    <button mat-flat-button (click)="cancelClicked()" type="button" color="accent">Avbryt</button>
+    <button mat-flat-button color="primary" type="submit" class="btn btn-success" [disabled]="watchForm.invalid">Spara</button>
   </mat-dialog-actions>
 </form>

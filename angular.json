@@ -4,10 +4,6 @@
   "newProjectRoot": "projects",
   "projects": {
     "client-ks-web-scraper": {
-      // "i18n": {
-      //   "sourceLocale": "en-US",
-      //   "locales": { "sv-SE": "src/locale/messages.sv.xlf" }
-      // },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -42,7 +38,6 @@
             "statsJson": true,
             "styles": ["src/styles.scss"],
             "scripts": []
-            // "localize": ["sv-SE"]
           },
           "configurations": {
             "production": {

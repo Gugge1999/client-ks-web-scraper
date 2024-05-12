@@ -1,22 +1,22 @@
-<h1 mat-dialog-title>API Status</h1>
+<h1 mat-dialog-title>API-status</h1>
 @if (apiStatus(); as status) {
   <div mat-dialog-content>
     <h4>
-      Scraping interval:
-      <i>{{ status.scrapingIntervalInMinutes }} minutes</i>
+      Interval på bevakningar:
+      <i>{{ status.scrapingIntervalInMinutes }} minuter</i>
     </h4>
-    <h4>Uptime</h4>
+    <h4>Drifttid</h4>
     <div style="margin-left: 1em">
-      <p>Years: {{ status.uptime.years }}</p>
-      <p>Months: {{ status.uptime.months }}</p>
-      <p>Days: {{ status.uptime.days }}</p>
-      <p>Hours: {{ status.uptime.hours }}</p>
-      <p>Minutes: {{ status.uptime.minutes }}</p>
-      <p>Seconds: {{ status.uptime.seconds }}</p>
+      <p>År: {{ status.uptime.years }}</p>
+      <p>Månader: {{ status.uptime.months }}</p>
+      <p>Dagar: {{ status.uptime.days }}</p>
+      <p>Timmar: {{ status.uptime.hours }}</p>
+      <p>Minuter: {{ status.uptime.minutes }}</p>
+      <p>Sekunder: {{ status.uptime.seconds }}</p>
     </div>
   </div>
 } @else {
   <div mat-dialog-content>
-    <p color="accent">Loading API status...</p>
+    <p color="accent">Laddar API-status...</p>
   </div>
 }

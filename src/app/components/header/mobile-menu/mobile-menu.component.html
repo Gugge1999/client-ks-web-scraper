@@ -10,7 +10,7 @@
 
     @if (apiStatus().active) {
       <button mat-menu-item (click)="onOpenApiStatusDialog()">
-        <div matTooltip="View API statistics" matTooltipPosition="left">
+        <div matTooltip="Visa statistik för API" matTooltipPosition="left">
           <div class="flex">
             <mat-icon color="primary"> check_circle_outline </mat-icon>
             <span class="status-text">API</span>
@@ -19,7 +19,7 @@
       </button>
     } @else {
       <button mat-menu-item disabled>
-        <div matTooltip="API is not active" matTooltipPosition="left" class="flex flex-align-items-center">
+        <div matTooltip="API:et är inte aktivt" matTooltipPosition="left" class="flex flex-align-items-center">
           <div class="flex">
             <mat-icon color="warn"> highlight_off </mat-icon>
             <span class="status-text">API</span>

@@ -7,15 +7,15 @@
 
       <mat-card-content>
         <p>
-          <strong> Last email sent: </strong>
-          {{ watch.lastEmailSent === null ? "No email sent" : (watch.lastEmailSent | date: cardDateFormat) }}
+          <strong>Senaste notisen skickades:</strong>
+          {{ watch.lastEmailSent === null ? "Ingen notis skickad" : (watch.lastEmailSent | date: cardDateFormat) }}
         </p>
         <p>
-          <strong>Added: </strong>
+          <strong>Tillagd: </strong>
           {{ watch.added | date: cardDateFormat }}
         </p>
         <p>
-          <strong>Current watch: </strong>
+          <strong>Nuvarande klocka: </strong>
           <a target="_blank" class="link" [href]="watch.watch.link">{{ watch.watch.name }}</a>
         </p>
       </mat-card-content>

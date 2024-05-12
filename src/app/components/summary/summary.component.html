@@ -1,11 +1,12 @@
 @if (allWatchesLength() > 0) {
-  <div class="flex flex-direction-column flex-align-items-center summary-wrapper">
-    <p>
-      Total: <b>{{ allWatchesLength() }} </b>
-    </p>
+  <div class="flex flex-direction-row flex-justify-content-center summary-wrapper">
+    <p>Bevakningar:</p>
 
     <p>
-      Active: <b>{{ activeWatchesLength() }}</b>
+      Totala: <b>{{ allWatchesLength() }} </b>
+    </p>
+    <p>
+      Aktiva: <b>{{ activeWatchesLength() }}</b>
     </p>
   </div>
 }

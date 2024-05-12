@@ -1,16 +1,16 @@
 <mat-card-actions align="end">
-  <button mat-icon-button matTooltip="Delete watch" matTooltipPosition="above" (click)="deleteWatchDialog(watch)">
+  <button mat-icon-button matTooltip="Radera bevakning" matTooltipPosition="above" (click)="deleteWatchDialog(watch)">
     <mat-icon class="delete-icon" color="warn">delete_outline</mat-icon>
   </button>
 
-  <button mat-icon-button matTooltip="View statistics" matTooltipPosition="above">
+  <button mat-icon-button matTooltip="Visa statistik" matTooltipPosition="above">
     <mat-icon fontSet="material-icons-outlined" color="primary">assessment</mat-icon>
   </button>
 
   <mat-slide-toggle
     class="watch-active-slide-toggle"
     color="primary"
-    matTooltip="Toggle active status"
+    matTooltip="Växla aktiv status"
     matTooltipPosition="above"
     [checked]="watch.active"
     (change)="toggleActiveStatus(watch)">
