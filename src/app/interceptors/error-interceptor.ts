@@ -24,11 +24,11 @@ export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn)
 
         console.error("Error", err);
 
-        snackbarService.errorSnackbar(errStatus === 0 ? "Could not connect to API" : err.errorMessage);
+        snackbarService.errorSnackbar(errStatus === 0 ? "Kunde inte ansluta till API:et" : err.errorMessage);
 
         return throwError(() => err);
       } catch (error) {
-        snackbarService.errorSnackbar("Something went wrong in errorInterceptor");
+        snackbarService.errorSnackbar("Nånting gick fel i errorInterceptor");
 
         console.error("Something went wrong in errorInterceptor", error);
 
