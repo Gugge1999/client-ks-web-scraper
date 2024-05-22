@@ -36,7 +36,7 @@ $light-theme: mat.define-light-theme(
 }
 
 :root[theme="dark"] {
-  .mat-mdc-snack-bar-container.snackbar-warning {
+  .mat-mdc-snack-bar-container.snack-bar-warning {
     --mdc-snackbar-container-color: #ff6e6e;
     .mat-mdc-snack-bar-label {
       color: #000;
@@ -66,7 +66,7 @@ $light-theme: mat.define-light-theme(
 
 :root[theme="light"] {
   .mat-mdc-snack-bar-container {
-    &.snackbar-warning {
+    &.snack-bar-warning {
       --mdc-snackbar-container-color: #b00020;
     }
 

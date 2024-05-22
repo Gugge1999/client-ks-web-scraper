@@ -1,5 +1,6 @@
 -------------- TODO --------------
-Fixa i18n https://www.youtube.com/watch?v=KNTN-nsbV7M
+Det kanske är overkill ha en separat header för mobil och desktop. Vilken är bäst?
+
 
 
 https://angular-material.dev/articles/angular-material-3

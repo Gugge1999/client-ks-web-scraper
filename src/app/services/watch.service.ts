@@ -5,7 +5,7 @@ import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { errorMessageConst } from "@models/constants";
 import { Watch } from "@models/watch.model";
-import { SnackbarService } from "@services/snackbar.service";
+import { SnackBarService } from "@services/snack-bar.service";
 import { WatchApiService } from "@services/watch-api.service";
 
 @Injectable({
@@ -16,7 +16,7 @@ export class WatchService {
   readonly watches = this._watches.asReadonly();
 
   private readonly watchApiService = inject(WatchApiService);
-  private readonly snackbarService = inject(SnackbarService);
+  private readonly snackbarService = inject(SnackBarService);
 
   async getAllWatches() {
     this._watches.set(await lastValueFrom(this.watchApiService.getAllWatchesApi()));
@@ -45,7 +45,7 @@ export class WatchService {
       return newWatch;
     }
 
-    this.snackbarService.successSnackbar(`Ny bevakning skapad för: ${newWatchDTO.label}`);
+    this.snackbarService.successSnackBar(`Ny bevakning skapad för: ${newWatchDTO.label}`);
     this._watches.update((watches) => [...watches, newWatch]);
 
     return newWatch;
@@ -60,7 +60,7 @@ export class WatchService {
       return;
     }
 
-    this.snackbarService.infoSnackbar(`Status växlad på: ${updatedWatch.label}`);
+    this.snackbarService.infoSnackBar(`Status växlad på: ${updatedWatch.label}`);
 
     this._watches.update((watches) =>
       watches.map((watch) => {
