@@ -29,7 +29,7 @@ export class AppComponent implements OnInit {
 
   watches = this.watchService.watches;
 
-  async ngOnInit() {
+  ngOnInit() {
     this.themeService.initTheme();
 
     this.watchService.getAllWatches();
@@ -41,6 +41,7 @@ export class AppComponent implements OnInit {
       autoFocus: false,
     });
 
+    // TODO: byt till async?
     dialogRef.afterClosed().subscribe((res: Watch | undefined) => {
       if (res !== undefined) {
         const cards = document.querySelectorAll(".card");

@@ -34,7 +34,7 @@ export class WatchService {
     this._watches.update((watches) => watches.filter((w) => w.id !== watch.id));
   }
 
-  async addWatch(watch: Watch) {
+  addWatch(watch: Watch) {
     this._watches.update((watches) => [...watches, watch].sort((a, b) => Date.parse(a.added.toString()) - Date.parse(b.added.toString())));
   }
 
@@ -60,7 +60,7 @@ export class WatchService {
       return;
     }
 
-    this.snackbarService.infoSnackBar(`Status växlad på: ${updatedWatch.label}`);
+    this.snackbarService.successSnackBar(`${updatedWatch.label} är ${updatedWatch.active ? "aktiv" : " inaktiv"}`);
 
     this._watches.update((watches) =>
       watches.map((watch) => {

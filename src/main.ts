@@ -2,7 +2,7 @@ import { LayoutModule } from "@angular/cdk/layout";
 import { registerLocaleData } from "@angular/common";
 import { provideHttpClient, withFetch, withInterceptors } from "@angular/common/http";
 import localeSvSe from "@angular/common/locales/sv";
-import { APP_INITIALIZER, LOCALE_ID, enableProdMode, importProvidersFrom } from "@angular/core";
+import { APP_INITIALIZER, LOCALE_ID, enableProdMode, importProvidersFrom, provideExperimentalZonelessChangeDetection } from "@angular/core";
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { BrowserModule, bootstrapApplication } from "@angular/platform-browser";
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
@@ -28,6 +28,7 @@ const matSnackbarDefaultConfig: MatSnackBarConfig = {
 
 bootstrapApplication(AppComponent, {
   providers: [
+    provideExperimentalZonelessChangeDetection(),
     importProvidersFrom(BrowserModule, LayoutModule),
     {
       provide: APP_INITIALIZER,

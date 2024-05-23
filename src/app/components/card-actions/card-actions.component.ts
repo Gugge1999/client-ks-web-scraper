@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, Input, inject } from "@angular/core
 import { FormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardActions } from "@angular/material/card";
-import { MatCheckboxModule } from "@angular/material/checkbox";
 import { MatDialog } from "@angular/material/dialog";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
@@ -12,11 +11,12 @@ import { DeleteWatchDialogComponent } from "@components/dialogs/delete-watch-dia
 import { Watch } from "@models/watch.model";
 import { SnackBarService } from "@services/snack-bar.service";
 import { WatchService } from "@services/watch.service";
+import { firstValueFrom, map } from "rxjs";
 
 @Component({
   selector: "scraper-card-actions",
   standalone: true,
-  imports: [MatSlideToggleModule, MatIconModule, MatTooltip, MatButtonModule, MatCardActions, MatCheckboxModule, FormsModule],
+  imports: [MatSlideToggleModule, MatIconModule, MatTooltip, MatButtonModule, MatCardActions, FormsModule],
   templateUrl: "./card-actions.component.html",
   styleUrl: "./card-actions.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -51,16 +51,11 @@ export class CardActionsComponent {
     this.watchService.toggleActiveStatus(watch);
   }
 
-  private deleteSnackbarWithUndoAction(watch: Watch) {
+  private async deleteSnackbarWithUndoAction(watch: Watch) {
     const snackbar = this.snackbarService.undoSnackBar(`Raderade bevakning: ${watch.label}`);
 
-    // TODO: Byt till await?
-    snackbar.afterDismissed().subscribe(async (res) => {
-      if (res.dismissedByAction) {
-        this.watchService.addWatch(watch);
-      } else {
-        this.watchService.deleteWatch(watch, true);
-      }
-    });
+    const dismissedByAction = await firstValueFrom(snackbar.afterDismissed().pipe(map((res) => res.dismissedByAction)));
+
+    dismissedByAction ? this.watchService.addWatch(watch) : this.watchService.deleteWatch(watch, true);
   }
 }

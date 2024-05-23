@@ -1,39 +1,39 @@
-@use "@angular/material" as mat;
-@include mat.core();
+// @use "@angular/material" as mat;
+// @include mat.core();
 
 // Define a dark theme
-$dark-theme: mat.define-dark-theme(
-  (
-    color: (
-      primary: mat.define-palette(mat.$teal-palette),
-      accent: mat.define-palette(mat.$blue-gray-palette, 300),
-      warn: mat.define-palette(mat.$red-palette, 300),
-    ),
-    // Only include `typography` and `density` in the default dark theme.
-    typography: mat.define-typography-config(),
-    density: 0,
-  )
-);
+// $dark-theme: mat.define-dark-theme(
+//   (
+//     color: (
+//       primary: mat.define-palette(mat.$teal-palette),
+//       accent: mat.define-palette(mat.$blue-gray-palette, 300),
+//       warn: mat.define-palette(mat.$red-palette, 300),
+//     ),
+//     // Only include `typography` and `density` in the default dark theme.
+//     typography: mat.define-typography-config(),
+//     density: 0,
+//   )
+// );
 
-// Define a light theme
-$light-theme: mat.define-light-theme(
-  (
-    color: (
-      primary: mat.define-palette(mat.$teal-palette),
-      accent: mat.define-palette(mat.$blue-gray-palette, 300),
-      warn: mat.define-palette(mat.$red-palette, 900),
-    ),
-  )
-);
+// // Define a light theme
+// $light-theme: mat.define-light-theme(
+//   (
+//     color: (
+//       primary: mat.define-palette(mat.$teal-palette),
+//       accent: mat.define-palette(mat.$blue-gray-palette, 300),
+//       warn: mat.define-palette(mat.$red-palette, 900),
+//     ),
+//   )
+// );
 
-@include mat.all-component-themes($dark-theme);
+// @include mat.all-component-themes($dark-theme);
 
-// Apply the light theme when the document element attribute is changed to 'light'
-:root[theme="light"] {
-  // Use the `-color` mixins to only apply color styles without reapplying the same
-  // typography and density styles.
-  @include mat.all-component-colors($light-theme);
-}
+// // Apply the light theme when the document element attribute is changed to 'light'
+// :root[theme="light"] {
+//   // Use the `-color` mixins to only apply color styles without reapplying the same
+//   // typography and density styles.
+//   @include mat.all-component-colors($light-theme);
+// }
 
 :root[theme="dark"] {
   .mat-mdc-snack-bar-container.snack-bar-warning {
