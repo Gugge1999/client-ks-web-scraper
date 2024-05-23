@@ -12,6 +12,7 @@ header {
   align-items: center;
   color: inherit;
   text-decoration: none;
+  flex-grow: 1;
 }
 
 :host {
@@ -22,4 +23,24 @@ header {
 
 .toolbar-row {
   justify-content: space-between;
+  padding: 0 4px;
+}
+
+.theme-icon-wrapper {
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+}
+
+.theme-mode-icon {
+  transform: scale(1.2);
+  transition: none;
+  padding: 4px;
+  color: white;
+
+  &:hover {
+    background-color: #717171;
+    border-radius: 50%;
+    cursor: pointer;
+  }
 }

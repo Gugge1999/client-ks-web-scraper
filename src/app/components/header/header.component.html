@@ -7,21 +7,41 @@
           <span class="toolbar-title">KS Web Scraper</span>
         </a>
 
-        @if (isHandset()) {
-          <scraper-mobile-menu
-            [apiStatus]="apiStatus()"
-            [isDarkMode]="isDarkMode()"
-            (toggleTheme)="toggleTheme()"
-            (openApiStatusDialog)="openApiStatusDialog()">
-          </scraper-mobile-menu>
-        } @else {
-          <scraper-desktop-menu
-            [apiStatus]="apiStatus()"
-            [isDarkMode]="isDarkMode()"
-            (toggleTheme)="toggleTheme()"
-            (openApiStatusDialog)="openApiStatusDialog()">
-          </scraper-desktop-menu>
-        }
+        <div class="theme-icon-wrapper pointer" matTooltip="Växla tema" matTooltipPosition="below" (click)="toggleTheme()">
+          <mat-icon class="theme-mode-icon" fontSet="material-icons-outlined">
+            {{ isDarkMode() ? "dark_mode" : "light_mode" }}
+          </mat-icon>
+        </div>
+
+        <div>
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>menu</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <div class="hamburger-toolbar-wrapper">
+              <!-- $event.stopPropagation förhindrar att menyn stängs vid klick -->
+              @if (apiStatus().active) {
+                <button mat-menu-item (click)="openApiStatusDialog()">
+                  <div matTooltip="Visa statistik för API" matTooltipPosition="left">
+                    <div class="flex">
+                      <mat-icon color="primary"> check_circle_outline </mat-icon>
+                      <span class="status-text">API</span>
+                    </div>
+                  </div>
+                </button>
+              } @else {
+                <button mat-menu-item disabled>
+                  <div matTooltip="API:et är inte aktivt" matTooltipPosition="left" class="flex flex-align-items-center">
+                    <div class="flex">
+                      <mat-icon color="warn"> highlight_off </mat-icon>
+                      <span class="status-text">API</span>
+                    </div>
+                  </div>
+                </button>
+              }
+            </div>
+          </mat-menu>
+        </div>
       </mat-toolbar-row>
     </mat-toolbar>
   </div>

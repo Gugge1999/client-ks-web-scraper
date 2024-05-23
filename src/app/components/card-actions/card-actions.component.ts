@@ -35,6 +35,7 @@ export class CardActionsComponent {
       autoFocus: "dialog",
     });
 
+    // TODO: Byt till await?
     dialogRef.afterClosed().subscribe((watch: Watch | undefined) => {
       if (watch === undefined) {
         return;
@@ -53,6 +54,7 @@ export class CardActionsComponent {
   private deleteSnackbarWithUndoAction(watch: Watch) {
     const snackbar = this.snackbarService.undoSnackBar(`Raderade bevakning: ${watch.label}`);
 
+    // TODO: Byt till await?
     snackbar.afterDismissed().subscribe(async (res) => {
       if (res.dismissedByAction) {
         this.watchService.addWatch(watch);

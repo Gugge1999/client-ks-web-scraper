@@ -6,10 +6,11 @@ import { MatToolbarModule } from "@angular/material/toolbar";
 import { timer } from "rxjs";
 import { map, switchMap } from "rxjs/operators";
 
+import { NgStyle } from "@angular/common";
+import { MatButtonModule } from "@angular/material/button";
 import { MatDialog } from "@angular/material/dialog";
+import { MatMenuModule } from "@angular/material/menu";
 import { ApiStatusDialogComponent } from "@components/dialogs/api-status-dialog/api-status-dialog.component";
-import { DesktopMenuComponent } from "@components/header/desktop-menu/desktop-menu.component";
-import { MobileMenuComponent } from "@components/header/mobile-menu/mobile-menu.component";
 import { Theme, initialApiStatus } from "@models/constants";
 import { StatusService } from "@services/status.service";
 import { ThemeService } from "@services/theme.service";
@@ -20,7 +21,7 @@ import { ThemeService } from "@services/theme.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./header.component.scss",
   standalone: true,
-  imports: [MatToolbarModule, MatIconModule, MobileMenuComponent, DesktopMenuComponent],
+  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, NgStyle],
 })
 export class HeaderComponent {
   private readonly statusService = inject(StatusService);
