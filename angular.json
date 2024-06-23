@@ -63,7 +63,8 @@
             "development": {
               "optimization": false,
               "extractLicenses": false,
-              "sourceMap": true
+              "sourceMap": true,
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
@@ -99,7 +100,7 @@
     }
   },
   "cli": {
-    "schematicCollections": ["@angular-eslint/schematics", "@ngrx/schematics"],
+    "schematicCollections": ["@angular-eslint/schematics"],
     "analytics": false
   },
   "schematics": {
