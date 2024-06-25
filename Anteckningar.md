@@ -1,5 +1,7 @@
 # TODO
 
+Fixa eslint 9: https://github.com/angular-eslint/angular-eslint/releases/tag/v18.0.0
+
 Läs: https://itnext.io/a-change-detection-zone-js-zoneless-local-change-detection-and-signals-story-9344079c3b9d
 
 Kolla på den: https://github.com/Angular-Material-Dev/course-md-ng-my-app/commit/e39cd37595d6e38ca3f6023b2c928c60a7a0a0c8
