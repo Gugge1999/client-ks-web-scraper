@@ -1,6 +1,6 @@
 <header role="banner">
   <div>
-    <mat-toolbar style="background-color: #00ae86">
+    <mat-toolbar>
       <mat-toolbar-row class="toolbar-row">
         <a class="title-bar-link">
           <mat-icon>watch</mat-icon>
@@ -19,7 +19,6 @@
           </button>
           <mat-menu #menu="matMenu">
             <div class="hamburger-toolbar-wrapper">
-              <!-- $event.stopPropagation förhindrar att menyn stängs vid klick -->
               @if (apiStatus().active) {
                 <button mat-menu-item (click)="openApiStatusDialog()">
                   <div matTooltip="Visa statistik för API" matTooltipPosition="left">

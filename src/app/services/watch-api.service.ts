@@ -15,11 +15,19 @@ export class WatchApiService {
 
   private readonly apiUrl = `${ConfigService.apiUrl()}`;
 
-  toggleActiveStatus = (dto: Pick<Watch, "active" | "id" | "label">) => this.http.put<Watch>(`${this.apiUrl}/toggle-active-status`, dto);
+  toggleActiveStatus(dto: Pick<Watch, "active" | "id" | "label">) {
+    return this.http.put<Watch>(`${this.apiUrl}/toggle-active-status`, dto);
+  }
 
-  deleteWatchById = (id: string) => this.http.delete<{ deleteWatchId: string } | ApiError>(`${this.apiUrl}/delete-watch/${id} `);
+  deleteWatchById(id: string) {
+    return this.http.delete<{ deleteWatchId: string } | ApiError>(`${this.apiUrl}/delete-watch/${id}`);
+  }
 
-  saveNewWatch = (watchFormDTO: NewWatchFormDTO) => this.http.post<Watch | ApiError>(`${this.apiUrl}/save-watch`, watchFormDTO);
+  saveNewWatch(watchFormDTO: NewWatchFormDTO) {
+    return this.http.post<Watch | ApiError>(`${this.apiUrl}/save-watch`, watchFormDTO);
+  }
 
-  getAllWatchesApi = () => this.http.get<Watch[]>(`${this.apiUrl}/all-watches`).pipe(retry({ delay: 5_000 }));
+  getAllWatches() {
+    return this.http.get<Watch[]>(`${this.apiUrl}/all-watches`).pipe(retry({ delay: 15000 }));
+  }
 }

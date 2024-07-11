@@ -2,12 +2,11 @@ import { HttpHeaders } from "@angular/common/http";
 import { ApiStatus } from "@models/api-status.model";
 
 export const enum Theme {
-  dark = "dark",
-  light = "light",
-  userTheme = "user-theme",
+  Dark = "dark",
+  Light = "light",
 }
 
-export const initialApiStatus: ApiStatus = Object.freeze({
+export const initialApiStatus: ApiStatus = {
   active: false,
   scrapingIntervalInMinutes: 0,
   uptime: {
@@ -18,13 +17,13 @@ export const initialApiStatus: ApiStatus = Object.freeze({
     minutes: 0,
     seconds: 0,
   },
-});
+};
 
-export const httpOptions = Object.freeze({
+export const httpHeadersNoCache: Readonly<{ headers: HttpHeaders }> = {
   headers: new HttpHeaders({
     "Cache-Control": "no-cache",
   }),
-});
+};
 
 export const errorMessageConst = "errorMessage";
 export const verboseErrorMessageConst = "verboseErrorMessage";

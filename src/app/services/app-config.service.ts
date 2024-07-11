@@ -4,7 +4,7 @@ import { lastValueFrom } from "rxjs";
 
 import { environment } from "@environments/environment";
 import { AppConfig } from "@models/app-config";
-import { httpOptions } from "@models/constants";
+import { httpHeadersNoCache } from "@models/constants";
 
 @Injectable({
   providedIn: "root",
@@ -16,7 +16,7 @@ export class ConfigService {
 
   async loadAppConfig() {
     try {
-      ConfigService.appConfig = await lastValueFrom(this.http.get<AppConfig>(`/assets/config/${environment.name}.config.json`, httpOptions));
+      ConfigService.appConfig = await lastValueFrom(this.http.get<AppConfig>(`/assets/config/${environment.name}.config.json`, httpHeadersNoCache));
     } catch (err) {
       console.error("loadAppConfig failed.", err);
     }

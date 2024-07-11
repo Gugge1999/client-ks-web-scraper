@@ -1,6 +1,5 @@
-import { LayoutModule } from "@angular/cdk/layout";
 import { registerLocaleData } from "@angular/common";
-import { provideHttpClient, withFetch, withInterceptors } from "@angular/common/http";
+import { provideHttpClient, withInterceptors } from "@angular/common/http";
 import localeSvSe from "@angular/common/locales/sv";
 import { APP_INITIALIZER, LOCALE_ID, enableProdMode, importProvidersFrom, provideExperimentalZonelessChangeDetection } from "@angular/core";
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from "@angular/material/snack-bar";
@@ -20,8 +19,8 @@ if (environment.name === "prod") {
   enableProdMode();
 }
 
-const matSnackbarDefaultConfig: MatSnackBarConfig = {
-  duration: 7_500,
+const matSnackbarDefaultConfig: Readonly<MatSnackBarConfig> = {
+  duration: 5_000,
   horizontalPosition: "right",
   verticalPosition: "bottom",
 };
@@ -29,7 +28,7 @@ const matSnackbarDefaultConfig: MatSnackBarConfig = {
 bootstrapApplication(AppComponent, {
   providers: [
     provideExperimentalZonelessChangeDetection(),
-    importProvidersFrom(BrowserModule, LayoutModule),
+    importProvidersFrom(BrowserModule),
     {
       provide: APP_INITIALIZER,
       multi: true,
@@ -42,6 +41,6 @@ bootstrapApplication(AppComponent, {
     },
     { provide: LOCALE_ID, useValue: "sv-se" },
     provideAnimationsAsync(),
-    provideHttpClient(withInterceptors([errorInterceptor]), withFetch()),
+    provideHttpClient(withInterceptors([errorInterceptor])),
   ],
 }).catch((err) => console.error(err));

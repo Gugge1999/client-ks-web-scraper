@@ -22,6 +22,7 @@ import { firstValueFrom, map } from "rxjs";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardActionsComponent {
+  // TODO: Går dom att konvertera till signals?
   @Input({ required: true }) watch!: Watch;
   @Input({ required: true }) isActive!: boolean;
 
@@ -29,22 +30,16 @@ export class CardActionsComponent {
   private readonly watchService = inject(WatchService);
   private readonly snackbarService = inject(SnackBarService);
 
-  deleteWatchDialog(watch: Watch) {
-    const dialogRef = this.dialog.open(DeleteWatchDialogComponent, {
-      data: watch,
-      autoFocus: "dialog",
-    });
+  async deleteWatchDialog(dialogData: Watch) {
+    const dialogRef = this.dialog.open(DeleteWatchDialogComponent, { data: dialogData, autoFocus: "dialog" });
 
-    // TODO: Byt till await?
-    dialogRef.afterClosed().subscribe((watch: Watch | undefined) => {
-      if (watch === undefined) {
-        return;
-      }
+    const watch = await firstValueFrom(dialogRef.afterClosed().pipe(map((watch: Watch | undefined) => watch)));
+    if (watch === undefined) {
+      return;
+    }
 
-      this.watchService.deleteWatch(watch, false);
-
-      this.deleteSnackbarWithUndoAction(watch);
-    });
+    this.watchService.deleteWatch(watch, false);
+    this.deleteSnackbarWithUndoAction(watch);
   }
 
   toggleActiveStatus(watch: Watch) {

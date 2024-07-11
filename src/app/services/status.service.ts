@@ -12,9 +12,10 @@ import { ConfigService } from "@services/app-config.service";
 export class StatusService {
   private readonly http = inject(HttpClient);
 
-  getApiStatus = () =>
-    this.http.get<ApiStatus>(`${ConfigService.apiUrl()}/api-status`).pipe(
-      retry({ delay: 5_000 }),
+  getApiStatus() {
+    return this.http.get<ApiStatus>(`${ConfigService.apiUrl()}/api-status`).pipe(
+      retry({ delay: 15000 }),
       catchError(() => of(initialApiStatus)),
     );
+  }
 }

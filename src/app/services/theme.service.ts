@@ -6,8 +6,9 @@ import { Theme } from "@models/constants";
   providedIn: "root",
 })
 export class ThemeService {
+  private readonly localStorageKey = "user-theme";
   private currentTheme = signal(this.getColorTheme());
-  isDarkMode = computed(() => (this.currentTheme() === Theme.dark ? true : false));
+  isDarkMode = computed(() => (this.currentTheme() === Theme.Dark ? true : false));
 
   initTheme() {
     const theme = this.getColorTheme();
@@ -15,14 +16,15 @@ export class ThemeService {
   }
 
   private getColorTheme() {
-    const userTheme = localStorage.getItem(Theme.userTheme);
-    if (userTheme) {
-      return userTheme;
+    const storedUserTheme = localStorage.getItem(this.localStorageKey);
+
+    if (storedUserTheme) {
+      return storedUserTheme;
     }
 
     const userPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    return userPrefersDark ? Theme.dark : Theme.light;
+    return userPrefersDark ? Theme.Dark : Theme.Light;
   }
 
   setTheme(theme: string) {
@@ -30,8 +32,8 @@ export class ThemeService {
     document.documentElement.setAttribute("theme", theme);
   }
 
-  updateTheme(theme: Theme.dark | Theme.light) {
+  updateTheme(theme: Theme) {
     this.setTheme(theme);
-    localStorage.setItem(Theme.userTheme, theme);
+    localStorage.setItem(this.localStorageKey, theme);
   }
 }

@@ -19,7 +19,7 @@ export class WatchService {
   private readonly snackbarService = inject(SnackBarService);
 
   async getAllWatches() {
-    this._watches.set(await lastValueFrom(this.watchApiService.getAllWatchesApi()));
+    this._watches.set(await lastValueFrom(this.watchApiService.getAllWatches()));
   }
 
   async deleteWatch(watch: Watch, deleteFromDatabase: boolean) {
@@ -64,7 +64,10 @@ export class WatchService {
 
     this._watches.update((watches) =>
       watches.map((watch) => {
-        watch.id === updatedWatch.id ? (watch.active = updatedWatch.active) : null;
+        if ((watch.active = updatedWatch.active)) {
+          watch.id = updatedWatch.id;
+        }
+
         return watch;
       }),
     );
