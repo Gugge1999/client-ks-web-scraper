@@ -4,8 +4,8 @@ import localeSvSe from "@angular/common/locales/sv";
 import { APP_INITIALIZER, LOCALE_ID, enableProdMode, importProvidersFrom, provideExperimentalZonelessChangeDetection } from "@angular/core";
 import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MatSnackBarConfig } from "@angular/material/snack-bar";
 import { BrowserModule, bootstrapApplication } from "@angular/platform-browser";
-import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 
+import { provideAnimations } from "@angular/platform-browser/animations";
 import { environment } from "@environments/environment";
 import { errorInterceptor } from "@interceptors/error-interceptor";
 import { ConfigService } from "@services/app-config.service";
@@ -40,7 +40,7 @@ bootstrapApplication(AppComponent, {
       useValue: matSnackbarDefaultConfig,
     },
     { provide: LOCALE_ID, useValue: "sv-se" },
-    provideAnimationsAsync(),
+    provideAnimations(),
     provideHttpClient(withInterceptors([errorInterceptor])),
   ],
 }).catch((err) => console.error(err));

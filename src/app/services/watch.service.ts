@@ -64,8 +64,8 @@ export class WatchService {
 
     this._watches.update((watches) =>
       watches.map((watch) => {
-        if ((watch.active = updatedWatch.active)) {
-          watch.id = updatedWatch.id;
+        if (watch.id === updatedWatch.id) {
+          watch.active = updatedWatch.active;
         }
 
         return watch;

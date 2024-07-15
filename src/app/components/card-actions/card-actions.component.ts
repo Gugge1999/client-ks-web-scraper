@@ -51,6 +51,11 @@ export class CardActionsComponent {
 
     const dismissedByAction = await firstValueFrom(snackbar.afterDismissed().pipe(map((res) => res.dismissedByAction)));
 
-    dismissedByAction ? this.watchService.addWatch(watch) : this.watchService.deleteWatch(watch, true);
+    if (dismissedByAction) {
+      this.watchService.addWatch(watch);
+      return;
+    }
+
+    this.watchService.deleteWatch(watch, true);
   }
 }

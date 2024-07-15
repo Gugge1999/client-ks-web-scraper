@@ -7,8 +7,13 @@
           <span class="toolbar-title">KS Web Scraper</span>
         </a>
 
-        <div class="theme-icon-wrapper pointer" matTooltip="Växla tema" matTooltipPosition="below" (click)="toggleTheme()">
-          <mat-icon class="theme-mode-icon" fontSet="material-icons-outlined">
+        <!-- TODO: Tooltip fungerar inte -->
+        <div matTooltip="Växla tema" matTooltipPosition="below">
+          <mat-icon
+            class="theme-mode-icon theme-icon-wrapper pointer"
+            fontSet="material-icons-outlined"
+            (click)="toggleTheme()"
+            (keyup)="toggleTheme()">
             {{ isDarkMode() ? "dark_mode" : "light_mode" }}
           </mat-icon>
         </div>

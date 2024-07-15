@@ -35,7 +35,5 @@ export class HeaderComponent {
     this.dialog.open(ApiStatusDialogComponent, { width: "450px", restoreFocus: false });
   }
 
-  toggleTheme(): void {
-    this.isDarkMode() ? this.themeService.updateTheme(Theme.Light) : this.themeService.updateTheme(Theme.Dark);
-  }
+  toggleTheme = () => (this.isDarkMode() ? this.themeService.updateTheme(Theme.Light) : this.themeService.updateTheme(Theme.Dark));
 }

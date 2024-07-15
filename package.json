@@ -1,6 +1,5 @@
 {
   "name": "client-ks-web-scraper",
-  "type": "module",
   "private": true,
   "scripts": {
     "dev": "npm run lint && ng serve",
@@ -25,12 +24,15 @@
     "@angular/build": "^18.1.0",
     "@angular/cli": "^18.1.0",
     "@angular/compiler-cli": "^18.1.0",
+    "angular-eslint": "18.1.0",
     "eslint": "^9.6.0",
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.2",
-    "typescript": "~5.5.3"
+    "typescript": "~5.5.3",
+    "typescript-eslint": "8.0.0-alpha.38"
   },
   "optionalDependencies": {
     "@nx/nx-linux-x64-gnu": "19.4.2"
   }
 }
+
