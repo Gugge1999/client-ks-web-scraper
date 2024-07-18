@@ -4,6 +4,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatDialog } from "@angular/material/dialog";
 import { MatIconModule } from "@angular/material/icon";
 import { MatTooltipModule } from "@angular/material/tooltip";
+
 import { firstValueFrom, map } from "rxjs";
 
 import { CardComponent } from "@components/card/card.component";
@@ -11,6 +12,7 @@ import { NewWatchDialogComponent } from "@components/dialogs/new-watch-dialog/ne
 import { FooterComponent } from "@components/footer/footer.component";
 import { HeaderComponent } from "@components/header/header.component";
 import { SummaryComponent } from "@components/summary/summary.component";
+import { CookieService } from "@services/cookie.service";
 import { ThemeService } from "@services/theme.service";
 import { WatchService } from "@services/watch.service";
 
@@ -25,10 +27,13 @@ export class AppComponent implements OnInit {
   private readonly themeService = inject(ThemeService);
   private readonly watchService = inject(WatchService);
   private readonly matDialog = inject(MatDialog);
+  private readonly cookieService = inject(CookieService);
 
   watches = this.watchService.watches;
 
   ngOnInit() {
+    this.cookieService.onInit();
+
     this.themeService.initTheme();
 
     this.watchService.getAllWatches();

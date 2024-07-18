@@ -1,11 +1,13 @@
-import { Injectable, computed, signal } from "@angular/core";
+import { Injectable, computed, inject, signal } from "@angular/core";
 
 import { Theme } from "@models/constants";
+import { CookieService } from "./cookie.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class ThemeService {
+  private readonly cookieService = inject(CookieService);
   private readonly localStorageKey = "user-theme";
   private currentTheme = signal(this.getColorTheme());
   isDarkMode = computed(() => (this.currentTheme() === Theme.Dark ? true : false));
@@ -34,6 +36,9 @@ export class ThemeService {
 
   updateTheme(theme: Theme) {
     this.setTheme(theme);
-    localStorage.setItem(this.localStorageKey, theme);
+
+    if (this.cookieService.isCookieAccepted()) {
+      localStorage.setItem(this.localStorageKey, theme);
+    }
   }
 }
