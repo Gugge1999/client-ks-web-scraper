@@ -6,6 +6,12 @@
     "build": "ng build",
     "lint": "ng lint"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged --watch=false",
+      "pre-push": "ng build --aot true"
+    }
+  },
   "dependencies": {
     "@angular/animations": "^18.1.0",
     "@angular/cdk": "^18.1.0",
@@ -27,8 +33,10 @@
     "@angular/compiler-cli": "^18.1.0",
     "angular-eslint": "18.1.0",
     "eslint": "^9.6.0",
+    "husky": "^9.1.4",
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.2",
+    "pretty-quick": "^4.0.0",
     "typescript": "~5.5.3",
     "typescript-eslint": "8.0.0-alpha.38"
   },
