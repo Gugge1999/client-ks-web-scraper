@@ -12,4 +12,8 @@ export class SummaryComponent {
   watches = input.required<Watch[]>();
   allWatchesLength = computed(() => this.watches().length);
   activeWatchesLength = computed(() => this.watches().filter((m) => m.active).length);
+
+  testing() {
+    console.log("slokigosipdfjoisdjf");
+  }
 }

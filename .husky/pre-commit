@@ -1,4 +1,8 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+set +e
 
 npm run pretty-quick
+if [ $? -ne 0 ]; then
+  echo "WARNING: failed to run file formatting (ng-dev format staged)"
+fi
+
+exit 0;

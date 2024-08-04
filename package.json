@@ -6,7 +6,7 @@
     "build": "ng build",
     "lint": "ng lint",
     "pretty-quick": "pretty-quick --staged",
-    "prepare": "husky install"
+    "prepare": "husky"
   },
   "dependencies": {
     "@angular/animations": "^18.1.0",
@@ -29,7 +29,7 @@
     "@angular/compiler-cli": "^18.1.0",
     "angular-eslint": "18.1.0",
     "eslint": "^9.6.0",
-    "husky": "^8.0.0",
+    "husky": "^8.0.3",
     "lint-staged": "^15.2.7",
     "prettier": "^3.3.3",
     "pretty-quick": "^4.0.0",
