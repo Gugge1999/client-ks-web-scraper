@@ -11,5 +11,5 @@ import { Watch } from "@models/watch.model";
 export class SummaryComponent {
   watches = input.required<Watch[]>();
   allWatchesLength = computed(() => this.watches().length);
-  					activeWatchesLength = computed(() => this.watches().filter((m) => m.active).length);
+  activeWatchesLength = computed(() => this.watches().filter((m) => m.active).length);
 }
