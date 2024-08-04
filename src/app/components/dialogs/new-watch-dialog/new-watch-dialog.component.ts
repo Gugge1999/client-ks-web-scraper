@@ -5,9 +5,10 @@ import { MatDialogModule, MatDialogRef } from "@angular/material/dialog";
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
-import { errorMessageConst } from "@models/constants";
 
+import { errorMessageConst } from "@models/constants";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
+import { WatchForm } from "@models/forms/watch-form";
 import { WatchService } from "@services/watch.service";
 
 @Component({
@@ -19,12 +20,12 @@ import { WatchService } from "@services/watch.service";
   imports: [FormsModule, ReactiveFormsModule, MatDialogModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatIconModule],
 })
 export class NewWatchDialogComponent {
-  watchForm = new FormGroup({
-    label: new FormControl<string>("", {
+  watchForm = new FormGroup<WatchForm>({
+    label: new FormControl("", {
       validators: [Validators.required, Validators.minLength(3)],
       nonNullable: true,
     }),
-    watchToScrape: new FormControl<string>("", {
+    watchToScrape: new FormControl("", {
       validators: [Validators.required, Validators.minLength(2)],
       nonNullable: true,
     }),

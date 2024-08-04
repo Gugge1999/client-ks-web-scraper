@@ -26,9 +26,9 @@ export class CardActionsComponent {
   @Input({ required: true }) watch!: Watch;
   @Input({ required: true }) isActive!: boolean;
 
-  private readonly dialog = inject(MatDialog);
-  private readonly watchService = inject(WatchService);
-  private readonly snackbarService = inject(SnackBarService);
+  public readonly dialog = inject(MatDialog);
+  public readonly watchService = inject(WatchService);
+  public readonly snackbarService = inject(SnackBarService);
 
   async deleteWatchDialog(dialogData: Watch) {
     const dialogRef = this.dialog.open(DeleteWatchDialogComponent, { data: dialogData, autoFocus: "dialog" });

@@ -24,6 +24,7 @@ module.exports = tseslint.config(
           style: "kebab-case",
         },
       ],
+      eqeqeq: "error",
     },
   },
   {

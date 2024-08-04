@@ -8,28 +8,29 @@ import { CookieService } from "./cookie.service";
 })
 export class ThemeService {
   private readonly cookieService = inject(CookieService);
+
   private readonly localStorageKey = "user-theme";
   private currentTheme = signal(this.getColorTheme());
-  isDarkMode = computed(() => (this.currentTheme() === Theme.Dark ? true : false));
+  isDarkMode = computed(() => (this.currentTheme() === "dark" ? true : false));
 
   initTheme() {
     const theme = this.getColorTheme();
     this.setTheme(theme);
   }
 
-  private getColorTheme() {
+  private getColorTheme(): Theme {
     const storedUserTheme = localStorage.getItem(this.localStorageKey);
 
     if (storedUserTheme) {
-      return storedUserTheme;
+      return storedUserTheme as Theme;
     }
 
     const userPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    return userPrefersDark ? Theme.Dark : Theme.Light;
+    return userPrefersDark ? "dark" : "light";
   }
 
-  setTheme(theme: string) {
+  setTheme(theme: Theme) {
     this.currentTheme.set(theme);
     document.documentElement.setAttribute("theme", theme);
   }

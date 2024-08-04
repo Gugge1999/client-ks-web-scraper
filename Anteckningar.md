@@ -1,6 +1,6 @@
 # TODO
 
-Fixa eslint 9: https://github.com/angular-eslint/angular-eslint/releases/tag/v18.0.0
+https://stackblitz.com/edit/angular-material-dev-angular-material-3-6msput?file=src%2Fapp%2Fapp.routes.ts
 
 Läs: https://itnext.io/a-change-detection-zone-js-zoneless-local-change-detection-and-signals-story-9344079c3b9d
 

@@ -9,7 +9,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatDialog } from "@angular/material/dialog";
 import { MatMenuModule } from "@angular/material/menu";
 import { ApiStatusDialogComponent } from "@components/dialogs/api-status-dialog/api-status-dialog.component";
-import { Theme, initialApiStatus } from "@models/constants";
+import { initialApiStatus } from "@models/constants";
 import { StatusService } from "@services/status.service";
 import { ThemeService } from "@services/theme.service";
 
@@ -35,5 +35,5 @@ export class HeaderComponent {
     this.dialog.open(ApiStatusDialogComponent, { width: "450px", restoreFocus: false });
   }
 
-  toggleTheme = () => (this.isDarkMode() ? this.themeService.updateTheme(Theme.Light) : this.themeService.updateTheme(Theme.Dark));
+  toggleTheme = () => (this.isDarkMode() ? this.themeService.updateTheme("light") : this.themeService.updateTheme("dark"));
 }
