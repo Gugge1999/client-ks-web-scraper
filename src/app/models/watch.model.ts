@@ -4,7 +4,7 @@ export interface Watch {
   label: string;
   watch: ScrapedWatch;
   active: boolean;
-  lastEmailSent?: string;
+  lastEmailSent: string | null;
   added: string;
 }
 

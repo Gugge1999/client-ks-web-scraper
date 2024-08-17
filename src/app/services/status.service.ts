@@ -14,7 +14,7 @@ export class StatusService {
 
   getApiStatus() {
     return this.http.get<ApiStatus>(`${ConfigService.apiUrl()}/api-status`).pipe(
-      retry({ delay: 15000 }),
+      retry({ delay: 15_000 }),
       catchError(() => of(initialApiStatus)),
     );
   }

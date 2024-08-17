@@ -4,20 +4,14 @@ import { MatSnackBar } from "@angular/material/snack-bar";
 @Injectable({ providedIn: "root" })
 export class SnackBarService {
   private readonly snackBar = inject(MatSnackBar);
-  private readonly dismissMessage = "Avvisa";
-  private readonly snackBarClassConst = "snack-bar";
+  private readonly dismiss = "Avvisa";
+  private readonly snackClass = "snack-bar";
   private readonly successConst = "success";
-  private readonly warningConst = "warning";
+  private readonly warning = "warning";
 
-  successSnackBar(message: string) {
-    return this.snackBar.open(message, this.dismissMessage, { panelClass: `${this.snackBarClassConst}-${this.successConst}` });
-  }
+  successSnackBar = (message: string) => this.snackBar.open(message, this.dismiss, { panelClass: `${this.snackClass}-${this.successConst}` });
 
-  errorSnackBar(message: string) {
-    return this.snackBar.open(`Error: ${message}`, this.dismissMessage, { panelClass: `${this.snackBarClassConst}-${this.warningConst}` });
-  }
+  errorSnackBar = (message: string) => this.snackBar.open(`Error: ${message}`, this.dismiss, { panelClass: `${this.snackClass}-${this.warning}` });
 
-  undoSnackBar(message: string) {
-    return this.snackBar.open(message, "Ångra", { panelClass: `${this.snackBarClassConst}-${this.warningConst}` });
-  }
+  undoSnackBar = (message: string) => this.snackBar.open(message, "Ångra", { panelClass: `${this.snackClass}-${this.warning}` });
 }

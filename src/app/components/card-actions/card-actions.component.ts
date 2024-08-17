@@ -6,12 +6,12 @@ import { MatDialog } from "@angular/material/dialog";
 import { MatIconModule } from "@angular/material/icon";
 import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatTooltip } from "@angular/material/tooltip";
+import { firstValueFrom, map } from "rxjs";
 
 import { DeleteWatchDialogComponent } from "@components/dialogs/delete-watch-dialog/delete-watch-dialog.component";
 import { Watch } from "@models/watch.model";
 import { SnackBarService } from "@services/snack-bar.service";
 import { WatchService } from "@services/watch.service";
-import { firstValueFrom, map } from "rxjs";
 
 @Component({
   selector: "scraper-card-actions",

@@ -8,7 +8,7 @@
       <mat-card-content>
         <p>
           <strong>Senaste notisen skickades:</strong>
-          {{ watch.lastEmailSent === null ? "Ingen notis skickad" : (watch.lastEmailSent | date: cardDateFormat) }}
+          {{ watch.lastEmailSent ? (watch.lastEmailSent | date: cardDateFormat) : "Ingen notis skickad" }}
         </p>
         <p>
           <strong>Tillagd: </strong>

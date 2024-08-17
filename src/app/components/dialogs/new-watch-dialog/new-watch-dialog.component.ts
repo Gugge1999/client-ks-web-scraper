@@ -21,14 +21,8 @@ import { WatchService } from "@services/watch.service";
 })
 export class NewWatchDialogComponent {
   watchForm = new FormGroup<WatchForm>({
-    label: new FormControl("", {
-      validators: [Validators.required, Validators.minLength(3)],
-      nonNullable: true,
-    }),
-    watchToScrape: new FormControl("", {
-      validators: [Validators.required, Validators.minLength(2)],
-      nonNullable: true,
-    }),
+    label: new FormControl("", { validators: [Validators.required, Validators.minLength(3)], nonNullable: true }),
+    watchToScrape: new FormControl("", { validators: [Validators.required, Validators.minLength(2)], nonNullable: true }),
   });
 
   private readonly watchService = inject(WatchService);
