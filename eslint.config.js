@@ -25,6 +25,7 @@ module.exports = tseslint.config(
         },
       ],
       eqeqeq: "error",
+      curly: ["error", "all"],
     },
   },
   {
@@ -33,4 +34,3 @@ module.exports = tseslint.config(
     rules: {},
   },
 );
-

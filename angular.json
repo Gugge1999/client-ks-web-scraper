@@ -7,15 +7,7 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss",
-          "skipTests": true,
-          "changeDetection": "OnPush"
-        },
-        "@schematics/angular:application": {
-          "strict": true
-        },
-        "@schematics/angular:service": {
-          "skipTests": true
+          "style": "scss"
         }
       },
       "root": "",
@@ -25,10 +17,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": {
-              "base": "dist/client-ks-web-scraper",
-              "browser": ""
-            },
+            "outputPath": "dist/client-ks-web-scraper",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
@@ -73,7 +62,7 @@
           "options": {
             "host": "192.168.1.2"
           },
-          "builder": "@angular/build:dev-server",
+          "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "buildTarget": "client-ks-web-scraper:build:production"
@@ -104,4 +93,3 @@
     "schematicCollections": ["@angular-eslint/schematics"]
   }
 }
-

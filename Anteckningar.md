@@ -8,8 +8,6 @@ Kolla på den: https://github.com/Angular-Material-Dev/course-md-ng-my-app/commi
 
 Kolla på den (finns tutorial på sidan): https://themes.angular-material.dev/
 
-Byt till 135 print width
-
 https://angular-material.dev/articles/angular-material-3
 
 Fixa cookie consent
