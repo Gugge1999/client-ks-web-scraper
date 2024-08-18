@@ -20,6 +20,11 @@ export class CookieService {
   private window: WindowWithAnalytics = window;
 
   onInit() {
+    if (this.isCookieAccepted()) {
+      this.installGoogleAnalytics();
+      return;
+    }
+
     if (this.getConsentCookie() === "") {
       this.cookieServiceLibrary.set(this.cookieConsentString, initCookie.toString());
     }
@@ -46,11 +51,7 @@ export class CookieService {
       return;
     }
 
-    const cookieErrorMessage = "Kunde inte behandla svaret av cookie consent.";
-
-    window.alert(`${cookieErrorMessage} Ladda om sidan och försök igen`);
-
-    console.error(cookieErrorMessage);
+    this.cookieError();
   }
 
   private installGoogleAnalytics() {
@@ -60,10 +61,10 @@ export class CookieService {
 
     window.dataLayer = this.window.dataLayer || [];
     window.gtag = function () {
+      // eslint-disable-next-line prefer-rest-params
       window.dataLayer?.push(arguments);
     };
 
-    // TODO: js och config läggs inte till i DOM
     window.gtag("js", new Date());
 
     window.gtag("config", gAnalyticsId);
@@ -73,6 +74,12 @@ export class CookieService {
     el.src = url as string;
     el.id = "gtag-script";
     window.document.head.appendChild(el);
+  }
+
+  private cookieError() {
+    const cookieErrorMessage = "Kunde inte behandla samtycke av cookies.";
+    window.alert(`${cookieErrorMessage} Ladda om sidan och försök igen`);
+    console.error(cookieErrorMessage);
   }
 
   getConsentCookie = () => this.cookieServiceLibrary.get(this.cookieConsentString);

@@ -19,7 +19,6 @@ import { NewWatchFabComponent } from "./components/new-watch-fab/new-watch-fab.c
 export class AppComponent implements OnInit {
   private readonly themeService = inject(ThemeService);
   private readonly watchService = inject(WatchService);
-
   private readonly cookieService = inject(CookieService);
 
   watches = this.watchService.watches;
