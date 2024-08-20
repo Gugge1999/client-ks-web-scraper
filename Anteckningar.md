@@ -10,16 +10,12 @@ Kolla på den (finns tutorial på sidan): https://themes.angular-material.dev/
 
 https://angular-material.dev/articles/angular-material-3
 
-Fixa cookie consent
-
 Radera @nx/nx-win32-x64-msvc från package.json. Den behövs på grund att ett problem i github actions
 
 Läs igenom den: https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
 Finns det för v3?
 
 Ett bra repo att kika på: https://github.com/joematthews/extreme-angular
-
-Kolla in storybook: https://storybook.js.org/docs/angular/get-started/install
 
 Använd Jest för att testa: https://www.xfive.co/blog/testing-angular-faster-jest/
 https://www.youtube.com/watch?v=bv9z_UfSqgM
