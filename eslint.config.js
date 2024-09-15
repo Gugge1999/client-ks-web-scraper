@@ -1,3 +1,4 @@
+// @ts-check
 const eslint = require("@eslint/js");
 const tseslint = require("typescript-eslint");
 const angular = require("angular-eslint");
@@ -26,6 +27,8 @@ module.exports = tseslint.config(
       ],
       eqeqeq: "error",
       curly: ["error", "all"],
+      "no-nested-ternary": "error",
+      "no-else-return": "error",
     },
   },
   {

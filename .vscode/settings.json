@@ -11,5 +11,8 @@
     "/*.vscode": true,
     "/*.github": true,
     "package-lock.json": true
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
   }
 }

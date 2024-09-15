@@ -31,11 +31,11 @@ export class WatchService {
       }
     }
 
-    this._watches.update((watches) => watches.filter((w) => w.id !== watch.id));
+    this._watches.update(watches => watches.filter(w => w.id !== watch.id));
   }
 
   addWatch(watch: Watch) {
-    this._watches.update((watches) => [...watches, watch].sort((a, b) => Date.parse(a.added.toString()) - Date.parse(b.added.toString())));
+    this._watches.update(watches => [...watches, watch].sort((a, b) => Date.parse(a.added.toString()) - Date.parse(b.added.toString())));
   }
 
   async saveNewWatch(newWatchDTO: NewWatchFormDTO) {
@@ -46,7 +46,7 @@ export class WatchService {
     }
 
     this.snackbarService.successSnackBar(`Ny bevakning skapad för: ${newWatchDTO.label}`);
-    this._watches.update((watches) => [...watches, newWatch]);
+    this._watches.update(watches => [...watches, newWatch]);
 
     return newWatch;
   }
@@ -62,13 +62,13 @@ export class WatchService {
 
     this.snackbarService.successSnackBar(`${updatedWatch.label} är ${updatedWatch.active ? "aktiv" : " inaktiv"}`);
 
-    this._watches.update((watches) =>
-      watches.map((watch) => {
-        if (watch.id === updatedWatch.id) {
-          watch.active = updatedWatch.active;
+    this._watches.update(watches =>
+      watches.map(w => {
+        if (w.id === updatedWatch.id) {
+          w.active = updatedWatch.active;
         }
 
-        return watch;
+        return w;
       }),
     );
   }

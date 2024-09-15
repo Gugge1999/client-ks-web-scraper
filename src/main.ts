@@ -30,4 +30,4 @@ bootstrapApplication(AppComponent, {
     { provide: MAT_SNACK_BAR_DEFAULT_OPTIONS, useValue: matSnackbarDefaultConfig },
     { provide: LOCALE_ID, useValue: "sv-se" },
   ],
-}).catch((err) => console.error(err));
+}).catch(err => console.error(err));

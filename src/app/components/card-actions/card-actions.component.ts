@@ -48,7 +48,7 @@ export class CardActionsComponent {
   private async deleteSnackbarWithUndoAction(watch: Watch) {
     const snackbar = this.snackbarService.undoSnackBar(`Raderade bevakning: ${watch.label}`);
 
-    const dismissedByAction = await firstValueFrom(snackbar.afterDismissed().pipe(map((res) => res.dismissedByAction)));
+    const dismissedByAction = await firstValueFrom(snackbar.afterDismissed().pipe(map(res => res.dismissedByAction)));
 
     if (dismissedByAction) {
       this.watchService.addWatch(watch);
