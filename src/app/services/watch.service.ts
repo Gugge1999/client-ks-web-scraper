@@ -1,9 +1,9 @@
 import { Injectable, inject, signal } from "@angular/core";
 import { lastValueFrom } from "rxjs";
 
+import { errorMessageConst } from "@constants/constants";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
-import { errorMessageConst } from "@models/constants";
 import { Watch } from "@models/watch.model";
 import { SnackBarService } from "@services/snack-bar.service";
 import { WatchApiService } from "@services/watch-api.service";

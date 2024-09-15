@@ -6,7 +6,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
 import { MatInputModule } from "@angular/material/input";
 
-import { errorMessageConst } from "@models/constants";
+import { errorMessageConst } from "@constants/constants";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { WatchForm } from "@models/forms/watch-form";
 import { WatchService } from "@services/watch.service";
@@ -51,7 +51,7 @@ export class NewWatchDialogComponent {
     this.dialogRef.close(result);
   }
 
-  cancelClicked(): void {
+  cancelClicked() {
     this.dialogRef.close();
   }
 

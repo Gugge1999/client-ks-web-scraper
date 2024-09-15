@@ -1,5 +1,5 @@
 <mat-card-actions align="end">
-  <button mat-icon-button matTooltip="Radera bevakning" matTooltipPosition="above" (click)="deleteWatchDialog(watch)">
+  <button mat-icon-button matTooltip="Radera bevakning" matTooltipPosition="above" (click)="deleteWatchDialog(watch())">
     <mat-icon class="delete-icon" color="warn">delete_outline</mat-icon>
   </button>
 
@@ -12,7 +12,7 @@
     color="primary"
     matTooltip="Växla aktiv status"
     matTooltipPosition="above"
-    [checked]="watch.active"
-    (change)="toggleActiveStatus(watch)">
+    [checked]="isActive()"
+    (change)="toggleActiveStatus(watch())">
   </mat-slide-toggle>
 </mat-card-actions>

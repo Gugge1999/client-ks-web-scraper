@@ -17,11 +17,11 @@ export class DeleteWatchDialogComponent {
   private readonly dialogRef = inject(MatDialogRef<AppComponent>);
   protected readonly watchToDelete: Watch = inject(MAT_DIALOG_DATA);
 
-  cancelClicked(): void {
+  cancelClicked() {
     this.dialogRef.close();
   }
 
-  deleteWatch(watchToDelete: Watch): void {
+  deleteWatch(watchToDelete: Watch) {
     this.dialogRef.close(watchToDelete);
   }
 }

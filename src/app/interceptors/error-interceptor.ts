@@ -1,6 +1,6 @@
 import { HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpRequest } from "@angular/common/http";
 import { inject } from "@angular/core";
-import { verboseErrorMessageConst } from "@models/constants";
+import { verboseErrorMessageConst } from "@constants/constants";
 import { SnackBarService } from "@services/snack-bar.service";
 import { Observable, catchError, throwError } from "rxjs";
 

@@ -1,10 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
+import { environment } from "@environments/environment";
 
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { Watch } from "@models/watch.model";
-import { ConfigService } from "@services/app-config.service";
 import { retry } from "rxjs";
 
 @Injectable({
@@ -13,7 +13,7 @@ import { retry } from "rxjs";
 export class WatchApiService {
   private readonly http = inject(HttpClient);
 
-  private readonly apiUrl = `${ConfigService.apiUrl()}`;
+  private readonly apiUrl = `${environment.apiUrl}`;
 
   toggleActiveStatus(dto: Pick<Watch, "active" | "id" | "label">) {
     return this.http.put<Watch>(`${this.apiUrl}/toggle-active-status`, dto);

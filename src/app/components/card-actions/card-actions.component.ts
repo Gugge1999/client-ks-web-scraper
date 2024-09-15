@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, input } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardActions } from "@angular/material/card";
@@ -22,9 +22,8 @@ import { WatchService } from "@services/watch.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardActionsComponent {
-  // TODO: Går dom att konvertera till signals?
-  @Input({ required: true }) watch!: Watch;
-  @Input({ required: true }) isActive!: boolean;
+  watch = input.required<Watch>();
+  isActive = input.required<boolean>();
 
   public readonly dialog = inject(MatDialog);
   public readonly watchService = inject(WatchService);

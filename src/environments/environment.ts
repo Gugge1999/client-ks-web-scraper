@@ -4,4 +4,5 @@
 
 export const environment = {
   name: "dev",
+  apiUrl: "http://192.168.1.2:3000",
 };

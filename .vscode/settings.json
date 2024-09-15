@@ -1,8 +1,15 @@
 {
   "workbench.colorCustomizations": {
-    "titleBar.activeBackground": "#812121dc",
+    "titleBar.activeBackground": "#1a4c62dc",
     "titleBar.activeForeground": "#fffffff1",
-    "titleBar.inactiveBackground": "#81212175",
+    "titleBar.inactiveBackground": "#143b4bdc",
     "titleBar.inactiveForeground": "#fffffff1"
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "/*.firebase": true,
+    "/*.vscode": true,
+    "/*.github": true,
+    "package-lock.json": true
   }
 }
