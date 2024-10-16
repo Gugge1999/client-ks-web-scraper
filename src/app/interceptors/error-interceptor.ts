@@ -24,7 +24,8 @@ export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn)
 
         console.error("Error", err);
 
-        snackbarService.errorSnackBar(errStatus === 0 ? "Kunde inte ansluta till API:et" : err.errorMessage);
+        const errMsg = errStatus === 0 ? "Kunde inte ansluta till API:et" : err.errorMessage;
+        snackbarService.errorSnackBar(errMsg);
 
         return throwError(() => err);
       } catch (error) {

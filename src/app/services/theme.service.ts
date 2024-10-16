@@ -1,7 +1,8 @@
 import { Injectable, computed, inject, signal } from "@angular/core";
 
-import { Theme } from "@constants/constants";
 import { CookieService } from "./cookie.service";
+
+type Theme = "dark" | "light";
 
 @Injectable({
   providedIn: "root",

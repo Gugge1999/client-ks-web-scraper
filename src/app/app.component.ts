@@ -3,11 +3,11 @@ import { ChangeDetectionStrategy, Component, OnInit, inject } from "@angular/cor
 import { CardComponent } from "@components/card/card.component";
 import { FooterComponent } from "@components/footer/footer.component";
 import { HeaderComponent } from "@components/header/header.component";
+import { NewWatchFabComponent } from "@components/new-watch-fab/new-watch-fab.component";
 import { SummaryComponent } from "@components/summary/summary.component";
 import { CookieService } from "@services/cookie.service";
 import { ThemeService } from "@services/theme.service";
 import { WatchService } from "@services/watch.service";
-import { NewWatchFabComponent } from "./components/new-watch-fab/new-watch-fab.component";
 
 @Component({
   selector: "scraper-root",

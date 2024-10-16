@@ -33,6 +33,7 @@ export class CardActionsComponent {
     const dialogRef = this.dialog.open(DeleteWatchDialogComponent, { data: dialogData, autoFocus: "dialog" });
 
     const watch = await firstValueFrom(dialogRef.afterClosed().pipe(map((watch: Watch | undefined) => watch)));
+
     if (watch === undefined) {
       return;
     }
