@@ -1,5 +1,5 @@
 p {
-  margin: 6px 0;
+  margin: 8px 0;
   font-size: large;
 }
 
@@ -7,12 +7,6 @@ p {
   gap: 16px;
   position: sticky;
   z-index: 2;
-  top: 63px;
-  background-color: var(--mat-app-background-color);
-}
-
-@media all and (max-width: 600px) {
-  .summary-wrapper {
-    top: 56px;
-  }
+  top: 48px;
+  background-color: var(--tui-background-base);
 }

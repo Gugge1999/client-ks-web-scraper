@@ -1,13 +1,22 @@
-<div style="min-height: 100vh; display: flex; flex-direction: column">
-  <scraper-header />
+<tui-root [attr.tuiTheme]="darkMode() ? 'dark' : null">
+  <div style="min-height: 100vh; display: flex; flex-direction: column">
+    <scraper-header />
 
-  <main style="flex: 1; margin-bottom: 60px">
-    <scraper-summary [watches]="watches()" />
+    <main style="flex: 1; margin-bottom: 60px">
+      <scraper-summary [watches]="watches()" />
 
-    <scraper-card [watches]="watches()" />
+      <scraper-card [watches]="watches()" />
 
-    <scraper-new-watch-fab />
-  </main>
+      <scraper-new-watch-fab />
+    </main>
 
-  <scraper-footer />
-</div>
+    <scraper-footer />
+  </div>
+
+  <!-- TODO: Går dea att ta bort? -->
+
+  <!-- If you need, you can add something between Taiga portal layers: -->
+  <ng-container ngProjectAs="tuiOverDialogs"> <!-- Content over dialogs --> </ng-container>
+  <ng-container ngProjectAs="tuiOverAlerts"> <!-- Content over alerts --> </ng-container>
+  <ng-container ngProjectAs="tuiOverHints"> <!-- Content over hints --> </ng-container>
+</tui-root>

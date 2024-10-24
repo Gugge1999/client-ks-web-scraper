@@ -4,7 +4,7 @@
   <mat-dialog-content class="mat-typography">
     <mat-form-field appearance="outline" style="padding: 0.5rem 0 1.5rem 0">
       <mat-label>Namn</mat-label>
-      <input matInput formControlName="label" type="text" class="form-control" id="label" name="label" />
+      <input matInput [formControl]="watchForm.controls.label" type="text" class="form-control" id="label" name="label" />
       <button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="onClear(watchForm.controls.label)">
         <mat-icon>close</mat-icon>
       </button>
@@ -16,12 +16,15 @@
         <mat-error> Namn måste vara minst 3 bokstäver</mat-error>
       }
     </mat-form-field>
+
     <mat-form-field appearance="outline">
       <mat-label>Klocka att bevaka</mat-label>
-      <input matInput formControlName="watchToScrape" type="text" class="form-control" id="watchToScrape" name="watchToScrape" />
+
+      <input matInput [formControl]="watchForm.controls.watchToScrape" type="text" class="form-control" id="watchToScrape" name="watchToScrape" />
       <button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="onClear(watchForm.controls.watchToScrape)">
         <mat-icon>close</mat-icon>
       </button>
+
       <mat-hint> Ange klockan du vill bevaka </mat-hint>
       @if (watchForm.controls.watchToScrape.errors?.["required"]) {
         <mat-error>Klocka att bevaka är obligatoriskt</mat-error>
@@ -34,8 +37,10 @@
       }
     </mat-form-field>
   </mat-dialog-content>
+
   <mat-dialog-actions align="end">
     <button mat-flat-button (click)="cancelClicked()" type="button" color="accent">Avbryt</button>
+
     <button mat-flat-button color="primary" type="submit" class="btn btn-success" [disabled]="watchForm.invalid">Spara</button>
   </mat-dialog-actions>
 </form>

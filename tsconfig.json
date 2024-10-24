@@ -5,12 +5,10 @@
     "baseUrl": "./src/",
     "paths": {
       "@components/*": ["app/components/*"],
-      "@dialogs/*": ["app/components/dialogs/*"],
       "@models/*": ["app/models/*"],
       "@constants/*": ["app/constants/*"],
       "@services/*": ["app/services/*"],
-      "@interceptors/*": ["app/interceptors/*"],
-      "@environments/*": ["environments/*"]
+      "@interceptors/*": ["app/interceptors/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

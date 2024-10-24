@@ -4,22 +4,21 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatCardActions } from "@angular/material/card";
 import { MatDialog } from "@angular/material/dialog";
 import { MatIconModule } from "@angular/material/icon";
-import { MatSlideToggleModule } from "@angular/material/slide-toggle";
 import { MatTooltip } from "@angular/material/tooltip";
-import { firstValueFrom, map } from "rxjs";
-
-import { DeleteWatchDialogComponent } from "@components/dialogs/delete-watch-dialog/delete-watch-dialog.component";
 import { Watch } from "@models/watch.model";
 import { SnackBarService } from "@services/snack-bar.service";
 import { WatchService } from "@services/watch.service";
+import { TuiHint } from "@taiga-ui/core";
+import { TuiSwitch } from "@taiga-ui/kit";
+import { firstValueFrom, map } from "rxjs";
 
 @Component({
   selector: "scraper-card-actions",
   standalone: true,
-  imports: [MatSlideToggleModule, MatIconModule, MatTooltip, MatButtonModule, MatCardActions, FormsModule],
   templateUrl: "./card-actions.component.html",
   styleUrl: "./card-actions.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [MatIconModule, MatTooltip, MatButtonModule, MatCardActions, FormsModule, TuiSwitch, TuiHint],
 })
 export class CardActionsComponent {
   watch = input.required<Watch>();
@@ -29,15 +28,7 @@ export class CardActionsComponent {
   public readonly watchService = inject(WatchService);
   public readonly snackbarService = inject(SnackBarService);
 
-  async deleteWatchDialog(dialogData: Watch) {
-    const dialogRef = this.dialog.open(DeleteWatchDialogComponent, { data: dialogData, autoFocus: "dialog" });
-
-    const watch = await firstValueFrom(dialogRef.afterClosed().pipe(map((watch: Watch | undefined) => watch)));
-
-    if (watch === undefined) {
-      return;
-    }
-
+  async deleteWatch(watch: Watch) {
     this.watchService.deleteWatch(watch, false);
     this.deleteSnackbarWithUndoAction(watch);
   }

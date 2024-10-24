@@ -1,11 +1,11 @@
 import { HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpRequest } from "@angular/common/http";
 import { inject } from "@angular/core";
 import { verboseErrorMessageConst } from "@constants/constants";
-import { SnackBarService } from "@services/snack-bar.service";
+import { AlertService } from "@services/alert.service";
 import { Observable, catchError, throwError } from "rxjs";
 
 export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
-  const snackbarService = inject(SnackBarService);
+  const alertService = inject(AlertService);
 
   return next(req).pipe(
     catchError((errRes: HttpErrorResponse) => {
@@ -25,11 +25,11 @@ export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn)
         console.error("Error", err);
 
         const errMsg = errStatus === 0 ? "Kunde inte ansluta till API:et" : err.errorMessage;
-        snackbarService.errorSnackBar(errMsg);
+        alertService.errorAlert(errMsg);
 
         return throwError(() => err);
       } catch (error) {
-        snackbarService.errorSnackBar("Nånting gick fel i errorInterceptor");
+        alertService.errorAlert("Nånting gick fel i errorInterceptor");
 
         console.error("Something went wrong in errorInterceptor", error);
 

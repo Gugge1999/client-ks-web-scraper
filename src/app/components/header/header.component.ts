@@ -1,17 +1,19 @@
 import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { MatIconModule } from "@angular/material/icon";
-import { MatToolbarModule } from "@angular/material/toolbar";
-import { timer } from "rxjs";
-import { switchMap } from "rxjs/operators";
-
 import { MatButtonModule } from "@angular/material/button";
 import { MatDialog } from "@angular/material/dialog";
+import { MatIconModule } from "@angular/material/icon";
 import { MatMenuModule } from "@angular/material/menu";
+import { MatToolbarModule } from "@angular/material/toolbar";
 import { ApiStatusDialogComponent } from "@components/dialogs/api-status-dialog/api-status-dialog.component";
 import { initialApiStatus } from "@constants/constants";
 import { StatusService } from "@services/status.service";
 import { ThemeService } from "@services/theme.service";
+import { TuiPlatform } from "@taiga-ui/cdk/directives/platform";
+import { TuiButton, TuiTitle } from "@taiga-ui/core";
+import { TuiAppBar } from "@taiga-ui/layout";
+import { timer } from "rxjs";
+import { switchMap } from "rxjs/operators";
 
 @Component({
   selector: "scraper-header",
@@ -19,7 +21,7 @@ import { ThemeService } from "@services/theme.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./header.component.scss",
   standalone: true,
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule],
+  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, TuiAppBar, TuiButton, TuiPlatform, TuiTitle],
 })
 export class HeaderComponent {
   private readonly statusService = inject(StatusService);

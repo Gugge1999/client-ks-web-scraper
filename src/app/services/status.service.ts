@@ -1,10 +1,10 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
-import { catchError, of, retry } from "rxjs";
+import { catchError, of } from "rxjs";
 
 import { initialApiStatus } from "@constants/constants";
-import { environment } from "@environments/environment";
 import { ApiStatus } from "@models/api-status.model";
+import { env } from "env/env";
 
 @Injectable({
   providedIn: "root",
@@ -12,10 +12,5 @@ import { ApiStatus } from "@models/api-status.model";
 export class StatusService {
   private readonly http = inject(HttpClient);
 
-  getApiStatus() {
-    return this.http.get<ApiStatus>(`${environment.apiUrl}/api-status`).pipe(
-      retry({ delay: 15_000 }),
-      catchError(() => of(initialApiStatus)),
-    );
-  }
+  getApiStatus = () => this.http.get<ApiStatus>(`${env.apiUrl}/api-status`).pipe(catchError(() => of(initialApiStatus)));
 }

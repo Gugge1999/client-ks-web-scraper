@@ -1,5 +1,5 @@
 import { Injectable, computed, inject, signal } from "@angular/core";
-
+import { TUI_DARK_MODE } from "@taiga-ui/core";
 import { CookieService } from "./cookie.service";
 
 type Theme = "dark" | "light";
@@ -9,10 +9,14 @@ type Theme = "dark" | "light";
 })
 export class ThemeService {
   private readonly cookieService = inject(CookieService);
+  private readonly darkModeSig = inject(TUI_DARK_MODE);
   private readonly localStorageKey = "user-theme";
-  private currentTheme = signal(this.getColorTheme());
-  isDarkMode = computed(() => (this.currentTheme() === "dark" ? true : false));
-  initTheme = () => this.setTheme(this.getColorTheme());
+  private currentThemeSig = signal(this.getColorTheme());
+  isDarkMode = computed(() => (this.currentThemeSig() === "dark" ? true : false));
+
+  initializeTheme() {
+    this.setTheme(this.getColorTheme());
+  }
 
   private getColorTheme(): Theme {
     const storedUserTheme = localStorage.getItem(this.localStorageKey);
@@ -27,8 +31,8 @@ export class ThemeService {
   }
 
   setTheme(theme: Theme) {
-    this.currentTheme.set(theme);
-    document.documentElement.setAttribute("theme", theme);
+    this.currentThemeSig.set(theme);
+    this.darkModeSig.set(theme === "dark" ? true : false);
   }
 
   updateTheme(theme: Theme) {

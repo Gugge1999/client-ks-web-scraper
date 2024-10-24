@@ -1,3 +1,7 @@
+.hejsan {
+  background-color: var(--tui-status-positive);
+}
+
 header {
   user-select: none;
 }
@@ -39,7 +43,7 @@ header {
   color: white;
 
   &:hover {
-    background-color: #717171;
+    background-color: #31a57b;
     border-radius: 50%;
     cursor: pointer;
   }

@@ -1,27 +1,28 @@
 <div class="card-container">
   @for (watch of watches(); track watch.id) {
-    <mat-card appearance="outlined" class="card">
-      <mat-card-title>
-        <strong>{{ watch.label }}</strong>
-      </mat-card-title>
+    <div tuiAppearance="floating" tuiCardLarge class="card">
+      <header tuiHeader>
+        <h2 tuiTitle>{{ watch.label }}</h2>
+      </header>
 
-      <mat-card-content>
+      <section style="display: unset; padding: 0 12px; height: auto; border-style: none">
         <p>
           <strong>Senaste notisen skickades:</strong>
           {{ watch.lastEmailSent ? (watch.lastEmailSent | date: cardDateFormat) : "Ingen notis skickad" }}
         </p>
-        <p>
-          <strong>Tillagd: </strong>
-          {{ watch.added | date: cardDateFormat }}
-        </p>
+
+        <p><strong>Tillagd: </strong> {{ watch.added | date: cardDateFormat }}</p>
+
         <p>
           <strong>Nuvarande klocka: </strong>
           <a target="_blank" class="link" [href]="watch.watch.link">{{ watch.watch.name }}</a>
         </p>
-      </mat-card-content>
+      </section>
 
-      <scraper-card-actions [watch]="watch" [isActive]="watch.active"></scraper-card-actions>
-    </mat-card>
+      <footer>
+        <scraper-card-actions [watch]="watch" [isActive]="watch.active"></scraper-card-actions>
+      </footer>
+    </div>
   } @empty {
     <div class="no-active-scraped-watches">Inga aktiva bevakningar.</div>
   }
