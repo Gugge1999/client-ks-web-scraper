@@ -2,7 +2,7 @@
   @for (watch of watches(); track watch.id) {
     <div tuiAppearance="floating" tuiCardLarge class="card">
       <header tuiHeader>
-        <h2 tuiTitle>{{ watch.label }}</h2>
+        <h1 style="margin-top: 4px; margin-bottom: 0">{{ watch.label }}</h1>
       </header>
 
       <section style="display: unset; padding: 0 12px; height: auto; border-style: none">
@@ -14,13 +14,13 @@
         <p><strong>Tillagd: </strong> {{ watch.added | date: cardDateFormat }}</p>
 
         <p>
-          <strong>Nuvarande klocka: </strong>
+          <strong>Senaste klockan: </strong>
           <a target="_blank" class="link" [href]="watch.watch.link">{{ watch.watch.name }}</a>
         </p>
       </section>
 
       <footer>
-        <scraper-card-actions [watch]="watch" [isActive]="watch.active"></scraper-card-actions>
+        <scraper-card-actions [watch]="watch"></scraper-card-actions>
       </footer>
     </div>
   } @empty {

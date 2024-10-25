@@ -6,9 +6,8 @@
     "client-ks-web-scraper": {
       "projectType": "application",
       "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
+        "@schematics/angular:component": { "style": "scss", "skipTests": true, "changeDetection": "OnPush" },
+        "@schematics/angular:service": { "skipTests": true }
       },
       "root": "",
       "sourceRoot": "src",
@@ -17,10 +16,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": {
-              "base": "dist/client-ks-web-scraper",
-              "browser": ""
-            },
+            "outputPath": { "base": "dist/client-ks-web-scraper", "browser": "" },
             "index": "src/index.html",
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
@@ -78,31 +74,21 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "options": {
-            "host": "192.168.1.2"
-          },
+          "options": { "host": "192.168.1.2" },
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "buildTarget": "client-ks-web-scraper:build:production"
-            },
-            "development": {
-              "buildTarget": "client-ks-web-scraper:build:development"
-            }
+            "production": { "buildTarget": "client-ks-web-scraper:build:production" },
+            "development": { "buildTarget": "client-ks-web-scraper:build:development" }
           },
           "defaultConfiguration": "development"
         },
         "extract-i18n": {
           "builder": "@angular/build:extract-i18n",
-          "options": {
-            "buildTarget": "client-ks-web-scraper:build"
-          }
+          "options": { "buildTarget": "client-ks-web-scraper:build" }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
-          "options": {
-            "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"]
-          }
+          "options": { "lintFilePatterns": ["src/**/*.ts", "src/**/*.html"] }
         }
       }
     }

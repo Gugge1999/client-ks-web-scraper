@@ -9,8 +9,7 @@ export class AlertService {
 
   successAlert = (message: string) => this.alerts.open(message, { appearance: "success" }).subscribe();
 
-  errorAlert = (message: string) => this.alerts.open(`Error: ${message}`, { appearance: "error" }).subscribe();
+  infoAlert = (message: string) => this.alerts.open(message, { appearance: "info" }).subscribe();
 
-  // TODO: Fixa med component sen
-  // undoSnackBar = (message: string) => this.alerts.open(message, "Ångra").subscribe();
+  errorAlert = (message: string) => this.alerts.open(`Error: ${message}`, { appearance: "error" }).subscribe();
 }

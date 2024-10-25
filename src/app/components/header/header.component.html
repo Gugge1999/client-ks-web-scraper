@@ -1,14 +1,13 @@
 <header>
   <section>
-    <tui-app-bar style="justify-content: space-between" class="hejsan">
-      <a class="title-bar-link" tuiSlot="left">
+    <tui-app-bar style="justify-content: space-between">
+      <a class="header-logo" tuiSlot="left">
         <mat-icon>watch</mat-icon>
         <span class="toolbar-title">KS Web Scraper</span>
       </a>
 
       <div tuiSlot="right" style="width: 100px; display: flex">
-        <!-- TODO: Tooltip fungerar inte -->
-        <div matTooltip="Växla tema" matTooltipPosition="below">
+        <div tuiHint="Växla tema" tuiHintDirection="bottom">
           <mat-icon
             class="theme-mode-icon theme-icon-wrapper pointer"
             fontSet="material-icons-outlined"
@@ -18,10 +17,10 @@
           </mat-icon>
         </div>
 
-        <div class="hamburger-toolbar-wrapper">
+        <div>
           @if (apiStatus().active) {
-            <button mat-menu-item (click)="openApiStatusDialog()">
-              <div matTooltip="Visa statistik för API" matTooltipPosition="left">
+            <button (click)="openApiStatusDialog()">
+              <div tuiHint="Visa statistik för API" tuiHintDirection="bottom">
                 <div class="flex">
                   <mat-icon color="primary"> check_circle_outline </mat-icon>
                   <span class="status-text">API</span>
@@ -29,8 +28,8 @@
               </div>
             </button>
           } @else {
-            <button mat-menu-item disabled>
-              <div matTooltip="API:et är inte aktivt" matTooltipPosition="left" class="flex flex-align-items-center">
+            <button disabled>
+              <div tuiHint="API:et är inte aktivt" tuiHintDirection="bottom" class="flex flex-align-items-center">
                 <div class="flex">
                   <mat-icon color="warn"> highlight_off </mat-icon>
                   <span class="status-text">API</span>
@@ -43,54 +42,3 @@
     </tui-app-bar>
   </section>
 </header>
-
-<!-- <header role="banner">
-  <section tuiPlatform="ios">
-    <tui-app-bar>
-      <a class="title-bar-link">
-        <mat-icon>watch</mat-icon>
-        <span class="toolbar-title">KS Web Scraper</span>
-      </a>
-
-      <div matTooltip="Växla tema" matTooltipPosition="below">
-        <mat-icon
-          class="theme-mode-icon theme-icon-wrapper pointer"
-          fontSet="material-icons-outlined"
-          (click)="toggleTheme()"
-          (keyup)="toggleTheme()">
-          {{ isDarkMode() ? "dark_mode" : "light_mode" }}
-        </mat-icon>
-      </div>
-
-      <div>
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon>menu</mat-icon>
-        </button>
-
-        <mat-menu #menu="matMenu">
-          <div class="hamburger-toolbar-wrapper">
-            @if (apiStatus().active) {
-              <button mat-menu-item (click)="openApiStatusDialog()">
-                <div matTooltip="Visa statistik för API" matTooltipPosition="left">
-                  <div class="flex">
-                    <mat-icon color="primary"> check_circle_outline </mat-icon>
-                    <span class="status-text">API</span>
-                  </div>
-                </div>
-              </button>
-            } @else {
-              <button mat-menu-item disabled>
-                <div matTooltip="API:et är inte aktivt" matTooltipPosition="left" class="flex flex-align-items-center">
-                  <div class="flex">
-                    <mat-icon color="warn"> highlight_off </mat-icon>
-                    <span class="status-text">API</span>
-                  </div>
-                </div>
-              </button>
-            }
-          </div>
-        </mat-menu>
-      </div>
-    </tui-app-bar>
-  </section>
-</header> -->

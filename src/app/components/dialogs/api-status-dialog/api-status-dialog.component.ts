@@ -1,8 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
-import { toSignal } from "@angular/core/rxjs-interop";
-import { MatDialogModule } from "@angular/material/dialog";
-
-import { StatusService } from "@services/status.service";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { ApiStatus } from "@models/api-status.model";
+import { TuiDialogContext } from "@taiga-ui/core";
+import { injectContext } from "@taiga-ui/polymorpheus";
 
 @Component({
   selector: "scraper-api-status-dialog",
@@ -10,10 +9,10 @@ import { StatusService } from "@services/status.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./api-status-dialog.component.scss",
   standalone: true,
-  imports: [MatDialogModule],
+  imports: [],
 })
 export class ApiStatusDialogComponent {
-  private readonly statusService = inject(StatusService);
+  public readonly context = injectContext<TuiDialogContext<void, ApiStatus>>();
 
-  apiStatus = toSignal(this.statusService.getApiStatus());
+  readonly apiStatus = this.context.data;
 }

@@ -1,4 +1,10 @@
-.hejsan {
+:host {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+tui-app-bar {
   background-color: var(--tui-status-positive);
 }
 
@@ -11,18 +17,11 @@ header {
   font-weight: bold;
 }
 
-.title-bar-link {
+.header-logo {
   display: flex;
   align-items: center;
   color: inherit;
-  text-decoration: none;
-  flex-grow: 1;
-}
-
-:host {
-  position: sticky;
-  top: 0;
-  z-index: 1;
+  padding-left: 8px;
 }
 
 .toolbar-row {

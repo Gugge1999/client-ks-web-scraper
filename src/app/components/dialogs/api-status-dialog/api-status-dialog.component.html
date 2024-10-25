@@ -1,22 +1,15 @@
-<h1 mat-dialog-title>Status för API</h1>
-@if (apiStatus(); as status) {
-  <div mat-dialog-content>
-    <h4>
-      Interval på bevakningar:
-      <i>{{ status.scrapingIntervalInMinutes }} minuter</i>
-    </h4>
-    <h4>Drifttid</h4>
-    <div style="margin-left: 1em">
-      <p>År: {{ status.uptime.years }}</p>
-      <p>Månader: {{ status.uptime.months }}</p>
-      <p>Dagar: {{ status.uptime.days }}</p>
-      <p>Timmar: {{ status.uptime.hours }}</p>
-      <p>Minuter: {{ status.uptime.minutes }}</p>
-      <p>Sekunder: {{ status.uptime.seconds }}</p>
-    </div>
+<div>
+  <h4>
+    Interval på bevakningar:
+    <i>{{ apiStatus.scrapingIntervalInMinutes }} minuter</i>
+  </h4>
+  <h4>Drifttid</h4>
+  <div style="margin-left: 1em">
+    <p>År: {{ apiStatus.uptime.years }}</p>
+    <p>Månader: {{ apiStatus.uptime.months }}</p>
+    <p>Dagar: {{ apiStatus.uptime.days }}</p>
+    <p>Timmar: {{ apiStatus.uptime.hours }}</p>
+    <p>Minuter: {{ apiStatus.uptime.minutes }}</p>
+    <p>Sekunder: {{ apiStatus.uptime.seconds }}</p>
   </div>
-} @else {
-  <div mat-dialog-content>
-    <p color="accent">Laddar...</p>
-  </div>
-}
+</div>

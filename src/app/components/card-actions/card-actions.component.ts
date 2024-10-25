@@ -2,15 +2,15 @@ import { ChangeDetectionStrategy, Component, inject, input } from "@angular/core
 import { FormsModule } from "@angular/forms";
 import { MatButtonModule } from "@angular/material/button";
 import { MatCardActions } from "@angular/material/card";
-import { MatDialog } from "@angular/material/dialog";
 import { MatIconModule } from "@angular/material/icon";
 import { MatTooltip } from "@angular/material/tooltip";
+import { UndoAlertComponent } from "@components/undo-alert/undo-alert.component";
 import { Watch } from "@models/watch.model";
-import { SnackBarService } from "@services/snack-bar.service";
 import { WatchService } from "@services/watch.service";
-import { TuiHint } from "@taiga-ui/core";
+import { TuiAlertService, TuiHint } from "@taiga-ui/core";
 import { TuiSwitch } from "@taiga-ui/kit";
-import { firstValueFrom, map } from "rxjs";
+import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
+import { take, tap } from "rxjs";
 
 @Component({
   selector: "scraper-card-actions",
@@ -22,31 +22,28 @@ import { firstValueFrom, map } from "rxjs";
 })
 export class CardActionsComponent {
   watch = input.required<Watch>();
-  isActive = input.required<boolean>();
 
-  public readonly dialog = inject(MatDialog);
   public readonly watchService = inject(WatchService);
-  public readonly snackbarService = inject(SnackBarService);
-
-  async deleteWatch(watch: Watch) {
-    this.watchService.deleteWatch(watch, false);
-    this.deleteSnackbarWithUndoAction(watch);
-  }
+  private readonly alerts = inject(TuiAlertService);
 
   toggleActiveStatus(watch: Watch) {
     this.watchService.toggleActiveStatus(watch);
   }
 
-  private async deleteSnackbarWithUndoAction(watch: Watch) {
-    const snackbar = this.snackbarService.undoSnackBar(`Raderade bevakning: ${watch.label}`);
+  protected deleteWatch() {
+    /** OBS: Anrop för att radera bevakningen från db görs i {@link UndoAlertComponent} */
+    this.watchService.deleteWatch(this.watch());
 
-    const dismissedByAction = await firstValueFrom(snackbar.afterDismissed().pipe(map(res => res.dismissedByAction)));
-
-    if (dismissedByAction) {
-      this.watchService.addWatch(watch);
-      return;
-    }
-
-    this.watchService.deleteWatch(watch, true);
+    this.alerts
+      .open(new PolymorpheusComponent(UndoAlertComponent), {
+        label: `Raderade: ${this.watch().label}`,
+        appearance: "info",
+        data: this.watch().id,
+      })
+      .pipe(
+        tap(() => this.watchService.addWatch(this.watch())),
+        take(1),
+      )
+      .subscribe();
   }
 }

@@ -1,9 +1,9 @@
 <mat-card-actions align="end">
-  <button mat-icon-button matTooltip="Radera bevakning" matTooltipPosition="above" (click)="deleteWatch(watch())">
+  <button mat-icon-button tuiHint="Radera bevakning" tuiHintDirection="top" (click)="deleteWatch()">
     <mat-icon class="delete-icon" color="warn">delete_outline</mat-icon>
   </button>
 
-  <button mat-icon-button matTooltip="Visa statistik" matTooltipPosition="above">
+  <button mat-icon-button tuiHint="Visa statistik" tuiHintDirection="top">
     <mat-icon fontSet="material-icons-outlined" color="primary">assessment</mat-icon>
   </button>
 
@@ -13,7 +13,7 @@
     (change)="toggleActiveStatus(watch())"
     tuiHint="Växla aktiv status"
     tuiHintDirection="top"
-    [ngModel]="isActive()"
+    [ngModel]="watch().active"
     [showIcons]="false"
     size="m" />
 </mat-card-actions>

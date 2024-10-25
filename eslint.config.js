@@ -29,6 +29,7 @@ module.exports = tseslint.config(
       curly: ["error", "all"],
       "no-nested-ternary": "error",
       "no-else-return": "error",
+      "@angular-eslint/prefer-on-push-component-change-detection": "error",
     },
   },
   {

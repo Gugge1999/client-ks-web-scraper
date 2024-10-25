@@ -7,6 +7,10 @@
   gap: 2em;
 }
 
+h1 {
+  color: var(--tui-status-positive);
+}
+
 .card {
   scroll-margin: 20px;
   width: clamp(45ch, 40%, 60ch);

@@ -22,15 +22,7 @@ export class WatchService {
     this._watches.set(await lastValueFrom(this.watchApiService.getAllWatches()));
   }
 
-  async deleteWatch(watch: Watch, deleteFromDatabase: boolean) {
-    if (deleteFromDatabase) {
-      const deleteId = await lastValueFrom(this.watchApiService.deleteWatchById(watch.id));
-
-      if (errorMessageConst in deleteId) {
-        return;
-      }
-    }
-
+  async deleteWatch(watch: Watch) {
     this._watches.update(watches => watches.filter(w => w.id !== watch.id));
   }
 
@@ -60,7 +52,7 @@ export class WatchService {
       return;
     }
 
-    this.alertService.successAlert(`${updatedWatch.active ? "Aktivera:" : "Inaktivera:"} ${updatedWatch.label}`);
+    this.alertService.infoAlert(`${updatedWatch.active ? "Aktivera:" : "Inaktivera:"} ${updatedWatch.label}`);
 
     this._watches.update(watches =>
       watches.map(w => {

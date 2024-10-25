@@ -1,16 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { MatButtonModule } from "@angular/material/button";
-import { MatDialog } from "@angular/material/dialog";
 import { MatIconModule } from "@angular/material/icon";
-import { MatMenuModule } from "@angular/material/menu";
-import { MatToolbarModule } from "@angular/material/toolbar";
 import { ApiStatusDialogComponent } from "@components/dialogs/api-status-dialog/api-status-dialog.component";
 import { initialApiStatus } from "@constants/constants";
 import { StatusService } from "@services/status.service";
 import { ThemeService } from "@services/theme.service";
 import { TuiPlatform } from "@taiga-ui/cdk/directives/platform";
-import { TuiButton, TuiTitle } from "@taiga-ui/core";
+import { TuiButton, tuiDialog, TuiHint, TuiTitle } from "@taiga-ui/core";
 import { TuiAppBar } from "@taiga-ui/layout";
 import { timer } from "rxjs";
 import { switchMap } from "rxjs/operators";
@@ -21,21 +17,24 @@ import { switchMap } from "rxjs/operators";
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./header.component.scss",
   standalone: true,
-  imports: [MatToolbarModule, MatIconModule, MatButtonModule, MatMenuModule, TuiAppBar, TuiButton, TuiPlatform, TuiTitle],
+  imports: [MatIconModule, TuiAppBar, TuiButton, TuiPlatform, TuiTitle, TuiHint],
 })
 export class HeaderComponent {
   private readonly statusService = inject(StatusService);
   private readonly themeService = inject(ThemeService);
-  private readonly dialog = inject(MatDialog);
-
-  isDarkMode = this.themeService.isDarkMode;
+  private readonly dialog = tuiDialog(ApiStatusDialogComponent, {
+    size: "auto",
+    label: "Status för API",
+  });
 
   apiStatus = toSignal(timer(0, 30_000).pipe(switchMap(() => this.statusService.getApiStatus())), {
     initialValue: initialApiStatus,
   });
 
+  isDarkMode = this.themeService.isDarkMode;
+
   openApiStatusDialog() {
-    this.dialog.open(ApiStatusDialogComponent, { width: "450px", restoreFocus: false });
+    this.dialog(this.apiStatus()).subscribe();
   }
 
   toggleTheme(): void {
