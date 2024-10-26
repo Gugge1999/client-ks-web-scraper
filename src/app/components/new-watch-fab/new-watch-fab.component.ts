@@ -1,10 +1,7 @@
-import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
-import { firstValueFrom, map } from "rxjs";
-
+import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { tap } from "rxjs";
 import { NewWatchDialogComponent } from "@components/dialogs/new-watch-dialog/new-watch-dialog.component";
-import { Watch } from "@models/watch.model";
-import { TuiButton, TuiHint, TuiIcon } from "@taiga-ui/core";
+import { TuiButton, tuiDialog, TuiHint, TuiIcon } from "@taiga-ui/core";
 
 @Component({
   selector: "scraper-new-watch-fab",
@@ -15,19 +12,25 @@ import { TuiButton, TuiHint, TuiIcon } from "@taiga-ui/core";
   imports: [TuiButton, TuiIcon, TuiHint],
 })
 export class NewWatchFabComponent {
-  private readonly matDialog = inject(MatDialog);
+  private readonly dialog = tuiDialog(NewWatchDialogComponent, {
+    size: "s",
+    closeable: false,
+  });
 
   async openNewWatchDialog() {
-    const dialogRef = this.matDialog.open(NewWatchDialogComponent, { height: "clamp(45ch, 50%, 50ch)", autoFocus: false });
+    this.dialog()
+      .pipe(
+        tap(res => {
+          if (res === undefined) {
+            return;
+          }
 
-    const watch = await firstValueFrom(dialogRef.afterClosed().pipe(map((watch: Watch | undefined) => watch)));
-
-    if (watch === undefined) {
-      return;
-    }
-
-    const cards = document.querySelectorAll(".card");
-    const lastCard = cards[cards.length - 1];
-    lastCard.scrollIntoView({ behavior: "smooth", block: "start" });
+          // TODO: Det hamnar lite för långt upp på mobil
+          const cards = document.querySelectorAll(".card");
+          const lastCard = cards[cards.length - 1];
+          lastCard.scrollIntoView({ behavior: "smooth", block: "start" });
+        }),
+      )
+      .subscribe();
   }
 }

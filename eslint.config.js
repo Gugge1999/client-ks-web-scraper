@@ -29,12 +29,15 @@ module.exports = tseslint.config(
       curly: ["error", "all"],
       "no-nested-ternary": "error",
       "no-else-return": "error",
+      "@typescript-eslint/no-explicit-any": "error",
       "@angular-eslint/prefer-on-push-component-change-detection": "error",
     },
   },
   {
     files: ["**/*.html"],
     extends: [...angular.configs.templateRecommended, ...angular.configs.templateAccessibility],
-    rules: {},
+    rules: {
+      "@angular-eslint/template/prefer-self-closing-tags": "warn",
+    },
   },
 );

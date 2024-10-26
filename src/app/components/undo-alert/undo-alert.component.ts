@@ -8,9 +8,9 @@ import { take } from "rxjs";
 @Component({
   selector: "scraper-undo-alert",
   standalone: true,
-  imports: [TuiButton],
   templateUrl: "./undo-alert.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [TuiButton],
 })
 export class UndoAlertComponent implements OnDestroy {
   protected readonly context = injectContext<TuiPopover<TuiAlertOptions<string>, boolean>>();

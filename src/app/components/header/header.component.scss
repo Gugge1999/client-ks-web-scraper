@@ -24,18 +24,13 @@ header {
   padding-left: 8px;
 }
 
-.toolbar-row {
-  justify-content: space-between;
-  padding: 0 4px;
-}
-
-.theme-icon-wrapper {
+.icon-wrapper {
   display: flex;
   align-items: center;
   border-radius: 50%;
 }
 
-.theme-mode-icon {
+.header-icon {
   transform: scale(1.2);
   transition: none;
   padding: 4px;

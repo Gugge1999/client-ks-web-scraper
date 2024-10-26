@@ -1,46 +1,32 @@
-<!-- TODO: Byt till async? Då slipper man anropa cdr -->
-<form [formGroup]="watchForm" (ngSubmit)="submitNewWatch()">
-  <h2 mat-dialog-title>Skapa ny bevakning</h2>
-  <mat-dialog-content class="mat-typography">
-    <mat-form-field appearance="outline" style="padding: 0.5rem 0 1.5rem 0">
-      <mat-label>Namn</mat-label>
-      <input matInput [formControl]="watchForm.controls.label" type="text" class="form-control" id="label" name="label" />
-      <button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="onClear(watchForm.controls.label)">
-        <mat-icon>close</mat-icon>
-      </button>
-      <mat-hint>Ange ett namn. Detta kan vara vad som helst</mat-hint>
-      @if (watchForm.controls.label.errors?.["required"]) {
-        <mat-error> Namn är obligatoriskt</mat-error>
-      }
-      @if (watchForm.controls.label.errors?.["minlength"]) {
-        <mat-error> Namn måste vara minst 3 bokstäver</mat-error>
-      }
-    </mat-form-field>
+<form [formGroup]="watchForm">
+  <h2 style="margin-top: 0; margin-bottom: 45px">Skapa ny bevakning</h2>
+  <p>
+    <tui-input [formControl]="watchForm.controls.label" [tuiTextfieldCleaner]="true">
+      Namn
 
-    <mat-form-field appearance="outline">
-      <mat-label>Klocka att bevaka</mat-label>
+      <input tuiTextfieldLegacy="true" type="text" />
 
-      <input matInput [formControl]="watchForm.controls.watchToScrape" type="text" class="form-control" id="watchToScrape" name="watchToScrape" />
-      <button matSuffix mat-icon-button aria-label="Clear" type="button" (click)="onClear(watchForm.controls.watchToScrape)">
-        <mat-icon>close</mat-icon>
-      </button>
+      <span class="tui-required"></span>
+    </tui-input>
 
-      <mat-hint> Ange klockan du vill bevaka </mat-hint>
-      @if (watchForm.controls.watchToScrape.errors?.["required"]) {
-        <mat-error>Klocka att bevaka är obligatoriskt</mat-error>
-      }
-      @if (watchForm.controls.watchToScrape.errors?.["minlength"]) {
-        <mat-error>Klocka att bevaka vara minst 2 bokstäver</mat-error>
-      }
-      @if (watchForm.controls.watchToScrape.errors?.["noResult"]) {
-        <mat-error>Klockan gav 0 resultat</mat-error>
-      }
-    </mat-form-field>
-  </mat-dialog-content>
+    <tui-error [formControl]="watchForm.controls.label" [error]="[] | tuiFieldError | async" />
+  </p>
 
-  <mat-dialog-actions align="end">
-    <button mat-flat-button (click)="cancelClicked()" type="button" color="accent">Avbryt</button>
+  <p>
+    <tui-input [formControl]="watchForm.controls.watchToScrape" [tuiTextfieldCleaner]="true">
+      Klocka att bevaka
 
-    <button mat-flat-button color="primary" type="submit" class="btn btn-success" [disabled]="watchForm.invalid">Spara</button>
-  </mat-dialog-actions>
+      <input tuiTextfieldLegacy="true" type="text" />
+
+      <span class="tui-required"></span>
+    </tui-input>
+
+    <tui-error [formControl]="watchForm.controls.watchToScrape" [error]="[] | tuiFieldError | async" />
+  </p>
+
+  <div class="flex" style="justify-content: end; padding-top: 16px">
+    <button tuiButton type="button" appearance="action-grayscale" (click)="cancelClicked()" style="margin-right: 16px">Avbryt</button>
+
+    <button tuiButton type="button" appearance="primary" [disabled]="watchForm.invalid" (click)="submitNewWatch()">Spara</button>
+  </div>
 </form>

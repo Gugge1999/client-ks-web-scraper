@@ -2,40 +2,24 @@
   <section>
     <tui-app-bar style="justify-content: space-between">
       <a class="header-logo" tuiSlot="left">
-        <mat-icon>watch</mat-icon>
+        <tui-icon icon="@tui.watch" />
         <span class="toolbar-title">KS Web Scraper</span>
       </a>
 
-      <div tuiSlot="right" style="width: 100px; display: flex">
+      <div tuiSlot="right" style="display: flex; align-items: center; gap: 12px; padding-right: 10px">
         <div tuiHint="Växla tema" tuiHintDirection="bottom">
-          <mat-icon
-            class="theme-mode-icon theme-icon-wrapper pointer"
-            fontSet="material-icons-outlined"
-            (click)="toggleTheme()"
-            (keyup)="toggleTheme()">
-            {{ isDarkMode() ? "dark_mode" : "light_mode" }}
-          </mat-icon>
+          <tui-icon [icon]="isDarkMode() ? 'moon' : 'sun'" class="header-icon icon-wrapper pointer" (click)="toggleTheme()" (keyup)="toggleTheme()" />
         </div>
 
         <div>
           @if (apiStatus().active) {
-            <button (click)="openApiStatusDialog()">
-              <div tuiHint="Visa statistik för API" tuiHintDirection="bottom">
-                <div class="flex">
-                  <mat-icon color="primary"> check_circle_outline </mat-icon>
-                  <span class="status-text">API</span>
-                </div>
-              </div>
-            </button>
+            <div class="header-icon icon-wrapper pointer" tuiHint="Visa statistik för API" tuiHintDirection="bottom">
+              <tui-icon icon="circle-check" (click)="openApiStatusDialog()" />
+            </div>
           } @else {
-            <button disabled>
-              <div tuiHint="API:et är inte aktivt" tuiHintDirection="bottom" class="flex flex-align-items-center">
-                <div class="flex">
-                  <mat-icon color="warn"> highlight_off </mat-icon>
-                  <span class="status-text">API</span>
-                </div>
-              </div>
-            </button>
+            <div class="header-icon icon-wrapper" style="cursor: not-allowed" tuiHint="API:et är inte aktivt" tuiHintDirection="bottom">
+              <tui-icon icon="circle-x" style="color: var(--tui-text-negative)" />
+            </div>
           }
         </div>
       </div>

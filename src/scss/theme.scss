@@ -1,24 +1,9 @@
-tui-root[tuitheme="dark"] {
-  ::selection {
-    background-color: #696969;
-  }
-
-  // TODO: Behövs den?
-  .desktop-header-wrapper .header-chip {
-    background-color: var(--mat-app-background-color);
-  }
-}
-
 ::selection {
   background-color: #d6d6d6;
 }
 
-//  TODO: Behövs den?
-.desktop-header-wrapper {
-  .header-chip {
-    background-color: #fff;
-  }
-  span {
-    color: #000;
+tui-root[tuitheme="dark"] {
+  ::selection {
+    background-color: #696969;
   }
 }

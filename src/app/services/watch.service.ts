@@ -1,4 +1,4 @@
-import { Injectable, inject, signal } from "@angular/core";
+import { inject, Injectable, signal } from "@angular/core";
 import { lastValueFrom } from "rxjs";
 
 import { errorMessageConst } from "@constants/constants";
@@ -6,7 +6,7 @@ import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { Watch } from "@models/watch.model";
 import { WatchApiService } from "@services/watch-api.service";
-import { AlertService } from "./alert.service";
+import { AlertService } from "@services/alert.service";
 
 @Injectable({
   providedIn: "root",
@@ -22,7 +22,7 @@ export class WatchService {
     this._watches.set(await lastValueFrom(this.watchApiService.getAllWatches()));
   }
 
-  async deleteWatch(watch: Watch) {
+  deleteWatch(watch: Watch) {
     this._watches.update(watches => watches.filter(w => w.id !== watch.id));
   }
 

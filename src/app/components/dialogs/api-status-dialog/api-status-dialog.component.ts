@@ -7,7 +7,6 @@ import { injectContext } from "@taiga-ui/polymorpheus";
   selector: "scraper-api-status-dialog",
   templateUrl: "./api-status-dialog.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrl: "./api-status-dialog.component.scss",
   standalone: true,
   imports: [],
 })

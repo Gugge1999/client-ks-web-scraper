@@ -1,9 +1,9 @@
 import { inject, Injectable } from "@angular/core";
-import { MatDialog } from "@angular/material/dialog";
-import { CookieComponent } from "@components/dialogs/cookie/cookie.component";
 import { CookieState, initCookie } from "@models/cookie";
 import { CookieService as CookieServiceLibrary } from "ngx-cookie-service";
-import { firstValueFrom, map } from "rxjs";
+import { take, tap } from "rxjs";
+import { TUI_CONFIRM, TuiConfirmData } from "@taiga-ui/kit";
+import { TuiDialogService } from "@taiga-ui/core";
 
 interface WindowWithAnalytics extends Window {
   dataLayer?: unknown[];
@@ -15,7 +15,8 @@ interface WindowWithAnalytics extends Window {
 })
 export class CookieService {
   private readonly cookieServiceLibrary = inject(CookieServiceLibrary);
-  private readonly matDialog = inject(MatDialog);
+  private readonly dialogs = inject(TuiDialogService);
+
   private readonly cookieConsentString = "Cookie consent";
   private window: WindowWithAnalytics = window;
 
@@ -34,52 +35,69 @@ export class CookieService {
     }
   }
 
-  private async showDialog() {
-    const dialogRef = this.matDialog.open(CookieComponent, { disableClose: true });
+  private showDialog() {
+    const data: TuiConfirmData = {
+      no: "Neka",
+      yes: "Acceptera",
 
-    const res = await firstValueFrom(dialogRef.afterClosed().pipe(map((res: CookieState) => res)));
+      content: "<p> Cookies använd för analys och för att utöka funktionalitet såsom personliga inställningar</p>",
+    };
 
-    if (res === CookieState.Accepted) {
-      // TODO: Lägg till google analytics
-      this.cookieServiceLibrary.set(this.cookieConsentString, CookieState.Accepted);
-      this.installGoogleAnalytics();
-      return;
-    }
+    this.dialogs
+      .open<boolean | undefined>(TUI_CONFIRM, {
+        label: "Acceptera cookies?",
+        size: "m",
+        dismissible: false,
+        closeable: false,
+        data: data,
+      })
+      .pipe(
+        tap(accepted => {
+          if (accepted) {
+            this.cookieServiceLibrary.set(this.cookieConsentString, CookieState.Accepted);
+            this.installGoogleAnalytics();
+            return;
+          }
 
-    if (res === CookieState.Rejected) {
-      this.cookieServiceLibrary.set(this.cookieConsentString, CookieState.Rejected);
-      return;
-    }
-
-    this.cookieError();
+          this.cookieServiceLibrary.set(this.cookieConsentString, CookieState.Rejected);
+        }),
+        take(1),
+      )
+      .subscribe();
   }
 
   private installGoogleAnalytics() {
-    const window = this.window;
-    const gAnalyticsId = "G-2M7YJWSQ0F";
-    const url = `https://www.googletagmanager.com/gtag/js?id=${gAnalyticsId}`;
+    try {
+      const window = this.window;
+      const gAnalyticsId = "G-2M7YJWSQ0F";
+      const url = `https://www.googletagmanager.com/gtag/js?id=${gAnalyticsId}`;
 
-    window.dataLayer = this.window.dataLayer || [];
-    window.gtag = function () {
-      // eslint-disable-next-line prefer-rest-params
-      window.dataLayer?.push(arguments);
-    };
+      window.dataLayer = this.window.dataLayer || [];
+      window.gtag = function () {
+        // TODO: Går det att fixa?
+        // eslint-disable-next-line prefer-rest-params
+        window.dataLayer?.push(arguments);
+      };
 
-    window.gtag("js", new Date());
+      window.gtag("js", new Date());
 
-    window.gtag("config", gAnalyticsId);
+      window.gtag("config", gAnalyticsId);
 
-    const el = window.document.createElement("script");
-    el.async = true;
-    el.src = url as string;
-    el.id = "gtag-script";
-    window.document.head.appendChild(el);
+      const el = window.document.createElement("script");
+      el.async = true;
+      el.src = url as string;
+      el.id = "gtag-script";
+      window.document.head.appendChild(el);
+    } catch (error) {
+      this.cookieError(error);
+    }
   }
 
-  private cookieError() {
+  private cookieError(error: unknown) {
+    // TODO: Byt till Taiga ui alert
     const cookieErrorMessage = "Kunde inte behandla samtycke av cookies.";
     window.alert(`${cookieErrorMessage} Ladda om sidan och försök igen`);
-    console.error(cookieErrorMessage);
+    console.error(`${cookieErrorMessage}.Error ${error}`);
   }
 
   getConsentCookie = () => this.cookieServiceLibrary.get(this.cookieConsentString);

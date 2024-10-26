@@ -1,3 +1,5 @@
-.watch-active-slide-toggle {
-  margin-left: 16px;
+:host {
+  display: flex;
+  gap: 20px;
+  padding-left: 5px;
 }

@@ -1,19 +1,13 @@
-<mat-card-actions align="end">
-  <button mat-icon-button tuiHint="Radera bevakning" tuiHintDirection="top" (click)="deleteWatch()">
-    <mat-icon class="delete-icon" color="warn">delete_outline</mat-icon>
-  </button>
+<tui-icon icon="trash-2" tuiHint="Radera" tuiHintDirection="top" (click)="deleteWatch()" style="color: var(--tui-text-negative)" class="pointer" />
 
-  <button mat-icon-button tuiHint="Visa statistik" tuiHintDirection="top">
-    <mat-icon fontSet="material-icons-outlined" color="primary">assessment</mat-icon>
-  </button>
+<tui-icon icon="chart-column" tuiHint="Statistik" tuiHintDirection="top" style="color: var(--tui-text-action)" class="pointer" />
 
-  <input
-    tuiSwitch
-    type="checkbox"
-    (change)="toggleActiveStatus(watch())"
-    tuiHint="Växla aktiv status"
-    tuiHintDirection="top"
-    [ngModel]="watch().active"
-    [showIcons]="false"
-    size="m" />
-</mat-card-actions>
+<input
+  tuiSwitch
+  type="checkbox"
+  (change)="toggleActiveStatus(watch())"
+  tuiHint="Växla aktiv status"
+  tuiHintDirection="top"
+  [ngModel]="watch().active"
+  [showIcons]="false"
+  size="m" />
