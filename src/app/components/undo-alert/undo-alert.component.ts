@@ -18,7 +18,7 @@ export class UndoAlertComponent implements OnDestroy {
   undoClicked = false;
 
   ngOnDestroy(): void {
-    if (this.undoClicked === true) {
+    if (this.undoClicked) {
       return;
     }
 

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, signal } from "@angular/core";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { errorMessageConst } from "@constants/constants";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
@@ -6,7 +6,7 @@ import { WatchForm } from "@models/forms/watch-form";
 import { WatchService } from "@services/watch.service";
 import { TuiInputModule, TuiTextfieldControllerModule } from "@taiga-ui/legacy";
 import { TuiButton, TuiDialogContext, TuiError, TuiHint, TuiTextfield } from "@taiga-ui/core";
-import { TuiFieldErrorPipe, tuiValidationErrorsProvider } from "@taiga-ui/kit";
+import { TuiButtonLoading, TuiFieldErrorPipe, tuiValidationErrorsProvider } from "@taiga-ui/kit";
 import { AsyncPipe } from "@angular/common";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { Watch } from "@models/watch.model";
@@ -25,6 +25,7 @@ import { Watch } from "@models/watch.model";
     AsyncPipe,
     TuiTextfieldControllerModule,
     TuiButton,
+    TuiButtonLoading,
     TuiHint,
     TuiTextfield,
   ],
@@ -51,7 +52,11 @@ export class NewWatchDialogComponent {
   public readonly context = injectContext<TuiDialogContext<Watch | undefined, void>>();
   private readonly watchService = inject(WatchService);
 
+  newWatchLoading = signal(false);
+
   protected async submitNewWatch() {
+    this.newWatchLoading.set(true);
+
     const wordsSeparatedByPlus = this.watchForm.controls.watchToScrape.value.trim().replace(/\s+/g, "+");
 
     const newWatch: NewWatchFormDTO = {
@@ -60,6 +65,8 @@ export class NewWatchDialogComponent {
     };
 
     const result = await this.watchService.saveNewWatch(newWatch);
+
+    this.newWatchLoading.set(false);
 
     if (errorMessageConst in result) {
       this.watchForm.controls.watchToScrape.setErrors({ noResult: true });

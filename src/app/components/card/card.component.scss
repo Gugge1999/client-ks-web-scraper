@@ -24,22 +24,3 @@ h1 {
     width: 100%;
   }
 }
-
-.no-active-scraped-watches {
-  font-size: large;
-  font-weight: bold;
-}
-
-section {
-  display: flex;
-  block-size: 3.125rem;
-  border-radius: 0.75rem;
-  justify-content: center;
-  align-items: center;
-  color: var(--tui-text-secondary);
-  border: 1px dashed;
-}
-
-.label {
-  font: var(--tui-font-text-l);
-}
