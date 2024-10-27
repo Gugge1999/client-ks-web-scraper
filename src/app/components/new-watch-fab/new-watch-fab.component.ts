@@ -30,9 +30,9 @@ export class NewWatchFabComponent {
       return;
     }
 
-    // TODO: Det hamnar lite för långt upp på mobil
     const cards = document.querySelectorAll(".card");
     const lastCard = cards[cards.length - 1];
-    lastCard.scrollIntoView({ behavior: "smooth", block: "start" });
+    // setTimeout behövs för mobil, annars hamnar man lite för långt upp
+    setTimeout(() => lastCard.scrollIntoView({ behavior: "smooth", block: "start" }), 100);
   }
 }
