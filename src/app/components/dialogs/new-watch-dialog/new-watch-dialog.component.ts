@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from "@angular/core";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-import { errorMessageConst, formErrorMessage } from "@constants/constants";
+import { errorMessageConst, formErrorMessages } from "@constants/constants";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { WatchForm } from "@models/forms/watch-form";
 import { WatchService } from "@services/watch.service";
-import { TuiInputModule, TuiTextfieldControllerModule } from "@taiga-ui/legacy";
 import { TuiButton, TuiDialogContext, TuiError, TuiHint, TuiTextfield } from "@taiga-ui/core";
 import { TuiButtonLoading, TuiFieldErrorPipe, tuiValidationErrorsProvider } from "@taiga-ui/kit";
 import { AsyncPipe } from "@angular/common";
@@ -19,17 +18,15 @@ import { Watch } from "@models/watch.model";
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    TuiInputModule,
     TuiError,
     TuiFieldErrorPipe,
     AsyncPipe,
-    TuiTextfieldControllerModule,
     TuiButton,
     TuiButtonLoading,
     TuiHint,
     TuiTextfield,
   ],
-  providers: [tuiValidationErrorsProvider(formErrorMessage)],
+  providers: [tuiValidationErrorsProvider(formErrorMessages)],
 })
 export class NewWatchDialogComponent {
   public readonly context = injectContext<TuiDialogContext<Watch | undefined, void>>();
