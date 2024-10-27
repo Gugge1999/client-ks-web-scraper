@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from "@angular/core";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-import { errorMessageConst } from "@constants/constants";
+import { errorMessageConst, formErrorMessage } from "@constants/constants";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { WatchForm } from "@models/forms/watch-form";
 import { WatchService } from "@services/watch.service";
@@ -29,15 +29,12 @@ import { Watch } from "@models/watch.model";
     TuiHint,
     TuiTextfield,
   ],
-  providers: [
-    tuiValidationErrorsProvider({
-      required: "Obligatorisk",
-      noResult: "Gav inget resultat",
-      minlength: ({ requiredLength }: { requiredLength: string }) => `Minst ${requiredLength} tecken`,
-    }),
-  ],
+  providers: [tuiValidationErrorsProvider(formErrorMessage)],
 })
 export class NewWatchDialogComponent {
+  public readonly context = injectContext<TuiDialogContext<Watch | undefined, void>>();
+  private readonly watchService = inject(WatchService);
+
   watchForm = new FormGroup<WatchForm>({
     label: new FormControl("", {
       validators: [Validators.required, Validators.minLength(3)],
@@ -48,9 +45,6 @@ export class NewWatchDialogComponent {
       nonNullable: true,
     }),
   });
-
-  public readonly context = injectContext<TuiDialogContext<Watch | undefined, void>>();
-  private readonly watchService = inject(WatchService);
 
   newWatchLoading = signal(false);
 

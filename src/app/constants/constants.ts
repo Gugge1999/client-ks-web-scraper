@@ -15,3 +15,9 @@ export const initialApiStatus: Readonly<ApiStatus> = {
 
 export const errorMessageConst = "errorMessage";
 export const verboseErrorMessageConst = "verboseErrorMessage";
+
+export const formErrorMessage = {
+  required: "Obligatorisk",
+  noResult: "Gav inget resultat",
+  minlength: ({ requiredLength }: { requiredLength: string }) => `Minst ${requiredLength} tecken`,
+};

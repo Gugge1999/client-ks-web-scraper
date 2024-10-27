@@ -5,9 +5,7 @@
     "start": "ng s",
     "dev": "npm run lint && ng serve",
     "build": "ng build",
-    "lint": "ng lint",
-    "pretty-quick": "pretty-quick --staged",
-    "prepare": "husky"
+    "lint": "ng lint"
   },
   "dependencies": {
     "@angular-devkit/build-angular": "^18.2.10",
@@ -37,7 +35,6 @@
     "@angular/compiler-cli": "^18.2.9",
     "angular-eslint": "18.4.0",
     "eslint": "^9.13.0",
-    "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
     "pretty-quick": "^4.0.0",
