@@ -18,7 +18,7 @@ export class WatchService {
   private readonly alertService = inject(AlertService);
 
   getAllWatches() {
-    // Värdet från den här används inte. Därför används inte promise
+    // Värdet från den här returneras inte. Därför används inte promise. Byt till resource sen
     this.watchApiService
       .getAllWatches()
       .pipe(take(1))
@@ -32,7 +32,9 @@ export class WatchService {
   }
 
   addWatch(watch: Watch) {
-    this._watches.update(watches => [...watches, watch].sort((a, b) => Date.parse(a.added.toString()) - Date.parse(b.added.toString())));
+    this._watches.update(watches => {
+      return [...watches, watch].sort((a, b) => Date.parse(a.added.toString()) - Date.parse(b.added.toString()));
+    });
   }
 
   async saveNewWatch(newWatchDTO: NewWatchFormDTO) {
@@ -50,19 +52,19 @@ export class WatchService {
 
   async toggleActiveStatus(watch: Watch) {
     const { active, id, label } = watch;
-    const updatedWatch = await lastValueFrom(this.watchApiService.toggleActiveStatus({ active, id, label })).catch((err: ApiError) => err);
+    const res = await lastValueFrom(this.watchApiService.toggleActiveStatus({ active, id, label })).catch((err: ApiError) => err);
 
-    if (errorMessageConst in updatedWatch) {
+    if (errorMessageConst in res) {
       this._watches.set(structuredClone(this._watches()));
       return;
     }
 
-    this.alertService.infoAlert(`${updatedWatch.active ? "Aktivera:" : "Inaktivera:"} ${updatedWatch.label}`);
+    this.alertService.infoAlert(`${res.active ? "Aktivera:" : "Inaktivera:"} ${res.label}`);
 
     this._watches.update(watches =>
       watches.map(w => {
-        if (w.id === updatedWatch.id) {
-          w.active = updatedWatch.active;
+        if (w.id === res.id) {
+          w.active = res.active;
         }
 
         return w;

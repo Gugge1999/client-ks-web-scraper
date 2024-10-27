@@ -1,7 +1,13 @@
 import { registerLocaleData } from "@angular/common";
 import { provideHttpClient, withInterceptors } from "@angular/common/http";
 import localeSvSe from "@angular/common/locales/sv";
-import { ApplicationConfig, enableProdMode, importProvidersFrom, LOCALE_ID, provideExperimentalZonelessChangeDetection } from "@angular/core";
+import {
+  ApplicationConfig,
+  enableProdMode,
+  importProvidersFrom,
+  LOCALE_ID,
+  provideExperimentalZonelessChangeDetection,
+} from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { provideAnimations } from "@angular/platform-browser/animations";
 import { errorInterceptor } from "@interceptors/error-interceptor";
