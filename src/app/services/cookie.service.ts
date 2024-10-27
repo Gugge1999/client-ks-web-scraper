@@ -96,10 +96,8 @@ export class CookieService {
   }
 
   private cookieError(error: unknown) {
-    const cookieErrorMessage = "Kunde inte behandla samtycke av cookies.";
-    // TODO: Byt till Taiga ui alert
-
-    window.alert(`${cookieErrorMessage} Ladda om sidan och försök igen`);
+    const cookieErrorMessage = "Kunde inte behandla samtycke av cookies";
+    this.alertService.errorAlert(`${cookieErrorMessage}. Ladda om sidan och försök igen`, { sticky: true });
     console.error(`${cookieErrorMessage}.Error ${error}`);
   }
 

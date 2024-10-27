@@ -11,5 +11,7 @@ export class AlertService {
 
   infoAlert = (message: string) => this.alerts.open(message, { appearance: "info" }).subscribe();
 
-  errorAlert = (message: string) => this.alerts.open(`Error: ${message}`, { appearance: "error" }).subscribe();
+  errorAlert(message: string, config?: { sticky: true }) {
+    return this.alerts.open(`Error: ${message}`, { appearance: "error", autoClose: config?.sticky ? 0 : 5000 }).subscribe();
+  }
 }
