@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, OnInit } from "@angular/core";
 import { TUI_DARK_MODE, TuiButton, TuiRoot } from "@taiga-ui/core";
-
 import { CardComponent } from "@components/card/card.component";
 import { FooterComponent } from "@components/footer/footer.component";
 import { HeaderComponent } from "@components/header/header.component";

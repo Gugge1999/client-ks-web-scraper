@@ -1,6 +1,5 @@
 import { inject, Injectable, signal } from "@angular/core";
-import { lastValueFrom } from "rxjs";
-
+import { lastValueFrom, take } from "rxjs";
 import { errorMessageConst } from "@constants/constants";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
@@ -18,8 +17,14 @@ export class WatchService {
   private readonly watchApiService = inject(WatchApiService);
   private readonly alertService = inject(AlertService);
 
-  async getAllWatches() {
-    this._watches.set(await lastValueFrom(this.watchApiService.getAllWatches()));
+  getAllWatches() {
+    // Värdet från den här används inte. Därför används inte promise
+    this.watchApiService
+      .getAllWatches()
+      .pipe(take(1))
+      .subscribe(res => {
+        this._watches.set(res);
+      });
   }
 
   deleteWatch(watch: Watch) {

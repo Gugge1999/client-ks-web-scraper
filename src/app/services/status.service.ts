@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
-import { Injectable, inject } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { catchError, of } from "rxjs";
-
 import { initialApiStatus } from "@constants/constants";
 import { ApiStatus } from "@models/api-status.model";
 import { env } from "env/env";

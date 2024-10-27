@@ -4,6 +4,7 @@ import { CookieService as CookieServiceLibrary } from "ngx-cookie-service";
 import { take, tap } from "rxjs";
 import { TUI_CONFIRM, TuiConfirmData } from "@taiga-ui/kit";
 import { TuiDialogService } from "@taiga-ui/core";
+import { AlertService } from "@services/alert.service";
 
 interface WindowWithAnalytics extends Window {
   dataLayer?: unknown[];
@@ -16,6 +17,7 @@ interface WindowWithAnalytics extends Window {
 export class CookieService {
   private readonly cookieServiceLibrary = inject(CookieServiceLibrary);
   private readonly dialogs = inject(TuiDialogService);
+  private readonly alertService = inject(AlertService);
 
   private readonly cookieConsentString = "Cookie consent";
   private window: WindowWithAnalytics = window;
@@ -94,8 +96,9 @@ export class CookieService {
   }
 
   private cookieError(error: unknown) {
-    // TODO: Byt till Taiga ui alert
     const cookieErrorMessage = "Kunde inte behandla samtycke av cookies.";
+    // TODO: Byt till Taiga ui alert
+
     window.alert(`${cookieErrorMessage} Ladda om sidan och försök igen`);
     console.error(`${cookieErrorMessage}.Error ${error}`);
   }
