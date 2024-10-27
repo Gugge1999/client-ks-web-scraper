@@ -1,10 +1,6 @@
 # TODO
 
-Ändra till printWidth 135
-
 Läs: https://itnext.io/a-change-detection-zone-js-zoneless-local-change-detection-and-signals-story-9344079c3b9d
-
-Radera @nx/nx-win32-x64-msvc från package.json. Den behövs på grund att ett problem i github actions
 
 Ett bra repo att kika på: https://github.com/joematthews/extreme-angular
 
