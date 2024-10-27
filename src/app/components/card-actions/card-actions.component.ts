@@ -57,10 +57,7 @@ export class CardActionsComponent {
         appearance: "info",
         data: this.watch().id,
       })
-      .pipe(
-        tap(() => this.watchService.addWatch(this.watch())),
-        take(1),
-      )
+      .pipe(tap(() => this.watchService.addWatch(this.watch())))
       .subscribe();
   }
 }

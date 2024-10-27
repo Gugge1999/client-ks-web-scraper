@@ -1,3 +1,11 @@
-<button tuiButton type="button" style="background-color: var(--tui-status-positive)" size="xl" (click)="openNewWatchDialog()">
-  <tui-icon icon="@tui.plus" />
-</button>
+<div [tuiHint]="tooltip()">
+  <button
+    tuiButton
+    type="button"
+    style="background-color: var(--tui-status-positive)"
+    size="xl"
+    (click)="openNewWatchDialog()"
+    [disabled]="!apiStatus().active">
+    <tui-icon icon="@tui.plus" />
+  </button>
+</div>

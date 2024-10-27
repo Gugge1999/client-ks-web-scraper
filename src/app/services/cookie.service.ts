@@ -1,7 +1,7 @@
 import { inject, Injectable } from "@angular/core";
 import { CookieState, initCookie } from "@models/cookie";
 import { CookieService as CookieServiceLibrary } from "ngx-cookie-service";
-import { take, tap } from "rxjs";
+import { tap } from "rxjs";
 import { TUI_CONFIRM, TuiConfirmData } from "@taiga-ui/kit";
 import { TuiDialogService } from "@taiga-ui/core";
 import { AlertService } from "@services/alert.service";
@@ -41,31 +41,23 @@ export class CookieService {
     const data: TuiConfirmData = {
       no: "Neka",
       yes: "Acceptera",
-
       content: "<p> Cookies använd för analys och för att utöka funktionalitet såsom personliga inställningar</p>",
     };
 
     this.dialogs
-      .open<boolean | undefined>(TUI_CONFIRM, {
-        label: "Acceptera cookies?",
-        size: "m",
-        dismissible: false,
-        closeable: false,
-        data: data,
-      })
-      .pipe(
-        tap(accepted => {
-          if (accepted) {
-            this.cookieServiceLibrary.set(this.cookieConsentString, CookieState.Accepted);
-            this.installGoogleAnalytics();
-            return;
-          }
-
-          this.cookieServiceLibrary.set(this.cookieConsentString, CookieState.Rejected);
-        }),
-        take(1),
-      )
+      .open<boolean>(TUI_CONFIRM, { label: "Acceptera cookies?", size: "m", dismissible: false, closeable: false, data: data })
+      .pipe(tap(accepted => this.handleCookieResponse(accepted)))
       .subscribe();
+  }
+
+  private handleCookieResponse(accepted: boolean) {
+    if (accepted) {
+      this.cookieServiceLibrary.set(this.cookieConsentString, CookieState.Accepted);
+      this.installGoogleAnalytics();
+      return;
+    }
+
+    this.cookieServiceLibrary.set(this.cookieConsentString, CookieState.Rejected);
   }
 
   private installGoogleAnalytics() {

@@ -1,10 +1,10 @@
 <form [formGroup]="watchForm">
   <h2 style="margin-top: 0; margin-bottom: 45px">Skapa ny bevakning</h2>
   <p>
-    <tui-input [formControl]="watchForm.controls.label" [tuiTextfieldCleaner]="true">
+    <tui-input [formControl]="watchForm.controls.label" [tuiTextfieldCleaner]="true" type="text">
       Namn
 
-      <input tuiTextfieldLegacy="true" type="text" />
+      <input tuiTextfieldLegacy="true" type="text" name="label" />
 
       <span class="tui-required"></span>
     </tui-input>
@@ -13,10 +13,10 @@
   </p>
 
   <p>
-    <tui-input [formControl]="watchForm.controls.watchToScrape" [tuiTextfieldCleaner]="true">
+    <tui-input [formControl]="watchForm.controls.watchToScrape" [tuiTextfieldCleaner]="true" type="text">
       Klocka att bevaka
 
-      <input tuiTextfieldLegacy="true" type="text" />
+      <input tuiTextfieldLegacy="true" type="text" name="watchToScrape" />
 
       <span class="tui-required"></span>
     </tui-input>
