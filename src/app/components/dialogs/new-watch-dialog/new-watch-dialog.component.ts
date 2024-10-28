@@ -1,19 +1,26 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from "@angular/core";
+import { injectContext } from "@taiga-ui/polymorpheus";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-import { errorMessageConst, formErrorMessages } from "@constants/constants";
+import { errorMessageConst } from "@constants/constants";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { WatchForm } from "@models/forms/watch-form";
+import { Watch } from "@models/watch.model";
 import { WatchService } from "@services/watch.service";
 import { TuiButton, TuiDialogContext, TuiError, TuiHint, TuiTextfield } from "@taiga-ui/core";
 import { TuiButtonLoading, TuiFieldErrorPipe, tuiValidationErrorsProvider } from "@taiga-ui/kit";
 import { AsyncPipe } from "@angular/common";
-import { injectContext } from "@taiga-ui/polymorpheus";
-import { Watch } from "@models/watch.model";
 
 @Component({
   selector: "scraper-new-watch-dialog",
   templateUrl: "./new-watch-dialog.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [
+    tuiValidationErrorsProvider({
+      required: "Obligatorisk",
+      noResult: "Klocka gav inget resultat",
+      minlength: ({ minLength }: { minLength: string }) => `Minst ${minLength} tecken`,
+    }),
+  ],
   standalone: true,
   imports: [
     FormsModule,
@@ -26,7 +33,6 @@ import { Watch } from "@models/watch.model";
     TuiHint,
     TuiTextfield,
   ],
-  providers: [tuiValidationErrorsProvider(formErrorMessages)],
 })
 export class NewWatchDialogComponent {
   public readonly context = injectContext<TuiDialogContext<Watch | undefined, void>>();

@@ -5,9 +5,9 @@
       <label [for]="watchForm.controls.label" tuiLabel>Namn</label>
 
       <input tuiTextfield [formControl]="watchForm.controls.label" />
-
-      <tui-error [formControl]="watchForm.controls.label" [error]="[] | tuiFieldError | async" />
     </tui-textfield>
+
+    <tui-error [formControl]="watchForm.controls.label" [error]="[] | tuiFieldError | async" />
   </p>
 
   <p>
@@ -15,9 +15,9 @@
       <label [for]="watchForm.controls.watchToScrape" tuiLabel>Klocka att bevaka</label>
 
       <input tuiTextfield [formControl]="watchForm.controls.watchToScrape" />
-
-      <tui-error [formControl]="watchForm.controls.watchToScrape" [error]="[] | tuiFieldError | async" />
     </tui-textfield>
+
+    <tui-error [formControl]="watchForm.controls.watchToScrape" [error]="[] | tuiFieldError | async" />
   </p>
 
   <div class="flex" style="justify-content: end; padding-top: 16px">
