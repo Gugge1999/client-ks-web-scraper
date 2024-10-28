@@ -18,7 +18,8 @@ import { AsyncPipe } from "@angular/common";
     tuiValidationErrorsProvider({
       required: "Obligatorisk",
       noResult: "Klocka gav inget resultat",
-      minlength: ({ minLength }: { minLength: string }) => `Minst ${minLength} tecken`,
+      // OBS: Variable måste heta requiredLength
+      minlength: ({ requiredLength }: { requiredLength: string }) => `Minst ${requiredLength} tecken`,
     }),
   ],
   standalone: true,
