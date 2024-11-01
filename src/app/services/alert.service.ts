@@ -7,11 +7,15 @@ import { TuiAlertService } from "@taiga-ui/core";
 export class AlertService {
   private readonly alerts = inject(TuiAlertService);
 
-  successAlert = (message: string) => this.alerts.open(message, { appearance: "success" }).subscribe();
+  successAlert(message: string): void {
+    this.alerts.open(message, { appearance: "success" }).subscribe();
+  }
 
-  infoAlert = (message: string) => this.alerts.open(message, { appearance: "info" }).subscribe();
+  infoAlert(message: string): void {
+    this.alerts.open(message, { appearance: "info" }).subscribe();
+  }
 
-  errorAlert(message: string, config?: { sticky: true }) {
-    return this.alerts.open(`Error: ${message}`, { appearance: "error", autoClose: config?.sticky ? 0 : 5000 }).subscribe();
+  errorAlert(message: string, config?: { sticky: true }): void {
+    this.alerts.open(`Error: ${message}`, { appearance: "error", autoClose: config?.sticky ? 0 : 5000 }).subscribe();
   }
 }
