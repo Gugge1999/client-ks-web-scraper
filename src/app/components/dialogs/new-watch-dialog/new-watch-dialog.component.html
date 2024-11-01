@@ -1,23 +1,26 @@
 <form [formGroup]="watchForm">
   <h2 style="margin-top: 0; margin-bottom: 45px">Skapa ny bevakning</h2>
+
+  @let controls = watchForm.controls;
+
   <p>
     <tui-textfield>
-      <label [for]="watchForm.controls.label" tuiLabel>Namn</label>
+      <label [for]="controls.label" tuiLabel>Namn</label>
 
-      <input tuiTextfield [formControl]="watchForm.controls.label" />
+      <input tuiTextfield [formControl]="controls.label" />
     </tui-textfield>
 
-    <tui-error [formControl]="watchForm.controls.label" [error]="[] | tuiFieldError | async" />
+    <tui-error [formControl]="controls.label" [error]="[] | tuiFieldError | async" />
   </p>
 
   <p>
     <tui-textfield>
-      <label [for]="watchForm.controls.watchToScrape" tuiLabel>Klocka att bevaka</label>
+      <label [for]="controls.watchToScrape" tuiLabel>Klocka att bevaka</label>
 
-      <input tuiTextfield [formControl]="watchForm.controls.watchToScrape" />
+      <input tuiTextfield [formControl]="controls.watchToScrape" />
     </tui-textfield>
 
-    <tui-error [formControl]="watchForm.controls.watchToScrape" [error]="[] | tuiFieldError | async" />
+    <tui-error [formControl]="controls.watchToScrape" [error]="[] | tuiFieldError | async" />
   </p>
 
   <div class="flex" style="justify-content: end; padding-top: 16px">

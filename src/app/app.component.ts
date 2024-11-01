@@ -13,13 +13,23 @@ import { timer } from "rxjs";
 import { switchMap } from "rxjs/operators";
 import { initialApiStatus } from "@constants/constants";
 import { StatusService } from "@services/status.service";
+import { ChartComponent } from "@components/chart/chart.component";
 
 @Component({
   selector: "scraper-root",
   templateUrl: "./app.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [HeaderComponent, FooterComponent, SummaryComponent, CardComponent, NewWatchFabComponent, TuiRoot, TuiButton],
+  imports: [
+    HeaderComponent,
+    FooterComponent,
+    SummaryComponent,
+    CardComponent,
+    NewWatchFabComponent,
+    TuiRoot,
+    TuiButton,
+    ChartComponent,
+  ],
 })
 export class AppComponent implements OnInit {
   private readonly themeService = inject(ThemeService);

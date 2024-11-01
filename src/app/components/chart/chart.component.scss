@@ -1,0 +1,13 @@
+.axes {
+  color: var(--tui-status-positive);
+  block-size: 15rem;
+  inline-size: 30rem;
+}
+
+:host {
+  display: flex;
+  justify-content: center;
+
+  // TODO: Radera sen
+  padding-top: 30px;
+}
