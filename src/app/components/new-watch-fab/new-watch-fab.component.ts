@@ -1,9 +1,9 @@
 import { ChangeDetectionStrategy, Component, computed, input } from "@angular/core";
-import { tap } from "rxjs";
 import { NewWatchDialogComponent } from "@components/dialogs/new-watch-dialog/new-watch-dialog.component";
-import { TuiButton, tuiDialog, TuiHint, TuiIcon } from "@taiga-ui/core";
 import { ApiStatus } from "@models/api-status.model";
 import { Watch } from "@models/watch.model";
+import { TuiButton, tuiDialog, TuiHint, TuiIcon } from "@taiga-ui/core";
+import { tap } from "rxjs";
 
 @Component({
   selector: "scraper-new-watch-fab",
@@ -11,7 +11,7 @@ import { Watch } from "@models/watch.model";
   templateUrl: "./new-watch-fab.component.html",
   styleUrl: "./new-watch-fab.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TuiButton, TuiIcon, TuiHint],
+  imports: [TuiIcon, TuiButton, TuiHint],
 })
 export class NewWatchFabComponent {
   apiStatus = input.required<ApiStatus>();
@@ -21,11 +21,11 @@ export class NewWatchFabComponent {
 
   async openNewWatchDialog() {
     this.dialog()
-      .pipe(tap(res => this.handleRes(res)))
+      .pipe(tap(res => this.handleFabRes(res)))
       .subscribe();
   }
 
-  private handleRes(res: Watch | undefined) {
+  private handleFabRes(res: Watch | undefined) {
     if (res === undefined) {
       return;
     }

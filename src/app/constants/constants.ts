@@ -3,6 +3,7 @@ import { ApiStatus } from "@models/api-status.model";
 export const initialApiStatus: Readonly<ApiStatus> = {
   active: false,
   scrapingIntervalInMinutes: 0,
+  memoryUsage: "",
   uptime: {
     years: 0,
     months: 0,

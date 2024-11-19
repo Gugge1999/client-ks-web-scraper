@@ -1,4 +1,6 @@
 # TODO
+Fixa hantering av error från api. Idag är det export const apiError = "errorMessage"; men det fungerar inte atm
+
 
 För diagram använd
 - https://taiga-ui.dev/charts/line-chart

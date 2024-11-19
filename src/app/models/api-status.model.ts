@@ -1,6 +1,7 @@
 export interface ApiStatus {
   active: boolean;
   scrapingIntervalInMinutes: number;
+  memoryUsage: string;
   uptime: Uptime;
 }
 
