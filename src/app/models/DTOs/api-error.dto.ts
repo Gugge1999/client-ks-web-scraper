@@ -1,4 +1,5 @@
 export interface ApiError {
-  errorMessage: string;
-  verboseErrorMessage?: object;
+  status: number;
+  message: string;
+  stack: string;
 }

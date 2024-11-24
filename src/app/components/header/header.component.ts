@@ -1,8 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject, input } from "@angular/core";
 import { ApiStatusDialogComponent } from "@components/dialogs/api-status-dialog/api-status-dialog.component";
 import { ThemeService } from "@services/theme.service";
-import { TuiPlatform } from "@taiga-ui/cdk/directives/platform";
-import { TuiButton, tuiDialog, TuiHint, TuiIcon, TuiTitle } from "@taiga-ui/core";
+import { tuiDialog, TuiHint, TuiIcon } from "@taiga-ui/core";
 import { TuiAppBar } from "@taiga-ui/layout";
 import { ApiStatus } from "@models/api-status.model";
 
@@ -11,8 +10,7 @@ import { ApiStatus } from "@models/api-status.model";
   templateUrl: "./header.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./header.component.scss",
-  standalone: true,
-  imports: [TuiAppBar, TuiButton, TuiPlatform, TuiTitle, TuiHint, TuiIcon],
+  imports: [TuiAppBar, TuiHint, TuiIcon],
 })
 export class HeaderComponent {
   apiStatus = input.required<ApiStatus>();

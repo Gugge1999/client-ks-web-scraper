@@ -5,10 +5,10 @@ import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { WatchForm } from "@models/forms/watch-form";
 import { Watch } from "@models/watch.model";
 import { WatchService } from "@services/watch.service";
-import { TuiButton, TuiDialogContext, TuiError, TuiHint, TuiTextfield } from "@taiga-ui/core";
+import { TuiButton, TuiDialogContext, TuiError, TuiTextfield } from "@taiga-ui/core";
 import { TuiButtonLoading, TuiFieldErrorPipe, tuiValidationErrorsProvider } from "@taiga-ui/kit";
 import { AsyncPipe } from "@angular/common";
-import { errorMessageConst } from "@constants/constants";
+import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
 
 @Component({
   selector: "scraper-new-watch-dialog",
@@ -22,18 +22,7 @@ import { errorMessageConst } from "@constants/constants";
       minlength: ({ requiredLength }: { requiredLength: string }) => `Minst ${requiredLength} tecken`,
     }),
   ],
-  standalone: true,
-  imports: [
-    FormsModule,
-    ReactiveFormsModule,
-    TuiError,
-    TuiFieldErrorPipe,
-    AsyncPipe,
-    TuiButton,
-    TuiButtonLoading,
-    TuiHint,
-    TuiTextfield,
-  ],
+  imports: [FormsModule, ReactiveFormsModule, TuiError, TuiFieldErrorPipe, AsyncPipe, TuiButton, TuiButtonLoading, TuiTextfield],
 })
 export class NewWatchDialogComponent {
   public readonly context = injectContext<TuiDialogContext<Watch | undefined, void>>();
@@ -66,7 +55,7 @@ export class NewWatchDialogComponent {
 
     this.newWatchLoading.set(false);
 
-    if (errorMessageConst in result) {
+    if (STACK_API_ERROR_PROPERTY in result) {
       this.watchForm.controls.watchToScrape.setErrors({ noResult: true });
 
       return;

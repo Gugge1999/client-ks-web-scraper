@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from "@angular/core";
-import { TUI_DARK_MODE, TuiButton, TuiRoot } from "@taiga-ui/core";
+import { ChangeDetectionStrategy, Component, inject, OnInit, resource } from "@angular/core";
+import { TUI_DARK_MODE, TuiRoot } from "@taiga-ui/core";
 import { CardComponent } from "@components/card/card.component";
 import { FooterComponent } from "@components/footer/footer.component";
 import { HeaderComponent } from "@components/header/header.component";
@@ -11,25 +11,14 @@ import { WatchService } from "@services/watch.service";
 import { toSignal } from "@angular/core/rxjs-interop";
 import { timer } from "rxjs";
 import { switchMap } from "rxjs/operators";
-import { initialApiStatus } from "@constants/constants";
+import { INITIAL_API_STATUS } from "@constants/constants";
 import { StatusService } from "@services/status.service";
-import { ChartComponent } from "@components/chart/chart.component";
 
 @Component({
   selector: "scraper-root",
   templateUrl: "./app.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [
-    HeaderComponent,
-    FooterComponent,
-    SummaryComponent,
-    CardComponent,
-    NewWatchFabComponent,
-    TuiRoot,
-    TuiButton,
-    ChartComponent,
-  ],
+  imports: [HeaderComponent, FooterComponent, SummaryComponent, CardComponent, NewWatchFabComponent, TuiRoot],
 })
 export class AppComponent implements OnInit {
   private readonly themeService = inject(ThemeService);
@@ -42,8 +31,24 @@ export class AppComponent implements OnInit {
   watches = this.watchService.watches;
 
   apiStatus = toSignal(timer(0, 30_000).pipe(switchMap(() => this.statusService.getApiStatus())), {
-    initialValue: initialApiStatus,
+    initialValue: INITIAL_API_STATUS,
   });
+
+  todosResource = resource({
+    loader: () => {
+      return fetch(`https://jsonplaceholder.typicode.com/todos?_limit=10`).then(res => res.json() as Promise<any[]>);
+    },
+  });
+
+  updateTodo() {
+    this.todosResource.value.update(value => {
+      if (!value) {
+        return undefined;
+      }
+
+      return { ...value, title: "updated" };
+    });
+  }
 
   ngOnInit() {
     this.cookieService.onInit();

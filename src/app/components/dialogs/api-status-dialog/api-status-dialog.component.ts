@@ -4,11 +4,10 @@ import { TuiDialogContext } from "@taiga-ui/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
 
 @Component({
-  selector: "scraper-api-status-dialog",
-  templateUrl: "./api-status-dialog.component.html",
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [],
+    selector: "scraper-api-status-dialog",
+    templateUrl: "./api-status-dialog.component.html",
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: []
 })
 export class ApiStatusDialogComponent {
   public readonly context = injectContext<TuiDialogContext<void, ApiStatus>>();

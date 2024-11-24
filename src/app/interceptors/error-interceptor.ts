@@ -1,16 +1,18 @@
 import { HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpRequest } from "@angular/common/http";
 import { inject } from "@angular/core";
-import { verboseErrorMessageConst } from "@constants/constants";
 import { AlertService } from "@services/alert.service";
 import { catchError, Observable, throwError } from "rxjs";
+import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
+import { TUI_IS_MOBILE } from "@taiga-ui/cdk";
 
 export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
   const alertService = inject(AlertService);
+  const isMobile = inject(TUI_IS_MOBILE);
 
   return next(req).pipe(
     catchError((errRes: HttpErrorResponse) => {
       const errStatus = errRes.status;
-      const err = errRes.error ?? {};
+      const err = errRes.error ?? null;
 
       try {
         // Returnera tidigt om status är 400. Den kan returneras vid valideringsfel, vilket inte är "riktigt" error
@@ -18,14 +20,7 @@ export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn)
           return throwError(() => err);
         }
 
-        if (err && verboseErrorMessageConst in err) {
-          // TODO :Det kanske bara ska visas i desktop
-          alertService.errorAlert("Fullständigt felmeddelande visas finns i console", { sticky: true });
-          console.error("verbose error message", err.verboseErrorMessage);
-        }
-
-        if (err && "stack" in err) {
-          // TODO :Det kanske bara ska visas i desktop
+        if (err && STACK_API_ERROR_PROPERTY in err && isMobile === false) {
           alertService.errorAlert("Se stacktrace i console", { sticky: true });
           console.error("Stack:", err.stack);
         }
@@ -43,16 +38,16 @@ export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn)
         } else if (err.errorMessage) {
           errMsg = err.errorMessage;
         } else {
-          // TODO: Lägg till message här
           errMsg = "Något gick fel";
         }
 
         alertService.errorAlert(errMsg);
         return throwError(() => err);
       } catch (error) {
-        alertService.errorAlert("Nånting gick fel i errorInterceptor");
+        const catchErrMsg = "Nånting gick fel i errorInterceptor";
+        alertService.errorAlert(catchErrMsg);
 
-        console.error("Something went wrong in errorInterceptor", error);
+        console.error(catchErrMsg, error);
 
         return throwError(() => error);
       }

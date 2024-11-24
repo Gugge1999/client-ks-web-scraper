@@ -9,12 +9,11 @@ import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
 import { take, tap } from "rxjs";
 
 @Component({
-  selector: "scraper-card-actions",
-  templateUrl: "./card-actions.component.html",
-  styleUrl: "./card-actions.component.scss",
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, TuiSwitch, TuiHint, TuiIcon],
+    selector: "scraper-card-actions",
+    templateUrl: "./card-actions.component.html",
+    styleUrl: "./card-actions.component.scss",
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [FormsModule, TuiSwitch, TuiHint, TuiIcon]
 })
 export class CardActionsComponent {
   watch = input.required<Watch>();

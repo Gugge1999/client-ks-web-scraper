@@ -1,6 +1,6 @@
 import { ApiStatus } from "@models/api-status.model";
 
-export const initialApiStatus: Readonly<ApiStatus> = {
+export const INITIAL_API_STATUS: Readonly<ApiStatus> = {
   active: false,
   scrapingIntervalInMinutes: 0,
   memoryUsage: "",
@@ -14,5 +14,4 @@ export const initialApiStatus: Readonly<ApiStatus> = {
   },
 } as const;
 
-export const errorMessageConst = "errorMessage";
-export const verboseErrorMessageConst = "verboseErrorMessage";
+export const STACK_API_ERROR_PROPERTY = "stack";

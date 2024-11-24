@@ -11,21 +11,25 @@ import { Watch } from "@models/watch.model";
 export class WatchApiService {
   private readonly http = inject(HttpClient);
 
-  private readonly apiUrl = `${env.apiUrl}`;
+  private readonly bevakningarUrl = `${env.apiUrl}/bevakningar`;
 
   toggleActiveStatus(dto: Pick<Watch, "active" | "id" | "label">) {
-    return this.http.put<Watch | ApiError>(`${this.apiUrl}/toggle-active-status`, dto);
+    return this.http.put<Watch | ApiError>(`${this.bevakningarUrl}/toggle-active-status`, dto);
   }
 
   deleteWatchById(id: string) {
-    return this.http.delete<{ deleteWatchId: string } | ApiError>(`${this.apiUrl}/delete-watch/${id}`);
+    return this.http.delete<{ deleteWatchId: string } | ApiError>(`${this.bevakningarUrl}/delete-watch/${id}`);
   }
 
   saveNewWatch(watchFormDTO: NewWatchFormDTO) {
-    return this.http.post<Watch | ApiError>(`${this.apiUrl}/save-watch`, watchFormDTO);
+    return this.http.post<Watch | ApiError>(`${this.bevakningarUrl}/save-watch`, watchFormDTO);
   }
 
   getAllWatches() {
-    return this.http.get<Watch[]>(`${this.apiUrl}/all-watches`);
+    return this.http.get<Watch[]>(`${this.bevakningarUrl}/all-watches`);
   }
+
+  // getAllWatchesResource = resource({
+  //   loader: () => fetch(`${env.apiUrl}/all-watches`).then(res => res.json() as Promise<Watch[]>),
+  // });
 }

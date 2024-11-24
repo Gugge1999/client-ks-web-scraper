@@ -1,6 +1,6 @@
 import { inject, Injectable, signal } from "@angular/core";
 import { lastValueFrom, take } from "rxjs";
-import { errorMessageConst } from "@constants/constants";
+import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { Watch } from "@models/watch.model";
@@ -16,6 +16,11 @@ export class WatchService {
 
   private readonly watchApiService = inject(WatchApiService);
   private readonly alertService = inject(AlertService);
+
+  // TODO: Lägg till resource loading i template för att visa att bevakningar laddar
+  // private readonly hejsan = this.watchApiService.getAllWatchesResource;
+  //
+  // desserts = computed(() => this.hejsan.value() ?? []);
 
   getAllWatches() {
     // Värdet från den här returneras inte. Därför används inte promise. Byt till resource sen
@@ -40,7 +45,7 @@ export class WatchService {
   async saveNewWatch(newWatchDTO: NewWatchFormDTO) {
     const newWatch = await lastValueFrom(this.watchApiService.saveNewWatch(newWatchDTO)).catch((err: ApiError) => err);
 
-    if (errorMessageConst in newWatch) {
+    if (STACK_API_ERROR_PROPERTY in newWatch) {
       return newWatch;
     }
 
@@ -54,7 +59,7 @@ export class WatchService {
     const { active, id, label } = watch;
     const res = await lastValueFrom(this.watchApiService.toggleActiveStatus({ active, id, label })).catch((err: ApiError) => err);
 
-    if (errorMessageConst in res) {
+    if (STACK_API_ERROR_PROPERTY in res) {
       this._watches.set(structuredClone(this._watches()));
       return;
     }

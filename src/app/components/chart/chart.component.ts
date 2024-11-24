@@ -4,12 +4,11 @@ import { TuiContext } from "@taiga-ui/cdk";
 import { TuiAxes, TuiLineChart, TuiLineChartHint } from "@taiga-ui/addon-charts";
 
 @Component({
-  selector: "scraper-chart",
-  standalone: true,
-  imports: [TuiAxes, TuiLineChartHint, TuiLineChart],
-  templateUrl: "./chart.component.html",
-  styleUrl: "./chart.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: "scraper-chart",
+    imports: [TuiAxes, TuiLineChartHint, TuiLineChart],
+    templateUrl: "./chart.component.html",
+    styleUrl: "./chart.component.scss",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ChartComponent {
   protected readonly value: readonly TuiPoint[] = [
