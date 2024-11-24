@@ -6,15 +6,15 @@ import { TuiButton, tuiDialog, TuiHint, TuiIcon } from "@taiga-ui/core";
 import { tap } from "rxjs";
 
 @Component({
-    selector: "scraper-new-watch-fab",
-    templateUrl: "./new-watch-fab.component.html",
-    styleUrl: "./new-watch-fab.component.scss",
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [TuiIcon, TuiButton, TuiHint]
+  selector: "scraper-new-watch-fab",
+  templateUrl: "./new-watch-fab.component.html",
+  styleUrl: "./new-watch-fab.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [TuiIcon, TuiButton, TuiHint],
 })
 export class NewWatchFabComponent {
   apiStatus = input.required<ApiStatus>();
-  tooltip = computed(() => (this.apiStatus().active === false ? "API:et är inte aktivt" : ""));
+  fabTooltip = computed(() => (this.apiStatus().active ? "" : "API:et är inte aktivt"));
 
   private readonly dialog = tuiDialog(NewWatchDialogComponent, { size: "s", closeable: false });
 

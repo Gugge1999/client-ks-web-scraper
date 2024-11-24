@@ -2,7 +2,7 @@ import { computed, inject, Injectable, signal } from "@angular/core";
 import { TUI_DARK_MODE } from "@taiga-ui/core";
 import { CookieService } from "./cookie.service";
 
-type Theme = "dark" | "light";
+export type Theme = "dark" | "light";
 
 @Injectable({
   providedIn: "root",

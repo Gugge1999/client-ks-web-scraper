@@ -7,25 +7,17 @@
       </a>
 
       <div tuiSlot="right" style="display: flex; align-items: center; gap: 12px; padding-right: 10px">
-        <div tuiHint="Växla tema" tuiHintDirection="bottom">
-          <tui-icon
-            [icon]="isDarkMode() ? 'moon' : 'sun'"
-            class="header-icon icon-wrapper pointer"
-            (click)="toggleTheme()"
-            (keyup)="toggleTheme()" />
+        <div tuiHint="Växla tema">
+          <tui-icon [icon]="darkModeIcon()" class="header-icon icon-wrapper pointer" (click)="toggleTheme()" (keyup)="toggleTheme()" />
         </div>
 
         <div>
           @if (apiStatus().active) {
-            <div class="header-icon icon-wrapper pointer" tuiHint="Visa statistik för API" tuiHintDirection="bottom">
+            <div class="header-icon icon-wrapper pointer">
               <tui-icon icon="circle-check" (click)="openApiStatusDialog()" />
             </div>
           } @else {
-            <div
-              class="header-icon icon-wrapper"
-              style="cursor: not-allowed"
-              tuiHint="API:et är inte aktivt"
-              tuiHintDirection="bottom">
+            <div class="header-icon icon-wrapper" style="cursor: not-allowed" tuiHint="API:et är inte aktivt">
               <tui-icon icon="circle-x" style="color: var(--tui-text-negative)" />
             </div>
           }

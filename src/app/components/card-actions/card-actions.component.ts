@@ -9,13 +9,14 @@ import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
 import { take, tap } from "rxjs";
 
 @Component({
-    selector: "scraper-card-actions",
-    templateUrl: "./card-actions.component.html",
-    styleUrl: "./card-actions.component.scss",
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [FormsModule, TuiSwitch, TuiHint, TuiIcon]
+  selector: "scraper-card-actions",
+  templateUrl: "./card-actions.component.html",
+  styleUrl: "./card-actions.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [FormsModule, TuiSwitch, TuiHint, TuiIcon],
 })
 export class CardActionsComponent {
+  // TODO: Kan det vara en linked signal?
   watch = input.required<Watch>();
 
   public readonly watchService = inject(WatchService);
@@ -30,13 +31,13 @@ export class CardActionsComponent {
     const data: TuiConfirmData = {
       no: "Avbryt",
       yes: "Radera",
+      appearance: "secondary-destructive",
     };
 
     this.dialogs
       .open<boolean>(TUI_CONFIRM, {
         label: `Vill du radera ${this.watch().label}?`,
         size: "auto",
-        closeable: false,
         data: data,
       })
       .pipe(

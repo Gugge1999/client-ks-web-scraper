@@ -56,24 +56,27 @@ export class WatchService {
   }
 
   async toggleActiveStatus(watch: Watch) {
-    const { active, id, label } = watch;
-    const res = await lastValueFrom(this.watchApiService.toggleActiveStatus({ active, id, label })).catch((err: ApiError) => err);
-
-    if (STACK_API_ERROR_PROPERTY in res) {
-      this._watches.set(structuredClone(this._watches()));
-      return;
-    }
-
-    this.alertService.infoAlert(`${res.active ? "Aktivera:" : "Inaktivera:"} ${res.label}`);
+    const newActiveStatus = watch.active;
 
     this._watches.update(watches =>
       watches.map(w => {
-        if (w.id === res.id) {
-          w.active = res.active;
+        if (w.id === watch.id) {
+          w.active = !watch.active;
         }
 
         return w;
       }),
     );
+
+    const { id, label } = watch;
+    const res = await lastValueFrom(this.watchApiService.toggleActiveStatus({ active: newActiveStatus, id, label })).catch(
+      (err: ApiError) => err,
+    );
+
+    if (STACK_API_ERROR_PROPERTY in res) {
+      return;
+    }
+
+    this.alertService.infoAlert(`${res.active ? "Aktivera:" : "Inaktivera:"} ${res.label}`);
   }
 }

@@ -35,9 +35,7 @@ export class AppComponent implements OnInit {
   });
 
   todosResource = resource({
-    loader: () => {
-      return fetch(`https://jsonplaceholder.typicode.com/todos?_limit=10`).then(res => res.json() as Promise<any[]>);
-    },
+    loader: () => fetch(`https://jsonplaceholder.typicode.com/todos?_limit=10`).then(res => res.json() as Promise<any[]>),
   });
 
   updateTodo() {
