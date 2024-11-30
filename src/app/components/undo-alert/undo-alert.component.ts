@@ -6,10 +6,10 @@ import { injectContext } from "@taiga-ui/polymorpheus";
 import { take } from "rxjs";
 
 @Component({
-    selector: "scraper-undo-alert",
-    templateUrl: "./undo-alert.component.html",
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [TuiButton]
+  selector: "scraper-undo-alert",
+  templateUrl: "./undo-alert.component.html",
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [TuiButton],
 })
 export class UndoAlertComponent implements OnDestroy {
   protected readonly context = injectContext<TuiPopover<TuiAlertOptions<string>, boolean>>();

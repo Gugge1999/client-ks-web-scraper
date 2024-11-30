@@ -6,11 +6,11 @@ import { TuiAppearance } from "@taiga-ui/core";
 import { TuiCardLarge, TuiHeader } from "@taiga-ui/layout";
 
 @Component({
-    selector: "scraper-card",
-    templateUrl: "./card.component.html",
-    styleUrl: "./card.component.scss",
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    imports: [DatePipe, CardActionsComponent, TuiAppearance, TuiCardLarge, TuiHeader]
+  selector: "scraper-card",
+  templateUrl: "./card.component.html",
+  styleUrl: "./card.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [DatePipe, CardActionsComponent, TuiAppearance, TuiCardLarge, TuiHeader],
 })
 export class CardComponent {
   watches = input.required<Watch[]>();
