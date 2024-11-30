@@ -2,7 +2,10 @@
 // `ng build` replaces `env.ts` with `env.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-export const env = {
+import { Env } from "@models/env";
+
+export const env: Env = {
   name: "dev",
   apiUrl: "http://192.168.1.2:3000/api",
-};
+  apiUrlWebSocket: "ws://192.168.1.2:3000/api",
+} as const;

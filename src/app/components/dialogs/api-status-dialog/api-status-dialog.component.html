@@ -1,20 +1,22 @@
+@let status = apiStatus();
+
 <div>
   <h4>
     Interval på bevakningar:
-    <i>{{ apiStatus.scrapingIntervalInMinutes }} minuter</i>
+    <i>{{ status.scrapingIntervalInMinutes }} minuter</i>
   </h4>
   <h4>
     Minnesanvändning:
-    <i>{{ apiStatus.memoryUsage }}</i>
+    <i>{{ status.memoryUsage }}</i>
   </h4>
 
   <h4>Drifttid</h4>
   <div style="margin-left: 1em">
-    <p>År: {{ apiStatus.uptime.years }}</p>
-    <p>Månader: {{ apiStatus.uptime.months }}</p>
-    <p>Dagar: {{ apiStatus.uptime.days }}</p>
-    <p>Timmar: {{ apiStatus.uptime.hours }}</p>
-    <p>Minuter: {{ apiStatus.uptime.minutes }}</p>
-    <p>Sekunder: {{ apiStatus.uptime.seconds }}</p>
+    <p>År: {{ status.uptime.years }}</p>
+    <p>Månader: {{ status.uptime.months }}</p>
+    <p>Dagar: {{ status.uptime.days }}</p>
+    <p>Timmar: {{ status.uptime.hours }}</p>
+    <p>Minuter: {{ status.uptime.minutes }}</p>
+    <p>Sekunder: {{ status.uptime.seconds }}</p>
   </div>
 </div>

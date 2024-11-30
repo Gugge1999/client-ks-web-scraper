@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject, OnInit, resource } from "@angular/core";
-import { TUI_DARK_MODE, TuiRoot } from "@taiga-ui/core";
+import { TuiRoot } from "@taiga-ui/core";
 import { CardComponent } from "@components/card/card.component";
 import { FooterComponent } from "@components/footer/footer.component";
 import { HeaderComponent } from "@components/header/header.component";
@@ -9,8 +9,6 @@ import { CookieService } from "@services/cookie.service";
 import { ThemeService } from "@services/theme.service";
 import { WatchService } from "@services/watch.service";
 import { toSignal } from "@angular/core/rxjs-interop";
-import { timer } from "rxjs";
-import { switchMap } from "rxjs/operators";
 import { INITIAL_API_STATUS } from "@constants/constants";
 import { StatusService } from "@services/status.service";
 
@@ -26,13 +24,9 @@ export class AppComponent implements OnInit {
   private readonly cookieService = inject(CookieService);
   private readonly statusService = inject(StatusService);
 
-  protected readonly darkMode = inject(TUI_DARK_MODE);
-
+  protected isDarkMode = this.themeService.isDarkMode;
   watches = this.watchService.watches;
-
-  apiStatus = toSignal(timer(0, 30_000).pipe(switchMap(() => this.statusService.getApiStatus())), {
-    initialValue: INITIAL_API_STATUS,
-  });
+  apiStatus = toSignal(this.statusService.getApiStatus(), { initialValue: INITIAL_API_STATUS });
 
   todosResource = resource({
     loader: () => fetch(`https://jsonplaceholder.typicode.com/todos?_limit=10`).then(res => res.json() as Promise<any[]>),

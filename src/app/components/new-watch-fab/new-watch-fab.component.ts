@@ -14,7 +14,16 @@ import { tap } from "rxjs";
 })
 export class NewWatchFabComponent {
   apiStatus = input.required<ApiStatus>();
-  fabTooltip = computed(() => (this.apiStatus().active ? "" : "API:et är inte aktivt"));
+  fabTooltip = computed(() => {
+    switch (this.apiStatus().status) {
+      case "active":
+        return "";
+      case "pending":
+        return "Väntar på API:et";
+      case "inactive":
+        return "API:et är inte aktivt";
+    }
+  });
 
   private readonly dialog = tuiDialog(NewWatchDialogComponent, { size: "s", closeable: false });
 

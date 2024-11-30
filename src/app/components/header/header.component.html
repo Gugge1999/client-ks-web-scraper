@@ -1,28 +1,34 @@
 <header>
-  <section>
-    <tui-app-bar style="justify-content: space-between">
-      <a class="header-logo" tuiSlot="left">
-        <tui-icon icon="@tui.watch" />
-        <span class="toolbar-title">KS Web Scraper</span>
-      </a>
+  <tui-app-bar style="justify-content: space-between">
+    <a class="header-logo" tuiSlot="left">
+      <tui-icon icon="@tui.watch" />
+      <span class="toolbar-title">KS Web Scraper</span>
+    </a>
 
-      <div tuiSlot="right" style="display: flex; align-items: center; gap: 12px; padding-right: 10px">
-        <div tuiHint="Växla tema">
-          <tui-icon [icon]="darkModeIcon()" class="header-icon icon-wrapper pointer" (click)="toggleTheme()" (keyup)="toggleTheme()" />
-        </div>
-
-        <div>
-          @if (apiStatus().active) {
-            <div class="header-icon icon-wrapper pointer">
-              <tui-icon icon="circle-check" (click)="openApiStatusDialog()" />
-            </div>
-          } @else {
-            <div class="header-icon icon-wrapper" style="cursor: not-allowed" tuiHint="API:et är inte aktivt">
-              <tui-icon icon="circle-x" style="color: var(--tui-text-negative)" />
-            </div>
-          }
-        </div>
+    <div tuiSlot="right" style="display: flex; align-items: center; gap: 12px; padding-right: 10px">
+      <div tuiHint="Växla tema">
+        <tui-icon [icon]="darkModeIcon()" class="header-icon icon-wrapper pointer" (click)="toggleTheme()" (keyup)="toggleTheme()" />
       </div>
-    </tui-app-bar>
-  </section>
+
+      <div>
+        @if (apiStatus().status === "active") {
+          <div class="header-icon icon-wrapper pointer">
+            <tui-icon icon="circle-check" (click)="openApiStatusDialog()" />
+          </div>
+        }
+
+        @if (apiStatus().status === "pending") {
+          <div class="header-icon icon-wrapper" style="cursor: wait" tuiHint="Väntar på API:et">
+            <tui-icon icon="loader" class="loading-icon-spinner" />
+          </div>
+        }
+
+        @if (apiStatus().status === "inactive") {
+          <div class="header-icon icon-wrapper" style="cursor: not-allowed" tuiHint="API:et är inte aktivt">
+            <tui-icon icon="circle-x" style="color: var(--tui-text-negative)" />
+          </div>
+        }
+      </div>
+    </div>
+  </tui-app-bar>
 </header>
