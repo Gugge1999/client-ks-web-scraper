@@ -6,11 +6,6 @@ import { TUI_CONFIRM, TuiConfirmData } from "@taiga-ui/kit";
 import { TuiDialogService } from "@taiga-ui/core";
 import { AlertService } from "@services/alert.service";
 
-interface WindowWithAnalytics extends Window {
-  dataLayer?: unknown[];
-  gtag?(...args: unknown[]): void;
-}
-
 @Injectable({
   providedIn: "root",
 })
@@ -19,7 +14,7 @@ export class CookieService {
   private readonly dialogs = inject(TuiDialogService);
   private readonly alertService = inject(AlertService);
 
-  private readonly cookieConsentString = "Cookie consent";
+  private readonly cookieConsentString = "cookie-consent";
   private window: WindowWithAnalytics = window;
 
   onInit() {
@@ -96,4 +91,9 @@ export class CookieService {
   getConsentCookie = () => this.cookieServiceLibrary.get(this.cookieConsentString);
 
   isCookieAccepted = () => this.cookieServiceLibrary.get(this.cookieConsentString) === CookieState.Accepted;
+}
+
+interface WindowWithAnalytics extends Window {
+  dataLayer?: unknown[];
+  gtag?(...args: unknown[]): void;
 }
