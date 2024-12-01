@@ -18,7 +18,7 @@ export class HeaderComponent {
 
   apiStatus = input.required<ApiStatus>();
   isDarkMode = this.themeService.isDarkMode;
-  darkModeIcon = computed(() => (this.isDarkMode() ? "moon" : "sun"));
+  themeIcon = computed(() => (this.isDarkMode() ? "moon" : "sun"));
 
   openApiStatusDialog() {
     this.dialog(this.apiStatus).subscribe();

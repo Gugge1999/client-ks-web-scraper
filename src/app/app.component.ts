@@ -26,6 +26,7 @@ export class AppComponent implements OnInit {
 
   protected isDarkMode = this.themeService.isDarkMode;
   watches = this.watchService.watches;
+
   apiStatus = toSignal(this.statusService.getApiStatus(), { initialValue: INITIAL_API_STATUS });
 
   // TODO: Läs https://www.angularspace.com/everything-you-need-to-know-abour-resource-for-now/

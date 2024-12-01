@@ -1,6 +1,11 @@
 <tui-icon icon="trash-2" (click)="deleteWatch()" style="color: var(--tui-text-negative)" class="pointer" />
 
-<tui-icon icon="chart-column" tuiHint="Statistik" tuiHintDirection="top" style="color: var(--tui-text-action)" class="pointer" />
+<tui-icon
+  icon="chart-column"
+  (click)="showNotifications()"
+  tuiHintDirection="top"
+  style="color: var(--tui-text-action)"
+  class="pointer" />
 
 <input
   tuiSwitch

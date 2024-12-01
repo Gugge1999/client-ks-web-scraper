@@ -11,7 +11,6 @@ import {
 import { BrowserModule } from "@angular/platform-browser";
 import { provideAnimations } from "@angular/platform-browser/animations";
 import { errorInterceptor } from "@interceptors/error-interceptor";
-import { tuiHintOptionsProvider } from "@taiga-ui/core";
 import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
 import { env } from "env/env";
 
@@ -24,7 +23,7 @@ registerLocaleData(localeSvSe);
 export const appConfig: ApplicationConfig = {
   providers: [
     provideExperimentalZonelessChangeDetection(),
-    tuiHintOptionsProvider({ showDelay: 100, hideDelay: 0, appearance: "dark" }),
+    // tuiHintOptionsProvider({ showDelay: 100, hideDelay: 0, appearance: "dark" }),
     provideHttpClient(withInterceptors([errorInterceptor])),
     importProvidersFrom(BrowserModule),
     provideAnimations(),
