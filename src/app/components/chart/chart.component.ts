@@ -5,9 +5,9 @@ import { TuiAxes, TuiLineChart, TuiLineChartHint } from "@taiga-ui/addon-charts"
 
 @Component({
   selector: "scraper-chart",
-  imports: [TuiAxes, TuiLineChartHint, TuiLineChart],
   templateUrl: "./chart.component.html",
   styleUrl: "./chart.component.scss",
+  imports: [TuiAxes, TuiLineChartHint, TuiLineChart],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChartComponent {

@@ -10,6 +10,8 @@ import { AlertService } from "@services/alert.service";
   providedIn: "root",
 })
 export class CookieService {
+  // TODO: Använd local storage istället. Jag tror att cookie behöver finnas på server också och det är därför den alltid frågar
+  //  efter cookie på mobil / prod
   private readonly cookieServiceLibrary = inject(CookieServiceLibrary);
   private readonly dialogs = inject(TuiDialogService);
   private readonly alertService = inject(AlertService);

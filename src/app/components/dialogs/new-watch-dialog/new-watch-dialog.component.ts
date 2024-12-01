@@ -14,6 +14,7 @@ import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
   selector: "scraper-new-watch-dialog",
   templateUrl: "./new-watch-dialog.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [FormsModule, ReactiveFormsModule, TuiError, TuiFieldErrorPipe, AsyncPipe, TuiButton, TuiButtonLoading, TuiTextfield],
   providers: [
     tuiValidationErrorsProvider({
       required: "Obligatorisk",
@@ -22,7 +23,6 @@ import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
       minlength: ({ requiredLength }: { requiredLength: string }) => `Minst ${requiredLength} tecken`,
     }),
   ],
-  imports: [FormsModule, ReactiveFormsModule, TuiError, TuiFieldErrorPipe, AsyncPipe, TuiButton, TuiButtonLoading, TuiTextfield],
 })
 export class NewWatchDialogComponent {
   public readonly context = injectContext<TuiDialogContext<Watch | undefined, void>>();

@@ -28,6 +28,7 @@ export class AppComponent implements OnInit {
   watches = this.watchService.watches;
   apiStatus = toSignal(this.statusService.getApiStatus(), { initialValue: INITIAL_API_STATUS });
 
+  // TODO: Läs https://www.angularspace.com/everything-you-need-to-know-abour-resource-for-now/
   todosResource = resource({
     loader: () => fetch(`https://jsonplaceholder.typicode.com/todos?_limit=10`).then(res => res.json() as Promise<any[]>),
   });

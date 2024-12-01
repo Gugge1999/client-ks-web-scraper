@@ -13,7 +13,7 @@ h1 {
 
 .card {
   scroll-margin: 20px;
-  width: clamp(45ch, 40%, 60ch);
+  width: 40%;
   &:nth-last-child(2) {
     margin-bottom: 0;
   }
