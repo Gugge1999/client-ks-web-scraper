@@ -1,6 +1,5 @@
 import { inject, Injectable } from "@angular/core";
 import { CookieState, initCookie } from "@models/cookie";
-import { CookieService as CookieServiceLibrary } from "ngx-cookie-service";
 import { tap } from "rxjs";
 import { TUI_CONFIRM, TuiConfirmData } from "@taiga-ui/kit";
 import { TuiDialogService } from "@taiga-ui/core";
@@ -10,9 +9,6 @@ import { AlertService } from "@services/alert.service";
   providedIn: "root",
 })
 export class CookieService {
-  // TODO: Använd local storage istället. Jag tror att cookie behöver finnas på server också och det är därför den alltid frågar
-  //  efter cookie på mobil / prod
-  private readonly cookieServiceLibrary = inject(CookieServiceLibrary);
   private readonly dialogs = inject(TuiDialogService);
   private readonly alertService = inject(AlertService);
 
@@ -25,8 +21,8 @@ export class CookieService {
       return;
     }
 
-    if (this.getConsentCookie() === "") {
-      this.cookieServiceLibrary.set(this.cookieConsentString, initCookie.toString());
+    if (this.getConsentCookie() === null) {
+      localStorage.setItem(this.cookieConsentString, initCookie.toString());
     }
 
     if (this.getConsentCookie() === initCookie) {
@@ -49,12 +45,12 @@ export class CookieService {
 
   private handleCookieResponse(accepted: boolean) {
     if (accepted) {
-      this.cookieServiceLibrary.set(this.cookieConsentString, CookieState.Accepted);
+      localStorage.setItem(this.cookieConsentString, CookieState.Accepted);
       this.installGoogleAnalytics();
       return;
     }
 
-    this.cookieServiceLibrary.set(this.cookieConsentString, CookieState.Rejected);
+    localStorage.setItem(this.cookieConsentString, CookieState.Rejected);
   }
 
   private installGoogleAnalytics() {
@@ -90,9 +86,9 @@ export class CookieService {
     console.error(`${cookieErrorMessage}.Error ${error}`);
   }
 
-  getConsentCookie = () => this.cookieServiceLibrary.get(this.cookieConsentString);
+  getConsentCookie = () => localStorage.getItem(this.cookieConsentString);
 
-  isCookieAccepted = () => this.cookieServiceLibrary.get(this.cookieConsentString) === CookieState.Accepted;
+  isCookieAccepted = () => localStorage.getItem(this.cookieConsentString) === CookieState.Accepted;
 }
 
 interface WindowWithAnalytics extends Window {

@@ -48,7 +48,7 @@ export class NewWatchDialogComponent {
 
     const newWatch: NewWatchFormDTO = {
       label: this.watchForm.getRawValue().label,
-      watchToScrape: `https://klocksnack.se/search/1/?q=${wordsSeparatedByPlus}&t=post&c[child_nodes]=1&c[nodes][0]=11&c[title_only]=1&o=date`,
+      watchToScrape: wordsSeparatedByPlus,
     };
 
     const result = await this.watchService.saveNewWatch(newWatch);
