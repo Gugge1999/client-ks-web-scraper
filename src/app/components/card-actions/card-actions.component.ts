@@ -23,7 +23,10 @@ export class CardActionsComponent {
   public readonly watchService = inject(WatchService);
   private readonly alerts = inject(TuiAlertService);
   private readonly dialogs = inject(TuiDialogService);
-  private readonly dialog = tuiDialog(NotificationsChartComponent, { label: "Notiser för bevakning" });
+  private readonly dialog = tuiDialog(NotificationsChartComponent, {
+    label: `Notiser för bevakning`,
+    size: "auto",
+  });
 
   toggleActiveStatus(watch: Watch) {
     return this.watchService.toggleActiveStatus(watch);
