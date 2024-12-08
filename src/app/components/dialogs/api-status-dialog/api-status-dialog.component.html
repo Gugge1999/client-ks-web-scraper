@@ -10,6 +10,10 @@
     <i>{{ status.memoryUsage }}</i>
   </h4>
 
+  @for (memUsage of hejsan(); track $index) {
+    <span>{{ memUsage }}</span>
+  }
+
   <h4>Drifttid</h4>
   <div style="margin-left: 1em">
     <p>År: {{ status.uptime.years }}</p>
