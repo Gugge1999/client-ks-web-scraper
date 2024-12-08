@@ -14,7 +14,7 @@ import { ApiStatus } from "@models/api-status.model";
 })
 export class HeaderComponent {
   private readonly themeService = inject(ThemeService);
-  private readonly dialog = tuiDialog(ApiStatusDialogComponent, { label: "Status för API" });
+  private readonly dialog = tuiDialog(ApiStatusDialogComponent, { label: "Status för API", size: "auto" });
 
   apiStatus = input.required<ApiStatus>();
   isDarkMode = this.themeService.isDarkMode;

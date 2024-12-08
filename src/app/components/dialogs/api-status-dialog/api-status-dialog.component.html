@@ -11,8 +11,28 @@
   </h4>
 
   @for (memUsage of hejsan(); track $index) {
-    <span>{{ memUsage }}</span>
+    <span> {{ memUsage }} |</span>
   }
+
+  <tui-axes
+    class="notifications-axes"
+    [horizontalLines]="2"
+    [axisXLabels]="axisXLabels"
+    [axisYLabels]="axisYLabels"
+    [tuiLineChartHint]="hintContent"
+    [verticalLines]="4">
+    <!-- TODO: Ändra till hejsan() sen-->
+    <tui-line-chart
+      [dots]="true"
+      [height]="200"
+      [value]="value"
+      [width]="10"
+      [x]="0"
+      [filled]="true"
+      [xStringify]="stringify"
+      [y]="0"
+      [yStringify]="stringify" />
+  </tui-axes>
 
   <h4>Drifttid</h4>
   <div style="margin-left: 1em">

@@ -3,7 +3,7 @@ import { ApiStatus } from "@models/api-status.model";
 export const INITIAL_API_STATUS: Readonly<ApiStatus> = {
   status: "pending",
   scrapingIntervalInMinutes: 0,
-  memoryUsage: "",
+  memoryUsage: 0,
   uptime: {
     years: 0,
     months: 0,
