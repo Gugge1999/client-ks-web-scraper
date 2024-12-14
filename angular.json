@@ -35,7 +35,6 @@
                 "output": "assets/taiga-ui/icons"
               }
             ],
-            "statsJson": true,
             "styles": [
               "node_modules/@taiga-ui/core/styles/taiga-ui-theme.less",
               "node_modules/@taiga-ui/core/styles/taiga-ui-fonts.less",

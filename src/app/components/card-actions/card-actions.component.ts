@@ -1,30 +1,39 @@
-import { ChangeDetectionStrategy, Component, inject, input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject, input } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { UndoAlertComponent } from "@components/undo-alert/undo-alert.component";
 import { Watch } from "@models/watch.model";
 import { WatchService } from "@services/watch.service";
-import { TuiAlertService, TuiDialogService, TuiHint, TuiIcon } from "@taiga-ui/core";
+import { TuiAlertService, tuiDialog, TuiDialogService, TuiHint, TuiIcon } from "@taiga-ui/core";
 import { TUI_CONFIRM, TuiConfirmData, TuiSwitch } from "@taiga-ui/kit";
 import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
 import { take, tap } from "rxjs";
+import { NotificationsChartComponent } from "@components/dialogs/notifications-chart/notifications-chart.component";
 
 @Component({
   selector: "scraper-card-actions",
   templateUrl: "./card-actions.component.html",
   styleUrl: "./card-actions.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, TuiSwitch, TuiHint, TuiIcon],
+  imports: [FormsModule, TuiSwitch, TuiIcon, TuiHint],
 })
 export class CardActionsComponent {
-  // TODO: Kan det vara en linked signal?
   watch = input.required<Watch>();
+  notifications = computed(() => this.watch().notifications);
 
   public readonly watchService = inject(WatchService);
   private readonly alerts = inject(TuiAlertService);
   private readonly dialogs = inject(TuiDialogService);
+  private readonly dialog = tuiDialog(NotificationsChartComponent, {
+    label: `Notiser för bevakning`,
+    size: "auto",
+  });
 
   toggleActiveStatus(watch: Watch) {
     return this.watchService.toggleActiveStatus(watch);
+  }
+
+  showNotifications() {
+    this.dialog(this.notifications()).subscribe();
   }
 
   protected deleteWatch(): void {
@@ -36,7 +45,7 @@ export class CardActionsComponent {
 
     this.dialogs
       .open<boolean>(TUI_CONFIRM, {
-        label: `Vill du radera ${this.watch().label}?`,
+        label: `Vill du radera bevakning: ${this.watch().label}?`,
         size: "auto",
         data: data,
       })

@@ -1,11 +1,9 @@
-<tui-root [attr.tuiTheme]="darkMode() ? 'dark' : null">
+<tui-root [attr.tuiTheme]="isDarkMode() ? 'dark' : null">
   <div style="min-height: 100vh; display: flex; flex-direction: column">
     <scraper-header [apiStatus]="apiStatus()" />
 
     <main style="flex: 1; margin-bottom: 60px">
       <scraper-summary [watches]="watches()" />
-
-      <!--      <scraper-chart />-->
 
       <scraper-card [watches]="watches()" />
 

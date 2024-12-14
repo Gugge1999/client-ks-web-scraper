@@ -14,6 +14,7 @@ import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
   selector: "scraper-new-watch-dialog",
   templateUrl: "./new-watch-dialog.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
+  imports: [FormsModule, ReactiveFormsModule, TuiError, TuiFieldErrorPipe, AsyncPipe, TuiButton, TuiButtonLoading, TuiTextfield],
   providers: [
     tuiValidationErrorsProvider({
       required: "Obligatorisk",
@@ -22,7 +23,6 @@ import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
       minlength: ({ requiredLength }: { requiredLength: string }) => `Minst ${requiredLength} tecken`,
     }),
   ],
-  imports: [FormsModule, ReactiveFormsModule, TuiError, TuiFieldErrorPipe, AsyncPipe, TuiButton, TuiButtonLoading, TuiTextfield],
 })
 export class NewWatchDialogComponent {
   public readonly context = injectContext<TuiDialogContext<Watch | undefined, void>>();
@@ -48,7 +48,7 @@ export class NewWatchDialogComponent {
 
     const newWatch: NewWatchFormDTO = {
       label: this.watchForm.getRawValue().label,
-      watchToScrape: `https://klocksnack.se/search/1/?q=${wordsSeparatedByPlus}&t=post&c[child_nodes]=1&c[nodes][0]=11&c[title_only]=1&o=date`,
+      watchToScrape: wordsSeparatedByPlus,
     };
 
     const result = await this.watchService.saveNewWatch(newWatch);

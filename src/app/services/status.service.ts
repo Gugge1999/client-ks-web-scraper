@@ -1,15 +1,22 @@
-import { HttpClient } from "@angular/common/http";
-import { inject, Injectable } from "@angular/core";
-import { catchError, of } from "rxjs";
-import { INITIAL_API_STATUS } from "@constants/constants";
 import { ApiStatus } from "@models/api-status.model";
+import { Injectable } from "@angular/core";
+import { webSocket } from "rxjs/webSocket";
 import { env } from "env/env";
+import { asyncScheduler, catchError, retry, scheduled } from "rxjs";
+import { ERROR_API_STATUS } from "@constants/constants";
 
 @Injectable({
   providedIn: "root",
 })
 export class StatusService {
-  private readonly http = inject(HttpClient);
+  getApiStatus() {
+    return webSocket<ApiStatus>(`${env.apiUrlWebSocket}/api-status?username=${this.getRandomString()}`).pipe(
+      retry({ count: 10, delay: 2000 }),
+      catchError(() => scheduled([ERROR_API_STATUS], asyncScheduler)),
+    );
+  }
 
-  getApiStatus = () => this.http.get<ApiStatus>(`${env.apiUrl}/api-status`).pipe(catchError(() => of(INITIAL_API_STATUS)));
+  getRandomString() {
+    return (Math.random() + 1).toString(36).substring(7);
+  }
 }

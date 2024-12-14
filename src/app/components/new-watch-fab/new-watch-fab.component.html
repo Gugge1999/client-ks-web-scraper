@@ -5,7 +5,7 @@
     style="background-color: var(--tui-status-positive)"
     size="xl"
     (click)="openNewWatchDialog()"
-    [disabled]="!apiStatus().active">
+    [disabled]="!(apiStatus().status === 'active')">
     <tui-icon icon="@tui.plus" />
   </button>
 </div>

@@ -4,6 +4,7 @@ import { env } from "env/env";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { Watch } from "@models/watch.model";
+import { retry } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -26,7 +27,7 @@ export class WatchApiService {
   }
 
   getAllWatches() {
-    return this.http.get<Watch[]>(`${this.bevakningarUrl}/all-watches`);
+    return this.http.get<Watch[]>(`${this.bevakningarUrl}/all-watches`).pipe(retry({ count: 3, delay: 2000 }));
   }
 
   // getAllWatchesResource = resource({

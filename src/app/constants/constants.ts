@@ -1,9 +1,9 @@
 import { ApiStatus } from "@models/api-status.model";
 
 export const INITIAL_API_STATUS: Readonly<ApiStatus> = {
-  active: false,
+  status: "pending",
   scrapingIntervalInMinutes: 0,
-  memoryUsage: "",
+  memoryUsage: 0,
   uptime: {
     years: 0,
     months: 0,
@@ -12,6 +12,11 @@ export const INITIAL_API_STATUS: Readonly<ApiStatus> = {
     minutes: 0,
     seconds: 0,
   },
+} as const;
+
+export const ERROR_API_STATUS: Readonly<ApiStatus> = {
+  ...INITIAL_API_STATUS,
+  status: "inactive",
 } as const;
 
 export const STACK_API_ERROR_PROPERTY = "stack";
