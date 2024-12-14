@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, computed, InputSignal, OnInit } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  computed,
+  inject,
+  InputSignal,
+  OnInit,
+  viewChild,
+} from "@angular/core";
 import { ApiStatus } from "@models/api-status.model";
 import { TuiDialogContext, TuiPoint } from "@taiga-ui/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
@@ -13,19 +22,27 @@ import { TuiContext } from "@taiga-ui/cdk";
   imports: [TuiAxes, TuiLineChart, TuiLineChartHint],
 })
 export class ApiStatusDialogComponent implements OnInit {
+  private readonly cdr = inject(ChangeDetectorRef);
+
   public readonly context = injectContext<TuiDialogContext<void, InputSignal<ApiStatus>>>();
+
+  header = viewChild(TuiLineChart);
 
   readonly apiStatus = this.context.data;
   private readonly memoryUsageArr: TuiPoint[] = [];
   private memoryUsageLength = 0;
+  protected showChart = false;
 
   readonly hejsan = computed(() => {
     const memoryUsage = this.apiStatus().memoryUsage;
+    this.showChart = false;
 
     if (this.memoryUsageArr.length <= 9) {
       this.memoryUsageLength++;
 
       this.memoryUsageArr.push([this.memoryUsageArr.length, memoryUsage]);
+      this.showChart = true;
+
       return this.memoryUsageArr;
     }
 
@@ -36,8 +53,7 @@ export class ApiStatusDialogComponent implements OnInit {
 
     this.memoryUsageArr.push([this.memoryUsageLength, memoryUsage]);
 
-    console.log("memoryUsageArr", this.memoryUsageArr);
-    console.log("value", this.value);
+    this.showChart = true;
 
     return this.memoryUsageArr;
   });
@@ -90,9 +106,6 @@ export class ApiStatusDialogComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    console.log("averageMemoryUsage", this.averageMemoryUsage);
-    console.log("axisXLabels", this.axisXLabels);
-
     this.axisXLabels.push(this.value.length.toString());
   }
 

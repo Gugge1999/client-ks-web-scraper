@@ -1,46 +1,52 @@
-@let status = apiStatus();
+@let apiStat = apiStatus();
 
-<div>
-  <h4>
-    Interval på bevakningar:
-    <i>{{ status.scrapingIntervalInMinutes }} minuter</i>
-  </h4>
-  <h4>
-    Minnesanvändning i MB:
-    <i>{{ status.memoryUsage }}</i>
-  </h4>
+@if (apiStat.status === "active") {
+  <div>
+    <h4>
+      Interval på bevakningar:
+      <i>{{ apiStat.scrapingIntervalInMinutes }} minuter</i>
+    </h4>
+    <h4>
+      Minnesanvändning i MB:
+      <i>{{ apiStat.memoryUsage }}</i>
+    </h4>
 
-  @for (memUsage of hejsan(); track $index) {
-    <span> {{ memUsage }} |</span>
-  }
+    @for (memUsage of hejsan(); track $index) {
+      <span> {{ memUsage }} |</span>
+    }
 
-  <tui-axes
-    class="notifications-axes"
-    [horizontalLines]="2"
-    [axisXLabels]="axisXLabels"
-    [axisYLabels]="axisYLabels"
-    [tuiLineChartHint]="hintContent"
-    [verticalLines]="4">
-    <!-- TODO: Ändra till hejsan() sen-->
-    <tui-line-chart
-      [dots]="true"
-      [height]="200"
-      [value]="value"
-      [width]="10"
-      [x]="0"
-      [filled]="true"
-      [xStringify]="stringify"
-      [y]="0"
-      [yStringify]="stringify" />
-  </tui-axes>
+    <tui-axes
+      class="notifications-axes"
+      [horizontalLines]="2"
+      [axisXLabels]="axisXLabelsSig()"
+      [axisYLabels]="axisYLabelsSig()"
+      [tuiLineChartHint]="hintContent"
+      [verticalLines]="4">
+      @if (showChart) {
+        <!-- TODO: Ändra till hejsan() sen och [height] borde använda averageMemUsage * 1.5-->
+        <tui-line-chart
+          [dots]="true"
+          [height]="200"
+          [value]="hejsan()"
+          [width]="9"
+          [x]="0"
+          [y]="0"
+          [filled]="true"
+          [xStringify]="stringify"
+          [yStringify]="stringify" />
+      }
+    </tui-axes>
 
-  <h4>Drifttid</h4>
-  <div style="margin-left: 1em">
-    <p>År: {{ status.uptime.years }}</p>
-    <p>Månader: {{ status.uptime.months }}</p>
-    <p>Dagar: {{ status.uptime.days }}</p>
-    <p>Timmar: {{ status.uptime.hours }}</p>
-    <p>Minuter: {{ status.uptime.minutes }}</p>
-    <p>Sekunder: {{ status.uptime.seconds }}</p>
+    <h4>Drifttid</h4>
+    <div style="margin-left: 1em">
+      <p>År: {{ apiStat.uptime.years }}</p>
+      <p>Månader: {{ apiStat.uptime.months }}</p>
+      <p>Dagar: {{ apiStat.uptime.days }}</p>
+      <p>Timmar: {{ apiStat.uptime.hours }}</p>
+      <p>Minuter: {{ apiStat.uptime.minutes }}</p>
+      <p>Sekunder: {{ apiStat.uptime.seconds }}</p>
+    </div>
   </div>
-</div>
+} @else {
+  <p style="color: var(--tui-text-negative)">API:et är inte aktivt</p>
+}

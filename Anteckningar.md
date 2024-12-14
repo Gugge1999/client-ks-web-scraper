@@ -1,7 +1,8 @@
 # TODO
 
-- För diagram använd: https://taiga-ui.dev/charts/line-chart
 
+- Fixa inM: 
+- 
 - Lägg till badge för att visa hur många notiser varje bevakningar har. Kanske på ikonen för statistik
 
 - Läs: https://itnext.io/a-change-detection-zone-js-zoneless-local-change-detection-and-signals-story-9344079c3b9d
