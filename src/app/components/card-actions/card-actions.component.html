@@ -1,11 +1,15 @@
 <tui-icon icon="trash-2" (click)="deleteWatch()" style="color: var(--tui-text-negative)" class="pointer" />
 
-<tui-icon
-  icon="chart-column"
-  (click)="showNotifications()"
-  tuiHintDirection="top"
-  style="color: var(--tui-text-action)"
-  class="pointer" />
+<tui-badged-content (click)="showNotifications()">
+  <tui-badge
+    size="m"
+    tuiSlot="top"
+    [style.background-color]="numberOfNotifications() > 0 ? 'var(--tui-status-positive)' : 'var(--tui-text-secondary)'">
+    {{ numberOfNotifications() }}
+  </tui-badge>
+
+  <tui-icon icon="chart-column" tuiHintDirection="top" style="color: var(--tui-text-secondary)" />
+</tui-badged-content>
 
 <input
   tuiSwitch
@@ -14,5 +18,6 @@
   [ngModel]="watch().active"
   tuiHint="Växla aktiv status"
   tuiHintDirection="top"
+  style="--t-bg: var(--tui-status-positive)"
   [showIcons]="false"
   size="m" />

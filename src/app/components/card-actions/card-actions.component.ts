@@ -4,7 +4,7 @@ import { UndoAlertComponent } from "@components/undo-alert/undo-alert.component"
 import { Watch } from "@models/watch.model";
 import { WatchService } from "@services/watch.service";
 import { TuiAlertService, tuiDialog, TuiDialogService, TuiHint, TuiIcon } from "@taiga-ui/core";
-import { TUI_CONFIRM, TuiConfirmData, TuiSwitch } from "@taiga-ui/kit";
+import { TUI_CONFIRM, TuiBadge, TuiBadgedContent, TuiConfirmData, TuiSwitch } from "@taiga-ui/kit";
 import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
 import { take, tap } from "rxjs";
 import { NotificationsChartComponent } from "@components/dialogs/notifications-chart/notifications-chart.component";
@@ -14,11 +14,12 @@ import { NotificationsChartComponent } from "@components/dialogs/notifications-c
   templateUrl: "./card-actions.component.html",
   styleUrl: "./card-actions.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [FormsModule, TuiSwitch, TuiIcon, TuiHint],
+  imports: [FormsModule, TuiSwitch, TuiIcon, TuiHint, TuiBadgedContent, TuiBadge],
 })
 export class CardActionsComponent {
   watch = input.required<Watch>();
   notifications = computed(() => this.watch().notifications);
+  numberOfNotifications = computed(() => this.notifications().length);
 
   public readonly watchService = inject(WatchService);
   private readonly alerts = inject(TuiAlertService);
