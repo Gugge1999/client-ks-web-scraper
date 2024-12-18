@@ -7,7 +7,7 @@ import { TuiAlertService, tuiDialog, TuiDialogService, TuiHint, TuiIcon } from "
 import { TUI_CONFIRM, TuiBadge, TuiBadgedContent, TuiConfirmData, TuiSwitch } from "@taiga-ui/kit";
 import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
 import { take, tap } from "rxjs";
-import { NotificationsChartComponent } from "@components/dialogs/notifications-chart/notifications-chart.component";
+import { NotificationsDialogComponent } from "@components/dialogs/notifications-chart/notifications-dialog.component";
 
 @Component({
   selector: "scraper-card-actions",
@@ -24,7 +24,7 @@ export class CardActionsComponent {
   public readonly watchService = inject(WatchService);
   private readonly alerts = inject(TuiAlertService);
   private readonly dialogs = inject(TuiDialogService);
-  private readonly dialog = tuiDialog(NotificationsChartComponent, {
+  private readonly dialog = tuiDialog(NotificationsDialogComponent, {
     label: `Notiser för bevakning`,
     size: "auto",
   });

@@ -20,3 +20,5 @@ export const ERROR_API_STATUS: Readonly<ApiStatus> = {
 } as const;
 
 export const STACK_API_ERROR_PROPERTY = "stack";
+
+export const cardDateFormat = "d MMMM yyyy - H:mm:ss";

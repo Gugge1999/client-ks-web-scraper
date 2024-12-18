@@ -4,6 +4,7 @@ import { CardActionsComponent } from "@components/card-actions/card-actions.comp
 import { Watch } from "@models/watch.model";
 import { TuiAppearance } from "@taiga-ui/core";
 import { TuiCardLarge, TuiHeader } from "@taiga-ui/layout";
+import { cardDateFormat } from "@constants/constants";
 
 @Component({
   selector: "scraper-card",
@@ -15,5 +16,5 @@ import { TuiCardLarge, TuiHeader } from "@taiga-ui/layout";
 export class CardComponent {
   watches = input.required<Watch[]>();
 
-  readonly cardDateFormat = "d MMMM yyyy - H:mm:ss";
+  readonly cardDateFormat = cardDateFormat;
 }
