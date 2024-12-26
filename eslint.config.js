@@ -35,7 +35,6 @@ module.exports = tseslint.config(
       "no-nested-ternary": "error",
       "no-else-return": "error",
       "@typescript-eslint/no-explicit-any": "error",
-      "@angular-eslint/prefer-on-push-component-change-detection": "error",
     },
   },
   {

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input } from "@angular/core";
+import { Component, computed, inject, input } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { UndoAlertComponent } from "@components/undo-alert/undo-alert.component";
 import { Watch } from "@models/watch.model";
@@ -13,7 +13,6 @@ import { NotificationsDialogComponent } from "@components/dialogs/notifications-
   selector: "scraper-card-actions",
   templateUrl: "./card-actions.component.html",
   styleUrl: "./card-actions.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormsModule, TuiSwitch, TuiIcon, TuiHint, TuiBadgedContent, TuiBadge],
 })
 export class CardActionsComponent {

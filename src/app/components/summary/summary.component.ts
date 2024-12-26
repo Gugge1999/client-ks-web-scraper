@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input } from "@angular/core";
+import { Component, computed, input } from "@angular/core";
 import { Watch } from "@models/watch.model";
 
 @Component({
@@ -6,7 +6,6 @@ import { Watch } from "@models/watch.model";
   standalone: true,
   templateUrl: "./summary.component.html",
   styleUrl: "./summary.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SummaryComponent {
   watches = input.required<Watch[]>();

@@ -43,16 +43,33 @@ export class WatchService {
   }
 
   async saveNewWatch(newWatchDTO: NewWatchFormDTO) {
-    const newWatch = await lastValueFrom(this.watchApiService.saveNewWatch(newWatchDTO)).catch((err: ApiError) => err);
+    const apiRes = await lastValueFrom(this.watchApiService.saveNewWatch(newWatchDTO)).catch((err: ApiError) => err);
 
-    if (STACK_API_ERROR_PROPERTY in newWatch) {
-      return newWatch;
+    if (STACK_API_ERROR_PROPERTY in apiRes) {
+      return apiRes;
     }
 
     this.alertService.successAlert(`Ny bevakning skapad för: ${newWatchDTO.label}`);
-    this._watches.update(watches => [...watches, newWatch]);
+    this._watches.update(watches => [...watches, apiRes]);
 
-    return newWatch;
+    return apiRes;
+  }
+
+  async toggleAll(activateAll: boolean, ids: string[]) {
+    const apiRes = await lastValueFrom(this.watchApiService.toggleAll(activateAll, ids)).catch((err: ApiError) => err);
+
+    if (STACK_API_ERROR_PROPERTY in apiRes) {
+      return;
+    }
+
+    this.alertService.successAlert((activateAll ? `Aktiverade` : `Inaktiverade`) + ` Alla bevakningar`);
+    const newWatches = this.watches().map(watch => {
+      watch.active = activateAll;
+      return watch;
+    });
+
+    this._watches.set([...newWatches]);
+    return apiRes;
   }
 
   async toggleActiveStatus(watch: Watch) {

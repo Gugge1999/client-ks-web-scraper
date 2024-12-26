@@ -2,8 +2,10 @@
   <div style="min-height: 100vh; display: flex; flex-direction: column">
     <scraper-header [apiStatus]="apiStatus()" />
 
-    <main style="flex: 1; margin-bottom: 60px">
+    <main style="flex: 1; margin-bottom: 80px">
       <scraper-summary [watches]="watches()" />
+
+      <scraper-toggle-all [watches]="watches()" />
 
       <scraper-card [watches]="watches()" />
 

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, input } from "@angular/core";
+import { Component, computed, input } from "@angular/core";
 import { NewWatchDialogComponent } from "@components/dialogs/new-watch-dialog/new-watch-dialog.component";
 import { ApiStatus } from "@models/api-status.model";
 import { Watch } from "@models/watch.model";
@@ -9,7 +9,6 @@ import { tap } from "rxjs";
   selector: "scraper-new-watch-fab",
   templateUrl: "./new-watch-fab.component.html",
   styleUrl: "./new-watch-fab.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TuiIcon, TuiButton, TuiHint],
 })
 export class NewWatchFabComponent {

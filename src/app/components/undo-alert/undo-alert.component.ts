@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnDestroy } from "@angular/core";
+import { Component, inject, OnDestroy } from "@angular/core";
 import { WatchApiService } from "@services/watch-api.service";
 import { TuiPopover } from "@taiga-ui/cdk/services";
 import { TuiAlertOptions, TuiButton } from "@taiga-ui/core";
@@ -8,7 +8,6 @@ import { take } from "rxjs";
 @Component({
   selector: "scraper-undo-alert",
   templateUrl: "./undo-alert.component.html",
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TuiButton],
 })
 export class UndoAlertComponent implements OnDestroy {

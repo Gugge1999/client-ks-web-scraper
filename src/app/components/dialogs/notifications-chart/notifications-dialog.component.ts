@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from "@angular/core";
+import { Component } from "@angular/core";
 import { TuiDialogContext } from "@taiga-ui/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { DatePipe } from "@angular/common";
@@ -9,7 +9,6 @@ import { cardDateFormat } from "@constants/constants";
   templateUrl: "./notifications-dialog.component.html",
   styleUrl: "./notifications-dialog.component.scss",
   imports: [DatePipe],
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NotificationsDialogComponent {
   public readonly context = injectContext<TuiDialogContext<void, string[]>>();

@@ -6,6 +6,7 @@ import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
 import { Watch } from "@models/watch.model";
 import { retry } from "rxjs";
 
+// TODO: Den här klassen borde bara nås via watch service.
 @Injectable({
   providedIn: "root",
 })
@@ -28,6 +29,13 @@ export class WatchApiService {
 
   getAllWatches() {
     return this.http.get<Watch[]>(`${this.bevakningarUrl}/all-watches`).pipe(retry({ count: 3, delay: 2000 }));
+  }
+
+  toggleAll(activateAll: boolean, ids: string[]) {
+    return this.http.patch<Watch[] | ApiError>(`${this.bevakningarUrl}/toggle-all`, {
+      activateAll,
+      ids,
+    });
   }
 
   // getAllWatchesResource = resource({

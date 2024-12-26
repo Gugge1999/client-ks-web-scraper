@@ -1,13 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  computed,
-  inject,
-  InputSignal,
-  OnInit,
-  viewChild,
-} from "@angular/core";
+import { ChangeDetectorRef, Component, computed, inject, InputSignal, OnInit, viewChild } from "@angular/core";
 import { ApiStatus } from "@models/api-status.model";
 import { TuiDialogContext, TuiPoint } from "@taiga-ui/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
@@ -19,7 +10,6 @@ import { JsonPipe } from "@angular/common";
   selector: "scraper-api-status-dialog",
   templateUrl: "./api-status-dialog.component.html",
   styleUrls: ["./api-status-dialog.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TuiAxes, TuiLineChart, TuiLineChartHint, JsonPipe],
 })
 export class ApiStatusDialogComponent implements OnInit {

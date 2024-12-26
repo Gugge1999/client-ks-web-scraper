@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from "@angular/core";
+import { Component, inject, signal } from "@angular/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
@@ -13,7 +13,6 @@ import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
 @Component({
   selector: "scraper-new-watch-dialog",
   templateUrl: "./new-watch-dialog.component.html",
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [FormsModule, ReactiveFormsModule, TuiError, TuiFieldErrorPipe, AsyncPipe, TuiButton, TuiButtonLoading, TuiTextfield],
   providers: [
     tuiValidationErrorsProvider({

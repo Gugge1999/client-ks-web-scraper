@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input } from "@angular/core";
+import { Component, computed, inject, input } from "@angular/core";
 import { ApiStatusDialogComponent } from "@components/dialogs/api-status-dialog/api-status-dialog.component";
 import { Theme, ThemeService } from "@services/theme.service";
 import { tuiDialog, TuiHint, TuiIcon } from "@taiga-ui/core";
@@ -8,7 +8,6 @@ import { ApiStatus } from "@models/api-status.model";
 @Component({
   selector: "scraper-header",
   templateUrl: "./header.component.html",
-  changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: "./header.component.scss",
   imports: [TuiAppBar, TuiHint, TuiIcon],
 })
