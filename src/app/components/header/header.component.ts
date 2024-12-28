@@ -4,7 +4,6 @@ import { Theme, ThemeService } from "@services/theme.service";
 import { tuiDialog, TuiHint, TuiIcon } from "@taiga-ui/core";
 import { TuiAppBar } from "@taiga-ui/layout";
 import { ApiStatus } from "@models/api-status.model";
-import { fadeInAnimation } from "@constants/constants";
 
 // TODO: Lägg till animations för ikoner
 @Component({
@@ -12,7 +11,7 @@ import { fadeInAnimation } from "@constants/constants";
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.scss",
   imports: [TuiAppBar, TuiHint, TuiIcon],
-  animations: [fadeInAnimation],
+  // animations: [fadeInAnimation],
 })
 export class HeaderComponent {
   private readonly themeService = inject(ThemeService);

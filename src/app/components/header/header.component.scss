@@ -51,3 +51,29 @@ header {
     transform: rotate(360deg);
   }
 }
+
+.moon-icon {
+  animation: fade1 0.4s ease-in-out;
+}
+
+.sun-icon {
+  animation: fade2 0.4s ease-in-out;
+}
+
+@keyframes fade1 {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade2 {
+  0% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+  }
+}
