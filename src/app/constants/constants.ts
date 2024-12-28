@@ -24,17 +24,17 @@ export const STACK_API_ERROR_PROPERTY = "stack";
 
 export const cardDateFormat = "d MMMM yyyy - H:mm:ss";
 
-export const fadeInAnimation = trigger("flyInOut", [
+export const fadeInAnimation = trigger("fadeInAnimation", [
   transition(":enter", [
     style({
       opacity: 0,
     }),
-    animate("400ms ease-in-out", style({ opacity: 1 })),
+    animate("500ms ease-in-out", style({ opacity: 1 })),
   ]),
   transition(":leave", [
     style({
       opacity: 1,
     }),
-    animate("400ms ease-in-out", style({ opacity: 0 })),
+    animate("150ms ease-in-out", style({ opacity: 0 })),
   ]),
 ]);
