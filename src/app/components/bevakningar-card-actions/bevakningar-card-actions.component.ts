@@ -10,12 +10,12 @@ import { take, tap } from "rxjs";
 import { NotificationsDialogComponent } from "@components/dialogs/notifications-chart/notifications-dialog.component";
 
 @Component({
-  selector: "scraper-card-actions",
-  templateUrl: "./card-actions.component.html",
-  styleUrl: "./card-actions.component.scss",
+  selector: "scraper-bevakningar-card-actions",
+  templateUrl: "./bevakningar-card-actions.component.html",
+  styleUrl: "./bevakningar-card-actions.component.scss",
   imports: [FormsModule, TuiSwitch, TuiIcon, TuiHint, TuiBadgedContent, TuiBadge],
 })
-export class CardActionsComponent {
+export class BevakningarCardActionsComponent {
   readonly watch = input.required<Watch>();
   readonly notifications = computed(() => this.watch().notifications);
   readonly numberOfNotifications = computed(() => this.notifications().length);
