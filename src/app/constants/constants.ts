@@ -25,28 +25,16 @@ export const STACK_API_ERROR_PROPERTY = "stack";
 export const cardDateFormat = "d MMMM yyyy - H:mm:ss";
 
 export const fadeInAnimation = trigger("flyInOut", [
-  transition(
-    ":enter",
-    [
-      style({
-        opacity: 0,
-      }),
-      animate("{{duration}}ms ease-in-out", style({ opacity: 1 })),
-    ],
-    {
-      params: { duration: 400 },
-    },
-  ),
-  transition(
-    ":leave",
-    [
-      style({
-        opacity: 1,
-      }),
-      animate("{{duration}}ms ease-in-out", style({ opacity: 0 })),
-    ],
-    {
-      params: { duration: 400 },
-    },
-  ),
+  transition(":enter", [
+    style({
+      opacity: 0,
+    }),
+    animate("400ms ease-in-out", style({ opacity: 1 })),
+  ]),
+  transition(":leave", [
+    style({
+      opacity: 1,
+    }),
+    animate("400ms ease-in-out", style({ opacity: 0 })),
+  ]),
 ]);
