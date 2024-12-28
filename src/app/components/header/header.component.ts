@@ -5,13 +5,11 @@ import { tuiDialog, TuiHint, TuiIcon } from "@taiga-ui/core";
 import { TuiAppBar } from "@taiga-ui/layout";
 import { ApiStatus } from "@models/api-status.model";
 
-// TODO: Lägg till animations för ikoner
 @Component({
   selector: "scraper-header",
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.scss",
   imports: [TuiAppBar, TuiHint, TuiIcon],
-  // animations: [fadeInAnimation],
 })
 export class HeaderComponent {
   private readonly themeService = inject(ThemeService);
