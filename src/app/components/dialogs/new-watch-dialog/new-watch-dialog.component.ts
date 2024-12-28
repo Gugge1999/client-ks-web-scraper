@@ -38,7 +38,7 @@ export class NewWatchDialogComponent {
     }),
   });
 
-  newWatchLoading = signal(false);
+  readonly newWatchLoading = signal(false);
 
   protected async submitNewWatch() {
     this.newWatchLoading.set(true);

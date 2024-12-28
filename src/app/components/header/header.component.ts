@@ -4,6 +4,7 @@ import { Theme, ThemeService } from "@services/theme.service";
 import { tuiDialog, TuiHint, TuiIcon } from "@taiga-ui/core";
 import { TuiAppBar } from "@taiga-ui/layout";
 import { ApiStatus } from "@models/api-status.model";
+import { fadeInAnimation } from "@constants/constants";
 
 // TODO: Lägg till animations för ikoner
 @Component({
@@ -11,6 +12,7 @@ import { ApiStatus } from "@models/api-status.model";
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.scss",
   imports: [TuiAppBar, TuiHint, TuiIcon],
+  animations: [fadeInAnimation],
 })
 export class HeaderComponent {
   private readonly themeService = inject(ThemeService);
@@ -19,9 +21,9 @@ export class HeaderComponent {
     size: "m",
   });
 
-  apiStatus = input.required<ApiStatus>();
+  readonly apiStatus = input.required<ApiStatus>();
   isDarkMode = this.themeService.isDarkMode;
-  themeIcon = computed(() => (this.isDarkMode() ? "moon" : "sun"));
+  readonly themeIcon = computed(() => (this.isDarkMode() ? "moon" : "sun"));
 
   openApiStatusDialog() {
     this.dialog(this.apiStatus).subscribe();

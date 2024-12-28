@@ -7,7 +7,12 @@
 
     <div tuiSlot="right" style="display: flex; align-items: center; gap: 12px; padding-right: 10px">
       <div tuiHint="Växla tema">
-        <tui-icon [icon]="themeIcon()" class="header-icon icon-wrapper pointer" (click)="toggleTheme()" (keyup)="toggleTheme()" />
+        <tui-icon
+          [@fadeInAnimation]="'in'"
+          [icon]="themeIcon()"
+          class="header-icon icon-wrapper pointer"
+          (click)="toggleTheme()"
+          (keyup)="toggleTheme()" />
       </div>
 
       <div>

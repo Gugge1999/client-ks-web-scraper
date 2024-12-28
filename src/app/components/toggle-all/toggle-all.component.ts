@@ -12,9 +12,9 @@ import { WatchService } from "@services/watch.service";
   styleUrl: "./toggle-all.component.scss",
 })
 export class ToggleAllComponent {
-  watches = input.required<Watch[]>();
+  readonly watches = input.required<Watch[]>();
 
-  isToggleActive = computed(() => this.watches().every(w => w.active));
+  readonly isToggleActive = computed(() => this.watches().every(w => w.active));
 
   public readonly watchService = inject(WatchService);
 

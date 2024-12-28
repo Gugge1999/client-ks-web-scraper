@@ -11,7 +11,7 @@ import { AlertService } from "@services/alert.service";
   providedIn: "root",
 })
 export class WatchService {
-  private _watches = signal<Watch[]>([]);
+  private readonly _watches = signal<Watch[]>([]);
   readonly watches = this._watches.asReadonly();
 
   private readonly watchApiService = inject(WatchApiService);

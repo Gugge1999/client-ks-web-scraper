@@ -16,9 +16,9 @@ import { NotificationsDialogComponent } from "@components/dialogs/notifications-
   imports: [FormsModule, TuiSwitch, TuiIcon, TuiHint, TuiBadgedContent, TuiBadge],
 })
 export class CardActionsComponent {
-  watch = input.required<Watch>();
-  notifications = computed(() => this.watch().notifications);
-  numberOfNotifications = computed(() => this.notifications().length);
+  readonly watch = input.required<Watch>();
+  readonly notifications = computed(() => this.watch().notifications);
+  readonly numberOfNotifications = computed(() => this.notifications().length);
 
   public readonly watchService = inject(WatchService);
   private readonly alerts = inject(TuiAlertService);

@@ -8,7 +8,7 @@ import { Watch } from "@models/watch.model";
   styleUrl: "./summary.component.scss",
 })
 export class SummaryComponent {
-  watches = input.required<Watch[]>();
-  allWatchesLength = computed(() => this.watches().length);
-  activeWatchesLength = computed(() => this.watches().filter(w => w.active).length);
+  readonly watches = input.required<Watch[]>();
+  readonly allWatchesLength = computed(() => this.watches().length);
+  readonly activeWatchesLength = computed(() => this.watches().filter(w => w.active).length);
 }

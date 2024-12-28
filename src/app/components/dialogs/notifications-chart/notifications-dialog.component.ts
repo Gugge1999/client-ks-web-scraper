@@ -2,7 +2,7 @@ import { Component } from "@angular/core";
 import { TuiDialogContext } from "@taiga-ui/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { DatePipe } from "@angular/common";
-import { cardDateFormat } from "@constants/constants";
+import { CARD_DATE_FORMAT } from "@constants/constants";
 
 @Component({
   selector: "scraper-notifications-dialog",
@@ -15,5 +15,5 @@ export class NotificationsDialogComponent {
 
   protected readonly notifications = [this.context.data].flat();
 
-  protected readonly cardDateFormat = cardDateFormat;
+  protected readonly cardDateFormat = CARD_DATE_FORMAT;
 }

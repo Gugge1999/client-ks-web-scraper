@@ -15,7 +15,7 @@ import { JsonPipe } from "@angular/common";
 export class ApiStatusDialogComponent implements OnInit {
   private readonly cdr = inject(ChangeDetectorRef);
 
-  private chartChild = viewChild.required<TuiLineChart>("vette");
+  private readonly chartChild = viewChild.required<TuiLineChart>("vette");
 
   readonly context = injectContext<TuiDialogContext<void, InputSignal<ApiStatus>>>();
 

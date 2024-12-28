@@ -12,8 +12,8 @@ import { tap } from "rxjs";
   imports: [TuiIcon, TuiButton, TuiHint],
 })
 export class NewWatchFabComponent {
-  apiStatus = input.required<ApiStatus>();
-  fabTooltip = computed(() => {
+  readonly apiStatus = input.required<ApiStatus>();
+  readonly fabTooltip = computed(() => {
     switch (this.apiStatus().status) {
       case "active":
         return "";

@@ -11,8 +11,8 @@ export class ThemeService {
   private readonly cookieService = inject(CookieService);
   private readonly darkModeSig = inject(TUI_DARK_MODE);
   private readonly localStorageKey = "user-theme";
-  private currentThemeSig = signal(this.getColorTheme());
-  isDarkMode = computed(() => this.currentThemeSig() === "dark");
+  private readonly currentThemeSig = signal(this.getColorTheme());
+  readonly isDarkMode = computed(() => this.currentThemeSig() === "dark");
 
   initializeTheme() {
     this.setTheme(this.getColorTheme());

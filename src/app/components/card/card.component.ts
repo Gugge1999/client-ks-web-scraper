@@ -4,7 +4,7 @@ import { CardActionsComponent } from "@components/card-actions/card-actions.comp
 import { Watch } from "@models/watch.model";
 import { TuiAppearance } from "@taiga-ui/core";
 import { TuiCardLarge, TuiHeader } from "@taiga-ui/layout";
-import { cardDateFormat, fadeInAnimation } from "@constants/constants";
+import { CARD_DATE_FORMAT, fadeInAnimation } from "@constants/constants";
 
 // TODO: Byt namn till bevakningar
 @Component({
@@ -15,7 +15,7 @@ import { cardDateFormat, fadeInAnimation } from "@constants/constants";
   animations: [fadeInAnimation],
 })
 export class CardComponent {
-  watches = input.required<Watch[]>();
+  readonly watches = input.required<Watch[]>();
 
-  readonly cardDateFormat = cardDateFormat;
+  readonly cardDateFormat = CARD_DATE_FORMAT;
 }
