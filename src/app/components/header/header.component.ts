@@ -5,6 +5,7 @@ import { tuiDialog, TuiHint, TuiIcon } from "@taiga-ui/core";
 import { TuiAppBar } from "@taiga-ui/layout";
 import { ApiStatus } from "@models/api-status.model";
 
+// TODO: Lägg till animations för ikoner
 @Component({
   selector: "scraper-header",
   templateUrl: "./header.component.html",
@@ -13,7 +14,10 @@ import { ApiStatus } from "@models/api-status.model";
 })
 export class HeaderComponent {
   private readonly themeService = inject(ThemeService);
-  private readonly dialog = tuiDialog(ApiStatusDialogComponent, { label: "Status för API", size: "m" });
+  private readonly dialog = tuiDialog(ApiStatusDialogComponent, {
+    label: "Status för API",
+    size: "m",
+  });
 
   apiStatus = input.required<ApiStatus>();
   isDarkMode = this.themeService.isDarkMode;

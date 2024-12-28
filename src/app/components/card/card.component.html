@@ -1,5 +1,5 @@
 @for (watch of watches(); track watch.id) {
-  <div tuiAppearance="floating" tuiCardLarge class="card">
+  <div tuiAppearance="floating" tuiCardLarge class="card" [@flyInOut]="'in'">
     <header tuiHeader>
       <h1 style="margin-top: 4px; margin-bottom: 0; color: var(--tui-status-positive)">{{ watch.label }}</h1>
     </header>

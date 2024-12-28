@@ -68,7 +68,7 @@ export class WatchService {
       return watch;
     });
 
-    this._watches.set([...newWatches]);
+    this._watches.set(newWatches);
     return apiRes;
   }
 
