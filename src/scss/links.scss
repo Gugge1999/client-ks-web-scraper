@@ -1,7 +1,6 @@
-.link:link,
-.link:visited {
-  color: #099d8c;
-  text-decoration: none;
+.card-link:link,
+.card-link:visited {
+  color: var(--tui-status-positive);
 }
 
 a:hover {
