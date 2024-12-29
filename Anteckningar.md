@@ -9,6 +9,8 @@
 * * https://www.youtube.com/watch?v=bv9z_UfSqgM
 * * https://www.youtube.com/watch?v=lbiOP-VLKGI
 
+* [Läs pnpm ci med cache](https://pnpm.io/continuous-integration#github-actions)
+
 ---
 ## Misc
 * Läs: https://itnext.io/a-change-detection-zone-js-zoneless-local-change-detection-and-signals-story-9344079c3b9d
