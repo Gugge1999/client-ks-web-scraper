@@ -2,8 +2,6 @@
 
 * Byta till tRPC för att skapa kontrakt mellan frontend och backend
 
-* Byt till pnpm?
- 
 * Använd Jest för att testa
 * * https://www.xfive.co/blog/testing-angular-faster-jest/
 * * https://www.youtube.com/watch?v=bv9z_UfSqgM

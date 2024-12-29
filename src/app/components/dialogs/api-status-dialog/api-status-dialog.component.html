@@ -22,15 +22,15 @@
         #vette
         class="notifications-axes"
         [horizontalLines]="2"
-        [axisXLabels]="axisXLabels"
-        [axisYLabels]="axisYLabels"
+        [axisXLabels]="axisXLabelsSig()"
+        [axisYLabels]="axisYLabelsSig()"
         [tuiLineChartHint]="hintContent"
         [verticalLines]="4">
         <!-- TODO: Ändra till hejsan() sen och [height] borde använda averageMemUsage * 1.5-->
         <tui-line-chart
           [dots]="true"
           [height]="200"
-          [value]="value"
+          [value]="hejsan()"
           [width]="9"
           [x]="0"
           [y]="0"

@@ -24,6 +24,7 @@ export class ApiStatusDialogComponent implements OnInit {
   private memoryUsageLength = 0;
   protected showChart = false;
 
+  // TODO: Ska det vara en linked signal?
   readonly hejsan = computed(() => {
     const memoryUsage = this.apiStatus().memoryUsage;
     // this.showChart = false;
