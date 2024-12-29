@@ -4,7 +4,7 @@
       <h1 style="margin-top: 4px; margin-bottom: 0; color: var(--tui-status-positive)">{{ watch.label }}</h1>
     </header>
 
-    <section style="display: unset; padding: 0 12px; height: auto; border-style: none">
+    <section style="display: unset; height: auto; border-style: none">
       <p>
         <strong>Senaste notisen skickades:</strong>
         {{ watch.lastEmailSent ? (watch.lastEmailSent | date: cardDateFormat) : "Ingen notis skickad" }}
