@@ -7,7 +7,7 @@ import { TuiAlertService, tuiDialog, TuiDialogService, TuiHint, TuiIcon } from "
 import { TUI_CONFIRM, TuiBadge, TuiBadgedContent, TuiConfirmData, TuiSwitch } from "@taiga-ui/kit";
 import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
 import { take, tap } from "rxjs";
-import { NotificationsDialogComponent } from "@components/dialogs/notifications-chart/notifications-dialog.component";
+import { NotificationsDialogComponent } from "@components/notifications-dialog/notifications-dialog.component";
 
 @Component({
   selector: "scraper-bevakningar-card-actions",

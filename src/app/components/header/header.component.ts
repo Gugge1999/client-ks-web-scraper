@@ -1,5 +1,5 @@
 import { Component, computed, inject, input } from "@angular/core";
-import { ApiStatusDialogComponent } from "@components/dialogs/api-status-dialog/api-status-dialog.component";
+import { ApiStatusDialogComponent } from "@components/api-status-dialog/api-status-dialog.component";
 import { Theme, ThemeService } from "@services/theme.service";
 import { tuiDialog, TuiHint, TuiIcon } from "@taiga-ui/core";
 import { TuiAppBar } from "@taiga-ui/layout";

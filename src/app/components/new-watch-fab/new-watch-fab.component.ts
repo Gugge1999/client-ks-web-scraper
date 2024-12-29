@@ -1,5 +1,5 @@
 import { Component, computed, input } from "@angular/core";
-import { NewWatchDialogComponent } from "@components/dialogs/new-watch-dialog/new-watch-dialog.component";
+import { NewWatchDialogComponent } from "@components/new-watch-dialog/new-watch-dialog.component";
 import { ApiStatus } from "@models/api-status.model";
 import { Watch } from "@models/watch.model";
 import { TuiButton, tuiDialog, TuiHint, TuiIcon } from "@taiga-ui/core";

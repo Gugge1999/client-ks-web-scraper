@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, computed, inject, InputSignal, OnInit, viewChild } from "@angular/core";
+import { Component, computed, InputSignal, OnInit, viewChild } from "@angular/core";
 import { ApiStatus } from "@models/api-status.model";
 import { TuiDialogContext, TuiPoint } from "@taiga-ui/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
@@ -13,8 +13,6 @@ import { JsonPipe } from "@angular/common";
   imports: [TuiAxes, TuiLineChart, TuiLineChartHint, JsonPipe],
 })
 export class ApiStatusDialogComponent implements OnInit {
-  private readonly cdr = inject(ChangeDetectorRef);
-
   private readonly chartChild = viewChild.required<TuiLineChart>("vette");
 
   readonly context = injectContext<TuiDialogContext<void, InputSignal<ApiStatus>>>();
