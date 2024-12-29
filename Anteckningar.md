@@ -2,9 +2,7 @@
 
 * Byta till tRPC för att skapa kontrakt mellan frontend och backend
 
-
 * Byt till pnpm?
-
  
 * Använd Jest för att testa
 * * https://www.xfive.co/blog/testing-angular-faster-jest/
@@ -12,7 +10,6 @@
 * * https://www.youtube.com/watch?v=lbiOP-VLKGI
 
 ---
-
 ## Misc
 * Läs: https://itnext.io/a-change-detection-zone-js-zoneless-local-change-detection-and-signals-story-9344079c3b9d
 
