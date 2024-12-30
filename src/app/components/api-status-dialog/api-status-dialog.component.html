@@ -11,34 +11,23 @@
       <i>{{ apiStat.memoryUsage }}</i>
     </h4>
 
-    <!--    @for (memUsage of hejsan(); track $index) {-->
-    <!--      <span> {{ memUsage }} |</span>-->
-    <!--    }-->
-
-    <span>{{ hejsan() | json }}</span>
-
-    @if (showChart) {
-      <tui-axes
-        #vette
-        class="notifications-axes"
-        [horizontalLines]="2"
-        [axisXLabels]="axisXLabelsSig()"
-        [axisYLabels]="axisYLabelsSig()"
-        [tuiLineChartHint]="hintContent"
-        [verticalLines]="4">
-        <!-- TODO: Ändra till hejsan() sen och [height] borde använda averageMemUsage * 1.5-->
-        <tui-line-chart
-          [dots]="true"
-          [height]="200"
-          [value]="hejsan()"
-          [width]="9"
-          [x]="0"
-          [y]="0"
-          [filled]="true"
-          [xStringify]="stringify"
-          [yStringify]="stringify" />
-      </tui-axes>
-    }
+    <tui-axes
+      class="notifications-axes"
+      [horizontalLines]="2"
+      [axisYLabels]="axisYLabels()"
+      [tuiLineChartHint]="hintContent"
+      [verticalLines]="4">
+      <tui-line-chart
+        [dots]="true"
+        [height]="chartHeight()"
+        [value]="chartValueSig()"
+        [width]="20"
+        [x]="0"
+        [y]="0"
+        [filled]="true"
+        [xStringify]="stringify"
+        [yStringify]="stringify" />
+    </tui-axes>
 
     <h4>Drifttid</h4>
     <div style="margin-left: 1em">

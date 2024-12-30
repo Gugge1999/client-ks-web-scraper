@@ -1,121 +1,78 @@
-import { Component, computed, effect, InputSignal, OnInit } from "@angular/core";
+import { Component, computed, effect, InputSignal } from "@angular/core";
 import { ApiStatus } from "@models/api-status.model";
 import { TuiDialogContext, TuiPoint } from "@taiga-ui/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { TuiAxes, TuiLineChart, TuiLineChartHint } from "@taiga-ui/addon-charts";
 import { TuiContext } from "@taiga-ui/cdk";
-import { JsonPipe } from "@angular/common";
 
 @Component({
   selector: "scraper-api-status-dialog",
   templateUrl: "./api-status-dialog.component.html",
   styleUrls: ["./api-status-dialog.component.scss"],
-  imports: [TuiAxes, TuiLineChart, TuiLineChartHint, JsonPipe],
+  imports: [TuiAxes, TuiLineChart, TuiLineChartHint],
 })
-export class ApiStatusDialogComponent implements OnInit {
+export class ApiStatusDialogComponent {
   readonly context = injectContext<TuiDialogContext<void, InputSignal<ApiStatus>>>();
   readonly apiStatus = computed(() => this.context.data());
-  private readonly memoryUsageArr: TuiPoint[] = [];
+  // TODO: Den ska egentligen var av typen TuiPoint[] men det är readonly
+  private memoryUsageArr: [number, number][] = [];
   private memoryUsageLength = 0;
-  protected showChart = false;
 
-  readonly hejsan = computed(() => {
+  readonly chartValueSig = computed(() => {
     const memoryUsage = this.apiStatus().memoryUsage;
 
-    if (this.memoryUsageArr.length <= 9) {
+    if (this.memoryUsageArr.length <= 20) {
       this.memoryUsageLength++;
 
       this.memoryUsageArr.push([this.memoryUsageArr.length, memoryUsage]);
 
-      // OBS: Notera spread operator för att skapa ny referens
+      // OBS! Notera spread operator för att skapa ny referens
       return [...this.memoryUsageArr];
     }
 
-    this.memoryUsageArr.shift();
-
-    // TODO: Den här skippar nr 10
-    this.memoryUsageLength++;
+    this.memoryUsageArr.splice(0, 1);
 
     this.memoryUsageArr.push([this.memoryUsageLength, memoryUsage]);
 
+    this.memoryUsageLength++;
+
     // OBS: Notera spread operator för att skapa ny referens
-    return [...this.memoryUsageArr];
-  });
-
-  constructor() {
-    effect(() => {
-      console.log("hejsan", this.hejsan());
-    });
-  }
-
-  readonly value: TuiPoint[] = [
-    [0, 100],
-    [1, 180],
-    [2, 50],
-    [3, 75],
-    [4, 50],
-    [5, 150],
-    [6, 175],
-    [7, 190],
-    [8, 70],
-    [9, 70],
-  ];
-
-  readonly stringify = String;
-
-  axisXLabels: string[] = this.value.map(e => e[0].toString()).slice(1);
-
-  readonly axisXLabelsSig = computed(() =>
-    this.hejsan()
-      .map(e => e[0].toString())
-      .slice(1),
-  );
-
-  readonly averageMemoryUsage = this.value.map(e => e[1]).reduce((a, b) => a + b) / this.value.length;
-  readonly averageMemoryUsageSig = computed(
-    () =>
-      this.hejsan()
-        .map(e => e[1])
-        .reduce((a, b) => a + b) / this.hejsan().length,
-  );
-
-  axisYLabels: readonly string[] = [
-    "0",
-    (this.averageMemoryUsage * 0.5).toFixed(0).toString(), // Halva av medel
-    this.averageMemoryUsage.toFixed(0).toString(), // Medel
-    (this.averageMemoryUsage * 1.5).toFixed(0).toString(), // Halva över medel
-  ];
-
-  readonly axisYLabelsSig = computed(() => {
     return [
-      "0",
-      (this.averageMemoryUsageSig() * 0.5).toFixed(0).toString(), // Halva av medel
-      this.averageMemoryUsageSig().toFixed(0).toString(), // Medel
-      (this.averageMemoryUsageSig() * 1.5).toFixed(0).toString(), // Halva över medel
+      ...this.memoryUsageArr.map((elem, index) => {
+        elem[0] = index;
+
+        return elem;
+      }),
     ];
   });
 
-  ngOnInit(): void {
-    this.axisXLabels.push(this.value.length.toString());
+  readonly stringify = String;
 
-    let index = 10;
-
-    setInterval(() => {
-      this.showChart = false;
-      index++;
-      this.value.push([index, 123]);
-
-      this.axisXLabels = this.value.map(e => e[0].toString()).slice(1);
-      this.axisYLabels = [
-        "0",
-        (this.averageMemoryUsage * 0.5).toFixed(0).toString(), // Halva av medel
-        this.averageMemoryUsage.toFixed(0).toString(), // Medel
-        (this.averageMemoryUsage * 1.5).toFixed(0).toString(), // Halva över medel
-      ];
-
-      this.showChart = true;
-    }, 2_000);
+  constructor() {
+    effect(() => {
+      console.log(this.chartValueSig());
+    });
   }
+
+  readonly averageMemoryUsageSig = computed(() => {
+    return (
+      this.chartValueSig()
+        .map(e => e[1])
+        .reduce((a, b) => a + b) / this.chartValueSig().length
+    );
+  });
+
+  readonly maxMemoryUsageSig = computed(() => Math.max(...this.chartValueSig().map(e => e[1])));
+
+  readonly axisYLabels = computed(() => [
+    "0",
+    (this.maxMemoryUsageSig() * 0.5).toFixed(0).toString(), // 0.5x
+    this.maxMemoryUsageSig().toFixed(0).toString(), // 1x
+    (this.maxMemoryUsageSig() * 1.5).toFixed(0).toString(), // 1.5x
+  ]);
+
+  /** Hittar det högsta värdet i array:en och sen lägga på 25% */
+  readonly chartHeight = computed(() => this.maxMemoryUsageSig() * 1.25);
 
   readonly hintContent = ({ $implicit }: TuiContext<readonly TuiPoint[]>) => $implicit[0]?.[1] ?? 0;
 }
