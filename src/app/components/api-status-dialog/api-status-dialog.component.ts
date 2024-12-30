@@ -1,4 +1,4 @@
-import { Component, computed, InputSignal, OnInit, viewChild } from "@angular/core";
+import { Component, computed, effect, InputSignal, OnInit } from "@angular/core";
 import { ApiStatus } from "@models/api-status.model";
 import { TuiDialogContext, TuiPoint } from "@taiga-ui/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
@@ -13,27 +13,22 @@ import { JsonPipe } from "@angular/common";
   imports: [TuiAxes, TuiLineChart, TuiLineChartHint, JsonPipe],
 })
 export class ApiStatusDialogComponent implements OnInit {
-  private readonly chartChild = viewChild.required<TuiLineChart>("vette");
-
   readonly context = injectContext<TuiDialogContext<void, InputSignal<ApiStatus>>>();
-
-  readonly apiStatus = this.context.data;
+  readonly apiStatus = computed(() => this.context.data());
   private readonly memoryUsageArr: TuiPoint[] = [];
   private memoryUsageLength = 0;
   protected showChart = false;
 
-  // TODO: Ska det vara en linked signal?
   readonly hejsan = computed(() => {
     const memoryUsage = this.apiStatus().memoryUsage;
-    // this.showChart = false;
 
     if (this.memoryUsageArr.length <= 9) {
       this.memoryUsageLength++;
 
       this.memoryUsageArr.push([this.memoryUsageArr.length, memoryUsage]);
-      // this.showChart = true;
 
-      return this.memoryUsageArr;
+      // OBS: Notera spread operator för att skapa ny referens
+      return [...this.memoryUsageArr];
     }
 
     this.memoryUsageArr.shift();
@@ -43,10 +38,15 @@ export class ApiStatusDialogComponent implements OnInit {
 
     this.memoryUsageArr.push([this.memoryUsageLength, memoryUsage]);
 
-    // this.showChart = true;
-
-    return this.memoryUsageArr;
+    // OBS: Notera spread operator för att skapa ny referens
+    return [...this.memoryUsageArr];
   });
+
+  constructor() {
+    effect(() => {
+      console.log("hejsan", this.hejsan());
+    });
+  }
 
   readonly value: TuiPoint[] = [
     [0, 100],
@@ -115,21 +115,6 @@ export class ApiStatusDialogComponent implements OnInit {
 
       this.showChart = true;
     }, 2_000);
-
-    // this.chartChild().value = [
-    //   [0, 100],
-    //   [1, 180],
-    //   [2, 50],
-    //   [3, 75],
-    //   [4, 50],
-    //   [5, 150],
-    //   [6, 175],
-    //   [7, 190],
-    //   [8, 70],
-    //   [9, 70],
-    // ];
-    //
-    // this.cdr.detectChanges();
   }
 
   readonly hintContent = ({ $implicit }: TuiContext<readonly TuiPoint[]>) => $implicit[0]?.[1] ?? 0;
