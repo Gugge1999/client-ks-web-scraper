@@ -4,7 +4,6 @@ import { fadeInAnimation } from "@constants/constants";
 
 @Component({
   selector: "scraper-summary",
-  standalone: true,
   templateUrl: "./summary.component.html",
   styleUrl: "./summary.component.scss",
   animations: [fadeInAnimation],
