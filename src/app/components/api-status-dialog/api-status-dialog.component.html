@@ -2,14 +2,13 @@
 
 @if (apiStat.status === "active") {
   <div>
-    <h4>
+    <h3>
       Interval på bevakningar:
       <i>{{ apiStat.scrapingIntervalInMinutes }} minuter</i>
-    </h4>
-    <h4>
-      Minnesanvändning i MB:
-      <i>{{ apiStat.memoryUsage }}</i>
-    </h4>
+    </h3>
+    <h3>
+      Minnesanvändning i MB: <i>{{ apiStat.memoryUsage }}</i>
+    </h3>
 
     <tui-axes
       class="notifications-axes"
@@ -18,15 +17,12 @@
       [tuiLineChartHint]="hintContent"
       [verticalLines]="4">
       <tui-line-chart
-        [dots]="true"
-        [height]="chartHeight()"
         [value]="chartValueSig()"
-        [width]="20"
-        [x]="0"
-        [y]="0"
+        [height]="chartHeight()"
+        [x]="xStartValue()"
         [filled]="true"
-        [xStringify]="stringify"
-        [yStringify]="stringify" />
+        [dots]="true"
+        [width]="20" />
     </tui-axes>
 
     <h4>Drifttid</h4>

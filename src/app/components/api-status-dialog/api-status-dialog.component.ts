@@ -1,4 +1,4 @@
-import { Component, computed, effect, InputSignal } from "@angular/core";
+import { Component, computed, InputSignal } from "@angular/core";
 import { ApiStatus } from "@models/api-status.model";
 import { TuiDialogContext, TuiPoint } from "@taiga-ui/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
@@ -12,11 +12,11 @@ import { TuiContext } from "@taiga-ui/cdk";
   imports: [TuiAxes, TuiLineChart, TuiLineChartHint],
 })
 export class ApiStatusDialogComponent {
-  readonly context = injectContext<TuiDialogContext<void, InputSignal<ApiStatus>>>();
-  readonly apiStatus = computed(() => this.context.data());
-  // TODO: Den ska egentligen var av typen TuiPoint[] men det är readonly
-  private memoryUsageArr: [number, number][] = [];
+  readonly dialogContext = injectContext<TuiDialogContext<void, InputSignal<ApiStatus>>>();
+  private memoryUsageArr: TuiPoint[] = [];
   private memoryUsageLength = 0;
+
+  readonly apiStatus = computed(() => this.dialogContext.data());
 
   readonly chartValueSig = computed(() => {
     const memoryUsage = this.apiStatus().memoryUsage;
@@ -36,33 +36,13 @@ export class ApiStatusDialogComponent {
 
     this.memoryUsageLength++;
 
-    // OBS: Notera spread operator för att skapa ny referens
-    return [
-      ...this.memoryUsageArr.map((elem, index) => {
-        elem[0] = index;
-
-        return elem;
-      }),
-    ];
-  });
-
-  readonly stringify = String;
-
-  constructor() {
-    effect(() => {
-      console.log(this.chartValueSig());
-    });
-  }
-
-  readonly averageMemoryUsageSig = computed(() => {
-    return (
-      this.chartValueSig()
-        .map(e => e[1])
-        .reduce((a, b) => a + b) / this.chartValueSig().length
-    );
+    // OBS! Notera spread operator för att skapa ny referens
+    return [...this.memoryUsageArr];
   });
 
   readonly maxMemoryUsageSig = computed(() => Math.max(...this.chartValueSig().map(e => e[1])));
+
+  readonly xStartValue = computed(() => this.chartValueSig()[0][0]);
 
   readonly axisYLabels = computed(() => [
     "0",
@@ -72,7 +52,7 @@ export class ApiStatusDialogComponent {
   ]);
 
   /** Hittar det högsta värdet i array:en och sen lägga på 25% */
-  readonly chartHeight = computed(() => this.maxMemoryUsageSig() * 1.25);
+  readonly chartHeight = computed(() => this.maxMemoryUsageSig() * 1.5);
 
   readonly hintContent = ({ $implicit }: TuiContext<readonly TuiPoint[]>) => $implicit[0]?.[1] ?? 0;
 }
