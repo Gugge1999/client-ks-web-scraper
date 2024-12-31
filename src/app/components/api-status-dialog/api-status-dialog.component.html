@@ -6,9 +6,8 @@
       Interval på bevakningar:
       <i>{{ apiStat.scrapingIntervalInMinutes }} minuter</i>
     </h3>
-    <h3>
-      Minnesanvändning i MB: <i>{{ apiStat.memoryUsage }}</i>
-    </h3>
+
+    <h3 style="padding-top: 24px">Minnesanvändning i MB</h3>
 
     <tui-axes
       class="notifications-axes"
@@ -25,7 +24,9 @@
         [width]="20" />
     </tui-axes>
 
-    <h4>Drifttid</h4>
+    <br />
+
+    <h4 style="padding-top: 24px">Drifttid</h4>
     <div style="margin-left: 1em">
       <p>År: {{ apiStat.uptime.years }}</p>
       <p>Månader: {{ apiStat.uptime.months }}</p>
