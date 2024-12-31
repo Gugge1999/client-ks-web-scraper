@@ -1,5 +1,5 @@
 @if (allWatchesLength() > 0) {
-  <div class="flex flex-direction-row flex-justify-content-center summary-wrapper">
+  <div class="flex flex-direction-row flex-justify-content-center summary-wrapper" [@fadeInAnimation]="'in'">
     <p>Bevakningar: {{ allWatchesLength() }}</p>
 
     <p>Aktiva: {{ activeWatchesLength() }}</p>

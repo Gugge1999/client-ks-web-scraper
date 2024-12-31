@@ -4,12 +4,14 @@ import { TuiHintDirective } from "@taiga-ui/core";
 import { TuiSwitch } from "@taiga-ui/kit";
 import { Watch } from "@models/watch.model";
 import { WatchService } from "@services/watch.service";
+import { fadeInAnimation } from "@constants/constants";
 
 @Component({
   selector: "scraper-toggle-all",
   imports: [FormsModule, TuiHintDirective, TuiSwitch],
   templateUrl: "./toggle-all.component.html",
   styleUrl: "./toggle-all.component.scss",
+  animations: [fadeInAnimation],
 })
 export class ToggleAllComponent {
   readonly watches = input.required<Watch[]>();

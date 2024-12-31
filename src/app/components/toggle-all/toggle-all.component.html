@@ -1,14 +1,16 @@
 @if (watches().length > 0) {
-  <input
-    tuiSwitch
-    type="checkbox"
-    (change)="toggleAll()"
-    [ngModel]="isToggleActive()"
-    tuiHint="Växla alla statusar"
-    tuiHintDirection="top"
-    style="--t-bg: var(--tui-status-positive)"
-    [showIcons]="false"
-    size="m" />
+  <div [@fadeInAnimation]="'in'">
+    <input
+      tuiSwitch
+      type="checkbox"
+      (change)="toggleAll()"
+      [ngModel]="isToggleActive()"
+      tuiHint="Växla alla statusar"
+      tuiHintDirection="top"
+      style="--t-bg: var(--tui-status-positive)"
+      [showIcons]="false"
+      size="m" />
 
-  <span style="padding-left: 8px; font-size: larger">Växla alla statusar</span>
+    <span style="padding-left: 8px; font-size: larger">Växla alla statusar</span>
+  </div>
 }
