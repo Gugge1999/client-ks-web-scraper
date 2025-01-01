@@ -19,10 +19,10 @@ export class ThemeService {
   }
 
   private getColorTheme(): Theme {
-    const storedUserTheme = localStorage.getItem(this.localStorageKey);
+    const storedUserTheme = localStorage.getItem(this.localStorageKey) as "true" | "false" | null;
 
     if (storedUserTheme) {
-      return storedUserTheme as Theme;
+      return storedUserTheme === "true" ? "dark" : "light";
     }
 
     const userPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
