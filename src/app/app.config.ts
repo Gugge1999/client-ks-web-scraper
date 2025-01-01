@@ -15,7 +15,6 @@ import { tuiHintOptionsProvider } from "@taiga-ui/core";
 import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
 import { env } from "env/env";
 
-// TODO: Behövs detta? Verkar inte finnas i nya applikationer
 if (env.name === "prod") {
   enableProdMode();
 }
