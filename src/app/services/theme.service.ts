@@ -10,7 +10,7 @@ export type Theme = "dark" | "light";
 export class ThemeService {
   private readonly cookieService = inject(CookieService);
   private readonly darkModeSig = inject(TUI_DARK_MODE);
-  private readonly localStorageKey = "user-theme";
+  private readonly localStorageKey = "tuiDark";
   private readonly currentThemeSig = signal(this.getColorTheme());
   readonly isDarkMode = computed(() => this.currentThemeSig() === "dark");
 
@@ -18,7 +18,6 @@ export class ThemeService {
     this.setTheme(this.getColorTheme());
   }
 
-  // TODO: Det bör gå att radera user-theme eftersom Taiga UI sätter tuiDark
   private getColorTheme(): Theme {
     const storedUserTheme = localStorage.getItem(this.localStorageKey);
 
@@ -33,6 +32,7 @@ export class ThemeService {
 
   setTheme(theme: Theme) {
     this.currentThemeSig.set(theme);
+
     const isDarkTheme = theme === "dark";
 
     this.darkModeSig.set(isDarkTheme);
@@ -40,9 +40,5 @@ export class ThemeService {
 
   updateTheme(theme: Theme) {
     this.setTheme(theme);
-
-    if (this.cookieService.isCookieAccepted()) {
-      localStorage.setItem(this.localStorageKey, theme);
-    }
   }
 }
