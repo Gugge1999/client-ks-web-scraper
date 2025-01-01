@@ -23,7 +23,7 @@
 
         @if (apiStatus().status === "pending") {
           <div class="header-icon icon-wrapper" style="cursor: wait" tuiHint="Väntar på API:et">
-            <tui-icon icon="loader" class="loading-icon-spinner" />
+            <tui-icon icon="loader" class="loading-icon-spinner" (click)="openApiStatusDialog()" />
           </div>
         }
 

@@ -18,6 +18,7 @@ export class ThemeService {
     this.setTheme(this.getColorTheme());
   }
 
+  // TODO: Det bör gå att radera user-theme eftersom Taiga UI sätter tuiDark
   private getColorTheme(): Theme {
     const storedUserTheme = localStorage.getItem(this.localStorageKey);
 

@@ -31,6 +31,11 @@ module.exports = tseslint.config(
       "no-else-return": "error",
       "@typescript-eslint/no-explicit-any": "error",
       "@angular-eslint/prefer-signals": "error",
+      // "eslint @stylistic/js/padding-line-between-statements": [
+      //   "error",
+      //   { blankLine: "always", prev: "directive", next: "*" },
+      //   { blankLine: "any", prev: "directive", next: "directive" },
+      // ],
 
       "@typescript-eslint/no-extraneous-class": "off",
     },

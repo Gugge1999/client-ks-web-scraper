@@ -38,6 +38,7 @@ export class NewWatchFabComponent {
     }
 
     const cards = document.querySelectorAll(".bevakningar-cards");
+    // TODO: Den här fungerar inte
     const lastCard = cards[cards.length - 1];
     // setTimeout behövs för mobil, annars hamnar man lite för långt upp
     setTimeout(() => lastCard.scrollIntoView({ behavior: "smooth", block: "start" }), 100);

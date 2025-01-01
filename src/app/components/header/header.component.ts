@@ -18,9 +18,9 @@ export class HeaderComponent {
     size: "m",
   });
 
-  readonly apiStatus = input.required<ApiStatus>();
-  isDarkMode = this.themeService.isDarkMode;
+  private readonly isDarkMode = this.themeService.isDarkMode;
   readonly themeIcon = computed(() => (this.isDarkMode() ? "moon" : "sun"));
+  readonly apiStatus = input.required<ApiStatus>();
 
   openApiStatusDialog() {
     this.dialog(this.apiStatus).subscribe();

@@ -1,5 +1,7 @@
 ## TODO
 
+* Lägg till https://eslint.style/rules/js/padding-line-between-statements
+
 * Byta till tRPC för att skapa kontrakt mellan frontend och backend
 
 * Använd Jest för att testa

@@ -1,18 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@use "sass:color";
-
 @use "./scss/theme.scss";
 @use "./scss/flexbox.scss";
 @use "./scss/globals.scss";
 @use "./scss/links.scss";
-@use "./scss/scrollbar.scss";
-
-:root {
-  --tui-background-accent-1: var(--tui-status-positive);
-  --tui-background-accent-1-hover: var(--tui-status-positive-pale-hover);
-  --tui-background-accent-1-pressed: var(--tui-text-positive-hover);
-
-  [tuiAppearance][data-appearance="flat"] {
-    color: var(--tui-text-positive);
-  }
-}

@@ -7,7 +7,9 @@
       <i>{{ apiStat.scrapingIntervalInMinutes }} minuter</i>
     </h3>
 
-    <h3 style="padding-top: 24px">Minnesanvändning i MB</h3>
+    <hr style="margin-top: 24px" />
+
+    <h3>Minnesanvändning i MB</h3>
 
     <tui-axes
       class="notifications-axes"
@@ -15,18 +17,12 @@
       [axisYLabels]="axisYLabels()"
       [tuiLineChartHint]="hintContent"
       [verticalLines]="4">
-      <tui-line-chart
-        [value]="chartValueSig()"
-        [height]="chartHeight()"
-        [x]="xStartValue()"
-        [filled]="true"
-        [dots]="true"
-        [width]="20" />
+      <tui-line-chart [value]="chartValueSig()" [height]="chartHeight()" [x]="xStartValue()" [filled]="true" [width]="20" />
     </tui-axes>
 
-    <br />
+    <hr style="margin-top: 24px" />
 
-    <h4 style="padding-top: 24px">Drifttid</h4>
+    <h4>Drifttid</h4>
     <div style="margin-left: 1em">
       <p>År: {{ apiStat.uptime.years }}</p>
       <p>Månader: {{ apiStat.uptime.months }}</p>
@@ -36,6 +32,8 @@
       <p>Sekunder: {{ apiStat.uptime.seconds }}</p>
     </div>
   </div>
+} @else if (apiStat.status === "pending") {
+  <p style="cursor: wait">Väntar på API:et</p>
 } @else {
   <p style="color: var(--tui-text-negative)">API:et är inte aktivt</p>
 }

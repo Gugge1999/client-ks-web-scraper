@@ -3,8 +3,7 @@ export interface Watch {
   watchToScrape: string;
   label: string;
   watch: ScrapedWatch;
-  // TODO: Ska den vara date eller string?
-  notifications: string[];
+  notifications: Date[];
   active: boolean;
   lastEmailSent: string | null;
   added: string;

@@ -15,6 +15,7 @@ import { tuiHintOptionsProvider } from "@taiga-ui/core";
 import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
 import { env } from "env/env";
 
+// TODO: Behövs detta? Verkar inte finnas i nya applikationer
 if (env.name === "prod") {
   enableProdMode();
 }
@@ -24,12 +25,19 @@ registerLocaleData(localeSvSe);
 export const appConfig: ApplicationConfig = {
   providers: [
     provideExperimentalZonelessChangeDetection(),
-    tuiHintOptionsProvider({ showDelay: 100, hideDelay: 0, appearance: "dark" }),
+    tuiHintOptionsProvider({
+      showDelay: 100,
+      hideDelay: 0,
+      appearance: "dark",
+    }),
     provideHttpClient(withInterceptors([errorInterceptor])),
     importProvidersFrom(BrowserModule),
     provideAnimations(),
     NG_EVENT_PLUGINS,
 
-    { provide: LOCALE_ID, useValue: "sv-se" },
+    {
+      provide: LOCALE_ID,
+      useValue: "sv-se",
+    },
   ],
 };

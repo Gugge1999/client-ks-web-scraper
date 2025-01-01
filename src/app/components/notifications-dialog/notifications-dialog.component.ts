@@ -11,7 +11,7 @@ import { CARD_DATE_FORMAT } from "@constants/constants";
   imports: [DatePipe],
 })
 export class NotificationsDialogComponent {
-  public readonly context = injectContext<TuiDialogContext<void, string[]>>();
+  public readonly context = injectContext<TuiDialogContext<void, Date[]>>();
 
   protected readonly notifications = [this.context.data].flat();
 
