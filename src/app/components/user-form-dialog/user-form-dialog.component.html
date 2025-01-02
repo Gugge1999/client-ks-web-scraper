@@ -1,14 +1,14 @@
-<form [formGroup]="newUserForm">
+<form [formGroup]="userForm">
   <!--TODO: Den här ska ändras till logga in om användaren byter till det -->
   <h2 style="margin-top: 0; margin-bottom: 45px">Registrera ny användare</h2>
 
-  @let controls = newUserForm.controls;
+  @let controls = userForm.controls;
 
   <p>
     <tui-textfield>
       <label [for]="controls.username" tuiLabel>Användarnamn</label>
 
-      <input name="username" type="text" tuiTextfield autocomplete="username" [formControl]="controls.username" />
+      <input name="username" type="text" tuiTextfield autocomplete="off" [formControl]="controls.username" />
     </tui-textfield>
 
     <tui-error [formControl]="controls.username" [error]="[] | tuiFieldError | async" />
@@ -18,7 +18,7 @@
     <tui-textfield>
       <label [for]="controls.email" tuiLabel>Email</label>
 
-      <input name="email" type="email" tuiTextfield autocomplete="email" [formControl]="controls.email" />
+      <input name="email" type="email" tuiTextfield autocomplete="off" [formControl]="controls.email" />
     </tui-textfield>
 
     <tui-error [formControl]="controls.email" [error]="[] | tuiFieldError | async" />
@@ -28,7 +28,7 @@
     <tui-textfield>
       <label [for]="controls.password" tuiLabel>Lösenord</label>
 
-      <input name="password" type="password" tuiTextfield autocomplete="current-password" [formControl]="controls.password" />
+      <input name="password" type="password" tuiTextfield autocomplete="off" [formControl]="controls.password" />
     </tui-textfield>
 
     <tui-error [formControl]="controls.password" [error]="[] | tuiFieldError | async" />
@@ -37,7 +37,7 @@
   <div class="flex" style="justify-content: end; padding-top: 16px">
     <button tuiButton type="button" appearance="action-grayscale" (click)="cancelClicked()" style="margin-right: 16px">Avbryt</button>
 
-    <button tuiButton type="button" [disabled]="newUserForm.invalid" [loading]="createUserLoading()" (click)="submitNewUser()">
+    <button tuiButton type="button" [disabled]="userForm.invalid" [loading]="createUserLoading()" (click)="submitNewUser()">
       Skapa användare
     </button>
   </div>
