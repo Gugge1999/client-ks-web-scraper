@@ -1,13 +1,24 @@
 <form [formGroup]="newUserForm">
-  <h2 style="margin-top: 0; margin-bottom: 45px">Skapa ny användare</h2>
+  <!--TODO: Den här ska ändras till logga in om användaren byter till det -->
+  <h2 style="margin-top: 0; margin-bottom: 45px">Registrera ny användare</h2>
 
   @let controls = newUserForm.controls;
 
   <p>
     <tui-textfield>
+      <label [for]="controls.username" tuiLabel>Användarnamn</label>
+
+      <input name="username" type="text" tuiTextfield autocomplete="username" [formControl]="controls.username" />
+    </tui-textfield>
+
+    <tui-error [formControl]="controls.username" [error]="[] | tuiFieldError | async" />
+  </p>
+
+  <p>
+    <tui-textfield>
       <label [for]="controls.email" tuiLabel>Email</label>
 
-      <input name="email" type="email" tuiTextfield autocomplete="username" [formControl]="controls.email" />
+      <input name="email" type="email" tuiTextfield autocomplete="email" [formControl]="controls.email" />
     </tui-textfield>
 
     <tui-error [formControl]="controls.email" [error]="[] | tuiFieldError | async" />
