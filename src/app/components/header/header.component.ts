@@ -4,6 +4,7 @@ import { Theme, ThemeService } from "@services/theme.service";
 import { tuiDialog, TuiHint, TuiIcon } from "@taiga-ui/core";
 import { TuiAppBar } from "@taiga-ui/layout";
 import { ApiStatus } from "@models/api-status.model";
+import { LoginDialogComponent } from "@components/login-dialog/login-dialog.component";
 
 @Component({
   selector: "scraper-header",
@@ -13,8 +14,11 @@ import { ApiStatus } from "@models/api-status.model";
 })
 export class HeaderComponent {
   private readonly themeService = inject(ThemeService);
-  private readonly dialog = tuiDialog(ApiStatusDialogComponent, {
+  private readonly statusDialog = tuiDialog(ApiStatusDialogComponent, {
     label: "Status för API",
+    size: "m",
+  });
+  private readonly newUserDialog = tuiDialog(LoginDialogComponent, {
     size: "m",
   });
 
@@ -23,12 +27,16 @@ export class HeaderComponent {
   readonly apiStatus = input.required<ApiStatus>();
 
   openApiStatusDialog() {
-    this.dialog(this.apiStatus).subscribe();
+    this.statusDialog(this.apiStatus).subscribe();
   }
 
   toggleTheme(): void {
     const newTheme: Theme = this.isDarkMode() ? "light" : "dark";
 
     return this.themeService.updateTheme(newTheme);
+  }
+
+  login() {
+    this.newUserDialog().subscribe();
   }
 }

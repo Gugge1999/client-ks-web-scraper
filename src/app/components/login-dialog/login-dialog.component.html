@@ -1,0 +1,33 @@
+<form [formGroup]="newUserForm">
+  <h2 style="margin-top: 0; margin-bottom: 45px">Skapa ny användare</h2>
+
+  @let controls = newUserForm.controls;
+
+  <p>
+    <tui-textfield>
+      <label [for]="controls.email" tuiLabel>Email</label>
+
+      <input name="email" type="email" tuiTextfield autocomplete="username" [formControl]="controls.email" />
+    </tui-textfield>
+
+    <tui-error [formControl]="controls.email" [error]="[] | tuiFieldError | async" />
+  </p>
+
+  <p>
+    <tui-textfield>
+      <label [for]="controls.password" tuiLabel>Lösenord</label>
+
+      <input name="password" type="password" tuiTextfield autocomplete="current-password" [formControl]="controls.password" />
+    </tui-textfield>
+
+    <tui-error [formControl]="controls.password" [error]="[] | tuiFieldError | async" />
+  </p>
+
+  <div class="flex" style="justify-content: end; padding-top: 16px">
+    <button tuiButton type="button" appearance="action-grayscale" (click)="cancelClicked()" style="margin-right: 16px">Avbryt</button>
+
+    <button tuiButton type="button" [disabled]="newUserForm.invalid" [loading]="createUserLoading()" (click)="submitNewUser()">
+      Skapa användare
+    </button>
+  </div>
+</form>

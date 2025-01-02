@@ -18,7 +18,7 @@ import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
     tuiValidationErrorsProvider({
       required: "Obligatorisk",
       noResult: "Klocka gav inget resultat",
-      // OBS: Variable måste heta requiredLength
+      // OBS: Variabel måste heta requiredLength
       minlength: ({ requiredLength }: { requiredLength: string }) => `Minst ${requiredLength} tecken`,
     }),
   ],
