@@ -11,7 +11,7 @@ import { ERROR_API_STATUS } from "@constants/constants";
 export class StatusService {
   getApiStatus() {
     return webSocket<ApiStatus>(`${env.apiUrlWebSocket}/status`).pipe(
-      retry({ count: 5, delay: 5000 }),
+      retry({ count: 3, delay: 2000 }),
       catchError(() => scheduled([ERROR_API_STATUS], asyncScheduler)),
     );
   }
