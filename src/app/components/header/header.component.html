@@ -37,6 +37,26 @@
       <div tuiHint="Användare" class="header-icon icon-wrapper pointer">
         <tui-icon icon="user" (click)="handleUserClick()" (keyup)="handleUserClick()" />
       </div>
+
+      <tui-icon
+        icon="user"
+        tuiDropdownHover
+        tuiDropdownAlign="right"
+        type="button"
+        class="link"
+        [tuiDropdown]="dropdown"
+        [(tuiDropdownOpen)]="open" />
+
+      <ng-template #dropdown>
+        <tui-data-list>
+          <tui-opt-group *ngFor="let group of items">
+            <button *ngFor="let item of group" tuiOption type="button" class="item" (click)="onClick(item)">
+              {{ item }}
+              <tui-icon *ngIf="itemIsActive(item)" icon="@tui.check" />
+            </button>
+          </tui-opt-group>
+        </tui-data-list>
+      </ng-template>
     </div>
   </tui-app-bar>
 </header>
