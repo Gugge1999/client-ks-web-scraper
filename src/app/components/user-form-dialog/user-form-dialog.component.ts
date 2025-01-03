@@ -1,4 +1,4 @@
-import { Component, inject, signal } from "@angular/core";
+import { Component, inject, OnInit, signal } from "@angular/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { TuiButton, TuiDialogContext, TuiError, TuiTextfield } from "@taiga-ui/core";
@@ -8,7 +8,7 @@ import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
 import { UserForm } from "@models/forms/user";
 import { NewUserDto } from "@models/DTOs/user";
 import { UserService } from "@services/user.service";
-import { User } from "@models/User";
+import { User } from "@models/user";
 import { lastValueFrom } from "rxjs";
 import { ApiError } from "@models/DTOs/api-error.dto";
 
@@ -27,17 +27,16 @@ import { ApiError } from "@models/DTOs/api-error.dto";
     }),
   ],
 })
-export class UserFormDialogComponent {
-  public readonly context = injectContext<TuiDialogContext<User | undefined, void>>();
+export class UserFormDialogComponent implements OnInit {
+  public readonly context = injectContext<TuiDialogContext<User | undefined, { newUser: boolean }>>();
   private readonly userService = inject(UserService);
+  protected readonly headerText = signal("");
+  protected readonly buttonText = signal("");
 
+  // OBS! FormControl för email sätts dynamiskt i ngOnInit
   userForm = new FormGroup<UserForm>({
     username: new FormControl("", {
       validators: [Validators.required, Validators.minLength(2)],
-      nonNullable: true,
-    }),
-    email: new FormControl("", {
-      validators: [Validators.required, Validators.email],
       nonNullable: true,
     }),
     password: new FormControl("", {
@@ -45,6 +44,24 @@ export class UserFormDialogComponent {
       nonNullable: true,
     }),
   });
+
+  ngOnInit(): void {
+    if (this.context.data.newUser) {
+      this.headerText.set("Skapa ny användare");
+      this.buttonText.set("Skapa användare");
+
+      this.userForm.addControl(
+        "email",
+        new FormControl("", {
+          validators: [Validators.required, Validators.email],
+          nonNullable: true,
+        }),
+      );
+    } else {
+      this.headerText.set("Logga in");
+      this.buttonText.set("Logga in");
+    }
+  }
 
   readonly createUserLoading = signal(false);
 
@@ -68,7 +85,7 @@ export class UserFormDialogComponent {
         return;
       }
 
-      this.userForm.controls.email.setErrors({ emailExists: true });
+      this.userForm.controls.email?.setErrors({ emailExists: true });
       return;
     }
 

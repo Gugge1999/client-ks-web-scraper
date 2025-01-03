@@ -32,6 +32,7 @@ module.exports = tseslint.config(
       "@typescript-eslint/no-explicit-any": "error",
       "@angular-eslint/prefer-signals": "error",
       "@typescript-eslint/no-extraneous-class": "off",
+      "@angular-eslint/sort-lifecycle-methods": "warn",
     },
   },
   {

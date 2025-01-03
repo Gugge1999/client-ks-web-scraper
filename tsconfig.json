@@ -9,7 +9,8 @@
       "@models/*": ["app/models/*"],
       "@constants/*": ["app/constants/*"],
       "@services/*": ["app/services/*"],
-      "@interceptors/*": ["app/interceptors/*"]
+      "@interceptors/*": ["app/interceptors/*"],
+      "@env/*": ["env/*"]
     },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,

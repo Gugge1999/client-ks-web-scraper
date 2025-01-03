@@ -18,7 +18,7 @@ export class HeaderComponent {
     label: "Status för API",
     size: "m",
   });
-  private readonly newUserDialog = tuiDialog(UserFormDialogComponent, {
+  private readonly userFormDialog = tuiDialog(UserFormDialogComponent, {
     size: "s",
   });
 
@@ -37,16 +37,15 @@ export class HeaderComponent {
   }
 
   handleNewUserClick() {
-    this.newUserDialog().subscribe();
+    this.userFormDialog({ newUser: true }).subscribe();
   }
 
-  // TODO: Fixa
   handleUserLoginClick() {
-    console.log("ikoiasjdasd");
+    this.userFormDialog({ newUser: false }).subscribe();
   }
 
   // TODO: Fixa
   handleLogoutClick() {
-    console.log("sdfsdafsdf");
+    console.log("handleLogoutClick");
   }
 }

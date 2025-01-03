@@ -10,10 +10,11 @@ import {
 } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { provideAnimations } from "@angular/platform-browser/animations";
-import { errorInterceptor } from "@interceptors/error-interceptor";
+import { errorInterceptor } from "@interceptors/error.interceptor";
 import { tuiHintOptionsProvider } from "@taiga-ui/core";
 import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
-import { env } from "env/env";
+import { jwtTokenInterceptor } from "@interceptors/jwt-token.interceptor";
+import { env } from "@env/env";
 
 if (env.name === "prod") {
   enableProdMode();
@@ -29,7 +30,7 @@ export const appConfig: ApplicationConfig = {
       hideDelay: 0,
       appearance: "dark",
     }),
-    provideHttpClient(withInterceptors([errorInterceptor])),
+    provideHttpClient(withInterceptors([errorInterceptor, jwtTokenInterceptor])),
     importProvidersFrom(BrowserModule),
     provideAnimations(),
     NG_EVENT_PLUGINS,

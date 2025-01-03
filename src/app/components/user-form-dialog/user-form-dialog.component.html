@@ -1,6 +1,6 @@
 <form [formGroup]="userForm">
   <!--TODO: Den här ska ändras till logga in om användaren byter till det -->
-  <h2 style="margin-top: 0; margin-bottom: 45px">Registrera ny användare</h2>
+  <h2 style="margin-top: 0; margin-bottom: 45px">{{ headerText() }}</h2>
 
   @let controls = userForm.controls;
 
@@ -14,15 +14,17 @@
     <tui-error [formControl]="controls.username" [error]="[] | tuiFieldError | async" />
   </p>
 
-  <p>
-    <tui-textfield>
-      <label [for]="controls.email" tuiLabel>Email</label>
+  @if (this.context.data.newUser && controls.email) {
+    <p>
+      <tui-textfield>
+        <label [for]="controls.email" tuiLabel>Email</label>
 
-      <input name="email" type="email" tuiTextfield autocomplete="off" [formControl]="controls.email" />
-    </tui-textfield>
+        <input name="email" type="email" tuiTextfield autocomplete="off" [formControl]="controls.email" />
+      </tui-textfield>
 
-    <tui-error [formControl]="controls.email" [error]="[] | tuiFieldError | async" />
-  </p>
+      <tui-error [formControl]="controls.email" [error]="[] | tuiFieldError | async" />
+    </p>
+  }
 
   <p>
     <tui-textfield>
@@ -38,7 +40,7 @@
     <button tuiButton type="button" appearance="action-grayscale" (click)="cancelClicked()" style="margin-right: 16px">Avbryt</button>
 
     <button tuiButton type="button" [disabled]="userForm.invalid" [loading]="createUserLoading()" (click)="submitNewUser()">
-      Skapa användare
+      {{ buttonText() }}
     </button>
   </div>
 </form>

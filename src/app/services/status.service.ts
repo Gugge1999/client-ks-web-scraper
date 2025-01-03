@@ -1,7 +1,7 @@
 import { ApiStatus } from "@models/api-status.model";
 import { Injectable } from "@angular/core";
 import { webSocket } from "rxjs/webSocket";
-import { env } from "env/env";
+import { env } from "@env/env";
 import { asyncScheduler, catchError, retry, scheduled } from "rxjs";
 import { ERROR_API_STATUS } from "@constants/constants";
 
