@@ -34,29 +34,29 @@
         }
       </div>
 
-      <div tuiHint="Användare" class="header-icon icon-wrapper pointer">
-        <tui-icon icon="user" (click)="handleUserClick()" (keyup)="handleUserClick()" />
+      <div class="header-icon icon-wrapper pointer">
+        <tui-icon icon="user" tuiDropdownOpen tuiDropdownAlign="right" [tuiDropdown]="dropdown" />
+
+        <ng-template #dropdown>
+          <tui-data-list>
+            <tui-opt-group>
+              <!--TODO: Registrera och logga in ska endast visas när man inte är inloggad -->
+              <button tuiOption type="button" class="item" (click)="handleNewUserClick()" (keyup)="handleNewUserClick()">
+                Registrera användare
+              </button>
+
+              <button tuiOption type="button" class="item" (click)="handleUserLoginClick()" (keyup)="handleUserLoginClick()">
+                Logga in
+              </button>
+
+              <!--TODO: Den här ska bara visas om användaren är inloggad -->
+              <button tuiOption type="button" class="item" (click)="handleLogoutClick()" (keyup)="handleLogoutClick()">
+                Logga ut
+              </button>
+            </tui-opt-group>
+          </tui-data-list>
+        </ng-template>
       </div>
-
-      <tui-icon
-        icon="user"
-        tuiDropdownHover
-        tuiDropdownAlign="right"
-        type="button"
-        class="link"
-        [tuiDropdown]="dropdown"
-        [(tuiDropdownOpen)]="open" />
-
-      <ng-template #dropdown>
-        <tui-data-list>
-          <tui-opt-group *ngFor="let group of items">
-            <button *ngFor="let item of group" tuiOption type="button" class="item" (click)="onClick(item)">
-              {{ item }}
-              <tui-icon *ngIf="itemIsActive(item)" icon="@tui.check" />
-            </button>
-          </tui-opt-group>
-        </tui-data-list>
-      </ng-template>
     </div>
   </tui-app-bar>
 </header>
