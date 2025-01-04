@@ -35,23 +35,36 @@
       </div>
 
       <div class="header-icon icon-wrapper pointer">
-        <tui-icon icon="user" tuiDropdownOpen tuiDropdownAlign="right" [tuiDropdown]="dropdown" />
+        <tui-icon icon="user" [(tuiDropdownOpen)]="open" tuiDropdownAlign="right" [tuiDropdown]="dropdown" />
 
         <ng-template #dropdown>
           <tui-data-list>
             <tui-opt-group>
               <!--TODO: Registrera och logga in ska endast visas när man inte är inloggad -->
-              <button tuiOption type="button" class="item" (click)="handleNewUserClick()" (keyup)="handleNewUserClick()">
+              <button tuiOption type="button" class="item" (click)="handleNewUser()" (keyup.enter)="handleNewUser()">
                 Registrera användare
               </button>
 
-              <button tuiOption type="button" class="item" (click)="handleUserLoginClick()" (keyup)="handleUserLoginClick()">
+              <button tuiOption type="button" class="item" (click)="handleUserLogin()" (keyup.enter)="handleUserLogin()">
                 Logga in
               </button>
 
-              <!--TODO: Den här ska bara visas om användaren är inloggad -->
-              <button tuiOption type="button" class="item" (click)="handleLogoutClick()" (keyup)="handleLogoutClick()">
+              <button tuiOption type="button" class="item" (click)="handleResetPassword()" (keyup.enter)="handleResetPassword()">
+                Glömt lösenord
+              </button>
+
+              <!--TODO: De här ska endast visas om man är inloggad -->
+              <button tuiOption type="button" class="item" (click)="handleChangePassword()" (keyup.enter)="handleChangePassword()">
+                Ändra lösenord
+              </button>
+
+              <button tuiOption type="button" class="item" (click)="handleDeleteUser()" (keyup.enter)="handleDeleteUser()">
+                Radera användare
+              </button>
+
+              <button tuiOption type="button" class="item" (click)="handleLogout()" (keyup.enter)="handleLogout()">
                 Logga ut
+                <tui-icon icon="@tui.log-out" />
               </button>
             </tui-opt-group>
           </tui-data-list>

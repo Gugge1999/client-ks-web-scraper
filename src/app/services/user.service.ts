@@ -1,10 +1,10 @@
 import { inject, Injectable } from "@angular/core";
-import { NewUserDto } from "@models/DTOs/user";
 import { HttpClient } from "@angular/common/http";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { User } from "@models/user";
 import { env } from "@env/env";
 import { tap } from "rxjs";
+import { ChangePasswordDto, ResetPasswordDto, UserFormDto } from "@models/DTOs/user";
 
 @Injectable({
   providedIn: "root",
@@ -14,7 +14,7 @@ export class UserService {
   private readonly jwtTokenConst = "jwt-token";
   private readonly userBaseUrl = `${env.apiUrl}/user`;
 
-  registerNewUser(newUserDto: NewUserDto) {
+  registerNewUser(newUserDto: UserFormDto) {
     return this.http.post<User | ApiError>(`${this.userBaseUrl}/register`, newUserDto).pipe(
       tap(res => {
         if ("jwtToken" in res) {
@@ -24,11 +24,28 @@ export class UserService {
     );
   }
 
+  changePassword(changePasswordDto: ChangePasswordDto) {
+    return this.http.post<User | ApiError>(`${this.userBaseUrl}/register`, changePasswordDto);
+  }
+
+  resetPassword(email: ResetPasswordDto) {
+    return this.http.post<User | ApiError>(`${this.userBaseUrl}/reset-password`, email);
+  }
+
+  // TODO: Fixa
+  logout() {
+    console.log("fixa");
+  }
+
   getAuthToken(): string {
     return localStorage.getItem(this.jwtTokenConst) ?? "";
   }
 
   setAuthToken(token: string) {
     localStorage.setItem(this.jwtTokenConst, token);
+  }
+
+  deleteUser(id: string) {
+    return this.http.delete<User | ApiError>(`${this.userBaseUrl}/delete/${id}`);
   }
 }

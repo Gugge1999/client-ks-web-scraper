@@ -6,11 +6,11 @@ import { TuiButtonLoading, TuiFieldErrorPipe, tuiValidationErrorsProvider } from
 import { AsyncPipe } from "@angular/common";
 import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
 import { UserForm } from "@models/forms/user";
-import { NewUserDto } from "@models/DTOs/user";
 import { UserService } from "@services/user.service";
 import { User } from "@models/user";
 import { lastValueFrom } from "rxjs";
 import { ApiError } from "@models/DTOs/api-error.dto";
+import { UserFormDto } from "@models/DTOs/user";
 
 @Component({
   selector: "scraper-new-user-form-dialog",
@@ -68,7 +68,7 @@ export class UserFormDialogComponent implements OnInit {
   protected async submitNewUser() {
     this.createUserLoading.set(true);
 
-    const newUserDto: NewUserDto = {
+    const newUserDto: UserFormDto = {
       username: this.userForm.getRawValue().username,
       email: this.userForm.getRawValue().email,
       password: this.userForm.getRawValue().password,
