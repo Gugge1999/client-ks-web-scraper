@@ -19,6 +19,8 @@
 
 * Bra blog: https://riegler.fr/
 
+* Angular ninja blog : https://blog.ninja-squad.com/tags.html#Angular-ref
+
 * För att se bundle size bygg med flaggan `"statsJson": true` i options i `angular.json`. Klistra sen i stats.json i dist på sidan https://esbuild.github.io/analyze/
  
 * [Bra förklaring om NgRx och historien bakom det]()

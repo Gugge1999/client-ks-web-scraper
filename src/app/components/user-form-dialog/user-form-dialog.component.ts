@@ -1,4 +1,4 @@
-import { Component, inject, OnInit, signal } from "@angular/core";
+import { Component, inject, signal } from "@angular/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { TuiButton, TuiDialogContext, TuiError, TuiTextfield } from "@taiga-ui/core";
@@ -27,11 +27,14 @@ import { UserFormDto } from "@models/DTOs/user";
     }),
   ],
 })
-export class UserFormDialogComponent implements OnInit {
-  public readonly context = injectContext<TuiDialogContext<User | undefined, { newUser: boolean }>>();
+export class UserFormDialogComponent {
+  public readonly context = injectContext<TuiDialogContext<User | undefined, void>>();
   private readonly userService = inject(UserService);
-  protected readonly headerText = signal("");
-  protected readonly buttonText = signal("");
+
+  protected readonly headerText = signal("Logga in");
+  protected readonly buttonText = signal("Logga in");
+  protected readonly createUserLoading = signal(false);
+  protected readonly newUser = signal(true);
 
   // OBS! FormControl för email sätts dynamiskt i ngOnInit
   userForm = new FormGroup<UserForm>({
@@ -45,25 +48,26 @@ export class UserFormDialogComponent implements OnInit {
     }),
   });
 
-  ngOnInit(): void {
-    if (this.context.data.newUser) {
-      this.headerText.set("Skapa ny användare");
-      this.buttonText.set("Skapa användare");
-
-      this.userForm.addControl(
-        "email",
-        new FormControl("", {
-          validators: [Validators.required, Validators.email],
-          nonNullable: true,
-        }),
-      );
-    } else {
-      this.headerText.set("Logga in");
-      this.buttonText.set("Logga in");
-    }
+  loginUser() {
+    this.headerText.set("Logga in");
+    this.buttonText.set("Logga in");
+    this.newUser.set(true);
+    this.userForm.removeControl("email");
   }
 
-  readonly createUserLoading = signal(false);
+  registerUser() {
+    this.headerText.set("Skapa ny användare");
+    this.buttonText.set("Skapa användare");
+    this.newUser.set(false);
+
+    this.userForm.addControl(
+      "email",
+      new FormControl("", {
+        validators: [Validators.required, Validators.email],
+        nonNullable: true,
+      }),
+    );
+  }
 
   protected async submitNewUser() {
     this.createUserLoading.set(true);

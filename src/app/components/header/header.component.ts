@@ -43,12 +43,8 @@ export class HeaderComponent {
     return this.themeService.updateTheme(newTheme);
   }
 
-  handleNewUser() {
-    this.userFormDialog({ newUser: true }).subscribe();
-  }
-
   handleUserLogin() {
-    this.userFormDialog({ newUser: false }).subscribe();
+    this.userFormDialog().subscribe();
   }
 
   handleChangePassword() {

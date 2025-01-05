@@ -1,6 +1,12 @@
 <form [formGroup]="userForm">
   <h2 style="margin-top: 0; margin-bottom: 45px">{{ headerText() }}</h2>
 
+  @if (newUser()) {
+    <p>Har du inget konto?<a href="#" class="link" style="padding-left: 8px" (click)="registerUser()">Registrera här</a></p>
+  } @else {
+    <p>Har du redan ett konto?<a href="#" class="link" style="padding-left: 8px" (click)="loginUser()">Logga in</a></p>
+  }
+
   @let controls = userForm.controls;
 
   <p>
@@ -13,7 +19,7 @@
     <tui-error [formControl]="controls.username" [error]="[] | tuiFieldError | async" />
   </p>
 
-  @if (this.context.data.newUser && controls.email) {
+  @if (controls.email) {
     <p>
       <tui-textfield>
         <label [for]="controls.email" tuiLabel>Email</label>
@@ -36,7 +42,7 @@
   </p>
 
   <div class="flex" style="justify-content: end; padding-top: 16px">
-    <button tuiButton type="button" appearance="action-grayscale" (click)="cancelClicked()" style="margin-right: 16px">Avbryt</button>
+    <button tuiButton type="button" appearance="action-grayscale" (click)="cancelClicked()" style="margin-right: 10px">Avbryt</button>
 
     <button tuiButton type="button" [disabled]="userForm.invalid" [loading]="createUserLoading()" (click)="submitNewUser()">
       {{ buttonText() }}

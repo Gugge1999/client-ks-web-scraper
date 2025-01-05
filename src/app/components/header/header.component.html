@@ -41,12 +41,8 @@
           <tui-data-list>
             <tui-opt-group>
               <!--TODO: Registrera och logga in ska endast visas när man inte är inloggad -->
-              <button tuiOption type="button" class="item" (click)="handleNewUser()" (keyup.enter)="handleNewUser()">
-                Registrera användare
-              </button>
-
               <button tuiOption type="button" class="item" (click)="handleUserLogin()" (keyup.enter)="handleUserLogin()">
-                Logga in
+                Logga in / Registrera
               </button>
 
               <button tuiOption type="button" class="item" (click)="handleResetPassword()" (keyup.enter)="handleResetPassword()">

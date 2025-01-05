@@ -31,14 +31,20 @@ export class CookieService {
   }
 
   private showDialog() {
-    const data: TuiConfirmData = {
+    const confirmData: TuiConfirmData = {
       no: "Neka",
       yes: "Acceptera",
       content: "<p> Cookies använd för analys och för att utöka funktionalitet såsom personliga inställningar</p>",
     };
 
     this.dialogs
-      .open<boolean>(TUI_CONFIRM, { label: "Acceptera cookies?", size: "m", dismissible: false, closeable: false, data: data })
+      .open<boolean>(TUI_CONFIRM, {
+        label: "Acceptera cookies?",
+        size: "m",
+        dismissible: false,
+        closeable: false,
+        data: confirmData,
+      })
       .pipe(tap(accepted => this.handleCookieResponse(accepted)))
       .subscribe();
   }

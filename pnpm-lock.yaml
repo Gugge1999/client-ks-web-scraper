@@ -81,9 +81,6 @@ importers:
       eslint:
         specifier: ^9.17.0
         version: 9.17.0
-      less:
-        specifier: ^4.2.1
-        version: 4.2.1
       prettier:
         specifier: ^3.4.2
         version: 3.4.2
@@ -5082,6 +5079,7 @@ snapshots:
   copy-anything@2.0.6:
     dependencies:
       is-what: 3.14.1
+    optional: true
 
   cross-spawn@7.0.6:
     dependencies:
@@ -5530,7 +5528,8 @@ snapshots:
 
   is-unicode-supported@0.1.0: {}
 
-  is-what@3.14.1: {}
+  is-what@3.14.1:
+    optional: true
 
   isexe@2.0.0: {}
 
@@ -5597,6 +5596,7 @@ snapshots:
       mime: 1.6.0
       needle: 3.3.1
       source-map: 0.6.1
+    optional: true
 
   levn@0.4.1:
     dependencies:
@@ -5971,7 +5971,8 @@ snapshots:
     dependencies:
       callsites: 3.1.0
 
-  parse-node-version@1.0.1: {}
+  parse-node-version@1.0.1:
+    optional: true
 
   parse5-html-rewriting-stream@7.0.0:
     dependencies:
