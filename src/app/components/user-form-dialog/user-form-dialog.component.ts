@@ -36,14 +36,14 @@ export class UserFormDialogComponent {
   protected readonly createUserLoading = signal(false);
   protected readonly newUser = signal(true);
 
-  // OBS! FormControl för email sätts dynamiskt i ngOnInit
+  // OBS! FormControl för email sätts dynamiskt beroende på om användare väljer logga in eller registrera
   userForm = new FormGroup<UserForm>({
     username: new FormControl("", {
       validators: [Validators.required, Validators.minLength(2)],
       nonNullable: true,
     }),
     password: new FormControl("", {
-      validators: [Validators.required, Validators.minLength(5)],
+      validators: [Validators.required, Validators.minLength(6)],
       nonNullable: true,
     }),
   });
