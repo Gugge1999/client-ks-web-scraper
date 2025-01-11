@@ -1,11 +1,11 @@
-import { HttpErrorResponse, HttpEvent, HttpHandlerFn, HttpRequest } from "@angular/common/http";
+import { HttpErrorResponse, HttpHandlerFn, HttpRequest } from "@angular/common/http";
 import { inject } from "@angular/core";
 import { AlertService } from "@services/alert.service";
-import { catchError, Observable, throwError } from "rxjs";
+import { catchError, throwError } from "rxjs";
 import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
 import { TUI_IS_MOBILE } from "@taiga-ui/cdk";
 
-export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn): Observable<HttpEvent<unknown>> {
+export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) {
   const alertService = inject(AlertService);
   const isMobile = inject(TUI_IS_MOBILE);
 

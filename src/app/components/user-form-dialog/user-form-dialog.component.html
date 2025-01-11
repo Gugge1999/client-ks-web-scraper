@@ -2,34 +2,22 @@
   <h2 style="margin-top: 0; margin-bottom: 45px">{{ headerText() }}</h2>
 
   @if (newUser()) {
-    <p>Har du inget konto?<a href="#" class="link" style="padding-left: 8px" (click)="registerUser()">Registrera här</a></p>
-  } @else {
     <p>Har du redan ett konto?<a href="#" class="link" style="padding-left: 8px" (click)="loginUser()">Logga in</a></p>
+  } @else {
+    <p>Har du inget konto?<a href="#" class="link" style="padding-left: 8px" (click)="registerUser()">Registrera här</a></p>
   }
 
   @let controls = userForm.controls;
 
   <p>
     <tui-textfield>
-      <label [for]="controls.username" tuiLabel>Användarnamn</label>
+      <label [for]="controls.email" tuiLabel>Email</label>
 
-      <input name="username" type="text" tuiTextfield autocomplete="off" [formControl]="controls.username" />
+      <input name="email" type="email" tuiTextfield autocomplete="off" [formControl]="controls.email" />
     </tui-textfield>
 
-    <tui-error [formControl]="controls.username" [error]="[] | tuiFieldError | async" />
+    <tui-error [formControl]="controls.email" [error]="[] | tuiFieldError | async" />
   </p>
-
-  @if (controls.email) {
-    <p>
-      <tui-textfield>
-        <label [for]="controls.email" tuiLabel>Email</label>
-
-        <input name="email" type="email" tuiTextfield autocomplete="off" [formControl]="controls.email" />
-      </tui-textfield>
-
-      <tui-error [formControl]="controls.email" [error]="[] | tuiFieldError | async" />
-    </p>
-  }
 
   <p>
     <tui-textfield>

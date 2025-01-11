@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { Component, inject, OnInit, resource } from "@angular/core";
 import { TuiRoot } from "@taiga-ui/core";
 import { FooterComponent } from "@components/footer/footer.component";
 import { HeaderComponent } from "@components/header/header.component";
@@ -12,6 +12,8 @@ import { INITIAL_API_STATUS } from "@constants/constants";
 import { StatusService } from "@services/status.service";
 import { ToggleAllComponent } from "@components/toggle-all/toggle-all.component";
 import { BevakningarCardsComponent } from "@components/bevakningar-cards/bevakningar-cards.component";
+import { Watch } from "@models/watch.model";
+import { env } from "@env/env";
 
 @Component({
   selector: "scraper-root",
@@ -31,6 +33,7 @@ export class AppComponent implements OnInit {
   private readonly watchService = inject(WatchService);
   private readonly cookieService = inject(CookieService);
   private readonly statusService = inject(StatusService);
+  private readonly bevakningarUrl = `${env.apiUrl}/bevakningar`;
 
   protected isDarkMode = this.themeService.isDarkMode;
   watches = this.watchService.watches;
@@ -38,9 +41,9 @@ export class AppComponent implements OnInit {
   readonly apiStatus = toSignal(this.statusService.getApiStatus(), { initialValue: INITIAL_API_STATUS });
 
   // TODO: Läs https://www.angularspace.com/everything-you-need-to-know-abour-resource-for-now/
-  // todosResource = resource({
-  //   loader: () => fetch(`https://jsonplaceholder.typicode.com/todos?_limit=10`).then(res => res.json() as Promise<any[]>),
-  // });
+  todosResource = resource({
+    loader: () => fetch(`${this.bevakningarUrl}/all-watches`).then(res => res.json() as Promise<Watch[]>),
+  });
 
   updateTodo() {
     // this.todosResource.value.update(value => {

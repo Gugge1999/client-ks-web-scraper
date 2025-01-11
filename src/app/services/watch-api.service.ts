@@ -16,7 +16,7 @@ export class WatchApiService {
   private readonly bevakningarUrl = `${env.apiUrl}/bevakningar`;
 
   toggleActiveStatus(dto: Pick<Watch, "active" | "id" | "label">) {
-    return this.http.put<Watch | ApiError>(`${this.bevakningarUrl}/toggle-active-status`, dto);
+    return this.http.put<Watch | ApiError>(`${this.bevakningarUrl}/toggle-active-status`, dto, { withCredentials: true });
   }
 
   deleteWatchById(id: string) {
@@ -32,10 +32,7 @@ export class WatchApiService {
   }
 
   toggleAll(activateAll: boolean, ids: string[]) {
-    return this.http.patch<Watch[] | ApiError>(`${this.bevakningarUrl}/toggle-all`, {
-      activateAll,
-      ids,
-    });
+    return this.http.patch<Watch[] | ApiError>(`${this.bevakningarUrl}/toggle-all`, { activateAll, ids });
   }
 
   // getAllWatchesResource = resource({

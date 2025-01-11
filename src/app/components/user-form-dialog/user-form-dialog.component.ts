@@ -20,8 +20,8 @@ import { UserFormDto } from "@models/DTOs/user";
     tuiValidationErrorsProvider({
       required: "Obligatorisk",
       email: "Ange en giltig e-postadress",
-      usernameExists: "Användarnamnet finns redan",
       emailExists: "Email finns redan registrerad",
+      wrongPassword: "Fel lösenord",
       // OBS: Variabel måste heta requiredLength
       minlength: ({ requiredLength }: { requiredLength: string }) => `Minst ${requiredLength} tecken`,
     }),
@@ -34,12 +34,12 @@ export class UserFormDialogComponent {
   protected readonly headerText = signal("Logga in");
   protected readonly buttonText = signal("Logga in");
   protected readonly createUserLoading = signal(false);
-  protected readonly newUser = signal(true);
+  protected readonly newUser = signal(false);
 
   // OBS! FormControl för email sätts dynamiskt beroende på om användare väljer logga in eller registrera
   userForm = new FormGroup<UserForm>({
-    username: new FormControl("", {
-      validators: [Validators.required, Validators.minLength(2)],
+    email: new FormControl("", {
+      validators: [Validators.required, Validators.email],
       nonNullable: true,
     }),
     password: new FormControl("", {
@@ -51,44 +51,36 @@ export class UserFormDialogComponent {
   loginUser() {
     this.headerText.set("Logga in");
     this.buttonText.set("Logga in");
-    this.newUser.set(true);
-    this.userForm.removeControl("email");
+    this.newUser.set(false);
   }
 
   registerUser() {
     this.headerText.set("Skapa ny användare");
     this.buttonText.set("Skapa användare");
-    this.newUser.set(false);
-
-    this.userForm.addControl(
-      "email",
-      new FormControl("", {
-        validators: [Validators.required, Validators.email],
-        nonNullable: true,
-      }),
-    );
+    this.newUser.set(true);
   }
 
   protected async submitNewUser() {
     this.createUserLoading.set(true);
 
     const newUserDto: UserFormDto = {
-      username: this.userForm.getRawValue().username,
       email: this.userForm.getRawValue().email,
       password: this.userForm.getRawValue().password,
     };
 
-    const apiRes = await lastValueFrom(this.userService.registerNewUser(newUserDto)).catch((err: ApiError) => err);
+    const apiRes = this.newUser()
+      ? await lastValueFrom(this.userService.registerNewUser(newUserDto)).catch((err: ApiError) => err)
+      : await lastValueFrom(this.userService.login(newUserDto)).catch((err: ApiError) => err);
 
     this.createUserLoading.set(false);
 
-    if (STACK_API_ERROR_PROPERTY in apiRes) {
-      // TODO: Det kanske finns ett bättre sätt att göra detta på
-      if (apiRes.message.toLowerCase().includes("användare med användarnamn")) {
-        this.userForm.controls.username.setErrors({ usernameExists: true });
+    if (apiRes && STACK_API_ERROR_PROPERTY in apiRes) {
+      if (apiRes.message.toLowerCase() === "fel lösenord") {
+        this.userForm.controls.password?.setErrors({ wrongPassword: true });
         return;
       }
 
+      // TODO: Här måste man nog också kolla om email inte möter kraven
       this.userForm.controls.email?.setErrors({ emailExists: true });
       return;
     }
