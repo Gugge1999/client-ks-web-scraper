@@ -1,37 +1,38 @@
 @let apiStat = apiStatus();
 
-<!--TODO: Testa att byta till island för att bättre dela upp innehållet visuellt -->
-
 @if (apiStat.status === "active") {
   <div>
-    <h3>
-      Interval på bevakningar:
-      <i>{{ apiStat.scrapingIntervalInMinutes }} minuter</i>
-    </h3>
+    <div tuiCardLarge tuiAppearance="floating" class="status-dialog-card">
+      <h3>
+        Interval på bevakningar:
+        <i>{{ apiStat.scrapingIntervalInMinutes }} minuter</i>
+      </h3>
+    </div>
 
-    <hr style="margin-top: 24px" />
+    <div tuiCardLarge tuiAppearance="floating" class="status-dialog-card">
+      <h3>Minnesanvändning i MB</h3>
 
-    <h3>Minnesanvändning i MB</h3>
+      <tui-axes
+        [tuiLineChartHint]="hintContent"
+        [axisYLabels]="axisYLabels()"
+        class="notifications-axes"
+        [horizontalLines]="3"
+        [verticalLines]="4">
+        <tui-line-chart [value]="chartValueSig()" [height]="chartHeight()" [x]="xStartValue()" [filled]="true" [width]="20" />
+      </tui-axes>
+    </div>
 
-    <tui-axes
-      class="notifications-axes"
-      [horizontalLines]="2"
-      [axisYLabels]="axisYLabels()"
-      [tuiLineChartHint]="hintContent"
-      [verticalLines]="4">
-      <tui-line-chart [value]="chartValueSig()" [height]="chartHeight()" [x]="xStartValue()" [filled]="true" [width]="20" />
-    </tui-axes>
+    <div tuiCardLarge tuiAppearance="floating" class="status-dialog-card">
+      <h3>Drifttid</h3>
 
-    <hr style="margin-top: 24px" />
-
-    <h4>Drifttid</h4>
-    <div style="margin-left: 1em">
-      <p>År: {{ apiStat.uptime.years }}</p>
-      <p>Månader: {{ apiStat.uptime.months }}</p>
-      <p>Dagar: {{ apiStat.uptime.days }}</p>
-      <p>Timmar: {{ apiStat.uptime.hours }}</p>
-      <p>Minuter: {{ apiStat.uptime.minutes }}</p>
-      <p>Sekunder: {{ apiStat.uptime.seconds }}</p>
+      <div style="margin-left: 1em">
+        <p>År: {{ apiStat.uptime.years }}</p>
+        <p>Månader: {{ apiStat.uptime.months }}</p>
+        <p>Dagar: {{ apiStat.uptime.days }}</p>
+        <p>Timmar: {{ apiStat.uptime.hours }}</p>
+        <p>Minuter: {{ apiStat.uptime.minutes }}</p>
+        <p>Sekunder: {{ apiStat.uptime.seconds }}</p>
+      </div>
     </div>
   </div>
 } @else if (apiStat.status === "pending") {

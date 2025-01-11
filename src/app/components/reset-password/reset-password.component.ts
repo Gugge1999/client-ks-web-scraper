@@ -38,10 +38,6 @@ export class ResetPasswordComponent {
     }),
   });
 
-  cancelClicked() {
-    this.context.completeWith(undefined);
-  }
-
   protected async submitResetPassword() {
     this.resetPasswordLoading.set(true);
 

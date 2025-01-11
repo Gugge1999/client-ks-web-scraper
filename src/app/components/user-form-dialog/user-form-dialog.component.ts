@@ -87,8 +87,4 @@ export class UserFormDialogComponent {
 
     this.context.completeWith(apiRes);
   }
-
-  cancelClicked() {
-    this.context.completeWith(undefined);
-  }
 }

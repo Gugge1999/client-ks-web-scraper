@@ -2,7 +2,7 @@ import { ApiStatus } from "@models/api-status.model";
 import { Injectable } from "@angular/core";
 import { webSocket } from "rxjs/webSocket";
 import { env } from "@env/env";
-import { asyncScheduler, catchError, retry, scheduled } from "rxjs";
+import { catchError, from, retry } from "rxjs";
 import { ERROR_API_STATUS } from "@constants/constants";
 
 @Injectable({
@@ -12,7 +12,7 @@ export class StatusService {
   getApiStatus() {
     return webSocket<ApiStatus>(`${env.apiUrlWebSocket}/status`).pipe(
       retry({ count: 3, delay: 2000 }),
-      catchError(() => scheduled([ERROR_API_STATUS], asyncScheduler)),
+      catchError(() => from([ERROR_API_STATUS])),
     );
   }
 }

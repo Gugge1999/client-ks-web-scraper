@@ -1,15 +1,16 @@
 import { Component, computed, InputSignal } from "@angular/core";
 import { ApiStatus } from "@models/api-status.model";
-import { TuiDialogContext, TuiPoint } from "@taiga-ui/core";
+import { TuiAppearance, TuiDialogContext, TuiPoint } from "@taiga-ui/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { TuiAxes, TuiLineChart, TuiLineChartHint } from "@taiga-ui/addon-charts";
 import { TuiContext } from "@taiga-ui/cdk";
+import { TuiCardLarge } from "@taiga-ui/layout";
 
 @Component({
   selector: "scraper-api-status-dialog",
   templateUrl: "./api-status-dialog.component.html",
   styleUrls: ["./api-status-dialog.component.scss"],
-  imports: [TuiAxes, TuiLineChart, TuiLineChartHint],
+  imports: [TuiAxes, TuiLineChart, TuiLineChartHint, TuiCardLarge, TuiAppearance],
 })
 export class ApiStatusDialogComponent {
   readonly dialogContext = injectContext<TuiDialogContext<void, InputSignal<ApiStatus>>>();

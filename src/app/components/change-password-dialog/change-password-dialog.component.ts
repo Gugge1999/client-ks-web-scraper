@@ -86,8 +86,4 @@ export class ChangePasswordDialogComponent {
 
     this.context.completeWith(apiRes);
   }
-
-  cancelClicked() {
-    this.context.completeWith(undefined);
-  }
 }

@@ -55,7 +55,6 @@ export class HeaderComponent {
     this.resetPasswordFormDialog().subscribe();
   }
 
-  // TODO: Fixa
   handleLogout() {
     this.userService.logout();
   }

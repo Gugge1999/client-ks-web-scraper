@@ -62,8 +62,4 @@ export class NewWatchDialogComponent {
 
     this.context.completeWith(result);
   }
-
-  cancelClicked() {
-    this.context.completeWith(undefined);
-  }
 }
