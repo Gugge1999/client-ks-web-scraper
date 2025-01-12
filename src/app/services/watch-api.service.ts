@@ -3,9 +3,9 @@ import { inject, Injectable } from "@angular/core";
 import { env } from "@env/env";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
-import { verifyResponse, Watch, watchSchema } from "@models/watch.model";
+import { verifyResponseNy, Watch, watchSchemaNy } from "@models/watch.model";
 import { retry } from "rxjs";
-import { z } from "zod";
+import * as v from "valibot";
 
 // TODO: Den här klassen borde bara nås via watch service.
 @Injectable({
@@ -31,7 +31,7 @@ export class WatchApiService {
   getAllWatches() {
     return this.http
       .get<Watch[]>(`${this.bevakningarUrl}/all-watches`)
-      .pipe(verifyResponse(z.array(watchSchema)), retry({ count: 3, delay: 2000 }));
+      .pipe(verifyResponseNy(v.array(watchSchemaNy)), retry({ count: 3, delay: 2000 }));
   }
 
   toggleAll(activateAll: boolean, ids: string[]) {
