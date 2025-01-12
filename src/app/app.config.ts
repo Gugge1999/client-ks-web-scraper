@@ -10,6 +10,7 @@ import { provideAnimationsAsync } from "@angular/platform-browser/animations/asy
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { getAnalytics, provideAnalytics } from "@angular/fire/analytics";
 import { FIREBASE_CONFIG } from "@constants/constants";
+import { jwtTokenInterceptor } from "@interceptors/jwt-token.interceptor";
 
 registerLocaleData(localeSvSe);
 
@@ -23,7 +24,7 @@ export const appConfig: ApplicationConfig = {
     //   interval: 1000, // run change detection every second
     //   exhaustive: true, // check all components
     // }),
-    provideHttpClient(withFetch(), withInterceptors([errorInterceptor])), // jwtTokenInterceptor
+    provideHttpClient(withFetch(), withInterceptors([errorInterceptor, jwtTokenInterceptor])), // jwtTokenInterceptor
     importProvidersFrom(BrowserModule),
     provideFirebaseApp(() => initializeApp(FIREBASE_CONFIG)),
     provideAnalytics(() => getAnalytics()),

@@ -1,7 +1,5 @@
 ## TODO
 
-* Byta till Open API för att skapa kontrakt mellan frontend och backend
-
 * Använd Jest för att testa
 * * https://www.xfive.co/blog/testing-angular-faster-jest/
 * * https://www.youtube.com/watch?v=bv9z_UfSqgM
@@ -20,6 +18,8 @@
 * Ett bra repo att kika på: https://github.com/joematthews/extreme-angular
 
 * Bra blog: https://riegler.fr/
+
+* [JSON till zod](https://transform.tools/json-to-zod)
 
 * [Angular ninja blog](https://blog.ninja-squad.com/tags.html#Angular-ref)
 

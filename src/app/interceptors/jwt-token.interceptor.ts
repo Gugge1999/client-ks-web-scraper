@@ -5,6 +5,8 @@ import { UserService } from "@services/user.service";
 export const jwtTokenInterceptor: HttpInterceptorFn = (req, next) => {
   const authToken = inject(UserService).getAuthToken();
 
+  console.log("req", req);
+
   const newReq = req.clone({
     headers: req.headers.append("X-Authentication-Token", authToken),
   });
