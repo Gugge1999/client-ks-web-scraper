@@ -3,24 +3,22 @@ import { CookieState, initCookie } from "@models/cookie";
 import { tap } from "rxjs";
 import { TUI_CONFIRM, TuiConfirmData } from "@taiga-ui/kit";
 import { TuiDialogService } from "@taiga-ui/core";
-import { AlertService } from "@services/alert.service";
 
 @Injectable({
   providedIn: "root",
 })
 export class CookieService {
   private readonly dialogs = inject(TuiDialogService);
-  private readonly alertService = inject(AlertService);
 
   private readonly cookieConsentString = "cookie-consent";
 
   onInit() {
-    // if (this.isCookieAccepted()) {
-    //   this.installGoogleAnalytics();
-    //   return;
-    // }
-
     if (this.getConsentCookie() === null) {
+      // if (this.isCookieAccepted()) {
+      //   this.installGoogleAnalytics();
+      //   return;
+      // }
+
       localStorage.setItem(this.cookieConsentString, initCookie.toString());
     }
 
@@ -57,13 +55,5 @@ export class CookieService {
     localStorage.setItem(this.cookieConsentString, CookieState.Rejected);
   }
 
-  // private cookieError(error: unknown) {
-  //   const cookieErrorMessage = "Kunde inte behandla samtycke av cookies";
-  //   this.alertService.errorAlert(`${cookieErrorMessage}. Ladda om sidan och försök igen`, { sticky: true });
-  //   console.error(`${cookieErrorMessage}.Error ${error}`);
-  // }
-
   getConsentCookie = () => localStorage.getItem(this.cookieConsentString);
-
-  isCookieAccepted = () => localStorage.getItem(this.cookieConsentString) === CookieState.Accepted;
 }

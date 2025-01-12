@@ -15,5 +15,6 @@ export class NotificationsDialogComponent {
 
   protected readonly notifications = [this.context.data].flat();
 
+  // TODO: Skicka in bevakningens namn också
   protected readonly cardDateFormat = CARD_DATE_FORMAT;
 }

@@ -14,6 +14,7 @@ import { ToggleAllComponent } from "@components/toggle-all/toggle-all.component"
 import { BevakningarCardsComponent } from "@components/bevakningar-cards/bevakningar-cards.component";
 import { Watch } from "@models/watch.model";
 import { env } from "@env/env";
+import { Analytics } from "@angular/fire/analytics";
 
 @Component({
   selector: "scraper-root",
@@ -34,6 +35,11 @@ export class AppComponent implements OnInit {
   private readonly cookieService = inject(CookieService);
   private readonly statusService = inject(StatusService);
   private readonly bevakningarUrl = `${env.apiUrl}/bevakningar`;
+  // noinspection JSUnusedLocalSymbols
+  /** **OBS:** Den måste vara kvar för att analytics ska fungera */
+  // TODO: Den här borde endast anropas när användaren har godkänt cookies. Det kanske går att skapa en komponent som endast
+  //  instansieras när cookies är godkända
+  private readonly analytics = inject(Analytics);
 
   protected isDarkMode = this.themeService.isDarkMode;
   watches = this.watchService.watches;
