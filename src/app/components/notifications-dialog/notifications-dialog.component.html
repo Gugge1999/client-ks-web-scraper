@@ -1,3 +1,5 @@
+<h2 style="margin-top: 0">{{ "Notiser för bevakning: " + label }}</h2>
+
 @for (notification of notifications; track $index) {
   <p>{{ notification | date: cardDateFormat }}</p>
 } @empty {

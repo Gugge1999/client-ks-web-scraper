@@ -24,8 +24,8 @@ export class BevakningarCardActionsComponent {
   private readonly alerts = inject(TuiAlertService);
   private readonly dialogs = inject(TuiDialogService);
   private readonly dialog = tuiDialog(NotificationsDialogComponent, {
-    label: `Notiser för bevakning`,
     size: "auto",
+    closeable: false,
   });
 
   toggleActiveStatus(watch: Watch) {
@@ -33,7 +33,7 @@ export class BevakningarCardActionsComponent {
   }
 
   showNotifications() {
-    this.dialog(this.notifications()).subscribe();
+    this.dialog({ label: this.watch().label, notifications: this.notifications() }).subscribe();
   }
 
   protected deleteWatch(): void {
@@ -47,6 +47,7 @@ export class BevakningarCardActionsComponent {
       .open<boolean>(TUI_CONFIRM, {
         label: `Vill du radera bevakning: ${this.watch().label}?`,
         size: "auto",
+        closeable: false,
         data: data,
       })
       .pipe(

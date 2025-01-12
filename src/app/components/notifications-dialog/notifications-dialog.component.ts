@@ -11,10 +11,10 @@ import { CARD_DATE_FORMAT } from "@constants/constants";
   imports: [DatePipe],
 })
 export class NotificationsDialogComponent {
-  public readonly context = injectContext<TuiDialogContext<void, Date[]>>();
+  public readonly context = injectContext<TuiDialogContext<void, { label: string; notifications: Date[] }>>();
 
-  protected readonly notifications = [this.context.data].flat();
+  protected readonly label = this.context.data.label;
+  protected readonly notifications = [this.context.data.notifications].flat();
 
-  // TODO: Skicka in bevakningens namn också
   protected readonly cardDateFormat = CARD_DATE_FORMAT;
 }
