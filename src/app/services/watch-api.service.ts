@@ -3,7 +3,7 @@ import { inject, Injectable } from "@angular/core";
 import { env } from "@env/env";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
-import { verifyResponseNy, Watch, watchSchemaNy } from "@models/watch.model";
+import { verifyResponseNy, Watch, watchSchema } from "@models/watch.model";
 import { retry } from "rxjs";
 import * as v from "valibot";
 
@@ -31,7 +31,7 @@ export class WatchApiService {
   getAllWatches() {
     return this.http
       .get<Watch[]>(`${this.bevakningarUrl}/all-watches`)
-      .pipe(verifyResponseNy(v.array(watchSchemaNy)), retry({ count: 3, delay: 2000 }));
+      .pipe(verifyResponseNy(v.array(watchSchema)), retry({ count: 3, delay: 2000 }));
   }
 
   toggleAll(activateAll: boolean, ids: string[]) {
