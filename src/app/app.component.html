@@ -2,6 +2,10 @@
   <div style="min-height: 100vh; display: flex; flex-direction: column">
     <scraper-header [apiStatus]="apiStatus()" />
 
+    @if (cookieAccepted()) {
+      <scraper-cookie />
+    }
+
     <main style="flex: 1; margin-bottom: 40px">
       <scraper-summary [watches]="watches()" />
 

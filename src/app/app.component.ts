@@ -12,8 +12,7 @@ import { INITIAL_API_STATUS } from "@constants/constants";
 import { StatusService } from "@services/status.service";
 import { ToggleAllComponent } from "@components/toggle-all/toggle-all.component";
 import { BevakningarCardsComponent } from "@components/bevakningar-cards/bevakningar-cards.component";
-import { env } from "@env/env";
-import { Analytics } from "@angular/fire/analytics";
+import { CookieComponent } from "./components/cookie/cookie.component";
 
 @Component({
   selector: "scraper-root",
@@ -26,6 +25,7 @@ import { Analytics } from "@angular/fire/analytics";
     TuiRoot,
     ToggleAllComponent,
     BevakningarCardsComponent,
+    CookieComponent,
   ],
 })
 export class AppComponent implements OnInit {
@@ -33,19 +33,15 @@ export class AppComponent implements OnInit {
   private readonly watchService = inject(WatchService);
   private readonly cookieService = inject(CookieService);
   private readonly statusService = inject(StatusService);
-  private readonly bevakningarUrl = `${env.apiUrl}/bevakningar`;
-  // noinspection JSUnusedLocalSymbols
-  /** **OBS:** Den måste vara kvar för att analytics ska fungera */
-  // TODO: Den här borde endast anropas när användaren har godkänt cookies. Det kanske går att skapa en komponent som endast
-  //  instansieras när cookies är godkända
-  private readonly analytics = inject(Analytics);
 
-  protected isDarkMode = this.themeService.isDarkMode;
-  watches = this.watchService.watches;
+  protected readonly isDarkMode = this.themeService.isDarkMode;
+  protected readonly cookieAccepted = this.cookieService.cookieAccepted;
+  protected readonly watches = this.watchService.watches;
 
   readonly apiStatus = toSignal(this.statusService.getApiStatus(), { initialValue: INITIAL_API_STATUS });
 
   // TODO: Läs https://www.angularspace.com/everything-you-need-to-know-abour-resource-for-now/
+  // private readonly bevakningarUrl = `${env.apiUrl}/bevakningar`;
   // todosResource = resource({
   //   loader: () => fetch(`${this.bevakningarUrl}/all-watches`).then(res => res.json() as Promise<Watch[]>),
   // });

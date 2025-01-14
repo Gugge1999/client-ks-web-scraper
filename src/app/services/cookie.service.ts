@@ -1,4 +1,4 @@
-import { inject, Injectable } from "@angular/core";
+import { inject, Injectable, signal } from "@angular/core";
 import { CookieState, initCookie } from "@models/cookie";
 import { tap } from "rxjs";
 import { TUI_CONFIRM, TuiConfirmData } from "@taiga-ui/kit";
@@ -9,16 +9,18 @@ import { TuiDialogService } from "@taiga-ui/core";
 })
 export class CookieService {
   private readonly dialogs = inject(TuiDialogService);
-
   private readonly cookieConsentString = "cookie-consent";
+  private readonly cookieAcceptedSig = signal(false);
+
+  readonly cookieAccepted = this.cookieAcceptedSig.asReadonly();
 
   onInit() {
-    if (this.getConsentCookie() === null) {
-      // if (this.isCookieAccepted()) {
-      //   this.installGoogleAnalytics();
-      //   return;
-      // }
+    if (this.isCookieAccepted()) {
+      this.cookieAcceptedSig.set(true);
+      return;
+    }
 
+    if (this.getConsentCookie() === null) {
       localStorage.setItem(this.cookieConsentString, initCookie.toString());
     }
 
@@ -31,7 +33,7 @@ export class CookieService {
     const confirmData: TuiConfirmData = {
       no: "Neka",
       yes: "Acceptera",
-      content: "<p> Cookies använd för analys och för att utöka funktionalitet såsom personliga inställningar</p>",
+      content: "<p>Cookies använd för analys och för att utöka funktionalitet såsom personliga inställningar</p>",
     };
 
     this.dialogs
@@ -42,13 +44,14 @@ export class CookieService {
         closeable: false,
         data: confirmData,
       })
-      .pipe(tap(accepted => this.handleCookieResponse(accepted)))
+      .pipe(tap(isAccepted => this.handleCookieResponse(isAccepted)))
       .subscribe();
   }
 
-  private handleCookieResponse(accepted: boolean) {
-    if (accepted) {
+  private handleCookieResponse(isAccepted: boolean) {
+    if (isAccepted) {
       localStorage.setItem(this.cookieConsentString, CookieState.Accepted);
+      this.cookieAcceptedSig.set(true);
       return;
     }
 
@@ -56,4 +59,6 @@ export class CookieService {
   }
 
   getConsentCookie = () => localStorage.getItem(this.cookieConsentString);
+
+  isCookieAccepted = () => localStorage.getItem(this.cookieConsentString) === CookieState.Accepted;
 }
