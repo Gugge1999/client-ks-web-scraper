@@ -2,7 +2,7 @@ import { inject, Injectable, signal } from "@angular/core";
 import { lastValueFrom, take } from "rxjs";
 import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
 import { ApiError } from "@models/DTOs/api-error.dto";
-import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
+import { NewWatchDTO } from "@models/DTOs/new-watch-form-dto";
 import { Watch } from "@models/watch.model";
 import { WatchApiService } from "@services/watch-api.service";
 import { AlertService } from "@services/alert.service";
@@ -46,7 +46,7 @@ export class WatchService {
     });
   }
 
-  async saveNewWatch(newWatchDTO: NewWatchFormDTO) {
+  async saveNewWatch(newWatchDTO: NewWatchDTO) {
     const apiRes = await lastValueFrom(this.watchApiService.saveNewWatch(newWatchDTO)).catch((err: ApiError) => err);
 
     if (STACK_API_ERROR_PROPERTY in apiRes) {
@@ -79,7 +79,8 @@ export class WatchService {
   async toggleActiveStatus(watch: Watch) {
     const newActiveStatus = watch.active;
 
-    // TODO: Om något får fel ska bevakningen gå tillbaka till den gamla statusen
+    const oldWatches = this._watches;
+
     this._watches.update(watches =>
       watches.map(w => {
         if (w.id === watch.id) {
@@ -96,6 +97,9 @@ export class WatchService {
     );
 
     if (STACK_API_ERROR_PROPERTY in res) {
+      // TODO: Den här verka inte fungera
+      this._watches.set([...oldWatches()]);
+
       return;
     }
 

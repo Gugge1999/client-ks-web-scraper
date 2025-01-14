@@ -1,7 +1,7 @@
 import { Component, inject, signal } from "@angular/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
+import { NewWatchDTO } from "@models/DTOs/new-watch-form-dto";
 import { WatchForm } from "@models/forms/watch-form";
 import { Watch } from "@models/watch.model";
 import { WatchService } from "@services/watch.service";
@@ -45,7 +45,7 @@ export class NewWatchDialogComponent {
 
     const wordsSeparatedByPlus = this.watchForm.controls.watchToScrape.value.trim().replace(/\s+/g, "+");
 
-    const newWatch: NewWatchFormDTO = {
+    const newWatch: NewWatchDTO = {
       label: this.watchForm.getRawValue().label,
       watchToScrape: wordsSeparatedByPlus,
     };

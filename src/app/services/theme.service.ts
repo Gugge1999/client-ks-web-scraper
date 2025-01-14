@@ -12,7 +12,7 @@ export class ThemeService {
   private readonly darkModeSig = inject(TUI_DARK_MODE);
   private readonly localStorageKey = "tuiDark";
   private readonly currentThemeSig = signal(this.getColorTheme());
-  readonly isDarkMode = computed(() => this.currentThemeSig() === "dark");
+  public readonly isDarkMode = computed(() => this.currentThemeSig() === "dark");
 
   initializeTheme() {
     this.setTheme(this.getColorTheme());
@@ -25,9 +25,9 @@ export class ThemeService {
       return storedUserTheme === "true" ? "dark" : "light";
     }
 
-    const userPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const userPrefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
 
-    return userPrefersDark ? "dark" : "light";
+    return userPrefersDark.matches ? "dark" : "light";
   }
 
   setTheme(theme: Theme) {
@@ -40,5 +40,9 @@ export class ThemeService {
 
   updateTheme(theme: Theme) {
     this.setTheme(theme);
+
+    if (this.cookieService.isCookieAccepted()) {
+      localStorage.setItem(this.localStorageKey, theme);
+    }
   }
 }
