@@ -1,5 +1,4 @@
-import { isDevMode } from "@angular/core";
-import { array, boolean, InferOutput, isoTimestamp, nullable, object, pipe, safeParse, string, url, uuid } from "valibot";
+import { array, boolean, InferOutput, isoTimestamp, nullable, object, pipe, string, url, uuid } from "valibot";
 
 export const scrapedWatch = object({
   name: string(),
@@ -19,16 +18,3 @@ export const watchSchema = object({
 });
 
 export type Watch = InferOutput<typeof watchSchema>;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-export function verifyResponse(schema: any, response: any) {
-  if (isDevMode()) {
-    const result = safeParse(schema, response);
-
-    if (!result.success) {
-      console.error("valibot error", result.issues);
-    }
-  }
-
-  return response as InferOutput<typeof schema>;
-}

@@ -3,7 +3,8 @@ import { inject, Injectable } from "@angular/core";
 import { env } from "@env/env";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
-import { verifyResponse, Watch, watchSchema } from "@models/watch.model";
+import { Watch, watchSchema } from "@models/watch.model";
+import { verifyResponse } from "@utils/valibot";
 import { Observable, retry, tap } from "rxjs";
 import { array } from "valibot";
 

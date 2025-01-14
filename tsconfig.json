@@ -10,6 +10,7 @@
       "@constants/*": ["app/constants/*"],
       "@services/*": ["app/services/*"],
       "@interceptors/*": ["app/interceptors/*"],
+      "@utils/*": ["app/utils/*"],
       "@env/*": ["env/*"]
     },
     "outDir": "./dist/out-tsc",
