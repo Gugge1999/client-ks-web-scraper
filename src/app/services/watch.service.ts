@@ -28,6 +28,10 @@ export class WatchService {
       .getAllWatches()
       .pipe(take(1))
       .subscribe(res => {
+        if (STACK_API_ERROR_PROPERTY in res) {
+          return;
+        }
+
         this._watches.set(res);
       });
   }
@@ -75,6 +79,7 @@ export class WatchService {
   async toggleActiveStatus(watch: Watch) {
     const newActiveStatus = watch.active;
 
+    // TODO: Om något får fel ska bevakningen gå tillbaka till den gamla statusen
     this._watches.update(watches =>
       watches.map(w => {
         if (w.id === watch.id) {

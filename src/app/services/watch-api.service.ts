@@ -3,9 +3,9 @@ import { inject, Injectable } from "@angular/core";
 import { env } from "@env/env";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchFormDTO } from "@models/DTOs/new-watch-form-dto";
-import { verifyResponseNy, Watch, watchSchema } from "@models/watch.model";
-import { retry } from "rxjs";
-import * as v from "valibot";
+import { verifyResponse, Watch, watchSchema } from "@models/watch.model";
+import { Observable, retry, tap } from "rxjs";
+import { array } from "valibot";
 
 // TODO: Den här klassen borde bara nås via watch service.
 @Injectable({
@@ -17,7 +17,7 @@ export class WatchApiService {
   private readonly bevakningarUrl = `${env.apiUrl}/bevakningar`;
 
   toggleActiveStatus(dto: Pick<Watch, "active" | "id" | "label">) {
-    return this.http.put<Watch | ApiError>(`${this.bevakningarUrl}/toggle-active-status`, dto, { withCredentials: true });
+    return this.http.put<Watch | ApiError>(`${this.bevakningarUrl}/toggle-active-status`, dto);
   }
 
   deleteWatchById(id: string) {
@@ -28,10 +28,14 @@ export class WatchApiService {
     return this.http.post<Watch | ApiError>(`${this.bevakningarUrl}/save-watch`, watchFormDTO);
   }
 
-  getAllWatches() {
-    return this.http
-      .get<Watch[]>(`${this.bevakningarUrl}/all-watches`)
-      .pipe(verifyResponseNy(v.array(watchSchema)), retry({ count: 3, delay: 2000 }));
+  // TODO: Lägg till api error union
+  getAllWatches(): Observable<Watch[] | ApiError> {
+    return this.http.get<Watch[] | ApiError>(`${this.bevakningarUrl}/all-watches`).pipe(
+      tap(res => {
+        verifyResponse(array(watchSchema), res);
+      }),
+      retry({ count: 3, delay: 2000 }),
+    );
   }
 
   toggleAll(activateAll: boolean, ids: string[]) {
