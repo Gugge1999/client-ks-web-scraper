@@ -12,7 +12,7 @@ import { INITIAL_API_STATUS } from "@constants/constants";
 import { StatusService } from "@services/status.service";
 import { ToggleAllComponent } from "@components/toggle-all/toggle-all.component";
 import { BevakningarCardsComponent } from "@components/bevakningar-cards/bevakningar-cards.component";
-import { CookieComponent } from "./components/cookie/cookie.component";
+import { CookieComponent } from "@components/cookie/cookie.component";
 
 @Component({
   selector: "scraper-root",

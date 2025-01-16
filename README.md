@@ -15,15 +15,13 @@
 * * [Sending (browser) OpenTelemetry traces from an Angular Application to .NET Aspire](https://timdeschryver.dev/blog/Sending-browser-opentelemetry-traces-from-an-angular-application-to-net-aspire)
 
 ---
-* Ett bra repo att kika på: https://github.com/joematthews/extreme-angular
+* Ett bra repo att kika på: [Extreme Angular](https://github.com/joematthews/extreme-angular)
 
 * Bra blog: https://riegler.fr/
 
-* [JSON till zod](https://transform.tools/json-to-zod)
-
 * [Angular ninja blog](https://blog.ninja-squad.com/tags.html#Angular-ref)
 
-* För att se bundle size bygg med flaggan `"statsJson": true` i options i `angular.json`. Klistra sen i stats.json i dist på sidan [esbuild analyze](https://esbuild.github.io/analyze/). Det finns också: [hawkeye](https://www.hawkeyeapp.dev/)
+* För att se bundle size bygg med flaggan `"statsJson": true` i options i `angular.json`. Infoga sen i `stats.json` i dist mappen till sidan [esbuild analyze](https://esbuild.github.io/analyze/). Det finns också: [hawkeye](https://www.hawkeyeapp.dev/)
  
 * [Bra förklaring om NgRx och historien bakom det]()
 
