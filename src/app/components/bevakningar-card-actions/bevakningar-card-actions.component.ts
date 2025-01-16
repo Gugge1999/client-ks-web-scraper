@@ -16,23 +16,23 @@ import { NotificationsDialogComponent } from "@components/notifications-dialog/n
   imports: [FormsModule, TuiSwitch, TuiIcon, TuiHint, TuiBadgedContent, TuiBadge],
 })
 export class BevakningarCardActionsComponent {
-  readonly watch = input.required<Watch>();
-  readonly notifications = computed(() => this.watch().notifications);
-  readonly numberOfNotifications = computed(() => this.notifications().length);
+  public readonly watch = input.required<Watch>();
+  private readonly notifications = computed(() => this.watch().notifications);
+  protected readonly numberOfNotifications = computed(() => this.notifications().length);
 
-  public readonly watchService = inject(WatchService);
-  private readonly alerts = inject(TuiAlertService);
-  private readonly dialogs = inject(TuiDialogService);
+  private readonly watchService = inject(WatchService);
+  private readonly alertsService = inject(TuiAlertService);
+  private readonly dialogsService = inject(TuiDialogService);
   private readonly dialog = tuiDialog(NotificationsDialogComponent, {
     size: "auto",
     closeable: false,
   });
 
-  toggleActiveStatus(watch: Watch) {
+  protected toggleActiveStatus(watch: Watch) {
     return this.watchService.toggleActiveStatus(watch);
   }
 
-  showNotifications() {
+  protected showNotifications() {
     this.dialog({ label: this.watch().label, notifications: this.notifications() }).subscribe();
   }
 
@@ -43,7 +43,7 @@ export class BevakningarCardActionsComponent {
       appearance: "secondary-destructive",
     };
 
-    this.dialogs
+    this.dialogsService
       .open<boolean>(TUI_CONFIRM, {
         label: `Vill du radera bevakning: ${this.watch().label}?`,
         size: "auto",
@@ -61,7 +61,7 @@ export class BevakningarCardActionsComponent {
     /** OBS: Anrop för att radera bevakningen från db görs i {@link UndoAlertComponent} */
     this.watchService.deleteWatch(this.watch());
 
-    this.alerts
+    this.alertsService
       .open(new PolymorpheusComponent(UndoAlertComponent), {
         label: `Raderade: ${this.watch().label}`,
         appearance: "info",

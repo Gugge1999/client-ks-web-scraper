@@ -14,10 +14,9 @@ import { TuiCardLarge } from "@taiga-ui/layout";
 })
 export class ApiStatusDialogComponent {
   readonly dialogContext = injectContext<TuiDialogContext<void, InputSignal<ApiStatus>>>();
-  private memoryUsageArr: TuiPoint[] = [];
+  private readonly memoryUsageArr: TuiPoint[] = [];
   private memoryUsageLength = 0;
-
-  readonly apiStatus = computed(() => this.dialogContext.data());
+  protected readonly apiStatus = computed(() => this.dialogContext.data());
 
   readonly chartValue = computed(() => {
     const memoryUsage = this.apiStatus().memoryUsage;

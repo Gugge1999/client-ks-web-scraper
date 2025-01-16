@@ -28,6 +28,7 @@ import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
   providers: [
     tuiValidationErrorsProvider({
       required: "Obligatorisk",
+      notmatched: "Lösenorden stämmer inte överens",
       // OBS: Variabel måste heta requiredLength
       minlength: ({ requiredLength }: { requiredLength: string }) => `Minst ${requiredLength} tecken`,
     }),
@@ -41,7 +42,7 @@ export class ChangePasswordDialogComponent {
     const password = control.getRawValue().newPassword;
     const confirmPassword = control.getRawValue().confirmNewPassword;
 
-    return password?.value === confirmPassword?.value ? null : { notmatched: true };
+    return password === confirmPassword ? null : { notmatched: true };
   };
 
   changePasswordForm = new FormGroup<ChangePasswordForm>(
