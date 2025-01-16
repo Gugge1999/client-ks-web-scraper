@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from "@angular/core";
+import { computed, inject, Injectable, signal } from "@angular/core";
 import { lastValueFrom, take } from "rxjs";
 import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
 import { ApiError } from "@models/DTOs/api-error.dto";
@@ -12,7 +12,7 @@ import { AlertService } from "@services/alert.service";
 })
 export class WatchService {
   private readonly _watches = signal<Watch[]>([]);
-  readonly watches = this._watches.asReadonly();
+  readonly watches = computed(() => [...this._watches()]);
 
   private readonly watchApiService = inject(WatchApiService);
   private readonly alertService = inject(AlertService);
@@ -79,8 +79,6 @@ export class WatchService {
   async toggleActiveStatus(watch: Watch) {
     const newActiveStatus = watch.active;
 
-    const oldWatches = this._watches;
-
     this._watches.update(watches =>
       watches.map(w => {
         if (w.id === watch.id) {
@@ -97,9 +95,6 @@ export class WatchService {
     );
 
     if (STACK_API_ERROR_PROPERTY in res) {
-      // TODO: Den här verka inte fungera
-      this._watches.set([...oldWatches()]);
-
       return;
     }
 

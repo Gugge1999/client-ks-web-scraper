@@ -19,7 +19,7 @@ export class ApiStatusDialogComponent {
 
   readonly apiStatus = computed(() => this.dialogContext.data());
 
-  readonly chartValueSig = computed(() => {
+  readonly chartValue = computed(() => {
     const memoryUsage = this.apiStatus().memoryUsage;
 
     if (this.memoryUsageArr.length <= 20) {
@@ -41,9 +41,9 @@ export class ApiStatusDialogComponent {
     return [...this.memoryUsageArr];
   });
 
-  readonly maxMemoryUsageSig = computed(() => Math.max(...this.chartValueSig().map(e => e[1])));
+  readonly maxMemoryUsageSig = computed(() => Math.max(...this.chartValue().map(e => e[1])));
 
-  readonly xStartValue = computed(() => this.chartValueSig()[0][0]);
+  readonly xStartValue = computed(() => this.chartValue()[0][0]);
 
   readonly axisYLabels = computed(() => [
     "0",

@@ -8,7 +8,6 @@ import { verifyResponse } from "@utils/valibot";
 import { Observable, retry, tap } from "rxjs";
 import { array, object, string, uuid, pipe as valibotPipe } from "valibot";
 
-// TODO: Den här klassen borde bara nås via watch service.
 @Injectable({
   providedIn: "root",
 })

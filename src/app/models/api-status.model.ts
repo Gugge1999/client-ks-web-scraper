@@ -10,7 +10,6 @@ const uptimeSchema = object({
 });
 
 export const apiStatusSchema = object({
-  // TODO: Fixa
   status: union([literal("active"), literal("inactive"), literal("pending")]),
   scrapingIntervalInMinutes: pipe(number(), integer()),
   memoryUsage: pipe(number(), integer()),
