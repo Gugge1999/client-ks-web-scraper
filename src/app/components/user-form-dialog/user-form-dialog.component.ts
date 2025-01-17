@@ -60,7 +60,7 @@ export class UserFormDialogComponent {
     this.newUser.set(true);
   }
 
-  protected async submitNewUser() {
+  protected async submitForm() {
     this.createUserLoading.set(true);
 
     const newUserDto: UserFormDto = {

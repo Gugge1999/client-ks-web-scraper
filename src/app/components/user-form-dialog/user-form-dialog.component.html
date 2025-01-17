@@ -34,7 +34,7 @@
       Avbryt
     </button>
 
-    <button tuiButton type="button" [disabled]="userForm.invalid" [loading]="createUserLoading()" (click)="submitNewUser()">
+    <button tuiButton type="button" [disabled]="userForm.invalid" [loading]="createUserLoading()" (click)="submitForm()">
       {{ buttonText() }}
     </button>
   </div>

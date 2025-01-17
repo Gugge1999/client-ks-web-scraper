@@ -52,6 +52,7 @@ export class WatchApiService {
   }
 
   toggleAll(activateAll: boolean, ids: string[]) {
+    // TODO: Byt till något bättre än object. Kanske tom body
     return this.http.patch<object | ApiError>(`${this.bevakningarUrl}/toggle-all`, { activateAll, ids });
   }
 }

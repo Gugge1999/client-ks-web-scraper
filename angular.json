@@ -77,9 +77,6 @@
           "defaultConfiguration": "production"
         },
         "serve": {
-          "options": {
-            "host": "192.168.1.2"
-          },
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
