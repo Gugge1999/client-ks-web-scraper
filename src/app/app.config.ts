@@ -1,8 +1,7 @@
 import { registerLocaleData } from "@angular/common";
 import { provideHttpClient, withFetch, withInterceptors } from "@angular/common/http";
 import localeSvSe from "@angular/common/locales/sv";
-import { ApplicationConfig, importProvidersFrom, LOCALE_ID, provideExperimentalZonelessChangeDetection } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
+import { ApplicationConfig, LOCALE_ID, provideExperimentalZonelessChangeDetection } from "@angular/core";
 import { errorInterceptor } from "@interceptors/error.interceptor";
 import { tuiHintOptionsProvider } from "@taiga-ui/core";
 import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
@@ -25,7 +24,6 @@ export const appConfig: ApplicationConfig = {
     //   exhaustive: true, // check all components
     // }),
     provideHttpClient(withFetch(), withInterceptors([errorInterceptor, jwtTokenInterceptor])), // jwtTokenInterceptor
-    importProvidersFrom(BrowserModule),
     provideFirebaseApp(() => initializeApp(FIREBASE_CONFIG)),
     provideAnalytics(() => getAnalytics()),
     provideAnimationsAsync(),
