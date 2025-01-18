@@ -1,16 +1,16 @@
-import { Component, inject, signal } from "@angular/core";
-import { injectContext } from "@taiga-ui/polymorpheus";
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-import { TuiButton, TuiDialogContext, TuiError, TuiTextfield } from "@taiga-ui/core";
-import { TuiButtonLoading, TuiFieldErrorPipe, tuiValidationErrorsProvider } from "@taiga-ui/kit";
 import { AsyncPipe } from "@angular/common";
+import { Component, inject, signal } from "@angular/core";
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
-import { UserForm } from "@models/forms/user";
-import { UserService } from "@services/user.service";
-import { User } from "@models/user";
-import { lastValueFrom } from "rxjs";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { UserFormDto } from "@models/DTOs/user";
+import { UserForm } from "@models/forms/user";
+import { User } from "@models/user";
+import { UserService } from "@services/user.service";
+import { TuiButton, TuiDialogContext, TuiError, TuiTextfield } from "@taiga-ui/core";
+import { TuiButtonLoading, TuiFieldErrorPipe, tuiValidationErrorsProvider } from "@taiga-ui/kit";
+import { injectContext } from "@taiga-ui/polymorpheus";
+import { lastValueFrom } from "rxjs";
 
 @Component({
   selector: "scraper-new-user-form-dialog",
