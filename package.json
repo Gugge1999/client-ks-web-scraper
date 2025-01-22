@@ -3,10 +3,8 @@
   "private": true,
   "packageManager": "pnpm@9.15.4",
   "scripts": {
-    "start": "ng serve",
-    "dev": "pnpm run lint && ng serve",
-    "build": "ng build",
-    "lint": "ng lint"
+    "dev": "ng lint && ng serve",
+    "build": "ng build"
   },
   "dependencies": {
     "@angular/animations": "^19.1.2",
