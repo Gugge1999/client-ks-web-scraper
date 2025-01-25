@@ -11,6 +11,7 @@ header {
 .scraper-header-app-bar {
   background: rgba(from var(--tui-status-positive) r g b / 75%);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .toolbar-title {
