@@ -8,5 +8,7 @@ p {
   position: sticky;
   z-index: 1;
   top: 38px;
-  background-color: var(--tui-background-base);
+
+  background: rgba(from var(--tui-background-base) r g b / 70%);
+  backdrop-filter: blur(8px);
 }

@@ -8,6 +8,11 @@ header {
   user-select: none;
 }
 
+.scraper-header-app-bar {
+  background: rgba(from var(--tui-status-positive) r g b / 75%);
+  backdrop-filter: blur(8px);
+}
+
 .toolbar-title {
   font-size: x-large;
   font-weight: bold;
