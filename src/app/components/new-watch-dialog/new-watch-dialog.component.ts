@@ -20,6 +20,7 @@ import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
       noResult: "Klocka gav inget resultat",
       // OBS: Variabel måste heta requiredLength
       minlength: ({ requiredLength }: { requiredLength: string }) => `Minst ${requiredLength} tecken`,
+      maxlength: ({ requiredLength }: { requiredLength: string }) => `Max ${requiredLength} tecken`,
     }),
   ],
 })
@@ -29,11 +30,11 @@ export class NewWatchDialogComponent {
 
   watchForm = new FormGroup<WatchForm>({
     label: new FormControl("", {
-      validators: [Validators.required, Validators.minLength(3)],
+      validators: [Validators.required, Validators.minLength(3), Validators.maxLength(35)],
       nonNullable: true,
     }),
     watchToScrape: new FormControl("", {
-      validators: [Validators.required, Validators.minLength(2)],
+      validators: [Validators.required, Validators.minLength(2), Validators.maxLength(35)],
       nonNullable: true,
     }),
   });

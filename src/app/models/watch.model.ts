@@ -14,7 +14,7 @@ export const watchSchema = object({
   lastEmailSent: nullable(pipe(string(), isoTimestamp())),
   watchToScrape: pipe(string(), url()),
   notifications: array(pipe(string(), isoTimestamp())),
-  watch: scrapedWatch,
+  latestWatch: scrapedWatch,
 });
 
 export type Watch = InferOutput<typeof watchSchema>;
