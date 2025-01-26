@@ -20,6 +20,8 @@ import { ApiError } from "@models/DTOs/api-error.dto";
   imports: [TuiAppBar, TuiHint, TuiIcon, TuiDataList, TuiDropdown, TuiDropdownDirective],
 })
 export class HeaderComponent {
+  readonly apiStatus = input.required<ApiStatus>();
+
   private readonly themeService = inject(ThemeService);
   private readonly userService = inject(UserService);
   private readonly alertService = inject(AlertService);
@@ -30,7 +32,6 @@ export class HeaderComponent {
 
   private readonly isDarkMode = this.themeService.isDarkMode;
   readonly themeIcon = computed(() => (this.isDarkMode() ? "moon" : "sun"));
-  readonly apiStatus = input.required<ApiStatus>();
   protected open = false;
 
   openApiStatusDialog() {
