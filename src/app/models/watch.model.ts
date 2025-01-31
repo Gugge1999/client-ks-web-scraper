@@ -17,4 +17,5 @@ export const watchSchema = object({
   latestWatch: scrapedWatch,
 });
 
-export type Watch = InferOutput<typeof watchSchema>;
+// OBS! Låt det vara ett interface. Om det är "type" kommer alla props att expanderas vid hover istället för att visa "Watch"
+export interface Watch extends InferOutput<typeof watchSchema> {}

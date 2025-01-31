@@ -33,6 +33,12 @@ module.exports = tseslint.config(
       "@angular-eslint/prefer-signals": "error",
       "@typescript-eslint/no-extraneous-class": "off",
       "@angular-eslint/sort-lifecycle-methods": "warn",
+      "@typescript-eslint/no-empty-object-type": [
+        "error",
+        {
+          allowInterfaces: "always",
+        },
+      ],
     },
   },
   {
