@@ -7,11 +7,21 @@
     }
 
     <main style="flex: 1; margin-bottom: 40px">
-      <scraper-summary [watches]="watches()" />
+      @if (watchesResource.isLoading()) {
+        <h2>Hämtar bevakningar...</h2>
+      }
 
-      <scraper-toggle-all [watches]="watches()" />
+      @if (watchesResource.error()) {
+        <h2 class="error">Något gick fel vid hämtning av bevakningar</h2>
+      }
 
-      <scraper-bevakningar-cards [watches]="watches()" />
+      @if (!watchesResource.isLoading() && !watchesResource.error() && watchesResource.value(); as watches) {
+        <scraper-summary [watches]="watches" />
+
+        <scraper-toggle-all [watches]="watches" />
+
+        <scraper-bevakningar-cards [watches]="watches" />
+      }
 
       <scraper-new-watch-fab [apiStatus]="apiStatus()" />
     </main>

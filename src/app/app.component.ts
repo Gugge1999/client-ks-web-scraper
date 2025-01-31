@@ -17,12 +17,13 @@ import { CookieComponent } from "@components/cookie/cookie.component";
 @Component({
   selector: "scraper-root",
   templateUrl: "./app.component.html",
+  styleUrl: "./app.component.scss",
   imports: [
+    TuiRoot,
     HeaderComponent,
     FooterComponent,
     SummaryComponent,
     NewWatchFabComponent,
-    TuiRoot,
     ToggleAllComponent,
     BevakningarCardsComponent,
     CookieComponent,
@@ -36,31 +37,13 @@ export class AppComponent implements OnInit {
 
   protected readonly isDarkMode = this.themeService.isDarkMode;
   protected readonly cookieAccepted = this.cookieService.cookieAccepted;
-  protected readonly watches = this.watchService.watches;
+  protected readonly watchesResource = this.watchService.watches;
 
   readonly apiStatus = toSignal(this.statusService.getApiStatus(), { initialValue: INITIAL_API_STATUS });
-
-  // TODO: Läs https://www.angularspace.com/everything-you-need-to-know-abour-resource-for-now/
-  // private readonly bevakningarUrl = `${env.apiUrl}/bevakningar`;
-  // todosResource = resource({
-  //   loader: () => fetch(`${this.bevakningarUrl}/all-watches`).then(res => res.json() as Promise<Watch[]>),
-  // });
-
-  updateTodo() {
-    // this.todosResource.value.update(value => {
-    //   if (!value) {
-    //     return undefined;
-    //   }
-    //
-    //   return { ...value, title: "updated" };
-    // });
-  }
 
   ngOnInit() {
     this.cookieService.onInit();
 
     this.themeService.initializeTheme();
-
-    this.watchService.getAllWatches();
   }
 }

@@ -20,6 +20,8 @@ export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn)
           return throwError(() => err);
         }
 
+        // TODO: Skapa ett Set så att dubbletter inte visas
+
         if (err && STACK_API_ERROR_PROPERTY in err && isMobile === false) {
           alertService.errorAlert("Se stacktrace i console", { sticky: true });
           console.error("Stack:", err.stack);

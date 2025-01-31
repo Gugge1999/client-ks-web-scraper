@@ -1,4 +1,3 @@
-<!--TODO: Använd resource för att visa pending, error, empty och success-->
 @for (watch of watches(); track watch.id) {
   <div tuiAppearance="floating" tuiCardLarge class="card" [@fadeInAnimation]="'in'">
     <header tuiHeader>
@@ -27,6 +26,7 @@
     </section>
 
     <footer>
+      <!-- TODO: Ska den vara en signal? Då kanske alla komponenter kan vara onPush -->
       <scraper-bevakningar-card-actions [watch]="watch" />
     </footer>
   </div>

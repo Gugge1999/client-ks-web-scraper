@@ -46,7 +46,7 @@ export class BevakningarCardActionsComponent {
     this.dialogsService
       .open<boolean>(TUI_CONFIRM, {
         label: `Vill du radera bevakning: ${this.watch().label}?`,
-        size: "auto",
+        size: "m",
         closeable: false,
         data: data,
       })

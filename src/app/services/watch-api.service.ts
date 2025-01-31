@@ -41,9 +41,8 @@ export class WatchApiService {
     );
   }
 
-  // TODO: Lägg till api error union
-  getAllWatches(): Observable<Watch[] | ApiError> {
-    return this.http.get<Watch[] | ApiError>(`${this.bevakningarUrl}/all-watches`).pipe(
+  getAllWatches(): Observable<Watch[]> {
+    return this.http.get<Watch[]>(`${this.bevakningarUrl}/all-watches`).pipe(
       tap(res => {
         verifyResponse(array(watchSchema), res);
       }),

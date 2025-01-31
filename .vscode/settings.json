@@ -10,7 +10,7 @@
     "/*.firebase": true,
     "/*.vscode": true,
     "/*.github": true,
-    "package-lock.json": true
+    "pnpm-lock.yaml": true
   },
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "always"

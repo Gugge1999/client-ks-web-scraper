@@ -1,48 +1,33 @@
-import { computed, inject, Injectable, signal } from "@angular/core";
-import { lastValueFrom, take } from "rxjs";
+import { inject, Injectable } from "@angular/core";
+import { lastValueFrom } from "rxjs";
 import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchDTO } from "@models/DTOs/new-watch-form-dto";
 import { Watch } from "@models/watch.model";
 import { WatchApiService } from "@services/watch-api.service";
 import { AlertService } from "@services/alert.service";
+import { rxResource } from "@angular/core/rxjs-interop";
 
 @Injectable({
   providedIn: "root",
 })
 export class WatchService {
-  private readonly _watches = signal<Watch[]>([]);
-  readonly watches = computed(() => [...this._watches()]);
-
   private readonly watchApiService = inject(WatchApiService);
   private readonly alertService = inject(AlertService);
 
-  // TODO: Lägg till resource loading i template för att visa att bevakningar laddar
-  // private readonly hejsan = this.watchApiService.getAllWatchesResource;
-  //
-  // desserts = computed(() => this.hejsan.value() ?? []);
+  private readonly _watches = rxResource({
+    loader: () => this.watchApiService.getAllWatches(),
+  });
 
-  getAllWatches() {
-    // Värdet från den här returneras inte. Därför används inte promise. Byt till resource sen
-    this.watchApiService
-      .getAllWatches()
-      .pipe(take(1))
-      .subscribe(res => {
-        if (STACK_API_ERROR_PROPERTY in res) {
-          return;
-        }
-
-        this._watches.set(res);
-      });
-  }
+  readonly watches = this._watches.asReadonly();
 
   deleteWatch(watch: Watch) {
-    this._watches.update(watches => watches.filter(w => w.id !== watch.id));
+    this._watches.value.update(watches => watches?.filter(w => w.id !== watch.id));
   }
 
   addWatch(watch: Watch) {
-    this._watches.update(watches => {
-      return [...watches, watch].sort((a, b) => Date.parse(a.added.toString()) - Date.parse(b.added.toString()));
+    this._watches.value.update(watches => {
+      return [...(watches ?? []), watch].sort((a, b) => Date.parse(a.added.toString()) - Date.parse(b.added.toString()));
     });
   }
 
@@ -54,7 +39,7 @@ export class WatchService {
     }
 
     this.alertService.successAlert(`Ny bevakning skapad för: ${newWatchDTO.label}`);
-    this._watches.update(watches => [...watches, apiRes]);
+    this._watches.value.update(watches => [...(watches ?? []), apiRes]);
 
     return apiRes;
   }
@@ -67,7 +52,7 @@ export class WatchService {
     }
 
     this.alertService.successAlert((activateAll ? `Aktiverade` : `Inaktiverade`) + ` Alla bevakningar`);
-    const newWatches = this.watches().map(watch => {
+    const newWatches = this.watches.value()?.map(watch => {
       watch.active = activateAll;
       return watch;
     });
@@ -79,8 +64,8 @@ export class WatchService {
   async toggleActiveStatus(watch: Watch) {
     const newActiveStatus = watch.active;
 
-    this._watches.update(watches =>
-      watches.map(w => {
+    this._watches.value.update(watches =>
+      watches?.map(w => {
         if (w.id === watch.id) {
           w.active = !watch.active;
         }
