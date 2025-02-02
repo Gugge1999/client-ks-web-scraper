@@ -45,7 +45,9 @@ export class WatchService {
   }
 
   async toggleAll(activateAll: boolean, ids: string[]) {
-    const apiRes = await lastValueFrom(this.watchApiService.toggleAll(activateAll, ids)).catch((err: ApiError) => err);
+    const apiRes = await lastValueFrom(this.watchApiService.toggleActiveStatus({ ids: ids, newActiveStatus: activateAll })).catch(
+      (err: ApiError) => err,
+    );
 
     if (STACK_API_ERROR_PROPERTY in apiRes) {
       return;
@@ -62,7 +64,7 @@ export class WatchService {
   }
 
   async toggleActiveStatus(watch: Watch) {
-    const newActiveStatus = watch.active;
+    const newActiveStatus = !watch.active;
 
     this._watches.value.update(watches =>
       watches?.map(w => {
@@ -74,10 +76,9 @@ export class WatchService {
       }),
     );
 
-    const { id, label } = watch;
-    const res = await lastValueFrom(this.watchApiService.toggleActiveStatus({ active: newActiveStatus, id, label })).catch(
-      (err: ApiError) => err,
-    );
+    const res = await lastValueFrom(
+      this.watchApiService.toggleActiveStatus({ ids: [watch.id], newActiveStatus: newActiveStatus }),
+    ).catch((err: ApiError) => err);
 
     if (STACK_API_ERROR_PROPERTY in res) {
       return;

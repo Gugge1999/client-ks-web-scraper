@@ -10,6 +10,7 @@ import { verifyResponse } from "@utils/valibot";
   providedIn: "root",
 })
 export class StatusService {
+  // TODO: Byt till streaming resource. Guide finns: https://www.angulararchitects.io/en/blog/streaming-resources-for-a-chat-with-web-sockets-messages-in-a-glitch-free-world/
   getApiStatus(): Observable<ApiStatus> {
     return webSocket<ApiStatus>(`${env.apiUrlWebSocket}/status`).pipe(
       tap(res => {

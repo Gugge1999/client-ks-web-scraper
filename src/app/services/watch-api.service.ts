@@ -6,7 +6,7 @@ import { NewWatchDTO } from "@models/DTOs/new-watch-form-dto";
 import { Watch, watchSchema } from "@models/watch.model";
 import { verifyResponse } from "@utils/valibot";
 import { Observable, retry, tap } from "rxjs";
-import { array, object, string, uuid, pipe as valibotPipe } from "valibot";
+import { array, object, pipe as valibotPipe, string, uuid } from "valibot";
 
 @Injectable({
   providedIn: "root",
@@ -17,8 +17,8 @@ export class WatchApiService {
   private readonly bevakningarUrl = `${env.apiUrl}/bevakningar`;
 
   // TODO: Ändra i backend så att den returnerar en hel watchSchema
-  toggleActiveStatus(dto: Pick<Watch, "active" | "id" | "label">) {
-    return this.http.put<Watch | ApiError>(`${this.bevakningarUrl}/toggle-active-status`, dto).pipe(
+  toggleActiveStatus(dto: { ids: string[]; newActiveStatus: boolean }) {
+    return this.http.put<Watch | ApiError>(`${this.bevakningarUrl}/toggle-active-statuses`, dto).pipe(
       tap(res => {
         verifyResponse(watchSchema, res);
       }),
@@ -48,10 +48,5 @@ export class WatchApiService {
       }),
       retry({ count: 3, delay: 2000 }),
     );
-  }
-
-  toggleAll(activateAll: boolean, ids: string[]) {
-    // TODO: Byt till något bättre än object. Kanske tom body
-    return this.http.patch<object | ApiError>(`${this.bevakningarUrl}/toggle-all`, { activateAll, ids });
   }
 }
