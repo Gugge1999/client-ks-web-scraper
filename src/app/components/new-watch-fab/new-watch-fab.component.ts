@@ -21,6 +21,8 @@ export class NewWatchFabComponent {
         return "Väntar på API:et";
       case "inactive":
         return "API:et är inte aktivt";
+      default:
+        throw Error("Okänd API status");
     }
   });
 
