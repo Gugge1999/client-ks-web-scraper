@@ -22,9 +22,15 @@
         }
 
         @if (apiStatus().status === "pending") {
-          <div class="header-icon icon-wrapper" style="cursor: wait" tuiHint="Väntar på API:et">
-            <tui-icon icon="loader" class="loading-icon-spinner" (click)="openApiStatusDialog()" />
-          </div>
+          <tui-loader
+            style="cursor: wait; stroke: var(--tui-text-primary)"
+            [inheritColor]="true"
+            tuiHint="Väntar på API:et"
+            (click)="openApiStatusDialog()" />
+
+          <!-- <div>
+            <tui-icon icon="loader" class="loading-icon-spinner" />
+          </div> -->
         }
 
         @if (apiStatus().status === "inactive") {

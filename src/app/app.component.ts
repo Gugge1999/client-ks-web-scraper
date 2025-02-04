@@ -1,5 +1,5 @@
 import { Component, inject, OnInit } from "@angular/core";
-import { TuiRoot } from "@taiga-ui/core";
+import { TuiLoader, TuiRoot } from "@taiga-ui/core";
 import { FooterComponent } from "@components/footer/footer.component";
 import { HeaderComponent } from "@components/header/header.component";
 import { NewWatchFabComponent } from "@components/new-watch-fab/new-watch-fab.component";
@@ -20,6 +20,7 @@ import { CookieComponent } from "@components/cookie/cookie.component";
   styleUrl: "./app.component.scss",
   imports: [
     TuiRoot,
+    TuiLoader,
     HeaderComponent,
     FooterComponent,
     SummaryComponent,

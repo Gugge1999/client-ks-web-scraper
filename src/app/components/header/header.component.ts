@@ -1,7 +1,7 @@
 import { Component, computed, inject, input } from "@angular/core";
 import { ApiStatusDialogComponent } from "@components/api-status-dialog/api-status-dialog.component";
 import { Theme, ThemeService } from "@services/theme.service";
-import { TuiDataList, tuiDialog, TuiDropdown, TuiDropdownDirective, TuiHint, TuiIcon } from "@taiga-ui/core";
+import { TuiDataList, tuiDialog, TuiDropdown, TuiDropdownDirective, TuiHint, TuiIcon, TuiLoader } from "@taiga-ui/core";
 import { TuiAppBar } from "@taiga-ui/layout";
 import { ApiStatus } from "@models/api-status.model";
 import { UserFormDialogComponent } from "@components/user-form-dialog/user-form-dialog.component";
@@ -17,7 +17,7 @@ import { ApiError } from "@models/DTOs/api-error.dto";
   selector: "scraper-header",
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.scss",
-  imports: [TuiAppBar, TuiHint, TuiIcon, TuiDataList, TuiDropdown, TuiDropdownDirective],
+  imports: [TuiAppBar, TuiHint, TuiDataList, TuiDropdown, TuiIcon, TuiDropdownDirective, TuiLoader],
 })
 export class HeaderComponent {
   readonly apiStatus = input.required<ApiStatus>();
