@@ -32,23 +32,9 @@ header {
   padding: 4px;
   color: white;
 
-  &:hover {
+  &:hover:not(tui-loader) {
     background-color: #31a57b;
     border-radius: 50%;
-    cursor: pointer;
-  }
-}
-
-.loading-icon-spinner {
-  animation: spin-animation 2s infinite;
-}
-
-@keyframes spin-animation {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
   }
 }
 
