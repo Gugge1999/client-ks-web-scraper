@@ -16,6 +16,6 @@ export class AlertService {
   }
 
   errorAlert(message: string, config?: { sticky: true }): void {
-    this.alerts.open(`Error: ${message}`, { appearance: "error", autoClose: config?.sticky ? 0 : 5000 }).subscribe();
+    this.alerts.open(message, { appearance: "error", autoClose: config?.sticky ? 0 : 5000 }).subscribe();
   }
 }
