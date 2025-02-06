@@ -7,22 +7,22 @@
     }
 
     <main style="flex: 1; margin-bottom: 40px">
-      @if (watchesResource.isLoading()) {
-        <h2>Hämtar bevakningar...</h2>
-
-        <tui-loader size="xl" />
-      }
-
       @if (watchesResource.error()) {
         <h2 class="error">Något gick fel vid hämtning av bevakningar</h2>
-      }
+      } @else {
+        @if (watchesResource.isLoading()) {
+          <h2>Hämtar bevakningar...</h2>
 
-      @if (!watchesResource.isLoading() && !watchesResource.error() && watchesResource.value(); as watches) {
-        <scraper-summary [watches]="watches" />
+          <tui-loader size="xl" />
+        }
 
-        <scraper-toggle-all [watches]="watches" />
+        @if (watchesResource.hasValue() && watchesResource.value(); as watches) {
+          <scraper-summary [watches]="watches" />
 
-        <scraper-bevakningar-cards [watches]="watches" />
+          <scraper-toggle-all [watches]="watches" />
+
+          <scraper-bevakningar-cards [watches]="watches" />
+        }
       }
 
       <scraper-new-watch-fab [apiStatus]="apiStatus()" />
