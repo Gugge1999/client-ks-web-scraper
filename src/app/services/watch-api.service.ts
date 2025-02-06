@@ -14,7 +14,7 @@ import { array, object, pipe as valibotPipe, string, uuid } from "valibot";
 export class WatchApiService {
   private readonly http = inject(HttpClient);
 
-  private readonly bevakningarUrl = `${env.apiUrl}/bevakningar`;
+  private readonly bevakningarUrl = `${env.apiUrl}/bevakningar` as const;
 
   // TODO: Ändra i backend så att den returnerar en hel watchSchema
   toggleActiveStatus(dto: { ids: string[]; newActiveStatus: boolean }) {

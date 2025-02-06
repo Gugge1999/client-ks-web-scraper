@@ -11,7 +11,7 @@ import { ChangePasswordDto, ResetPasswordDto, UserFormDto } from "@models/DTOs/u
 export class UserService {
   private readonly http = inject(HttpClient);
   private readonly jwtTokenConst = "jwt-token";
-  private readonly userBaseUrl = `${env.apiUrl}/user`;
+  private readonly userBaseUrl = `${env.apiUrl}/user` as const;
 
   // TODO: Kolla på https://www.youtube.com/watch?v=586O934xrhQ
   registerNewUser(newUserDto: UserFormDto) {
