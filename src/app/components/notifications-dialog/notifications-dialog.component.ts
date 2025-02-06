@@ -13,7 +13,6 @@ import { CARD_DATE_FORMAT } from "@constants/constants";
 export class NotificationsDialogComponent {
   public readonly context = injectContext<TuiDialogContext<void, { label: string; notifications: string[] }>>();
 
-  protected readonly label = this.context.data.label;
   protected readonly notifications = [this.context.data.notifications].flat();
 
   protected readonly cardDateFormat = CARD_DATE_FORMAT;

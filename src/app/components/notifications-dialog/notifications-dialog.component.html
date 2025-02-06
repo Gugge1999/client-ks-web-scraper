@@ -1,4 +1,4 @@
-<h2 style="margin-top: 0">{{ "Notiser för bevakning: " + label }}</h2>
+<h2 style="margin-top: 0">{{ "Notiser för bevakning: " + context.data.label }}</h2>
 
 @for (notification of notifications; track $index) {
   <p>{{ notification | date: cardDateFormat }}</p>

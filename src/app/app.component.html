@@ -1,22 +1,22 @@
-<tui-root [attr.tuiTheme]="isDarkMode() ? 'dark' : null">
+<tui-root [attr.tuiTheme]="themeService.isDarkMode() ? 'dark' : null">
   <div style="min-height: 100vh; display: flex; flex-direction: column">
     <scraper-header [apiStatus]="apiStatus()" />
 
-    @if (cookieAccepted()) {
+    @if (cookieService.cookieAccepted()) {
       <scraper-cookie />
     }
 
     <main style="flex: 1; margin-bottom: 40px">
-      @if (watchesResource.error()) {
+      @if (watchService.watches.error()) {
         <h2 class="error">Något gick fel vid hämtning av bevakningar</h2>
       } @else {
-        @if (watchesResource.isLoading()) {
+        @if (watchService.watches.isLoading()) {
           <h2>Hämtar bevakningar...</h2>
 
           <tui-loader size="xl" />
         }
 
-        @if (watchesResource.hasValue() && watchesResource.value(); as watches) {
+        @if (watchService.watches.hasValue() && watchService.watches.value(); as watches) {
           <scraper-summary [watches]="watches" />
 
           <scraper-toggle-all [watches]="watches" />
