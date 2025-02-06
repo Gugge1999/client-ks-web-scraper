@@ -5,6 +5,8 @@ import { catchError, throwError } from "rxjs";
 import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
 import { TUI_IS_MOBILE } from "@taiga-ui/cdk";
 
+let isFirstErrorWithStack = true;
+
 export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) {
   const alertService = inject(AlertService);
   const isMobile = inject(TUI_IS_MOBILE);
@@ -20,9 +22,8 @@ export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn)
           return throwError(() => err);
         }
 
-        // TODO: Skapa ett Set så att dubbletter inte visas
-
-        if (err && STACK_API_ERROR_PROPERTY in err && isMobile === false) {
+        if (err && STACK_API_ERROR_PROPERTY in err && isMobile === false && isFirstErrorWithStack) {
+          isFirstErrorWithStack = false;
           alertService.errorAlert("Se stacktrace i console", { sticky: true });
           console.error("Stack:", err.stack);
         }
