@@ -37,6 +37,7 @@ import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
 export class ChangePasswordDialogComponent {
   public readonly context = injectContext<TuiDialogContext<User | undefined, void>>();
   private readonly userService = inject(UserService);
+  readonly changePasswordLoading = signal(false);
 
   passwordMatchingValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
     const password = control.getRawValue().newPassword;
@@ -62,8 +63,6 @@ export class ChangePasswordDialogComponent {
     },
     { validators: this.passwordMatchingValidator },
   );
-
-  readonly changePasswordLoading = signal(false);
 
   protected async submitChangePassword() {
     this.changePasswordLoading.set(true);

@@ -31,14 +31,10 @@ import { CookieComponent } from "@components/cookie/cookie.component";
   ],
 })
 export class AppComponent implements OnInit {
-  private readonly themeService = inject(ThemeService);
-  private readonly watchService = inject(WatchService);
-  private readonly cookieService = inject(CookieService);
+  protected readonly themeService = inject(ThemeService);
+  protected readonly cookieService = inject(CookieService);
+  protected readonly watchService = inject(WatchService);
   private readonly statusService = inject(StatusService);
-
-  protected readonly isDarkMode = this.themeService.isDarkMode;
-  protected readonly cookieAccepted = this.cookieService.cookieAccepted;
-  protected readonly watchesResource = this.watchService.watches;
 
   readonly apiStatus = toSignal(this.statusService.getApiStatus(), { initialValue: INITIAL_API_STATUS });
 
