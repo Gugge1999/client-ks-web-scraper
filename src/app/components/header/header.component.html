@@ -7,11 +7,7 @@
 
     <div tuiSlot="right" style="display: flex; align-items: center; gap: 16px; padding-right: 10px">
       <div tuiHint="Växla tema" class="header-icon icon-wrapper pointer">
-        <tui-icon
-          [icon]="themeIcon()"
-          [class]="themeIcon() === 'moon' ? 'moon-icon' : 'sun-icon'"
-          (click)="toggleTheme()"
-          (keyup)="toggleTheme()" />
+        <tui-icon [icon]="themeIcon()" [class]="themeIcon()" (click)="toggleTheme()" (keyup)="toggleTheme()" />
       </div>
 
       <div>
@@ -26,8 +22,8 @@
         @if (apiStatus().status === "pending") {
           <tui-loader
             tuiHint="Väntar på API:et"
-            style="cursor: wait"
             class="header-icon icon-wrapper"
+            style="cursor: wait"
             [inheritColor]="true"
             (click)="openApiStatusDialog()" />
         }
