@@ -15,6 +15,7 @@ export class WatchService {
   private readonly watchApiService = inject(WatchApiService);
   private readonly alertService = inject(AlertService);
 
+  // TODO: Lägg till default value []. Det kommer i 19.2
   private readonly _watches = rxResource({
     loader: () => this.watchApiService.getAllWatches(),
   });
