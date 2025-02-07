@@ -28,7 +28,7 @@ import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
   providers: [
     tuiValidationErrorsProvider({
       required: "Obligatorisk",
-      notmatched: "Lösenorden stämmer inte överens",
+      notmatched: "Bekräftade lösenordet stämmer inte överens",
       // OBS: Variabel måste heta requiredLength
       minlength: ({ requiredLength }: { requiredLength: string }) => `Minst ${requiredLength} tecken`,
     }),
