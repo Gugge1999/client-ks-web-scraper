@@ -47,7 +47,7 @@ export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn)
         alertService.errorAlert(errMsg);
         return throwError(() => err);
       } catch (error) {
-        const catchErrMsg = "Nånting gick fel i errorInterceptor";
+        const catchErrMsg = "Nånting gick fel i errorInterceptor testing";
         alertService.errorAlert(catchErrMsg);
 
         console.error(catchErrMsg, error);
