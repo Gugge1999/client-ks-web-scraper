@@ -9,7 +9,7 @@ import { TuiCardLarge } from "@taiga-ui/layout";
 @Component({
   selector: "scraper-api-status-dialog",
   templateUrl: "./api-status-dialog.component.html",
-  styleUrls: ["./api-status-dialog.component.scss"],
+  styleUrl: "./api-status-dialog.component.scss",
   imports: [TuiAxes, TuiLineChart, TuiLineChartHint, TuiCardLarge, TuiAppearance],
 })
 export class ApiStatusDialogComponent {
@@ -46,12 +46,12 @@ export class ApiStatusDialogComponent {
 
   readonly axisYLabels = computed(() => [
     "0",
-    (this.maxMemoryUsageSig() * 0.5).toFixed(0).toString(), // 0.5x
-    this.maxMemoryUsageSig().toFixed(0).toString(), // 1x
-    (this.maxMemoryUsageSig() * 1.5).toFixed(0).toString(), // 1.5x
+    (this.maxMemoryUsageSig() * 0.5).toFixed(0).toString(), // -50%
+    this.maxMemoryUsageSig().toFixed(0).toString(),
+    (this.maxMemoryUsageSig() * 1.5).toFixed(0).toString(), // +50%
   ]);
 
-  /** Hittar det högsta värdet i array:en och sen lägga på 25% */
+  /** Hittar det högsta värdet i array:en och sen lägga på 50% */
   readonly chartHeight = computed(() => this.maxMemoryUsageSig() * 1.5);
 
   readonly hintContent = ({ $implicit }: TuiContext<readonly TuiPoint[]>) => $implicit[0]?.[1] ?? 0;
