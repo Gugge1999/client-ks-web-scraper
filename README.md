@@ -20,7 +20,7 @@
 > - Ett bra repo att kika på: [Extreme Angular](https://github.com/joematthews/extreme-angular)
 > - Bra blog: https://riegler.fr/
 > - [Angular ninja blog](https://blog.ninja-squad.com/tags.html#Angular-ref)
-> - För att se bundle size bygg med flaggan `"statsJson": true` i options i `angular.json`. Infoga sen i `stats.json` i dist mappen till sidan [esbuild analyze](https://esbuild.github.io/analyze/). Det finns också: [hawkeye](https://www.hawkeyeapp.dev/)
+> - För att se bundle size bygg med flaggan `"statsJson": true` i options i `angular.json`. Infoga sen `stats.json` i dist mappen till sidan [esbuild analyze](https://esbuild.github.io/analyze/). Det finns också: [hawkeye](https://www.hawkeyeapp.dev/)
 > - [Bra förklaring om NgRx och historien bakom det]()
 > - Bra video från Google om Angular ["How to stay fast and fresh with Angular"](https://www.youtube.com/watch?v=B-lipaiZII8)
 > - För att köra debug med attach i Chrome:
