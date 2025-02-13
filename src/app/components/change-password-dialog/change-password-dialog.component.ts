@@ -1,4 +1,4 @@
-import { Component, inject, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, signal } from "@angular/core";
 import {
   AbstractControl,
   FormControl,
@@ -25,6 +25,7 @@ import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
   imports: [AsyncPipe, ReactiveFormsModule, TuiTextfield, TuiError, TuiButton, TuiButtonLoading, TuiFieldErrorPipe],
   templateUrl: "./change-password-dialog.component.html",
   styleUrl: "./change-password-dialog.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     tuiValidationErrorsProvider({
       required: "Obligatorisk",

@@ -22,8 +22,8 @@ export class WatchService {
 
   readonly watches = this._watches.asReadonly();
 
-  deleteWatch(watch: Watch) {
-    this._watches.value.update(watches => watches?.filter(w => w.id !== watch.id));
+  deleteWatch(watchId: string) {
+    this._watches.value.update(watches => watches?.filter(w => w.id !== watchId));
   }
 
   addWatch(watch: Watch) {

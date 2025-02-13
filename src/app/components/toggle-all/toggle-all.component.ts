@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject, input } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { TuiHintDirective } from "@taiga-ui/core";
 import { TuiSwitch } from "@taiga-ui/kit";
@@ -11,6 +11,7 @@ import { fadeInAnimation } from "@constants/constants";
   imports: [FormsModule, TuiHintDirective, TuiSwitch],
   templateUrl: "./toggle-all.component.html",
   styleUrl: "./toggle-all.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInAnimation],
 })
 export class ToggleAllComponent {

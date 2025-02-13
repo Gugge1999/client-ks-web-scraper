@@ -1,5 +1,5 @@
 import { AsyncPipe } from "@angular/common";
-import { Component, inject, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, signal } from "@angular/core";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
 import { ApiError } from "@models/DTOs/api-error.dto";
@@ -16,6 +16,7 @@ import { lastValueFrom } from "rxjs";
   selector: "scraper-new-user-form-dialog",
   templateUrl: "./user-form-dialog.component.html",
   imports: [FormsModule, ReactiveFormsModule, TuiError, TuiFieldErrorPipe, AsyncPipe, TuiButton, TuiButtonLoading, TuiTextfield],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     tuiValidationErrorsProvider({
       required: "Obligatorisk",

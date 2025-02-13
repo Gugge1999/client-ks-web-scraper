@@ -26,8 +26,7 @@
     </section>
 
     <footer>
-      <!-- TODO: Ska den vara en signal? Då kanske alla komponenter kan vara onPush, eller om det går att köra destruct på objektet för att endast skicka in strings till komponenten -->
-      <scraper-bevakningar-card-actions [watch]="watch" />
+      <scraper-bevakningar-card-actions [watch]="watch" [active]="watch.active" />
     </footer>
   </div>
 } @empty {

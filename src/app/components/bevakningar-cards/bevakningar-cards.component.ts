@@ -1,5 +1,5 @@
 import { DatePipe } from "@angular/common";
-import { Component, input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, input } from "@angular/core";
 import { Watch } from "@models/watch.model";
 import { TuiAppearance, TuiHint } from "@taiga-ui/core";
 import { TuiCardLarge, TuiHeader } from "@taiga-ui/layout";
@@ -11,6 +11,7 @@ import { BevakningarCardActionsComponent } from "@components/bevakningar-card-ac
   templateUrl: "./bevakningar-cards.component.html",
   styleUrl: "./bevakningar-cards.component.scss",
   imports: [DatePipe, TuiAppearance, TuiCardLarge, TuiHeader, BevakningarCardActionsComponent, TuiHint],
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInAnimation],
 })
 export class BevakningarCardsComponent {

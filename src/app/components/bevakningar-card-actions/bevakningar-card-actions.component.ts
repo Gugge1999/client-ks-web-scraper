@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject, input } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { UndoAlertComponent } from "@components/undo-alert/undo-alert.component";
 import { Watch } from "@models/watch.model";
@@ -14,9 +14,12 @@ import { NotificationsDialogComponent } from "@components/notifications-dialog/n
   templateUrl: "./bevakningar-card-actions.component.html",
   styleUrl: "./bevakningar-card-actions.component.scss",
   imports: [FormsModule, TuiSwitch, TuiIcon, TuiHint, TuiBadgedContent, TuiBadge],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BevakningarCardActionsComponent {
   public readonly watch = input.required<Watch>();
+  public readonly active = input.required<boolean>(); // active behöver vara en egen input för att få OnPush att fungera
+
   private readonly notifications = computed(() => this.watch().notifications);
   protected readonly numberOfNotifications = computed(() => this.notifications().length);
 
@@ -56,7 +59,7 @@ export class BevakningarCardActionsComponent {
 
   protected deleteWatchWithUndoAlert() {
     /** OBS: Anrop för att radera bevakningen från db görs i {@link UndoAlertComponent} */
-    this.watchService.deleteWatch(this.watch());
+    this.watchService.deleteWatch(this.watch().id);
 
     this.alertsService
       .open(new PolymorpheusComponent(UndoAlertComponent), {

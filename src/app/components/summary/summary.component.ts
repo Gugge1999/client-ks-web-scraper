@@ -1,4 +1,4 @@
-import { Component, computed, input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, input } from "@angular/core";
 import { fadeInAnimation } from "@constants/constants";
 import { Watch } from "@models/watch.model";
 
@@ -6,6 +6,7 @@ import { Watch } from "@models/watch.model";
   selector: "scraper-summary",
   templateUrl: "./summary.component.html",
   styleUrl: "./summary.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [fadeInAnimation],
 })
 export class SummaryComponent {

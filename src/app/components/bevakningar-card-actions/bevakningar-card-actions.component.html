@@ -15,7 +15,7 @@
   tuiSwitch
   type="checkbox"
   (change)="toggleActiveStatus(watch())"
-  [ngModel]="watch().active"
+  [ngModel]="active()"
   tuiHint="Växla aktiv status"
   tuiHintDirection="top"
   style="--t-bg: var(--tui-status-positive)"

@@ -1,4 +1,4 @@
-import { Component, computed, inject, input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject, input } from "@angular/core";
 import { ApiStatusDialogComponent } from "@components/api-status-dialog/api-status-dialog.component";
 import { Theme, ThemeService } from "@services/theme.service";
 import { TuiDataList, tuiDialog, TuiDropdown, TuiDropdownDirective, TuiHint, TuiIcon, TuiLoader } from "@taiga-ui/core";
@@ -17,6 +17,7 @@ import { ApiError } from "@models/DTOs/api-error.dto";
   selector: "scraper-header",
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TuiAppBar, TuiHint, TuiDataList, TuiDropdown, TuiIcon, TuiDropdownDirective, TuiLoader],
 })
 export class HeaderComponent {

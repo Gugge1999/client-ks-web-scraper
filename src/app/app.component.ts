@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, OnInit } from "@angular/core";
 import { TuiLoader, TuiRoot } from "@taiga-ui/core";
 import { FooterComponent } from "@components/footer/footer.component";
 import { HeaderComponent } from "@components/header/header.component";
@@ -18,6 +18,7 @@ import { CookieComponent } from "@components/cookie/cookie.component";
   selector: "scraper-root",
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     TuiRoot,
     TuiLoader,

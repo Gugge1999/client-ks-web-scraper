@@ -30,7 +30,6 @@ export default tseslint.config(
       "no-nested-ternary": "error",
       "no-else-return": "error",
       "@angular-eslint/prefer-signals": "error",
-      "@angular-eslint/prefer-on-push-component-change-detection": "off",
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-extraneous-class": "off",
       "@typescript-eslint/no-empty-object-type": [

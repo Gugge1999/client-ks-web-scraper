@@ -1,4 +1,4 @@
-import { Component, inject, signal } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject, signal } from "@angular/core";
 import { TuiButtonLoading, TuiFieldErrorPipe, tuiValidationErrorsProvider } from "@taiga-ui/kit";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { TuiButton, TuiDialogContext, TuiError, TuiTextfield } from "@taiga-ui/core";
@@ -17,6 +17,7 @@ import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
   imports: [ReactiveFormsModule, TuiTextfield, TuiError, AsyncPipe, TuiFieldErrorPipe, TuiButtonLoading, TuiButton],
   templateUrl: "./reset-password.component.html",
   styleUrl: "./reset-password.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     tuiValidationErrorsProvider({
       required: "Obligatorisk",

@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { TuiDialogContext } from "@taiga-ui/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { DatePipe } from "@angular/common";
@@ -8,6 +8,7 @@ import { CARD_DATE_FORMAT } from "@constants/constants";
   selector: "scraper-notifications-dialog",
   templateUrl: "./notifications-dialog.component.html",
   styleUrl: "./notifications-dialog.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [DatePipe],
 })
 export class NotificationsDialogComponent {
