@@ -57,8 +57,8 @@ export class BevakningarCardActionsComponent {
       .subscribe();
   }
 
+  /** OBS: Anrop för att radera bevakningen från db görs i {@link UndoAlertComponent} */
   protected deleteWatchWithUndoAlert() {
-    /** OBS: Anrop för att radera bevakningen från db görs i {@link UndoAlertComponent} */
     this.watchService.deleteWatch(this.watch().id);
 
     this.alertsService

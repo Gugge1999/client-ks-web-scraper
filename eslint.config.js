@@ -29,7 +29,6 @@ export default tseslint.config(
       curly: ["error", "all"],
       "no-nested-ternary": "error",
       "no-else-return": "error",
-      "@angular-eslint/prefer-signals": "error",
       "@typescript-eslint/no-explicit-any": "error",
       "@typescript-eslint/no-extraneous-class": "off",
       "@typescript-eslint/no-empty-object-type": [
