@@ -5,7 +5,6 @@ import { ApplicationConfig, isDevMode, LOCALE_ID, provideExperimentalZonelessCha
 import { getAnalytics, provideAnalytics } from "@angular/fire/analytics";
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
-import { FIREBASE_CONFIG } from "@constants/constants";
 import { errorInterceptor } from "@interceptors/error.interceptor";
 import { tuiHintOptionsProvider } from "@taiga-ui/core";
 import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
@@ -44,3 +43,13 @@ export const appConfig: ApplicationConfig = {
     }),
   ],
 };
+
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyDJ7ITz4fNpZbOA2IHfhPC_V_KKmrd-Rq8",
+  authDomain: "ks-web-scraper.firebaseapp.com",
+  projectId: "ks-web-scraper",
+  storageBucket: "ks-web-scraper.firebasestorage.app",
+  messagingSenderId: "330274214889",
+  appId: "1:330274214889:web:2a7f4ec0010d99900bf178",
+  measurementId: "G-2M7YJWSQ0F",
+} as const;

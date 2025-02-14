@@ -3,13 +3,18 @@ import { Injectable } from "@angular/core";
 import { webSocket } from "rxjs/webSocket";
 import { env } from "@env/env";
 import { catchError, from, Observable, retry, tap } from "rxjs";
-import { ERROR_API_STATUS } from "@constants/constants";
 import { verifyResponse } from "@utils/valibot";
+import { INITIAL_API_STATUS } from "@constants/constants";
 
 @Injectable({
   providedIn: "root",
 })
 export class StatusService {
+  private readonly ERROR_API_STATUS: ApiStatus = {
+    ...INITIAL_API_STATUS,
+    status: "inactive",
+  } as const;
+
   /* TODO: Byt till streaming resource. Den kommer i Angular 19.2
 
    Guide finns:
@@ -22,7 +27,7 @@ export class StatusService {
         verifyResponse(apiStatusSchema, res);
       }),
       retry({ count: 3, delay: 2000 }),
-      catchError(() => from([ERROR_API_STATUS])),
+      catchError(() => from([this.ERROR_API_STATUS])),
     );
   }
 }

@@ -1,16 +1,6 @@
 import { ApiStatus } from "@models/api-status.model";
 import { animate, style, transition, trigger } from "@angular/animations";
 
-export const FIREBASE_CONFIG = {
-  apiKey: "AIzaSyDJ7ITz4fNpZbOA2IHfhPC_V_KKmrd-Rq8",
-  authDomain: "ks-web-scraper.firebaseapp.com",
-  projectId: "ks-web-scraper",
-  storageBucket: "ks-web-scraper.firebasestorage.app",
-  messagingSenderId: "330274214889",
-  appId: "1:330274214889:web:2a7f4ec0010d99900bf178",
-  measurementId: "G-2M7YJWSQ0F",
-} as const;
-
 export const INITIAL_API_STATUS: ApiStatus = {
   status: "pending",
   scrapingIntervalInMinutes: 0,
@@ -23,11 +13,6 @@ export const INITIAL_API_STATUS: ApiStatus = {
     minutes: 0,
     seconds: 0,
   },
-} as const;
-
-export const ERROR_API_STATUS: ApiStatus = {
-  ...INITIAL_API_STATUS,
-  status: "inactive",
 } as const;
 
 export const STACK_API_ERROR_PROPERTY = "stack";
