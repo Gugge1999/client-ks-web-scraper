@@ -54,7 +54,7 @@ export class WatchService {
       return;
     }
 
-    this.alertService.successAlert((activateAll ? `Aktiverade` : `Inaktiverade`) + ` Alla bevakningar`);
+    this.alertService.successAlert((activateAll ? `Aktiverade` : `Inaktiverade`) + ` alla bevakningar`);
     const newWatches = this.watches.value()?.map(watch => {
       watch.active = activateAll;
       return watch;
@@ -85,6 +85,6 @@ export class WatchService {
       return;
     }
 
-    this.alertService.infoAlert(`${res.active ? "Aktivera:" : "Inaktivera:"} ${res.label}`);
+    this.alertService.infoAlert(`${res.active ? "Aktivera:" : "Inaktivera:"} ${watch.label}`);
   }
 }

@@ -20,7 +20,7 @@ export class WatchApiService {
   toggleActiveStatus(dto: { ids: string[]; newActiveStatus: boolean }) {
     return this.http.put<Watch | ApiError>(`${this.bevakningarUrl}/toggle-active-statuses`, dto).pipe(
       tap(res => {
-        verifyResponse(watchSchema, res);
+        verifyResponse(object({}), res);
       }),
     );
   }

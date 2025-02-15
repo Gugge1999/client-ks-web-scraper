@@ -1,5 +1,5 @@
-import { ApiStatus } from "@models/api-status.model";
 import { animate, style, transition, trigger } from "@angular/animations";
+import { ApiStatus } from "@models/api-status.model";
 
 export const INITIAL_API_STATUS: ApiStatus = {
   status: "pending",
