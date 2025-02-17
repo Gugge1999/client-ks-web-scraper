@@ -10,6 +10,7 @@ import { StatusService } from "@services/status.service";
 import { ToggleAllComponent } from "@components/toggle-all/toggle-all.component";
 import { BevakningarCardsComponent } from "@components/bevakningar-cards/bevakningar-cards.component";
 import { CookieComponent } from "@components/cookie/cookie.component";
+import { TuiLoader, TuiRoot } from "@taiga-ui/core";
 
 @Component({
   selector: "scraper-root",
@@ -17,6 +18,8 @@ import { CookieComponent } from "@components/cookie/cookie.component";
   styleUrl: "./app.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    TuiRoot,
+    TuiLoader,
     HeaderComponent,
     FooterComponent,
     SummaryComponent,
