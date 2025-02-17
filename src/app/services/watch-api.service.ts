@@ -16,7 +16,6 @@ export class WatchApiService {
 
   private readonly bevakningarUrl = `${env.apiUrl}/bevakningar` as const;
 
-  // TODO: Ändra i backend så att den returnerar en hel watchSchema
   toggleActiveStatus(dto: { ids: string[]; newActiveStatus: boolean }) {
     return this.http.put<Watch | ApiError>(`${this.bevakningarUrl}/toggle-active-statuses`, dto).pipe(
       tap(res => {
