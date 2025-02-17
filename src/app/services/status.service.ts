@@ -1,5 +1,5 @@
 import { ApiStatus, apiStatusSchema } from "@models/api-status.model";
-import { Injectable } from "@angular/core";
+import { Injectable, resource, signal } from "@angular/core";
 import { webSocket } from "rxjs/webSocket";
 import { env } from "@env/env";
 import { catchError, from, Observable, retry, tap } from "rxjs";
@@ -15,12 +15,6 @@ export class StatusService {
     status: "inactive",
   } as const;
 
-  /* TODO: Byt till streaming resource. Den kommer i Angular 19.2
-
-   Guide finns:
-   https://www.angulararchitects.io/en/blog/streaming-resources-for-a-chat-with-web-sockets-messages-in-a-glitch-free-world/
-
-   Tillhörande kod finns här: C:\Code\angular_projects\streaming-resource-demo */
   getApiStatus(): Observable<ApiStatus> {
     return webSocket<ApiStatus>(`${env.apiUrlWebSocket}/status`).pipe(
       tap(res => {
@@ -30,4 +24,37 @@ export class StatusService {
       catchError(() => from([this.ERROR_API_STATUS])),
     );
   }
+
+  /* Guide finns:
+    https://www.angulararchitects.io/en/blog/streaming-resources-for-a-chat-with-web-sockets-messages-in-a-glitch-free-world/
+    Tillhörande kod finns här: C:\Code\angular_projects\streaming-resource-demo
+
+    och: https://www.youtube.com/watch?v=FXEGxcuGbnI&list=WL&index=18
+
+    Det verkar också komma stream till rxResource i 19.2: https://github.com/angular/angular/pull/59910
+    Detta kommer gör det enklare med retry, error och verifyResponse
+  */
+  getApiStatusStream = resource<ApiStatus, null>({
+    stream: () => {
+      return new Promise(resolve => {
+        const socket = new WebSocket(`${env.apiUrlWebSocket}/status`);
+        const statusSignal = signal({ value: INITIAL_API_STATUS });
+
+        socket.onmessage = event => {
+          const newStatus = JSON.parse(event.data) as ApiStatus;
+          verifyResponse(apiStatusSchema, newStatus);
+
+          statusSignal.set({ value: newStatus });
+
+          resolve(statusSignal);
+        };
+
+        socket.onerror = () => {
+          statusSignal.set({ value: this.ERROR_API_STATUS });
+          resolve(statusSignal);
+        };
+      });
+    },
+    defaultValue: INITIAL_API_STATUS,
+  });
 }

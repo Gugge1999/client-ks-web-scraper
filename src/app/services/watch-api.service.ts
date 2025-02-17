@@ -6,7 +6,7 @@ import { NewWatchDTO } from "@models/DTOs/new-watch-form-dto";
 import { Watch, watchSchema } from "@models/watch.model";
 import { verifyResponse } from "@utils/valibot";
 import { Observable, retry, tap } from "rxjs";
-import { array, object, pipe as valibotPipe, string, uuid } from "valibot";
+import { array, object, string, uuid, pipe as valibotPipe } from "valibot";
 
 @Injectable({
   providedIn: "root",

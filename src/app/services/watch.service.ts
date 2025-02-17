@@ -15,20 +15,20 @@ export class WatchService {
   private readonly watchApiService = inject(WatchApiService);
   private readonly alertService = inject(AlertService);
 
-  // TODO: Lägg till default value []. Det kommer i 19.2
   private readonly _watches = rxResource({
     loader: () => this.watchApiService.getAllWatches(),
+    defaultValue: [],
   });
 
   readonly watches = this._watches.asReadonly();
 
   deleteWatch(watchId: string) {
-    this._watches.value.update(watches => watches?.filter(w => w.id !== watchId));
+    this._watches.value.update(watches => watches.filter(w => w.id !== watchId));
   }
 
   addWatch(watch: Watch) {
     this._watches.value.update(watches => {
-      return [...(watches ?? []), watch].sort((a, b) => Date.parse(a.added.toString()) - Date.parse(b.added.toString()));
+      return [...watches, watch].sort((a, b) => Date.parse(a.added.toString()) - Date.parse(b.added.toString()));
     });
   }
 
@@ -40,7 +40,7 @@ export class WatchService {
     }
 
     this.alertService.successAlert(`Ny bevakning skapad för: ${newWatchDTO.label}`);
-    this._watches.value.update(watches => [...(watches ?? []), apiRes]);
+    this._watches.value.update(watches => [...watches, apiRes]);
 
     return apiRes;
   }
@@ -55,7 +55,7 @@ export class WatchService {
     }
 
     this.alertService.successAlert((activateAll ? `Aktiverade` : `Inaktiverade`) + ` alla bevakningar`);
-    const newWatches = this.watches.value()?.map(watch => {
+    const newWatches = this.watches.value().map(watch => {
       watch.active = activateAll;
       return watch;
     });
@@ -68,7 +68,7 @@ export class WatchService {
     const newActiveStatus = !watch.active;
 
     this._watches.value.update(watches =>
-      watches?.map(w => {
+      watches.map(w => {
         if (w.id === watch.id) {
           w.active = !watch.active;
         }

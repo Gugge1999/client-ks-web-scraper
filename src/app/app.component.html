@@ -1,6 +1,6 @@
 <tui-root [attr.tuiTheme]="themeService.isDarkMode() ? 'dark' : null">
   <div style="min-height: 100vh; display: flex; flex-direction: column">
-    <scraper-header [apiStatus]="apiStatus()" />
+    <scraper-header [apiStatus]="apiStatus.value()" />
 
     @if (cookieService.cookieAccepted()) {
       <scraper-cookie />
@@ -25,7 +25,7 @@
         }
       }
 
-      <scraper-new-watch-fab [apiStatus]="apiStatus()" />
+      <scraper-new-watch-fab [apiStatus]="apiStatus.value()" />
     </main>
 
     <scraper-footer />
