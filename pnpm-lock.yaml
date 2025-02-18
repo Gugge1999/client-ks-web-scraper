@@ -42,26 +42,26 @@ importers:
         specifier: ^19.1.6
         version: 19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
       '@taiga-ui/addon-charts':
-        specifier: ^4.24.0
-        version: 4.24.0(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@ng-web-apis/common@4.11.1(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@taiga-ui/cdk@4.24.0(27591ea10db078839e2aba77486adeb9))(@taiga-ui/core@4.24.0(0098dc86cc470745f05aba8751180ba3))(@taiga-ui/polymorpheus@4.7.4(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.6(@angular/animations@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))))
+        specifier: ^4.25.0
+        version: 4.25.0(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@ng-web-apis/common@4.11.1(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@taiga-ui/cdk@4.25.0(27591ea10db078839e2aba77486adeb9))(@taiga-ui/core@4.25.0(6a53265e8f575a772a000d1f528a6036))(@taiga-ui/polymorpheus@4.7.4(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.6(@angular/animations@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))))
       '@taiga-ui/cdk':
-        specifier: ^4.24.0
-        version: 4.24.0(27591ea10db078839e2aba77486adeb9)
+        specifier: ^4.25.0
+        version: 4.25.0(27591ea10db078839e2aba77486adeb9)
       '@taiga-ui/core':
-        specifier: ^4.24.0
-        version: 4.24.0(0098dc86cc470745f05aba8751180ba3)
+        specifier: ^4.25.0
+        version: 4.25.0(6a53265e8f575a772a000d1f528a6036)
       '@taiga-ui/event-plugins':
         specifier: ^4.4.0
         version: 4.4.0(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.6(@angular/animations@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(rxjs@7.8.1)
       '@taiga-ui/icons':
-        specifier: ^4.24.0
-        version: 4.24.0
+        specifier: ^4.25.0
+        version: 4.25.0
       '@taiga-ui/kit':
-        specifier: ^4.24.0
-        version: 4.24.0(5f4ab5421e3ad0f88f6e439ee2b0cdd9)
+        specifier: ^4.25.0
+        version: 4.25.0(00df5f43ca29b0b91c7a387faca824ba)
       '@taiga-ui/layout':
-        specifier: ^4.24.0
-        version: 4.24.0(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@taiga-ui/cdk@4.24.0(27591ea10db078839e2aba77486adeb9))(@taiga-ui/core@4.24.0(0098dc86cc470745f05aba8751180ba3))(@taiga-ui/kit@4.24.0(5f4ab5421e3ad0f88f6e439ee2b0cdd9))(@taiga-ui/polymorpheus@4.7.4(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.6(@angular/animations@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))))(rxjs@7.8.1)
+        specifier: ^4.25.0
+        version: 4.25.0(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@taiga-ui/cdk@4.25.0(27591ea10db078839e2aba77486adeb9))(@taiga-ui/core@4.25.0(6a53265e8f575a772a000d1f528a6036))(@taiga-ui/kit@4.25.0(00df5f43ca29b0b91c7a387faca824ba))(@taiga-ui/polymorpheus@4.7.4(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.6(@angular/animations@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))))(rxjs@7.8.1)
       firebase:
         specifier: ^11.3.1
         version: 11.3.1
@@ -86,22 +86,22 @@ importers:
         version: 9.20.0
       angular-eslint:
         specifier: ^19.1.0
-        version: 19.1.0(chokidar@4.0.3)(eslint@9.20.1(jiti@1.21.7))(typescript-eslint@8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3))(typescript@5.7.3)
+        version: 19.1.0(chokidar@4.0.3)(eslint@9.20.1(jiti@1.21.7))(typescript-eslint@8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3))(typescript@5.7.3)
       eslint:
         specifier: ^9.20.1
         version: 9.20.1(jiti@1.21.7)
       prettier:
-        specifier: ^3.5.0
-        version: 3.5.0
+        specifier: ^3.5.1
+        version: 3.5.1
       typescript:
         specifier: ~5.7.3
         version: 5.7.3
       typescript-eslint:
-        specifier: 8.24.0
-        version: 8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
+        specifier: 8.24.1
+        version: 8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
       valibot:
-        specifier: 1.0.0-rc.0
-        version: 1.0.0-rc.0(typescript@5.7.3)
+        specifier: 1.0.0-rc.1
+        version: 1.0.0-rc.1(typescript@5.7.3)
 
 packages:
 
@@ -1954,10 +1954,6 @@ packages:
     resolution: {integrity: sha512-XrnmSbCcDPePCbEVhgEPFZFiL/fowvkPJ8qOa1m9tWHSPYb739Vk3g+VDrAqNMm7FULcRzQzqHBq/IBB8qYfIg==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
 
-  '@schematics/angular@19.1.5':
-    resolution: {integrity: sha512-Yks2QD87z2qJhVLi6O0tQDBG4pyX5n5c8BYEyZ+yiThjzIXBRkHjWS1jIFvd/y1+yU/NQFHYG/sy8sVOxfQ9IA==}
-    engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
-
   '@schematics/angular@19.1.7':
     resolution: {integrity: sha512-BB8yMGmYDZzSb8Nu+Ln0TKyeoS3++f9STCYw30NwM3IViHxJJYxu/zowzwSa9TjftIzdCpbOaPxGS0vU9UOUDQ==}
     engines: {node: ^18.19.1 || ^20.11.1 || >=22.0.0, npm: ^6.11.0 || ^7.5.6 || >=8.0.0, yarn: '>= 1.13.0'}
@@ -1990,18 +1986,18 @@ packages:
     resolution: {integrity: sha512-LtoMMhxAlorcGhmFYI+LhPgbPZCkgP6ra1YL604EeF6U98pLlQ3iWIGMdWSC+vWmPBWBNgmDBAhnAobLROJmwg==}
     engines: {node: '>=18'}
 
-  '@taiga-ui/addon-charts@4.24.0':
-    resolution: {integrity: sha512-x75l4Dj1l7ForatbIdk4O8NzM6fQlKRp9UsXzMrKSoKj9O3jGHsFyMV67FhBS9oVitU4+3MIgPLuj09qpG1gBg==}
+  '@taiga-ui/addon-charts@4.25.0':
+    resolution: {integrity: sha512-nH6m7hXHzgMWmazxZN01/sdmvG2dX8yhFM8Lk4LUCnrK0Daa2aKMIYMIWoqSg9Z9e1s5qhcmAtUfWYaSKYnFqw==}
     peerDependencies:
       '@angular/common': '>=16.0.0'
       '@angular/core': '>=16.0.0'
       '@ng-web-apis/common': ^4.11.1
-      '@taiga-ui/cdk': ^4.24.0
-      '@taiga-ui/core': ^4.24.0
+      '@taiga-ui/cdk': ^4.25.0
+      '@taiga-ui/core': ^4.25.0
       '@taiga-ui/polymorpheus': ^4.8.0
 
-  '@taiga-ui/cdk@4.24.0':
-    resolution: {integrity: sha512-vsI+Jyzj4yfMolCg42OOyDvT30g1WFoupfOGlUk8A9R2HTVhMTeFeoA186A7c5KLI3e9fxj/60Rc9LbIbacnDA==}
+  '@taiga-ui/cdk@4.25.0':
+    resolution: {integrity: sha512-I8grhmHx0MUvMcDj+q9Q1FyLe9sc9ZzKE3BgGF3UL/Mcq8L/C1MDrMe0OWPZipGB1mSs0gMYIyVshwmd5H7mHg==}
     peerDependencies:
       '@angular/animations': '>=16.0.0'
       '@angular/cdk': '>=16.0.0'
@@ -2017,8 +2013,8 @@ packages:
       '@taiga-ui/polymorpheus': ^4.8.0
       rxjs: '>=7.0.0'
 
-  '@taiga-ui/core@4.24.0':
-    resolution: {integrity: sha512-tHHxdwXtvMI8W2Ct1YgLZGg5UEDRPq3j3fYwLV0P/G+17TU1rVeF9/JxVe8ZdZ1Mo55LNLDflTnenC13GK0R/w==}
+  '@taiga-ui/core@4.25.0':
+    resolution: {integrity: sha512-pVjLxwq/C9SRkH5xdIgeqmo8ZIeCnqgpHkXjo7qVdAMsW0vRemw+CSQzHjVxt6fLvsaHTLKR6F9OuZCHrno0hw==}
     peerDependencies:
       '@angular/animations': '>=16.0.0'
       '@angular/common': '>=16.0.0'
@@ -2028,9 +2024,9 @@ packages:
       '@angular/router': '>=16.0.0'
       '@ng-web-apis/common': ^4.11.1
       '@ng-web-apis/mutation-observer': ^4.11.1
-      '@taiga-ui/cdk': ^4.24.0
+      '@taiga-ui/cdk': ^4.25.0
       '@taiga-ui/event-plugins': ^4.4.0
-      '@taiga-ui/i18n': ^4.24.0
+      '@taiga-ui/i18n': ^4.25.0
       '@taiga-ui/polymorpheus': ^4.8.0
       rxjs: '>=7.0.0'
 
@@ -2048,11 +2044,11 @@ packages:
       '@ng-web-apis/common': ^4.11.1
       rxjs: '>=7.0.0'
 
-  '@taiga-ui/icons@4.24.0':
-    resolution: {integrity: sha512-VGWKMuVayab+/MJ60JuxRM2zTJG2WelDmUuTMdYqnh+zAWTn7FoPjDgAREiT7m84XryZdKtkUqGK6aLI+J62Sg==}
+  '@taiga-ui/icons@4.25.0':
+    resolution: {integrity: sha512-KndcaPF+O+/IY6k2YgaAUogUJ1tPezMYBw7QH2R91RmERQdvtnVO0/bl4j2KqodilSwmWCJiAPkZhSdNCdyfMQ==}
 
-  '@taiga-ui/kit@4.24.0':
-    resolution: {integrity: sha512-qz+OpsAyHWUT6fcfBPd+RJTv98J5USezh028B7TpSLSSyRE6mbklKIj2gteJQVnwVS0AXwm69WgQDXMVolbJnw==}
+  '@taiga-ui/kit@4.25.0':
+    resolution: {integrity: sha512-iStxHahkdjlKI//e1ZjcjGma5s0/FI1wEEB+u3yOMa7VuYWEQSjRKPm2V8GE9Ozi/8Ovq+oj1oiEHFn7ZaCeQw==}
     peerDependencies:
       '@angular/common': '>=16.0.0'
       '@angular/core': '>=16.0.0'
@@ -2066,20 +2062,20 @@ packages:
       '@ng-web-apis/intersection-observer': ^4.11.1
       '@ng-web-apis/mutation-observer': ^4.11.1
       '@ng-web-apis/resize-observer': ^4.11.1
-      '@taiga-ui/cdk': ^4.24.0
-      '@taiga-ui/core': ^4.24.0
-      '@taiga-ui/i18n': ^4.24.0
+      '@taiga-ui/cdk': ^4.25.0
+      '@taiga-ui/core': ^4.25.0
+      '@taiga-ui/i18n': ^4.25.0
       '@taiga-ui/polymorpheus': ^4.8.0
       rxjs: '>=7.0.0'
 
-  '@taiga-ui/layout@4.24.0':
-    resolution: {integrity: sha512-xwWB2iXeQWipzw0jTvqFL6V/20bhyM5lNT2AyAo6EcI8fX1N8x/RThaz9crf1jexajynHm4qirGT1M8tblg+Pw==}
+  '@taiga-ui/layout@4.25.0':
+    resolution: {integrity: sha512-cJxuzrNA+GM7QhZz9LAve4+LMWS/QSPMuYW1DEVtbB2Yxcv3qfvr61cjcqYRzRsMNLCl9JZXqzfitelC4DDB5A==}
     peerDependencies:
       '@angular/common': '>=16.0.0'
       '@angular/core': '>=16.0.0'
-      '@taiga-ui/cdk': ^4.24.0
-      '@taiga-ui/core': ^4.24.0
-      '@taiga-ui/kit': ^4.24.0
+      '@taiga-ui/cdk': ^4.25.0
+      '@taiga-ui/core': ^4.25.0
+      '@taiga-ui/kit': ^4.25.0
       '@taiga-ui/polymorpheus': ^4.8.0
       rxjs: '>=7.0.0'
 
@@ -2175,16 +2171,16 @@ packages:
   '@types/ws@8.5.13':
     resolution: {integrity: sha512-osM/gWBTPKgHV8XkTunnegTRIsvF6owmf5w+JtAfOw472dptdm0dlGv4xCt6GwQRcC2XVOvvRE/0bAoQcL2QkA==}
 
-  '@typescript-eslint/eslint-plugin@8.24.0':
-    resolution: {integrity: sha512-aFcXEJJCI4gUdXgoo/j9udUYIHgF23MFkg09LFz2dzEmU0+1Plk4rQWv/IYKvPHAtlkkGoB3m5e6oUp+JPsNaQ==}
+  '@typescript-eslint/eslint-plugin@8.24.1':
+    resolution: {integrity: sha512-ll1StnKtBigWIGqvYDVuDmXJHVH4zLVot1yQ4fJtLpL7qacwkxJc1T0bptqw+miBQ/QfUbhl1TcQ4accW5KUyA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       '@typescript-eslint/parser': ^8.0.0 || ^8.0.0-alpha.0
       eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <5.8.0'
 
-  '@typescript-eslint/parser@8.24.0':
-    resolution: {integrity: sha512-MFDaO9CYiard9j9VepMNa9MTcqVvSny2N4hkY6roquzj8pdCBRENhErrteaQuu7Yjn1ppk0v1/ZF9CG3KIlrTA==}
+  '@typescript-eslint/parser@8.24.1':
+    resolution: {integrity: sha512-Tqoa05bu+t5s8CTZFaGpCH2ub3QeT9YDkXbPd3uQ4SfsLoh1/vv2GEYAioPoxCWJJNsenXlC88tRjwoHNts1oQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
@@ -2194,12 +2190,12 @@ packages:
     resolution: {integrity: sha512-OGqo7+dXHqI7Hfm+WqkZjKjsiRtFUQHPdGMXzk5mYXhJUedO7e/Y7i8AK3MyLMgZR93TX4bIzYrfyVjLC+0VSw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@typescript-eslint/scope-manager@8.24.0':
-    resolution: {integrity: sha512-HZIX0UByphEtdVBKaQBgTDdn9z16l4aTUz8e8zPQnyxwHBtf5vtl1L+OhH+m1FGV9DrRmoDuYKqzVrvWDcDozw==}
+  '@typescript-eslint/scope-manager@8.24.1':
+    resolution: {integrity: sha512-OdQr6BNBzwRjNEXMQyaGyZzgg7wzjYKfX2ZBV3E04hUCBDv3GQCHiz9RpqdUIiVrMgJGkXm3tcEh4vFSHreS2Q==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@typescript-eslint/type-utils@8.24.0':
-    resolution: {integrity: sha512-8fitJudrnY8aq0F1wMiPM1UUgiXQRJ5i8tFjq9kGfRajU+dbPyOuHbl0qRopLEidy0MwqgTHDt6CnSeXanNIwA==}
+  '@typescript-eslint/type-utils@8.24.1':
+    resolution: {integrity: sha512-/Do9fmNgCsQ+K4rCz0STI7lYB4phTtEXqqCAs3gZW0pnK7lWNkvWd5iW545GSmApm4AzmQXmSqXPO565B4WVrw==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
@@ -2209,8 +2205,8 @@ packages:
     resolution: {integrity: sha512-1sK4ILJbCmZOTt9k4vkoulT6/y5CHJ1qUYxqpF1K/DBAd8+ZUL4LlSCxOssuH5m4rUaaN0uS0HlVPvd45zjduQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@typescript-eslint/types@8.24.0':
-    resolution: {integrity: sha512-VacJCBTyje7HGAw7xp11q439A+zeGG0p0/p2zsZwpnMzjPB5WteaWqt4g2iysgGFafrqvyLWqq6ZPZAOCoefCw==}
+  '@typescript-eslint/types@8.24.1':
+    resolution: {integrity: sha512-9kqJ+2DkUXiuhoiYIUvIYjGcwle8pcPpdlfkemGvTObzgmYfJ5d0Qm6jwb4NBXP9W1I5tss0VIAnWFumz3mC5A==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@typescript-eslint/typescript-estree@8.23.0':
@@ -2219,8 +2215,8 @@ packages:
     peerDependencies:
       typescript: '>=4.8.4 <5.8.0'
 
-  '@typescript-eslint/typescript-estree@8.24.0':
-    resolution: {integrity: sha512-ITjYcP0+8kbsvT9bysygfIfb+hBj6koDsu37JZG7xrCiy3fPJyNmfVtaGsgTUSEuTzcvME5YI5uyL5LD1EV5ZQ==}
+  '@typescript-eslint/typescript-estree@8.24.1':
+    resolution: {integrity: sha512-UPyy4MJ/0RE648DSKQe9g0VDSehPINiejjA6ElqnFaFIhI6ZEiZAkUI0D5MCk0bQcTf/LVqZStvQ6K4lPn/BRg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       typescript: '>=4.8.4 <5.8.0'
@@ -2232,8 +2228,8 @@ packages:
       eslint: ^8.57.0 || ^9.0.0
       typescript: '>=4.8.4 <5.8.0'
 
-  '@typescript-eslint/utils@8.24.0':
-    resolution: {integrity: sha512-07rLuUBElvvEb1ICnafYWr4hk8/U7X9RDCOqd9JcAMtjh/9oRmcfN4yGzbPVirgMR0+HLVHehmu19CWeh7fsmQ==}
+  '@typescript-eslint/utils@8.24.1':
+    resolution: {integrity: sha512-OOcg3PMMQx9EXspId5iktsI3eMaXVwlhC8BvNnX6B5w9a4dVgpkQZuU8Hy67TolKcl+iFWq0XX+jbDGN4xWxjQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
@@ -2243,8 +2239,8 @@ packages:
     resolution: {integrity: sha512-oWWhcWDLwDfu++BGTZcmXWqpwtkwb5o7fxUIGksMQQDSdPW9prsSnfIOZMlsj4vBOSrcnjIUZMiIjODgGosFhQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
-  '@typescript-eslint/visitor-keys@8.24.0':
-    resolution: {integrity: sha512-kArLq83QxGLbuHrTMoOEWO+l2MwsNS2TGISEdx8xgqpkbytB07XmlQyQdNDrCc1ecSqx0cnmhGvpX+VBwqqSkg==}
+  '@typescript-eslint/visitor-keys@8.24.1':
+    resolution: {integrity: sha512-EwVHlp5l+2vp8CoqJm9KikPZgi3gbdZAtabKT9KPShGeOcJhsv4Zdo3oc8T8I0uKEmYoU4ItyxbptjF08enaxg==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
 
   '@vitejs/plugin-basic-ssl@1.2.0':
@@ -4002,8 +3998,8 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier@3.5.0:
-    resolution: {integrity: sha512-quyMrVt6svPS7CjQ9gKb3GLEX/rl3BCL2oa/QkNcXv4YNVBC9olt3s+H7ukto06q7B1Qz46PbrKLO34PR6vXcA==}
+  prettier@3.5.1:
+    resolution: {integrity: sha512-hPpFQvHwL3Qv5AdRvBFMhnKo4tYxp0ReXiPn2bxkiohEX6mBeBwEpBSQTkD458RaaDKQMYSp4hX4UtfUTA5wDw==}
     engines: {node: '>=14'}
     hasBin: true
 
@@ -4534,8 +4530,8 @@ packages:
   typed-assert@1.0.9:
     resolution: {integrity: sha512-KNNZtayBCtmnNmbo5mG47p1XsCyrx6iVqomjcZnec/1Y5GGARaxPs6r49RnSPeUP3YjNYiU9sQHAtY4BBvnZwg==}
 
-  typescript-eslint@8.24.0:
-    resolution: {integrity: sha512-/lmv4366en/qbB32Vz5+kCNZEMf6xYHwh1z48suBwZvAtnXKbP+YhGe8OLE2BqC67LMqKkCNLtjejdwsdW6uOQ==}
+  typescript-eslint@8.24.1:
+    resolution: {integrity: sha512-cw3rEdzDqBs70TIcb0Gdzbt6h11BSs2pS0yaq7hDWDBtCCSei1pPSUXE9qUdQ/Wm9NgFg8mKtMt1b8fTHIl1jA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: ^8.57.0 || ^9.0.0
@@ -4601,8 +4597,8 @@ packages:
     resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
 
-  valibot@1.0.0-rc.0:
-    resolution: {integrity: sha512-9ZUrOXOejY/WaIn8p0Z469R1qBAwNJeqq8jzOIDsl1qR8gqtObHQmyHLFli0UCkcGiTco5kH6/KPLWsTWE9b2g==}
+  valibot@1.0.0-rc.1:
+    resolution: {integrity: sha512-bTHNpeeQ403xS7qGHF/tw3EC/zkZOU5VdkfIsmRDu1Sp+BJNTNCm6m5HlwOgyW/03lofP+uQiq3R+Poo9wiCEg==}
     peerDependencies:
       typescript: '>=5'
     peerDependenciesMeta:
@@ -6922,15 +6918,6 @@ snapshots:
     transitivePeerDependencies:
       - chokidar
 
-  '@schematics/angular@19.1.5(chokidar@4.0.3)':
-    dependencies:
-      '@angular-devkit/core': 19.1.5(chokidar@4.0.3)
-      '@angular-devkit/schematics': 19.1.5(chokidar@4.0.3)
-      jsonc-parser: 3.3.1
-    transitivePeerDependencies:
-      - chokidar
-    optional: true
-
   '@schematics/angular@19.1.7(chokidar@4.0.3)':
     dependencies:
       '@angular-devkit/core': 19.1.7(chokidar@4.0.3)
@@ -6973,17 +6960,17 @@ snapshots:
 
   '@sindresorhus/merge-streams@2.3.0': {}
 
-  '@taiga-ui/addon-charts@4.24.0(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@ng-web-apis/common@4.11.1(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@taiga-ui/cdk@4.24.0(27591ea10db078839e2aba77486adeb9))(@taiga-ui/core@4.24.0(0098dc86cc470745f05aba8751180ba3))(@taiga-ui/polymorpheus@4.7.4(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.6(@angular/animations@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))))':
+  '@taiga-ui/addon-charts@4.25.0(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@ng-web-apis/common@4.11.1(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@taiga-ui/cdk@4.25.0(27591ea10db078839e2aba77486adeb9))(@taiga-ui/core@4.25.0(6a53265e8f575a772a000d1f528a6036))(@taiga-ui/polymorpheus@4.7.4(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.6(@angular/animations@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))))':
     dependencies:
       '@angular/common': 19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
       '@angular/core': 19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)
       '@ng-web-apis/common': 4.11.1(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
-      '@taiga-ui/cdk': 4.24.0(27591ea10db078839e2aba77486adeb9)
-      '@taiga-ui/core': 4.24.0(0098dc86cc470745f05aba8751180ba3)
+      '@taiga-ui/cdk': 4.25.0(27591ea10db078839e2aba77486adeb9)
+      '@taiga-ui/core': 4.25.0(6a53265e8f575a772a000d1f528a6036)
       '@taiga-ui/polymorpheus': 4.7.4(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.6(@angular/animations@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))
       tslib: 2.8.1
 
-  '@taiga-ui/cdk@4.24.0(27591ea10db078839e2aba77486adeb9)':
+  '@taiga-ui/cdk@4.25.0(27591ea10db078839e2aba77486adeb9)':
     dependencies:
       '@angular/animations': 19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))
       '@angular/cdk': 19.1.4(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
@@ -7000,15 +6987,15 @@ snapshots:
       rxjs: 7.8.1
       tslib: 2.8.1
     optionalDependencies:
-      '@angular-devkit/core': 19.1.5(chokidar@4.0.3)
-      '@angular-devkit/schematics': 19.1.5(chokidar@4.0.3)
-      '@schematics/angular': 19.1.5(chokidar@4.0.3)
-      ng-morph: 4.8.4(@angular-devkit/core@19.1.5(chokidar@4.0.3))(@angular-devkit/schematics@19.1.5(chokidar@4.0.3))(tslib@2.8.1)
+      '@angular-devkit/core': 19.1.7(chokidar@4.0.3)
+      '@angular-devkit/schematics': 19.1.7(chokidar@4.0.3)
+      '@schematics/angular': 19.1.7(chokidar@4.0.3)
+      ng-morph: 4.8.4(@angular-devkit/core@19.1.7(chokidar@4.0.3))(@angular-devkit/schematics@19.1.7(chokidar@4.0.3))(tslib@2.8.1)
       parse5: 7.2.1
     transitivePeerDependencies:
       - chokidar
 
-  '@taiga-ui/core@4.24.0(0098dc86cc470745f05aba8751180ba3)':
+  '@taiga-ui/core@4.25.0(6a53265e8f575a772a000d1f528a6036)':
     dependencies:
       '@angular/animations': 19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))
       '@angular/common': 19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
@@ -7018,7 +7005,7 @@ snapshots:
       '@angular/router': 19.1.6(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.6(@angular/animations@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(rxjs@7.8.1)
       '@ng-web-apis/common': 4.11.1(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
       '@ng-web-apis/mutation-observer': 4.11.1(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@ng-web-apis/common@4.11.1(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))
-      '@taiga-ui/cdk': 4.24.0(27591ea10db078839e2aba77486adeb9)
+      '@taiga-ui/cdk': 4.25.0(27591ea10db078839e2aba77486adeb9)
       '@taiga-ui/event-plugins': 4.4.0(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.6(@angular/animations@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(rxjs@7.8.1)
       '@taiga-ui/i18n': 4.19.0(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@ng-web-apis/common@4.11.1(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(rxjs@7.8.1)
       '@taiga-ui/polymorpheus': 4.7.4(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.6(@angular/animations@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))
@@ -7039,11 +7026,11 @@ snapshots:
       rxjs: 7.8.1
       tslib: 2.8.1
 
-  '@taiga-ui/icons@4.24.0':
+  '@taiga-ui/icons@4.25.0':
     dependencies:
       tslib: 2.8.1
 
-  '@taiga-ui/kit@4.24.0(5f4ab5421e3ad0f88f6e439ee2b0cdd9)':
+  '@taiga-ui/kit@4.25.0(00df5f43ca29b0b91c7a387faca824ba)':
     dependencies:
       '@angular/common': 19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
       '@angular/core': 19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)
@@ -7057,20 +7044,20 @@ snapshots:
       '@ng-web-apis/intersection-observer': 4.11.1(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@ng-web-apis/common@4.11.1(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))
       '@ng-web-apis/mutation-observer': 4.11.1(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@ng-web-apis/common@4.11.1(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))
       '@ng-web-apis/resize-observer': 4.11.1(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@ng-web-apis/common@4.11.1(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))
-      '@taiga-ui/cdk': 4.24.0(27591ea10db078839e2aba77486adeb9)
-      '@taiga-ui/core': 4.24.0(0098dc86cc470745f05aba8751180ba3)
+      '@taiga-ui/cdk': 4.25.0(27591ea10db078839e2aba77486adeb9)
+      '@taiga-ui/core': 4.25.0(6a53265e8f575a772a000d1f528a6036)
       '@taiga-ui/i18n': 4.19.0(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@ng-web-apis/common@4.11.1(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(rxjs@7.8.1)
       '@taiga-ui/polymorpheus': 4.7.4(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.6(@angular/animations@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))
       rxjs: 7.8.1
       tslib: 2.8.1
 
-  '@taiga-ui/layout@4.24.0(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@taiga-ui/cdk@4.24.0(27591ea10db078839e2aba77486adeb9))(@taiga-ui/core@4.24.0(0098dc86cc470745f05aba8751180ba3))(@taiga-ui/kit@4.24.0(5f4ab5421e3ad0f88f6e439ee2b0cdd9))(@taiga-ui/polymorpheus@4.7.4(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.6(@angular/animations@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))))(rxjs@7.8.1)':
+  '@taiga-ui/layout@4.25.0(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@taiga-ui/cdk@4.25.0(27591ea10db078839e2aba77486adeb9))(@taiga-ui/core@4.25.0(6a53265e8f575a772a000d1f528a6036))(@taiga-ui/kit@4.25.0(00df5f43ca29b0b91c7a387faca824ba))(@taiga-ui/polymorpheus@4.7.4(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.6(@angular/animations@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))))(rxjs@7.8.1)':
     dependencies:
       '@angular/common': 19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1)
       '@angular/core': 19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)
-      '@taiga-ui/cdk': 4.24.0(27591ea10db078839e2aba77486adeb9)
-      '@taiga-ui/core': 4.24.0(0098dc86cc470745f05aba8751180ba3)
-      '@taiga-ui/kit': 4.24.0(5f4ab5421e3ad0f88f6e439ee2b0cdd9)
+      '@taiga-ui/cdk': 4.25.0(27591ea10db078839e2aba77486adeb9)
+      '@taiga-ui/core': 4.25.0(6a53265e8f575a772a000d1f528a6036)
+      '@taiga-ui/kit': 4.25.0(00df5f43ca29b0b91c7a387faca824ba)
       '@taiga-ui/polymorpheus': 4.7.4(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(@angular/platform-browser@19.1.6(@angular/animations@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))(@angular/common@19.1.6(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0))(rxjs@7.8.1))(@angular/core@19.2.0-next.3(rxjs@7.8.1)(zone.js@0.15.0)))
       rxjs: 7.8.1
       tslib: 2.8.1
@@ -7197,14 +7184,14 @@ snapshots:
     dependencies:
       '@types/node': 22.10.2
 
-  '@typescript-eslint/eslint-plugin@8.24.0(@typescript-eslint/parser@8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3))(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)':
+  '@typescript-eslint/eslint-plugin@8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3))(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)':
     dependencies:
       '@eslint-community/regexpp': 4.12.1
-      '@typescript-eslint/parser': 8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
-      '@typescript-eslint/scope-manager': 8.24.0
-      '@typescript-eslint/type-utils': 8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
-      '@typescript-eslint/utils': 8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
-      '@typescript-eslint/visitor-keys': 8.24.0
+      '@typescript-eslint/parser': 8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
+      '@typescript-eslint/scope-manager': 8.24.1
+      '@typescript-eslint/type-utils': 8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
+      '@typescript-eslint/utils': 8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
+      '@typescript-eslint/visitor-keys': 8.24.1
       eslint: 9.20.1(jiti@1.21.7)
       graphemer: 1.4.0
       ignore: 5.3.2
@@ -7214,12 +7201,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/parser@8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)':
+  '@typescript-eslint/parser@8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)':
     dependencies:
-      '@typescript-eslint/scope-manager': 8.24.0
-      '@typescript-eslint/types': 8.24.0
-      '@typescript-eslint/typescript-estree': 8.24.0(typescript@5.7.3)
-      '@typescript-eslint/visitor-keys': 8.24.0
+      '@typescript-eslint/scope-manager': 8.24.1
+      '@typescript-eslint/types': 8.24.1
+      '@typescript-eslint/typescript-estree': 8.24.1(typescript@5.7.3)
+      '@typescript-eslint/visitor-keys': 8.24.1
       debug: 4.4.0
       eslint: 9.20.1(jiti@1.21.7)
       typescript: 5.7.3
@@ -7231,15 +7218,15 @@ snapshots:
       '@typescript-eslint/types': 8.23.0
       '@typescript-eslint/visitor-keys': 8.23.0
 
-  '@typescript-eslint/scope-manager@8.24.0':
+  '@typescript-eslint/scope-manager@8.24.1':
     dependencies:
-      '@typescript-eslint/types': 8.24.0
-      '@typescript-eslint/visitor-keys': 8.24.0
+      '@typescript-eslint/types': 8.24.1
+      '@typescript-eslint/visitor-keys': 8.24.1
 
-  '@typescript-eslint/type-utils@8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)':
+  '@typescript-eslint/type-utils@8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)':
     dependencies:
-      '@typescript-eslint/typescript-estree': 8.24.0(typescript@5.7.3)
-      '@typescript-eslint/utils': 8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
+      '@typescript-eslint/typescript-estree': 8.24.1(typescript@5.7.3)
+      '@typescript-eslint/utils': 8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
       debug: 4.4.0
       eslint: 9.20.1(jiti@1.21.7)
       ts-api-utils: 2.0.1(typescript@5.7.3)
@@ -7249,7 +7236,7 @@ snapshots:
 
   '@typescript-eslint/types@8.23.0': {}
 
-  '@typescript-eslint/types@8.24.0': {}
+  '@typescript-eslint/types@8.24.1': {}
 
   '@typescript-eslint/typescript-estree@8.23.0(typescript@5.7.3)':
     dependencies:
@@ -7265,10 +7252,10 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/typescript-estree@8.24.0(typescript@5.7.3)':
+  '@typescript-eslint/typescript-estree@8.24.1(typescript@5.7.3)':
     dependencies:
-      '@typescript-eslint/types': 8.24.0
-      '@typescript-eslint/visitor-keys': 8.24.0
+      '@typescript-eslint/types': 8.24.1
+      '@typescript-eslint/visitor-keys': 8.24.1
       debug: 4.4.0
       fast-glob: 3.3.3
       is-glob: 4.0.3
@@ -7290,12 +7277,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@typescript-eslint/utils@8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)':
+  '@typescript-eslint/utils@8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)':
     dependencies:
       '@eslint-community/eslint-utils': 4.4.1(eslint@9.20.1(jiti@1.21.7))
-      '@typescript-eslint/scope-manager': 8.24.0
-      '@typescript-eslint/types': 8.24.0
-      '@typescript-eslint/typescript-estree': 8.24.0(typescript@5.7.3)
+      '@typescript-eslint/scope-manager': 8.24.1
+      '@typescript-eslint/types': 8.24.1
+      '@typescript-eslint/typescript-estree': 8.24.1(typescript@5.7.3)
       eslint: 9.20.1(jiti@1.21.7)
       typescript: 5.7.3
     transitivePeerDependencies:
@@ -7306,9 +7293,9 @@ snapshots:
       '@typescript-eslint/types': 8.23.0
       eslint-visitor-keys: 4.2.0
 
-  '@typescript-eslint/visitor-keys@8.24.0':
+  '@typescript-eslint/visitor-keys@8.24.1':
     dependencies:
-      '@typescript-eslint/types': 8.24.0
+      '@typescript-eslint/types': 8.24.1
       eslint-visitor-keys: 4.2.0
 
   '@vitejs/plugin-basic-ssl@1.2.0(vite@6.0.11(@types/node@22.10.2)(jiti@1.21.7)(less@4.2.1)(sass@1.83.1)(terser@5.37.0))':
@@ -7448,7 +7435,7 @@ snapshots:
       json-schema-traverse: 1.0.0
       require-from-string: 2.0.2
 
-  angular-eslint@19.1.0(chokidar@4.0.3)(eslint@9.20.1(jiti@1.21.7))(typescript-eslint@8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3))(typescript@5.7.3):
+  angular-eslint@19.1.0(chokidar@4.0.3)(eslint@9.20.1(jiti@1.21.7))(typescript-eslint@8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3))(typescript@5.7.3):
     dependencies:
       '@angular-devkit/core': 19.1.5(chokidar@4.0.3)
       '@angular-devkit/schematics': 19.1.5(chokidar@4.0.3)
@@ -7461,7 +7448,7 @@ snapshots:
       '@typescript-eslint/utils': 8.23.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
       eslint: 9.20.1(jiti@1.21.7)
       typescript: 5.7.3
-      typescript-eslint: 8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
+      typescript-eslint: 8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
     transitivePeerDependencies:
       - chokidar
       - supports-color
@@ -8880,10 +8867,10 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  ng-morph@4.8.4(@angular-devkit/core@19.1.5(chokidar@4.0.3))(@angular-devkit/schematics@19.1.5(chokidar@4.0.3))(tslib@2.8.1):
+  ng-morph@4.8.4(@angular-devkit/core@19.1.7(chokidar@4.0.3))(@angular-devkit/schematics@19.1.7(chokidar@4.0.3))(tslib@2.8.1):
     dependencies:
-      '@angular-devkit/core': 19.1.5(chokidar@4.0.3)
-      '@angular-devkit/schematics': 19.1.5(chokidar@4.0.3)
+      '@angular-devkit/core': 19.1.7(chokidar@4.0.3)
+      '@angular-devkit/schematics': 19.1.7(chokidar@4.0.3)
       jsonc-parser: 3.3.1
       minimatch: 10.0.1
       multimatch: 5.0.0
@@ -9195,7 +9182,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier@3.5.0: {}
+  prettier@3.5.1: {}
 
   proc-log@5.0.0: {}
 
@@ -9780,11 +9767,11 @@ snapshots:
 
   typed-assert@1.0.9: {}
 
-  typescript-eslint@8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3):
+  typescript-eslint@8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3):
     dependencies:
-      '@typescript-eslint/eslint-plugin': 8.24.0(@typescript-eslint/parser@8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3))(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
-      '@typescript-eslint/parser': 8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
-      '@typescript-eslint/utils': 8.24.0(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
+      '@typescript-eslint/eslint-plugin': 8.24.1(@typescript-eslint/parser@8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3))(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
+      '@typescript-eslint/parser': 8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
+      '@typescript-eslint/utils': 8.24.1(eslint@9.20.1(jiti@1.21.7))(typescript@5.7.3)
       eslint: 9.20.1(jiti@1.21.7)
       typescript: 5.7.3
     transitivePeerDependencies:
@@ -9833,7 +9820,7 @@ snapshots:
 
   uuid@8.3.2: {}
 
-  valibot@1.0.0-rc.0(typescript@5.7.3):
+  valibot@1.0.0-rc.1(typescript@5.7.3):
     optionalDependencies:
       typescript: 5.7.3
 
