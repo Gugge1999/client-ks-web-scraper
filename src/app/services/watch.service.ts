@@ -85,6 +85,6 @@ export class WatchService {
       return;
     }
 
-    this.alertService.infoAlert(`${res.active ? "Aktivera:" : "Inaktivera:"} ${watch.label}`);
+    this.alertService.infoAlert(`${newActiveStatus === true ? "Aktivera:" : "Inaktivera:"} ${watch.label}`);
   }
 }

@@ -14,7 +14,6 @@ registerLocaleData(localeSvSe);
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideExperimentalZonelessChangeDetection(),
     /*
      * För att kolla att zoneless fungerar
      */
@@ -22,6 +21,7 @@ export const appConfig: ApplicationConfig = {
     //   interval: 1000, // run change detection every second
     //   exhaustive: true, // check all components
     // }),
+    provideExperimentalZonelessChangeDetection(),
     provideHttpClient(withFetch(), withInterceptors([errorInterceptor])), // jwtTokenInterceptor
     provideFirebaseApp(() => initializeApp(FIREBASE_CONFIG)),
     provideAnalytics(() => getAnalytics()),
