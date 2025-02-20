@@ -10,6 +10,7 @@
     "/*.firebase": true,
     "/*.vscode": true,
     "/*.github": true,
+    "/*.angular": true,
     "pnpm-lock.yaml": true
   },
   "editor.codeActionsOnSave": {
