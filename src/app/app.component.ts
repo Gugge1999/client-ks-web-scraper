@@ -33,9 +33,7 @@ export class AppComponent implements OnInit {
   protected readonly themeService = inject(ThemeService);
   protected readonly cookieService = inject(CookieService);
   protected readonly watchService = inject(WatchService);
-  private readonly statusService = inject(StatusService);
-
-  readonly apiStatus = this.statusService.getApiStatusStream;
+  protected readonly apiStatus = inject(StatusService).getApiStatusStream;
 
   ngOnInit() {
     this.cookieService.onInit();
