@@ -1,11 +1,12 @@
 import { HttpClient } from "@angular/common/http";
-import { inject, Injectable } from "@angular/core";
+import { inject, Injectable, ResourceRef } from "@angular/core";
+import { rxResource } from "@angular/core/rxjs-interop";
 import { env } from "@env/env";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchDTO } from "@models/DTOs/new-watch-form-dto";
 import { Watch, watchSchema } from "@models/watch.model";
 import { verifyResponse } from "@utils/valibot";
-import { Observable, retry, tap } from "rxjs";
+import { retry, tap } from "rxjs";
 import { array, object, pipe as valibotPipe, string, uuid } from "valibot";
 
 @Injectable({
@@ -40,12 +41,17 @@ export class WatchApiService {
     );
   }
 
-  getAllWatches(): Observable<Watch[]> {
-    return this.http.get<Watch[]>(`${this.bevakningarUrl}/all-watches`).pipe(
-      tap(res => {
-        verifyResponse(array(watchSchema), res);
-      }),
-      retry({ count: 3, delay: 2000 }),
-    );
+  getAllWatches(): ResourceRef<Watch[]> {
+    return rxResource({
+      loader: () =>
+        this.http.get<Watch[]>(`${this.bevakningarUrl}/all-watches`).pipe(
+          tap(res => {
+            verifyResponse(array(watchSchema), res);
+          }),
+          retry({ count: 3, delay: 2000 }),
+        ),
+
+      defaultValue: [],
+    });
   }
 }

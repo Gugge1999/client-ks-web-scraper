@@ -6,7 +6,6 @@ import { NewWatchDTO } from "@models/DTOs/new-watch-form-dto";
 import { Watch } from "@models/watch.model";
 import { WatchApiService } from "@services/watch-api.service";
 import { AlertService } from "@services/alert.service";
-import { rxResource } from "@angular/core/rxjs-interop";
 
 @Injectable({
   providedIn: "root",
@@ -15,10 +14,7 @@ export class WatchService {
   private readonly watchApiService = inject(WatchApiService);
   private readonly alertService = inject(AlertService);
 
-  private readonly _watches = rxResource({
-    loader: () => this.watchApiService.getAllWatches(),
-    defaultValue: [],
-  });
+  private readonly _watches = this.watchApiService.getAllWatches();
 
   readonly watches = this._watches.asReadonly();
 
@@ -85,6 +81,6 @@ export class WatchService {
       return;
     }
 
-    this.alertService.infoAlert(`${res.active ? "Aktivera:" : "Inaktivera:"} ${watch.label}`);
+    this.alertService.infoAlert(`${newActiveStatus === true ? "Aktivera:" : "Inaktivera:"} ${watch.label}`);
   }
 }

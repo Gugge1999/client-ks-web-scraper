@@ -55,6 +55,7 @@ export class StatusService {
         };
       });
     },
+
     defaultValue: INITIAL_API_STATUS,
   });
 }
