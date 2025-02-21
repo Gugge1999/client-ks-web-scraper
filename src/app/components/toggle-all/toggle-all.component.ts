@@ -21,8 +21,8 @@ export class ToggleAllComponent {
 
   public readonly watchService = inject(WatchService);
 
-  async toggleAll() {
-    return await this.watchService.toggleAll(
+  toggleAll() {
+    return this.watchService.toggleAll(
       !this.isToggleActive(),
       this.watches().map(m => m.id),
     );

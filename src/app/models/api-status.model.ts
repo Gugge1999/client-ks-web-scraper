@@ -16,4 +16,4 @@ export const apiStatusSchema = object({
   uptime: uptimeSchema,
 });
 
-export type ApiStatus = InferOutput<typeof apiStatusSchema>;
+export interface ApiStatus extends InferOutput<typeof apiStatusSchema> {}
