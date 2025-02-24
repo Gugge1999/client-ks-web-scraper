@@ -7,8 +7,6 @@
 
 ## Läs
 
-- [https://riegler.fr/blog/2024-10-18-resources-as-signals/](https://riegler.fr/blog/2024-10-18-resources-as-signals/)
-- [A change detection story](https://itnext.io/a-change-detection-zone-js-zoneless-local-change-detection-and-signals-story-9344079c3b9d)
 - [Sending (browser) OpenTelemetry traces from an Angular Application to .NET Aspire](https://timdeschryver.dev/blog/Sending-browser-opentelemetry-traces-from-an-angular-application-to-net-aspire)
 
 ## Bra länkar

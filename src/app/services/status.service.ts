@@ -20,7 +20,7 @@ export class StatusService {
       tap(res => {
         verifyResponse(apiStatusSchema, res);
       }),
-      retry({ count: 3, delay: 2000 }),
+      retry({ count: 3, delay: 2_000 }),
       catchError(() => from([this.ERROR_API_STATUS])),
     );
   }

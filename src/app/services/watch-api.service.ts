@@ -48,7 +48,7 @@ export class WatchApiService {
           tap(res => {
             verifyResponse(array(watchSchema), res);
           }),
-          retry({ count: 3, delay: 2000 }),
+          retry({ count: 3, delay: 2_000 }),
         ),
 
       defaultValue: [],
