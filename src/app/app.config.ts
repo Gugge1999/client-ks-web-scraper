@@ -15,7 +15,7 @@ registerLocaleData(localeSvSe);
 export const appConfig: ApplicationConfig = {
   providers: [
     /*
-     * För att kolla att zoneless fungerar
+     * Debug för att kolla att zoneless fungerar
      */
     // provideExperimentalCheckNoChangesForDebug({
     //   interval: 1000, // run change detection every second

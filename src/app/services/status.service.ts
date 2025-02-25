@@ -25,7 +25,7 @@ export class StatusService {
     );
   }
 
-  /* Guide finns:
+  /** Guide finns:
     https://www.angulararchitects.io/en/blog/streaming-resources-for-a-chat-with-web-sockets-messages-in-a-glitch-free-world/
     Tillhörande kod finns här: C:\Code\angular_projects\streaming-resource-demo
 
