@@ -31,6 +31,7 @@ header {
   color: white;
 
   &:hover:not(tui-loader) {
+    // TODO: Den ska vara en variabel som är mörkare
     background-color: #31a57b;
     border-radius: 50%;
   }

@@ -47,9 +47,9 @@ export class ApiStatusDialogComponent {
 
   readonly axisYLabels = computed(() => [
     "0",
-    (this.maxMemoryUsageSig() * 0.5).toFixed(0).toString(), // -50%
+    (this.maxMemoryUsageSig() * 0.5).toFixed(0).toString(), // - 50%
     this.maxMemoryUsageSig().toFixed(0).toString(),
-    (this.maxMemoryUsageSig() * 1.5).toFixed(0).toString(), // +50%
+    (this.maxMemoryUsageSig() * 1.5).toFixed(0).toString(), // + 50%
   ]);
 
   /** Hittar det högsta värdet i array:en och sen lägga på 50% */
