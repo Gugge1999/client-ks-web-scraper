@@ -27,13 +27,16 @@ header {
 }
 
 .header-icon {
-  transform: scale(1.2);
   padding: 4px;
   color: white;
 
   &:hover:not(tui-loader) {
     background-color: #31a57b;
     border-radius: 50%;
+  }
+
+  &:not(tui-loader) {
+    transform: scale(1.2);
   }
 }
 
