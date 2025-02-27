@@ -57,6 +57,7 @@ export class NewWatchDialogComponent {
     this.newWatchLoading.set(false);
 
     if (STACK_API_ERROR_PROPERTY in result) {
+      // TODO: Är det en bra idé att tillåta ett tomt sökresultat och varna användaren om det? Det kan ju vara en helt ny modell som användaren bevakar
       this.watchForm.controls.watchToScrape.setErrors({ noResult: true });
 
       return;
