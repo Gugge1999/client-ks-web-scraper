@@ -31,8 +31,7 @@ header {
   color: white;
 
   &:hover:not(tui-loader) {
-    // TODO: Den ska vara en variabel som är mörkare
-    background-color: #31a57b;
+    background-color: hsl(from var(--tui-status-positive) h s calc(l - 15));
     border-radius: 50%;
   }
 
