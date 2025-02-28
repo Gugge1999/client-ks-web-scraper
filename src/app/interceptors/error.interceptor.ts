@@ -30,7 +30,7 @@ export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn)
 
         console.error("Error", err);
 
-        let errMsg: string;
+        let errMsg = "Något gick fel";
 
         if (errStatus === 0) {
           errMsg = "Kunde inte ansluta till API:et";
@@ -40,8 +40,6 @@ export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn)
           errMsg = "Kunde inte hantera anrop. Se console";
         } else if (err.errorMessage) {
           errMsg = err.errorMessage;
-        } else {
-          errMsg = "Något gick fel";
         }
 
         alertService.errorAlert(errMsg);

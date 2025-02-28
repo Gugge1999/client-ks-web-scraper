@@ -3,7 +3,8 @@
   --tui-background-accent-1-hover: var(--tui-status-positive-pale-hover);
   --tui-background-accent-1-pressed: var(--tui-text-positive-hover);
 
-  [tuiAppearance][data-appearance="flat"] {
+  [tuiAppearance][data-appearance="flat"],
+  [tuiAppearance][data-appearance="secondary"] {
     color: var(--tui-text-positive);
   }
 }
