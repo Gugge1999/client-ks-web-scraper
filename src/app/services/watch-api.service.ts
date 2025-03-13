@@ -41,6 +41,7 @@ export class WatchApiService {
     );
   }
 
+  // TODO: Ska den vara en httpResource? Hur fungerar retry i en sån?
   getAllWatches(): ResourceRef<Watch[]> {
     return rxResource({
       loader: () =>

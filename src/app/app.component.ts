@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, inject } from "@angular/core";
 import { FooterComponent } from "@components/footer/footer.component";
 import { HeaderComponent } from "@components/header/header.component";
 import { NewWatchFabComponent } from "@components/new-watch-fab/new-watch-fab.component";
@@ -29,13 +29,13 @@ import { TuiLoader, TuiRoot } from "@taiga-ui/core";
     CookieComponent,
   ],
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   protected readonly themeService = inject(ThemeService);
   protected readonly cookieService = inject(CookieService);
   protected readonly watchService = inject(WatchService);
   protected readonly apiStatus = inject(StatusService).getApiStatusStream;
 
-  ngOnInit() {
+  constructor() {
     this.cookieService.onInit();
 
     this.themeService.initializeTheme();

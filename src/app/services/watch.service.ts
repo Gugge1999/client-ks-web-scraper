@@ -57,7 +57,6 @@ export class WatchService {
     });
 
     this._watches.set(newWatches);
-    return apiRes;
   }
 
   async toggleActiveStatus(watch: Watch) {

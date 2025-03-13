@@ -22,7 +22,7 @@ export class ToggleAllComponent {
   public readonly watchService = inject(WatchService);
 
   toggleAll() {
-    return this.watchService.toggleAll(
+    this.watchService.toggleAll(
       !this.isToggleActive(),
       this.watches().map(m => m.id),
     );
