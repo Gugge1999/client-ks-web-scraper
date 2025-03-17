@@ -18,7 +18,8 @@ import { NotificationsDialogComponent } from "@components/notifications-dialog/n
 })
 export class BevakningarCardActionsComponent {
   public readonly watch = input.required<Watch>();
-  public readonly active = input.required<boolean>(); // active behöver vara en egen input för att få OnPush att fungera
+  /** `active` behöver vara en egen input för att få `OnPush` att fungera */
+  public readonly active = input.required<boolean>();
 
   private readonly notifications = computed(() => this.watch().notifications);
   protected readonly numberOfNotifications = computed(() => this.notifications().length);
@@ -57,7 +58,7 @@ export class BevakningarCardActionsComponent {
       .subscribe();
   }
 
-  /** OBS: Anrop för att radera bevakningen från db görs i {@link UndoAlertComponent} */
+  /** **OBS**: Anrop för att radera bevakningen från db görs i {@link UndoAlertComponent} */
   protected deleteWatchWithUndoAlert() {
     this.watchService.deleteWatch(this.watch().id);
 
