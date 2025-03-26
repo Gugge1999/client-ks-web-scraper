@@ -16,7 +16,7 @@
           <tui-loader size="xl" />
         }
 
-        @if (watchService.watches.value().length > 0 && watchService.watches.value(); as watches) {
+        @if (watchService.watches.value(); as watches) {
           <scraper-summary [watches]="watches" />
 
           <scraper-toggle-all [watches]="watches" />
