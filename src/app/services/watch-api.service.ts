@@ -21,6 +21,7 @@ export class WatchApiService {
     return this.http.put<Watch | ApiError>(`${this.bevakningarUrl}/toggle-active-statuses`, dto).pipe(
       tap(res => {
         verifyResponse(object({}), res);
+        retry({ count: 3, delay: 2_000 });
       }),
     );
   }

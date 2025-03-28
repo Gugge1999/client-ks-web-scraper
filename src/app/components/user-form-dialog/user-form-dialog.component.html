@@ -1,7 +1,7 @@
 <form [formGroup]="userForm">
   <h2 style="margin-top: 0; margin-bottom: 45px">{{ headerText() }}</h2>
 
-  @if (newUser()) {
+  @if (isNewUser()) {
     <p>Har du redan ett konto?<a href="#" class="link" style="padding-left: 8px" (click)="loginUser()">Logga in</a></p>
   } @else {
     <p>Har du inget konto?<a href="#" class="link" style="padding-left: 8px" (click)="registerUser()">Registrera här</a></p>

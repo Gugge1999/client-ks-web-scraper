@@ -35,7 +35,7 @@ export class UserFormDialogComponent {
   protected readonly headerText = signal("Logga in");
   protected readonly buttonText = signal("Logga in");
   protected readonly createUserLoading = signal(false);
-  protected readonly newUser = signal(false);
+  protected readonly isNewUser = signal(false);
 
   // OBS! FormControl för email sätts dynamiskt beroende på om användare väljer logga in eller registrera
   userForm = new FormGroup<UserForm>({
@@ -52,13 +52,13 @@ export class UserFormDialogComponent {
   loginUser() {
     this.headerText.set("Logga in");
     this.buttonText.set("Logga in");
-    this.newUser.set(false);
+    this.isNewUser.set(false);
   }
 
   registerUser() {
     this.headerText.set("Skapa ny användare");
     this.buttonText.set("Skapa användare");
-    this.newUser.set(true);
+    this.isNewUser.set(true);
   }
 
   protected async submitForm() {
@@ -69,7 +69,7 @@ export class UserFormDialogComponent {
       password: this.userForm.getRawValue().password,
     };
 
-    const apiRes = this.newUser()
+    const apiRes = this.isNewUser()
       ? await lastValueFrom(this.userService.registerNewUser(newUserDto)).catch((err: ApiError) => err)
       : await lastValueFrom(this.userService.login(newUserDto)).catch((err: ApiError) => err);
 
