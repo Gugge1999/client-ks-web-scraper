@@ -1,27 +1,27 @@
 name: Deploy to Firebase
 
-#TOOD: Går det att skapa en variabel av alla path-ignores?
+# TOOD: Går det att skapa en variabel av alla path-ignores?
 
 on:
   push:
     paths-ignore:
-      - 'README.md'
-      - 'eslint.config.js'
-      - '.vscode/**'
-      - '.editorconfig'
-      - '.prettierignore'
-      - '.prettierrc.json'
+      - "README.md"
+      - "eslint.config.js"
+      - ".vscode/**"
+      - ".editorconfig"
+      - ".prettierignore"
+      - ".prettierrc.json"
     branches:
       - main
 
   pull_request:
     paths-ignore:
-      - 'README.md'
-      - 'eslint.config.js'
-      - '.vscode/**'
-      - '.editorconfig'
-      - '.prettierignore'
-      - '.prettierrc.json'
+      - "README.md"
+      - "eslint.config.js"
+      - ".vscode/**"
+      - ".editorconfig"
+      - ".prettierignore"
+      - ".prettierrc.json"
     branches:
       - main
 
