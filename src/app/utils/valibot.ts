@@ -9,7 +9,7 @@ export function verifyResponse<T>(schema: BaseSchema<unknown, unknown, BaseIssue
     const result = safeParse(schema, response);
 
     if (result.success === false) {
-      console.error("valibot error", result.issues);
+      console.error("valibot error. Issues:", result.issues);
     }
   }
 }
