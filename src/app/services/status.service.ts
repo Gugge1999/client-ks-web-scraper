@@ -2,7 +2,7 @@ import { ApiStatus, apiStatusSchema } from "@models/api-status.model";
 import { Injectable } from "@angular/core";
 import { webSocket } from "rxjs/webSocket";
 import { env } from "@env/env";
-import { catchError, from, Observable, retry, tap } from "rxjs";
+import { catchError, from, Observable, of, retry, tap } from "rxjs";
 import { verifyResponse } from "@utils/valibot";
 import { INITIAL_API_STATUS } from "@constants/constants";
 import { rxResource } from "@angular/core/rxjs-interop";
@@ -22,7 +22,7 @@ export class StatusService {
         verifyResponse(apiStatusSchema, res);
       }),
       retry({ count: 3, delay: 2_000 }),
-      catchError(() => from([this.ERROR_API_STATUS])),
+      catchError(() => of(this.ERROR_API_STATUS)),
     );
   }
 
