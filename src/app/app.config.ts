@@ -4,11 +4,11 @@ import localeSvSe from "@angular/common/locales/sv";
 import { ApplicationConfig, isDevMode, LOCALE_ID, provideExperimentalZonelessChangeDetection } from "@angular/core";
 import { getAnalytics, provideAnalytics } from "@angular/fire/analytics";
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
-import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 import { errorInterceptor } from "@interceptors/error.interceptor";
 import { tuiHintOptionsProvider } from "@taiga-ui/core";
 import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
 import { provideServiceWorker } from "@angular/service-worker";
+import { provideAnimations } from "@angular/platform-browser/animations";
 
 registerLocaleData(localeSvSe);
 
@@ -25,7 +25,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch(), withInterceptors([errorInterceptor])), // jwtTokenInterceptor
     provideFirebaseApp(() => initializeApp(FIREBASE_CONFIG)),
     provideAnalytics(() => getAnalytics()),
-    provideAnimationsAsync(),
+    provideAnimations(),
     {
       provide: LOCALE_ID,
       useValue: "sv-se",
