@@ -36,7 +36,7 @@ export class AppComponent {
   protected readonly apiStatus = inject(StatusService).getApiStatusStream;
 
   constructor() {
-    this.cookieService.onInit();
+    this.cookieService.initializeConsentCookie();
 
     this.themeService.initializeTheme();
   }
