@@ -9,13 +9,13 @@ import { ChangePasswordDto, ResetPasswordDto, UserFormDto } from "@models/DTOs/u
   providedIn: "root",
 })
 export class UserService {
-  private readonly http = inject(HttpClient);
+  private readonly httpClient = inject(HttpClient);
   private readonly jwtTokenConst = "jwt-token";
   private readonly userBaseUrl = `${env.apiUrl}/user` as const;
 
   // TODO: Kolla på https://www.youtube.com/watch?v=586O934xrhQ
   registerNewUser(newUserDto: UserFormDto) {
-    return this.http.post<User | ApiError>(`${this.userBaseUrl}/register`, newUserDto);
+    return this.httpClient.post<User | ApiError>(`${this.userBaseUrl}/register`, newUserDto);
 
     // .pipe(
     //     tap(res => {
@@ -27,19 +27,19 @@ export class UserService {
   }
 
   changePassword(changePasswordDto: ChangePasswordDto) {
-    return this.http.post<User | ApiError>(`${this.userBaseUrl}/register`, changePasswordDto);
+    return this.httpClient.post<User | ApiError>(`${this.userBaseUrl}/register`, changePasswordDto);
   }
 
   resetPassword(email: ResetPasswordDto) {
-    return this.http.post<User | ApiError>(`${this.userBaseUrl}/reset-password`, email);
+    return this.httpClient.post<User | ApiError>(`${this.userBaseUrl}/reset-password`, email);
   }
 
   login(newUserDto: UserFormDto) {
-    return this.http.post<User | ApiError>(`${this.userBaseUrl}/login`, newUserDto);
+    return this.httpClient.post<User | ApiError>(`${this.userBaseUrl}/login`, newUserDto);
   }
 
   logout() {
-    return this.http.post<User | ApiError>(`${this.userBaseUrl}/logout`, {});
+    return this.httpClient.post<User | ApiError>(`${this.userBaseUrl}/logout`, {});
   }
 
   getAuthToken(): string {
@@ -51,6 +51,6 @@ export class UserService {
   }
 
   deleteUser(id: string) {
-    return this.http.delete<User | ApiError>(`${this.userBaseUrl}/delete/${id}`);
+    return this.httpClient.delete<User | ApiError>(`${this.userBaseUrl}/delete/${id}`);
   }
 }
