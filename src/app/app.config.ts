@@ -6,7 +6,7 @@ import { getAnalytics, provideAnalytics } from "@angular/fire/analytics";
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { errorInterceptor } from "@interceptors/error.interceptor";
 import { tuiHintOptionsProvider } from "@taiga-ui/core";
-import { NG_EVENT_PLUGINS } from "@taiga-ui/event-plugins";
+import { provideEventPlugins } from "@taiga-ui/event-plugins";
 import { provideServiceWorker } from "@angular/service-worker";
 import { provideAnimations } from "@angular/platform-browser/animations";
 
@@ -36,7 +36,7 @@ export const appConfig: ApplicationConfig = {
     }),
 
     // Taiga UI
-    NG_EVENT_PLUGINS,
+    provideEventPlugins(),
     tuiHintOptionsProvider({
       showDelay: 100,
       hideDelay: 0,

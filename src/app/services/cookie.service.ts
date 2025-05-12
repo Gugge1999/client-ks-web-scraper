@@ -14,7 +14,7 @@ export class CookieService {
 
   readonly cookieAccepted = computed(() => this.cookieAcceptedSig());
 
-  onInit() {
+  initializeConsentCookie() {
     if (this.isCookieAccepted()) {
       this.cookieAcceptedSig.set(true);
       return;
