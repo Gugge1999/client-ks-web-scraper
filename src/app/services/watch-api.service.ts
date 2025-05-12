@@ -13,12 +13,12 @@ import { array, object, pipe as valibotPipe, string, uuid } from "valibot";
   providedIn: "root",
 })
 export class WatchApiService {
-  private readonly http = inject(HttpClient);
+  private readonly httpClient = inject(HttpClient);
 
   private readonly bevakningarUrl = `${env.apiUrl}/bevakningar` as const;
 
   toggleActiveStatus(dto: { ids: string[]; newActiveStatus: boolean }) {
-    return this.http.put<Watch | ApiError>(`${this.bevakningarUrl}/toggle-active-statuses`, dto).pipe(
+    return this.httpClient.put<Watch | ApiError>(`${this.bevakningarUrl}/toggle-active-statuses`, dto).pipe(
       tap(res => {
         verifyResponse(object({}), res);
         retry({ count: 3, delay: 2_000 });
@@ -27,7 +27,7 @@ export class WatchApiService {
   }
 
   deleteWatchById(id: string) {
-    return this.http.delete<{ deleteWatchId: string } | ApiError>(`${this.bevakningarUrl}/delete-watch/${id}`).pipe(
+    return this.httpClient.delete<{ deleteWatchId: string } | ApiError>(`${this.bevakningarUrl}/delete-watch/${id}`).pipe(
       tap(res => {
         verifyResponse(object({ deleteWatchId: valibotPipe(string(), uuid()) }), res);
       }),
@@ -35,7 +35,7 @@ export class WatchApiService {
   }
 
   saveNewWatch(newWatchFormDTO: NewWatchDTO) {
-    return this.http.post<Watch | ApiError>(`${this.bevakningarUrl}/save-watch`, newWatchFormDTO).pipe(
+    return this.httpClient.post<Watch | ApiError>(`${this.bevakningarUrl}/save-watch`, newWatchFormDTO).pipe(
       tap(res => {
         verifyResponse(watchSchema, res);
       }),
@@ -46,7 +46,7 @@ export class WatchApiService {
   getAllWatches(): ResourceRef<Watch[]> {
     return rxResource({
       loader: () =>
-        this.http.get<Watch[]>(`${this.bevakningarUrl}/all-watches`).pipe(
+        this.httpClient.get<Watch[]>(`${this.bevakningarUrl}/all-watches`).pipe(
           tap(res => {
             verifyResponse(array(watchSchema), res);
           }),

@@ -1,4 +1,4 @@
-import { inject, Injectable, signal } from "@angular/core";
+import { computed, inject, Injectable, signal } from "@angular/core";
 import { CookieState, initCookie } from "@models/cookie";
 import { tap } from "rxjs";
 import { TUI_CONFIRM, TuiConfirmData } from "@taiga-ui/kit";
@@ -12,7 +12,7 @@ export class CookieService {
   private readonly cookieConsentString = "cookie-consent";
   private readonly cookieAcceptedSig = signal(false);
 
-  readonly cookieAccepted = this.cookieAcceptedSig.asReadonly();
+  readonly cookieAccepted = computed(() => this.cookieAcceptedSig());
 
   onInit() {
     if (this.isCookieAccepted()) {
