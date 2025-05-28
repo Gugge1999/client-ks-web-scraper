@@ -52,4 +52,4 @@ const FIREBASE_CONFIG = {
   messagingSenderId: "330274214889",
   appId: "1:330274214889:web:2a7f4ec0010d99900bf178",
   measurementId: "G-2M7YJWSQ0F",
-} as const;
+} as const satisfies Record<string, string>;

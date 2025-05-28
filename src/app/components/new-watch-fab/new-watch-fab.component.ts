@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, computed, input } from "@angular/core";
+import { ChangeDetectionStrategy, Component, computed, inject, input } from "@angular/core";
 import { NewWatchDialogComponent } from "@components/new-watch-dialog/new-watch-dialog.component";
 import { ApiStatus } from "@models/api-status.model";
 import { Watch } from "@models/watch.model";
 import { TuiButton, tuiDialog, TuiHint, TuiIcon } from "@taiga-ui/core";
 import { tap } from "rxjs";
+import { AlertService } from "@services/alert.service";
 
 @Component({
   selector: "scraper-new-watch-fab",
@@ -13,7 +14,10 @@ import { tap } from "rxjs";
   imports: [TuiIcon, TuiButton, TuiHint],
 })
 export class NewWatchFabComponent {
+  private readonly alertService = inject(AlertService);
+
   readonly apiStatus = input.required<ApiStatus>();
+
   readonly fabTooltip = computed(() => {
     switch (this.apiStatus().status) {
       case "active":
@@ -22,8 +26,11 @@ export class NewWatchFabComponent {
         return "Väntar på API:et";
       case "inactive":
         return "API:et är inte aktivt";
-      default:
-        throw Error("Okänd API status");
+      default: {
+        const errMsg = "Okänd API status";
+        this.alertService.errorAlert(errMsg);
+        throw Error(errMsg);
+      }
     }
   });
 

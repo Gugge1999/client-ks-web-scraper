@@ -1,7 +1,7 @@
-export const enum CookieState {
-  Init = "init",
-  Rejected = "rejected",
-  Accepted = "accepted",
-}
+export const cookieState = {
+  Init: "init",
+  Rejected: "rejected",
+  Accepted: "accepted",
+} as const satisfies Record<string, string>;
 
-export const initCookie = CookieState.Init;
+export const initialCookie = cookieState.Init;

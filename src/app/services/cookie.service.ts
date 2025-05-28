@@ -1,5 +1,5 @@
 import { computed, inject, Injectable, signal } from "@angular/core";
-import { CookieState, initCookie } from "@models/cookie";
+import { cookieState, initialCookie } from "@models/cookie";
 import { tap } from "rxjs";
 import { TUI_CONFIRM, TuiConfirmData } from "@taiga-ui/kit";
 import { TuiDialogService } from "@taiga-ui/core";
@@ -21,10 +21,10 @@ export class CookieService {
     }
 
     if (this.getConsentCookie() === null) {
-      localStorage.setItem(this.cookieConsentString, initCookie.toString());
+      localStorage.setItem(this.cookieConsentString, initialCookie.toString());
     }
 
-    if (this.getConsentCookie() === initCookie) {
+    if (this.getConsentCookie() === initialCookie) {
       this.showDialog();
     }
   }
@@ -50,15 +50,15 @@ export class CookieService {
 
   private handleCookieResponse(isAccepted: boolean) {
     if (isAccepted) {
-      localStorage.setItem(this.cookieConsentString, CookieState.Accepted);
+      localStorage.setItem(this.cookieConsentString, cookieState.Accepted);
       this.cookieAcceptedSig.set(true);
       return;
     }
 
-    localStorage.setItem(this.cookieConsentString, CookieState.Rejected);
+    localStorage.setItem(this.cookieConsentString, cookieState.Rejected);
   }
 
   getConsentCookie = () => localStorage.getItem(this.cookieConsentString);
 
-  isCookieAccepted = () => localStorage.getItem(this.cookieConsentString) === CookieState.Accepted;
+  isCookieAccepted = () => localStorage.getItem(this.cookieConsentString) === cookieState.Accepted;
 }

@@ -8,4 +8,4 @@ export const env: Env = {
   name: "prod",
   apiUrl: "http://localhost:3000/api",
   apiUrlWebSocket: "ws://localhost:3000/api",
-} as const;
+} as const satisfies Record<string, string>;
