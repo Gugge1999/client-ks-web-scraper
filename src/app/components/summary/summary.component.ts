@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, input } from "@angular/core";
-import { fadeInAnimation } from "@constants/constants";
+import { FADE_IN_ANIMATION } from "@constants/constants";
 import { Watch } from "@models/watch.model";
 
 @Component({
@@ -7,7 +7,7 @@ import { Watch } from "@models/watch.model";
   templateUrl: "./summary.component.html",
   styleUrl: "./summary.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInAnimation],
+  animations: [FADE_IN_ANIMATION],
 })
 export class SummaryComponent {
   readonly watches = input.required<Watch[]>();

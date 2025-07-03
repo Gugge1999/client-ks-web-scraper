@@ -19,17 +19,9 @@ export const STACK_API_ERROR_PROPERTY = "stack";
 
 export const CARD_DATE_FORMAT = "d MMMM yyyy - HH:mm:ss";
 
-export const fadeInAnimation = trigger("fadeInAnimation", [
-  transition(":enter", [
-    style({
-      opacity: 0,
-    }),
-    animate("500ms ease-in-out", style({ opacity: 1 })),
-  ]),
-  transition(":leave", [
-    style({
-      opacity: 1,
-    }),
-    animate("150ms ease-in-out", style({ opacity: 0 })),
-  ]),
+export const CARD_DATE_FORMAT_LEADING_ZERO = `d${CARD_DATE_FORMAT}`;
+
+export const FADE_IN_ANIMATION = trigger("fadeInAnimation", [
+  transition(":enter", [style({ opacity: 0 }), animate("500ms ease-in-out", style({ opacity: 1 }))]),
+  transition(":leave", [style({ opacity: 1 }), animate("150ms ease-in-out", style({ opacity: 0 }))]),
 ]);
