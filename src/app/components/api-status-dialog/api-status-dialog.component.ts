@@ -8,10 +8,10 @@ import { TuiCardLarge } from "@taiga-ui/layout";
 
 @Component({
   selector: "scraper-api-status-dialog",
+  imports: [TuiAxes, TuiLineChart, TuiLineChartHint, TuiCardLarge, TuiAppearance],
   templateUrl: "./api-status-dialog.component.html",
   styleUrl: "./api-status-dialog.component.scss",
-  imports: [TuiAxes, TuiLineChart, TuiLineChartHint, TuiCardLarge, TuiAppearance],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ApiStatusDialogComponent {
   readonly dialogContext = injectContext<TuiDialogContext<void, InputSignal<ApiStatus>>>();

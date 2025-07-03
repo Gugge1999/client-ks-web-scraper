@@ -6,10 +6,10 @@ import { CARD_DATE_FORMAT } from "@constants/constants";
 
 @Component({
   selector: "scraper-notifications-dialog",
+  imports: [DatePipe],
   templateUrl: "./notifications-dialog.component.html",
   styleUrl: "./notifications-dialog.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [DatePipe],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NotificationsDialogComponent {
   public readonly context = injectContext<TuiDialogContext<void, { label: string; notifications: string[] }>>();

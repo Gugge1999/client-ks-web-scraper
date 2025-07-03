@@ -1,31 +1,24 @@
 import { registerLocaleData } from "@angular/common";
 import { provideHttpClient, withFetch, withInterceptors } from "@angular/common/http";
 import localeSvSe from "@angular/common/locales/sv";
-import { ApplicationConfig, isDevMode, LOCALE_ID, provideExperimentalZonelessChangeDetection } from "@angular/core";
+import { ApplicationConfig, isDevMode, LOCALE_ID, provideZonelessChangeDetection } from "@angular/core";
 import { getAnalytics, provideAnalytics } from "@angular/fire/analytics";
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { errorInterceptor } from "@interceptors/error.interceptor";
 import { tuiHintOptionsProvider } from "@taiga-ui/core";
 import { provideEventPlugins } from "@taiga-ui/event-plugins";
 import { provideServiceWorker } from "@angular/service-worker";
-import { provideAnimations } from "@angular/platform-browser/animations";
+import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
 
 registerLocaleData(localeSvSe);
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    /*
-     * Debug för att kolla att zoneless fungerar
-     */
-    // provideExperimentalCheckNoChangesForDebug({
-    //   interval: 1000, // run change detection every second
-    //   exhaustive: true, // check all components
-    // }),
-    provideExperimentalZonelessChangeDetection(),
+    provideZonelessChangeDetection(),
     provideHttpClient(withFetch(), withInterceptors([errorInterceptor])), // jwtTokenInterceptor
     provideFirebaseApp(() => initializeApp(FIREBASE_CONFIG)),
     provideAnalytics(() => getAnalytics()),
-    provideAnimations(),
+    provideAnimationsAsync(),
     {
       provide: LOCALE_ID,
       useValue: "sv-se",
@@ -44,7 +37,7 @@ export const appConfig: ApplicationConfig = {
   ],
 };
 
-const FIREBASE_CONFIG = {
+const FIREBASE_CONFIG: Readonly<Record<string, string>> = {
   apiKey: "AIzaSyDJ7ITz4fNpZbOA2IHfhPC_V_KKmrd-Rq8",
   authDomain: "ks-web-scraper.firebaseapp.com",
   projectId: "ks-web-scraper",
@@ -52,4 +45,4 @@ const FIREBASE_CONFIG = {
   messagingSenderId: "330274214889",
   appId: "1:330274214889:web:2a7f4ec0010d99900bf178",
   measurementId: "G-2M7YJWSQ0F",
-} as const satisfies Record<string, string>;
+};

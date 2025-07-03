@@ -8,10 +8,10 @@ import { AlertService } from "@services/alert.service";
 
 @Component({
   selector: "scraper-new-watch-fab",
+  imports: [TuiIcon, TuiButton, TuiHint],
   templateUrl: "./new-watch-fab.component.html",
   styleUrl: "./new-watch-fab.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TuiIcon, TuiButton, TuiHint],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NewWatchFabComponent {
   private readonly alertService = inject(AlertService);

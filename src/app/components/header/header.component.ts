@@ -15,10 +15,10 @@ import { ApiError } from "@models/DTOs/api-error.dto";
 
 @Component({
   selector: "scraper-header",
+  imports: [TuiAppBar, TuiHint, TuiDataList, TuiDropdown, TuiIcon, TuiDropdownDirective, TuiLoader],
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TuiAppBar, TuiHint, TuiDataList, TuiDropdown, TuiIcon, TuiDropdownDirective, TuiLoader],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
   readonly apiStatus = input.required<ApiStatus>();

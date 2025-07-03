@@ -14,8 +14,8 @@ import { lastValueFrom } from "rxjs";
 
 @Component({
   selector: "scraper-new-user-form-dialog",
-  templateUrl: "./user-form-dialog.component.html",
   imports: [FormsModule, ReactiveFormsModule, TuiError, TuiFieldErrorPipe, AsyncPipe, TuiButton, TuiButtonLoading, TuiTextfield],
+  templateUrl: "./user-form-dialog.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     tuiValidationErrorsProvider({
@@ -26,7 +26,7 @@ import { lastValueFrom } from "rxjs";
       // OBS: Variabel måste heta requiredLength
       minlength: ({ requiredLength }: { requiredLength: string }) => `Minst ${requiredLength} tecken`,
     }),
-  ],
+  ]
 })
 export class UserFormDialogComponent {
   public readonly context = injectContext<TuiDialogContext<User | undefined, void>>();

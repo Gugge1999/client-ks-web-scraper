@@ -8,11 +8,11 @@ import { BevakningarCardActionsComponent } from "@components/bevakningar-card-ac
 
 @Component({
   selector: "scraper-bevakningar-cards",
+  imports: [DatePipe, TuiAppearance, TuiCardLarge, TuiHeader, BevakningarCardActionsComponent, TuiHint],
   templateUrl: "./bevakningar-cards.component.html",
   styleUrl: "./bevakningar-cards.component.scss",
-  imports: [DatePipe, TuiAppearance, TuiCardLarge, TuiHeader, BevakningarCardActionsComponent, TuiHint],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInAnimation],
+  animations: [fadeInAnimation]
 })
 export class BevakningarCardsComponent {
   readonly watches = input.required<Watch[]>();

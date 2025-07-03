@@ -47,7 +47,7 @@ export class StatusService {
     Detta kommer gör det enklare med retry, error och verifyResponse
   */
   getApiStatusStream = rxResource<ApiStatus, null>({
-    loader: () => {
+    stream: () => {
       return webSocket<ApiStatus>(`${env.apiUrlWebSocket}/status`).pipe(
         tap(res => {
           verifyResponse(apiStatusSchema, res);

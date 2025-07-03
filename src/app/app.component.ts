@@ -14,9 +14,6 @@ import { TuiLoader, TuiRoot } from "@taiga-ui/core";
 
 @Component({
   selector: "scraper-root",
-  templateUrl: "./app.component.html",
-  styleUrl: "./app.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     TuiRoot,
     TuiLoader,
@@ -28,6 +25,9 @@ import { TuiLoader, TuiRoot } from "@taiga-ui/core";
     BevakningarCardsComponent,
     CookieComponent,
   ],
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.scss",
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   protected readonly themeService = inject(ThemeService);

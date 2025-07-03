@@ -11,10 +11,10 @@ import { NotificationsDialogComponent } from "@components/notifications-dialog/n
 
 @Component({
   selector: "scraper-bevakningar-card-actions",
+  imports: [FormsModule, TuiSwitch, TuiIcon, TuiHint, TuiBadgedContent, TuiBadge],
   templateUrl: "./bevakningar-card-actions.component.html",
   styleUrl: "./bevakningar-card-actions.component.scss",
-  imports: [FormsModule, TuiSwitch, TuiIcon, TuiHint, TuiBadgedContent, TuiBadge],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BevakningarCardActionsComponent {
   public readonly watch = input.required<Watch>();

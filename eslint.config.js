@@ -6,7 +6,12 @@ import angularEslint from "angular-eslint";
 export default tseslint.config(
   {
     files: ["**/*.ts"],
-    extends: [eslint.configs.recommended, ...tseslint.configs.strict, ...tseslint.configs.stylistic, ...angularEslint.configs.tsAll],
+    extends: [
+      eslint.configs.recommended,
+      ...tseslint.configs.strict,
+      ...tseslint.configs.stylistic,
+      ...angularEslint.configs.tsRecommended,
+    ],
     processor: angularEslint.processInlineTemplates,
     rules: {
       "@angular-eslint/directive-selector": [
