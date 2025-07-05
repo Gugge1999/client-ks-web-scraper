@@ -1,5 +1,9 @@
 ## TODO
 
+- [Adding OpenTelemetry to an Angular Application](https://timdeschryver.dev/blog/adding-opentelemetry-to-an-angular-application)
+
+- Testa signal graph i devtools i Angular 20.1
+
 - Använd Jest för att testa
 - https://www.xfive.co/blog/testing-angular-faster-jest/
 - https://www.youtube.com/watch?v=bv9z_UfSqgM
