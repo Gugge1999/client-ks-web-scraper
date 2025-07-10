@@ -3,17 +3,19 @@
 - Gör så att accessibility är 100 enligt lighthouse
 
 - [Adding OpenTelemetry to an Angular Application](https://timdeschryver.dev/blog/adding-opentelemetry-to-an-angular-application)
-
-- Testa signal graph i devtools i Angular 20.1
-
-- Använd Jest för att testa
-- https://www.xfive.co/blog/testing-angular-faster-jest/
-- https://www.youtube.com/watch?v=bv9z_UfSqgM
-- https://www.youtube.com/watch?v=lbiOP-VLKGI
+ 
+- [Testing Angular Faster with Jest](https://www.xfive.co/blog/testing-angular-faster-jest/)
+ 
+- [Angular Unit Testing Course](https://www.youtube.com/watch?v=bv9z_UfSqgM)
+ 
+- [Beyond Unit Tests: Modern Testing in Angular
+  ](https://www.youtube.com/watch?v=lbiOP-VLKGI)
 
 ## Läs
 
 - [Sending (browser) OpenTelemetry traces from an Angular Application to .NET Aspire](https://timdeschryver.dev/blog/Sending-browser-opentelemetry-traces-from-an-angular-application-to-net-aspire)
+
+- [Unlocking Angular Performance: Optimization Techniques](https://www.codemag.com/Article/2507061/Unlocking-Angular-Performance-Optimization-Techniques)
 
 ## Bra länkar
 
