@@ -11,7 +11,7 @@ import { AlertService } from "@services/alert.service";
   imports: [TuiIcon, TuiButton, TuiHint],
   templateUrl: "./new-watch-fab.component.html",
   styleUrl: "./new-watch-fab.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewWatchFabComponent {
   private readonly alertService = inject(AlertService);

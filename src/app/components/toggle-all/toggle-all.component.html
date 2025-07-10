@@ -1,5 +1,5 @@
 @if (watches().length > 0) {
-  <div [@fadeInAnimation]="'in'">
+  <div [@fadeInAnimation]="'in'" class="flex">
     <input
       tuiSwitch
       type="checkbox"
@@ -7,10 +7,11 @@
       [ngModel]="isToggleActive()"
       tuiHint="Växla alla statusar"
       tuiHintDirection="top"
+      id="toggle-all-input"
       style="--t-bg: var(--tui-status-positive)"
       [showIcons]="false"
       size="m" />
 
-    <span style="padding-left: 8px; font-size: larger">Växla alla statusar</span>
+    <label style="padding-left: 8px; font-size: larger" for="toggle-all-input">Växla alla statusar</label>
   </div>
 }

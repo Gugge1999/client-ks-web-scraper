@@ -26,7 +26,7 @@ import { lastValueFrom } from "rxjs";
       // OBS: Variabel måste heta requiredLength
       minlength: ({ requiredLength }: { requiredLength: string }) => `Minst ${requiredLength} tecken`,
     }),
-  ]
+  ],
 })
 export class UserFormDialogComponent {
   public readonly context = injectContext<TuiDialogContext<User | undefined, void>>();

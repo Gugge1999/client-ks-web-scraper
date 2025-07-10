@@ -1,5 +1,7 @@
 ## TODO
 
+- Gör så att accessibility är 100 enligt lighthouse
+
 - [Adding OpenTelemetry to an Angular Application](https://timdeschryver.dev/blog/adding-opentelemetry-to-an-angular-application)
 
 - Testa signal graph i devtools i Angular 20.1
@@ -25,4 +27,3 @@
 - För att köra debug med attach i Chrome:
   - Högerklicka på chrome -> Google chrome -> properties
   - Lägg till: `--remote-debugging-port=9222` på slutet i **Target**
-

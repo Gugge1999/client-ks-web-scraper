@@ -1,5 +1,8 @@
 @if (allWatchesLength() > 0) {
-  <div class="flex flex-direction-row flex-justify-content-center summary-wrapper" [@fadeInAnimation]="'in'">
+  <div
+    class="flex flex-direction-row flex-justify-content-center summary-wrapper"
+    [@fadeInAnimation]="'in'"
+    aria-label="Summary of watches to scrape">
     <p>Bevakningar: {{ allWatchesLength() }}</p>
 
     <p>Aktiva: {{ activeWatchesLength() }}</p>

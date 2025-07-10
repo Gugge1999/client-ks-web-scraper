@@ -27,7 +27,7 @@ import { TuiLoader, TuiRoot } from "@taiga-ui/core";
   ],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppComponent {
   protected readonly themeService = inject(ThemeService);
