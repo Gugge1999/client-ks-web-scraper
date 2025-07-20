@@ -1,6 +1,6 @@
 import { inject, Injectable } from "@angular/core";
 import { lastValueFrom } from "rxjs";
-import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
+import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchDTO } from "@models/DTOs/new-watch-form-dto";
 import { Watch } from "@models/watch.model";
@@ -31,7 +31,7 @@ export class WatchService {
   async saveNewWatch(newWatchDTO: NewWatchDTO) {
     const apiRes = await lastValueFrom(this.watchApiService.saveNewWatch(newWatchDTO)).catch((err: ApiError) => err);
 
-    if (STACK_API_ERROR_PROPERTY in apiRes) {
+    if (STACK_API_ERROR_OBJECT_PROPERTY in apiRes) {
       return apiRes;
     }
 
@@ -46,7 +46,7 @@ export class WatchService {
       (err: ApiError) => err,
     );
 
-    if (STACK_API_ERROR_PROPERTY in apiRes) {
+    if (STACK_API_ERROR_OBJECT_PROPERTY in apiRes) {
       return;
     }
 
@@ -76,7 +76,7 @@ export class WatchService {
       this.watchApiService.toggleActiveStatus({ ids: [watch.id], newActiveStatus: newActiveStatus }),
     ).catch((err: ApiError) => err);
 
-    if (STACK_API_ERROR_PROPERTY in res) {
+    if (STACK_API_ERROR_OBJECT_PROPERTY in res) {
       return;
     }
 

@@ -1,7 +1,7 @@
 import { AsyncPipe } from "@angular/common";
 import { ChangeDetectionStrategy, Component, inject, signal } from "@angular/core";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
+import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { UserFormDto } from "@models/DTOs/user";
 import { UserForm } from "@models/forms/user";
@@ -75,7 +75,7 @@ export class UserFormDialogComponent {
 
     this.createUserLoading.set(false);
 
-    if (apiRes && STACK_API_ERROR_PROPERTY in apiRes) {
+    if (apiRes && STACK_API_ERROR_OBJECT_PROPERTY in apiRes) {
       if (apiRes.message.toLowerCase() === "fel lösenord") {
         this.userForm.controls.password?.setErrors({ wrongPassword: true });
         return;

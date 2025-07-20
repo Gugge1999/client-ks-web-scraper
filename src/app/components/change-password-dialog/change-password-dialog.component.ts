@@ -18,13 +18,12 @@ import { ApiError } from "@models/DTOs/api-error.dto";
 import { UserService } from "@services/user.service";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { User } from "@models/user";
-import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
+import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
 
 @Component({
   selector: "scraper-change-password-dialog",
   imports: [AsyncPipe, ReactiveFormsModule, TuiTextfield, TuiError, TuiButton, TuiButtonLoading, TuiFieldErrorPipe],
   templateUrl: "./change-password-dialog.component.html",
-  styleUrl: "./change-password-dialog.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [
     tuiValidationErrorsProvider({
@@ -79,7 +78,7 @@ export class ChangePasswordDialogComponent {
     this.changePasswordLoading.set(false);
 
     // TODO: Här måste man också kolla om det gamla lösenordet är fel
-    if (STACK_API_ERROR_PROPERTY in apiRes) {
+    if (STACK_API_ERROR_OBJECT_PROPERTY in apiRes) {
       this.changePasswordForm.controls.newPassword?.setErrors({ minLength: true });
       this.changePasswordForm.controls.confirmNewPassword?.setErrors({ minLength: true });
       return;

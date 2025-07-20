@@ -2,7 +2,7 @@ import { HttpErrorResponse, HttpHandlerFn, HttpRequest } from "@angular/common/h
 import { inject } from "@angular/core";
 import { AlertService } from "@services/alert.service";
 import { catchError, throwError } from "rxjs";
-import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
+import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
 import { TUI_IS_MOBILE } from "@taiga-ui/cdk";
 
 let isFirstErrorWithStack = true;
@@ -22,7 +22,7 @@ export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn)
           return throwError(() => err);
         }
 
-        if (err && STACK_API_ERROR_PROPERTY in err && isMobile === false && isFirstErrorWithStack) {
+        if (err && STACK_API_ERROR_OBJECT_PROPERTY in err && isMobile === false && isFirstErrorWithStack) {
           isFirstErrorWithStack = false;
           alertService.errorAlert("Se stacktrace i console", { sticky: true });
           console.error("Stack:", err.stack);

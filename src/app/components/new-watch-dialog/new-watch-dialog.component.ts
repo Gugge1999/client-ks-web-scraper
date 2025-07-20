@@ -8,7 +8,7 @@ import { WatchService } from "@services/watch.service";
 import { TuiButton, TuiDialogContext, TuiError, TuiTextfield } from "@taiga-ui/core";
 import { TuiButtonLoading, TuiFieldErrorPipe, tuiValidationErrorsProvider } from "@taiga-ui/kit";
 import { AsyncPipe } from "@angular/common";
-import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
+import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
 
 @Component({
   selector: "scraper-new-watch-dialog",
@@ -56,7 +56,7 @@ export class NewWatchDialogComponent {
 
     this.newWatchLoading.set(false);
 
-    if (STACK_API_ERROR_PROPERTY in result) {
+    if (STACK_API_ERROR_OBJECT_PROPERTY in result) {
       // TODO: Är det en bra idé att tillåta ett tomt sökresultat och varna användaren om det? Det kan ju vara en helt ny modell som användaren bevakar
       this.watchForm.controls.watchToScrape.setErrors({ noResult: true });
 

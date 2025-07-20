@@ -9,7 +9,7 @@ import { UserService } from "@services/user.service";
 import { ChangePasswordDialogComponent } from "@components/change-password-dialog/change-password-dialog.component";
 import { ResetPasswordComponent } from "@components/reset-password/reset-password.component";
 import { lastValueFrom } from "rxjs";
-import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
+import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
 import { AlertService } from "@services/alert.service";
 import { ApiError } from "@models/DTOs/api-error.dto";
 
@@ -69,7 +69,7 @@ export class HeaderComponent {
       (err: ApiError) => err,
     );
 
-    if (STACK_API_ERROR_PROPERTY in apiRes) {
+    if (STACK_API_ERROR_OBJECT_PROPERTY in apiRes) {
       this.alertService.errorAlert(apiRes.message);
       return;
     }

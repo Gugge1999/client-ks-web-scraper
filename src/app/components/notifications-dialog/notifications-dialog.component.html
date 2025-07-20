@@ -3,5 +3,5 @@
 @for (notification of notifications; track $index) {
   <p>{{ notification | date: cardDateFormat }}</p>
 } @empty {
-  <p>Inga notiser att visa</p>
+  <p>0 notiser finns för bevakningen</p>
 }

@@ -10,7 +10,7 @@ import { AsyncPipe } from "@angular/common";
 import { ResetPasswordDto } from "@models/DTOs/user";
 import { lastValueFrom } from "rxjs";
 import { ApiError } from "@models/DTOs/api-error.dto";
-import { STACK_API_ERROR_PROPERTY } from "@constants/constants";
+import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
 
 @Component({
   selector: "scraper-reset-password",
@@ -50,7 +50,7 @@ export class ResetPasswordComponent {
 
     this.resetPasswordLoading.set(false);
 
-    if (STACK_API_ERROR_PROPERTY in apiRes) {
+    if (STACK_API_ERROR_OBJECT_PROPERTY in apiRes) {
       this.resetPasswordForm.controls.email?.setErrors({ emailDoesNotExist: true });
       return;
     }
