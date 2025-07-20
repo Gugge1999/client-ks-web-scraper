@@ -18,11 +18,14 @@ import { NotificationsDialogComponent } from "@components/notifications-dialog/n
 })
 export class BevakningarCardActionsComponent {
   public readonly watch = input.required<Watch>();
-  /** `active` behöver vara en egen input för att få `OnPush` att fungera */
+  /** `active` behöver vara en egen input för `OnPush` */
   public readonly active = input.required<boolean>();
 
   private readonly notifications = computed(() => this.watch().notifications);
   protected readonly numberOfNotifications = computed(() => this.notifications().length);
+  protected readonly numberOfNotificationsIconColor = computed(() =>
+    this.numberOfNotifications() > 0 ? "var(--tui-status-positive)" : "var(--tui-text-secondary)",
+  );
 
   private readonly watchService = inject(WatchService);
   private readonly alertsService = inject(TuiAlertService);
