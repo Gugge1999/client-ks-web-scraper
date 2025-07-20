@@ -15,7 +15,7 @@ registerLocaleData(localeSvSe);
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZonelessChangeDetection(),
-    provideHttpClient(withFetch(), withInterceptors([errorInterceptor])), // jwtTokenInterceptor
+    provideHttpClient(withFetch(), withInterceptors([errorInterceptor])),
     provideFirebaseApp(() => initializeApp(FIREBASE_CONFIG)),
     provideAnalytics(() => getAnalytics()),
     provideAnimationsAsync(),

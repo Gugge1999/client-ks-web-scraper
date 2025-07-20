@@ -2,7 +2,7 @@
   <div style="min-height: 100vh; display: flex; flex-direction: column">
     <scraper-header [apiStatus]="apiStatus.value()" />
 
-    @if (cookieService.cookieAccepted()) {
+    @if (cookieService.isCookieAccepted()) {
       <scraper-cookie />
     }
 

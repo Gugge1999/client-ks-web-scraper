@@ -9,19 +9,18 @@ import { TuiDialogService } from "@taiga-ui/core";
 })
 export class CookieService {
   private readonly dialogs = inject(TuiDialogService);
-  private readonly cookieConsentString = "cookie-consent";
   private readonly cookieAcceptedSig = signal(false);
 
-  readonly cookieAccepted = computed(() => this.cookieAcceptedSig());
+  readonly isCookieAccepted = computed(() => this.cookieAcceptedSig());
 
   initializeConsentCookie() {
-    if (this.isCookieAccepted()) {
+    if (this.isCookieAcceptedFromLocalStorage()) {
       this.cookieAcceptedSig.set(true);
       return;
     }
 
     if (this.getConsentCookie() === null) {
-      localStorage.setItem(this.cookieConsentString, initialCookie.toString());
+      localStorage.setItem(cookieConsentString, initialCookie.toString());
     }
 
     if (this.getConsentCookie() === initialCookie) {
@@ -50,15 +49,17 @@ export class CookieService {
 
   private handleCookieResponse(isAccepted: boolean) {
     if (isAccepted) {
-      localStorage.setItem(this.cookieConsentString, cookieState.Accepted);
+      localStorage.setItem(cookieConsentString, cookieState.Accepted);
       this.cookieAcceptedSig.set(true);
       return;
     }
 
-    localStorage.setItem(this.cookieConsentString, cookieState.Rejected);
+    localStorage.setItem(cookieConsentString, cookieState.Rejected);
   }
 
-  getConsentCookie = () => localStorage.getItem(this.cookieConsentString);
+  getConsentCookie = () => localStorage.getItem(cookieConsentString);
 
-  isCookieAccepted = () => localStorage.getItem(this.cookieConsentString) === cookieState.Accepted;
+  isCookieAcceptedFromLocalStorage = () => localStorage.getItem(cookieConsentString) === cookieState.Accepted;
 }
+
+const cookieConsentString = "cookie-consent";

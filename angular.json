@@ -50,6 +50,7 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "statsJson": true,
             "assets": [
               { "glob": "**/*", "input": "node_modules/@taiga-ui/icons/src", "output": "assets/taiga-ui/icons" },
               { "glob": "**/*", "input": "public" }
@@ -82,8 +83,7 @@
                   "with": "src/env/env.prod.ts"
                 }
               ],
-              "outputHashing": "all",
-              "statsJson": true
+              "outputHashing": "all"
             },
             "development": {
               "optimization": false,

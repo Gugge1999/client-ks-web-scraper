@@ -41,7 +41,7 @@ export class ThemeService {
   updateTheme(theme: Theme) {
     this.setTheme(theme);
 
-    if (this.cookieService.isCookieAccepted()) {
+    if (this.cookieService.isCookieAcceptedFromLocalStorage()) {
       localStorage.setItem(this.localStorageKey, theme);
     }
   }

@@ -17,6 +17,9 @@
 
 - [Unlocking Angular Performance: Optimization Techniques](https://www.codemag.com/Article/2507061/Unlocking-Angular-Performance-Optimization-Techniques)
 
+- The Angular Compiler: [From Your Code to Browser Code
+  ](https://blog.angulartraining.com/the-angular-compiler-from-your-code-to-browser-code-9b20ac2cbac6)
+
 ## Bra länkar
 
 - Ett bra repo att kika på: [Extreme Angular](https://github.com/joematthews/extreme-angular)

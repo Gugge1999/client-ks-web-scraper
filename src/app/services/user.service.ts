@@ -39,6 +39,7 @@ export class UserService {
   }
 
   logout() {
+    // TODO: Ska den vara post?
     return this.httpClient.post<User | ApiError>(`${this.userBaseUrl}/logout`, {});
   }
 
