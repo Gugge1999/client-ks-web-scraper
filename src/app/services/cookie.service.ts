@@ -1,5 +1,5 @@
 import { computed, inject, Injectable, signal } from "@angular/core";
-import { cookieState, initialCookie } from "@models/cookie";
+import { CookieState, initialCookie } from "@models/cookie";
 import { tap } from "rxjs";
 import { TUI_CONFIRM, TuiConfirmData } from "@taiga-ui/kit";
 import { TuiDialogService } from "@taiga-ui/core";
@@ -49,17 +49,17 @@ export class CookieService {
 
   private handleCookieResponse(isAccepted: boolean) {
     if (isAccepted) {
-      localStorage.setItem(cookieConsentString, cookieState.Accepted);
+      localStorage.setItem(cookieConsentString, CookieState.Accepted);
       this.cookieAcceptedSig.set(true);
       return;
     }
 
-    localStorage.setItem(cookieConsentString, cookieState.Rejected);
+    localStorage.setItem(cookieConsentString, CookieState.Rejected);
   }
 
   getConsentCookie = () => localStorage.getItem(cookieConsentString);
 
-  isCookieAcceptedFromLocalStorage = () => localStorage.getItem(cookieConsentString) === cookieState.Accepted;
+  isCookieAcceptedFromLocalStorage = () => localStorage.getItem(cookieConsentString) === CookieState.Accepted;
 }
 
 const cookieConsentString = "cookie-consent";
