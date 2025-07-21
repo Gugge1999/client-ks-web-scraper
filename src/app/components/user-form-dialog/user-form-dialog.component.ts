@@ -32,8 +32,8 @@ export class UserFormDialogComponent {
   public readonly context = injectContext<TuiDialogContext<User | undefined, void>>();
   private readonly userService = inject(UserService);
 
-  protected readonly headerText = signal("Logga in");
-  protected readonly buttonText = signal("Logga in");
+  protected readonly headerText = signal<"Logga in" | "Skapa ny användare">("Logga in");
+  protected readonly buttonText = signal<"Logga in" | "Skapa användare">("Logga in");
   protected readonly createUserLoading = signal(false);
   protected readonly isNewUser = signal(false);
 
