@@ -2,6 +2,8 @@
 
 - Gör så att accessibility är 100 enligt lighthouse
 
+- Radera service worker
+
 - [Adding OpenTelemetry to an Angular Application](https://timdeschryver.dev/blog/adding-opentelemetry-to-an-angular-application)
  
 - [Testing Angular Faster with Jest](https://www.xfive.co/blog/testing-angular-faster-jest/)
