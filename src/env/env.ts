@@ -1,6 +1,6 @@
-// This file can be replaced during build by using the `fileReplacements` array.
-// `ng build` replaces `env.ts` with `env.prod.ts`.
-// The list of file replacements can be found in `angular.json`.
+/* This file can be replaced during build by using the `fileReplacements` array.
+`ng build` replaces `env.ts` with `env.prod.ts`.
+The list of file replacements can be found in `angular.json`. */
 
 import { Env } from "@models/env";
 

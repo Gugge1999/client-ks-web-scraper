@@ -50,7 +50,6 @@
             "browser": "src/main.ts",
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "statsJson": true,
             "assets": [
               "src/favicon.png",
               {
@@ -86,6 +85,7 @@
                   "with": "src/env/env.prod.ts"
                 }
               ],
+              "statsJson": true,
               "outputHashing": "all"
             },
             "development": {
