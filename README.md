@@ -14,10 +14,11 @@
 >
 > * [Beyond Unit Tests: Modern Testing in Angular](https://www.youtube.com/watch?v=lbiOP-VLKGI)
 >
+
 ---
 > [!NOTE]
 >
-> ## Läs
+> ### Läs
 >
 > * [Sending (browser) OpenTelemetry traces from an Angular Application to .NET Aspire](https://timdeschryver.dev/blog/Sending-browser-opentelemetry-traces-from-an-angular-application-to-net-aspire)
 >
@@ -47,5 +48,4 @@
 > * För att köra debug med attach i Chrome:
   > >
   > > * Högerklicka på chrome -> Google chrome -> properties
-  > >
   > > * Lägg till: `--remote-debugging-port=9222` på slutet i **Target**
