@@ -41,15 +41,5 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "8.38.0",
     "valibot": "^1.1.0"
-  },
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "@firebase/util",
-      "@parcel/watcher",
-      "esbuild",
-      "lmdb",
-      "msgpackr-extract",
-      "protobufjs"
-    ]
   }
 }
