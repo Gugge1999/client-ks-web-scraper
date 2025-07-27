@@ -1,7 +1,5 @@
 {
-  "tabWidth": 2,
-  "semi": true,
-  "singleQuote": false,
+  "$schema": "https://json.schemastore.org/prettierrc.json",
   "bracketSameLine": true,
   "printWidth": 135,
   "arrowParens": "avoid"

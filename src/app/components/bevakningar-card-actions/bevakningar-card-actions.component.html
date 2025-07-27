@@ -9,12 +9,12 @@
 </tui-badged-content>
 
 <input
-  tuiSwitch
-  type="checkbox"
   (change)="toggleActiveStatus(watch())"
   [ngModel]="active()"
+  [showIcons]="false"
+  size="m"
+  style="--t-bg: var(--tui-status-positive)"
   tuiHint="Växla aktiv status"
   tuiHintDirection="top"
-  style="--t-bg: var(--tui-status-positive)"
-  [showIcons]="false"
-  size="m" />
+  tuiSwitch
+  type="checkbox" />
