@@ -19,7 +19,7 @@ export const STACK_API_ERROR_OBJECT_PROPERTY = "stack";
 
 export const CARD_DATE_FORMAT = "d MMMM yyyy - HH:mm:ss";
 
-/**  Samma som {@link CARD_DATE_FORMAT} fast om ett datum är ensiffrigt läggs en 0:a på i början. T.ex. blir 1 maj = 01 maj */
+/** Samma som {@link CARD_DATE_FORMAT} fast om ett datum är ensiffrigt läggs en 0:a på i början. T.ex. blir 1 maj = 01 maj */
 export const CARD_DATE_FORMAT_LEADING_ZERO = `d${CARD_DATE_FORMAT}`;
 
 export const FADE_IN_ANIMATION = trigger("fadeInAnimation", [

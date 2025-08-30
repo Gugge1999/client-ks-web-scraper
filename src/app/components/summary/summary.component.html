@@ -1,8 +1,5 @@
 @if (allWatchesLength() > 0) {
-  <div
-    class="flex flex-direction-row flex-justify-content-center summary-wrapper"
-    [@fadeInAnimation]="'in'"
-    aria-label="Sammanfattning av aktiva / inaktiva bevakningar">
+  <div class="flex flex-direction-row flex-justify-content-center summary-wrapper" animate.enter="fade-in">
     <p>Bevakningar: {{ allWatchesLength() }}</p>
 
     <p>Aktiva: {{ activeWatchesLength() }}</p>

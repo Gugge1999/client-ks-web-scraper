@@ -3,7 +3,7 @@ import { ChangeDetectionStrategy, Component, input } from "@angular/core";
 import { Watch } from "@models/watch.model";
 import { TuiAppearance, TuiHint } from "@taiga-ui/core";
 import { TuiCardLarge, TuiHeader } from "@taiga-ui/layout";
-import { CARD_DATE_FORMAT, FADE_IN_ANIMATION } from "@constants/constants";
+import { CARD_DATE_FORMAT } from "@constants/constants";
 import { BevakningarCardActionsComponent } from "@components/bevakningar-card-actions/bevakningar-card-actions.component";
 
 @Component({
@@ -12,7 +12,6 @@ import { BevakningarCardActionsComponent } from "@components/bevakningar-card-ac
   templateUrl: "./bevakningar-cards.component.html",
   styleUrl: "./bevakningar-cards.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [FADE_IN_ANIMATION],
 })
 export class BevakningarCardsComponent {
   readonly watches = input.required<Watch[]>();

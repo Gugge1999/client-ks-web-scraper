@@ -1,8 +1,8 @@
-# KS Scraper client
+# KS Scraper - Angular client
 
 > [!IMPORTANT]
 >
-> ### TODO
+> ## TODO
 >
 > * Gör så att accessibility är 100 enligt lighthouse
 >
@@ -18,7 +18,7 @@
 ---
 > [!NOTE]
 >
-> ### Läs
+> ## Läs
 >
 > * [Sending (browser) OpenTelemetry traces from an Angular Application to .NET Aspire](https://timdeschryver.dev/blog/Sending-browser-opentelemetry-traces-from-an-angular-application-to-net-aspire)
 >
@@ -29,7 +29,7 @@
 ---
 > [!TIP]
 >
-> ### Bra länkar
+> ## Bra länkar
 >
 > * Ett bra repo att kika på: [Extreme Angular](https://github.com/joematthews/extreme-angular)
 >
@@ -40,8 +40,6 @@
 > * [Angular ninja blog](https://blog.ninja-squad.com/tags.html#Angular-ref)
 >
 > * För att se bundle size bygg med flaggan `"statsJson": true` i options i `angular.json`. Infoga sen `stats.json` i dist mappen till sidan [esbuild analyze](https://esbuild.github.io/analyze/). Det finns också: [hawkeye](https://www.hawkeyeapp.dev/)
->
-> * [Bra förklaring om NgRx och historien bakom det]()
 >
 > * Bra video från Google om Angular ["How to stay fast and fresh with Angular"](https://www.youtube.com/watch?v=B-lipaiZII8)
 >

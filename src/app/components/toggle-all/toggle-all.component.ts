@@ -4,7 +4,6 @@ import { TuiHintDirective } from "@taiga-ui/core";
 import { TuiSwitch } from "@taiga-ui/kit";
 import { Watch } from "@models/watch.model";
 import { WatchService } from "@services/watch.service";
-import { FADE_IN_ANIMATION } from "@constants/constants";
 
 @Component({
   selector: "scraper-toggle-all",
@@ -12,7 +11,6 @@ import { FADE_IN_ANIMATION } from "@constants/constants";
   templateUrl: "./toggle-all.component.html",
   styleUrl: "./toggle-all.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [FADE_IN_ANIMATION],
 })
 export class ToggleAllComponent {
   readonly watches = input.required<Watch[]>();

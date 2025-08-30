@@ -14,7 +14,7 @@ import { take } from "rxjs";
 export class UndoAlertComponent implements OnDestroy {
   protected readonly context = injectContext<TuiPopover<TuiAlertOptions<string>, boolean>>();
   protected readonly watchApiService = inject(WatchApiService);
-  undoClicked = false;
+  private undoClicked = false;
 
   ngOnDestroy(): void {
     if (this.undoClicked) {
