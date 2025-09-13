@@ -43,6 +43,7 @@ export class WatchApiService {
   }
 
   // TODO: Ska den vara en httpResource? Hur fungerar retry i en sån?
+  // TODO: Det går att lägga till retry i interceptor. Är det en bra idé?
   getAllWatches(): ResourceRef<Watch[]> {
     return rxResource({
       stream: () =>

@@ -1,4 +1,5 @@
 @let apiStat = apiStatus();
+@let uptime = apiStatus().uptime;
 
 @if (apiStat.status === "active") {
   <div>
@@ -26,12 +27,12 @@
       <h3>Drifttid</h3>
 
       <div style="margin-left: 1em">
-        <p>År: {{ apiStat.uptime.years }}</p>
-        <p>Månader: {{ apiStat.uptime.months }}</p>
-        <p>Dagar: {{ apiStat.uptime.days }}</p>
-        <p>Timmar: {{ apiStat.uptime.hours }}</p>
-        <p>Minuter: {{ apiStat.uptime.minutes }}</p>
-        <p>Sekunder: {{ apiStat.uptime.seconds }}</p>
+        <p>År: {{ uptime.years }}</p>
+        <p>Månader: {{ uptime.months }}</p>
+        <p>Dagar: {{ uptime.days }}</p>
+        <p>Timmar: {{ uptime.hours }}</p>
+        <p>Minuter: {{ uptime.minutes }}</p>
+        <p>Sekunder: {{ uptime.seconds }}</p>
       </div>
     </div>
   </div>
