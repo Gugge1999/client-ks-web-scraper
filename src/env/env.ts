@@ -4,8 +4,8 @@ The list of file replacements can be found in `angular.json`. */
 
 import { Env } from "@models/env";
 
-export const env: Env = {
+export const env: Readonly<Env> = {
   name: "prod",
   apiUrl: "http://localhost:3000/api",
   apiUrlWebSocket: "ws://localhost:3000/api",
-} as const;
+};

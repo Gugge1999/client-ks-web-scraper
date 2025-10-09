@@ -14,9 +14,9 @@
       <h3>Minnesanvändning i MB</h3>
 
       <tui-axes
+        class="notifications-axes"
         [tuiLineChartHint]="hintContent"
         [axisYLabels]="axisYLabels()"
-        class="notifications-axes"
         [horizontalLines]="3"
         [verticalLines]="4">
         <tui-line-chart [value]="chartValue()" [height]="chartHeight()" [x]="xStartValue()" [filled]="true" [width]="20" />

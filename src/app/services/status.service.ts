@@ -11,10 +11,10 @@ import { rxResource } from "@angular/core/rxjs-interop";
   providedIn: "root",
 })
 export class StatusService {
-  private readonly ERROR_API_STATUS: ApiStatus = {
+  private readonly ERROR_API_STATUS: Readonly<ApiStatus> = {
     ...INITIAL_API_STATUS,
     status: "inactive",
-  } as const;
+  };
 
   getApiStatus(): Observable<ApiStatus> {
     return webSocket<ApiStatus>(`${env.apiUrlWebSocket}/status`).pipe(

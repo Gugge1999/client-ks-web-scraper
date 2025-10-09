@@ -58,6 +58,7 @@ export class NewWatchDialogComponent {
 
     if (STACK_API_ERROR_OBJECT_PROPERTY in result) {
       // TODO: Är det en bra idé att tillåta ett tomt sökresultat och varna användaren om det? Det kan ju vara en helt ny modell som användaren bevakar
+      // Det är nog också en bra idé att länka till sidan på klocksnack för att visa vad användaren har sökt på
       this.watchForm.controls.watchToScrape.setErrors({ noResult: true });
 
       return;
