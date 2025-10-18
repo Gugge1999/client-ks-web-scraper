@@ -23,3 +23,12 @@
 .fade-out {
   animation: fadeOutKeyframes 150ms ease-in-out forwards;
 }
+
+button[tuibutton] {
+  transition: transform 0.2s ease-in-out;
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
+}

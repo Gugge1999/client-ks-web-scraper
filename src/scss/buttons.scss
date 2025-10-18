@@ -1,9 +1,0 @@
-button[tuibutton] {
-  // TODO: Ska den vara transform? Se: https://www.youtube.com/shorts/Ehg00ctiU7s
-  transition: all 0.2s ease-in-out;
-
-  &:hover,
-  &:focus {
-    transform: scale(1.1);
-  }
-}
