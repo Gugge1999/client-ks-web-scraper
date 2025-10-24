@@ -24,7 +24,7 @@
   animation: fadeOutKeyframes 150ms ease-in-out forwards;
 }
 
-button[tuibutton] {
+button[tuibutton]:not([disabled], [appearance="action-grayscale"]) {
   transition: transform 0.2s ease-in-out;
 
   &:hover,
