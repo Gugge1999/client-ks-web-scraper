@@ -1,4 +1,5 @@
 import { ApiStatus } from "@models/api-status.model";
+import { isDevMode } from "@angular/core";
 
 export const INITIAL_API_STATUS: Readonly<ApiStatus> = {
   status: "pending",
@@ -13,6 +14,8 @@ export const INITIAL_API_STATUS: Readonly<ApiStatus> = {
     seconds: 0,
   },
 };
+
+export const isProduction = !isDevMode();
 
 export const STACK_API_ERROR_OBJECT_PROPERTY = "stack";
 
