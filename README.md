@@ -4,6 +4,8 @@
 >
 > ## TODO
 >
+> * Ändra så att dark är default på body (om det är där den sätts) så att fönstret inte blinkar vitt när man laddar om sidan i dark mode
+>
 > * Gör så att accessibility är 100 enligt lighthouse
 >
 > * [Adding OpenTelemetry to an Angular Application](https://timdeschryver.dev/blog/adding-opentelemetry-to-an-angular-application)

@@ -92,8 +92,7 @@
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
-              "namedChunks": true,
-              "statsJson": true
+              "namedChunks": true
             }
           },
           "defaultConfiguration": "production"
