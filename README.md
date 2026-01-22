@@ -4,6 +4,8 @@
 >
 > ## TODO
 >
+> * Kolla om less behövs i package.json
+> 
 > * Ändra så att dark är default på body (om det är där den sätts) så att fönstret inte blinkar vitt när man laddar om sidan i dark mode
 >
 > * Gör så att accessibility är 100 enligt lighthouse
