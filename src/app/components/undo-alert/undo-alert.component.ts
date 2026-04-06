@@ -1,7 +1,7 @@
+import { TuiPortalContext } from "@taiga-ui/cdk";
 import { ChangeDetectionStrategy, Component, inject, OnDestroy } from "@angular/core";
 import { WatchApiService } from "@services/watch-api.service";
-import { TuiPopover } from "@taiga-ui/cdk/services";
-import { TuiAlertOptions, TuiButton } from "@taiga-ui/core";
+import { TuiButton, type TuiNotificationOptions } from "@taiga-ui/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { take } from "rxjs";
 
@@ -12,7 +12,7 @@ import { take } from "rxjs";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UndoAlertComponent implements OnDestroy {
-  protected readonly context = injectContext<TuiPopover<TuiAlertOptions<string>, boolean>>();
+  protected readonly context = injectContext<TuiPortalContext<TuiNotificationOptions<string>, boolean>>();
   protected readonly watchApiService = inject(WatchApiService);
   private undoClicked = false;
 

@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input } from "@angular/core";
-import { NewWatchDialogComponent } from "@components/new-watch-dialog/new-watch-dialog.component";
 import { ApiStatus } from "@models/api-status.model";
 import { Watch } from "@models/watch.model";
-import { TuiButton, tuiDialog, TuiHint, TuiIcon } from "@taiga-ui/core";
-import { tap } from "rxjs";
+import { TuiButton, TuiDialogService, TuiHint, TuiIcon } from "@taiga-ui/core";
 import { AlertService } from "@services/alert.service";
+import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
+import { NewWatchDialogComponent } from "@components/new-watch-dialog/new-watch-dialog.component";
+import { tap } from "rxjs";
 
 @Component({
   selector: "scraper-new-watch-fab",
@@ -14,9 +15,10 @@ import { AlertService } from "@services/alert.service";
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewWatchFabComponent {
-  private readonly alertService = inject(AlertService);
-
   readonly apiStatus = input.required<ApiStatus>();
+
+  private readonly alertService = inject(AlertService);
+  private readonly dialogService = inject(TuiDialogService);
 
   readonly fabTooltip = computed(() => {
     switch (this.apiStatus().status) {
@@ -34,10 +36,9 @@ export class NewWatchFabComponent {
     }
   });
 
-  private readonly dialog = tuiDialog(NewWatchDialogComponent, { size: "s", closeable: false });
-
   async openNewWatchDialog() {
-    this.dialog()
+    this.dialogService
+      .open<Watch | undefined>(new PolymorpheusComponent(NewWatchDialogComponent), { size: "s", closable: false })
       .pipe(tap(res => this.handleFabRes(res)))
       .subscribe();
   }

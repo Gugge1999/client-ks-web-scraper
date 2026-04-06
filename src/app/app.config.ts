@@ -5,9 +5,7 @@ import { ApplicationConfig, LOCALE_ID, provideZonelessChangeDetection } from "@a
 import { getAnalytics, provideAnalytics } from "@angular/fire/analytics";
 import { initializeApp, provideFirebaseApp } from "@angular/fire/app";
 import { errorInterceptor } from "@interceptors/error.interceptor";
-import { tuiHintOptionsProvider } from "@taiga-ui/core";
-import { provideEventPlugins } from "@taiga-ui/event-plugins";
-import { provideAnimationsAsync } from "@angular/platform-browser/animations/async";
+import { provideTaiga, tuiHintOptionsProvider } from "@taiga-ui/core";
 
 registerLocaleData(localeSvSe);
 
@@ -17,14 +15,13 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch(), withInterceptors([errorInterceptor])),
     provideFirebaseApp(() => initializeApp(FIREBASE_CONFIG)),
     provideAnalytics(() => getAnalytics()),
-    provideAnimationsAsync(),
     {
       provide: LOCALE_ID,
       useValue: "sv-se",
     },
 
     // Taiga UI
-    provideEventPlugins(),
+    provideTaiga(),
     tuiHintOptionsProvider({
       showDelay: 100,
       hideDelay: 0,

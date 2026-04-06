@@ -1,21 +1,44 @@
 import { ChangeDetectionStrategy, Component, computed, inject, input } from "@angular/core";
-import { ApiStatusDialogComponent } from "@components/api-status-dialog/api-status-dialog.component";
 import { Theme, ThemeService } from "@services/theme.service";
-import { TuiDataList, tuiDialog, TuiDropdown, TuiDropdownDirective, TuiHint, TuiIcon, TuiLoader } from "@taiga-ui/core";
+import {
+  TuiDataListComponent,
+  TuiDialogService,
+  TuiDropdownDirective,
+  TuiDropdownOpen,
+  TuiDropdownOptionsDirective,
+  TuiHint,
+  TuiIcon,
+  TuiLoader,
+  TuiOptGroup,
+  TuiOption,
+} from "@taiga-ui/core";
 import { TuiAppBar } from "@taiga-ui/layout";
 import { ApiStatus } from "@models/api-status.model";
-import { UserFormDialogComponent } from "@components/user-form-dialog/user-form-dialog.component";
 import { UserService } from "@services/user.service";
+import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
+import { ApiStatusDialogComponent } from "@components/api-status-dialog/api-status-dialog.component";
+import { AlertService } from "@services/alert.service";
+import { lastValueFrom } from "rxjs";
+import { ApiError } from "@models/DTOs/api-error.dto";
+import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
 import { ChangePasswordDialogComponent } from "@components/change-password-dialog/change-password-dialog.component";
 import { ResetPasswordComponent } from "@components/reset-password/reset-password.component";
-import { lastValueFrom } from "rxjs";
-import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
-import { AlertService } from "@services/alert.service";
-import { ApiError } from "@models/DTOs/api-error.dto";
+import { UserFormDialogComponent } from "@components/user-form-dialog/user-form-dialog.component";
 
 @Component({
   selector: "scraper-header",
-  imports: [TuiAppBar, TuiHint, TuiDataList, TuiDropdown, TuiIcon, TuiDropdownDirective, TuiLoader],
+  imports: [
+    TuiAppBar,
+    TuiHint,
+    TuiIcon,
+    TuiLoader,
+    TuiOptGroup,
+    TuiDataListComponent,
+    TuiDropdownOpen,
+    TuiDropdownDirective,
+    TuiOption,
+    TuiDropdownOptionsDirective,
+  ],
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -26,17 +49,20 @@ export class HeaderComponent {
   private readonly themeService = inject(ThemeService);
   private readonly userService = inject(UserService);
   private readonly alertService = inject(AlertService);
-  private readonly statusDialog = tuiDialog(ApiStatusDialogComponent, { label: "Status för API", size: "m" });
-  private readonly userFormDialog = tuiDialog(UserFormDialogComponent, { size: "s" });
-  private readonly changePasswordFormDialog = tuiDialog(ChangePasswordDialogComponent, { size: "s" });
-  private readonly resetPasswordFormDialog = tuiDialog(ResetPasswordComponent, { size: "s" });
+  private readonly dialogService = inject(TuiDialogService);
 
   private readonly isDarkMode = this.themeService.isDarkMode;
   readonly themeIcon = computed(() => (this.isDarkMode() ? "moon" : "sun"));
   protected open = false;
 
   openApiStatusDialog() {
-    this.statusDialog(this.apiStatus).subscribe();
+    this.dialogService
+      .open(new PolymorpheusComponent(ApiStatusDialogComponent), {
+        label: "Status för API",
+        size: "m",
+        data: this.apiStatus,
+      })
+      .subscribe();
   }
 
   toggleTheme(): void {
@@ -46,15 +72,15 @@ export class HeaderComponent {
   }
 
   handleUserLogin() {
-    this.userFormDialog().subscribe();
+    this.dialogService.open(new PolymorpheusComponent(UserFormDialogComponent)).subscribe();
   }
 
   handleChangePassword() {
-    this.changePasswordFormDialog().subscribe();
+    this.dialogService.open(new PolymorpheusComponent(ChangePasswordDialogComponent)).subscribe();
   }
 
   handleResetPassword() {
-    this.resetPasswordFormDialog().subscribe();
+    this.dialogService.open(new PolymorpheusComponent(ResetPasswordComponent)).subscribe();
   }
 
   handleLogout() {

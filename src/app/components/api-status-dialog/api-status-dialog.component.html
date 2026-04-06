@@ -3,27 +3,27 @@
 
 @if (apiStat.status === "active") {
   <div>
-    <div tuiCardLarge tuiAppearance="floating" class="status-dialog-card">
+    <div tuiCardLarge appearance="floating" class="status-dialog-card">
       <h3>
         Interval på bevakningar:
         <i>{{ apiStat.scrapingIntervalInMinutes }} minuter</i>
       </h3>
     </div>
 
-    <div tuiCardLarge tuiAppearance="floating" class="status-dialog-card">
+    <div tuiCardLarge appearance="floating" class="status-dialog-card">
       <h3>Minnesanvändning i MB</h3>
 
       <tui-axes
         class="notifications-axes"
         [tuiLineChartHint]="hintContent"
         [axisYLabels]="axisYLabels()"
-        [horizontalLines]="3"
-        [verticalLines]="4">
+        [horizontalLines]="4"
+        [verticalLines]="5">
         <tui-line-chart [value]="chartValue()" [height]="chartHeight()" [x]="xStartValue()" [filled]="true" [width]="20" />
       </tui-axes>
     </div>
 
-    <div tuiCardLarge tuiAppearance="floating" class="status-dialog-card">
+    <div tuiCardLarge appearance="floating" class="status-dialog-card">
       <h3>Drifttid</h3>
 
       <div style="margin-left: 1em">

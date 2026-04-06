@@ -9,9 +9,8 @@ import {
   Validators,
 } from "@angular/forms";
 import { ChangePasswordForm } from "@models/forms/user";
-import { AsyncPipe } from "@angular/common";
-import { TuiButton, TuiDialogContext, TuiError, TuiTextfield } from "@taiga-ui/core";
-import { TuiButtonLoading, TuiFieldErrorPipe, tuiValidationErrorsProvider } from "@taiga-ui/kit";
+import { TuiButton, TuiDialogContext, TuiError, TuiInput, tuiValidationErrorsProvider } from "@taiga-ui/core";
+import { TuiButtonLoading } from "@taiga-ui/kit";
 import { ChangePasswordDto } from "@models/DTOs/user";
 import { lastValueFrom } from "rxjs";
 import { ApiError } from "@models/DTOs/api-error.dto";
@@ -22,7 +21,7 @@ import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
 
 @Component({
   selector: "scraper-change-password-dialog",
-  imports: [AsyncPipe, ReactiveFormsModule, TuiTextfield, TuiError, TuiButton, TuiButtonLoading, TuiFieldErrorPipe],
+  imports: [ReactiveFormsModule, TuiInput, TuiError, TuiButton, TuiButtonLoading],
   templateUrl: "./change-password-dialog.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [

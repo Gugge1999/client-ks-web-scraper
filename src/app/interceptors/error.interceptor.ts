@@ -1,15 +1,14 @@
+import { WA_IS_MOBILE } from "@ng-web-apis/platform";
 import { HttpErrorResponse, HttpHandlerFn, HttpRequest } from "@angular/common/http";
 import { inject } from "@angular/core";
 import { AlertService } from "@services/alert.service";
 import { catchError, throwError } from "rxjs";
 import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
-import { TUI_IS_MOBILE } from "@taiga-ui/cdk";
-
 let isFirstErrorWithStack = true;
 
 export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) {
   const alertService = inject(AlertService);
-  const isMobile = inject(TUI_IS_MOBILE);
+  const isMobile = inject(WA_IS_MOBILE);
 
   return next(req).pipe(
     catchError((errRes: HttpErrorResponse) => {

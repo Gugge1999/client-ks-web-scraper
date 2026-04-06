@@ -1,12 +1,11 @@
 import { ChangeDetectionStrategy, Component, inject, signal } from "@angular/core";
-import { TuiButtonLoading, TuiFieldErrorPipe, tuiValidationErrorsProvider } from "@taiga-ui/kit";
+import { TuiButtonLoading } from "@taiga-ui/kit";
 import { injectContext } from "@taiga-ui/polymorpheus";
-import { TuiButton, TuiDialogContext, TuiError, TuiTextfield } from "@taiga-ui/core";
+import { TuiButton, TuiDialogContext, TuiError, TuiInput, tuiValidationErrorsProvider } from "@taiga-ui/core";
 import { User } from "@models/user";
 import { UserService } from "@services/user.service";
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from "@angular/forms";
 import { ResetPasswordForm } from "@models/forms/user";
-import { AsyncPipe } from "@angular/common";
 import { ResetPasswordDto } from "@models/DTOs/user";
 import { lastValueFrom } from "rxjs";
 import { ApiError } from "@models/DTOs/api-error.dto";
@@ -14,7 +13,7 @@ import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
 
 @Component({
   selector: "scraper-reset-password",
-  imports: [ReactiveFormsModule, TuiTextfield, TuiError, AsyncPipe, TuiFieldErrorPipe, TuiButtonLoading, TuiButton],
+  imports: [ReactiveFormsModule, TuiInput, TuiError, TuiButtonLoading, TuiButton],
   templateUrl: "./reset-password.component.html",
   styleUrl: "./reset-password.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,

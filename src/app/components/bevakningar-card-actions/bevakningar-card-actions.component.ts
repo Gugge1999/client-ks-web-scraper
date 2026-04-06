@@ -3,7 +3,7 @@ import { FormsModule } from "@angular/forms";
 import { UndoAlertComponent } from "@components/undo-alert/undo-alert.component";
 import { Watch } from "@models/watch.model";
 import { WatchService } from "@services/watch.service";
-import { TuiAlertService, tuiDialog, TuiDialogService, TuiHint, TuiIcon } from "@taiga-ui/core";
+import { TuiDialogService, TuiHint, TuiIcon, TuiNotificationService } from "@taiga-ui/core";
 import { TUI_CONFIRM, TuiBadge, TuiBadgedContent, TuiConfirmData, TuiSwitch } from "@taiga-ui/kit";
 import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
 import { take, tap } from "rxjs";
@@ -28,16 +28,20 @@ export class BevakningarCardActionsComponent {
   );
 
   private readonly watchService = inject(WatchService);
-  private readonly alertsService = inject(TuiAlertService);
+  private readonly alertsService = inject(TuiNotificationService);
   private readonly dialogsService = inject(TuiDialogService);
-  private readonly dialog = tuiDialog(NotificationsDialogComponent, { size: "auto", closeable: false });
 
   protected toggleActiveStatus(watch: Watch) {
     return this.watchService.toggleActiveStatus(watch);
   }
 
   protected showNotifications() {
-    this.dialog({ label: this.watch().label, notifications: this.notifications() }).subscribe();
+    this.dialogsService
+      .open(new PolymorpheusComponent(NotificationsDialogComponent), {
+        closable: false,
+        data: { label: this.watch().label, notifications: this.notifications() },
+      })
+      .subscribe();
   }
 
   protected deleteWatch(): void {
@@ -51,7 +55,7 @@ export class BevakningarCardActionsComponent {
       .open<boolean>(TUI_CONFIRM, {
         label: `Vill du radera bevakning: ${this.watch().label}?`,
         size: "m",
-        closeable: false,
+        closable: false,
         data: data,
       })
       .pipe(

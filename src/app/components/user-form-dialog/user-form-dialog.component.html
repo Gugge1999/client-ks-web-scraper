@@ -13,20 +13,20 @@
     <tui-textfield>
       <label [for]="controls.email" tuiLabel>Email</label>
 
-      <input name="email" type="email" tuiTextfield autocomplete="off" [formControl]="controls.email" />
+      <input name="email" type="email" tuiInput autocomplete="off" [formControl]="controls.email" />
     </tui-textfield>
 
-    <tui-error [formControl]="controls.email" [error]="[] | tuiFieldError | async" />
+    <tui-error [formControl]="controls.email" />
   </p>
 
   <p>
     <tui-textfield>
       <label [for]="controls.password" tuiLabel>Lösenord</label>
 
-      <input name="password" type="password" tuiTextfield autocomplete="off" [formControl]="controls.password" />
+      <input name="password" type="password" tuiInput autocomplete="off" [formControl]="controls.password" />
     </tui-textfield>
 
-    <tui-error [formControl]="controls.password" [error]="[] | tuiFieldError | async" />
+    <tui-error [formControl]="controls.password" />
   </p>
 
   <div class="flex" style="justify-content: end; padding-top: 16px">

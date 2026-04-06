@@ -5,14 +5,13 @@ import { NewWatchDTO } from "@models/DTOs/new-watch-form-dto";
 import { WatchForm } from "@models/forms/watch-form";
 import { Watch } from "@models/watch.model";
 import { WatchService } from "@services/watch.service";
-import { TuiButton, TuiDialogContext, TuiError, TuiTextfield } from "@taiga-ui/core";
-import { TuiButtonLoading, TuiFieldErrorPipe, tuiValidationErrorsProvider } from "@taiga-ui/kit";
-import { AsyncPipe } from "@angular/common";
+import { TuiButton, TuiDialogContext, TuiError, TuiInput, tuiValidationErrorsProvider } from "@taiga-ui/core";
+import { TuiButtonLoading } from "@taiga-ui/kit";
 import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
 
 @Component({
   selector: "scraper-new-watch-dialog",
-  imports: [FormsModule, ReactiveFormsModule, TuiError, TuiFieldErrorPipe, AsyncPipe, TuiButton, TuiButtonLoading, TuiTextfield],
+  imports: [FormsModule, ReactiveFormsModule, TuiError, TuiButton, TuiButtonLoading, TuiInput],
   templateUrl: "./new-watch-dialog.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [

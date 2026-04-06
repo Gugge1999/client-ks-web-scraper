@@ -1,4 +1,3 @@
-import { AsyncPipe } from "@angular/common";
 import { ChangeDetectionStrategy, Component, inject, signal } from "@angular/core";
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
 import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
@@ -7,14 +6,14 @@ import { UserFormDto } from "@models/DTOs/user";
 import { UserForm } from "@models/forms/user";
 import { User } from "@models/user";
 import { UserService } from "@services/user.service";
-import { TuiButton, TuiDialogContext, TuiError, TuiTextfield } from "@taiga-ui/core";
-import { TuiButtonLoading, TuiFieldErrorPipe, tuiValidationErrorsProvider } from "@taiga-ui/kit";
+import { TuiButton, TuiDialogContext, TuiError, TuiInput, tuiValidationErrorsProvider } from "@taiga-ui/core";
+import { TuiButtonLoading } from "@taiga-ui/kit";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { lastValueFrom } from "rxjs";
 
 @Component({
   selector: "scraper-new-user-form-dialog",
-  imports: [FormsModule, ReactiveFormsModule, TuiError, TuiFieldErrorPipe, AsyncPipe, TuiButton, TuiButtonLoading, TuiTextfield],
+  imports: [FormsModule, ReactiveFormsModule, TuiError, TuiButton, TuiButtonLoading, TuiInput],
   templateUrl: "./user-form-dialog.component.html",
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [

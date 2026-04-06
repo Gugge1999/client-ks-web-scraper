@@ -8,7 +8,7 @@ import { TuiDialogService } from "@taiga-ui/core";
   providedIn: "root",
 })
 export class CookieService {
-  private readonly dialogs = inject(TuiDialogService);
+  private readonly dialogService = inject(TuiDialogService);
   private readonly cookieAcceptedSig = signal(false);
 
   readonly isCookieAccepted = computed(() => this.cookieAcceptedSig());
@@ -35,12 +35,12 @@ export class CookieService {
       content: "<p>Cookies använd för analys och för att utöka funktionalitet såsom personliga inställningar</p>",
     };
 
-    this.dialogs
+    this.dialogService
       .open<boolean>(TUI_CONFIRM, {
         label: "Acceptera cookies?",
         size: "m",
         dismissible: false,
-        closeable: false,
+        closable: false,
         data: confirmData,
       })
       .pipe(tap(isAccepted => this.handleCookieResponse(isAccepted)))

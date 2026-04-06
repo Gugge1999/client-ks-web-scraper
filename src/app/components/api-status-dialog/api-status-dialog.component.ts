@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, InputSignal } from "@angular/core";
 import { ApiStatus } from "@models/api-status.model";
-import { TuiAppearance, TuiDialogContext, TuiPoint } from "@taiga-ui/core";
+import { type TuiDialogContext, TuiPoint } from "@taiga-ui/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { TuiAxes, TuiLineChart, TuiLineChartHint } from "@taiga-ui/addon-charts";
 import { TuiContext } from "@taiga-ui/cdk";
@@ -8,16 +8,18 @@ import { TuiCardLarge } from "@taiga-ui/layout";
 
 @Component({
   selector: "scraper-api-status-dialog",
-  imports: [TuiAxes, TuiLineChart, TuiLineChartHint, TuiCardLarge, TuiAppearance],
+  imports: [TuiAxes, TuiLineChart, TuiLineChartHint, TuiCardLarge],
   templateUrl: "./api-status-dialog.component.html",
   styleUrl: "./api-status-dialog.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // TODO: Kolla om det behövs
+  host: { "(submit.prevent)": "context.completeWith('asdasd')" },
 })
 export class ApiStatusDialogComponent {
-  readonly dialogContext = injectContext<TuiDialogContext<void, InputSignal<ApiStatus>>>();
+  protected readonly context = injectContext<TuiDialogContext<string, InputSignal<ApiStatus>>>();
   private readonly memoryUsageArr: TuiPoint[] = [];
   private memoryUsageLength = 0;
-  protected readonly apiStatus = computed(() => this.dialogContext.data());
+  protected readonly apiStatus = computed(() => this.context.data());
 
   readonly chartValue = computed(() => {
     const memoryUsage = this.apiStatus().memoryUsage;

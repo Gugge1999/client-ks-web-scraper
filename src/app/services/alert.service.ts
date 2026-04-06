@@ -1,11 +1,11 @@
+import { TuiNotificationService } from "@taiga-ui/core";
 import { inject, Injectable } from "@angular/core";
-import { TuiAlertService } from "@taiga-ui/core";
 
 @Injectable({
   providedIn: "root",
 })
 export class AlertService {
-  private readonly alerts = inject(TuiAlertService);
+  private readonly alerts = inject(TuiNotificationService);
 
   successAlert(message: string) {
     this.alerts.open(message, { appearance: "success" }).subscribe();

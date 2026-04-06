@@ -7,20 +7,20 @@
     <tui-textfield>
       <label [for]="controls.label" tuiLabel>Namn</label>
 
-      <input name="label" tuiTextfield [formControl]="controls.label" />
+      <input name="label" tuiInput [formControl]="controls.label" />
     </tui-textfield>
 
-    <tui-error [formControl]="controls.label" [error]="[] | tuiFieldError | async" />
+    <tui-error [formControl]="controls.label" />
   </p>
 
   <p>
     <tui-textfield>
       <label [for]="controls.watchToScrape" tuiLabel>Klocka att bevaka</label>
 
-      <input name="watchToScrape" tuiTextfield [formControl]="controls.watchToScrape" />
+      <input name="watchToScrape" tuiInput [formControl]="controls.watchToScrape" />
     </tui-textfield>
 
-    <tui-error [formControl]="controls.watchToScrape" [error]="[] | tuiFieldError | async" />
+    <tui-error [formControl]="controls.watchToScrape" />
   </p>
 
   <div class="flex" style="justify-content: end; padding-top: 16px">

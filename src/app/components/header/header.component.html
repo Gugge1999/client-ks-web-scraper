@@ -1,11 +1,11 @@
 <header>
   <tui-app-bar style="background-color: var(--tui-status-positive); height: 2.5rem">
-    <a class="header-logo" tuiSlot="left">
+    <a class="header-logo" tuiSlot="start">
       <tui-icon icon="@tui.watch" />
       <span class="toolbar-title">KS Scraper</span>
     </a>
 
-    <div tuiSlot="right" style="display: flex; align-items: center; gap: 16px; padding-right: 10px">
+    <div tuiSlot="end" style="display: flex; align-items: center; gap: 16px; padding-right: 10px">
       <div tuiHint="Växla tema" class="header-icon icon-wrapper pointer">
         <tui-icon [icon]="themeIcon()" [class]="themeIcon()" (click)="toggleTheme()" (keyup)="toggleTheme()" />
       </div>
@@ -34,7 +34,7 @@
       </div>
 
       <div class="header-icon icon-wrapper pointer">
-        <tui-icon icon="user" [(tuiDropdownOpen)]="open" tuiDropdownAlign="right" [tuiDropdown]="dropdown" />
+        <tui-icon icon="user" [(tuiDropdownOpen)]="open" tuiDropdownAlign="end" [tuiDropdown]="dropdown" />
 
         <ng-template #dropdown>
           <tui-data-list>
