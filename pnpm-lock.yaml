@@ -59,9 +59,6 @@ importers:
       firebase:
         specifier: ^12.11.0
         version: 12.11.0
-      less:
-        specifier: ^4.6.4
-        version: 4.6.4
       rxjs:
         specifier: ^7.8.2
         version: 7.8.2
@@ -6158,6 +6155,7 @@ snapshots:
   copy-anything@3.0.5:
     dependencies:
       is-what: 4.1.16
+    optional: true
 
   cors@2.8.6:
     dependencies:
@@ -6687,7 +6685,8 @@ snapshots:
 
   is-unicode-supported@2.1.0: {}
 
-  is-what@4.1.16: {}
+  is-what@4.1.16:
+    optional: true
 
   isexe@2.0.0: {}
 
@@ -6745,6 +6744,7 @@ snapshots:
       mime: 1.6.0
       needle: 3.5.0
       source-map: 0.6.1
+    optional: true
 
   levn@0.4.1:
     dependencies:
@@ -7141,7 +7141,8 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  parse-node-version@1.0.1: {}
+  parse-node-version@1.0.1:
+    optional: true
 
   parse5-html-rewriting-stream@8.0.0:
     dependencies:
