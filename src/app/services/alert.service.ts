@@ -8,7 +8,7 @@ export class AlertService {
   private readonly alerts = inject(TuiNotificationService);
 
   successAlert(message: string) {
-    this.alerts.open(message, { appearance: "success" }).subscribe();
+    this.alerts.open(message, { appearance: "positive" }).subscribe();
   }
 
   infoAlert(message: string) {
@@ -16,6 +16,6 @@ export class AlertService {
   }
 
   errorAlert(message: string, config?: { sticky: true }) {
-    this.alerts.open(message, { appearance: "error", autoClose: config?.sticky ? 0 : 5000 }).subscribe();
+    this.alerts.open(message, { appearance: "negative", autoClose: config?.sticky ? 0 : 5000 }).subscribe();
   }
 }

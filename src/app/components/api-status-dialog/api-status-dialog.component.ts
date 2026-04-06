@@ -12,11 +12,9 @@ import { TuiCardLarge } from "@taiga-ui/layout";
   templateUrl: "./api-status-dialog.component.html",
   styleUrl: "./api-status-dialog.component.scss",
   changeDetection: ChangeDetectionStrategy.OnPush,
-  // TODO: Kolla om det behövs
-  host: { "(submit.prevent)": "context.completeWith('asdasd')" },
 })
 export class ApiStatusDialogComponent {
-  protected readonly context = injectContext<TuiDialogContext<string, InputSignal<ApiStatus>>>();
+  protected readonly context = injectContext<TuiDialogContext<void, InputSignal<ApiStatus>>>();
   private readonly memoryUsageArr: TuiPoint[] = [];
   private memoryUsageLength = 0;
   protected readonly apiStatus = computed(() => this.context.data());

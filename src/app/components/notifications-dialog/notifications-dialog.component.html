@@ -1,5 +1,6 @@
 <h2 style="margin-top: 0">{{ `Notiser för bevakning ${context.data.label}` }}</h2>
 
+<!-- TODO: Gör så att alla notiser får samma bredd -->
 @for (notification of notifications; track $index) {
   <p>{{ notification | date: cardDateFormat }}</p>
 } @empty {
