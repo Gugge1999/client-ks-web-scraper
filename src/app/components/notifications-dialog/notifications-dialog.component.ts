@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from "@angular/core";
 import { TuiDialogContext } from "@taiga-ui/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
 import { DatePipe } from "@angular/common";
-import { CARD_DATE_FORMAT_LEADING_ZERO } from "@constants/constants";
+import { CARD_DATE_FORMAT_MONOSPACE } from "@constants/constants";
 
 @Component({
   selector: "scraper-notifications-dialog",
@@ -16,5 +16,5 @@ export class NotificationsDialogComponent {
 
   protected readonly notifications = [this.context.data.notifications].flat();
 
-  protected readonly cardDateFormat = CARD_DATE_FORMAT_LEADING_ZERO;
+  protected readonly cardDateFormat = CARD_DATE_FORMAT_MONOSPACE;
 }

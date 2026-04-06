@@ -2,7 +2,7 @@
 
 <!-- TODO: Gör så att alla notiser får samma bredd -->
 @for (notification of notifications; track $index) {
-  <p>{{ notification | date: cardDateFormat }}</p>
+  <p style="font-family: monospace">{{ notification | date: cardDateFormat }}</p>
 } @empty {
   <p>0 notiser finns för bevakningen</p>
 }
