@@ -6,6 +6,7 @@ import { AlertService } from "@services/alert.service";
 import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
 import { NewWatchDialogComponent } from "@components/new-watch-dialog/new-watch-dialog.component";
 import { tap } from "rxjs";
+import { BreakpointObserverService } from "@services/breakpoint-observer.service";
 
 @Component({
   selector: "scraper-new-watch-fab",
@@ -19,6 +20,8 @@ export class NewWatchFabComponent {
 
   private readonly alertService = inject(AlertService);
   private readonly dialogService = inject(TuiDialogService);
+  private readonly breakpointObserverService = inject(BreakpointObserverService);
+  private readonly appearanceDialogString = this.breakpointObserverService.appearanceDialogString;
 
   readonly fabTooltip = computed(() => {
     switch (this.apiStatus().status) {
@@ -38,7 +41,11 @@ export class NewWatchFabComponent {
 
   async openNewWatchDialog() {
     this.dialogService
-      .open<Watch | undefined>(new PolymorpheusComponent(NewWatchDialogComponent), { size: "s", closable: false })
+      .open<Watch | undefined>(new PolymorpheusComponent(NewWatchDialogComponent), {
+        size: "s",
+        appearance: this.appearanceDialogString(),
+        closable: false,
+      })
       .pipe(tap(res => this.handleFabRes(res)))
       .subscribe();
   }

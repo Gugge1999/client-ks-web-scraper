@@ -8,6 +8,7 @@ import { TUI_CONFIRM, TuiBadge, TuiBadgedContent, TuiConfirmData, TuiSwitch } fr
 import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
 import { take, tap } from "rxjs";
 import { NotificationsDialogComponent } from "@components/notifications-dialog/notifications-dialog.component";
+import { BreakpointObserverService } from "@services/breakpoint-observer.service";
 
 @Component({
   selector: "scraper-bevakningar-card-actions",
@@ -30,6 +31,8 @@ export class BevakningarCardActionsComponent {
   private readonly watchService = inject(WatchService);
   private readonly alertsService = inject(TuiNotificationService);
   private readonly dialogsService = inject(TuiDialogService);
+  private readonly breakpointObserverService = inject(BreakpointObserverService);
+  private readonly appearanceDialogString = this.breakpointObserverService.appearanceDialogString;
 
   protected toggleActiveStatus(watch: Watch) {
     return this.watchService.toggleActiveStatus(watch);
@@ -38,7 +41,7 @@ export class BevakningarCardActionsComponent {
   protected showNotifications() {
     this.dialogsService
       .open(new PolymorpheusComponent(NotificationsDialogComponent), {
-        closable: false,
+        appearance: this.appearanceDialogString(),
         data: { label: this.watch().label, notifications: this.notifications() },
       })
       .subscribe();

@@ -24,6 +24,7 @@ import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
 import { ChangePasswordDialogComponent } from "@components/change-password-dialog/change-password-dialog.component";
 import { ResetPasswordComponent } from "@components/reset-password/reset-password.component";
 import { UserFormDialogComponent } from "@components/user-form-dialog/user-form-dialog.component";
+import { BreakpointObserverService } from "@services/breakpoint-observer.service";
 
 @Component({
   selector: "scraper-header",
@@ -50,6 +51,8 @@ export class HeaderComponent {
   private readonly userService = inject(UserService);
   private readonly alertService = inject(AlertService);
   private readonly dialogService = inject(TuiDialogService);
+  private readonly breakpointObserverService = inject(BreakpointObserverService);
+  private readonly appearanceDialogString = this.breakpointObserverService.appearanceDialogString;
 
   private readonly isDarkMode = this.themeService.isDarkMode;
   readonly themeIcon = computed(() => (this.isDarkMode() ? "moon" : "sun"));
@@ -59,7 +62,7 @@ export class HeaderComponent {
     this.dialogService
       .open(new PolymorpheusComponent(ApiStatusDialogComponent), {
         label: "Status för API",
-        size: "m",
+        appearance: this.appearanceDialogString(),
         data: this.apiStatus,
       })
       .subscribe();
