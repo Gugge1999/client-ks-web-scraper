@@ -1,7 +1,7 @@
-@if (allWatchesLength() > 0) {
+@if (watchesArrLength() > 0) {
   <div class="flex flex-direction-row flex-justify-content-center summary-wrapper" animate.enter="fade-in">
-    <p>Bevakningar: {{ allWatchesLength() }}</p>
+    <p>Bevakningar: {{ watchesArrLength() }}</p>
 
-    <p>Aktiva: {{ activeWatchesLength() }}</p>
+    <p>Aktiva: {{ activeWatchesArrLength() }}</p>
   </div>
 }

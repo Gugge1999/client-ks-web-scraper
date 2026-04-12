@@ -9,6 +9,6 @@ import { Watch } from "@models/watch.model";
 })
 export class SummaryComponent {
   readonly watches = input.required<Watch[]>();
-  readonly allWatchesLength = computed(() => this.watches().length);
-  readonly activeWatchesLength = computed(() => this.watches().filter(w => w.active).length);
+  readonly watchesArrLength = computed(() => this.watches().length);
+  readonly activeWatchesArrLength = computed(() => this.watches().filter(w => w.active).length);
 }
