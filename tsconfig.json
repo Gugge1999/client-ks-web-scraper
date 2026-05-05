@@ -4,17 +4,15 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./src/",
     "paths": {
-      "@components/*": ["app/components/*"],
-      "@models/*": ["app/models/*"],
-      "@constants/*": ["app/constants/*"],
-      "@services/*": ["app/services/*"],
-      "@interceptors/*": ["app/interceptors/*"],
-      "@utils/*": ["app/utils/*"],
-      "@env/*": ["env/*"]
+      "@components/*": ["./src/app/components/*"],
+      "@models/*": ["./src/app/models/*"],
+      "@constants/*": ["./src/app/constants/*"],
+      "@services/*": ["./src/app/services/*"],
+      "@interceptors/*": ["./src/app/interceptors/*"],
+      "@utils/*": ["./src/app/utils/*"],
+      "@env/*": ["./src/env/*"]
     },
-    "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
