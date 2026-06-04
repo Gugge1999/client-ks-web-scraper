@@ -1,5 +1,5 @@
 import { registerLocaleData } from "@angular/common";
-import { provideHttpClient, withFetch, withInterceptors } from "@angular/common/http";
+import { provideHttpClient, withInterceptors } from "@angular/common/http";
 import localeSvSe from "@angular/common/locales/sv";
 import { ApplicationConfig, LOCALE_ID, provideZonelessChangeDetection } from "@angular/core";
 import { getAnalytics, provideAnalytics } from "@angular/fire/analytics";
@@ -12,7 +12,7 @@ registerLocaleData(localeSvSe);
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZonelessChangeDetection(),
-    provideHttpClient(withFetch(), withInterceptors([errorInterceptor])),
+    provideHttpClient(withInterceptors([errorInterceptor])),
     provideFirebaseApp(() => initializeApp(FIREBASE_CONFIG)),
     provideAnalytics(() => getAnalytics()),
     {
