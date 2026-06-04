@@ -6,3 +6,4 @@ allowBuilds:
   msgpackr-extract: true
   protobufjs: true
 shamefullyHoist: true
+minimumReleaseAge: 0
