@@ -16,7 +16,7 @@ import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
   imports: [ReactiveFormsModule, TuiInput, TuiError, TuiButtonLoading, TuiButton],
   templateUrl: "./reset-password.component.html",
   styleUrl: "./reset-password.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush,
+
   providers: [
     tuiValidationErrorsProvider({
       required: "Obligatorisk",

@@ -1,12 +1,10 @@
-import { computed, inject, Injectable, signal } from "@angular/core";
+import { computed, inject, Service, signal } from "@angular/core";
 import { TUI_DARK_MODE } from "@taiga-ui/core";
 import { CookieService } from "./cookie.service";
 
 export type Theme = "dark" | "light";
 
-@Injectable({
-  providedIn: "root",
-})
+@Service()
 export class ThemeService {
   private readonly cookieService = inject(CookieService);
   private readonly darkModeSig = inject(TUI_DARK_MODE);

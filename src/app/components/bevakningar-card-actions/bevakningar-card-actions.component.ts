@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input } from "@angular/core";
+import { Component, computed, inject, input } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { UndoAlertComponent } from "@components/undo-alert/undo-alert.component";
 import { Watch } from "@models/watch.model";
@@ -15,7 +15,6 @@ import { BreakpointObserverService } from "@services/breakpoint-observer.service
   imports: [FormsModule, TuiSwitch, TuiIcon, TuiHint, TuiBadgedContent, TuiBadge],
   templateUrl: "./bevakningar-card-actions.component.html",
   styleUrl: "./bevakningar-card-actions.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BevakningarCardActionsComponent {
   public readonly watch = input.required<Watch>();

@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input } from "@angular/core";
+import { Component, computed, inject, input } from "@angular/core";
 import { ApiStatus } from "@models/api-status.model";
 import { Watch } from "@models/watch.model";
 import { TuiButton, TuiDialogService, TuiHint, TuiIcon } from "@taiga-ui/core";
-import { AlertService } from "@services/alert.service";
+import { NotificationService } from "../../services/notification.service";
 import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
 import { NewWatchDialogComponent } from "@components/new-watch-dialog/new-watch-dialog.component";
 import { tap } from "rxjs";
@@ -13,12 +13,11 @@ import { BreakpointObserverService } from "@services/breakpoint-observer.service
   imports: [TuiIcon, TuiButton, TuiHint],
   templateUrl: "./new-watch-fab.component.html",
   styleUrl: "./new-watch-fab.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NewWatchFabComponent {
   readonly apiStatus = input.required<ApiStatus>();
 
-  private readonly alertService = inject(AlertService);
+  private readonly alertService = inject(NotificationService);
   private readonly dialogService = inject(TuiDialogService);
   private readonly breakpointObserverService = inject(BreakpointObserverService);
   private readonly appearanceDialogString = this.breakpointObserverService.appearanceDialogString;
@@ -33,7 +32,7 @@ export class NewWatchFabComponent {
         return "API:et är inte aktivt";
       default: {
         const errMsg = "Okänd API status";
-        this.alertService.errorAlert(errMsg);
+        this.alertService.errorNotification(errMsg);
         throw Error(errMsg);
       }
     }

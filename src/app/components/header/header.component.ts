@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input } from "@angular/core";
+import { Component, computed, inject, input } from "@angular/core";
 import { Theme, ThemeService } from "@services/theme.service";
 import {
   TuiDataListComponent,
@@ -17,7 +17,7 @@ import { ApiStatus } from "@models/api-status.model";
 import { UserService } from "@services/user.service";
 import { PolymorpheusComponent } from "@taiga-ui/polymorpheus";
 import { ApiStatusDialogComponent } from "@components/api-status-dialog/api-status-dialog.component";
-import { AlertService } from "@services/alert.service";
+import { NotificationService } from "../../services/notification.service";
 import { lastValueFrom } from "rxjs";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
@@ -42,14 +42,13 @@ import { BreakpointObserverService } from "@services/breakpoint-observer.service
   ],
   templateUrl: "./header.component.html",
   styleUrl: "./header.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
   readonly apiStatus = input.required<ApiStatus>();
 
   private readonly themeService = inject(ThemeService);
   private readonly userService = inject(UserService);
-  private readonly alertService = inject(AlertService);
+  private readonly alertService = inject(NotificationService);
   private readonly dialogService = inject(TuiDialogService);
   private readonly breakpointObserverService = inject(BreakpointObserverService);
   private readonly appearanceDialogString = this.breakpointObserverService.appearanceDialogString;
@@ -99,10 +98,10 @@ export class HeaderComponent {
     );
 
     if (STACK_API_ERROR_OBJECT_PROPERTY in apiRes) {
-      this.alertService.errorAlert(apiRes.message);
+      this.alertService.errorNotification(apiRes.message);
       return;
     }
 
-    this.alertService.successAlert("Användare raderad");
+    this.alertService.successNotification("Användare raderad");
   }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, InputSignal } from "@angular/core";
+import { Component, computed, InputSignal } from "@angular/core";
 import { ApiStatus } from "@models/api-status.model";
 import { type TuiDialogContext, TuiPoint } from "@taiga-ui/core";
 import { injectContext } from "@taiga-ui/polymorpheus";
@@ -11,7 +11,6 @@ import { TuiCardLarge } from "@taiga-ui/layout";
   imports: [TuiAxes, TuiLineChart, TuiLineChartHint, TuiCardLarge],
   templateUrl: "./api-status-dialog.component.html",
   styleUrl: "./api-status-dialog.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ApiStatusDialogComponent {
   protected readonly context = injectContext<TuiDialogContext<void, InputSignal<ApiStatus>>>();

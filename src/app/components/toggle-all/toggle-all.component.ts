@@ -10,7 +10,6 @@ import { WatchService } from "@services/watch.service";
   imports: [FormsModule, TuiHintDirective, TuiSwitch],
   templateUrl: "./toggle-all.component.html",
   styleUrl: "./toggle-all.component.scss",
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ToggleAllComponent {
   readonly watches = input.required<Watch[]>();

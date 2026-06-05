@@ -1,12 +1,10 @@
-import { computed, inject, Injectable, signal } from "@angular/core";
+import { computed, inject, Service, signal } from "@angular/core";
 import { CookieState, initialCookie } from "@models/cookie";
 import { tap } from "rxjs";
 import { TUI_CONFIRM, TuiConfirmData } from "@taiga-ui/kit";
 import { TuiDialogService } from "@taiga-ui/core";
 
-@Injectable({
-  providedIn: "root",
-})
+@Service()
 export class CookieService {
   private readonly dialogService = inject(TuiDialogService);
   private readonly cookieAcceptedSig = signal(false);

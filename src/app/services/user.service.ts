@@ -1,13 +1,11 @@
-import { inject, Injectable } from "@angular/core";
+import { inject, Service } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { User } from "@models/user";
 import { env } from "@env/env";
 import { ChangePasswordDto, ResetPasswordDto, UserFormDto } from "@models/DTOs/user";
 
-@Injectable({
-  providedIn: "root",
-})
+@Service()
 export class UserService {
   private readonly httpClient = inject(HttpClient);
   private readonly jwtTokenConst = "jwt-token";

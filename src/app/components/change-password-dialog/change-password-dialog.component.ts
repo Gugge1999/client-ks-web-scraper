@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from "@angular/core";
+import { Component, inject, signal } from "@angular/core";
 import {
   AbstractControl,
   FormControl,
@@ -23,7 +23,7 @@ import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
   selector: "scraper-change-password-dialog",
   imports: [ReactiveFormsModule, TuiInput, TuiError, TuiButton, TuiButtonLoading],
   templateUrl: "./change-password-dialog.component.html",
-  changeDetection: ChangeDetectionStrategy.OnPush,
+
   providers: [
     tuiValidationErrorsProvider({
       required: "Obligatorisk",

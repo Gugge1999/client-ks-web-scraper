@@ -1,5 +1,5 @@
 import { HttpClient } from "@angular/common/http";
-import { inject, Injectable, ResourceRef } from "@angular/core";
+import { inject, ResourceRef, Service } from "@angular/core";
 import { rxResource } from "@angular/core/rxjs-interop";
 import { env } from "@env/env";
 import { ApiError } from "@models/DTOs/api-error.dto";
@@ -9,9 +9,7 @@ import { verifyResponse } from "@utils/valibot";
 import { retry, tap } from "rxjs";
 import { array, object, pipe as valibotPipe, string, uuid } from "valibot";
 
-@Injectable({
-  providedIn: "root",
-})
+@Service()
 export class WatchApiService {
   private readonly httpClient = inject(HttpClient);
 

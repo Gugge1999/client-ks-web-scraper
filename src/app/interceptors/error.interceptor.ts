@@ -1,13 +1,14 @@
 import { WA_IS_MOBILE } from "@ng-web-apis/platform";
 import { HttpErrorResponse, HttpHandlerFn, HttpRequest } from "@angular/common/http";
 import { inject } from "@angular/core";
-import { AlertService } from "@services/alert.service";
+import { NotificationService } from "../services/notification.service";
 import { catchError, throwError } from "rxjs";
 import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
+
 let isFirstErrorWithStack = true;
 
 export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn) {
-  const alertService = inject(AlertService);
+  const alertService = inject(NotificationService);
   const isMobile = inject(WA_IS_MOBILE);
 
   return next(req).pipe(
@@ -23,7 +24,7 @@ export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn)
 
         if (err && STACK_API_ERROR_OBJECT_PROPERTY in err && isMobile === false && isFirstErrorWithStack) {
           isFirstErrorWithStack = false;
-          alertService.errorAlert("Se stacktrace i console", { sticky: true });
+          alertService.errorNotification("Se stacktrace i console", { sticky: true });
           console.error("Stack:", err.stack);
         }
 
@@ -41,11 +42,11 @@ export function errorInterceptor(req: HttpRequest<unknown>, next: HttpHandlerFn)
           errMsg = err.errorMessage;
         }
 
-        alertService.errorAlert(errMsg);
+        alertService.errorNotification(errMsg);
         return throwError(() => err);
       } catch (error) {
         const catchErrMsg = "Nånting gick fel i errorInterceptor";
-        alertService.errorAlert(catchErrMsg);
+        alertService.errorNotification(catchErrMsg);
 
         console.error(catchErrMsg, error);
 

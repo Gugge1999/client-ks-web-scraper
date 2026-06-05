@@ -1,21 +1,19 @@
 import { TuiNotificationService } from "@taiga-ui/core";
-import { inject, Injectable } from "@angular/core";
+import { inject, Service } from "@angular/core";
 
-@Injectable({
-  providedIn: "root",
-})
-export class AlertService {
+@Service()
+export class NotificationService {
   private readonly alerts = inject(TuiNotificationService);
 
-  successAlert(message: string) {
+  successNotification(message: string) {
     this.alerts.open(message, { appearance: "positive" }).subscribe();
   }
 
-  infoAlert(message: string) {
+  infoNotification(message: string) {
     this.alerts.open(message, { appearance: "info" }).subscribe();
   }
 
-  errorAlert(message: string, config?: { sticky: true }) {
+  errorNotification(message: string, config?: { sticky: true }) {
     this.alerts.open(message, { appearance: "negative", autoClose: config?.sticky ? 0 : 5000 }).subscribe();
   }
 }

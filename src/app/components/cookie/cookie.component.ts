@@ -4,7 +4,6 @@ import { Analytics } from "@angular/fire/analytics";
 @Component({
   selector: "scraper-cookie",
   template: ``,
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CookieComponent {
   // noinspection JSUnusedLocalSymbols

@@ -1,18 +1,16 @@
-import { inject, Injectable } from "@angular/core";
+import { inject, Service } from "@angular/core";
 import { lastValueFrom } from "rxjs";
 import { STACK_API_ERROR_OBJECT_PROPERTY } from "@constants/constants";
 import { ApiError } from "@models/DTOs/api-error.dto";
 import { NewWatchDTO } from "@models/DTOs/new-watch-form-dto";
 import { Watch } from "@models/watch.model";
 import { WatchApiService } from "@services/watch-api.service";
-import { AlertService } from "@services/alert.service";
+import { NotificationService } from "./notification.service";
 
-@Injectable({
-  providedIn: "root",
-})
+@Service()
 export class WatchService {
   private readonly watchApiService = inject(WatchApiService);
-  private readonly alertService = inject(AlertService);
+  private readonly alertService = inject(NotificationService);
 
   private readonly _watches = this.watchApiService.getAllWatches();
 
@@ -35,7 +33,7 @@ export class WatchService {
       return apiRes;
     }
 
-    this.alertService.successAlert(`Ny bevakning skapad för: ${newWatchDTO.label}`);
+    this.alertService.successNotification(`Ny bevakning skapad för: ${newWatchDTO.label}`);
     this._watches.value.update(watches => [...watches, apiRes]);
 
     return apiRes;
@@ -50,7 +48,7 @@ export class WatchService {
       return;
     }
 
-    this.alertService.successAlert((activateAll ? `Aktiverade` : `Inaktiverade`) + ` alla bevakningar`);
+    this.alertService.successNotification((activateAll ? `Aktiverade` : `Inaktiverade`) + ` alla bevakningar`);
     const newWatches = this.watches.value().map(watch => {
       watch.active = activateAll;
       return watch;
@@ -80,6 +78,6 @@ export class WatchService {
       return;
     }
 
-    this.alertService.successAlert(`${newActiveStatus === true ? "Aktivera:" : "Inaktivera:"} ${watch.label}`);
+    this.alertService.successNotification(`${newActiveStatus === true ? "Aktivera:" : "Inaktivera:"} ${watch.label}`);
   }
 }

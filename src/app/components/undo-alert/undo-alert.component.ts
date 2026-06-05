@@ -9,7 +9,6 @@ import { take } from "rxjs";
   selector: "scraper-undo-alert",
   imports: [TuiButton],
   templateUrl: "./undo-alert.component.html",
-  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class UndoAlertComponent implements OnDestroy {
   protected readonly context = injectContext<TuiPortalContext<TuiNotificationOptions<string>, boolean>>();

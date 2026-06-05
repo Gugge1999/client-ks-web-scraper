@@ -1,15 +1,13 @@
 import { ApiStatus, apiStatusSchema } from "@models/api-status.model";
-import { Injectable } from "@angular/core";
 import { webSocket } from "rxjs/webSocket";
 import { env } from "@env/env";
 import { catchError, from, Observable, of, retry, tap } from "rxjs";
 import { verifyResponse } from "@utils/valibot";
 import { INITIAL_API_STATUS } from "@constants/constants";
 import { rxResource } from "@angular/core/rxjs-interop";
+import { Service } from "@angular/core";
 
-@Injectable({
-  providedIn: "root",
-})
+@Service()
 export class StatusService {
   private readonly ERROR_API_STATUS: Readonly<ApiStatus> = {
     ...INITIAL_API_STATUS,

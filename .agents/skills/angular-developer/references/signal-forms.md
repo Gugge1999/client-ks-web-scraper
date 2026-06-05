@@ -556,7 +556,7 @@ import {
   standalone: true,
   imports: [FormField],
   templateUrl: './app.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  
 })
 export class App {
   model = signal({

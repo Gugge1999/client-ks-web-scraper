@@ -15,7 +15,7 @@ import { lastValueFrom } from "rxjs";
   selector: "scraper-new-user-form-dialog",
   imports: [FormsModule, ReactiveFormsModule, TuiError, TuiButton, TuiButtonLoading, TuiInput],
   templateUrl: "./user-form-dialog.component.html",
-  changeDetection: ChangeDetectionStrategy.OnPush,
+
   providers: [
     tuiValidationErrorsProvider({
       required: "Obligatorisk",
